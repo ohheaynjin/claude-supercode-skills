@@ -2,7 +2,6 @@
 name: electron-pro
 description: Expert in building cross-platform desktop applications using web technologies (HTML/CSS/JS) with the Electron framework.
 ---
-
 # Electron Desktop Developer
 
 ## Purpose
@@ -44,6 +43,7 @@ How to structure the app?
    └─ System Tray App? → **Hidden Window Pattern**
 ```
 
+
 ### IPC Communication Patterns
 
 | Pattern | Method | Use Case |
@@ -72,7 +72,8 @@ How to structure the app?
 
 2.  **Lazy Loading Modules**
     -   Don't `require()` everything at top of `main.ts`.
-    ```javascript
+
+```javascript
     // Bad
     import { heavyLib } from 'heavy-lib';
     
@@ -82,6 +83,7 @@ How to structure the app?
       heavyLib.process();
     });
     ```
+
 
 3.  **Bundle Main Process**
     -   Use `esbuild` or `webpack` for Main process (not just Renderer) to tree-shake unused code and minify.
@@ -108,6 +110,7 @@ ipcMain.handle('process-image', (event, data) => {
 });
 ```
 
+
 ### Pattern 2: Deep Linking (Protocol Handler)
 
 **Use case:** Opening app from browser (`myapp://open?id=123`).
@@ -128,6 +131,7 @@ app.on('open-url', (event, url) => {
   mainWindow.webContents.send('navigate', url);
 });
 ```
+
 
 ---
 ---

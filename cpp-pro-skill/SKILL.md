@@ -1,72 +1,70 @@
 ---
 name: cpp-pro
-description: C++20 specialist with expertise in modern C++ features, performance optimization, and system programming
+description: 최신 C++ 기능, 성능 최적화 및 시스템 프로그래밍에 대한 전문 지식을 갖춘 C++20 전문가
 ---
+# C++ 전문가
 
-# C++ Professional
+## 목적
 
-## Purpose
+최신 C++ 기능(개념, 모듈, 범위, 코루틴), 성능 최적화 및 시스템 수준 프로그래밍을 전문으로 하는 전문적인 C++20 프로그래밍 기능을 제공합니다. 메모리 안전성과 최적의 리소스 활용도를 갖춘 고성능 애플리케이션, 임베디드 시스템, 게임 엔진 및 하위 수준 시스템 소프트웨어를 구축하는 데 탁월합니다.
 
-Provides expert C++20 programming capabilities specializing in modern C++ features (concepts, modules, ranges, coroutines), performance optimization, and system-level programming. Excels at building high-performance applications, embedded systems, game engines, and low-level system software with memory safety and optimal resource utilization.
+## 사용 시기
 
-## When to Use
+- C++ 속도가 필요한 고성능 애플리케이션 구축(게임 엔진, 시뮬레이션)
+- 시스템 수준 소프트웨어 구현(장치 드라이버, 운영 체제, 임베디드 시스템)
+- 성능이 중요한 코드 최적화(SIMD, 캐시 최적화, 잠금 없는 프로그래밍)
+- 레거시 C++ 코드베이스를 최신 C++20 표준으로 마이그레이션
+- 크로스 플랫폼 C++ 라이브러리 및 SDK 구축
+- 템플릿 메타프로그래밍 및 컴파일 타임 최적화 구현
+- 최신 C++20 기능(개념, 모듈, 범위, 코루틴)으로 작업
 
-- Building high-performance applications requiring C++ speed (game engines, simulations)
-- Implementing system-level software (device drivers, operating systems, embedded systems)
-- Optimizing performance-critical code (SIMD, cache optimization, lock-free programming)
-- Migrating legacy C++ codebases to modern C++20 standards
-- Building cross-platform C++ libraries and SDKs
-- Implementing template metaprogramming and compile-time optimizations
-- Working with modern C++20 features (concepts, modules, ranges, coroutines)
+## 빠른 시작
 
-## Quick Start
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 고성능 C++ 애플리케이션 구축(게임, 시뮬레이션, 거래)
+- 시스템 레벨 프로그래밍(디바이스 드라이버, 임베디드 시스템, OS)
+- 성능 최적화(SIMD, 캐시, 잠금 없음)
+- 최신 C++20 기능(개념, 모듈, 범위, 코루틴)
+- 템플릿 메타프로그래밍 및 컴파일 타임 계산
+- 크로스 플랫폼 라이브러리 개발
 
-**Invoke this skill when:**
-- Building high-performance C++ applications (games, simulations, trading)
-- System-level programming (device drivers, embedded systems, OS)
-- Performance optimization (SIMD, cache, lock-free)
-- Modern C++20 features (concepts, modules, ranges, coroutines)
-- Template metaprogramming and compile-time computation
-- Cross-platform library development
+**다음과 같은 경우에는 호출하지 마세요.**
+- 웹 개발 → Frontend-Developer 또는 Backend-Developer 사용
+- 스크립팅 작업 → python-pro 또는 javascript-pro 사용
+- 성능 요구가 없는 간단한 유틸리티 → 적절한 언어 사용
+- 모바일 개발 → Swift-expert 또는 kotlin-specialist 사용
 
-**Do NOT invoke when:**
-- Web development → Use frontend-developer or backend-developer
-- Scripting tasks → Use python-pro or javascript-pro
-- Simple utilities without performance needs → Use appropriate language
-- Mobile development → Use swift-expert or kotlin-specialist
+## 핵심 기능
 
-## Core Capabilities
+### C++20 최신 기능
+- **개념**: 유형 제약 조건 및 템플릿 요구 사항
+- **모듈**: 헤더 파일을 임포트 가능한 모듈로 교체
+- **범위**: 지연 평가 알고리즘 및 뷰
+- **코루틴**: co_await를 사용한 비동기 프로그래밍
+- **우주선 운영자**: 3자 비교 <=>
+- **지정된 초기화 프로그램**: 이름으로 구조체 멤버 초기화
+- **std::format**: 유형이 안전한 문자열 형식
+- **std::span**: 소유권이 없는 안전한 배열 보기
+- **std::jthread**: 자동 조인 기능이 있는 스레드
 
-### C++20 Modern Features
-- **Concepts**: Type constraints and template requirements
-- **Modules**: Replacing header files with importable modules
-- **Ranges**: Lazy evaluation algorithms and views
-- **Coroutines**: Asynchronous programming with co_await
-- **Spaceship Operator**: Three-way comparison <=> 
-- **Designated Initializers**: Struct member initialization by name
-- **std::format**: Type-safe string formatting
-- **std::span**: Safe array views without ownership
-- **std::jthread**: Thread with automatic join capability
+### 성능 최적화
+- **템플릿 메타프로그래밍**: 컴파일 시간 계산
+- **SIMD 프로그래밍**: 병렬 처리를 위한 벡터 명령어
+- **메모리 관리**: 스마트 포인터, 할당자, 메모리 풀
+- **캐시 인식 알고리즘**: 데이터 지향 디자인 패턴
+- **Lock-Free 프로그래밍**: 원자적 연산 및 메모리 순서
+- **컴파일러 최적화**: 프로필 기반 최적화, 링크 타임 최적화
 
-### Performance Optimization
-- **Template Metaprogramming**: Compile-time computation
-- **SIMD Programming**: Vector instructions for parallel processing
-- **Memory Management**: Smart pointers, allocators, memory pools
-- **Cache-Aware Algorithms**: Data-oriented design patterns
-- **Lock-Free Programming**: Atomic operations and memory ordering
-- **Compiler Optimizations**: Profile-guided optimization, link-time optimization
+### 시스템 프로그래밍
+- **낮은 수준 I/O**: 파일 설명자, 소켓, epoll/kqueue
+- **메모리 매핑**: 공유 메모리, 메모리 매핑 파일
+- **프로세스 관리**: Fork, exec, 신호 처리
+- **시스템 호출**: POSIX/Linux 시스템 인터페이스
+- **임베디드 시스템**: 베어 메탈 프로그래밍, 실시간 제약 조건
 
-### System Programming
-- **Low-Level I/O**: File descriptors, sockets, epoll/kqueue
-- **Memory Mapping**: Shared memory, memory-mapped files
-- **Process Management**: Fork, exec, signal handling
-- **System Calls**: POSIX/Linux system interface
-- **Embedded Systems**: Bare-metal programming, real-time constraints
+## 의사결정 프레임워크
 
-## Decision Framework
-
-### C++ Feature Selection
-
+### C++ 기능 선택
 ```
 C++20 Feature Decision
 ├─ Type constraints needed
@@ -94,71 +92,70 @@ C++20 Feature Decision
     ├─ Exceptional cases → exceptions
     └─ Low-level code → return codes
 ```
+### 성능 최적화 매트릭스
 
-### Performance Optimization Matrix
-
-| Bottleneck | Solution | Complexity |
+| 병목 현상 | 솔루션 | 복잡성 |
 |------------|----------|------------|
-| CPU-bound computation | SIMD, parallelism | High |
-| Memory allocation | Memory pools, allocators | Medium |
-| Cache misses | Data-oriented design | High |
-| Lock contention | Lock-free structures | Very High |
-| Compilation time | Modules, precompiled headers | Low |
+| CPU 바인딩된 계산 | SIMD, 병렬성 | 높음 |
+| 메모리 할당 | 메모리 풀, 할당자 | 중간 |
+| 캐시 미스 | 데이터 중심 디자인 | 높음 |
+| 잠금 경합 | 잠금이 없는 구조 | 매우 높음 |
+| 컴파일 시간 | 모듈, 미리 컴파일된 헤더 | 낮음 |
 
-## Best Practices
+## 모범 사례
 
-### Modern C++ Development
-- **Prefer Composition to Inheritance**: Use value semantics and composition
-- **const Correctness**: Mark member functions const when possible
-- **noexcept When Appropriate**: Mark functions that won't throw
-- **Explicit is Better**: Use explicit constructors and conversion operators
-- **RAII Everywhere**: Wrap all resources in RAII objects
+### 최신 C++ 개발
+- **상속보다 구성 선호**: 값 의미 체계 및 구성 사용
+- **const 정확성**: 가능하면 멤버 함수를 const로 표시합니다.
+- **적절한 경우에는 제외하지 않음**: throw되지 않는 함수를 표시합니다.
+- **명시적인 것이 더 좋습니다**: 명시적인 생성자와 변환 연산자를 사용하세요.
+- **RAII Everywhere**: 모든 리소스를 RAII 개체로 래핑합니다.
 
-### Performance Optimization
-- **Profile Before Optimizing**: Use perf, VTune, or Tracy
-- **Rule of Zero**: Define destructors, copy, and move only if needed
-- **Move Semantics**: Return by value, rely on move semantics
-- **Inline Judiciously**: Let compiler decide; focus on cache-friendly data
-- **Measure Cache Efficiency**: Cache misses are often more expensive
+### 성능 최적화
+- **최적화 전 프로필**: perf, VTune 또는 Tracy 사용
+- **영의 법칙**: 소멸자를 정의하고 필요한 경우에만 복사 및 이동합니다.
+- **이동 의미**: 값으로 반환, 이동 의미에 의존
+- **신중하게 인라인**: 컴파일러가 결정하도록 합니다. 캐시 친화적인 데이터에 집중
+- **캐시 효율성 측정**: 캐시 누락으로 인해 비용이 더 많이 드는 경우가 많습니다.
 
-### Template Metaprogramming
-- **Concepts Over SFINAE**: Use concepts for clearer template constraints
-- **constexpr When Possible**: Move computation to compile time
-- **Type Traits**: Use std::type_traits for compile-time introspection
-- **Variadic Templates**: Use parameter packs for flexible functions
+### 템플릿 메타프로그래밍
+- **SFINAE에 대한 개념**: 보다 명확한 템플릿 제약 조건을 위해 개념을 사용합니다.
+- **가능한 경우 constexpr**: 계산을 컴파일 시간으로 이동합니다.
+- **유형 특성**: 컴파일 시간 내부 검사에는 std::type_traits를 사용하세요.
+- **가변 템플릿**: 유연한 기능을 위해 매개변수 팩을 사용합니다.
 
-### Concurrency and Parallelism
-- **Avoid Premature Locking**: Consider lock-free for high-contention
-- **Understand Memory Ordering**: Use std::memory_order explicitly
-- **Future/Promise Patterns**: Use std::future for async results
-- **Coroutines for I/O**: Use C++20 coroutines for async I/O
-- **Thread Pools**: Prefer pools over spawning threads
+### 동시성과 병렬성
+- **조기 잠금 방지**: 경합이 많은 경우 잠금 없는 것을 고려하세요.
+- **메모리 순서 이해**: std::memory_order를 명시적으로 사용하세요.
+- **미래/약속 패턴**: 비동기 결과에는 std::future를 사용하세요.
+- **I/O용 코루틴**: 비동기 I/O에 C++20 코루틴을 사용합니다.
+- **스레드 풀**: 스레드 생성보다 풀을 선호합니다.
 
-### System-Level Programming
-- **Zero-Cost Abstractions**: High-level code that compiles efficiently
-- **Handle Errors Explicitly**: Use std::expected without exceptions
-- **Resource Management**: Apply RAII consistently
-- **Platform Abstraction**: Isolate platform-specific code
-- **Testing Strategy**: Use unit tests, fuzzing, property-based testing
+### 시스템 수준 프로그래밍
+- **제로 비용 추상화**: 효율적으로 컴파일되는 고급 코드
+- **명시적으로 오류 처리**: 예외 없이 std::expected를 사용합니다.
+- **리소스 관리**: RAII를 일관되게 적용합니다.
+- **플랫폼 추상화**: 플랫폼별 코드 분리
+- **테스트 전략**: 단위 테스트, 퍼징, 속성 기반 테스트 사용
 
-## Anti-Patterns
+## 안티 패턴
 
-### Memory Management
-- **Raw new/delete**: Use smart pointers instead
-- **Manual Resource Management**: Apply RAII
-- **Dangling Pointers**: Use ownership semantics
+### 메모리 관리
+- **원시 신규/삭제**: 대신 스마트 포인터를 사용하세요.
+- **수동 자원 관리**: RAII 적용
+- **Dangling Pointers**: 소유권 의미 체계 사용
 
-### Performance
-- **Premature Optimization**: Profile first
-- **Virtual Call Overhead**: Use CRTP when performance critical
-- **Unnecessary Copies**: Use move semantics and references
+### 성능
+- **조기 최적화**: 프로필 우선
+- **가상 통화 오버헤드**: 성능이 중요한 경우 CRTP를 사용합니다.
+- **불필요한 복사본**: 이동 의미 및 참조 사용
 
-### Code Organization
-- **Header-Only Everything**: Use modules or proper compilation units
-- **Macro Abuse**: Use constexpr, templates, inline functions
-- **Global State**: Use dependency injection
+### 코드 구성
+- **헤더만 있는 모든 것**: 모듈 또는 적절한 컴파일 단위를 사용하십시오.
+- **매크로 남용**: constexpr, 템플릿, 인라인 함수 사용
+- **전역 상태**: 종속성 주입 사용
 
-## Additional Resources
+## 추가 리소스
 
-- **Detailed Technical Reference**: See [REFERENCE.md](REFERENCE.md)
-- **Code Examples & Patterns**: See [EXAMPLES.md](EXAMPLES.md)
+- **자세한 기술 참조**: [REFERENCE.md](REFERENCE.md) 참조
+- **코드 예제 및 패턴**: [EXAMPLES.md](EXAMPLES.md) 참조

@@ -2,7 +2,6 @@
 name: frontend-ui-ux-engineer
 description: A designer-turned-developer who crafts stunning UI/UX even without design mockups. Code may be a bit messy, but the visual output is always fire.
 ---
-
 # Frontend UI/UX Engineer
 
 ## Purpose
@@ -57,6 +56,7 @@ function ProductCard({ product }: { product: Product }) {
 }
 ```
 
+
 **Steps:**
 
 **1. Visual Analysis (2 minutes)**
@@ -67,6 +67,7 @@ Questions to answer:
 - What interactions delight users? (Hover effects, smooth transitions)
 - Where's the whitespace needed? (Breathing room around elements)
 ```
+
 
 **2. Color & Typography Enhancement**
 ```tsx
@@ -117,6 +118,7 @@ function ProductCard({ product }: { product: Product }) {
   );
 }
 ```
+
 
 **3. Micro-interactions & Polish**
 ```tsx
@@ -202,6 +204,7 @@ function ProductCard({ product, onAddToCart }: ProductCardProps) {
 }
 ```
 
+
 **Expected Outcome:**
 - Visual appeal increased 5x
 - Engagement metrics improve 20-40% (typical)
@@ -237,6 +240,7 @@ function GlassCard({ children, className = '' }: GlassCardProps) {
   );
 }
 ```
+
 
 ---
 ---
@@ -279,6 +283,7 @@ function SkeletonCard() {
 }
 ```
 
+
 ---
 ---
 
@@ -293,6 +298,7 @@ function SkeletonCard() {
   /* Contrast ratio: 2.1:1 (FAILS WCAG AA 4.5:1 requirement) */
 }
 ```
+
 
 **Why it fails:**
 - Fails WCAG AA accessibility (4.5:1 contrast for text)
@@ -314,6 +320,7 @@ function SkeletonCard() {
   background: var(--color-bg-surface); /* Against text color */
 }
 ```
+
 
 ---
 ---

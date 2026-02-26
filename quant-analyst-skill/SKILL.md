@@ -1,38 +1,37 @@
 ---
 name: quant-analyst
-description: Expert in quantitative finance, algorithmic trading, and financial data analysis using Python (Pandas/NumPy), statistical modeling, and machine learning.
+description: Python(Pandas/NumPy), 통계 모델링 및 기계 학습을 사용한 양적 금융, 알고리즘 거래 및 금융 데이터 분석 전문가입니다.
 ---
+# 정량분석가
 
-# Quantitative Analyst
+## 목적
+양적 금융, 알고리즘 거래 전략 및 금융 데이터 분석에 대한 전문 지식을 제공합니다. Python 과학 컴퓨팅 스택을 사용하여 통계 모델링, 위험 분석 및 데이터 기반 거래 시스템 구축을 전문으로 합니다.
 
-## Purpose
-Provides expertise in quantitative finance, algorithmic trading strategies, and financial data analysis. Specializes in statistical modeling, risk analytics, and building data-driven trading systems using Python scientific computing stack.
+## 사용 시기
+- 알고리즘 거래 전략 구축 또는 백테스팅 프레임워크 구축
+- 금융시계열 데이터에 대한 통계분석 수행
+- 리스크 모델 구현(VaR, CVaR, Greeks 계산)
+- 포트폴리오 최적화 알고리즘 생성
+- 파생상품의 정량적 가격결정모델 개발
+- 시장 미세구조 및 주문장 역학 분석
+- 자산 수익률을 위한 빌딩 팩터 모델
+- 금융상품 몬테카를로 시뮬레이션 구현
 
-## When to Use
-- Building algorithmic trading strategies or backtesting frameworks
-- Performing statistical analysis on financial time series data
-- Implementing risk models (VaR, CVaR, Greeks calculations)
-- Creating portfolio optimization algorithms
-- Developing quantitative pricing models for derivatives
-- Analyzing market microstructure and order book dynamics
-- Building factor models for asset returns
-- Implementing Monte Carlo simulations for financial instruments
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 알고리즘 거래 전략 구축 또는 백테스팅 프레임워크 구축
+- 금융시계열 데이터에 대한 통계분석 수행
+- 리스크 모델 구현(VaR, CVaR, Greeks 계산)
+- 포트폴리오 최적화 알고리즘 생성
+- 파생상품의 정량적 가격결정모델 개발
 
-## Quick Start
-**Invoke this skill when:**
-- Building algorithmic trading strategies or backtesting frameworks
-- Performing statistical analysis on financial time series data
-- Implementing risk models (VaR, CVaR, Greeks calculations)
-- Creating portfolio optimization algorithms
-- Developing quantitative pricing models for derivatives
+**다음과 같은 경우에는 호출하지 마세요.**
+- 일반 웹 애플리케이션 구축 → fullstack-developer 사용
+- 재정적 맥락 없이 데이터 시각화 만들기 → 데이터 분석가 사용
+- 결제처리 구현 → 결제통합 이용
+- 일반 ML 모델 구축 → ml-engine 사용
 
-**Do NOT invoke when:**
-- Building general web applications → use fullstack-developer
-- Creating data visualizations without financial context → use data-analyst
-- Implementing payment processing → use payment-integration
-- Building generic ML models → use ml-engineer
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Financial Analysis Task?
 ├── Trading Strategy → Backtesting framework + signal generation
@@ -41,42 +40,41 @@ Financial Analysis Task?
 ├── Derivatives Pricing → Monte Carlo, finite difference, analytical
 └── Time Series Analysis → ARIMA, GARCH, cointegration tests
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 알고리즘 트레이딩 전략 개발
+1. 거래 가설 및 신호 생성 논리 정의
+2. 벡터화된 Pandas 작업을 사용하여 전략 구현
+3. 현실적인 실행 시뮬레이션으로 백테스팅 엔진 구축
+4. 성능 지표 계산(Sharpe, Sortino, 최대 감소)
+5. 과적합을 방지하기 위해 Walk-forward 최적화를 수행합니다.
+6. 적절한 위험 통제를 통해 실시간 거래 후크를 구현합니다.
 
-### 1. Algorithmic Trading Strategy Development
-1. Define trading hypothesis and signal generation logic
-2. Implement strategy using vectorized Pandas operations
-3. Build backtesting engine with realistic execution simulation
-4. Calculate performance metrics (Sharpe, Sortino, max drawdown)
-5. Perform walk-forward optimization to avoid overfitting
-6. Implement live trading hooks with proper risk controls
+### 2. 위험 모델 구현
+1. 과거 가격/반품 데이터 수집
+2. 적절한 위험 지표(VaR, CVaR, Greeks)를 선택합니다.
+3. 파라메트릭, 히스토리 또는 몬테카를로 방법을 사용하여 계산을 구현합니다.
+4. 백테스팅 및 스트레스 시나리오로 모델 검증
+5. 실시간 위험 노출에 대한 모니터링 대시보드 구축
 
-### 2. Risk Model Implementation
-1. Gather historical price/returns data
-2. Select appropriate risk metric (VaR, CVaR, Greeks)
-3. Implement calculation using parametric, historical, or Monte Carlo methods
-4. Validate model with backtesting and stress scenarios
-5. Build monitoring dashboard for real-time risk exposure
+### 3. 포트폴리오 최적화
+1. 투자 유니버스 및 제약 조건 정의
+2. 기대수익률과 공분산행렬 계산
+3. 최적화 구현(scipy.optimize 또는 cvxpy)
+4. 집중 방지를 위해 정규화 적용
+5. 거래비용을 고려하여 주기적으로 재조정
 
-### 3. Portfolio Optimization
-1. Define investment universe and constraints
-2. Calculate expected returns and covariance matrix
-3. Implement optimization (scipy.optimize or cvxpy)
-4. Apply regularization to prevent concentration
-5. Rebalance periodically with transaction cost consideration
+## 모범 사례
+- 대규모 데이터 세트의 성능을 위해 벡터화된 NumPy/Pandas 작업을 사용합니다.
+- 백테스트에서 항상 거래 비용, 슬리피지, 시장 영향을 고려하세요.
+- 미리보기 편향을 방지하기 위해 적절한 교차 검증(순방향 이동)을 구현합니다.
+- 통계적 특성에는 로그 반환을 사용하고, 집계에는 단순 반환을 사용합니다.
+- 시간대 인식 타임스탬프를 사용하여 금융 데이터를 저장합니다(UTC 선호).
+- 배포 전 샘플 외 테스트를 통해 모델 검증
 
-## Best Practices
-- Use vectorized NumPy/Pandas operations for performance on large datasets
-- Always account for transaction costs, slippage, and market impact in backtests
-- Implement proper cross-validation (walk-forward) to prevent lookahead bias
-- Use log returns for statistical properties, simple returns for aggregation
-- Store financial data with timezone-aware timestamps (UTC preferred)
-- Validate models with out-of-sample testing before deployment
-
-## Anti-Patterns
-- **Overfitting to historical data** → Use walk-forward validation and regularization
-- **Ignoring transaction costs** → Include realistic costs in all backtests
-- **Using future data in signals** → Ensure strict point-in-time correctness
-- **Assuming normal distributions** → Use fat-tailed distributions for risk models
-- **Hardcoding market assumptions** → Parameterize and stress test assumptions
+## 안티 패턴
+- **과거 데이터에 대한 과적합** → Walk-forward 검증 및 정규화 사용
+- **거래 비용 무시** → 모든 백테스트에 현실적인 비용 포함
+- **신호에 미래 데이터 사용** → 엄격한 시점 정확성 보장
+- **정규분포 가정** → 위험 모델에 두꺼운 꼬리 분포 사용
+- **하드코딩 시장 가정** → 매개변수화 및 스트레스 테스트 가정

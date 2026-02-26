@@ -1,11 +1,10 @@
-# Rails Expert - Technical Reference
+# 레일즈 전문가 - 기술 참조
 
-## Architecture Patterns
+## 아키텍처 패턴
 
-### Modern Rails Application Structure
+### Modern Rails 애플리케이션 구조
 
-The following shows a complete model implementation with modern Rails 7+ patterns:
-
+다음은 최신 Rails 7+ 패턴을 사용한 완전한 모델 구현을 보여줍니다.
 ```ruby
 # app/models/order.rb
 class Order < ApplicationRecord
@@ -89,9 +88,7 @@ class Order < ApplicationRecord
   end
 end
 ```
-
-### Service Objects Pattern
-
+### 서비스 개체 패턴
 ```ruby
 # app/services/order_service.rb
 class OrderService
@@ -176,9 +173,7 @@ class OrderService
   end
 end
 ```
-
-### Payment Processor Pattern
-
+### 결제 프로세서 패턴
 ```ruby
 # app/services/payment_processor.rb
 class PaymentProcessor
@@ -227,9 +222,7 @@ class PaymentProcessor
   end
 end
 ```
-
-## Modern Controllers with Hotwire
-
+## Hotwire를 갖춘 최신 컨트롤러
 ```ruby
 # app/controllers/orders_controller.rb
 class OrdersController < ApplicationController
@@ -345,9 +338,7 @@ class OrdersController < ApplicationController
   end
 end
 ```
-
-## API Resources
-
+## API 리소스
 ```ruby
 # app/resources/order_resource.rb
 class OrderResource < ApplicationResource
@@ -381,9 +372,7 @@ class OrderResource < ApplicationResource
   sort :created_at, :total_amount
 end
 ```
-
-## Background Jobs
-
+## 백그라운드 작업
 ```ruby
 # app/jobs/order_confirmation_job.rb
 class OrderConfirmationJob < ApplicationJob
@@ -434,9 +423,7 @@ class OrderProcessingJob < ApplicationJob
   end
 end
 ```
-
 ## GraphQL API
-
 ```ruby
 # app/graphql/types/query_type.rb
 module Types

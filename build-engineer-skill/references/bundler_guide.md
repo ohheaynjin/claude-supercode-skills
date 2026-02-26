@@ -1,13 +1,12 @@
-# Bundler Guide
+# 번들러 가이드
 
-## Overview
+## 개요
 
-Modern web applications use bundlers to transform, optimize, and bundle source code for browser consumption. This guide covers major bundlers and their configurations.
+최신 웹 애플리케이션은 번들러를 사용하여 브라우저 사용을 위한 소스 코드를 변환, 최적화 및 번들링합니다. 이 가이드에서는 주요 번들러와 해당 구성을 다룹니다.
 
-## Webpack
+## 웹팩
 
-### Basic Configuration
-
+### 기본 구성
 ```javascript
 const path = require('path');
 
@@ -20,9 +19,7 @@ module.exports = {
   mode: 'production',
 };
 ```
-
-### Loaders
-
+### 로더
 ```javascript
 module.exports = {
   module: {
@@ -64,9 +61,7 @@ module.exports = {
   },
 };
 ```
-
-### Plugins
-
+### 플러그인
 ```javascript
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -89,9 +84,7 @@ module.exports = {
   ],
 };
 ```
-
-### Optimization
-
+### 최적화
 ```javascript
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -124,11 +117,9 @@ module.exports = {
   },
 };
 ```
+## 비테
 
-## Vite
-
-### Configuration
-
+### 구성
 ```typescript
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -161,9 +152,7 @@ export default defineConfig({
   },
 });
 ```
-
-### Plugins
-
+### 플러그인
 ```typescript
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -178,9 +167,7 @@ export default defineConfig({
   ],
 });
 ```
-
-### Environment Variables
-
+### 환경 변수
 ```typescript
 export default defineConfig({
   define: {
@@ -189,11 +176,9 @@ export default defineConfig({
   },
 });
 ```
+## 에스빌드
 
-## esbuild
-
-### Basic Usage
-
+### 기본 사용법
 ```javascript
 const esbuild = require('esbuild');
 
@@ -206,9 +191,7 @@ esbuild.build({
   target: 'es2015',
 });
 ```
-
-### Watch Mode
-
+### 시청 모드
 ```javascript
 esbuild.context({
   entryPoints: ['src/index.js'],
@@ -218,11 +201,9 @@ esbuild.context({
   ctx.watch();
 });
 ```
+## 터보팩
 
-## Turbopack
-
-### Configuration
-
+### 구성
 ```javascript
 module.exports = {
   experimental: {
@@ -230,9 +211,7 @@ module.exports = {
   },
 };
 ```
-
-### Development Server
-
+### 개발 서버
 ```javascript
 const { createServer } = require('turbo');
 
@@ -242,48 +221,46 @@ createServer({
   hmr: true,
 });
 ```
+## 비교
 
-## Comparison
-
-| Feature | Webpack | Vite | esbuild | Turbopack |
+| 기능 | 웹팩 | VITE | 에스빌드 | 터보팩 |
 |---------|----------|-------|----------|------------|
-| Build Speed | Slow | Fast | Very Fast | Very Fast |
-| HMR | Good | Excellent | Good | Excellent |
-| Ecosystem | Extensive | Growing | Limited | New |
-| Configuration | Complex | Simple | Simple | Simple |
-| TypeScript | Via loader | Native | Native | Native |
-| Learning Curve | High | Low | Low | Low |
+| 빌드 속도 | 천천히 | 빠른 | 매우 빠름 | 매우 빠름 |
+| HMR | 좋음 | 우수 | 좋음 | 우수 |
+| 생태계 | 광범위한 | 성장 | 한정 | 신규 |
+| 구성 | 복잡한 | 단순 | 단순 | 단순 |
+| 타입스크립트 | 로더를 통해 | 네이티브 | 네이티브 | 네이티브 |
+| 학습 곡선 | 높음 | 낮음 | 낮음 | 낮음 |
 
-## When to Use Which
+## 언제 어느 것을 사용해야 하는가?
 
-### Webpack
-- Maximum configurability needed
-- Advanced optimization required
-- Legacy browser support
-- Large enterprise applications
+### 웹팩
+- 필요한 최대 구성 가능성
+- 고급 최적화 필요
+- 레거시 브라우저 지원
+- 대기업 애플리케이션
 
-### Vite
-- Modern browser support
-- Fast development experience
-- TypeScript-first
-- React/Vue/Svelte projects
+### 비테
+- 최신 브라우저 지원
+- 빠른 개발 경험
+- TypeScript 우선
+- React/Vue/Svelte 프로젝트
 
-### esbuild
-- Maximum build speed
-- Simple projects
-- Minimal dependencies
-- Build-time transformation only
+### 에스빌드
+- 최대 빌드 속도
+- 간단한 프로젝트
+- 최소한의 의존성
+- 빌드 시간 변환만 해당
 
-### Turbopack
-- Next.js projects
-- Maximum performance
-- React-based applications
-- Want to stay bleeding-edge
+### 터보팩
+- Next.js 프로젝트
+- 최대 성능
+- React 기반 애플리케이션
+- 최첨단을 유지하고 싶다
 
-## Best Practices
+## 모범 사례
 
-### Performance
-
+### 성능
 ```javascript
 // Enable persistent cache
 module.exports = {
@@ -293,9 +270,7 @@ module.exports = {
   },
 };
 ```
-
-### Bundle Size
-
+### 번들 크기
 ```javascript
 // Analyze bundle size
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
@@ -309,9 +284,7 @@ module.exports = {
   ],
 };
 ```
-
-### Development
-
+### 개발
 ```javascript
 // Fast rebuilds
 module.exports = {
@@ -319,9 +292,7 @@ module.exports = {
   cache: true,
 };
 ```
-
-### Production
-
+### 생산
 ```javascript
 // Optimize for production
 module.exports = {

@@ -1,251 +1,250 @@
-# Framework Selection Guide
+# 프레임워크 선택 가이드
 
-## Overview
+## 개요
 
-Choosing the right build tool/framework is crucial for project success. This guide helps you make informed decisions based on project requirements.
+올바른 빌드 도구/프레임워크를 선택하는 것은 프로젝트 성공에 매우 중요합니다. 이 가이드는 프로젝트 요구 사항에 따라 정보에 근거한 결정을 내리는 데 도움이 됩니다.
 
-## Decision Matrix
+## 결정 매트릭스
 
-### Project Size
+### 프로젝트 크기
 
-#### Small Projects (< 10 files, < 5 dependencies)
-- **Vite** - Fastest setup, minimal configuration
-- **esbuild** - Simplest, no build system needed
-- **Rollup** - Great for libraries
+#### 소규모 프로젝트(< 10개 파일, < 5개 종속성)
+- **Vite** - 가장 빠른 설정, 최소한의 구성
+- **esbuild** - 가장 간단하고 빌드 시스템이 필요하지 않습니다.
+- **롤업** - 도서관에 적합
 
-#### Medium Projects (10-100 files, 5-20 dependencies)
-- **Vite** - Excellent DX, fast HMR
-- **Webpack** - More control if needed
-- **Parcel** - Zero config
+#### 중간 규모 프로젝트(파일 10~100개, 종속성 5~20개)
+- **Vite** - 탁월한 DX, 빠른 HMR
+- **웹팩** - 필요한 경우 더 많은 제어 가능
+- **소포** - 제로 구성
 
-#### Large Projects (100+ files, 20+ dependencies)
-- **Webpack** - Maximum control and optimization
-- **Vite** - Still good, may need plugins
-- **Turbopack** - For Next.js projects
+#### 대규모 프로젝트(100개 이상의 파일, 20개 이상의 종속성)
+- **웹팩** - 최대 제어 및 최적화
+- **Vite** - 여전히 양호하지만 플러그인이 필요할 수 있습니다.
+- **터보팩** - Next.js 프로젝트용
 
-### Team Size
+### 팀 규모
 
-#### Solo Developer
-- **Vite** - Simple and fast
-- **esbuild** - Minimal setup
-- **Parcel** - Zero config
+#### 1인 개발자
+- **Vite** - 간단하고 빠릅니다.
+- **esbuild** - 최소 설정
+- **소포** - 제로 구성
 
-#### Small Team (2-5 developers)
-- **Vite** - Good documentation, easy onboarding
-- **Webpack** - Well-documented, widely used
-- **Parcel** - Easy setup, less maintenance
+#### 소규모 팀(개발자 2~5명)
+- **Vite** - 좋은 문서화, 쉬운 온보딩
+- **Webpack** - 잘 문서화되어 있으며 널리 사용됩니다.
+- **소포** - 설치가 쉽고 유지 관리가 적습니다.
 
-#### Large Team (5+ developers)
-- **Webpack** - Standard in industry, lots of resources
-- **Vite** - Growing ecosystem
-- **Turbopack** - Latest tech, may be experimental
+#### 대규모 팀(개발자 5명 이상)
+- **Webpack** - 업계 표준, 많은 리소스
+- **Vite** - 생태계 성장
+- **터보팩** - 최신 기술, 실험적일 수 있음
 
-### Requirements
+### 요구 사항
 
-#### Fast Development
-1. **Vite** - Instant HMR
-2. **esbuild** - Fastest builds
-3. **Turbopack** - Blazing fast
+#### 빠른 개발
+1. **VITE** - 인스턴트 HMR
+2. **esbuild** - 가장 빠른 빌드
+3. **터보팩** - 엄청나게 빠른 속도
 
-#### Maximum Optimization
-1. **Webpack** - Most options
-2. **Rollup** - Great tree shaking
-3. **Terser** - Best minification
+#### 최대 최적화
+1. **웹팩** - 대부분의 옵션
+2. **롤업** - 큰 나무 흔들림
+3. **Terser** - 최고의 축소
 
-#### Legacy Browser Support
-1. **Webpack + Babel** - Most control
-2. **Rollup + Babel** - Good for libraries
-3. **Parcel** - Handles automatically
+#### 기존 브라우저 지원
+1. **Webpack + Babel** - 대부분의 제어
+2. **롤업 + 바벨** - 도서관에 적합
+3. **소포** - 자동으로 처리됩니다.
 
-#### TypeScript Support
-1. **Vite** - Native support
-2. **esbuild** - Native support
-3. **Turbopack** - Native support
+#### 타입스크립트 지원
+1. **Vite** - 기본 지원
+2. **esbuild** - 기본 지원
+3. **터보팩** - 기본 지원
 
-## Tool Comparison
+## 도구 비교
 
-### Webpack
+### 웹팩
 
-**Pros:**
-- Extensive plugin ecosystem
-- Maximum configurability
-- Industry standard
-- Advanced optimization
-- Great documentation
+**장점:**
+- 광범위한 플러그인 생태계
+- 최대 구성 가능성
+- 업계 표준
+- 고급 최적화
+- 훌륭한 문서
 
-**Cons:**
-- Slow builds
-- Complex configuration
-- Steep learning curve
-- Can be overkill for small projects
+**단점:**
+- 느린 빌드
+- 복잡한 구성
+- 가파른 학습 곡선
+- 소규모 프로젝트에는 과잉일 수 있음
 
-**Best For:**
-- Large enterprise applications
-- Advanced optimization needs
-- Legacy browser support
-- Custom build pipelines
+**최적의 용도:**
+- 대기업 애플리케이션
+- 고급 최적화 요구
+- 레거시 브라우저 지원
+- 맞춤형 빌드 파이프라인
 
-### Vite
+### 비테
 
-**Pros:**
-- Extremely fast HMR
-- Simple configuration
-- Native TypeScript support
-- Excellent DX
-- Growing ecosystem
+**장점:**
+- 매우 빠른 HMR
+- 간단한 구성
+- 기본 TypeScript 지원
+- 우수한 DX
+- 생태계 성장
 
-**Cons:**
-- Smaller plugin ecosystem than Webpack
-- Less mature than Webpack
-- Limited advanced features
+**단점:**
+- Webpack보다 작은 플러그인 생태계
+- Webpack보다 덜 성숙함
+- 제한된 고급 기능
 
-**Best For:**
-- Modern web apps
-- React/Vue/Svelte projects
-- Fast development cycles
-- Small to medium teams
+**최적의 용도:**
+- 최신 웹 앱
+- React/Vue/Svelte 프로젝트
+- 빠른 개발 주기
+- 중소 규모 팀
 
-### esbuild
+### 에스빌드
 
-**Pros:**
-- Extremely fast (10-100x faster)
-- Simple API
-- Native TypeScript
-- No dependencies
-- Great for libraries
+**장점:**
+- 매우 빠름(10~100배 빠름)
+- 간단한 API
+- 네이티브 타입스크립트
+- 종속성 없음
+- 도서관에 적합
 
-**Cons:**
-- Limited plugin support
-- Less mature
-- Minimal configuration
-- Not a full bundler for complex apps
+**단점:**
+- 제한된 플러그인 지원
+- 덜 성숙함
+- 최소한의 구성
+- 복잡한 앱을 위한 완전한 번들러가 아닙니다.
 
-**Best For:**
-- Build tools
-- CLI tools
-- Simple apps
-- Performance-critical builds
+**최적의 용도:**
+- 빌드 도구
+- CLI 도구
+- 간단한 앱
+- 성능이 중요한 빌드
 
-### Turbopack
+### 터보팩
 
-**Pros:**
-- Extremely fast
-- Rust-based
-- Next.js integration
-- Modern architecture
+**장점:**
+- 매우 빠르다
+- Rust 기반
+- Next.js 통합
+- 현대 건축
 
-**Cons:**
-- Very new (beta)
-- Limited ecosystem
-- Experimental features
-- Limited documentation
+**단점:**
+- 아주 새로운 것(베타)
+- 제한된 생태계
+- 실험적 기능
+- 제한된 문서
 
-**Best For:**
-- Next.js projects
-- Early adopters
-- Performance-critical apps
-- React projects
+**최적의 용도:**
+- Next.js 프로젝트
+- 얼리 어답터
+- 성능이 중요한 앱
+- 반응 프로젝트
 
-### Rollup
+### 롤업
 
-**Pros:**
-- Excellent tree shaking
-- Great for libraries
-- Simple API
-- Good plugin support
+**장점:**
+- 뛰어난 나무 흔들림
+- 도서관에 적합
+- 간단한 API
+- 좋은 플러그인 지원
 
-**Cons:**
-- Not for complex apps
-- Limited HMR
-- More config than Vite
-- Slower than esbuild
+**단점:**
+- 복잡한 앱에는 적합하지 않음
+- 제한된 HMR
+- Vite보다 더 많은 구성
+- esbuild보다 느림
 
-**Best For:**
-- Library development
-- Component libraries
-- npm packages
-- Simple bundles
+**최적의 용도:**
+- 도서관 개발
+- 구성 요소 라이브러리
+- npm 패키지
+- 단순 번들
 
-### Parcel
+### 소포
 
-**Pros:**
-- Zero config
-- Fast builds
-- Automatic optimization
-- Great for small teams
+**장점:**
+- 제로 구성
+- 빠른 빌드
+- 자동 최적화
+- 소규모 팀에 적합
 
-**Cons:**
-- Less control
-- Plugin limitations
-- Smaller ecosystem
-- Harder to debug
+**단점:**
+- 통제력 감소
+- 플러그인 제한
+- 더 작은 생태계
+- 디버깅이 더 어렵다
 
-**Best For:**
-- Prototypes
-- Small projects
-- Less technical teams
-- Rapid development
+**최적의 용도:**
+- 프로토타입
+- 소규모 프로젝트
+- 덜 기술적인 팀
+- 신속한 개발
 
-## Recommendations by Use Case
+## 사용 사례별 권장 사항
 
-### Single Page Applications
+### 단일 페이지 애플리케이션
 
-**React:**
-1. Vite (recommended)
-2. Webpack Create React App
-3. Next.js (SSR)
+**반응:**
+1. 바이트(권장)
+2. Webpack React 앱 생성
+3. Next.js(SSR)
 
-**Vue:**
-1. Vite (recommended)
-2. Vue CLI (Webpack)
-3. Nuxt (SSR)
+**뷰:**
+1. 바이트(권장)
+2. Vue CLI(웹팩)
+3. 누스트(SSR)
 
-**Svelte:**
-1. Vite (recommended)
-2. SvelteKit (SSR)
+**스벨트:**
+1. 바이트(권장)
+2. 스벨트킷(SSR)
 
-**Angular:**
-1. Angular CLI (Webpack)
-2. Nx (Webpack/Turbo)
+**각도:**
+1. 앵귤러 CLI(웹팩)
+2. Nx(웹팩/터보)
 
-### Static Site Generation
+### 정적 사이트 생성
 
-**Next Best:**
-1. Next.js (React)
+**다음 최고:**
+1. Next.js(리액트)
 2. Nuxt (Vue)
-3. SvelteKit (Svelte)
-4. Gatsby (React)
+3. SvelteKit (스벨트)
+4. 개츠비(리액트)
 
-**Good Options:**
-1. Vite + Vitepress
-2. Docusaurus
-3. Astro
+**좋은 옵션:**
+1. VITE + Vitepress
+2. 도쿠사우루스
+3. 아스트로
 
-### Component Libraries
+### 구성 요소 라이브러리
 
-**Recommended:**
-1. Rollup
-2. Vite library mode
-3. esbuild
+**권장:**
+1. 롤업
+2. VITE 라이브러리 모드
+3. 에스빌드
 
-### Micro-frontends
+### 마이크로 프런트엔드
 
-**Recommended:**
-1. Webpack Module Federation
-2. Single-spa
-3. Qiankun
+**권장:**
+1. 웹팩 모듈 연합
+2. 싱글스파
+3. 첸쿤
 
-### Node.js Applications
+### Node.js 애플리케이션
 
-**Recommended:**
-1. esbuild
-2. ts-node (development)
-3. swc (development)
+**권장:**
+1. 에스빌드
+2. ts-node (개발)
+3. swc(개발)
 
-## Migration Guides
+## 마이그레이션 가이드
 
-### Webpack to Vite
-
+### Vite용 웹팩
 ```typescript
 // Before (webpack.config.js)
 module.exports = {
@@ -262,9 +261,7 @@ export default defineConfig({
   },
 });
 ```
-
-### Webpack to esbuild
-
+### esbuild용 웹팩
 ```javascript
 // Before (webpack.config.js)
 module.exports = {
@@ -281,86 +278,85 @@ esbuild.build({
   bundle: true,
 });
 ```
+## 성능 벤치마크
 
-## Performance Benchmarks
+### 빌드 시간(콜드 빌드)
+- **esbuild**: ~100ms(소형 프로젝트)
+- **Vite**: ~500ms(소형 프로젝트)
+- **웹팩**: ~2초(소규모 프로젝트)
+- **터보팩**: ~50ms(소규모 프로젝트)
 
-### Build Time (Cold Build)
-- **esbuild**: ~100ms (small project)
-- **Vite**: ~500ms (small project)
-- **Webpack**: ~2s (small project)
-- **Turbopack**: ~50ms (small project)
-
-### HMR Time
+### HMR 시간
 - **Vite**: ~50ms
-- **Webpack**: ~500ms
-- **Turbopack**: ~10ms
+- **웹팩**: ~500ms
+- **터보팩**: ~10ms
 
-### Bundle Size
-All bundlers can produce similar sizes with proper optimization. Differences come from:
-- Code splitting strategy
-- Tree shaking effectiveness
-- Compression settings
-- Source map configuration
+### 번들 크기
+모든 번들러는 적절한 최적화를 통해 유사한 크기를 생성할 수 있습니다. 차이점은 다음과 같습니다.
+- 코드 분할 전략
+- 나무 흔들기 효과
+- 압축 설정
+- 소스 맵 구성
 
-## Checklist for Selection
+## 선택을 위한 체크리스트
 
-### Requirements Assessment
-- [ ] Project size and complexity
-- [ ] Team size and expertise
-- [ ] Performance requirements
-- [ ] Browser support needs
-- [ ] TypeScript requirements
-- [ ] Build tooling needs
-- [ ] Deployment constraints
-- [ ] Budget limitations
+### 요구사항 평가
+- [ ] 프로젝트 규모 및 복잡성
+- [ ] 팀 규모 및 전문성
+- [ ] 성능 요구 사항
+- [ ] 브라우저 지원 필요
+- [ ] TypeScript 요구 사항
+- [ ] 빌드 툴링 요구 사항
+- [ ] 배포 제약
+- [ ] 예산 제한
 
-### Technical Considerations
-- [ ] Learning curve
-- [ ] Ecosystem maturity
-- [ ] Documentation quality
-- [ ] Community support
-- [ ] Plugin availability
-- [ ] Integration with other tools
-- [ ] Long-term maintenance
+### 기술적 고려사항
+- [ ] 학습 곡선
+- [ ] 생태계 성숙도
+- [ ] 문서 품질
+- [ ] 커뮤니티 지원
+- [ ] 플러그인 가용성
+- [ ] 다른 도구와의 통합
+- [ ] 장기 유지보수
 
-### Business Considerations
-- [ ] Time to market
-- [ ] Developer productivity
-- [ ] Hiring ease
-- [ ] Skill availability
-- [ ] Vendor lock-in risk
-- [ ] Future-proofing
+### 비즈니스 고려사항
+- [ ] 출시 시간
+- [ ] 개발자 생산성
+- [ ] 채용 용이성
+- [ ] 스킬 가용성
+- [ ] 공급업체 종속 위험
+- [ ] 미래 보장
 
-## Final Recommendations
+## 최종 권장 사항
 
-### Default Choice: Vite
-- Fast development experience
-- Simple configuration
-- Modern tooling
-- Growing ecosystem
-- Good documentation
+### 기본 선택: Vite
+- 빠른 개발 경험
+- 간단한 구성
+- 현대적인 툴링
+- 생태계 성장
+- 좋은 문서
 
-### Complex Enterprise: Webpack
-- Maximum control
-- Extensive plugins
-- Industry standard
-- Advanced optimization
-- Well-documented
+### 복잡한 기업: Webpack
+- 최대 제어
+- 광범위한 플러그인
+- 업계 표준
+- 고급 최적화
+- 잘 문서화되어 있음
 
-### Maximum Performance: esbuild
-- Blazing fast builds
-- Simple API
-- Zero dependencies
-- Great for libraries
+### 최대 성능: esbuild
+- 엄청나게 빠른 빌드
+- 간단한 API
+- 의존성 제로
+- 도서관에 적합
 
-### Next.js Projects: Turbopack
-- Native integration
-- Cutting-edge performance
-- Future-proof
-- Active development
+### Next.js 프로젝트: Turbopack
+- 기본 통합
+- 최첨단 성능
+- 미래 지향적
+- 활발한 개발
 
-### Conservative Choice: Rollup
-- Stable and mature
-- Great for libraries
-- Excellent tree shaking
-- Well-documented
+### 보수적 선택: 롤업
+- 안정적이고 성숙함
+- 도서관에 적합
+- 뛰어난 나무 흔들림
+- 잘 문서화되어 있음

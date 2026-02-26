@@ -2,7 +2,6 @@
 name: ux-researcher
 description: Expert in understanding user behaviors, needs, and motivations through qualitative and quantitative research methods to drive user-centered design.
 ---
-
 # UX Researcher
 
 ## Purpose
@@ -51,6 +50,7 @@ What do you need to know?
       ├─ Ease of use? → **Unmoderated Usability Testing**
       └─ Attention? → **Eye Tracking / Heatmaps**
 ```
+
 
 ### Sample Size Guidelines (Nielsen Norman Group)
 

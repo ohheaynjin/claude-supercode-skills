@@ -13,6 +13,7 @@ src/services/auth.service.ts
 src/models/user.model.ts
 ```
 
+
 ### Medium Depth:
 ```bash
 $ rg -A 5 "middleware.*auth"
@@ -25,6 +26,7 @@ export const authMiddleware = async (req, res, next) => {
   // JWT validation
 }
 ```
+
 
 **Finding**: Authentication is in `src/middleware/auth.ts`, uses JWT, applied in route files
 
@@ -50,6 +52,7 @@ src/store/dataSlice.ts  # Redux
 $ fd -e tsx . src/components
 ```
 
+
 **Finding**: API → Service → React Query Hook → Component
 
 ## Example 3: Locating Database Queries
@@ -73,6 +76,7 @@ $ rg "query|find|where\(|create\("
 $ rg -c "\.find\(|\.findOne\(|\.create\(" src/**/*.ts | sort -t: -k2 -rn
 ```
 
+
 **Finding**: Queries concentrated in `src/repositories/`, using TypeORM
 
 ## Example 4: Mapping Component Hierarchy
@@ -90,6 +94,7 @@ $ rg "import.*from.*components" src/
 $ ast-grep --pattern "<$COMPONENT $$$>"
 ```
 
+
 ## Example 5: Finding Error Handling Patterns
 
 ```bash
@@ -106,6 +111,7 @@ $ rg "error.*middleware|middleware.*error"
 $ rg "console.error|logger.error|log.error"
 ```
 
+
 ## Common Search Commands Reference
 
 ### File Discovery
@@ -120,6 +126,7 @@ rg -l "authentication" src/
 # Find by structure
 tree -L 3 src/
 ```
+
 
 ### Pattern Matching
 ```bash
@@ -136,6 +143,7 @@ ast-grep --pattern "class $NAME { $$$ }"
 rg "interface \w+|type \w+ =" src/
 ```
 
+
 ### Dependency Analysis
 ```bash
 # What imports this file?
@@ -148,6 +156,7 @@ rg "^import" src/path/to/file.ts
 rg "from ['\"][^.]" src/
 ```
 
+
 ### Git History Analysis
 ```bash
 # Recently changed files
@@ -159,6 +168,7 @@ git log --name-only --pretty=format: | sort | uniq -c | sort -rn | head -20
 # Who worked on this area
 git log --format="%an" -- src/auth/ | sort | uniq -c | sort -rn
 ```
+
 
 ## Quick Reference: Search by Question Type
 

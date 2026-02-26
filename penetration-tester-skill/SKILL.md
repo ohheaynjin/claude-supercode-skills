@@ -2,7 +2,6 @@
 name: penetration-tester
 description: Expert in ethical hacking, vulnerability assessment, and offensive security testing (Web/Network/Cloud).
 ---
-
 # Penetration Tester
 
 ## Purpose
@@ -42,6 +41,7 @@ What is the target?
    └─ External Perimeter? → **Recon + Service Exploitation** (Nmap, Metasploit)
 ```
 
+
 ### Tool Selection Matrix
 
 | Phase | Category | Tool Recommendation |
@@ -80,7 +80,8 @@ What is the target?
 **Steps:**
 
 1.  **Reconnaissance**
-    ```bash
+
+```bash
     # Subdomain discovery
     subfinder -d target.com -o subdomains.txt
     
@@ -88,13 +89,16 @@ What is the target?
     httpx -l subdomains.txt -o live_hosts.txt
     ```
 
+
 2.  **Mapping & Discovery**
     -   Spider the application (Burp Suite).
     -   Identify all entry points (Inputs, URL parameters, Headers).
     -   **Fuzzing:**
-        ```bash
+
+```bash
         ffuf -u https://target.com/FUZZ -w wordlist.txt -mc 200,403
         ```
+
 
 3.  **Vulnerability Hunting**
     -   **SQL Injection:** Test `' OR 1=1--` on login forms and IDs.
@@ -118,9 +122,11 @@ What is the target?
 1.  **Enumeration**
     -   Obtain credentials (leaked or provided).
     -   Run **ScoutSuite**:
-        ```bash
+
+```bash
         scout aws
         ```
+
 
 2.  **S3 Bucket Analysis**
     -   Check for public buckets.

@@ -1,329 +1,322 @@
 ---
 name: error-detective
-description: Use when user needs complex error pattern analysis, distributed system debugging, error correlation, root cause discovery, or predictive error prevention across microservices.
+description: 사용자가 복잡한 오류 패턴 분석, 분산 시스템 디버깅, 오류 상관관계, 근본 원인 발견 또는 마이크로서비스 전반에 걸친 예측 오류 예방이 필요한 경우에 사용합니다.
 ---
+# 오류탐정
 
-# Error Detective
+## 목적
 
-## Purpose
+분산 시스템에 대한 포괄적인 오류 분석 및 패턴 감지 전문 지식을 제공합니다. 복잡한 오류 패턴을 식별하고, 서비스 전반의 오류를 연관시키고, 체계적인 조사를 통해 근본 원인을 발견하는 데 특화되어 있습니다. 예측 오류 방지 및 지속적인 모니터링 개선을 구현합니다.
 
-Provides comprehensive error analysis and pattern detection expertise for distributed systems. Specializes in identifying complex error patterns, correlating failures across services, and discovering root causes through systematic investigation. Implements predictive error prevention and continuous monitoring improvement.
+## 사용 시기
 
-## When to Use
+- 복잡한 오류 패턴 또는 계단식 오류
+- 여러 서비스에 걸친 분산 시스템 디버깅
+- 오류 상관관계 및 근본 원인 분석
+- 이상 탐지 또는 오류 예측
+- 오류 추세 분석 및 예측
+- 모니터링 개선 또는 경고 최적화
+- 사고 예방 또는 사전 오류 관리
+- 오류 패턴에 대한 지식 관리
 
-- Complex error patterns or cascading failures
-- Distributed system debugging across multiple services
-- Error correlation and root cause analysis
-- Anomaly detection or error prediction
-- Error trend analysis and forecasting
-- Monitoring improvement or alert optimization
-- Incident prevention or proactive error management
-- Knowledge management for error patterns
+## 이 스킬의 역할
 
-## What This Skill Does
+오류 감지 기술은 오류 환경 분석, 심층 조사 및 감지 우수성의 체계적인 단계를 통해 포괄적인 오류 분석 기능을 제공합니다. 숨겨진 연결을 식별하고 연속적인 오류를 방지하며 실행 가능한 예방 전략을 제공합니다.
 
-The error-detective skill delivers comprehensive error analysis capabilities through systematic phases of error landscape analysis, deep investigation, and detection excellence. It identifies hidden connections, prevents error cascades, and provides actionable prevention strategies.
+### 오류 패턴 분석
 
-### Error Pattern Analysis
+오류 발생 빈도 분석을 수행하고, 시간 기반 패턴을 식별하고(매시간, 매일, 매주), 서비스 전반에서 오류를 연관시키고, 사용자 영향 패턴을 매핑하고, 지리적 및 장치 변형을 분석하고, 버전별 패턴을 식별하고, 환경 차이를 감지합니다(개발/스테이징/프로덕션).
 
-Performs frequency analysis of error occurrences, identifies time-based patterns (hourly, daily, weekly), correlates errors across services, maps user impact patterns, analyzes geographic and device variations, identifies version-specific patterns, and detects environmental differences (dev/staging/prod).
+### 로그 상관관계
 
-### Log Correlation
+여러 서비스에 걸쳐 오류를 연관시키고, 시간적 상관을 수행하여 시퀀스를 찾고, 오류 전파의 원인 체인을 분석하고, 이벤트를 시간순으로 시퀀스하고, 오류 서명에 패턴 일치를 적용하고, 오류 패턴의 이상 항목을 감지하고, 오류 분포에 대한 통계 분석을 수행하고, 통찰력 발견을 위해 기계 학습을 적용합니다.
 
-Correlates errors across multiple services, performs temporal correlation to find sequences, analyzes causal chains of error propagation, sequences events chronologically, applies pattern matching for error signatures, detects anomalies in error patterns, performs statistical analysis of error distributions, and applies machine learning for insight discovery.
+### 분산 추적
 
-### Distributed Tracing
+서비스 경계 전반에 걸쳐 요청 흐름을 추적하고, 서비스 종속성을 그래픽으로 매핑하고, 대기 시간 패턴과 병목 현상을 분석하고, 시스템을 통한 오류 전파를 추적하고, 성능 상관관계를 식별하고, 리소스 사용량을 오류와 연관시키고, 시스템 전체에서 사용자 여정을 매핑하고, 영향을 받는 사용자를 식별합니다.
 
-Tracks request flow across service boundaries, maps service dependencies graphically, analyzes latency patterns and bottlenecks, tracks error propagation through the system, identifies performance correlations, correlates resource usage with errors, maps user journeys through the system, and identifies affected users.
+### 이상 탐지
 
-### Anomaly Detection
+성능 기준을 설정하고, 정상 패턴과의 편차를 감지하고, 임계값 위반을 분석하고, 오류 패턴이 심각해지기 전에 인식하고, 예측을 위한 예측 모델링을 적용하고, 신호 대 잡음에 대한 경고 구성을 최적화하고, 거짓 긍정을 줄이고, 오류 심각도를 자동으로 분류합니다.
 
-Establishes performance baselines, detects deviations from normal patterns, analyzes threshold violations, recognizes error patterns before they become critical, applies predictive modeling for forecasting, optimizes alert configurations for signal-to-noise, reduces false positives, and classifies error severity automatically.
+### 영향 분석
 
-### Impact Analysis
+영향을 받는 사용자 수를 계산하여 사용자 영향을 평가하고, 수익 또는 SLA 조건에서 비즈니스 영향을 계산하고, 서비스 저하 심각도를 측정하고, 데이터 무결성 영향을 평가하고, 보안 영향을 평가하고, 성능 영향을 분석하고, 비용 영향을 추정하고, 평판 영향을 평가합니다.
 
-Assesses user impact by counting affected users, calculates business impact in revenue or SLA terms, measures service degradation severity, evaluates data integrity impacts, assesses security implications, analyzes performance impact, estimates cost implications, and evaluates reputation impact.
+## 핵심 기능
 
-## Core Capabilities
+### 오류 분류
 
-### Error Categorization
+- 시스템 오류(인프라, 연결성)
+- 애플리케이션 오류(코드 버그, 로직 오류)
+- 사용자 오류(검증, 승인)
+- 통합 오류(API 오류, 타사)
+- 성능 오류(속도 저하, 시간 초과)
+- 보안 오류(인증, 승인)
+- 데이터 오류(손상, 불일치)
+- 구성 오류(잘못된 구성, 충돌)
 
-- System errors (infrastructure, connectivity)
-- Application errors (code bugs, logic errors)
-- User errors (validation, authorization)
-- Integration errors (API failures, third-party)
-- Performance errors (slowdowns, timeouts)
-- Security errors (authentication, authorization)
-- Data errors (corruption, inconsistency)
-- Configuration errors (misconfigurations, conflicts)
+### 근본 원인 기술
 
-### Root Cause Techniques
+- 깊은 이해를 위한 5가지 Why 분석
+- 체계적 분석을 위한 Fishbone 다이어그램
+- 고장 모드에 대한 고장 트리 분석
+- 시간과 서비스에 따른 이벤트 상관관계
+- 사건 순서에 대한 타임라인 재구성
+- 원인검증을 위한 가설검증
+- 원인 축소를 위한 제거 프로세스
+- 공통점 식별을 위한 패턴 합성
 
-- Five whys analysis for deep understanding
-- Fishbone diagrams for systematic analysis
-- Fault tree analysis for failure modes
-- Event correlation across time and services
-- Timeline reconstruction for incident sequence
-- Hypothesis testing for cause validation
-- Elimination process for narrowing causes
-- Pattern synthesis for identifying commonalities
+### 예방 전략
 
-### Prevention Strategies
+- 패턴 기반 오류 예측
+- 오류 발생 전 사전 모니터링
+- 회로 차단기 구현
+- 우아한 성능 저하 패턴
+- 오류 예산 관리
+- 탄력성 테스트를 위한 카오스 엔지니어링
+- 용량 계획을 위한 부하 테스트
+- 준비를 위한 실패주입
 
-- Error prediction based on patterns
-- Proactive monitoring before errors occur
-- Circuit breaker implementation
-- Graceful degradation patterns
-- Error budget management
-- Chaos engineering for resilience testing
-- Load testing for capacity planning
-- Failure injection for preparation
+### 법의학 분석- 로그 및 지표에서 증거를 수집합니다.
+- 상세한 타임라인을 구성합니다.
+- 액터와 트리거를 식별합니다.
+- 오류 시퀀스를 재구성합니다.
+- 실제 영향 측정
+- 복구 효과 분석
+- 배운 교훈을 추출합니다.
+- 포괄적인 보고서 생성
 
-### Forensic Analysis
+### 시각화 기술
 
-- Collects evidence from logs and metrics
-- Constructs detailed timelines
-- Identifies actors and triggers
-- Reconstructs error sequences
-- Measures actual impact
-- Analyzes recovery effectiveness
-- Extracts lessons learned
-- Generates comprehensive reports
+- 지리적 또는 시간적 시각화를 위한 오류 열 지도
+- 서비스 관계에 대한 종속성 그래프
+- 추세에 대한 시계열 차트
+- 오류 관계에 대한 상관 행렬
+- 오류 전파 흐름도
+- 충격 반경 시각화
+- 예측을 위한 추세 분석
+- 예측 모델 시각화
+
+### 오류 상관관계 기술
+
+- 시간 기반 상관관계(시간적 근접성)
+- 서비스 상관관계(서비스 종속성)
+- 사용자 상관관계(공유 사용자 세션)
+- 지리적 상관관계(지역적 문제)
+- 버전 상관관계(배포 관련)
+- 부하 상관관계(교통 관련)
+- 상관관계 변경(구성 또는 코드 변경)
+- 외부 상관관계(타사 종속성)
+
+### 예측 분석
+
+- 예측을 위한 추세 감지
+- 예상 패턴 예측
+- 예방을 위한 이상현상 예측
+- 계획을 위한 용량 예측
+- 준비 실패 예측
+- 우선순위화를 위한 영향 추정
+- 분류를 위한 위험 점수 매기기
+- 조기경보를 위한 경보 최적화
 
-### Visualization Techniques
+### 캐스케이드 분석
 
-- Error heat maps for geographic or temporal visualization
-- Dependency graphs for service relationships
-- Time series charts for trends
-- Correlation matrices for error relationships
-- Flow diagrams for error propagation
-- Impact radius visualization
-- Trend analysis for forecasting
-- Predictive model visualization
+- 장애 전파 추적
+- 서비스 종속성 매핑
+- 회로 차단기 간격 식별
+- 타임아웃 체인 분석
+- 폭풍 감지 재시도
+- 대기열 백업 분석
+- 자원고갈 식별
+- 도미노효과 예방
 
-### Error Correlation Techniques
+## 도구 제한사항
 
-- Time-based correlation (temporal proximity)
-- Service correlation (service dependencies)
-- User correlation (shared user sessions)
-- Geographic correlation (regional issues)
-- Version correlation (deployment-related)
-- Load correlation (traffic-related)
-- Change correlation (configuration or code changes)
-- External correlation (third-party dependencies)
-
-### Predictive Analysis
+오류 감지 기술은 구성 및 스크립트 생성을 위해 표준 파일 작업을 사용합니다. 로그 집계 도구(ELK, Splunk, Loki), 모니터링 플랫폼(Prometheus, Grafana, CloudWatch) 및 추적 시스템(Jaeger, Zipkin, Honeycomb)이 필요합니다. 애플리케이션 코드 수정을 수행하지 않습니다. 문제 해결을 위해 적절한 개발 기술을 조정합니다.
 
-- Trend detection for forecasting
-- Pattern prediction for anticipation
-- Anomaly forecasting for prevention
-- Capacity prediction for planning
-- Failure prediction for preparation
-- Impact estimation for prioritization
-- Risk scoring for triage
-- Alert optimization for early warning
+## 다른 기술과의 통합
 
-### Cascade Analysis
+- 특정 문제 조사를 위해 디버거와 협력합니다.
+- 테스트 시나리오 설계를 위한 qa 전문가 지원
+- 성능 오류 분석을 위해 성능 엔지니어와 협력
+- 보안 패턴 분석을 위한 보안 감사자 안내
+- 사고 조사를 위한 DevOps-Incident-Responder를 지원합니다.
+- 신뢰성 향상을 위해 SRE 엔지니어 지원
+- 도구 통합을 위해 모니터링 전문가와 협력
+- 애플리케이션 오류에 대해 백엔드 개발자와 조정
 
-- Failure propagation tracking
-- Service dependency mapping
-- Circuit breaker gap identification
-- Timeout chain analysis
-- Retry storm detection
-- Queue backup analysis
-- Resource exhaustion identification
-- Domino effect prevention
+## 상호작용 예시
 
-## Tool Restrictions
+### 시나리오 1: 계단식 오류 조사
 
-The error-detective skill uses standard file operations for configuration and script generation. It requires log aggregation tools (ELK, Splunk, Loki), monitoring platforms (Prometheus, Grafana, CloudWatch), and tracing systems (Jaeger, Zipkin, Honeycomb). Does not perform application code fixes—coordinate with appropriate development skills for remediation.
+사용자: "여러 서비스에서 오류가 발생하고 있습니다."
 
-## Integration with Other Skills
+응답:
+1. 영향을 받은 모든 서비스의 오류 로그를 집계합니다.
+2. 전파 순서를 식별하기 위해 오류를 일시적으로 연관시킵니다.
+3. 분산 추적을 통한 근본 원인 추적
+4. 서비스 종속성을 매핑하고 오류 지점을 식별합니다.
+5. 계단식 메커니즘 분석(시간 초과, 재시도, 대기열)
+6. 회로 차단기 및 모니터링 개선 사항 구현
+7. 예측 알림으로 재발 방지
 
-- Collaborates with debugger for specific issue investigation
-- Supports qa-expert for test scenario design
-- Works with performance-engineer for performance error analysis
-- Guides security-auditor for security pattern analysis
-- Helps devops-incident-responder for incident investigation
-- Assists sre-engineer for reliability improvements
-- Partners with monitoring specialists for tool integration
-- Coordinates with backend-developer for application errors
+### 시나리오 2: 오류 패턴 검색
 
-## Example Interactions
+사용자: "오류 로그에서 패턴을 찾아보세요."
 
-### Scenario 1: Cascading Failure Investigation
+응답:
+1. 시스템 전체에 걸쳐 15,420개의 오류를 분석합니다.
+2. 23개의 고유한 오류 패턴 식별
+3. 서비스와 시간 전반에 걸쳐 패턴을 연관시킵니다.
+4. 패턴의 7가지 근본 원인 파악
+5. 각 패턴의 영향과 심각도를 평가합니다.
+6. 주요 패턴에 대한 모니터링 및 경고 설계
+7. 오류를 67% 줄이는 예방 전략 구현
 
-User: "We're seeing failures across multiple services"
+### 시나리오 3: 이상 탐지 설정
 
-Response:
-1. Aggregate error logs from all affected services
-2. Correlate errors temporally to identify propagation sequence
-3. Trace root cause through distributed tracing
-4. Map service dependencies and identify failure points
-5. Analyze cascade mechanisms (timeouts, retries, queues)
-6. Implement circuit breakers and monitoring improvements
-7. Prevent recurrence with predictive alerts
+사용자: "예측 오류 모니터링 설정"
 
-### Scenario 2: Error Pattern Discovery
+응답:
+1. 기록 데이터를 바탕으로 성능 기준 설정
+2. 오류율에 대한 이상 감지 구성
+3. 오류 예측을 위한 예측 모델링 구현
+4. 최적화된 임계값으로 알림 설정
+5. ML 기반 필터링을 통해 오탐률 감소
+6. 시각화를 위한 대시보드 만들기
+7. 이상 해석 및 대응에 관해 팀 교육
 
-User: "Find patterns in our error logs"
+## 모범 사례- 항상 증상부터 시작하고 오류 체인을 따르세요.
+- 결론을 내리기 전에 시간과 서비스 전반에 걸쳐 오류를 연관시킵니다.
+- 데이터와 증거로 가설 검증
+- 지식 공유를 위해 결과를 철저하게 문서화합니다.
+- 발견된 패턴을 기반으로 모니터링 개선을 구현합니다.
+- 사전 예방을 위해 예측 알림을 사용합니다.
+- 도미노 효과를 방지하기 위해 계단식 분석
+- 패턴 및 솔루션에 대한 지식 기반 구축
 
-Response:
-1. Analyze 15,420 errors across system
-2. Identify 23 distinct error patterns
-3. Correlate patterns across services and time
-4. Determine 7 root causes for patterns
-5. Assess impact and severity for each pattern
-6. Design monitoring and alerting for key patterns
-7. Implement prevention strategies reducing errors by 67%
+## 출력 형식
 
-### Scenario 3: Anomaly Detection Setup
+포괄적인 오류 분석 보고서, 패턴 라이브러리, 근본 원인 데이터베이스, 모니터링 개선 사항, 예측 경고 및 지식 관리 리소스를 제공합니다. 측정 가능한 영향을 미치는 시각화 및 실행 가능한 예방 전략을 위한 대시보드를 제공합니다.
 
-User: "Set up predictive error monitoring"
+## 포함된 자동화 스크립트
 
-Response:
-1. Establish performance baselines from historical data
-2. Configure anomaly detection for error rates
-3. Implement predictive modeling for error forecasting
-4. Set up alerts with optimized thresholds
-5. Reduce false positives through ML-based filtering
-6. Create dashboards for visualization
-7. Train team on anomaly interpretation and response
+오류 감지 기술에는 다음 위치에 있는 포괄적인 자동화 스크립트가 포함됩니다.`scripts/`:
 
-## Best Practices
+- **error_Detection_automation.py**: 로그에서 오류 패턴을 검색하고, 서비스 전반에서 오류를 연관시키고, 오류율의 이상을 감지하고, 오류 보고서 및 경고를 생성하여 오류 감지 및 분석을 자동화합니다.
 
-- Always start with symptoms and follow error chains
-- Correlate errors across time and services before conclusions
-- Verify hypotheses with data and evidence
-- Document findings thoroughly for knowledge sharing
-- Implement monitoring improvements based on discovered patterns
-- Use predictive alerts for proactive prevention
-- Analyze cascades to prevent domino effects
-- Build knowledge base of patterns and solutions
+## 참고자료
 
-## Output Format
+### 참조 문서(`references/`디렉토리)
+- **troubleshooting.md**: 오류 감지 패턴, 분산 시스템 디버깅, 근본 원인 분석에 대한 문제 해결 가이드
+- **best_practices.md**: 오류 상관 관계, 이상 탐지, 예측 오류 방지 및 지식 관리에 대한 모범 사례
 
-Delivers comprehensive error analysis reports, pattern libraries, root cause databases, monitoring improvements, predictive alerts, and knowledge management resources. Provides dashboards for visualization and actionable prevention strategies with measurable impact.
+## 예
 
-## Included Automation Scripts
+### 예 1: 분산 시스템 오류 분석
 
-The error-detective skill includes comprehensive automation scripts located in `scripts/`:
+**시나리오:** 마이크로서비스 아키텍처에서 일부 요청은 시간 초과되고 다른 요청은 성공하는 간헐적인 오류가 발생합니다.
 
-- **error_detection_automation.py**: Automates error detection and analysis by scanning logs for error patterns, correlating errors across services, detecting anomalies in error rates, and generating error reports and alerts
+**조사 접근 방식:**
+1. **오류 수집**: 장애 기간 동안 모든 서비스의 로그를 집계합니다.
+2. **상관 분석**: 타임스탬프 정렬을 사용하여 식별된 시간 패턴
+3. **종속성 매핑**: 모든 서비스를 통해 추적된 요청 흐름
+4. **근본 원인**: 한 서비스의 데이터베이스 연결 풀 고갈
 
-## References
+**해결 방법:**
+- 연결 풀 크기 증가 및 회로 차단기 추가
+- 재시도에 대한 지수 백오프 구현
+- 연결 풀 모니터링 경고가 추가되었습니다.
 
-### Reference Documentation (`references/` directory)
-- **troubleshooting.md**: Troubleshooting guide for error detection patterns, distributed system debugging, and root cause analysis
-- **best_practices.md**: Best practices for error correlation, anomaly detection, predictive error prevention, and knowledge management
+### 예시 2: 성능 회귀 감지
 
-## Examples
+**시나리오:** 배포 후 사용자가 애플리케이션 속도 저하를 보고했지만 자동화된 테스트를 통과했습니다.
 
-### Example 1: Distributed System Failure Analysis
+**탐지 프로세스:**
+1. **기준 비교**: 과거 데이터와 현재 성능을 비교했습니다.
+2. **데이터베이스 분석**: 테이블 스캔을 유발하는 새로운 쿼리 패턴 식별
+3. **코드 검토**: 최근 변경 사항에 도입된 N+1 쿼리 패턴 발견
+4. **영향 평가**: 정량화된 대기 시간 증가 및 영향을 받는 엔드포인트
 
-**Scenario:** A microservices architecture experiences intermittent failures where some requests timeout while others succeed.
+**해결책:**
+- 열성적인 로딩으로 최적화된 ORM 쿼리
+- CI 파이프라인에 쿼리 성능 테스트를 추가했습니다.
+- 데이터베이스 쿼리 모니터링 구현
 
-**Investigation Approach:**
-1. **Error Collection**: Aggregated logs from all services during failure window
-2. **Correlation Analysis**: Identified temporal patterns using timestamp alignment
-3. **Dependency Mapping**: Traced request flow through all services
-4. **Root Cause**: Database connection pool exhaustion in one service
+### 예시 3: 보안 취약점 패턴 검색
 
-**Resolution:**
-- Increased connection pool size and added circuit breakers
-- Implemented exponential backoff for retries
-- Added connection pool monitoring alerts
+**시나리오:** 인증 로그의 비정상적인 패턴은 잠재적인 무차별 공격을 암시합니다.
 
-### Example 2: Performance Regression Detection
+**분석 단계:**
+1. **패턴 인식**: 여러 번 실패한 시도로 식별된 IP 주소
+2. **비율 분석**: 자동화된 공격을 나타내는 감지된 타이밍 패턴
+3. **영향 평가**: 영향을 받는 계정과 잠재적 노출 매핑
+4. **수정**: 속도 제한 및 CAPTCHA 문제를 구현했습니다.
 
-**Scenario:** User-reported application slowness after a deployment, but automated tests pass.
+**예방 조치:**
+- Fail2ban 스타일 자동 차단 추가
+- 인증 이상 모니터링 강화
+- 민감한 작업을 위한 다단계 인증 구현
 
-**Detection Process:**
-1. **Baseline Comparison**: Compared current performance against historical data
-2. **Database Analysis**: Identified new query patterns causing table scans
-3. **Code Review**: Found N+1 query pattern introduced in recent change
-4. **Impact Assessment**: Quantified latency increase and affected endpoints
+## 모범 사례
 
-**Solution:**
-- Optimized ORM queries with eager loading
-- Added query performance tests to CI pipeline
-- Implemented database query monitoring
+### 조사 방법론
 
-### Example 3: Security Vulnerability Pattern Discovery
+- **체계적인 접근 방식**: 증상부터 근본 원인까지 일관된 프로세스를 따릅니다.
+- **증거 기반**: 가정이 아닌 데이터를 바탕으로 결론을 내립니다.
+- **철저한 문서화**: 부정적인 결과까지 포함하여 모든 결과를 기록합니다.
+- **상호 참조**: 여러 데이터 소스에 대한 결과 검증
+- **공동 조사**: 다양한 관점을 위해 관련 팀을 참여시킵니다.
 
-**Scenario:** Unusual patterns in authentication logs suggest potential brute force attacks.
+### 오류 패턴 인식
 
-**Analysis Steps:**
-1. **Pattern Recognition**: Identified IP addresses with multiple failed attempts
-2. **Rate Analysis**: Detected timing patterns indicating automated attacks
-3. **Impact Assessment**: Mapped affected accounts and potential exposure
-4. **Remediation**: Implemented rate limiting and CAPTCHA challenges
+- **기준 설정**: 비교를 위한 정상적인 동작을 정의합니다.
+- **이상 탐지**: 통계적 방법을 사용하여 편차를 식별합니다.
+- **추세 분석**: 시간 경과에 따른 오류 패턴 추적
+- **상관관계**: 서비스 및 기간 전반에 걸쳐 오류를 연결합니다.
+- **우선순위**: 영향이 크고 빈번한 오류 패턴에 중점을 둡니다.
 
-**Prevention Measures:**
-- Added fail2ban-style automatic blocking
-- Enhanced monitoring for authentication anomalies
-- Implemented multi-factor authentication for sensitive operations
+### 근본 원인 분석
 
-## Best Practices
+- **5가지 이유 기법**: 근본 원인을 심층 분석합니다.
+- **Fault Tree Analysis**: 인과 관계를 체계적으로 매핑합니다.
+- **기여 요인**: 즉각적인 원인을 넘어서는 시스템적 문제 식별
+- **문서화**: 증거를 통해 실행 가능한 결과 생성
+- **검증**: 증상이 아닌 근본 원인 해결 방법을 확인합니다.
 
-### Investigation Methodology
+### 예방 전략
 
-- **Systematic Approach**: Follow consistent process from symptoms to root cause
-- **Evidence-Based**: Base conclusions on data, not assumptions
-- **Thorough Documentation**: Record all findings, even negative results
-- **Cross-Reference**: Validate findings against multiple data sources
-- **Collaborative Investigation**: Involve relevant teams for diverse perspectives
+- **자동 모니터링**: 사전 오류 감지 구현
+- **예측 알림**: 조기 경보 시스템에 ML을 사용합니다.
+- **테스트 통합**: 테스트 스위트에 오류 시나리오 추가
+- **지식 공유**: 문서 패턴 및 솔루션
+- **지속적인 개선**: 학습을 바탕으로 예방을 반복합니다.
 
-### Error Pattern Recognition
+## 안티 패턴
 
-- **Baseline Establishment**: Define normal behavior for comparison
-- **Anomaly Detection**: Use statistical methods to identify deviations
-- **Trend Analysis**: Track error patterns over time
-- **Correlation**: Connect errors across services and time periods
-- **Prioritization**: Focus on high-impact, frequent error patterns
+### 조사 안티 패턴- **성급한 결론**: 근본 원인 분석 없이 증상 해결 - 이해하기 전에 조치를 취하라는 압력에 저항
+- **비난 게임**: 오류의 원인이 아닌 누가 오류를 일으켰는지에 초점 - 비난 없는 사후 분석 사용
+- **오버 엔지니어링 솔루션**: 단순한 문제에 대한 복잡한 수정 구현 - 간단하고 검증된 솔루션 선호
+- **범위 확장**: 원래 증상 이상으로 조사 확대 - 보고된 문제에 계속 집중
 
-### Root Cause Analysis
+### 오류 패턴 방지 패턴
 
-- **5 Whys Technique**: Drill down to underlying causes
-- **Fault Tree Analysis**: Map causal relationships systematically
-- **Contributing Factors**: Identify systemic issues beyond immediate cause
-- **Documentation**: Create actionable findings with evidence
-- **Verification**: Confirm fix addresses root cause, not symptoms
+- **노이즈 허용**: 심각도가 낮은 오류가 자주 발생하는 경우 무시 - 모든 오류 및 해당 추세 추적
+- **경고 피로**: 너무 자주 발생하는 경보 무시 - 임계값 최적화 및 오탐지 감소
+- **패턴 맹목**: 정상적인 변화로 가려진 점진적인 저하 누락 - 기준선 설정 및 모니터링
+- **사일로 뷰**: 오류를 개별적으로 분석 - 서비스와 시간 전반에 걸쳐 오류의 상관관계 확인
 
-### Prevention Strategy
+### 근본 원인 방지 패턴
 
-- **Automated Monitoring**: Implement proactive error detection
-- **Predictive Alerts**: Use ML for early warning systems
-- **Testing Integration**: Add error scenarios to test suites
-- **Knowledge Sharing**: Document patterns and solutions
-- **Continuous Improvement**: Iterate on prevention based on learnings
+- **단일 지점 실패 초점**: 처음 확인된 원인에서 중지 - 시스템 문제가 발견될 때까지 "이유"를 계속 묻습니다.
+- **인적 오류 라벨링**: 시스템 설계를 검토하지 않고 개인을 비난합니다. 인적 오류는 시스템 오류인 경우가 많습니다.
+- **시간적 오류**: 시간적 근접성이 인과관계를 나타낸다고 가정 - 인과관계 검증
+- **확증 편향**: 가정된 원인에 대한 증거 찾기 - 대체 가설 테스트
 
-## Anti-Patterns
+### 안티 패턴 방지
 
-### Investigation Anti-Patterns
-
-- **Jumping to Conclusions**: Fixing symptoms without root cause analysis - resist pressure to act before understanding
-- **Blame Game**: Focusing on who caused the error instead of why - use blameless postmortems
-- **Over-Engineering Solutions**: Implementing complex fixes for simple problems - prefer simple, proven solutions
-- **Scope Creep**: Expanding investigation beyond original symptoms - stay focused on the reported issue
-
-### Error Pattern Anti-Patterns
-
-- **Noise Acceptance**: Ignoring frequent low-severity errors - track all errors and their trends
-- **Alert Fatigue**: Ignoring alerts that trigger too often - optimize thresholds and reduce false positives
-- **Pattern Blindness**: Missing gradual degradation masked by normal variation - establish and monitor baselines
-- **Siloed View**: Analyzing errors in isolation - correlate errors across services and time
-
-### Root Cause Anti-Patterns
-
-- **Single Point Failure Focus**: Stopping at first identified cause - continue asking "why" until systemic issues found
-- **Human Error Labeling**: Blaming individuals without examining system design - human error is often system failure
-- **Temporal Fallacy**: Assuming temporal proximity indicates causation - validate causal relationships
-- **Confirmation Bias**: Seeking evidence for assumed causes - test alternative hypotheses
-
-### Prevention Anti-Patterns
-
-- **False Confidence**: Assuming fixed errors won't recur - implement monitoring and detection
-- **Prevention Paralysis**: Over-investing in prevention at expense of detection - balance prevention and detection
-- **One-Shot Learning**: Learning from incidents only once - build institutional knowledge and pattern recognition
-- **Documentation Debt**: Failing to document error patterns and solutions - maintain searchable knowledge base
+- **잘못된 확신**: 수정된 오류가 재발하지 않을 것이라고 가정 - 모니터링 및 감지 구현
+- **예방 마비**: 탐지를 희생하면서 예방에 과잉 투자 - 예방과 탐지의 균형
+- **원샷 학습**: 사건으로부터 단 한 번만 학습 - 제도적 지식 구축 및 패턴 인식 구축
+- **문서화 부채**: 오류 패턴 및 해결 방법을 문서화하지 못함 - 검색 가능한 지식 기반 유지

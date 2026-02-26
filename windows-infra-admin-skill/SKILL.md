@@ -2,7 +2,6 @@
 name: windows-infra-admin
 description: Expert in Windows Server, Active Directory (AD DS), Hybrid Identity (Entra ID), and PowerShell automation.
 ---
-
 # Windows Infrastructure Admin
 
 ## Purpose
@@ -203,6 +202,7 @@ VisibleCmdlets = @{
     'Unlock-ADAccount' = @{ Parameters = @{ Name = 'Identity' } }
 }
 ```
+
 
 ---
 ---

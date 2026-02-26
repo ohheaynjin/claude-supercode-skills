@@ -1,11 +1,10 @@
-# GraphQL Architect - Examples & Patterns
+# GraphQL 아키텍트 - 예제 및 패턴
 
-## Anti-Patterns
+## 안티 패턴
 
-### Anti-Pattern: Not Handling N+1 Queries
+### 안티 패턴: N+1 쿼리를 처리하지 않음
 
-**What it looks like:**
-
+**모습:**
 ```typescript
 // Resolver without DataLoader
 const resolvers = {
@@ -20,14 +19,12 @@ const resolvers = {
 // Query for 100 posts triggers 101 DB queries:
 // 1 query for posts + 100 queries for authors
 ```
+**실패하는 이유:**
+- **성능**: 선형 확장(게시물 100개 = 쿼리 101개, 게시물 1000개 = 쿼리 1001개)
+- **데이터베이스 부하**: 작은 쿼리로 DB를 압도함
+- **지연**: 일괄 처리 대신 순차적 쿼리
 
-**Why it fails:**
-- **Performance**: Linear scaling (100 posts = 101 queries, 1000 posts = 1001 queries)
-- **Database load**: Overwhelming DB with small queries
-- **Latency**: Sequential queries instead of batching
-
-**Correct approach:**
-
+**올바른 접근 방식:**
 ```typescript
 // Use DataLoader for batching
 import DataLoader from 'dataloader';
@@ -55,13 +52,11 @@ const resolvers = {
 // Same query now triggers 2 queries:
 // 1 query for posts + 1 batched query for all authors
 ```
-
 ---
 
-### Anti-Pattern: No Query Depth/Complexity Limits
+### 안티 패턴: 쿼리 깊이/복잡성 제한 없음
 
-**What it looks like:**
-
+**모습:**
 ```graphql
 # Malicious query - no limits
 query DeepNested {
@@ -82,14 +77,12 @@ query DeepNested {
   }
 }
 ```
+**실패하는 이유:**
+- DoS 취약점
+- 기억력 고갈
+- 데이터베이스 과부하
 
-**Why it fails:**
-- DoS vulnerability
-- Memory exhaustion
-- Database overload
-
-**Correct approach:**
-
+**올바른 접근 방식:**
 ```typescript
 import depthLimit from 'graphql-depth-limit';
 import { createComplexityLimitRule } from 'graphql-validation-complexity';
@@ -103,33 +96,30 @@ const server = new ApolloServer({
   ]
 });
 ```
-
 ---
 
-### Anti-Pattern: Exposing Internal IDs
+### 안티 패턴: 내부 ID 노출
 
-**What it looks like:**
-
+**모습:**
 ```graphql
 type User {
   id: Int!  # Database auto-increment ID exposed
   email: String!
 }
 ```
+**실패하는 이유:**
+- 데이터베이스 구조를 드러냅니다.
+- 열거 공격 가능
+- 데이터베이스 마이그레이션 시 중단
 
-**Why it fails:**
-- Reveals database structure
-- Enables enumeration attacks
-- Breaks when migrating databases
-
-**Correct approach:**
-
+**올바른 접근 방식:**
 ```graphql
 type User {
   id: ID!  # Opaque identifier (base64 encoded or UUID)
   email: String!
 }
 ```
+
 
 ```typescript
 // Encode/decode IDs
@@ -142,13 +132,11 @@ const fromGlobalId = (globalId: string) => {
   return { type, id: parseInt(id) };
 };
 ```
-
 ---
 
-### Anti-Pattern: Nullable Everything
+### 안티 패턴: 모두 Null 가능
 
-**What it looks like:**
-
+**모습:**
 ```graphql
 type User {
   id: ID
@@ -157,14 +145,12 @@ type User {
   posts: [Post]
 }
 ```
+**실패하는 이유:**
+- 클라이언트가 모든 곳에서 null을 처리하도록 강제합니다.
+- 필수 필드를 숨깁니다.
+- 코드 생성에 스키마를 덜 유용하게 만듭니다.
 
-**Why it fails:**
-- Forces clients to handle null everywhere
-- Hides required fields
-- Makes schema less useful for code generation
-
-**Correct approach:**
-
+**올바른 접근 방식:**
 ```graphql
 type User {
   id: ID!                    # Always present
@@ -173,45 +159,43 @@ type User {
   posts: [Post!]!            # Non-null list with non-null items
 }
 ```
+---
+
+## 통합 패턴
+
+### 백엔드 개발자
+- **핸드오프**: 백엔드에서 비즈니스 로직 구현 → GraphQL 설계자가 스키마를 통해 노출
+- **협업**: 공유 리졸버 구현, 인증/권한 부여
+- **도구**: TypeScript, Node.js, ORM(Prisma, TypeORM), DataLoader
+- **예**: 백엔드가 사용자 서비스 제공 → GraphQL은 DataLoader를 사용하여 사용자 유형을 생성합니다.
+
+### API 디자이너
+- **핸드오프**: API 디자이너가 REST 끝점을 정의 → GraphQL이 래퍼 또는 마이그레이션 계획을 생성합니다.
+- **협업**: API 버전 관리 전략, REST→GraphQL 마이그레이션
+- **도구**: OpenAPI 사양, GraphQL 스키마, 게이트웨이 패턴
+- **예**: 제품용 REST API → GraphQL은 통합 스키마를 생성합니다.
+
+### 프론트엔드 개발자
+- **Handoff**: 프런트엔드에 데이터가 필요함 → GraphQL은 형식화된 스키마와 쿼리를 제공합니다.
+- **협업**: 조각 코로케이션, Apollo 클라이언트 캐시 구성
+- **도구**: GraphQL 코드 생성기, Apollo 클라이언트, 릴레이
+- **예**: 프런트엔드에는 사용자 프로필이 필요합니다. → GraphQL은 입력된 쿼리를 제공합니다.
+
+### 데이터베이스 최적화 프로그램
+- **핸드오프**: GraphQL은 느린 해석기를 식별 → 데이터베이스 최적화 프로그램이 인덱스를 생성합니다.
+- **협업**: 쿼리 최적화, 연결 풀링
+- **도구**: EXPLAIN ANALYZE, DataLoader 일괄 처리, pg_stat_statements
+- **예**: DataLoader 일괄 처리 100명의 사용자 → 커버링 인덱스 생성
+
+### 데브옵스 엔지니어
+- **핸드오프**: GraphQL은 게이트웨이 아키텍처를 정의 → DevOps는 연합 서비스를 배포합니다.
+- **협업**: 서비스 메시, 로드 밸런싱, 모니터링
+- **도구**: Kubernetes, Istio, Apollo Router, Grafana
+- **예**: 5개의 하위 그래프가 있는 Apollo Federation → 서비스 검색을 통한 배포
 
 ---
 
-## Integration Patterns
-
-### backend-developer
-- **Handoff**: Backend implements business logic → GraphQL architect exposes via schema
-- **Collaboration**: Shared resolver implementation, authentication/authorization
-- **Tools**: TypeScript, Node.js, ORM (Prisma, TypeORM), DataLoader
-- **Example**: Backend provides user service → GraphQL creates User type with DataLoader
-
-### api-designer
-- **Handoff**: API-designer defines REST endpoints → GraphQL creates wrapper or migration plan
-- **Collaboration**: API versioning strategy, REST→GraphQL migration
-- **Tools**: OpenAPI specs, GraphQL schema, gateway patterns
-- **Example**: REST API for products → GraphQL creates unified schema
-
-### frontend-developer
-- **Handoff**: Frontend needs data → GraphQL provides typed schema and queries
-- **Collaboration**: Fragment colocation, Apollo Client cache configuration
-- **Tools**: GraphQL Code Generator, Apollo Client, Relay
-- **Example**: Frontend needs user profile → GraphQL provides typed query
-
-### database-optimizer
-- **Handoff**: GraphQL identifies slow resolvers → Database optimizer creates indexes
-- **Collaboration**: Query optimization, connection pooling
-- **Tools**: EXPLAIN ANALYZE, DataLoader batching, pg_stat_statements
-- **Example**: DataLoader batching 100 users → Create covering index
-
-### devops-engineer
-- **Handoff**: GraphQL defines gateway architecture → DevOps deploys federated services
-- **Collaboration**: Service mesh, load balancing, monitoring
-- **Tools**: Kubernetes, Istio, Apollo Router, Grafana
-- **Example**: Apollo Federation with 5 subgraphs → Deploy with service discovery
-
----
-
-## Complete Resolver Example
-
+## 전체 리졸버 예제
 ```typescript
 import { GraphQLResolveInfo } from 'graphql';
 import DataLoader from 'dataloader';
@@ -303,11 +287,9 @@ export const resolvers = {
   }
 };
 ```
-
 ---
 
-## DataLoader Factory
-
+## 데이터로더 팩토리
 ```typescript
 // loaders.ts
 

@@ -1,8 +1,8 @@
-# Data Engineer - Code Examples & Patterns
+# 데이터 엔지니어 - 코드 예제 및 패턴
 
-## Anti-Pattern: No Idempotency in Data Pipelines
+## 안티 패턴: 데이터 파이프라인에 멱등성 없음
 
-### What it looks like (BAD):
+### 외관(나쁨):
 ```python
 def daily_etl():
     # Extract new data
@@ -16,14 +16,13 @@ def daily_etl():
 
 # Problem: If pipeline fails halfway and restarts → duplicates!
 ```
+### 실패 이유:
+- 파이프라인 실패로 인해 중복 레코드가 생성됨
+- 실패한 실행을 안전하게 재시도할 수 있는 방법이 없습니다.
+- 데이터 무결성이 손상됨
+- 개수 및 집계가 올바르지 않게 됩니다.
 
-### Why it fails:
-- Pipeline failures create duplicate records
-- No way to safely retry failed runs
-- Data integrity compromised
-- Counts and aggregations become incorrect
-
-### Correct approach:
+### 올바른 접근 방식:
 ```python
 import uuid
 from datetime import datetime
@@ -91,9 +90,7 @@ def daily_etl(run_date=None, run_id=None):
 # Safe to retry with same run_id
 daily_etl(run_date='2024-01-15', run_id='specific-run-id-123')
 ```
-
-## dbt Mart Model Example
-
+## dbt Mart 모델 예시
 ```sql
 -- models/marts/fact_orders.sql
 {{
@@ -146,9 +143,7 @@ FROM orders o
 LEFT JOIN customers c ON o.customer_id = c.customer_id
 LEFT JOIN order_items i ON o.order_id = i.order_id
 ```
-
-## SCD Type 2 Implementation
-
+## SCD 유형 2 구현
 ```sql
 -- dbt snapshot for SCD2
 {% snapshot users_snapshot %}
@@ -166,9 +161,7 @@ SELECT * FROM {{ source('raw', 'users') }}
 
 {% endsnapshot %}
 ```
-
-## Kafka Consumer with Error Handling
-
+## 오류 처리 기능이 있는 Kafka 소비자
 ```python
 from kafka import KafkaConsumer, KafkaProducer
 import json
@@ -220,9 +213,7 @@ for message in consumer:
     if result:
         consumer.commit()
 ```
-
-## Spark Streaming with Watermarks
-
+## 워터마크를 사용한 Spark 스트리밍
 ```python
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import window, col, from_json

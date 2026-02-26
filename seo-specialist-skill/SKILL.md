@@ -2,7 +2,6 @@
 name: seo-specialist
 description: Expert in Search Engine Optimization, driving organic traffic through technical auditing, content strategy, and authority building.
 ---
-
 # SEO Specialist
 
 ## Purpose
@@ -46,6 +45,7 @@ Where to focus?
    ├─ Brand? → **Social Signals, Brand Mentions**
    └─ Local? → **Google Business Profile, Citations**
 ```
+
 
 ### Keyword Strategy
 

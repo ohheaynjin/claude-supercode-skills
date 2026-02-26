@@ -30,6 +30,7 @@ Compliance:
   - Secrets management? (Vault, AWS Secrets Manager)
 ```
 
+
 ## GitOps with ArgoCD Pattern
 
 **When to use:** Declarative infrastructure management, audit trail for changes
@@ -89,6 +90,7 @@ spec:
         - /spec/replicas
 ```
 
+
 **Benefits:**
 - Git as single source of truth (audit trail)
 - Automatic sync keeps cluster in desired state
@@ -103,16 +105,19 @@ kubectl rollout undo deployment/webapp
 kubectl rollout undo deployment/webapp --to-revision=3
 ```
 
+
 ### Helm Rollback
 ```bash
 helm rollback webapp 5  # Rollback to revision 5
 helm rollback webapp 0  # Rollback to previous release
 ```
 
+
 ### Blue-Green Instant Rollback
 ```bash
 kubectl patch service webapp -p '{"spec":{"selector":{"version":"blue"}}}'
 ```
+
 
 ### Automated Rollback with Monitoring
 ```yaml
@@ -147,6 +152,7 @@ spec:
           restartPolicy: OnFailure
 ```
 
+
 ## Infrastructure as Code Best Practices
 
 ### Terraform State Management
@@ -162,6 +168,7 @@ terraform {
 }
 ```
 
+
 ### Tagging Strategy
 ```hcl
 provider "aws" {
@@ -175,6 +182,7 @@ provider "aws" {
   }
 }
 ```
+
 
 ### Module Composition
 ```hcl
@@ -191,6 +199,7 @@ module "eks" {
   # configuration
 }
 ```
+
 
 ## Monitoring Setup
 
@@ -224,6 +233,7 @@ alertmanager:
             title: 'Alert: {{ .GroupLabels.alertname }}'
 ```
 
+
 ### Installation Commands
 ```bash
 # Install Prometheus stack
@@ -236,6 +246,7 @@ helm install prometheus prometheus-community/kube-prometheus-stack \
 # Access Grafana
 kubectl port-forward -n monitoring svc/prometheus-grafana 3000:80
 ```
+
 
 ## Container Security Best Practices
 
@@ -257,6 +268,7 @@ USER nodejs
 EXPOSE 3000
 CMD ["node", "server.js"]
 ```
+
 
 ### Security Scanning
 ```yaml

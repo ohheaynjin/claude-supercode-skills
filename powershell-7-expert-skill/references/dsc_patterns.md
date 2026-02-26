@@ -1,13 +1,12 @@
-# Desired State Configuration (DSC) Patterns
+# 원하는 상태 구성(DSC) 패턴
 
-## Overview
+## 개요
 
-Desired State Configuration (DSC) is a management platform in PowerShell that enables deploying and managing configuration data for software services and managing the environment in which these services run.
+DSC(필요한 상태 구성)는 소프트웨어 서비스에 대한 구성 데이터를 배포 및 관리하고 이러한 서비스가 실행되는 환경을 관리할 수 있는 PowerShell의 관리 플랫폼입니다.
 
-## Basic DSC Configuration
+## 기본 DSC 구성
 
-### Simple Configuration
-
+### 간단한 구성
 ```powershell
 # Simple Web Server Configuration
 Configuration WebServerConfig {
@@ -43,11 +42,9 @@ Configuration WebServerConfig {
 # Compile configuration
 WebServerConfig -ComputerName 'web01' -WebsitePath 'C:\inetpub\wwwroot'
 ```
+## 고급 DSC 패턴
 
-## Advanced DSC Patterns
-
-### Composite Resources
-
+### 복합 리소스
 ```powershell
 # Composite DSC Resource
 Configuration CompositeWebsite {
@@ -78,9 +75,7 @@ Configuration CompositeWebsite {
     }
 }
 ```
-
-### Configuration Data
-
+### 구성 데이터
 ```powershell
 # Configuration Data
 $configData = @{
@@ -132,9 +127,7 @@ Configuration RoleBasedConfig {
 
 RoleBasedConfig -ConfigurationData $configData
 ```
-
-### Partial Configurations
-
+### 부분 구성
 ```powershell
 # Configuration 1: IIS
 Configuration IISConfig {
@@ -165,11 +158,9 @@ SecurityConfig -OutputPath C:\DSC\Security
 Start-DscConfiguration -Path C:\DSC\IIS -ComputerName web01 -Wait -Verbose
 Start-DscConfiguration -Path C:\DSC\Security -ComputerName web01 -Wait -Verbose
 ```
+## DSC 리소스
 
-## DSC Resources
-
-### Built-in Resources
-
+### 내장 리소스
 ```powershell
 # File resource
 File ExampleFile {
@@ -218,9 +209,7 @@ Script CustomScript {
     }
 }
 ```
-
-### Custom DSC Resources
-
+### 사용자 지정 DSC 리소스
 ```powershell
 # Custom resource schema (schema.mof)
 [ClassVersion("1.0.0"), FriendlyName("CustomFile")]
@@ -283,11 +272,9 @@ function Test-TargetResource {
     return $actualContent -eq $Content
 }
 ```
+## DSC 풀 서버
 
-## DSC Pull Server
-
-### Setup Pull Server
-
+### 풀 서버 설정
 ```powershell
 # Install DSC Service
 Configuration PullServer {
@@ -335,11 +322,9 @@ Configuration SetLCM {
 
 SetLCM
 ```
+## JEA(충분한 행정)
 
-## JEA (Just Enough Administration)
-
-### JEA Configuration
-
+### JEA 구성
 ```powershell
 # Create JEA Session Configuration
 $sessionConfig = @{
@@ -359,9 +344,7 @@ New-PSSessionConfigurationFile @sessionConfig
 # Register session configuration
 Register-PSSessionConfiguration -Path ".\JEAConfig.pssc" -Name "JEA" -Force
 ```
-
-### Role Capability
-
+### 역할 능력
 ```powershell
 # Create role capability file
 $roleParams = @{
@@ -374,11 +357,9 @@ $roleParams = @{
 
 New-PSRoleCapabilityFile @roleParams
 ```
+## DSC 테스트
 
-## Testing DSC
-
-### Test Configuration
-
+### 테스트 구성
 ```powershell
 # Test configuration compliance
 Test-DscConfiguration -ComputerName web01
@@ -392,43 +373,41 @@ Invoke-DscResource -Name File -Method Test -ModuleName PSDesiredStateConfigurati
     Ensure = 'Present'
 }
 ```
+## 모범 사례
 
-## Best Practices
+1. 선언적 언어를 사용하십시오(절차가 아닌 상태를 설명).
+2. 데이터와 구성 분리
+3. 멱등성 리소스 사용
+4. 적절한 오류 처리 구현
+5. 배포 전 구성 테스트
+6. DSC 구성에 버전 제어 사용
+7. 사용자 지정 리소스를 철저하게 문서화하세요.
+8. DSC 규정 준수를 정기적으로 모니터링합니다.
 
-1. Use declarative language (describe state, not procedure)
-2. Separate configuration from data
-3. Use idempotent resources
-4. Implement proper error handling
-5. Test configurations before deployment
-6. Use version control for DSC configurations
-7. Document custom resources thoroughly
-8. Monitor DSC compliance regularly
+## 문제 해결
 
-## Troubleshooting
+### 구성 컴파일 오류
 
-### Configuration Compilation Errors
+**오류:** 잘못된 MOF 파일
 
-**Error:** Invalid MOF file
+**해결책:** 구성 스크립트에서 구문 및 리소스 매개변수를 확인하세요.
 
-**Solution:** Check syntax and resource parameters in configuration script
+### LCM 문제
 
-### LCM Issues
+**오류:** LCM이 비활성화된 상태입니다.
 
-**Error:** LCM is in a disabled state
-
-**Solution:** Enable LCM and set refresh mode
+**해결책:** LCM을 활성화하고 새로 고침 모드를 설정합니다.
 ```powershell
 Set-DscLocalConfigurationManager -Enabled $true
 ```
+### 리소스 오류
 
-### Resource Failures
+**오류:** 리소스 실행 실패
 
-**Error:** Resource execution failed
+**해결책:** 리소스 로그를 확인하고 전제조건을 확인하세요.
 
-**Solution:** Check resource logs and verify prerequisites
+## 리소스
 
-## Resources
-
-- [DSC Documentation](https://docs.microsoft.com/en-us/powershell/dsc/overview)
-- [DSC Resources](https://docs.microsoft.com/en-us/powershell/dsc/resources/resources)
-- [JEA Documentation](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/jea/overview)
+- [DSC 설명서](https://docs.microsoft.com/en-us/powershell/dsc/overview)
+- [DSC 리소스](https://docs.microsoft.com/en-us/powershell/dsc/resources/resources)
+- [JEA 문서](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/jea/overview)

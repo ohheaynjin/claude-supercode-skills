@@ -2,7 +2,6 @@
 name: react-native-specialist
 description: Expert in React Native (New Architecture), TurboModules, Fabric, and Expo. Specializes in native module development and performance optimization.
 ---
-
 # React Native Specialist
 
 ## Purpose
@@ -122,6 +121,7 @@ Which architecture to use?
    └─ **Maintenance:** Only for unmigrated legacy libraries.
 ```
 
+
 ### Expo vs CLI
 
 | Feature | Expo (Managed) | React Native CLI (Bare) |
@@ -156,7 +156,8 @@ Which architecture to use?
 **Steps:**
 
 1.  **Define Spec (`NativeBattery.ts`)**
-    ```typescript
+
+```typescript
     import type { TurboModule } from 'react-native';
     import { TurboModuleRegistry } from 'react-native';
 
@@ -167,11 +168,13 @@ Which architecture to use?
     export default TurboModuleRegistry.getEnforcing<Spec>('RTNBattery');
     ```
 
+
 2.  **Generate Code**
     -   Run `yarn codegen`. Generates C++ interfaces.
 
 3.  **Implement iOS (`RTNBattery.mm`)**
-    ```objectivec
+
+```objectivec
     - (NSNumber *)getBatteryLevel {
       [UIDevice currentDevice].batteryMonitoringEnabled = YES;
       return @([UIDevice currentDevice].batteryLevel);
@@ -183,8 +186,10 @@ Which architecture to use?
     }
     ```
 
+
 4.  **Implement Android (`BatteryModule.kt`)**
-    ```kotlin
+
+```kotlin
     class BatteryModule(context: ReactApplicationContext) : NativeBatterySpec(context) {
       override fun getName() = "RTNBattery"
       
@@ -194,6 +199,7 @@ Which architecture to use?
       }
     }
     ```
+
 
 ---
 ---
@@ -205,13 +211,16 @@ Which architecture to use?
 **Steps:**
 
 1.  **Setup**
-    ```tsx
+
+```tsx
     import { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
     import { GestureDetector, Gesture } from 'react-native-gesture-handler';
     ```
 
+
 2.  **Implementation**
-    ```tsx
+
+```tsx
     function Ball() {
       const offset = useSharedValue({ x: 0, y: 0 });
 
@@ -235,6 +244,7 @@ Which architecture to use?
       );
     }
     ```
+
 
 ---
 ---

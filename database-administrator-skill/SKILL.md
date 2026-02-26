@@ -1,56 +1,54 @@
 ---
 name: database-administrator
-description: "Senior Database Administrator with expertise in PostgreSQL, MySQL, MongoDB, and enterprise database systems. Specializes in high availability architectures, performance tuning, backup strategies, and database security for production environments."
+description: "PostgreSQL, MySQL, MongoDB 및 엔터프라이즈 데이터베이스 시스템에 대한 전문 지식을 갖춘 수석 데이터베이스 관리자입니다. 프로덕션 환경을 위한 고가용성 아키텍처, 성능 조정, 백업 전략 및 데이터베이스 보안을 전문으로 합니다."
 ---
+# 데이터베이스 관리자
 
-# Database Administrator
+## 목적
 
-## Purpose
+PostgreSQL, MySQL, MongoDB 및 엔터프라이즈 데이터베이스를 포함한 프로덕션 데이터베이스 시스템에 대한 고위급 데이터베이스 관리 전문 지식을 제공합니다. 미션 크리티컬 환경을 위한 고가용성 아키텍처, 성능 튜닝, 백업 전략, 재해 복구 및 데이터베이스 보안을 전문으로 합니다.
 
-Provides senior-level database administration expertise for production database systems including PostgreSQL, MySQL, MongoDB, and enterprise databases. Specializes in high availability architectures, performance tuning, backup strategies, disaster recovery, and database security for mission-critical environments.
+## 사용 시기
 
-## When to Use
+- 고가용성 및 재해 복구 기능을 갖춘 프로덕션 데이터베이스 설정
+- 데이터베이스 성능 최적화(느린 쿼리, 인덱싱, 구성 튜닝)
+- 백업 및 복구 전략 구현(PITR, 교차 지역 백업)
+- 데이터베이스(PostgreSQL, MySQL, MongoDB)를 클라우드로 또는 버전 간 마이그레이션
+- 데이터베이스 보안 강화(암호화, 접근통제, 감사로깅)
+- 데이터베이스 문제 해결(잠금, 복제 지연, 손상)
+- 확장성과 신뢰성을 위한 데이터베이스 아키텍처 설계
 
-- Setting up production databases with high availability and disaster recovery
-- Optimizing database performance (slow queries, indexing, configuration tuning)
-- Implementing backup and recovery strategies (PITR, cross-region backups)
-- Migrating databases (PostgreSQL, MySQL, MongoDB) to cloud or between versions
-- Hardening database security (encryption, access control, audit logging)
-- Troubleshooting database issues (locks, replication lag, corruption)
-- Designing database architectures for scalability and reliability
+## 빠른 시작
 
-## Quick Start
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 고가용성 및 재해 복구 기능을 갖춘 프로덕션 데이터베이스 설정
+- 데이터베이스 성능 최적화(느린 쿼리, 인덱싱, 구성 튜닝)
+- 백업 및 복구 전략 구현(PITR, 교차 지역 백업)
+- 데이터베이스(PostgreSQL, MySQL, MongoDB)를 클라우드로 또는 버전 간 마이그레이션
+- 데이터베이스 보안 강화(암호화, 접근통제, 감사로깅)
+- 데이터베이스 문제 해결(잠금, 복제 지연, 손상)
 
-**Invoke this skill when:**
-- Setting up production databases with high availability and disaster recovery
-- Optimizing database performance (slow queries, indexing, configuration tuning)
-- Implementing backup and recovery strategies (PITR, cross-region backups)
-- Migrating databases (PostgreSQL, MySQL, MongoDB) to cloud or between versions
-- Hardening database security (encryption, access control, audit logging)
-- Troubleshooting database issues (locks, replication lag, corruption)
+**다음과 같은 경우에는 호출하지 마세요.**
+- 애플리케이션 수준 ORM 쿼리에만 최적화가 필요합니다(백엔드 개발자 사용).
+- 데이터 파이프라인 개발(ETL/ELT용 데이터 엔지니어 사용)
+- 분석을 위한 데이터 모델링 및 스키마 설계(데이터 엔지니어 활용)
+- 신규 프로젝트를 위한 데이터베이스 선택(전략을 위해 클라우드 아키텍트 사용)
+- 간단한 SQL 쿼리 또는 데이터 분석(data-analyst 사용)
 
-**Do NOT invoke when:**
-- Only application-level ORM queries need optimization (use backend-developer)
-- Data pipeline development (use data-engineer for ETL/ELT)
-- Data modeling and schema design for analytics (use data-engineer)
-- Database selection for new projects (use cloud-architect for strategy)
-- Simple SQL queries or data analysis (use data-analyst)
+## 의사결정 프레임워크
 
-## Decision Framework
+### 데이터베이스 선택
 
-### Database Selection
-
-| Use Case | Database | Why |
+| 사용 사례 | 데이터베이스 | 왜 |
 |----------|----------|-----|
-| **Transactional (OLTP)** | PostgreSQL | ACID, extensions, JSON support |
-| **High-read web apps** | MySQL/MariaDB | Fast reads, mature replication |
-| **Flexible schema** | MongoDB | Document model, horizontal scale |
-| **Key-value cache** | Redis | Sub-ms latency, data structures |
-| **Time-series data** | TimescaleDB/InfluxDB | Optimized for time-based queries |
-| **Analytics (OLAP)** | Snowflake/BigQuery | Columnar, massive scale |
+| **트랜잭션(OLTP)** | 포스트그레SQL | ACID, 확장, JSON 지원 |
+| **읽기량이 많은 웹 앱** | MySQL/마리아DB | 빠른 읽기, 성숙한 복제 |
+| **유연한 스키마** | 몽고DB | 문서 모델, 수평 규모 |
+| **키-값 캐시** | 레디스 | 밀리초 미만의 대기 시간, 데이터 구조 |
+| **시계열 데이터** | 타임스케일DB/인플럭스DB | 시간 기반 쿼리에 최적화됨 |
+| **분석(OLAP)** | 눈송이/BigQuery | 기둥형, 대규모 |
 
-### High Availability Architecture
-
+### 고가용성 아키텍처
 ```
 ├─ Single Region HA?
 │   ├─ Managed service → RDS Multi-AZ / Cloud SQL HA
@@ -75,54 +73,53 @@ Provides senior-level database administration expertise for production database 
     ├─ Write scaling → Sharding (MongoDB, Vitess)
     └─ Both → Distributed SQL (CockroachDB, TiDB)
 ```
+### 백업 전략 매트릭스
 
-### Backup Strategy Matrix
+| RPO 요구 사항 | 전략 | 구현 |
+|----|----------|---|
+| **< 1분** | 동기식 복제 | Patroni 동기화 모드 |
+| **< 5분** | 지속적인 WAL 아카이빙 | pg_basebackup + WAL-G |
+| **< 1시간** | 자동 스냅샷 | RDS 자동 백업 |
+| **< 24시간** | 일일 백업 | pg_dump + S3 |
 
-| RPO Requirement | Strategy | Implementation |
-|-----------------|----------|----------------|
-| **< 1 minute** | Synchronous replication | Patroni sync mode |
-| **< 5 minutes** | Continuous WAL archiving | pg_basebackup + WAL-G |
-| **< 1 hour** | Automated snapshots | RDS automated backups |
-| **< 24 hours** | Daily backups | pg_dump + S3 |
+### 성능 조정 우선순위
 
-### Performance Tuning Priorities
+1. **쿼리 최적화**(가장 큰 영향, 최저 비용)
+2. **인덱싱 전략**(보통의 노력, 높은 영향력)
+3. **구성 튜닝**(일회성, 중간 정도의 영향)
+4. **하드웨어 업그레이드**(높은 비용, 최후의 수단)
 
-1. **Query optimization** (biggest impact, lowest cost)
-2. **Indexing strategy** (moderate effort, high impact)
-3. **Configuration tuning** (one-time, moderate impact)
-4. **Hardware upgrades** (high cost, last resort)
+## 품질 체크리스트
 
-## Quality Checklist
+### 생산 준비
+- [ ] 고가용성 구성(다중 AZ 또는 다중 지역)
+- [ ] 자동 백업 활성화됨(일일 + 연속 WAL)
+- [ ] 백업 복원 테스트(월간 재해 복구 훈련)
+- [ ] 연결 풀링 구성됨(PgBouncer/ProxySQL)
+- [ ] 모니터링 및 경고 활성화(느린 쿼리, 복제 지연)
 
-### Production Readiness
-- [ ] High availability configured (multi-AZ or multi-region)
-- [ ] Automated backups enabled (daily + continuous WAL)
-- [ ] Backup restoration tested (monthly disaster recovery drill)
-- [ ] Connection pooling configured (PgBouncer/ProxySQL)
-- [ ] Monitoring and alerting active (slow queries, replication lag)
+### 성능
+- [ ] 모든 쿼리 패턴에 대해 생성된 인덱스
+- [ ] 최신 테이블 통계(autovacuum 조정됨)
+- [ ] 쿼리 계획 검토됨(대형 테이블에서는 전체 테이블 스캔 없음)
+- [ ] 연결 풀링 최적화(최소/최대 풀 크기)
+- [ ] 데이터베이스 구성 조정(shared_buffers, work_mem)
 
-### Performance
-- [ ] Indexes created for all query patterns
-- [ ] Table statistics up-to-date (autovacuum tuned)
-- [ ] Query plans reviewed (no full table scans on large tables)
-- [ ] Connection pooling optimized (min/max pool size)
-- [ ] Database configuration tuned (shared_buffers, work_mem)
+### 보안
+- [ ] 미사용 암호화 활성화됨
+- [ ] 전송 중 암호화(SSL/TLS) 시행
+- [ ] 최소 권한 액세스(응용 프로그램에 대한 수퍼유저 없음)
+- [ ] 감사 로깅 활성화(로그인 실패, DDL 변경)
+- [ ] 정기 보안 패치 예정
 
-### Security
-- [ ] Encryption at rest enabled
-- [ ] Encryption in transit (SSL/TLS) enforced
-- [ ] Least privilege access (no superuser for applications)
-- [ ] Audit logging enabled (failed logins, DDL changes)
-- [ ] Regular security patching scheduled
+### 재해 복구
+- [ ] RTO/RPO 문서화 및 테스트 완료
+- [ ] 지역 간 백업이 활성화되었습니다.
+- [ ] 장애 조치 절차가 문서화되고 테스트되었습니다.
+- [ ] 데이터 보존 정책 시행
+- [ ] 특정 시점 복구 검증됨
 
-### Disaster Recovery
-- [ ] RTO/RPO documented and tested
-- [ ] Cross-region backups enabled
-- [ ] Failover procedure documented and tested
-- [ ] Data retention policy enforced
-- [ ] Point-in-time recovery validated
+## 추가 리소스
 
-## Additional Resources
-
-- **Detailed Technical Reference**: See [REFERENCE.md](REFERENCE.md)
-- **Code Examples & Patterns**: See [EXAMPLES.md](EXAMPLES.md)
+- **자세한 기술 참조**: [REFERENCE.md](REFERENCE.md) 참조
+- **코드 예제 및 패턴**: [EXAMPLES.md](EXAMPLES.md) 참조

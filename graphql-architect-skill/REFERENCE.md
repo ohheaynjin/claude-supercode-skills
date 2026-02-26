@@ -1,11 +1,10 @@
-# GraphQL Architect - Technical Reference
+# GraphQL 설계자 - 기술 참조
 
-## Apollo Federation Setup
+## 아폴로 연합 설정
 
-**Scenario**: Split monolithic GraphQL into federated services (Users, Posts, Products)
+**시나리오**: 모놀리식 GraphQL을 연합 서비스(사용자, 게시물, 제품)로 분할합니다.
 
-### Step 1: Define federated subgraphs
-
+### 1단계: 연합 하위 그래프 정의
 ```graphql
 # users-service/schema.graphql
 
@@ -30,6 +29,7 @@ type Query {
   me: User
 }
 ```
+
 
 ```graphql
 # posts-service/schema.graphql
@@ -57,6 +57,7 @@ type Query {
 }
 ```
 
+
 ```graphql
 # products-service/schema.graphql
 
@@ -72,9 +73,7 @@ type Query {
   products: [Product!]!
 }
 ```
-
-### Step 2: Implement reference resolvers
-
+### 2단계: 참조 확인자 구현
 ```typescript
 // users-service/resolvers.ts
 
@@ -91,6 +90,7 @@ export const resolvers = {
   }
 };
 ```
+
 
 ```typescript
 // posts-service/resolvers.ts
@@ -119,9 +119,7 @@ export const resolvers = {
   }
 };
 ```
-
-### Step 3: Set up Apollo Gateway
-
+### 3단계: Apollo 게이트웨이 설정
 ```typescript
 // gateway/index.ts
 
@@ -143,9 +141,7 @@ const server = new ApolloServer({ gateway });
 await server.listen({ port: 4000 });
 console.log('Gateway running at http://localhost:4000');
 ```
-
-### Step 4: Query across federated services
-
+### 4단계: 페더레이션된 서비스 전체에 대한 쿼리
 ```graphql
 # Client query (gateway resolves across services)
 query GetUserWithPosts {
@@ -166,19 +162,17 @@ query GetUserWithPosts {
 # 2. Query posts-service with user reference { __typename: "User", id: "1" }
 # 3. Merge results
 ```
-
-**Expected outcome**:
-- Independent service deployment (users, posts, products)
-- Type-safe cross-service references
-- Single GraphQL endpoint for clients
-- Distributed resolver execution
+**예상 결과**:
+- 독립적인 서비스 배포(사용자, 게시물, 제품)
+- 유형이 안전한 서비스 간 참조
+- 클라이언트를 위한 단일 GraphQL 엔드포인트
+- 분산 리졸버 실행
 
 ---
 
-## Field-Level Authorization Directive
+## 필드 수준 인증 지시어
 
-**Use case**: Protect sensitive fields with custom directive
-
+**사용 사례**: 맞춤 지시어로 민감한 필드 보호
 ```typescript
 // directives.ts
 
@@ -242,13 +236,11 @@ type Query {
 }
 */
 ```
-
 ---
 
-## Query Complexity Limiting
+## 쿼리 복잡성 제한
 
-**Use case**: Prevent DoS from expensive nested queries
-
+**사용 사례**: 비용이 많이 드는 중첩 쿼리로부터 DoS 방지
 ```typescript
 // complexity.ts
 
@@ -311,11 +303,9 @@ type User {
 # }
 */
 ```
-
 ---
 
-## Real-Time Subscriptions
-
+## 실시간 구독
 ```typescript
 // subscriptions.ts
 
@@ -372,13 +362,11 @@ type Message {
 }
 */
 ```
-
 ---
 
-## Caching Strategies
+## 캐싱 전략
 
-### Response Caching
-
+### 응답 캐싱
 ```typescript
 // Apollo Server response cache
 import responseCachePlugin from '@apollo/server-plugin-response-cache';
@@ -407,9 +395,7 @@ type Product @cacheControl(maxAge: 86400) {  # Cache 24 hours
 }
 */
 ```
-
-### DataLoader Caching
-
+### DataLoader 해킹
 ```typescript
 // Per-request caching (automatic with DataLoader)
 const userLoader = new DataLoader(async (ids) => {

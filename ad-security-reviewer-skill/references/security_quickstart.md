@@ -1,17 +1,16 @@
-# AD Security Reviewer - Quick Start Guide
+# AD 보안 검토자 - 빠른 시작 가이드
 
-This guide helps you get started with the AD security reviewer skill's scripts and tools.
+이 가이드는 AD 보안 검토자 기술의 스크립트 및 도구를 시작하는 데 도움이 됩니다.
 
-## Prerequisites
+## 전제 조건
 
-- Windows Server 2016 or later with Active Directory
-- Remote Server Administration Tools (RSAT) installed
-- Domain Administrator privileges for comprehensive audits
-- PowerShell 5.1 or later
-- For TypeScript scripts: Node.js 16+, Azure AD app registration
+- Active Directory가 포함된 Windows Server 2016 이상
+- RSAT(원격 서버 관리 도구) 설치
+- 포괄적인 감사를 위한 도메인 관리자 권한
+- 파워셸 5.1 이상
+- TypeScript 스크립트의 경우: Node.js 16+, Azure AD 앱 등록
 
-## Installing Required Modules
-
+## 필수 모듈 설치
 ```powershell
 # Install RSAT features (PowerShell)
 Install-WindowsFeature RSAT-AD-PowerShell -IncludeManagementTools
@@ -19,25 +18,21 @@ Install-WindowsFeature RSAT-AD-PowerShell -IncludeManagementTools
 # Import modules
 Import-Module ActiveDirectory
 ```
+## Azure AD 앱 등록(TypeScript 스크립트용)
 
-## Azure AD App Registration (for TypeScript scripts)
-
-1. **Create App Registration:**
-   ```bash
+1. **앱 등록 생성:**
+```bash
    # Azure Portal → App registrations → New registration
    # Name: AD Security Reviewer
    # Permissions: Directory.Read.All, AuditLog.Read.All
    ```
-
-2. **Generate Client Secret:**
-   ```bash
+2. **클라이언트 비밀번호 생성:**
+```bash
    # Certificates & secrets → New client secret
    ```
+## 빠른 예
 
-## Quick Examples
-
-### PowerShell: Auditing Privileged Groups
-
+### PowerShell: 권한 있는 그룹 감사
 ```powershell
 # Audit all privileged groups in the domain
 .\audit_privileged_groups.ps1 -Domain "example.com" -Threshold 5
@@ -48,9 +43,7 @@ Import-Module ActiveDirectory
 # Generate report to specific location
 .\audit_privileged_groups.ps1 -ReportPath "C:\Reports\privileged_audit.html"
 ```
-
-### PowerShell: Reviewing Delegation
-
+### PowerShell: 위임 검토
 ```powershell
 # Review delegation across entire domain
 .\review_delegation.ps1 -SearchBase "DC=example,DC=com"
@@ -61,9 +54,7 @@ Import-Module ActiveDirectory
 # Set custom report path
 .\review_delegation.ps1 -ReportPath "C:\Reports\delegation_review.html"
 ```
-
-### TypeScript: Running Security Assessment
-
+### TypeScript: 보안 평가 실행
 ```typescript
 import { ADSecurityAnalyzer } from './scripts/analyze_ad_security';
 
@@ -84,11 +75,9 @@ console.log(report);
 const fs = require('fs');
 fs.writeFileSync('security_report.md', report);
 ```
+## 일반적인 패턴
 
-## Common Patterns
-
-### Automated Security Assessments
-
+### 자동화된 보안 평가
 ```powershell
 # Run all security audits daily
 $today = Get-Date -Format "yyyy-MM-dd"
@@ -103,9 +92,7 @@ $reportPath = "C:\Reports\$today-security-audit.html"
 # Run TypeScript assessment
 node assess_security.js
 ```
-
-### Monthly Security Reviews
-
+### 월별 보안 검토
 ```typescript
 import { ADSecurityAnalyzer, generateSecurityReport } from './scripts/analyze_ad_security';
 import * as fs from 'fs';
@@ -139,9 +126,7 @@ async function monthlySecurityReview() {
 
 monthlySecurityReview().catch(console.error);
 ```
-
-### Targeted Delegation Audits
-
+### 표적 위임 감사
 ```powershell
 # Find all delegation from specific user
 $targetUser = "jdoe"
@@ -151,151 +136,140 @@ $reportPath = "C:\Reports\delegation_${targetUser}.html"
     Select-String -Pattern $targetUser -Context 0, 2 |
     Out-File $reportPath
 ```
+## 보안 평가 구성요소
 
-## Security Assessment Components
+TypeScript 보안 분석기는 다음 검사를 수행합니다.
 
-The TypeScript security analyzer performs the following checks:
+1. **특권 그룹 멤버십**
+   - 기업 관리자
+   - 도메인 관리자
+   - 스키마 관리자
+   - 관리자
+   - 계정 운영자
+   - 백업 운영자
 
-1. **Privileged Group Memberships**
-   - Enterprise Admins
-   - Domain Admins
-   - Schema Admins
-   - Administrators
-   - Account Operators
-   - Backup Operators
+2. **부실 계정 감지**
+   - 90일 이상 비활성화된 계정
+   - 최근 로그인 활동이 없는 사용자
 
-2. **Stale Account Detection**
-   - Accounts inactive for 90+ days
-   - Users with no recent sign-in activity
+3. **비밀번호 정책 검토**
+   - 잠금 임계값 검증
+   - 잠금 기간 확인
+   - 비밀번호 복잡성 요구 사항
 
-3. **Password Policy Review**
-   - Lockout threshold validation
-   - Lockout duration verification
-   - Password complexity requirements
+4. **MFA 등록 확인**
+   - MFA를 활성화한 사용자 비율
+   - MFA 권한이 없는 계정 식별
 
-4. **MFA Enrollment Check**
-   - Percentage of users with MFA enabled
-   - Identification of non-MFA privileged accounts
+5. **의심스러운 로그인 분석**
+   - 고위험 로그인 시도
+   - 특이한 지리적 위치
+   - 비정형적인 기기 사용
 
-5. **Suspicious Sign-In Analysis**
-   - High-risk sign-in attempts
-   - Unusual geographic locations
-   - Atypical device usage
+6. **조건부 액세스 정책**
+   - 정책 유무 확인
+   - 관리자를 위한 MFA 요구 사항
+   - 지리적 제한
 
-6. **Conditional Access Policies**
-   - Policy existence check
-   - MFA requirement for admins
-   - Geographic restrictions
+7. **위험한 사용자 감지**
+   - 중간 및 고위험 사용자
+   - 손상된 계정 표시
 
-7. **Risky User Detection**
-   - Medium and high risk users
-   - Compromised account indicators
+## 모범 사례
 
-## Best Practices
+1. **정기 감사 실행** - 주간 또는 월간 보안 평가
+2. **결과를 즉시 검토** - 중요한 문제를 즉시 해결합니다.
+3. **문서 수정** - 수정 사항 및 그 효과를 추적합니다.
+4. **기준 구현** - 보안 기준을 설정하고 편차를 모니터링합니다.
+5. **최소 권한 사용** - 권한 있는 액세스를 정기적으로 검토하고 줄입니다.
+6. **변경 사항 모니터링** - 권한 있는 그룹 수정에 대한 알림 설정
+7. **사용자 교육** - 보안 모범 사례에 대해 직원 교육
+8. **테스트 복구** - 수정 절차가 올바르게 작동하는지 확인합니다.
 
-1. **Run Regular Audits** - Weekly or monthly security assessments
-2. **Review Findings Promptly** - Address critical issues immediately
-3. **Document Remediation** - Track fixes and their effectiveness
-4. **Implement Baselines** - Establish security baselines and monitor deviations
-5. **Use Least Privilege** - Regularly review and reduce privileged access
-6. **Monitor Changes** - Set up alerts for privileged group modifications
-7. **Educate Users** - Train staff on security best practices
-8. **Test Recovery** - Ensure remediation procedures work correctly
+## 문제 해결
 
-## Troubleshooting
-
-### Module Import Errors
-
+### 모듈 가져오기 오류
 ```
 Error: Active Directory module not available
 ```
-
-**Solution:**
+**해결책:**
 ```powershell
 Install-WindowsFeature RSAT-AD-PowerShell -IncludeManagementTools
 Import-Module ActiveDirectory
 ```
-
-### Permission Denied Errors
-
+### 권한 거부 오류
 ```
 Error: Access is denied
 ```
+**해결책:**
+1. 관리자 권한으로 PowerShell을 실행하세요.
+2. 도메인 관리자 자격 증명 사용
+3. 계정에 필요한 위임 권한이 있는지 확인하세요.
 
-**Solutions:**
-1. Run PowerShell as Administrator
-2. Use Domain Admin credentials
-3. Ensure account has necessary delegated permissions
-
-### Graph API Authentication Failed
-
+### 그래프 API 인증 실패
 ```
 Error: Access token request failed
 ```
+**해결책:**
+1. 클라이언트 ID, 클라이언트 비밀번호, 테넌트 ID 확인
+2. 앱 등록이 활성화되어 있는지 확인하세요
+3. Directory.Read.All 권한이 부여되었는지 확인하세요.
+4. 관리자 동의가 부여되었는지 확인
 
-**Solutions:**
-1. Verify client ID, client secret, and tenant ID
-2. Check if app registration is active
-3. Ensure Directory.Read.All permission is granted
-4. Verify admin consent has been granted
-
-### Large Dataset Timeouts
-
+### 대규모 데이터 세트 시간 초과
 ```
 Error: Operation timed out
 ```
+**해결책:**
+1. 더 작은 배치로 처리
+2. 스크립트 시간 초과 값을 늘립니다.
+3. 전체 도메인 대신 특정 OU를 사용하세요
+4. 사용량이 적은 시간에 실행
 
-**Solutions:**
-1. Process in smaller batches
-2. Increase script timeout values
-3. Use specific OUs instead of entire domain
-4. Run during off-peak hours
+## 결과 해석
 
-## Interpreting Findings
+### 심각한 심각도
 
-### Critical Severity
+즉각적인 보안 위험을 초래하는 결과:
+- 불필요한 도메인 관리자 멤버십
+- 권한이 있는 비활성화된 계정
+- 일반모든 위임 권한
+- 알 수 없는 위치에서 로그인하는 위험도가 높음
 
-Findings that pose immediate security risk:
-- Unnecessary Domain Admin memberships
-- Disabled accounts with privileges
-- GenericAll delegation rights
-- High-risk sign-ins from unknown locations
+**조치 필요:** 즉각적인 해결
 
-**Action Required:** Immediate remediation
+### 높은 심각도
 
-### High Severity
+중요한 보안 문제:
+- 과도한 권한을 가진 그룹 구성원
+- 권한이 있는 상태에서 90일 이상 비활성화된 계정
+- 관리자에 대해 MFA가 활성화되지 않았습니다.
+- 취약한 비밀번호 정책
 
-Significant security concerns:
-- Excessive privileged group members
-- Accounts inactive >90 days with privileges
-- MFA not enabled for admins
-- Weak password policies
+**조치 필요:** 24~48시간 이내에 해결
 
-**Action Required:** Remediation within 24-48 hours
+### 중간 심각도
 
-### Medium Severity
+해결해야 할 보안 문제:
+- 위임이 있는 비특권 계정
+- 비밀번호가 365일 이상 변경되지 않음
+- 보통 위험 사용자
+- 불완전한 조건부 액세스 적용 범위
 
-Security issues that should be addressed:
-- Non-privileged accounts with delegation
-- Passwords not changed >365 days
-- Moderate risk users
-- Incomplete conditional access coverage
+**조치 필요:** 1~2주 이내에 해결
 
-**Action Required:** Remediation within 1-2 weeks
+### 낮은 심각도
 
-### Low Severity
+사소한 보안 문제:
+- 문서 공백
+- 명명 규칙 위반
+- 사소한 정책 불일치
 
-Minor security concerns:
-- Documentation gaps
-- Naming convention violations
-- Minor policy inconsistencies
+**조치 필요:** 다음 유지 관리 기간 중 주소
 
-**Action Required:** Address during next maintenance window
+## 모니터링과의 통합
 
-## Integration with Monitoring
-
-### Email Alerts for Critical Findings
-
+### 중요한 결과에 대한 이메일 알림
 ```typescript
 import { sendEmail } from './email_utils';
 
@@ -310,9 +284,7 @@ async function alertOnCriticalFindings(assessment: SecurityAssessmentResult) {
   }
 }
 ```
-
-### SIEM Integration
-
+### SIEM 통합
 ```powershell
 # Send audit events to SIEM
 $events = Get-Content ".\audit_log.log" | ConvertFrom-Csv
@@ -327,11 +299,10 @@ foreach ($event in $events) {
     }
 }
 ```
+## 추가 리소스
 
-## Additional Resources
-
-- [Active Directory Security Best Practices](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices)
-- [Microsoft Graph Security API](https://docs.microsoft.com/graph/api/resources/security-overview)
-- [Azure Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview)
-- [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
-- [Conditional Access Policies](https://docs.microsoft.com/azure/active-directory/conditional-access/)
+- [Active Directory 보안 모범 사례](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices)
+- [Microsoft Graph 보안 API](https://docs.microsoft.com/graph/api/resources/security-overview)
+- [Azure ID 보호](https://docs.microsoft.com/azure/active-directory/identity-protection/overview)
+- [권한 있는 ID 관리](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+- [조건부 액세스 정책](https://docs.microsoft.com/azure/active-directory/conditional-access/)

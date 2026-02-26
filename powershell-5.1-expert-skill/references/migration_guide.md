@@ -38,12 +38,14 @@ $array += "Item1"
 $array += "Item2"
 ```
 
+
 **PowerShell 7:**
 ```powershell
 $array = @("Item1", "Item2")
 # Or use pipeline
 $array = @("Item1", "Item2")
 ```
+
 
 #### Null-Coalescing
 
@@ -54,10 +56,12 @@ if ($null -eq $value) {
 }
 ```
 
+
 **PowerShell 7:**
 ```powershell
 $value = $value ?? "default"
 ```
+
 
 #### Null-Conditional Assignment
 
@@ -68,10 +72,12 @@ if ($object -ne $null) {
 }
 ```
 
+
 **PowerShell 7:**
 ```powershell
 $object?.Property = "value"
 ```
+
 
 ### 2. Replace WMI with CIM
 
@@ -80,10 +86,12 @@ $object?.Property = "value"
 $process = Get-WmiObject -Class Win32_Process -Filter "Name='notepad.exe'"
 ```
 
+
 **PowerShell 7:**
 ```powershell
 $process = Get-CimInstance -ClassName Win32_Process -Filter "Name='notepad.exe'"
 ```
+
 
 **PowerShell 5.1:**
 ```powershell
@@ -91,11 +99,13 @@ $wmi = Get-WmiObject -Class Win32_OperatingSystem
 Invoke-WmiMethod -InputObject $wmi -Name "Win32Shutdown" -ArgumentList @()
 ```
 
+
 **PowerShell 7:**
 ```powershell
 $cim = Get-CimInstance -ClassName Win32_OperatingSystem
 Invoke-CimMethod -InputObject $cim -MethodName "Win32Shutdown" -Arguments @{}
 ```
+
 
 ### 3. Update Platform-Specific Code
 
@@ -104,6 +114,7 @@ Invoke-CimMethod -InputObject $cim -MethodName "Win32Shutdown" -Arguments @{}
 # Use Windows-specific APIs
 Add-Type -AssemblyName System.Windows.Forms
 ```
+
 
 **PowerShell 7 (Cross-platform):**
 ```powershell
@@ -117,6 +128,7 @@ if ($IsWindows) {
 }
 ```
 
+
 ### 4. Modernize Error Handling
 
 **PowerShell 5.1:**
@@ -128,6 +140,7 @@ catch {
     Write-Error $_
 }
 ```
+
 
 **PowerShell 7:**
 ```powershell
@@ -142,6 +155,7 @@ catch {
 }
 ```
 
+
 ### 5. Update Parameter Validation
 
 **PowerShell 5.1:**
@@ -151,6 +165,7 @@ param(
     [string]$Path
 )
 ```
+
 
 **PowerShell 7:**
 ```powershell
@@ -166,6 +181,7 @@ param(
 )
 ```
 
+
 ## Module Migration
 
 ### Update Module Manifest
@@ -180,6 +196,7 @@ param(
 }
 ```
 
+
 **PowerShell 7:**
 ```powershell
 @{
@@ -190,6 +207,7 @@ param(
 }
 ```
 
+
 ### Update #Requires Statements
 
 **PowerShell 5.1:**
@@ -198,11 +216,13 @@ param(
 #Requires -Modules ActiveDirectory
 ```
 
+
 **PowerShell 7:**
 ```powershell
 #Requires -Version 7.0
 #Requires -Modules @{ ModuleName='ActiveDirectory'; ModuleVersion='1.0.0.0' }
 ```
+
 
 ## Breaking Changes
 
@@ -256,6 +276,7 @@ foreach ($service in $services) {
 }
 ```
 
+
 ### After (PowerShell 7)
 
 ```powershell
@@ -279,6 +300,7 @@ foreach ($service in $services) {
     Write-Host "$($service.Name) - $($service.State)" -ForegroundColor $status
 }
 ```
+
 
 ## Troubleshooting
 

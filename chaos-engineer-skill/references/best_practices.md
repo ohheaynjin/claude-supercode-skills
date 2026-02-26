@@ -1,352 +1,348 @@
-# Chaos Engineer - Best Practices
+# 카오스 엔지니어 - 모범 사례
 
-This guide outlines best practices for chaos engineering, controlled failure injection, and building resilient systems.
+이 가이드에서는 카오스 엔지니어링, 제어된 오류 주입 및 탄력적인 시스템 구축에 대한 모범 사례를 간략하게 설명합니다.
 
-## Core Principles
+## 핵심 원칙
 
-### Hypothesis-Driven Experiments
+### 가설 기반 실험
 
-- Always start with a clear hypothesis
-- Define steady state metrics before experimenting
-- Set success criteria upfront
-- Validate or invalidate hypothesis based on data
+- 항상 명확한 가설부터 시작하세요.
+- 실험하기 전에 정상 상태 측정항목을 정의하세요.
+- 성공 기준을 미리 설정
+- 데이터를 기반으로 가설을 검증하거나 무효화합니다.
 
-**Example Hypothesis**:
-"The system api-service remains available (error rate < 1%) when 20% of pods are killed"
+**예시 가설**:
+"Pod의 20%가 종료되어도 시스템 API 서비스는 계속 사용 가능합니다(오류율 < 1%)."
 
-### Controlled Blast Radius
+### 폭발 반경 제어
 
-- **Development**: 100% blast radius acceptable
-- **Staging**: 50-100% blast radius
-- **Production**: 1-10% blast radius maximum
-- **Canary**: Start with 1%, increase gradually
+- **개발 중**: 100% 폭발 반경 허용
+- **스테이징**: 폭발 반경 50-100%
+- **생산**: 폭발 반경 최대 1~10%
+- **카나리아**: 1%부터 시작하여 점차 증가
 
-### Automated Rollback
+### 자동 롤백
 
-- **Target**: Rollback within 30 seconds if needed
-- **Method**: Automated kill switch or circuit breaker
-- **Monitoring**: Real-time monitoring of key metrics
-- **Validation**: Verify system health after rollback
+- **목표**: 필요한 경우 30초 이내에 롤백
+- **방법**: 자동 킬 스위치 또는 회로 차단기
+- **모니터링**: 주요 지표에 대한 실시간 모니터링
+- **검증**: 롤백 후 시스템 상태를 확인합니다.
 
-## Experiment Design Best Practices
+## 실험 설계 모범 사례
 
-### Define Clear Hypotheses
+### 명확한 가설 정의
 
-Use SMART hypotheses:
-- **S**pecific: Clear statement about expected behavior
-- **M**easurable: Can be validated with metrics
-- **A**chievable: Within system capabilities
-- **R**ealistic: Based on understanding of system
-- **T**ime-bound: Clear time window for validation
+SMART 가설을 사용하세요.
+- **특정**: 예상되는 동작에 대한 명확한 설명
+- **M**asurable: 측정항목으로 검증 가능
+- **A**달성 가능: 시스템 성능 내에서
+- **R**현실적: 시스템에 대한 이해를 바탕으로 함
+- **T**time-bound: 검증을 위한 명확한 시간 창
 
-**Good Hypothesis**:
-"System remains available (error rate < 0.5%, latency p95 < 500ms) when network latency of 200ms is injected for 5 minutes"
+**좋은 가설**:
+"200ms의 네트워크 대기 시간이 5분 동안 주입되면 시스템은 계속 사용 가능합니다(오류율 < 0.5%, 대기 시간 p95 < 500ms)."
 
-**Bad Hypothesis**:
-"System works fine when we break things"
+**잘못된 가설**:
+"우리가 문제를 망가뜨려도 시스템은 잘 작동합니다"
 
-### Identify Steady State Metrics
+### 정상 상태 지표 식별
 
-Track these metrics before, during, and after experiments:
-- **Error Rate**: Percentage of failed requests
-- **Latency**: p50, p95, p99 response times
-- **Throughput**: Requests per second
-- **Availability**: Uptime percentage
-- **Resource Usage**: CPU, memory, disk, network
+실험 전, 실험 중, 실험 후에 다음 측정항목을 추적하세요.
+- **오류율**: 실패한 요청의 비율
+- **지연 시간**: p50, p95, p99 응답 시간
+- **처리량**: 초당 요청
+- **가용성**: 가동 시간 비율
+- **리소스 사용량**: CPU, 메모리, 디스크, 네트워크
 
-### Plan Safety Mechanisms
+### 안전 메커니즘 계획
 
-- Automated kill switches
-- Manual emergency stop buttons
-- Circuit breakers for protection
-- Alert thresholds for auto-rollback
-- Communication channels for coordination
+- 자동 킬 스위치
+- 수동 비상 정지 버튼
+- 보호를 위한 회로 차단기
+- 자동 롤백에 대한 경고 임계값
+- 조정을 위한 의사소통 채널
 
-## Failure Injection Best Practices
+## 실패 주입 모범 사례
 
-### Start Simple
+### 간단하게 시작하세요
 
-1. **Pod Kill**: Easiest failure to inject and recover from
-2. **Network Latency**: Introduce controlled delay
-3. **Packet Loss**: Test resilience to data loss
-4. **Memory Stress**: Simulate memory exhaustion
-5. **Complex Scenarios**: Combine multiple failures
+1. **Pod Kill**: 가장 쉬운 주입 실패 및 복구
+2. **네트워크 지연 시간**: 제어된 지연 도입
+3. **패킷 손실**: 데이터 손실에 대한 복원력 테스트
+4. **메모리 스트레스**: 메모리 고갈 시뮬레이션
+5. **복잡한 시나리오**: 여러 실패를 결합합니다.
 
-### Progressive Complexity
+### 점진적 복잡성
 
-- **Week 1**: Single failure types in development
-- **Week 2**: Multiple failures in staging
-- **Week 3**: Combined failures with smaller blast radius in production
-- **Week 4**: Game days with complex scenarios
+- **1주차**: 단일 실패 유형 개발 중
+- **2주차**: 스테이징의 여러 실패
+- **3주차**: 생산 시 더 작은 폭발 반경과 실패가 결합됨
+- **4주차**: 복잡한 시나리오가 있는 게임 데이
 
-### Target Critical Paths
+### 주요 경로 대상
 
-- Test customer-facing services first
-- Include downstream dependencies
-- Test authentication and authorization flows
-- Include database and storage systems
-- Test network and infrastructure components
+- 고객 대면 서비스를 먼저 테스트해 보세요.
+- 다운스트림 종속성을 포함합니다.
+- 인증 및 승인 흐름 테스트
+- 데이터베이스 및 스토리지 시스템 포함
+- 네트워크 및 인프라 구성 요소 테스트
 
-## Blast Radius Control
+## 폭발 반경 제어
 
-### Traffic Percentage
+### 트래픽 비율
 
-Use these blast radius percentages:
-- **Development**: 100%
-- **Staging**: 50-100%
-- **Production Canary**: 1-5%
-- **Production Standard**: 5-10%
+다음 폭발 반경 비율을 사용하십시오.
+- **개발**: 100%
+- **스테이징**: 50-100%
+- **프로덕션 카나리아**: 1-5%
+- **생산기준**: 5-10%
 
-### User Segmentation
+### 사용자 세분화
 
-- **Internal Users**: Test with internal traffic first
-- **Beta Customers**: Test with selected customer segment
-- **Geographic**: Limit to specific regions
-- **Feature Flags**: Use feature flags to isolate experiments
+- **내부 사용자**: 내부 트래픽으로 먼저 테스트
+- **베타 고객**: 선택된 고객 세그먼트를 대상으로 테스트합니다.
+- **지리적**: 특정 지역으로 제한
+- **기능 플래그**: 기능 플래그를 사용하여 실험을 분리합니다.
 
-### Environment Isolation
+### 환경 격리
 
-- Use dedicated namespaces for chaos experiments
-- Separate monitoring for experiment tracking
-- Isolate resources to prevent cross-contamination
-- Clean up all experiment resources after completion
+- 혼돈 실험을 위한 전용 네임스페이스 사용
+- 실험 추적을 위한 별도 모니터링
+- 교차오염 방지를 위한 자원 분리
+- 실험 완료 후 모든 실험 리소스 정리
 
-## Monitoring During Experiments
+## 실험 중 모니터링
 
-### Real-Time Dashboards
+### 실시간 대시보드
 
-Create dashboards showing:
-- Error rate by service
-- Latency distribution
-- Throughput over time
-- System resource utilization
-- Active experiment status
+다음을 표시하는 대시보드를 만듭니다.
+- 서비스별 오류율
+- 레이턴시 분포
+- 시간 경과에 따른 처리량
+- 시스템 자원 활용
+- 활성 실험 상태
 
-### Alert Thresholds
+### 경고 임계값
 
-Set alerts for:
-- Error rate > 1% for > 1 minute
-- Latency p95 > 1000ms
-- Available instances < 50%
-- CPU > 80% for > 2 minutes
-- Automatic rollback trigger
+다음에 대한 알림 설정:
+- 1분 이상 동안 오류율 > 1%
+- 대기 시간 p95 > 1000ms
+- 사용 가능한 인스턴스 < 50%
+- CPU > 80% 이상 2분 동안
+- 자동 롤백 트리거
 
-### Observability
+### 관찰 가능성- 모든 서비스의 로그 수집
+- 서비스 경계를 넘어 요청 추적
+- 시스템 이벤트 및 지표 모니터링
+- 중앙 시스템에서 실험 타임라인 추적
 
-- Collect logs from all services
-- Trace requests across service boundaries
-- Monitor system events and metrics
-- Track experiment timeline in central system
+## 게임 데이 계획
 
-## Game Day Planning
+### 경기 전 준비
+
+- 사건을 기반으로 현실적인 시나리오 선택
+- 실행서 및 절차 준비
+- 커뮤니케이션 채널 설정
+- 역할 할당: 사고 지휘관, 서기, 관찰자
+- 트래픽이 적은 시간대의 일정
+- 롤백 계획을 문서화합니다.
+
+### 경기 당일
+
+- 사건지휘관 활성화
+- 런북 절차를 따르세요.
+- 모든 행동과 결정을 문서화
+- 지표를 지속적으로 모니터링
+- 업데이트를 정기적으로 전달
+- 모든 절차 시간
+
+### 경기 후의 날
 
-### Pre-Game Day Preparation
+- 무책임한 사후검토 실시
+- 잘 된 점을 문서로 기록하세요.
+- 개선할 부분 파악
+- 조사 결과를 기반으로 런북 업데이트
+- 더 넓은 팀과 수업 공유
+- 후속 경기 일정을 계획하세요
 
-- Choose realistic scenarios based on incidents
-- Prepare runbooks and procedures
-- Set up communication channels
-- Assign roles: Incident Commander, Scribe, Observers
-- Schedule during low-traffic periods
-- Have rollback plan documented
-
-### During Game Day
+## 지속적인 혼돈
 
-- Activate Incident Commander
-- Follow runbook procedures
-- Document all actions and decisions
-- Monitor metrics continuously
-- Communicate updates regularly
-- Time all procedures
+### 자동화된 실험
+
+- CI/CD 파이프라인에서 실험 예약
+- 모든 배포에 대해 실험 실행
+- 혼란스러운 새로운 기능 테스트
+- 결과 분석 자동화
+- 자동으로 실험 보고서 생성
 
-### Post-Game Day
+### 개발과의 통합
 
-- Conduct blameless postmortem
-- Document what went well
-- Identify areas for improvement
-- Update runbooks based on findings
-- Share lessons with wider team
-- Schedule follow-up game day
+- PR 점검에 카오스 테스트 포함
+- 실험 실패 시 배포 차단
+- 중요한 서비스에 대한 카오스 테스트가 필요합니다.
+- 기존 모니터링과 통합
+- 실험 결과를 용량 계획에 활용
 
-## Continuous Chaos
+### 지식경영
+
+- 모든 실험의 카탈로그를 유지합니다.
+- 서비스별, 장애유형별 태그 실험
+- 가설 및 결과 추적
+- 참고용으로 실험 보고서 저장
+- 패턴 및 모범 사례 업데이트
 
-### Automated Experiments
+## 안전 지침
+
+### 생산 실험
 
-- Schedule experiments in CI/CD pipeline
-- Run experiments on every deployment
-- Test new features with chaos
-- Automate analysis of results
-- Generate experiment reports automatically
+- 승인 없이 프로덕션 환경에서 실험하지 마세요.
+- 엔지니어링 리더로부터 명시적인 승인을 받으세요.
+- 필요한 경우 유지 관리 기간을 예약하세요.
+- 가능한 가장 작은 폭발 반경을 사용하십시오.
+- 통화 중인 팀을 대기 상태로 유지
+- 실험 전 롤백 절차 테스트
 
-### Integration with Development
+### 비상 절차
 
-- Include chaos tests in PR checks
-- Block deployments if experiment fails
-- Require chaos testing for critical services
-- Integrate with existing monitoring
-- Use experiment results for capacity planning
+- 킬 스위치: 중요한 경우 즉시 실험을 중지합니다.
+- 롤백 : 30초 이내에 롤백 실행
+- 의사소통: 모든 이해관계자에게 즉시 통보
+- 에스컬레이션: 영향이 심각한 경우 관리팀으로 승격
+- 문서화: 취해진 모든 조치를 기록합니다.
 
-### Knowledge Management
+### 위험 평가
 
-- Maintain catalog of all experiments
-- Tag experiments by service and failure type
-- Track hypotheses and outcomes
-- Store experiment reports for reference
-- Update patterns and best practices
+각 실험 전:
+- 잠재적인 고객 영향 평가
+- 위험에 처한 중요한 비즈니스 기능 식별
+- 문제가 발생할 경우 재정적 영향을 추정합니다.
+- 완화 전략 준비
+- 롤백 절차가 작동하는지 확인
 
-## Safety Guidelines
+## 탄력성 구축
 
-### Production Experiments
+### 구현할 패턴
 
-- Never experiment in production without approval
-- Get explicit sign-off from engineering lead
-- Schedule maintenance windows if needed
-- Use smallest possible blast radius
-- Have on-call team on standby
-- Test rollback procedure before experiment
+#### 회로 차단기
+- 실패 임계값에 도달하면 열립니다.
+- 연속적인 실패를 방지합니다.
+- 자동 복구 지원
+- 폴백 메커니즘 포함
 
-### Emergency Procedures
+#### 백오프로 재시도
+- 일시적인 오류 재시도
+- 지수 백오프 사용
+- 최대 재시도 제한 설정
+- 분산 시스템에 대한 지터 구현
 
-- Kill switch: Stop experiment immediately if critical
-- Rollback: Execute rollback within 30 seconds
-- Communication: Notify all stakeholders immediately
-- Escalation: Elevate to management if impact severe
-- Documentation: Record all actions taken
+#### 격벽
+- 리소스 풀 격리
+- 자원고갈 방지
+- 장애 시 부분 서비스 유지
+- 리소스가 가득 차면 대기열 요청
 
-### Risk Assessment
+#### 시간 초과 구성
+- 모든 작업에 대해 적절한 시간 초과 설정
+- 매달리기보다는 빠르게 실패하세요.
+- 모니터링에 타임아웃을 포함합니다.
+- 문서 시간 초과 예상
 
-Before each experiment:
-- Assess potential customer impact
-- Identify critical business functions at risk
-- Estimate financial impact if things go wrong
-- Prepare mitigation strategies
-- Verify rollback procedures work
+#### 대체 메커니즘
+- 대체 서비스 제공
+- 기능을 정상적으로 저하시킵니다.
+- 가능한 경우 캐시된 응답을 반환합니다.
+- 가동 중단 시에도 핵심 서비스 유지
 
-## Building Resilience
+### 탄력성 모니터링
 
-### Patterns to Implement
+#### 단일 실패 지점
 
-#### Circuit Breaker
-- Opens when failure threshold reached
-- Prevents cascading failures
-- Supports automatic recovery
-- Include fallback mechanisms
+- SPOF에 대한 인프라를 정기적으로 감사합니다.
+- 모든 중요한 시스템에 대한 테스트 장애 조치
+- 누락된 부분에 중복 구현
+- SPOF 및 완화 계획 문서화
 
-#### Retry with Backoff
-- Retry transient failures
-- Use exponential backoff
-- Set maximum retry limit
-- Implement jitter for distributed systems
+#### 상태 점검
 
-#### Bulkhead
-- Isolate resource pools
-- Prevent resource exhaustion
-- Maintain partial service during failures
-- Queue requests when resources full
+- 활동성 및 준비 상태 프로브 구현
+- 모든 종속성 테스트
+- 라우팅을 위해 상태 확인 결과를 사용합니다.
+- 상태 확인 실패에 대한 경고
 
-#### Timeout Configuration
-- Set appropriate timeouts for all operations
-- Fail fast instead of hanging
-- Include timeout in monitoring
-- Document timeout expectations
+#### 용량 계획
 
-#### Fallback Mechanisms
-- Provide alternative services
-- Gracefully degrade functionality
-- Return cached responses when available
-- Maintain core service during outages
+- 자원 활용도 모니터링
+- 최대 부하에 대한 계획
+- 자동 크기 조정 구현
+- 최대 용량의 테스트 시스템
 
-### Monitoring Resilience
+## 측정항목 및 KPI
 
-#### Single Points of Failure
+### 카오스 엔지니어링 지표- **실험 실행**: 분기당 40-60개 목표
+- **발견된 실패**: 발견된 중요한 문제를 추적합니다.
+- **MTTR 개선**: 복구 시간 단축 측정
+- **폭발 반경 준수**: 트랙 생산 폭발 반경은 <10%로 유지됩니다.
+- **롤백 시간**: 롤백 성능 추적(목표 <30초)
+- **고객 영향**: 혼란으로 인한 고객 대면 사고 제로
 
-- Regularly audit infrastructure for SPOFs
-- Test failover for all critical systems
-- Implement redundancy where missing
-- Document SPOFs and mitigation plans
+### 시스템 복원력 측정항목
 
-#### Health Checks
+- **가용성**: 목표 99.9% 이상
+- **MTTR**: 심각도가 높은 사고의 경우 목표는 60분 미만입니다.
+- **MTBF(평균 고장 간격)**: 시간 경과에 따른 개선 추적
+- **오류율**: 정상 작동 시 목표 <0.1%
+- **복구 시간**: 정상 상태로 돌아가는 데 걸리는 시간을 측정합니다.
 
-- Implement liveness and readiness probes
-- Test all dependencies
-- Use health check results for routing
-- Alert on health check failures
+## 팀 조정
 
-#### Capacity Planning
+### 역할
 
-- Monitor resource utilization
-- Plan for peak load
-- Implement auto-scaling
-- Test system at maximum capacity
+- **카오스 엔지니어**: 실험 설계 및 실행
+- **SRE 엔지니어**: 안정적인 상태 정의 및 측정항목 모니터링
+- **서비스 소유자**: 프로덕션에서 실험 승인
+- **당직팀**: 필요 시 롤백 실행
+- **이해관계자**: 결과 검토 및 개선 승인
 
-## Metrics and KPIs
+### 커뮤니케이션
 
-### Chaos Engineering Metrics
+- 생산 실험 전 이해관계자에게 통보
+- 대기 중인 팀과 실험 일정 공유
+- 명확한 일정과 예상되는 영향을 제공합니다.
+- 결과와 학습을 널리 공유
+- 팀 지식을 위해 모든 실험을 문서화합니다.
 
-- **Experiments Run**: Target 40-60 per quarter
-- **Failures Discovered**: Track critical issues found
-- **MTTR Improvement**: Measure reduction in recovery time
-- **Blast Radius Compliance**: Track production blast radius stays <10%
-- **Rollback Time**: Track rollback performance (target <30s)
-- **Customer Impact**: Zero customer-facing incidents from chaos
+## 실패로부터 배우기
 
-### System Resilience Metrics
+### 실험 후 분석
 
-- **Availability**: Target 99.9% or higher
-- **MTTR**: Target <60 minutes for high severity incidents
-- **Mean Time Between Failures (MTBF)**: Track improvement over time
-- **Error Rate**: Target <0.1% under normal operation
-- **Recovery Time**: Measure time to return to steady state
+- 가설 검증 또는 무효화
+- 무슨 일이 일어났고 그 이유를 문서로 기록하세요.
+- 예상치 못한 행동 식별
+- 시스템 응답 캡처
+- 개선할 점 참고
 
-## Team Coordination
+### 지속적인 개선
 
-### Roles
+- 조사 결과를 기반으로 런북 업데이트
+- 발견된 수정사항 구현
+- 발견된 문제를 기반으로 새로운 테스트 케이스 추가
+- 팀 간 학습 내용 공유
+- 개선 후 실험 반복
 
-- **Chaos Engineer**: Design and execute experiments
-- **SRE Engineer**: Define steady state and monitor metrics
-- **Service Owner**: Approve experiments in production
-- **On-call Team**: Execute rollback if needed
-- **Stakeholder**: Review results and approve improvements
+## 툴링
 
-### Communication
+### 권장 도구
 
-- Notify stakeholders before production experiments
-- Share experiment schedules with on-call teams
-- Provide clear timelines and expected impact
-- Share results and learnings widely
-- Document all experiments for team knowledge
+- **카오스 메시**: Kubernetes 기반 카오스 엔지니어링
+- **LitmusChaos**: 클라우드 기반 카오스 도구
+- **Gremlin**: SaaS 카오스 엔지니어링 플랫폼
+- **Chaos Monkey**: Netflix의 혼돈 도구
+- **Pumba**: Docker 기반 카오스 도구
 
-## Learning from Failures
+### 통합
 
-### Post-Experiment Analysis
-
-- Validate or invalidate hypothesis
-- Document what happened and why
-- Identify unexpected behaviors
-- Capture system responses
-- Note areas for improvement
-
-### Continuous Improvement
-
-- Update runbooks based on findings
-- Implement discovered fixes
-- Add new test cases based on issues found
-- Share learnings across teams
-- Repeat experiments after improvements
-
-## Tooling
-
-### Recommended Tools
-
-- **Chaos Mesh**: Kubernetes-native chaos engineering
-- **LitmusChaos**: Cloud-native chaos tooling
-- **Gremlin**: SaaS chaos engineering platform
-- **Chaos Monkey**: Netflix's chaos tool
-- **Pumba**: Docker-based chaos tooling
-
-### Integration
-
-- Integrate with existing monitoring (Prometheus, Datadog)
-- Connect to alerting systems (PagerDuty)
-- Use CI/CD for automated experiments
-- Store results in knowledge base
-- Generate reports for team review
+- 기존 모니터링과 통합(Prometheus, Datadog)
+- 경고 시스템에 연결(PagerDuty)
+- 자동화된 실험을 위해 CI/CD를 활용하세요.
+- 결과를 지식 베이스에 저장
+- 팀 검토를 위한 보고서 생성

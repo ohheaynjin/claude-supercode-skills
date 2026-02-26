@@ -1,9 +1,8 @@
-# Rails Expert - Code Examples & Patterns
+# Rails Expert - 코드 예제 및 패턴
 
-## Hotwire Implementation
+## 핫와이어 구현
 
-### Turbo Frame Views
-
+### 터보 프레임 뷰
 ```erb
 <!-- app/views/orders/index.html.erb -->
 <div class="container mx-auto px-4 py-8">
@@ -125,9 +124,7 @@
             class: "px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-xs",
             data: { turbo_confirm: "Are you sure you want to cancel this order?" } %>
 ```
-
-### Stimulus Controllers
-
+### 자극 컨트롤러
 ```javascript
 // app/javascript/controllers/order_status_controller.js
 import { Controller } from "@hotwired/stimulus"
@@ -295,11 +292,9 @@ export default class extends Controller {
   }
 }
 ```
+## 테스트 전략
 
-## Testing Strategies
-
-### Modern Rails Testing
-
+### 최신 레일 테스트
 ```ruby
 # test/services/order_service_test.rb
 require "test_helper"
@@ -543,56 +538,55 @@ class OrdersSystemTest < ApplicationSystemTestCase
   end
 end
 ```
+## 사용 사례 예시
 
-## Example Use Cases
+### 예시 1: 핫와이어 기반 실시간 대시보드
 
-### Example 1: Hotwire-Powered Real-Time Dashboard
+**시나리오:** 기존 Rails 관리 패널에 실시간 업데이트를 추가해야 합니다.
 
-**Scenario:** Need to add real-time updates to a legacy Rails admin panel.
+**구현:**
+1. jQuery를 터보 스트림으로 대체
+2. 실시간 업데이트를 위한 액션 케이블 구현
+3. 부분 페이지 업데이트를 위한 터보 프레임 생성
+4. 대화형 요소에 자극 컨트롤러를 추가했습니다.
+5. 페이지 새로고침 횟수가 90% 감소했습니다.
 
-**Implementation:**
-1. Replaced jQuery with Turbo Streams
-2. Implemented Action Cable for live updates
-3. Created Turbo Frames for partial page updates
-4. Added Stimulus controllers for interactive elements
-5. Reduced page reloads by 90%
+**결과:**
+- 실시간 대시보드 업데이트(<100ms 대기 시간)
+- 전체 페이지 새로 고침 제거
+- 인지 성능이 대폭 향상되었습니다.
+- 사용자 만족도 60% 증가
 
-**Results:**
-- Dashboard updates in real-time (<100ms latency)
-- Eliminated full page refreshes
-- Improved perceived performance dramatically
-- User satisfaction increased 60%
+### 예시 2: 대규모 데이터베이스 최적화
 
-### Example 2: Database Optimization at Scale
+**시나리오:** 1,000만 개 이상의 레코드가 있는 Rails 앱에서 N+1 쿼리 문제가 발생합니다.
 
-**Scenario:** A Rails app with 10M+ records experiencing N+1 query issues.
+**구현:**
+1. Query Monitor로 모든 쿼리를 감사했습니다.
+2. 즉시 로딩(포함/사전 로드) 구현
+3. 필요한 곳에 카운터 캐시를 추가했습니다.
+4. 최적화된 데이터베이스 인덱스
+5. 쿼리 결과 캐싱 구현
 
-**Implementation:**
-1. Audited all queries with Query Monitor
-2. Implemented eager loading (includes/preload)
-3. Added counter caches where needed
-4. Optimized database indexes
-5. Implemented query result caching
+**결과:**
+- 평균 페이지 로드가 2.3초에서 280ms로 감소했습니다.
+- 데이터베이스 CPU가 65% 감소했습니다.
+- 쿼리 수가 페이지당 150개 이상에서 <20개로 감소했습니다.
+- 로드 시 애플리케이션 확장이 5배 향상됩니다.
 
-**Results:**
-- Average page load reduced from 2.3s to 280ms
-- Database CPU reduced by 65%
-- Query count reduced from 150+ to <20 per page
-- Application scales 5x better under load
+### 예 3: 모듈식 레일 아키텍처
 
-### Example 3: Modular Rails Architecture
+**시나리오:** 모놀리식 Rails 앱을 유지 관리할 수 없게 됩니다.
 
-**Scenario:** Monolithic Rails app becoming unmaintainable.
+**구현:**
+1. 도메인 로직을 서비스 객체로 추출
+2. 복잡한 데이터베이스 쿼리를 위한 쿼리 개체 생성
+3. 복잡한 유효성 검사를 위해 구현된 양식 개체
+4. 재사용 가능한 UI를 위해 뷰 컴포넌트 사용
+5. 명확한 모듈 경계 설정
 
-**Implementation:**
-1. Extracted domain logic into Service Objects
-2. Created Query Objects for complex database queries
-3. Implemented Form Objects for complex validations
-4. Used View Components for reusable UI
-5. Established clear module boundaries
-
-**Results:**
-- Code organization improved significantly
-- Testing become easier with focused objects
-- Developer productivity increased 40%
-- Onboarding time reduced by 50%
+**결과:**
+- 코드 구성이 크게 개선되었습니다.
+- 집중된 개체를 사용하면 테스트가 더 쉬워집니다.
+- 개발자 생산성 40% 증가
+- 온보딩 시간이 50% 단축되었습니다.

@@ -2,7 +2,6 @@
 name: build-engineer
 description: Expert in monorepo tooling (Turborepo, Nx, Bazel), CI/CD pipelines, and bundler optimization (Webpack/Vite/Rspack).
 ---
-
 # Build Engineer
 
 ## Purpose
@@ -49,6 +48,7 @@ What is the priority?
    └─ Dual Emit (CJS/ESM)? → **Rollup** (Tree-shaking standard)
 ```
 
+
 **Red Flags → Escalate to `devops-engineer`:**
 - CI Pipeline takes > 20 minutes
 - `node_modules` size > 1GB (Phantom dependencies)
@@ -67,7 +67,8 @@ What is the priority?
 **Steps:**
 
 1.  **Configuration (`turbo.json`)**
-    ```json
+
+```json
     {
       "$schema": "https://turbo.build/schema.json",
       "pipeline": {
@@ -84,14 +85,17 @@ What is the priority?
     }
     ```
 
+
 2.  **Remote Cache**
     -   Link to Vercel Remote Cache: `npx turbo link`.
     -   In CI (GitHub Actions):
-        ```yaml
+
+```yaml
         env:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
         ```
+
 
 3.  **Execution**
     -   `turbo run build test lint`
@@ -110,13 +114,15 @@ What is the priority?
     -   `nx graph` (Visualizes dependencies: App A depends on Lib B).
 
 2.  **CI Pipeline**
-    ```bash
+
+```bash
     # Only test projects affected by PR
     npx nx affected -t test --base=origin/main --head=HEAD
     
     # Only lint affected
     npx nx affected -t lint --base=origin/main
     ```
+
 
 ---
 ---
@@ -147,6 +153,7 @@ js_library(
     ],
 )
 ```
+
 
 ---
 ---
@@ -267,6 +274,7 @@ js_library(
       shard: [1, 2, ..., 20]
     max-parallel: 10
 ```
+
 
 **Results:**
 - E2E test time: 90m → 12m (87% improvement)

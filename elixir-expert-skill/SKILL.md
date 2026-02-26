@@ -2,7 +2,6 @@
 name: elixir-expert
 description: Expert in Elixir, Phoenix Framework, and OTP. Specializes in building concurrent, fault-tolerant, and real-time applications using the BEAM. Use when building Elixir applications, working with Phoenix, implementing GenServers, or designing distributed systems on the BEAM.
 ---
-
 # Elixir Expert
 
 ## Purpose
@@ -47,6 +46,7 @@ Supervision Strategy:
 ├── Ordered restart needed → rest_for_one
 └── Dynamic children → DynamicSupervisor
 ```
+
 
 ## Core Workflows
 

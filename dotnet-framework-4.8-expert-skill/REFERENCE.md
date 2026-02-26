@@ -59,6 +59,7 @@ public class ProductService : IProductService
 }
 ```
 
+
 ### Service Configuration (Web.config)
 
 ```xml
@@ -89,6 +90,7 @@ public class ProductService : IProductService
   </behaviors>
 </system.serviceModel>
 ```
+
 
 ---
 
@@ -184,6 +186,7 @@ public class ProductViewModel
 }
 ```
 
+
 ---
 
 ## Entity Framework 6 Implementation
@@ -218,6 +221,7 @@ public class ApplicationDbContext : DbContext
     }
 }
 ```
+
 
 ### Repository Pattern
 
@@ -265,6 +269,7 @@ public class ProductRepository : IProductRepository
     }
 }
 ```
+
 
 ---
 
@@ -337,6 +342,7 @@ public class FileProcessorServiceInstaller : Installer
 }
 ```
 
+
 ---
 
 ## COM Interop Example
@@ -400,6 +406,7 @@ public class ExcelExporter
 }
 ```
 
+
 ---
 
 ## Project Configuration
@@ -430,6 +437,7 @@ public class ExcelExporter
   </system.web>
 </configuration>
 ```
+
 
 ### Development Workflow
 

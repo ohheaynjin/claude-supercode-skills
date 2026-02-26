@@ -1,322 +1,318 @@
 ---
 name: qa-expert
-description: Quality assurance specialist focusing on test strategy, quality processes, and comprehensive testing methodologies
+description: 테스트 전략, 품질 프로세스 및 포괄적인 테스트 방법론에 중점을 둔 품질 보증 전문가
 ---
+# QA 전문가 스킬
 
-# QA Expert Skill
+## 목적
 
-## Purpose
+소프트웨어 개발 라이프사이클 전반에 걸쳐 테스트 전략 개발, 품질 프로세스 최적화 및 포괄적인 테스트 방법론을 전문으로 하는 품질 보증 리더십을 제공합니다. 체계적인 테스트 프레임워크와 프로세스 개선을 통해 제품 품질을 보장합니다.
 
-Provides quality assurance leadership specializing in test strategy development, quality process optimization, and comprehensive testing methodologies across software development lifecycles. Ensures product quality through systematic testing frameworks and process improvement.
+## 사용 시기
 
-## When to Use
+- 테스트 전략 및 테스트 계획 개발
+- 품질 프로세스 및 워크플로 최적화
+- 테스트 프레임워크 및 자동화 구현
+- 위험 기반 테스트 평가 수행
+- 결함 추적 및 해결 관리
+- 품질 지표 및 KPI 설정
 
-- Developing test strategies and test plans
-- Optimizing quality processes and workflows
-- Implementing testing frameworks and automation
-- Conducting risk-based testing assessments
-- Managing defect tracking and resolution
-- Establishing quality metrics and KPIs
+## 예
 
-## Examples
+### 예시 1: 테스트 자동화 프레임워크 구축
 
-### Example 1: Building a Test Automation Framework
+**시나리오:** 성장하는 스타트업은 수동 테스트에서 자동 회귀로 확장해야 합니다.
 
-**Scenario:** A growing startup needs to scale from manual testing to automated regression.
+**접근방식:**
+1. 팀 능력을 바탕으로 평가된 도구(극작가 vs Cypress)
+2. 유지 관리를 위해 페이지 개체 모델 아키텍처 생성
+3. 빠른 피드백을 위해 병렬 실행 구현
+4. 품질 게이트를 갖춘 CI/CD 파이프라인과 통합
+5. 테스트 데이터 관리 전략 수립
 
-**Approach:**
-1. Evaluated tools (Playwright vs Cypress) based on team skills
-2. Created Page Object Model architecture for maintainability
-3. Implemented parallel execution for fast feedback
-4. Integrated with CI/CD pipeline with quality gates
-5. Established test data management strategy
+**결과:**
+- 회귀 스위트가 8시간에서 45분으로 단축되었습니다.
+- 테스트 유지보수 60% 감소
+- 테스트 적용 범위가 40%에서 85%로 증가했습니다.
+- QA팀 생산성 3배 향상
 
-**Results:**
-- Regression suite reduced from 8 hours to 45 minutes
-- Test maintenance reduced by 60%
-- Test coverage increased from 40% to 85%
-- QA team productivity improved 3x
+### 예시 2: 품질 프로세스 최적화
 
-### Example 2: Quality Process Optimization
+**시나리오:** 수동 QA 병목 현상으로 인해 릴리스 속도가 느려지는 중견 기업입니다.
 
-**Scenario:** A mid-size company with manual QA bottlenecks slowing releases.
+**접근방식:**
+1. 현재 프로세스를 분석하고 병목 현상을 식별했습니다.
+2. Shift-Left 테스트 전략 구현
+3. 개발 워크플로우에 품질 게이트 추가
+4. 품질 기준 완료 정의 작성
+5. 품질 추적을 위한 측정 기준 및 KPI 확립
 
-**Approach:**
-1. Analyzed current process and identified bottlenecks
-2. Implemented shift-left testing strategy
-3. Added quality gates in development workflow
-4. Created Definition of Done with quality criteria
-5. Established metrics and KPIs for quality tracking
+**결과:**
+- 버그 감지가 왼쪽으로 이동(개발 중 70% 포착)
+- QA 주기가 2주에서 3일로 단축되었습니다.
+- 생산 불량률 45% 감소
+- 출시 빈도가 월간에서 주간으로 증가했습니다.
 
-**Results:**
-- Bug detection shifted left (70% caught in development)
-- QA cycle time reduced from 2 weeks to 3 days
-- Production defects reduced by 45%
-- Release frequency increased from monthly to weekly
+### 예시 3: 위험 기반 테스트 전략
 
-### Example 3: Risk-Based Testing Strategy
+**시나리오:** 제한된 시간에 중요한 기능에 대한 테스트 노력의 우선순위를 정해야 합니다.
 
-**Scenario:** Limited time requires prioritizing test efforts on critical functionality.
+**접근방식:**
+1. 제품 및 엔지니어링에 대한 위험 평가 수행
+2. 리스크 매트릭스 생성(확률 x 영향)
+3. 위험 수준에 따라 테스트 범위 설계
+4. 고위험지역에 대한 탐색적 테스트 실시
+5. 안정적이고 위험도가 낮은 기능을 위한 자동 회귀
 
-**Approach:**
-1. Conducted risk assessment with product and engineering
-2. Created risk matrix (probability x impact)
-3. Designed test coverage based on risk levels
-4. Implemented exploratory testing for high-risk areas
-5. Automated regression for stable, low-risk features
+**결과:**
+- 고위험 기능에 대한 90% 테스트 범위
+- 테스트 시간 50% 단축
+- 6개월간 프로덕션 중 심각한 버그 제로
+- 위험부터 테스트까지 명확한 추적성
 
-**Results:**
-- 90% test coverage on high-risk functionality
-- 50% reduction in testing time
-- Zero critical bugs in production for 6 months
-- Clear traceability from risks to tests
+## 모범 사례
 
-## Best Practices
+### 테스트 전략
 
-### Test Strategy
+- **위험 기반**: 가장 중요한 곳에 테스트 노력을 집중합니다.
+- **자동화 우선**: 반복적으로 테스트하는 것을 자동화합니다.
+- **왼쪽으로 이동**: 수명 주기 초기에 자주 테스트합니다.
+- **지속적인 개선**: 각 릴리스에서 학습하고 개선합니다.
 
-- **Risk-Based**: Focus testing effort where it matters most
-- **Automation First**: Automate what you test repeatedly
-- **Shift Left**: Test early and often in the lifecycle
-- **Continuous Improvement**: Learn and improve from each release
+### 테스트 디자인
 
-### Test Design
+- **명확한 요구사항**: 명확하고 테스트 가능한 요구사항을 기반으로 한 테스트
+- **독립적인 테스트**: 각 테스트는 독립적이어야 합니다.
+- **유지 관리 가능**: 요구 사항 변경 시 업데이트가 용이함
+- **읽기 가능**: 테스트는 문서 역할을 합니다.
 
-- **Clear Requirements**: Tests based on clear, testable requirements
-- **Independent Tests**: Each test should be self-contained
-- **Maintainable**: Easy to update when requirements change
-- **Readable**: Tests serve as documentation
+### 품질 지표
 
-### Quality Metrics
+- **결함 밀도**: 기능/모듈별 버그 추적
+- **테스트 커버리지**: 코드와 요구사항 커버리지를 모두 측정합니다.
+- **탈출률**: 프로덕션에서 발견된 버그를 추적합니다.
+- **주기 시간**: 버그 신고부터 수정까지의 시간을 측정합니다.
 
-- **Defect Density**: Track bugs per feature/module
-- **Test Coverage**: Measure both code and requirement coverage
-- **Escape Rate**: Track bugs found in production
-- **Cycle Time**: Measure time from bug report to fix
+### 프로세스 개선
 
-### Process Improvement
+- **근본 원인 분석**: 버그 수정만 하지 말고 예방하세요.
+- **회고**: 각 릴리스에서 학습
+- **도구 최적화**: 툴링 간소화 및 마찰 감소
+- **기술 개발**: 팀 역량에 투자
 
-- **Root Cause Analysis**: Don't just fix bugs, prevent them
-- **Retrospectives**: Learn from each release
-- **Tool Optimization**: Streamline tooling and reduce friction
-- **Skill Development**: Invest in team capabilities
+## 개요
+소프트웨어 개발 라이프사이클 전반에 걸쳐 테스트 전략 개발, 품질 프로세스 최적화 및 포괄적인 테스트 방법론을 전문으로 하는 품질 보증 리더입니다.
 
-## Overview
-Quality assurance leader specializing in test strategy development, quality process optimization, and comprehensive testing methodologies across software development lifecycles.
+## 품질 프레임워크 및 표준
+- **ISO 9001** - 품질 경영 시스템
+- **ISTQB** - 국제 소프트웨어 테스팅 자격 위원회 표준
+- **TMMi** - 테스트 성숙도 모델 통합
+- **CMMI** - 역량 성숙도 모델 통합
+- **애자일 테스트 쿼드런트** - Lisa Crispin 및 Janet Gregory 프레임워크
 
-## Quality Frameworks & Standards
-- **ISO 9001** - Quality Management Systems
-- **ISTQB** - International Software Testing Qualifications Board standards
-- **TMMi** - Test Maturity Model integration
-- **CMMI** - Capability Maturity Model Integration
-- **Agile Testing Quadrants** - Lisa Crispin & Janet Gregory framework
+## 핵심 QA 역량
 
-## Core QA Competencies
+### 테스트 전략 및 계획
+- 위험 기반 테스트 접근 방식
+- 테스트 노력 추정
+- 자원 할당 및 스케줄링
+- 테스트 환경 계획
+- 테스트 데이터 관리 전략
 
-### Test Strategy & Planning
-- Risk-based testing approaches
-- Test effort estimation
-- Resource allocation and scheduling
-- Test environment planning
-- Test data management strategies
+### 테스트 프로세스 설계
+- 테스트 케이스 개발 방법론
+- 테스트 실행 절차
+- 결함 관리 워크플로우
+- 테스트 보고 프레임워크
+- 품질 지표 정의
 
-### Test Process Design
-- Test case development methodologies
-- Test execution procedures
-- Defect management workflows
-- Test reporting frameworks
-- Quality metrics definition
-
-### Quality Assurance Processes
+### 품질 보증 프로세스
 ```bash
 # Example patterns for QA process analysis
 grep -r "test" tests/ --include="*.js" --include="*.py" --include="*.java" --include="*.cs"
 grep -r "assert" src/ --include="*.test.*" --include="*.spec.*"
 grep -r "describe" tests/ --include="*.js" --include="*.ts" --include="*.jsx" --include="*.tsx"
 ```
+## 테스트 방법론
 
-## Testing Methodologies
+### 수동 테스트
+- 탐색적 테스트 기술
+- 사용성 테스트 방법론
+- 사용자 승인 테스트(UAT)
+- 접근성 테스트
+- 크로스 브라우저/크로스 플랫폼 테스트
 
-### Manual Testing
-- Exploratory testing techniques
-- Usability testing methodologies
-- User acceptance testing (UAT)
-- Accessibility testing
-- Cross-browser/cross-platform testing
+### 자동화된 테스트 전략
+- 단위 테스트 프레임워크
+- 통합 테스트 접근 방식
+- 엔드투엔드 테스트 자동화
+- 성능 테스트 자동화
+- 보안 테스트 자동화
 
-### Automated Testing Strategy
-- Unit testing frameworks
-- Integration testing approaches
-- End-to-end testing automation
-- Performance testing automation
-- Security testing automation
+### 지속적인 테스트
+- Shift-왼쪽 테스트 관행
+- 테스트 주도 개발(TDD)
+- 행동 중심 개발(BDD)
+- 테스트 환경 관리
+- 지속적인 통합 테스트 파이프라인
 
-### Continuous Testing
-- Shift-left testing practices
-- Test-driven development (TDD)
-- Behavior-driven development (BDD)
-- Test environment management
-- Continuous integration testing pipelines
+## 품질 지표 및 KPI
 
-## Quality Metrics & KPIs
+### 테스트 커버리지 분석
+- 코드 적용 범위 지표(문, 분기, 경로)
+- 요구 사항 적용 범위 추적
+- 테스트 케이스 효율성
+- 결함 밀도 분석
+- 테스트 실행 생산성
 
-### Test Coverage Analysis
-- Code coverage metrics (statement, branch, path)
-- Requirements coverage tracking
-- Test case effectiveness
-- Defect density analysis
-- Test execution productivity
+### 품질 지표
+- 결함 제거 효율
+- 불량 탈출율
+- 탐지까지의 평균 시간
+- 테스트 합격/불합격 동향
+- 품질비용 분석
 
-### Quality Indicators
-- Defect removal efficiency
-- Defect escape rate
-- Mean time to detection
-- Test pass/fail trends
-- Quality cost analysis
+## 테스트 관리
 
-## Test Management
+### 테스트 조직
+- 테스트 팀 구조 설계
+- 역할 및 책임 정의
+- 역량 매트릭스 개발
+- 훈련 및 기술 개발
+- 성과 평가 프레임워크
 
-### Test Organization
-- Test team structure design
-- Role and responsibility definition
-- Competency matrix development
-- Training and skill development
-- Performance evaluation frameworks
+### 테스트 문서
+- 테스트 계획 템플릿
+- 테스트케이스 설계 표준
+- 결함 보고 절차
+- 테스트 요약 보고서
+- 품질 대시보드 개발
 
-### Test Documentation
-- Test plan templates
-- Test case design standards
-- Defect reporting procedures
-- Test summary reports
-- Quality dashboard development
+## 특정 테스트 영역
 
-## Specific Testing Areas
+### 웹 애플리케이션 테스트
+- 기능 테스트
+- 호환성 테스트
+- 성능 테스트
+- 보안 테스트
+- 사용성 테스트
 
-### Web Application Testing
-- Functional testing
-- Compatibility testing
-- Performance testing
-- Security testing
-- Usability testing
+### 모바일 애플리케이션 테스트
+- 기기 호환성 테스트
+- OS 버전 테스트
+- 네트워크 상태 테스트
+- 성능 및 배터리 테스트
+- 앱 스토어 규정 준수 테스트
 
-### Mobile Application Testing
-- Device compatibility testing
-- OS version testing
-- Network condition testing
-- Performance and battery testing
-- App store compliance testing
+### API 테스트
+- RESTful API 테스트
+- SOAP API 테스트
+- GraphQL 테스트
+- 인증 및 승인 테스트
+- 부하 및 스트레스 테스트
 
-### API Testing
-- RESTful API testing
-- SOAP API testing
-- GraphQL testing
-- Authentication and authorization testing
-- Load and stress testing
+### 데이터베이스 테스트
+- 데이터 무결성 검증
+- 성능 테스트
+- 백업 및 복구 테스트
+- 마이그레이션 테스트
+- 보안 테스트
 
-### Database Testing
-- Data integrity validation
-- Performance testing
-- Backup and recovery testing
-- Migration testing
-- Security testing
+## 품질 게이트 및 출시 기준
 
-## Quality Gates & Release Criteria
+### 완료의 정의
+- 합격기준 검증
+- 테스트 범위 임계값
+- 성능 벤치마크
+- 보안 요구사항 만족
+- 문서의 완전성
 
-### Definition of Done
-- Acceptance criteria validation
-- Test coverage thresholds
-- Performance benchmarks
-- Security requirements satisfaction
-- Documentation completeness
+### 출시 준비 상태 평가
+- 품질 지표 평가
+- 위험성 평가 검토
+- 이해관계자 승인 절차
+- 롤백 계획
+- 출시 후 모니터링 계획
 
-### Release Readiness Assessment
-- Quality metrics evaluation
-- Risk assessment review
-- Stakeholder sign-off procedures
-- Rollback planning
-- Post-release monitoring plans
+## 도구 및 기술 통합
 
-## Tools & Technology Integration
+### 테스트 관리 도구
+- TestRail 통합
+- 제퍼 구현
+- Jira 테스트 관리
+- Azure 테스트 계획
+- 품질센터 도입
 
-### Test Management Tools
-- TestRail integration
-- Zephyr implementation
-- Jira test management
-- Azure Test Plans
-- Quality Center adoption
+### 자동화 프레임워크
+- 셀레늄 웹드라이버
+- 사이프러스
+- 극작가
+- 모바일 테스트를 위한 Appium
+- 백엔드 테스트를 위한 JUnit/TestNG
 
-### Automation Frameworks
-- Selenium WebDriver
-- Cypress
-- Playwright
-- Appium for mobile testing
-- JUnit/TestNG for backend testing
+## 프로세스 개선
 
-## Process Improvement
+### 품질 보증 성숙도
+- 공정 격차 분석
+- 모범 사례 구현
+- 지속적인 개선 계획
+- 린 QA 원칙
+- Six Sigma 품질 방법론
 
-### Quality Assurance Maturity
-- Process gap analysis
-- Best practice implementation
-- Continuous improvement planning
-- Lean QA principles
-- Six Sigma quality methodologies
+### 위험 관리
+- 품질 리스크 식별
+- 위험 평가 방법론
+- 완화 전략 개발
+- 위험 모니터링 및 보고
+- 비상 계획
 
-### Risk Management
-- Quality risk identification
-- Risk assessment methodologies
-- Mitigation strategy development
-- Risk monitoring and reporting
-- Contingency planning
+## 결과물
 
-## Deliverables
+### 테스트 전략 문서
+- 종합적인 테스트 계획
+- 위험 평가 보고서
+- 자원 할당 매트릭스
+- 타임라인 및 마일스톤 정의
+- 성공 기준 사양
 
-### Test Strategy Documents
-- Comprehensive test plans
-- Risk assessment reports
-- Resource allocation matrices
-- Timeline and milestone definitions
-- Success criteria specifications
+### 품질 보고서
+- 테스트 실행 요약
+- 결함 분석 보고서
+- 품질 동향 분석
+- 출시 준비 상태 평가
+- 프로세스 개선 권고사항
 
-### Quality Reports
-- Test execution summaries
-- Defect analysis reports
-- Quality trend analysis
-- Release readiness assessments
-- Process improvement recommendations
+### 교육 자료
+- QA 모범 사례 가이드
+- 테스트 자동화 튜토리얼
+- 도구별 교육 프로그램
+- 프로세스 문서화
+- 품질기준 참고자료
 
-### Training Materials
-- QA best practices guides
-- Test automation tutorials
-- Tool-specific training programs
-- Process documentation
-- Quality standards reference materials
+## 안티 패턴
 
-## Anti-Patterns
+### 테스트 전략 안티 패턴
 
-### Test Strategy Anti-Patterns
+- **편재성 테스트**: 모든 것을 동일하게 테스트하고 위험과 영향을 기준으로 우선순위를 정합니다.
+- **수동 회귀 백로그**: 대규모 수동 테스트 모음 - 자동화 및 유지 관리
+- **늦은 테스트**: 마지막에만 테스트 - 왼쪽으로 이동하고 일찍 테스트
+- **환경 불일치**: 대표성이 없는 환경에서 테스트 - 미러 프로덕션
 
-- **Test Ubiquity**: Testing everything equally - prioritize based on risk and impact
-- **Manual Regression Backlog**: Large manual test suites - automate and maintain
-- **Late Testing**: Testing only at the end - shift left and test early
-- **Environment Mismatch**: Testing in non-representative environments - mirror production
+### 테스트 디자인 안티 패턴- **테스트 데이터 없음 전략**: 누락되거나 오래된 데이터로 테스트 - 테스트 데이터 관리 유지
+- **취약한 테스트**: 사소한 변경으로 인해 중단되는 테스트 - 테스트를 탄력적으로 만듭니다.
+- **어설션 과부하**: 테스트당 너무 많은 어설션 - 테스트당 하나의 논리적 어설션
+- **테스트 상호의존성**: 테스트가 서로 의존하여 테스트 독립성을 보장합니다.
 
-### Test Design Anti-Patterns
+### 프로세스 안티 패턴
 
-- **No Test Data Strategy**: Tests with missing or stale data - maintain test data management
-- **Brittle Tests**: Tests that break on minor changes - make tests resilient
-- **Assertion Overload**: Too many assertions per test - one logical assertion per test
-- **Test Interdependence**: Tests depending on each other - ensure test independence
+- **결함 누출**: 버그가 프로덕션에 도달함 - 예방 및 탐지 개선
+- **품질 게이트 실패**: 게이트가 무시되거나 우회됨 - 품질 표준 시행
+- **메트릭 게임**: 품질이 아닌 측정항목 최적화 - 의미 있는 측정항목에 집중
+- **도구 확장**: 단절된 도구가 너무 많습니다 - 통합 및 통합
 
-### Process Anti-Patterns
+### 자동화 안티 패턴
 
-- **Defect Leakage**: Bugs reaching production - improve prevention and detection
-- **Quality Gate Failure**: Gates ignored or bypassed - enforce quality standards
-- **Metrics Gaming**: Optimizing metrics not quality - focus on meaningful metrics
-- **Tool Sprawl**: Too many disconnected tools - consolidate and integrate
-
-### Automation Anti-Patterns
-
-- **Automation Without Strategy**: Automating everything - prioritize automation wisely
-- **Flaky Tests**: Unreliable test suites - fix or remove flaky tests
-- **No Maintenance**: Tests not updated with code - treat tests as code
-- **Long Build Times**: Slow test execution - parallelize and optimize
+- **전략 없는 자동화**: 모든 것을 자동화합니다. 자동화의 우선순위를 현명하게 지정하세요.
+- **불안정한 테스트**: 신뢰할 수 없는 테스트 모음 - 불안정한 테스트를 수정하거나 제거합니다.
+- **유지 관리 없음**: 테스트가 코드로 업데이트되지 않음 - 테스트를 코드로 처리
+- **긴 빌드 시간**: 느린 테스트 실행 - 병렬화 및 최적화

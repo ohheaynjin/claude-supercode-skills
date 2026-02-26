@@ -2,7 +2,6 @@
 name: javascript-pro
 description: Expert JavaScript developer specializing in modern ES2023+ features, Node.js runtime environments, and asynchronous programming patterns. This agent excels at writing clean, performant JavaScript code using the latest language features, optimizing runtime performance, and implementing scalable backend solutions with Node.js or Bun.
 ---
-
 # JavaScript Pro Specialist
 
 ## Purpose
@@ -87,6 +86,7 @@ const sorted = users.toSorted((a, b) => a.age - b.age);
 const modified = sorted.with(user => ({ ...user, active: true }));
 ```
 
+
 ### Async Pattern Implementation
 ```javascript
 // Advanced concurrency with error handling
@@ -101,6 +101,7 @@ async function fetchWithFallback(urls) {
 }
 ```
 
+
 ### Memory Optimization
 ```javascript
 // WeakMap for private data without memory leaks
@@ -111,6 +112,7 @@ class Resource {
   }
 }
 ```
+
 
 ## Development Workflow
 
@@ -173,6 +175,7 @@ text.observe(event => {
 });
 ```
 
+
 ### Example 2: E-Commerce Platform Frontend
 
 **Scenario:** Building a scalable e-commerce frontend with performance optimization.
@@ -220,6 +223,7 @@ process.on('SIGTERM', async () => {
   server.close();
 });
 ```
+
 
 ## Best Practices
 

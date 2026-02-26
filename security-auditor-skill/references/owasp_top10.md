@@ -1,21 +1,21 @@
-# OWASP Top 10 Security Risks
+# OWASP 상위 10대 보안 위험
 
-## Overview
-The OWASP Top 10 represents the most critical web application security risks. This reference provides detection patterns and remediation strategies for each.
+## 개요
+OWASP Top 10은 가장 중요한 웹 애플리케이션 보안 위험을 나타냅니다. 이 참조 자료는 각각에 대한 탐지 패턴과 해결 전략을 제공합니다.
 
-## OWASP Top 10 (2021)
+## OWASP 상위 10위(2021)
 
-### 1. Broken Access Control (A01:2021)
+### 1. 손상된 액세스 제어(A01:2021)
 
-**Description:** Restrictions on what authenticated users are allowed to do are not properly enforced.
+**설명:** 인증된 사용자에게 허용된 작업에 대한 제한이 제대로 적용되지 않습니다.
 
-**Detection Patterns:**
-- Missing authorization checks on sensitive endpoints
-- IDOR (Insecure Direct Object References)
-- Bypassing access control checks via URL manipulation
-- CORS misconfigurations allowing unauthorized access
+**탐지 패턴:**
+- 민감한 엔드포인트에 대한 승인 확인 누락
+- IDOR(안전하지 않은 직접 객체 참조)
+- URL 조작을 통한 접근통제 점검 우회
+- 무단 액세스를 허용하는 CORS 구성 오류
 
-**Remediation:**
+**해결:**
 ```python
 # Secure pattern - always verify authorization
 from functools import wraps
@@ -38,20 +38,19 @@ def get_document(doc_id):
         abort(403)
     return jsonify(doc.to_dict())
 ```
+**도구:** OWASP ZAP, Burp Suite, 수동 코드 검토
 
-**Tools:** OWASP ZAP, Burp Suite, manual code review
+### 2. 암호화 실패(A02:2021)
 
-### 2. Cryptographic Failures (A02:2021)
+**설명:** 암호화가 잘못 구현되어 민감한 데이터가 노출되는 경우가 많습니다.
 
-**Description:** Cryptography is often incorrectly implemented, leading to exposure of sensitive data.
+**탐지 패턴:**
+- 취약한 암호화 알고리즘(DES, MD5, SHA1)
+- 하드코딩된 암호화 키
+- TLS/SSL 누락
+- 비밀번호를 일반 텍스트로 저장
 
-**Detection Patterns:**
-- Weak encryption algorithms (DES, MD5, SHA1)
-- Hardcoded encryption keys
-- Missing TLS/SSL
-- Storing passwords in plaintext
-
-**Remediation:**
+**해결:**
 ```python
 # Secure encryption pattern
 from cryptography.fernet import Fernet
@@ -91,21 +90,20 @@ def hash_password(password: str) -> str:
 def verify_password(password: str, hashed: str) -> bool:
     return bcrypt.checkpw(password.encode(), hashed.encode())
 ```
+**도구:** OpenSSL, bcrypt, 암호화 라이브러리, SSL Labs
 
-**Tools:** OpenSSL, bcrypt, cryptography library, SSL Labs
+### 3. 주입(A03:2021)
 
-### 3. Injection (A03:2021)
+**설명:** 사용자가 제공한 데이터는 애플리케이션에 의해 검증, 필터링 또는 삭제되지 않습니다.
 
-**Description:** User-supplied data is not validated, filtered, or sanitized by the application.
+**탐지 패턴:**
+- SQL 인젝션
+- NoSQL 주입
+- OS 명령 주입
+- LDAP 주입
+- XPath 주입
 
-**Detection Patterns:**
-- SQL injection
-- NoSQL injection
-- OS command injection
-- LDAP injection
-- XPath injection
-
-**Remediation:**
+**해결:**
 ```python
 # Secure database queries - use parameterized queries
 import psycopg2
@@ -148,21 +146,20 @@ def safe_exec_command(command_parts: list):
     
     return subprocess.run(' '.join(safe_parts), shell=False, check=True)
 ```
+**도구:** SQLMap, OWASP ZAP, Burp Suite, 정적 분석 도구
 
-**Tools:** SQLMap, OWASP ZAP, Burp Suite, static analysis tools
+### 4. 안전하지 않은 디자인(A04:2021)
 
-### 4. Insecure Design (A04:2021)
+**설명:** 설계 결함으로 인해 구현만으로는 해결할 수 없는 보안 취약성이 발생합니다.
 
-**Description:** Design flaws lead to security vulnerabilities that cannot be fixed by implementation alone.
+**탐지 패턴:**
+- 위협 모델링 누락
+- 안전하지 않은 비즈니스 로직
+- 속도 제한 없음
+- 보안 기본값 누락
+- 클라이언트측 컨트롤을 신뢰함
 
-**Detection Patterns:**
-- Missing threat modeling
-- Insecure business logic
-- No rate limiting
-- Missing secure defaults
-- Trusting client-side controls
-
-**Remediation:**
+**해결:**
 ```python
 # Rate limiting implementation
 from flask_limiter import Limiter
@@ -199,21 +196,20 @@ DEFAULT_SECURITY_CONFIG = {
     'require_https': True
 }
 ```
+**도구:** 위협 모델링 도구, 설계 검토 체크리스트, 설계 원칙에 따른 보안
 
-**Tools:** Threat modeling tools, design review checklists, security by design principles
+### 5. 잘못된 보안 구성(A05:2021)
 
-### 5. Security Misconfiguration (A05:2021)
+**설명:** 안전하지 않은 기본 구성, 불완전한 구성, 개방형 클라우드 저장소, 잘못 구성된 HTTP 헤더.
 
-**Description:** Insecure default configurations, incomplete configurations, open cloud storage, misconfigured HTTP headers.
+**탐지 패턴:**
+- 기본 자격 증명
+- 디버그 모드 활성화
+- 자세한 오류 메시지
+- 보안 헤더 누락
+- 불필요한 서비스 실행
 
-**Detection Patterns:**
-- Default credentials
-- Debug mode enabled
-- Verbose error messages
-- Missing security headers
-- Unnecessary services running
-
-**Remediation:**
+**해결:**
 ```python
 # Flask security configuration
 app = Flask(__name__)
@@ -243,20 +239,19 @@ if not app.debug:
     def handle_exception(e):
         return jsonify({'error': 'Internal server error'}), 500
 ```
+**도구:** Nmap, SSL Labs, 보안 헤더 검사기, 구성 린터
 
-**Tools:** Nmap, SSL Labs, security headers checker, configuration linters
+### 6. 취약하고 오래된 구성 요소(A06:2021)
 
-### 6. Vulnerable and Outdated Components (A06:2021)
+**설명:** 알려진 취약점이 있는 라이브러리를 사용하거나 구성 요소 업데이트에 실패합니다.
 
-**Description:** Using libraries with known vulnerabilities or failing to update components.
+**탐지 패턴:**
+- 오래된 의존성
+- 종속성에서 알려진 CVE
+- 버려진 도서관
+- 프로덕션에서 알파/베타 버전 사용
 
-**Detection Patterns:**
-- Outdated dependencies
-- Known CVEs in dependencies
-- Abandoned libraries
-- Using alpha/beta versions in production
-
-**Remediation:**
+**해결:**
 ```bash
 # Python - pip-audit
 pip install pip-audit
@@ -279,21 +274,20 @@ updates:
 poetry update
 poetry show --tree
 ```
+**도구:** OWASP 종속성 검사, Snyk, npm 감사, pip-audit, WhiteSource
 
-**Tools:** OWASP Dependency Check, Snyk, npm audit, pip-audit, WhiteSource
+### 7. 식별 및 인증 실패(A07:2021)
 
-### 7. Identification and Authentication Failures (A07:2021)
+**설명:** 사용자 신원 확인, 인증, 세션 관리가 손상되었습니다.
 
-**Description:** Confirmation of the user's identity, authentication, and session management is compromised.
+**탐지 패턴:**
+- 취약한 비밀번호 정책
+- 크리덴셜 스터핑
+- 세션 고정
+- 무차별 공격
+- 다단계 인증 우회
 
-**Detection Patterns:**
-- Weak password policies
-- Credential stuffing
-- Session fixation
-- Brute force attacks
-- Multi-factor authentication bypass
-
-**Remediation:**
+**해결:**
 ```python
 # Secure authentication with Flask-Login
 from flask_login import LoginManager, UserMixin
@@ -336,20 +330,19 @@ app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)
 ```
+**도구:** OWASP ZAP, Burp Suite, MFA 솔루션, 비밀번호 정책 도구
 
-**Tools:** OWASP ZAP, Burp Suite, MFA solutions, password policy tools
+### 8. 소프트웨어 및 데이터 무결성 오류(A08:2021)
 
-### 8. Software and Data Integrity Failures (A08:2021)
+**설명:** 무결성 위반으로부터 보호하지 않는 코드 및 인프라입니다.
 
-**Description:** Code and infrastructure that does not protect against integrity violations.
+**탐지 패턴:**
+- 서명되지 않은 코드/패키지
+- 무결성 검사 없이 자동 업데이트
+- CI/CD 파이프라인 취약점
+- 역직렬화 공격
 
-**Detection Patterns:**
-- Unsigned code/packages
-- Auto-update without integrity checks
-- CI/CD pipeline vulnerabilities
-- Deserialization attacks
-
-**Remediation:**
+**해결:**
 ```python
 # Verify package signatures
 import hashlib
@@ -386,20 +379,19 @@ jobs:
           pip install bandit
           bandit -r ./src
 ```
+**도구:** GPG, 체크섬 확인, SLSA 프레임워크, Sigstore
 
-**Tools:** GPG, checksum verification, SLSA framework, Sigstore
+### 9. 보안 로깅 및 모니터링 오류(A09:2021)
 
-### 9. Security Logging and Monitoring Failures (A09:2021)
+**설명:** 활성 위반에 대한 로깅, 감지, 에스컬레이션 및 대응은 효과적이지 않습니다.
 
-**Description:** Logging, detecting, escalating, and responding to active breaches is not effective.
+**탐지 패턴:**
+- 불충분한 로깅
+- 침입 감지 없음
+- 감사 추적 누락
+- 보호되지 않은 채 저장된 로그
 
-**Detection Patterns:**
-- Insufficient logging
-- No intrusion detection
-- Missing audit trails
-- Logs stored without protection
-
-**Remediation:**
+**해결:**
 ```python
 # Secure logging with structlog
 import structlog
@@ -453,20 +445,19 @@ def log_security_event(event_type: str, details: dict):
     # Send alert (example with Sentry)
     # capture_message(f"Security event: {event_type}", extra=log_entry)
 ```
+**도구:** ELK 스택, Splunk, Graylog, SIEM 솔루션, AWS CloudTrail
 
-**Tools:** ELK Stack, Splunk, Graylog, SIEM solutions, AWS CloudTrail
+### 10. 서버측 요청 위조(A10:2021)
 
-### 10. Server-Side Request Forgery (A10:2021)
+**설명:** 서버측 요청 위조는 웹 애플리케이션이 사용자가 제공한 URL을 확인하지 않고 원격 리소스를 가져올 때 발생합니다.
 
-**Description:** Server-side request forgery occurs when a web application is fetching a remote resource without validating the user-supplied URL.
+**탐지 패턴:**
+- 임의의 URL 가져오기
+- 파일 업로드 기능의 SSRF
+- 메타데이터 서비스 접근
+- 내부 네트워크 스캐닝
 
-**Detection Patterns:**
-- Fetching arbitrary URLs
-- SSRF in file upload features
-- Metadata service access
-- Internal network scanning
-
-**Remediation:**
+**해결:**
 ```python
 # Validate and sanitize URLs
 from urllib.parse import urlparse
@@ -525,25 +516,24 @@ def fetch_allowed_resource(resource_type: str, resource_id: str):
     url = template.format(id=resource_id)
     # Fetch URL...
 ```
+**도구:** OWASP SSRF 테스트 가이드, Burp Suite, 사용자 정의 검증 스크립트
 
-**Tools:** OWASP SSRF Testing Guide, Burp Suite, custom validation scripts
+## 추가 OWASP 리소스
 
-## Additional OWASP Resources
-
-- [OWASP Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
-- [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
-- [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/)
+- [OWASP 테스트 가이드](https://owasp.org/www-project-web-security-testing-guide/)
+- [OWASP 치트 시트 시리즈](https://cheatsheetseries.owasp.org/)
+- [OWASP 코드 리뷰 가이드](https://owasp.org/www-project-code-review-guide/)
 - [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/)
 
-## Quick Reference Checklist
+## 빠른 참조 체크리스트
 
-- [ ] Input validation on all user inputs
-- [ ] Parameterized queries for database access
-- [ ] Proper authentication and session management
-- [ ] Authorization checks on all sensitive operations
-- [ ] Secure cryptographic implementations
-- [ ] Error handling without information disclosure
-- [ ] Security headers configured
-- [ ] Dependency vulnerability scanning
-- [ ] Logging and monitoring in place
-- [ ] Regular security testing and code reviews
+- [ ] 모든 사용자 입력에 대한 입력 검증
+- [ ] 데이터베이스 액세스를 위한 매개변수화된 쿼리
+- [ ] 적절한 인증 및 세션 관리
+- [ ] 모든 민감한 작업에 대한 권한 확인
+- [ ] 안전한 암호화 구현
+- [ ] 정보 공개 없이 오류 처리
+- [ ] 보안 헤더가 구성됨
+- [ ] 종속성 취약점 스캔
+- [ ] 로깅 및 모니터링이 실행 중입니다.
+- [ ] 정기적인 보안 테스트 및 코드 검토

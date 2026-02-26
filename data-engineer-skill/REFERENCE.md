@@ -1,10 +1,10 @@
-# Data Engineer - Technical Reference
+# 데이터 엔지니어 - 기술 참조
 
-## Workflow: Build Batch ETL Pipeline with Airflow + dbt
+## 워크플로: Airflow + dbt를 사용하여 일괄 ETL 파이프라인 구축
 
-**Use case:** Daily data sync from PostgreSQL → Snowflake for analytics
+**사용 사례:** PostgreSQL에서 일일 데이터 동기화 → 분석용 Snowflake
 
-### Step 1: Source System Analysis
+### 1단계: 소스 시스템 분석
 ```python
 # scripts/analyze_source.py
 import pandas as pd
@@ -40,8 +40,7 @@ HAVING COUNT(*) >= 1;
 
 print(f"\nIncremental load candidates: {len(incremental_tables)} tables")
 ```
-
-### Step 2: Airflow DAG for Orchestration
+### 2단계: 오케스트레이션을 위한 Airflow DAG
 ```python
 # dags/daily_etl.py
 from airflow import DAG
@@ -172,8 +171,7 @@ quality_checks = SnowflakeOperator(
 # DAG dependencies
 extract_tasks >> dbt_run >> quality_checks
 ```
-
-### Step 3: dbt Transformations
+### 3단계: DBT 변환
 ```sql
 -- models/staging/stg_orders.sql
 {{
@@ -219,8 +217,7 @@ cleaned AS (
 
 SELECT * FROM cleaned
 ```
-
-### Execution Results
+### 실행 결과
 ```bash
 # Run Airflow DAG
 airflow dags trigger daily_etl_postgres_to_snowflake
@@ -237,11 +234,9 @@ airflow dags trigger daily_etl_postgres_to_snowflake
 # - Snowflake storage: $23/month (1TB compressed)
 # - Total monthly cost: ~$2,000
 ```
+## 세부 패턴
 
-## Detailed Patterns
-
-### Pattern: Idempotent Partition Overwrite
-
+### 패턴: 멱등성 파티션 덮어쓰기
 ```python
 # PySpark example: Overwrite partition based on execution date
 def write_daily_partition(df, target_table, execution_date):
@@ -268,9 +263,7 @@ WHEN NOT MATCHED THEN
   INSERT ...
 """
 ```
-
-### Pattern: Data Quality Circuit Breaker
-
+### 패턴: 데이터 품질 회로 차단기
 ```python
 def check_data_quality(df, thresholds):
     """
@@ -300,9 +293,7 @@ check_task = PythonOperator(
     op_kwargs={'thresholds': {'max_null_ratio': 0.01}}
 )
 ```
-
-### Pattern: Dead Letter Queue (DLQ) for Streaming
-
+### 패턴: 스트리밍을 위한 DLQ(배달 못한 편지 대기열)
 ```python
 # Flink Side Output for DLQ
 process_stream = stream.process(ProcessFunction())

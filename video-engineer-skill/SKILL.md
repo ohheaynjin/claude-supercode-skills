@@ -1,38 +1,37 @@
 ---
 name: video-engineer
-description: Expert in video processing, streaming protocols (HLS/DASH/WebRTC), and FFmpeg automation. Specializes in building scalable video infrastructure.
+description: 비디오 처리, 스트리밍 프로토콜(HLS/DASH/WebRTC) 및 FFmpeg 자동화 분야의 전문가입니다. 확장 가능한 비디오 인프라 구축을 전문으로 합니다.
 ---
+# 영상엔지니어
 
-# Video Engineer
+## 목적
+비디오 처리, 인코딩, 스트리밍 및 인프라에 대한 전문 지식을 제공합니다. FFmpeg 자동화, 적응형 스트리밍 프로토콜, 실시간 통신 및 확장 가능한 비디오 전달 시스템 구축을 전문으로 합니다.
 
-## Purpose
-Provides expertise in video processing, encoding, streaming, and infrastructure. Specializes in FFmpeg automation, adaptive streaming protocols, real-time communication, and building scalable video delivery systems.
+## 사용 시기
+- 비디오 인코딩 및 트랜스코딩 파이프라인 구현
+- HLS 또는 DASH 스트리밍 인프라 설정
+- 실시간 비디오용 WebRTC 애플리케이션 구축
+- FFmpeg를 이용한 영상 처리 자동화
+- 비디오 품질 및 압축 최적화
+- 비디오 썸네일 및 미리보기 만들기
+- 영상 분석 및 메타데이터 추출 구현
+- 비디오 플레이어 통합 구축
 
-## When to Use
-- Implementing video encoding and transcoding pipelines
-- Setting up HLS or DASH streaming infrastructure
-- Building WebRTC applications for real-time video
-- Automating video processing with FFmpeg
-- Optimizing video quality and compression
-- Creating video thumbnails and previews
-- Implementing video analytics and metadata extraction
-- Building video player integrations
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 비디오 인코딩 및 트랜스코딩 파이프라인 구현
+- HLS 또는 DASH 스트리밍 인프라 설정
+- 실시간 비디오용 WebRTC 애플리케이션 구축
+- FFmpeg를 이용한 영상 처리 자동화
+- 비디오 품질 및 압축 최적화
 
-## Quick Start
-**Invoke this skill when:**
-- Implementing video encoding and transcoding pipelines
-- Setting up HLS or DASH streaming infrastructure
-- Building WebRTC applications for real-time video
-- Automating video processing with FFmpeg
-- Optimizing video quality and compression
+**다음과 같은 경우에는 호출하지 마세요.**
+- 일반 웹 애플리케이션 구축 → fullstack-developer 사용
+- 애니메이션 GIF 만들기 → slack-gif-creator 사용
+- 미디어 파일 분석만 → 다중 모드 분석 사용
+- 영상 없이 이미지 처리 → 적절한 스킬 사용
 
-**Do NOT invoke when:**
-- Building general web applications → use fullstack-developer
-- Creating animated GIFs → use slack-gif-creator
-- Media file analysis only → use multimodal-analysis
-- Image processing without video → use appropriate skill
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Video Engineering Task?
 ├── On-Demand Streaming → HLS/DASH with adaptive bitrate
@@ -42,47 +41,46 @@ Video Engineering Task?
 ├── Quality Optimization → Codec selection + encoding params
 └── Video Analytics → Metadata extraction + scene detection
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 적응형 스트리밍 설정
+1. 소스 비디오 사양 분석
+2. 품질 사다리 정의(해상도, 비트 전송률)
+3. 품질 수준별 인코더 설정 구성
+4. HLS/DASH 매니페스트 생성
+5. 세그먼트 전달을 위한 CDN 설정
+6. ABR 지원으로 플레이어 구현
+7. 재생 품질 지표 모니터링
 
-### 1. Adaptive Streaming Setup
-1. Analyze source video specifications
-2. Define quality ladder (resolutions, bitrates)
-3. Configure encoder settings per quality level
-4. Generate HLS/DASH manifests
-5. Set up CDN for segment delivery
-6. Implement player with ABR support
-7. Monitor playback quality metrics
+### 2. FFmpeg 처리 파이프라인
+1. 입력 소스 및 형식 정의
+2. 변환을 위한 필터 그래프 작성
+3. 인코딩 매개변수 구성
+4. 오디오/비디오 동기화 처리
+5. 오류 처리 및 재시도 구현
+6. 처리량을 위한 병렬화
+7. 출력 품질 검증
 
-### 2. FFmpeg Processing Pipeline
-1. Define input sources and formats
-2. Build filter graph for transformations
-3. Configure encoding parameters
-4. Handle audio/video synchronization
-5. Implement error handling and retries
-6. Parallelize for throughput
-7. Validate output quality
+### 3. WebRTC 구현
+1. 시그널링 서버 설정
+2. STUN/TURN 서버 구성
+3. 피어 연결 처리 구현
+4. 미디어 트랙 및 스트림 관리
+5. 네트워크 적응 처리(동시방송, SVC)
+6. 필요한 경우 녹음 구현
+7. 연결 품질 지표 모니터링
 
-### 3. WebRTC Implementation
-1. Set up signaling server
-2. Configure STUN/TURN servers
-3. Implement peer connection handling
-4. Manage media tracks and streams
-5. Handle network adaptation (simulcast, SVC)
-6. Implement recording if needed
-7. Monitor connection quality metrics
+## 모범 사례
+- 속도가 가능한 경우 하드웨어 인코딩(NVENC, QSV)을 사용합니다.
+- 가변적인 네트워크 조건에 맞는 적응형 비트 전송률 구현
+- 주문형 콘텐츠에 대한 모든 품질 수준을 사전 생성합니다.
+- 사용 사례에 적합한 코덱 사용(H.264 호환성, H.265/AV1 효율성)
+- 탐색 및 ABR 전환에 적합한 키프레임 간격 설정
+- 인코딩 대기열 깊이 및 대기 시간을 모니터링하고 경고합니다.
 
-## Best Practices
-- Use hardware encoding (NVENC, QSV) when available for speed
-- Implement adaptive bitrate for variable network conditions
-- Pre-generate all quality levels for on-demand content
-- Use appropriate codecs for use case (H.264 compatibility, H.265/AV1 efficiency)
-- Set keyframe intervals appropriate for seeking and ABR switching
-- Monitor and alert on encoding queue depth and latency
-
-## Anti-Patterns
-- **Single bitrate streaming** → Always use adaptive bitrate
-- **Ignoring audio sync** → Verify A/V alignment after processing
-- **Oversized segments** → Keep HLS segments 2-10 seconds
-- **No error handling** → FFmpeg can fail; implement retries
-- **Hardcoded paths** → Parameterize for different environments
+## 안티 패턴
+- **단일 비트레이트 스트리밍** → 항상 적응형 비트레이트 사용
+- **오디오 싱크 무시** → 처리 후 A/V 정렬 확인
+- **특대 세그먼트** → HLS 세그먼트를 2~10초 유지
+- **오류 처리 없음** → FFmpeg가 실패할 수 있습니다. 재시도 구현
+- **하드코딩된 경로** → 다양한 환경에 맞게 매개변수화

@@ -1,54 +1,50 @@
 ---
 name: skill-creator
-description: Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.
+description: 효과적인 기술을 만들기 위한 가이드입니다. 이 기술은 사용자가 전문 지식, 워크플로 또는 도구 통합을 통해 Claude의 기능을 확장하는 새로운 기술을 만들거나 기존 기술을 업데이트하려는 경우에 사용해야 합니다.
 ---
+# 스킬 크리에이터
 
-# Skill Creator
+## 목적
 
-## Purpose
+고품질의 효과적인 스킬 생성을 안내하는 메타 스킬입니다. 전문 지식, 워크플로우 또는 도구 통합을 통해 Claude의 역량을 향상시키는 기술 구축을 위한 템플릿, 모범 사례 및 구조적 지침을 제공합니다.
 
-A meta-skill that guides the creation of high-quality, effective skills. Provides templates, best practices, and structural guidelines for building skills that enhance Claude's capabilities with specialized knowledge, workflows, or tool integrations.
+## 사용 시기
 
-## When to Use
+- 새로운 스킬을 만들고 싶은 사용자
+- 사용자가 기존 기술을 업데이트하거나 개선하기를 원합니다.
+- 사용자가 기술 문서를 구성하는 방법을 묻습니다.
+- 특정 도메인이나 워크플로에 대한 기술 설계가 필요한 경우
+- 기술이 모범 사례를 따르도록 하고 싶습니다.
 
-- User wants to create a new skill
-- User wants to update or improve an existing skill  
-- User asks how to structure skill documentation
-- Need to design a skill for a specific domain or workflow
-- Want to ensure skill follows best practices
+## 핵심 스킬 구조
 
-## Core Skill Structure
+### 필수 구성요소
 
-### Required Components
+모든 기술에는 다음 요소가 있어야 합니다.
 
-Every skill must have these elements:
-
-1. **Frontmatter**
-   ```yaml
+1. **머리말**
+```yaml
    ---
    name: skill-name
    description: One-line description when to use this skill
    ---
    ```
-
-2. **Title & Purpose**
-   ```markdown
+2. **제목 및 목적**
+```markdown
    # Skill Name
    
    ## Purpose
    Clear, concise statement of what this skill does
    ```
-
-3. **When to Use**
-   ```markdown
+3. **사용 시기**
+```markdown
    ## When to Use
    - Specific trigger 1
    - Specific trigger 2
    - Context where this helps
    ```
-
-4. **Core Capabilities**
-   ```markdown
+4. **핵심 기능**
+```markdown
    ## Core Capabilities
    
    ### Domain Expertise
@@ -59,29 +55,26 @@ Every skill must have these elements:
    - Specific techniques
    - Frameworks used
    ```
+### 선택사항이지만 권장되는 구성요소
 
-### Optional but Recommended Components
-
-5. **Workflow**
-   ```markdown
+5. **워크플로**
+```markdown
    ## Workflow
    
    1. Step 1: What to do first
    2. Step 2: Next action
    3. Step 3: Final deliverable
    ```
-
-6. **Best Practices**
-   ```markdown
+6. **모범 사례**
+```markdown
    ## Best Practices
    
    - Do this
    - Avoid that
    - Remember this
    ```
-
-7. **Examples**
-   ```markdown
+7. **예**
+```markdown
    ## Examples
    
    ### Example 1: Common Use Case
@@ -89,88 +82,85 @@ Every skill must have these elements:
    **Approach**: How to handle
    **Output**: Expected result
    ```
-
-8. **Anti-Patterns**
-   ```markdown
+8. **안티패턴**
+```markdown
    ## Anti-Patterns
    
    ❌ **Don't**: Bad practice
    ✅ **Do**: Good alternative
    ```
+## 스킬 생성 작업 흐름
 
-## Skill Creation Workflow
+### 1단계: 범위 정의
 
-### Step 1: Define Scope
+스스로에게 물어보세요:
+- 이 기술은 어떤 문제를 해결하는가?
+- 누가 사용할 것인가?
+- 무엇이 사용을 유발하나요?
+- 예상되는 결과는 무엇인가?
 
-Ask yourself:
-- What problem does this skill solve?
-- Who will use it?
-- What triggers its use?
-- What's the expected outcome?
+### 2단계: 핵심 지식 파악
 
-### Step 2: Identify Core Knowledge
+문서:
+- 도메인별 용어
+- 주요 개념 및 원리
+- 이 영역의 일반적인 패턴
+- 관련 도구 및 기술
 
-Document:
-- Domain-specific terminology
-- Key concepts and principles
-- Common patterns in this domain
-- Tools and technologies involved
+### 3단계: 워크플로 구조화
 
-### Step 3: Structure the Workflow
+지도 작성:
+- 입장조건
+- 단계별 프로세스
+- 결정 포인트
+- 종료 기준 및 결과물
 
-Map out:
-- Entry conditions
-- Step-by-step process
-- Decision points
-- Exit criteria and deliverables
+### 4단계: 실용적인 요소 추가
 
-### Step 4: Add Practical Elements
+포함:
+- 실제 사례
+- 피해야 할 일반적인 함정
+- 현장 모범 사례
+- 품질기준
 
-Include:
-- Real-world examples
-- Common pitfalls to avoid
-- Best practices from the field
-- Quality criteria
+### 5단계: 지우기 트리거 작성
 
-### Step 5: Write Clear Triggers
+"사용 시기"를 구체적으로 작성하십시오.
+- ✅ "사용자는 PostgreSQL 데이터베이스에 대한 SQL 쿼리 최적화가 필요합니다"
+- ❌ "사용자에게 데이터베이스 도움이 필요합니다."
 
-Make "When to Use" specific:
-- ✅ "User needs SQL query optimization for PostgreSQL databases"
-- ❌ "User needs database help"
+- ✅ "분산 시스템의 생산 중단 디버깅"
+- ❌ "버그 수정"
 
-- ✅ "Debugging production outages in distributed systems"
-- ❌ "Fixing bugs"
+## 스킬 품질 기준
 
-## Skill Quality Criteria
+### 명확성
+- [ ] 이름은 설명이 필요합니다.
+- [ ] 사용 시기를 명확하게 설명하는 설명
+- [ ] 목적을 1~2문장으로 표현함
+- [ ] 설명 없이 전문 용어 사용 불가
 
-### Clarity
-- [ ] Name is self-explanatory
-- [ ] Description clearly states when to use
-- [ ] Purpose is stated in 1-2 sentences
-- [ ] No jargon without explanation
+### 완전성
+- [ ] 모든 필수 섹션이 있음
+- [ ] 작업 흐름이 실행 가능합니다.
+- [ ] 일반적인 사례에 대한 예시
+- [ ] 가장자리 사례 해결됨
 
-### Completeness
-- [ ] All required sections present
-- [ ] Workflow is actionable
-- [ ] Examples cover common cases
-- [ ] Edge cases addressed
+### 특이성
+- [ ] 트리거가 구체적입니다.
+- [ ] 단계가 따라갈 수 있을 만큼 상세합니다.
+- [ ] 도구/방법의 이름이 명시적으로 지정되었습니다.
+- [ ] 성공 기준이 정의됨
 
-### Specificity
-- [ ] Triggers are concrete
-- [ ] Steps are detailed enough to follow
-- [ ] Tools/methods are named explicitly
-- [ ] Success criteria defined
+### 유용성
+- [ ] 스캔 및 탐색이 용이함
+- [ ] 일관된 형식
+- [ ] 논리적 섹션 순서 지정
+- [ ] 도움이 되는 상호 참조
 
-### Usability
-- [ ] Easy to scan and navigate
-- [ ] Consistent formatting
-- [ ] Logical section ordering
-- [ ] Cross-references where helpful
+## 스킬 템플릿
 
-## Skill Templates
-
-### Technical Domain Skill Template
-
+### 기술 도메인 기술 템플릿
 ```markdown
 ---
 name: domain-expert
@@ -261,9 +251,7 @@ Expert in [domain] specializing in [specific areas]. Helps with [key problems so
 - **[Tool 2]**: [Version] - [Use for what]
 - **[Framework]**: [Version] - [Key features used]
 ```
-
-### Process/Workflow Skill Template
-
+### 프로세스/워크플로 기술 템플릿
 ```markdown
 ---
 name: process-specialist
@@ -336,32 +324,31 @@ After each phase, verify:
   - **Impact**: [What happens]
   - **Solution**: [How to avoid]
 ```
+## 글쓰기 팁
 
-## Writing Tips
+### 구체적으로 작성하세요
+❌ "데이터베이스 작업 시 사용"
+✅ "PostgreSQL 14+ 프로덕션 데이터베이스에 대한 SQL 쿼리를 최적화할 때 사용"
 
-### Be Specific
-❌ "Use when working with databases"
-✅ "Use when optimizing SQL queries for PostgreSQL 14+ production databases"
+### 실행 가능
+❌ "보안을 생각해보세요"
+✅ "OWASP ZAP 스캔을 실행하고 심각도가 높은 결과를 모두 검토하세요"
 
-### Be Actionable
-❌ "Think about security"
-✅ "Run OWASP ZAP scan and review all HIGH severity findings"
+### 구조화하라
+일관된 제목 수준을 사용합니다.
+-`##`주요 섹션에 대한
+-`###`하위 섹션의 경우
+-`####`자세한 분석을 위해
 
-### Be Structured
-Use consistent heading levels:
-- `##` for major sections
-- `###` for subsections
-- `####` for detailed breakdowns
+### 시각적 표시기 사용
+- ✅ 모범 사례
+- ❌ 안티패턴의 경우
+- 🔍 조사 단계
+- ⚠️ 경고용
+- 💡 팁
 
-### Use Visual Indicators
-- ✅ for good practices
-- ❌ for anti-patterns
-- 🔍 for investigation steps
-- ⚠️ for warnings
-- 💡 for tips
-
-### Include Context
-Don't just list what to do—explain why:
+### 컨텍스트 포함
+해야 할 일만 나열하지 말고 그 이유를 설명하세요.
 ```markdown
 ## Instead of:
 - Use connection pooling
@@ -372,37 +359,34 @@ Don't just list what to do—explain why:
   - Critical for applications with >100 concurrent users
   - Configure pool size = (core count × 2) + effective_spindle_count
 ```
+## 스킬 유지
 
-## Skill Maintenance
+### 업데이트 시기
+- 핵심기술 신규 버전 출시
+- 현장에서 더 나은 관행이 등장합니다.
+- 사용자 피드백에 따르면 격차가 드러납니다.
+- 관련 스킬이 생성됩니다. (상호참조)
 
-### When to Update
-- New version of core technology released
-- Better practices emerge in the field
-- User feedback reveals gaps
-- Related skills are created (cross-reference)
-
-### Version Control
-Consider adding to frontmatter:
+### 버전 관리
+머리말에 다음을 추가하는 것을 고려해보세요:
 ```yaml
 ---
 name: skill-name
 description: One-line description
 ---
 ```
+## 스킬 통합
 
-## Skill Integration
-
-### Cross-References
-Link to related skills:
+### 상호 참조
+관련 스킬 링크:
 ```markdown
 ## Related Skills
 - Use [[debugger-skill]] when issues arise
 - Combine with [[performance-engineer-skill]] for optimization
 - Precede with [[architect-reviewer-skill]] for design validation
 ```
-
-### Skill Composition
-Complex workflows can chain skills:
+### 스킬 구성
+복잡한 워크플로에서는 기술을 연결할 수 있습니다.
 ```markdown
 ## Workflow
 1. Use [[requirement-analyst]] to gather needs
@@ -410,77 +394,76 @@ Complex workflows can chain skills:
 3. Use [[code-reviewer]] for quality assurance
 4. Use [[deployment-engineer]] to ship
 ```
+## 예
 
-## Examples
+### 예시 1: Python Pro 기술 만들기
 
-### Example 1: Creating a Python Pro Skill
+**컨텍스트**: 고급 Python 개발을 위한 기술이 필요합니다.
 
-**Context**: Need a skill for advanced Python development
+**프로세스**:
+1. 범위 정의: FastAPI 및 유형 안전성에 중점을 둔 Python 3.11+
+2. 트리거 식별: "최신 Python", "유형 힌트", "FastAPI"
+3. 구조 핵심 기능:
+   - Python 3.11+ 기능(일치 문, 입력 개선)
+   - FastAPI 프레임워크 패턴
+   - 유형 주석 모범 사례
+4. 워크플로우 추가: 디자인 API → 유형 모델 → 경로 구현 → 테스트
+5. 예시 포함: 전체 유형 주석이 포함된 FastAPI 경로
 
-**Process**:
-1. Define scope: Python 3.11+ with focus on FastAPI and type safety
-2. Identify triggers: "modern Python", "type hints", "FastAPI"
-3. Structure core capabilities:
-   - Python 3.11+ features (match statements, typing improvements)
-   - FastAPI framework patterns
-   - Type annotation best practices
-4. Add workflow: Design API → Type models → Implement routes → Test
-5. Include examples: FastAPI route with full type annotations
+**결과**: 최신 Python 개발을 위한 집중적이고 실행 가능한 기술
 
-**Result**: A focused, actionable skill for modern Python development
+### 예 2: Git 워크플로 기술 만들기
 
-### Example 2: Creating a Git Workflow Skill
+**컨텍스트**: 팀의 Git 분기 전략을 체계화해야 함
 
-**Context**: Need to codify team's git branching strategy
+**프로세스**:
+1. 범위 정의: 기능 개발을 위한 Git 워크플로
+2. 트리거 식별: "브랜치 생성", "PR 생성", "git 워크플로"
+3. 단계별 구조:
+   - 지점 생성
+   - 개발주기
+   - 홍보과정
+   - 병합 전략
+4. 결정 포인트 추가: 리베이스할 때와 병합할 때
+5. 예시 포함: 표준 기능 개발 흐름
 
-**Process**:
-1. Define scope: Git workflow for feature development
-2. Identify triggers: "create branch", "make PR", "git workflow"
-3. Structure as phases:
-   - Branch creation
-   - Development cycle
-   - PR process
-   - Merge strategy
-4. Add decision points: When to rebase vs merge
-5. Include examples: Standard feature development flow
+**결과**: 일관된 Git 사용을 위한 명확한 절차 가이드
 
-**Result**: Clear procedural guide for consistent git usage
+## 검증 체크리스트
 
-## Validation Checklist
+기술을 마무리하기 전에 다음을 확인하세요.
 
-Before finalizing a skill, check:
+### 구조
+- [ ] 서문 작성 완료(이름, 설명)
+- [ ] 제목 및 목적이 명확함
+- [ ] "사용 시기" 섹션에는 특정 트리거가 있습니다.
+- [ ] 잘 정의된 핵심 기능
 
-### Structure
-- [ ] Frontmatter complete (name, description)
-- [ ] Title and purpose clear
-- [ ] "When to Use" section has specific triggers
-- [ ] Core capabilities well-defined
+### 내용
+- [ ] 정보가 정확하고 최신입니다.
+- [ ] 예시가 현실적이고 도움이 됩니다.
+- [ ] 모범 사례가 타당합니다.
+- [ ] 안티 패턴은 대안을 보여줍니다.
 
-### Content
-- [ ] Information is accurate and current
-- [ ] Examples are realistic and helpful
-- [ ] Best practices are justified
-- [ ] Anti-patterns show alternatives
+### 유용성
+- [ ] 정보를 빠르게 스캔하고 찾을 수 있습니다.
+- [ ] 섹션이 논리적으로 흐름
+- [ ] 형식이 일관됩니다.
+- [ ] 상호 참조가 정확함
 
-### Usability
-- [ ] Can scan and find info quickly
-- [ ] Sections flow logically
-- [ ] Formatting is consistent
-- [ ] Cross-references are correct
+### 품질
+- [ ] 철자/문법 오류 없음
+- [ ] 기술 용어 정의
+- [ ] 코드 예제(있는 경우)가 정확합니다.
+- [ ] 위의 모든 품질 기준을 충족합니다.
 
-### Quality
-- [ ] No spelling/grammar errors
-- [ ] Technical terms defined
-- [ ] Code examples (if any) are correct
-- [ ] Meets all quality criteria above
+## 메타: 이 스킬에 대해
 
-## Meta: About This Skill
+이 기술 자체는 그것이 가르치는 원리를 보여줍니다.
+- 명확한 머리말과 구조
+- 특정 "사용 시기" 트리거
+- 실행 가능한 워크플로우
+- 구체적인 예
+- 품질기준
 
-This skill itself demonstrates the principles it teaches:
-- Clear frontmatter and structure
-- Specific "When to Use" triggers
-- Actionable workflows
-- Concrete examples
-- Quality criteria
-
-When creating skills, use this as both a guide and a template.
+스킬을 만들 때 이를 가이드이자 템플릿으로 사용하세요.

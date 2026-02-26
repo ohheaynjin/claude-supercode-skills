@@ -1,37 +1,36 @@
 ---
 name: docx
-description: Expert in creating, editing, and automating Word documents (.docx) using python-docx and docx.js. Use when generating Word documents, modifying existing docx files, or automating document workflows.
+description: python-docx 및 docx.js를 사용하여 Word 문서(.docx)를 생성, 편집 및 자동화하는 전문가입니다. Word 문서를 생성하거나 기존 docx 파일을 수정하거나 문서 작업 흐름을 자동화할 때 사용합니다.
 ---
+# DOCX 스킬
 
-# DOCX Skill
+## 목적
+프로그래밍 방식의 Word 문서 생성 및 조작에 대한 전문 지식을 제공합니다. python-docx 및 JavaScript 라이브러리를 사용하여 문서 생성, 템플릿 채우기, 스타일 관리 및 일괄 문서 처리를 처리합니다.
 
-## Purpose
-Provides expertise in programmatic Word document creation and manipulation. Handles document generation, template filling, style management, and batch document processing using python-docx and JavaScript libraries.
+## 사용 시기
+- 프로그래밍 방식으로 Word 문서 생성
+- 문서 템플릿을 데이터로 채우기
+- 기존 .docx 파일 수정
+- Word 문서에서 콘텐츠 추출
+- 스타일 및 서식 적용
+- 메일 병합 작업 흐름 생성
+- 데이터를 형식화된 문서로 변환
 
-## When to Use
-- Generating Word documents programmatically
-- Filling document templates with data
-- Modifying existing .docx files
-- Extracting content from Word documents
-- Applying styles and formatting
-- Creating mail merge workflows
-- Converting data to formatted documents
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 프로그래밍 방식으로 Word 문서 생성
+- 문서 템플릿을 데이터로 채우기
+- 기존 .docx 파일 수정
+- Word 문서에서 콘텐츠 추출
+- 문서 워크플로우 자동화
 
-## Quick Start
-**Invoke this skill when:**
-- Generating Word documents programmatically
-- Filling document templates with data
-- Modifying existing .docx files
-- Extracting content from Word documents
-- Automating document workflows
+**다음과 같은 경우에는 호출하지 마세요.**
+- 문서 내용 작성(문서 작성기 사용)
+- PDF 만들기 (pdf-skill 사용)
+- 스프레드시트 만들기 (xlsx-skill 사용)
+- 프리젠테이션 만들기 (pptx-skill 활용)
 
-**Do NOT invoke when:**
-- Writing document content (use document-writer)
-- Creating PDFs (use pdf-skill)
-- Creating spreadsheets (use xlsx-skill)
-- Creating presentations (use pptx-skill)
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Library Selection:
 ├── Python backend → python-docx
@@ -46,47 +45,46 @@ Task Type:
 ├── Modify existing → Load, edit, save
 └── Batch processing → Loop with template
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 문서 생성(python-docx)
+1. 문서 객체 생성
+2. 레벨과 함께 제목 추가
+3. 텍스트가 포함된 단락 추가
+4. 스타일 적용(기본 제공 또는 사용자 정의)
+5. 필요한 경우 테이블을 추가합니다.
+6. 이미지 삽입
+7. 문서 저장
 
-### 1. Document Generation (python-docx)
-1. Create Document object
-2. Add heading with level
-3. Add paragraphs with text
-4. Apply styles (built-in or custom)
-5. Add tables if needed
-6. Insert images
-7. Save document
+### 2. 템플릿 처리
+1. 템플릿 문서 로드
+2. 자리표시자({{변수}}) 찾기
+3. 실제 값으로 대체
+4. 조건부 섹션 처리
+5. 반복 섹션 처리
+6. 새 문서로 저장
 
-### 2. Template Processing
-1. Load template document
-2. Find placeholders ({{variable}})
-3. Replace with actual values
-4. Handle conditional sections
-5. Process repeating sections
-6. Save as new document
+### 3. 일괄 문서 생성
+1. 템플릿을 한 번 로드합니다.
+2. 데이터 레코드 반복
+3. 각각에 대한 복제 템플릿
+4. 자리 표시자 채우기
+5. 고유한 파일 이름 생성
+6. 각 문서를 저장하세요
 
-### 3. Batch Document Generation
-1. Load template once
-2. Iterate over data records
-3. Clone template for each
-4. Fill placeholders
-5. Generate unique filenames
-6. Save each document
+## 모범 사례
+- 직접 서식이 아닌 단락 스타일을 사용하세요.
+- 재사용을 위한 자리 표시자가 있는 템플릿 만들기
+- 누락된 자리 표시자 값을 적절하게 처리합니다.
+- 원본 템플릿을 보존하고 새 파일에 저장
+- 복잡한 콘텐츠(테이블, 이미지)로 테스트
+- 출력이 올바르게 열리는지 확인
 
-## Best Practices
-- Use paragraph styles, not direct formatting
-- Create templates with placeholders for reuse
-- Handle missing placeholder values gracefully
-- Preserve original template, save to new file
-- Test with complex content (tables, images)
-- Validate output opens correctly
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Direct formatting | Hard to maintain | Use styles |
-| Modifying template | Corrupts original | Save to new file |
-| No error handling | Fails on bad input | Validate data first |
-| Hardcoded paths | Not portable | Use relative paths |
-| Ignoring encoding | Character issues | Use UTF-8 strings |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 직접 서식 | 유지 관리가 어려움 | 스타일 사용 |
+| 템플릿 수정 | 원본 손상 | 새 파일에 저장 |
+| 오류 처리 없음 | 잘못된 입력 시 실패 | 먼저 데이터 검증 |
+| 하드코딩된 경로 | 휴대용이 아님 | 상대 경로 사용 |
+| 인코딩 무시 | 캐릭터 문제 | UTF-8 문자열 사용 |

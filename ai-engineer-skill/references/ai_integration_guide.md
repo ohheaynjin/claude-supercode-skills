@@ -1,21 +1,19 @@
-# AI Integration Guide
+# AI 통합 가이드
 
-## Quick Start
+## 빠른 시작
 
-### Installation
+### 설치
 ```bash
 pip install openai anthropic chromadb sentence-transformers
 ```
-
-### Environment Variables
+### 환경 변수
 ```bash
 export OPENAI_API_KEY="your-key"
 export ANTHROPIC_API_KEY="your-key"
 ```
+## OpenAI 통합
 
-## OpenAI Integration
-
-### Basic Usage
+### 기본 사용법
 ```python
 from integrate_openai import OpenAIIntegration, OpenAIConfig
 
@@ -34,16 +32,15 @@ messages = [
 response = integration.chat_completion(messages)
 print(response['content'])
 ```
+### 구성 옵션
+-`max_retries`: 재시도 횟수 (기본값: 3)
+-`retry_delay`: 재시도 간 지연 시간(초)(기본값: 1.0)
+-`timeout`: 요청 시간 초과(기본값: 120)
+-`rate_limit_delay`: 속도 제한을 피하기 위한 지연 (기본값: 0.5)
 
-### Configuration Options
-- `max_retries`: Number of retry attempts (default: 3)
-- `retry_delay`: Delay between retries in seconds (default: 1.0)
-- `timeout`: Request timeout (default: 120)
-- `rate_limit_delay`: Delay to avoid rate limiting (default: 0.5)
+## 인류 통합
 
-## Anthropic Integration
-
-### Basic Usage
+### 기본 사용법
 ```python
 from integrate_anthropic import AnthropicIntegration, AnthropicConfig
 
@@ -57,10 +54,9 @@ integration = AnthropicIntegration(config)
 messages = [{"role": "user", "content": "Explain AI"}]
 response = integration.messages(messages)
 ```
+## RAG 설정
 
-## RAG Setup
-
-### Quick Start
+### 빠른 시작
 ```python
 from setup_rag import RAGSystem, RAGConfig
 
@@ -86,9 +82,7 @@ results = rag.query("What is machine learning?")
 for result in results:
     print(result['text'])
 ```
-
-## Prompt Management
-
+## 신속한 관리
 ```python
 from manage_prompts import PromptManager, PromptTemplate
 
@@ -106,9 +100,7 @@ manager.add_template(template)
 # Render
 rendered = template.render(text="Your text here")
 ```
-
-## Monitoring
-
+## 모니터링
 ```python
 from monitor_ai_service import AIMonitor
 
@@ -123,9 +115,7 @@ monitor.record_request(
 status = monitor.get_health_status()
 print(f"Healthy: {status.is_healthy}")
 ```
-
-## Cost Optimization
-
+## 비용 최적화
 ```python
 from optimize_tokens import TokenTracker
 
@@ -138,22 +128,21 @@ tracker.record_usage(
 cost = tracker.get_total_cost()
 print(f"Total cost: ${cost:.4f}")
 ```
+## 모범 사례
 
-## Best Practices
+1. **속도 제한**: API 제한을 방지하려면 항상 속도 제한을 구현하세요.
+2. **오류 처리**: 지수 백오프와 함께 재시도 로직을 사용합니다.
+3. **토큰 추적**: 사용량을 모니터링하여 비용을 제어합니다.
+4. **폴백 시스템**: 대체 모델로 폴백 구현
+5. **모니터링**: 상태 지표 및 응답 시간 추적
+6. **보안**: 버전 관리에 API 키를 커밋하지 마세요.
 
-1. **Rate Limiting**: Always implement rate limiting to avoid API limits
-2. **Error Handling**: Use retry logic with exponential backoff
-3. **Token Tracking**: Monitor usage to control costs
-4. **Fallback Systems**: Implement fallback to alternative models
-5. **Monitoring**: Track health metrics and response times
-6. **Security**: Never commit API keys to version control
+## 가격 참조
 
-## Pricing Reference
-
-| Model | Input (per 1K) | Output (per 1K) |
-|-------|---------------|----------------|
+| 모델 | 입력(1K당) | 출력(1K당) |
+|-------|---------------|---|
 | GPT-4 | $0.03 | $0.06 |
-| GPT-4 Turbo | $0.01 | $0.03 |
-| GPT-3.5 Turbo | $0.0005 | $0.0015 |
-| Claude 3.5 Sonnet | $0.003 | $0.015 |
-| Claude 3 Opus | $0.015 | $0.075 |
+| GPT-4 터보 | $0.01 | $0.03 |
+| GPT-3.5 터보 | $0.0005 | $0.0015 |
+| 클로드 3.5 소네트 | $0.003 | $0.015 |
+| 클로드 3 작품 | $0.015 | $0.075 |

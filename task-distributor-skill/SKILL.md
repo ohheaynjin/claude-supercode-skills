@@ -1,38 +1,37 @@
 ---
 name: task-distributor
-description: Expert in load balancing and dynamic task allocation for multi-agent systems. Specializes in optimal routing based on agent capability, availability, and cost (Token Economics).
+description: 다중 에이전트 시스템에 대한 로드 밸런싱 및 동적 작업 할당 전문가입니다. 상담원 역량, 가용성, 비용을 기반으로 최적의 라우팅을 전문으로 합니다(토큰 경제).
 ---
+# 작업 분배자
 
-# Task Distributor
+## 목적
+다중 에이전트 시스템 전반에 걸쳐 작업을 효율적으로 배포하는 데 필요한 전문 지식을 제공합니다. 로드 밸런싱 알고리즘, 기능 기반 라우팅, 비용 최적화 및 분산 에이전트 풀 전체에서 최적의 리소스 활용 보장을 전문으로 합니다.
 
-## Purpose
-Provides expertise in distributing tasks across multi-agent systems efficiently. Specializes in load balancing algorithms, capability-based routing, cost optimization, and ensuring optimal resource utilization across distributed agent pools.
+## 사용 시기
+- 다중 에이전트 시스템을 위한 작업 분배 전략 설계
+- 작업자 풀 전체에 로드 밸런싱 구현
+- 비용 최적화(토큰 경제)와 속도 절충
+- 상담원 역량에 따른 라우팅 로직 구축
+- 우선순위와 마감일을 기준으로 작업 대기열 관리
+- 재시도 및 장애 조치 전략 구현
+- 수요에 따라 에이전트 풀을 동적으로 확장
+- 작업 처리량 모니터링 및 최적화
 
-## When to Use
-- Designing task distribution strategies for multi-agent systems
-- Implementing load balancing across worker pools
-- Optimizing for cost (token economics) vs speed trade-offs
-- Building routing logic based on agent capabilities
-- Managing task queues with priorities and deadlines
-- Implementing retry and failover strategies
-- Scaling agent pools dynamically based on demand
-- Monitoring and optimizing task throughput
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 다중 에이전트 시스템을 위한 작업 분배 전략 설계
+- 작업자 풀 전체에 로드 밸런싱 구현
+- 비용 최적화(토큰 경제)와 속도 절충
+- 상담원 역량에 따른 라우팅 로직 구축
+- 우선순위와 마감일을 기준으로 작업 대기열 관리
 
-## Quick Start
-**Invoke this skill when:**
-- Designing task distribution strategies for multi-agent systems
-- Implementing load balancing across worker pools
-- Optimizing for cost (token economics) vs speed trade-offs
-- Building routing logic based on agent capabilities
-- Managing task queues with priorities and deadlines
+**다음과 같은 경우에는 호출하지 마세요.**
+- 전체 Agent Architecture 설계 → Agent-Organizer 활용
+- 개별 에이전트 로직 구현 → 적절한 도메인 스킬 사용
+- 에이전트 오류 처리 및 복구 → 오류 조정자 사용
+- 워크플로우 오케스트레이션 구축 → 워크플로우 오케스트레이터 사용
 
-**Do NOT invoke when:**
-- Designing overall agent architecture → use agent-organizer
-- Implementing individual agent logic → use appropriate domain skill
-- Handling agent errors and recovery → use error-coordinator
-- Building workflow orchestration → use workflow-orchestrator
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Distribution Strategy?
 ├── Uniform Workloads → Round-robin or random distribution
@@ -42,47 +41,46 @@ Distribution Strategy?
 ├── Specialized Tasks → Capability-based routing
 └── Burst Traffic → Dynamic scaling + queue management
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 기능 기반 라우팅
+1. 에이전트의 기능 분류 정의
+2. 필요한 기능으로 작업에 태그 지정
+3. 능력 매칭 알고리즘 구현
+4. 능력 적합성과 가용성에 따라 상담사 점수를 매깁니다.
+5. 가장 적합한 상담원에게 연결
+6. 최적화를 위한 기능 활용도 추적
+7. 성능에 따라 라우팅 가중치를 조정합니다.
 
-### 1. Capability-Based Routing
-1. Define capability taxonomy for agents
-2. Tag tasks with required capabilities
-3. Implement capability matching algorithm
-4. Score agents by capability fit and availability
-5. Route to best-matched agent
-6. Track capability utilization for optimization
-7. Adjust routing weights based on performance
+### 2. 비용 최적화된 배포
+1. 에이전트 유형별 비용 모델 정의(토큰, 시간, 비용)
+2. 복잡성 신호를 기반으로 작업 비용 추정
+3. 예산 제약 및 최적화 목표 설정
+4. SLA를 충족하면서 비용을 최소화하는 경로
+5. 필요한 경우 고비용 에이전트로 대체 구현
+6. 실제 비용과 예상 비용을 추적하세요.
+7. 과거 데이터를 바탕으로 비용 모델 개선
 
-### 2. Cost-Optimized Distribution
-1. Define cost model per agent type (tokens, time, money)
-2. Estimate task cost based on complexity signals
-3. Set budget constraints and optimization targets
-4. Route to minimize cost while meeting SLAs
-5. Implement fallback to higher-cost agents when needed
-6. Track actual vs estimated costs
-7. Refine cost models from historical data
+### 3. 우선순위에 따른 대기열 관리
+1. 우선순위 수준 및 SLA 요구 사항 정의
+2. 마감일을 인식하여 우선순위 대기열을 구현합니다.
+3. 유휴 에이전트에 대한 작업 도용 설정
+4. 우선순위가 낮은 작업의 기아 처리
+5. 대기열 깊이가 임계값을 초과하는 경우 배압 구현
+6. 대기열 대기 시간 및 처리량 모니터링
+7. 대기열 지표를 기반으로 에이전트 풀 확장
 
-### 3. Queue Management with Priorities
-1. Define priority levels and SLA requirements
-2. Implement priority queue with deadline awareness
-3. Set up work stealing for idle agents
-4. Handle starvation of low-priority tasks
-5. Implement backpressure when queue depth exceeds threshold
-6. Monitor queue latency and throughput
-7. Scale agent pool based on queue metrics
+## 모범 사례
+- 상태 확인을 구현하고 풀에서 비정상 에이전트를 제거합니다.
+- 재시도를 위해 지터와 함께 지수 백오프 사용
+- 정보에 입각한 라우팅 결정을 위해 에이전트별 지표를 추적합니다.
+- 실패한 에이전트 유형에 대한 회로 차단기 구현
+- 부하가 걸릴 때 우아한 성능 저하를 위한 설계
+- 디버깅을 위해 라우팅 결정을 관찰 가능하게 만듭니다.
 
-## Best Practices
-- Implement health checks and remove unhealthy agents from pool
-- Use exponential backoff with jitter for retries
-- Track per-agent metrics for informed routing decisions
-- Implement circuit breakers for failing agent types
-- Design for graceful degradation under load
-- Make routing decisions observable for debugging
-
-## Anti-Patterns
-- **Static assignment** → Use dynamic routing based on current state
-- **Ignoring agent health** → Remove unhealthy agents from rotation
-- **FIFO only** → Implement priority awareness for SLA compliance
-- **Tight coupling** → Decouple task producers from agent pool
-- **No backpressure** → Implement admission control under overload
+## 안티 패턴
+- **정적 할당** → 현재 상태에 따른 동적 라우팅 사용
+- **에이전트 상태 무시** → 순환에서 비정상 에이전트 제거
+- **FIFO만 해당** → SLA 준수를 위한 우선순위 인식 구현
+- **긴밀한 결합** → 에이전트 풀에서 작업 생산자를 분리합니다.
+- **배압 없음** → 과부하 시 허용 제어 구현

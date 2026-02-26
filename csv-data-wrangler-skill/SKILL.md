@@ -1,37 +1,36 @@
 ---
 name: csv-data-wrangler
-description: Expert in high-performance CSV processing, parsing, and data cleaning using Python, DuckDB, and command-line tools. Use when working with CSV files, cleaning data, transforming datasets, or processing large tabular data files.
+description: Python, DuckDB 및 명령줄 도구를 사용한 고성능 CSV 처리, 구문 분석 및 데이터 정리 전문가입니다. CSV 파일 작업, 데이터 정리, 데이터 세트 변환 또는 대규모 표 형식 데이터 파일 처리 시 사용합니다.
 ---
+# CSV 데이터 랭글러
 
-# CSV Data Wrangler
+## 목적
+효율적인 CSV 파일 처리, 데이터 정리 및 변환에 대한 전문 지식을 제공합니다. 표 형식 데이터 워크플로에 대한 대용량 파일, 인코딩 문제, 잘못된 형식의 데이터 및 성능 최적화를 처리합니다.
 
-## Purpose
-Provides expertise in efficient CSV file processing, data cleaning, and transformation. Handles large files, encoding issues, malformed data, and performance optimization for tabular data workflows.
+## 사용 시기
+- 대용량 CSV 파일을 효율적으로 처리
+- CSV 데이터 정리 및 유효성 검사
+- 데이터 세트 변환 및 재구성
+- 인코딩 및 구분 기호 문제 처리
+- CSV 파일 병합 또는 분할
+- 표 형식 간 변환
+- SQL로 CSV 쿼리(DuckDB)
 
-## When to Use
-- Processing large CSV files efficiently
-- Cleaning and validating CSV data
-- Transforming and reshaping datasets
-- Handling encoding and delimiter issues
-- Merging or splitting CSV files
-- Converting between tabular formats
-- Querying CSV with SQL (DuckDB)
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 대용량 CSV 파일을 효율적으로 처리
+- CSV 데이터 정리 및 유효성 검사
+- 데이터 세트 변환 및 재구성
+- 인코딩 및 구분 기호 문제 처리
+- SQL로 CSV 쿼리하기
 
-## Quick Start
-**Invoke this skill when:**
-- Processing large CSV files efficiently
-- Cleaning and validating CSV data
-- Transforming and reshaping datasets
-- Handling encoding and delimiter issues
-- Querying CSV with SQL
+**다음과 같은 경우에는 호출하지 마세요.**
+- 서식을 적용하여 Excel 파일 만들기(xlsx-skill 사용)
+- 데이터의 통계적 분석(데이터 분석가 사용)
+- 데이터 파이프라인 구축(데이터 엔지니어 사용)
+- 데이터베이스 작업(sql-pro 사용)
 
-**Do NOT invoke when:**
-- Building Excel files with formatting (use xlsx-skill)
-- Statistical analysis of data (use data-analyst)
-- Building data pipelines (use data-engineer)
-- Database operations (use sql-pro)
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Tool Selection by File Size:
 ├── < 100MB → pandas
@@ -46,45 +45,44 @@ Processing Type:
 ├── Simple filtering → csvkit/xsv
 └── Streaming → Python csv module
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 대규모 CSV 처리
+1. 프로필 파일(크기, 인코딩, 구분 기호)
+2. 규모에 맞는 적절한 도구 선택
+3. 메모리가 제한된 경우 청크로 처리합니다.
+4. 인코딩 문제 처리(UTF-8, Latin-1)
+5. 열별 데이터 유형 유효성 검사
+6. 적절한 인용으로 출력을 작성하십시오.
 
-### 1. Large CSV Processing
-1. Profile file (size, encoding, delimiter)
-2. Choose appropriate tool for scale
-3. Process in chunks if memory-constrained
-4. Handle encoding issues (UTF-8, Latin-1)
-5. Validate data types per column
-6. Write output with proper quoting
+### 2. 데이터 클리닝 파이프라인
+1. 구조를 이해하기 위해 샘플을 로드합니다.
+2. 누락된 값과 잘못된 형식의 값 식별
+3. 열별 정리 규칙 정의
+4. 변환 적용
+5. 출력 품질 검증
+6. 로그 정리 통계
 
-### 2. Data Cleaning Pipeline
-1. Load sample to understand structure
-2. Identify missing and malformed values
-3. Define cleaning rules per column
-4. Apply transformations
-5. Validate output quality
-6. Log cleaning statistics
+### 3. DuckDB를 사용한 CSV 쿼리
+1. CSV 파일에 DuckDB를 지정합니다.
+2. DuckDB가 스키마를 추론하도록 하세요.
+3. SQL 쿼리를 직접 작성
+4. 결과를 새로운 CSV로 내보내기
+5. 선택적으로 Parquet로 유지
 
-### 3. CSV Query with DuckDB
-1. Point DuckDB at CSV file(s)
-2. Let DuckDB infer schema
-3. Write SQL queries directly
-4. Export results to new CSV
-5. Optionally persist as Parquet
+## 모범 사례
+- 항상 인코딩을 명시적으로 지정하세요.
+- 대용량 파일에는 청크 분할 읽기 사용
+- 도구를 선택하기 전에 프로필을 작성하세요.
+- 원본 파일을 보존하고 새 파일에 쓰기
+- 이전/이후 행 개수 유효성 검사
+- 인용된 필드와 이스케이프를 올바르게 처리합니다.
 
-## Best Practices
-- Always specify encoding explicitly
-- Use chunked reading for large files
-- Profile before choosing tools
-- Preserve original files, write to new
-- Validate row counts before/after
-- Handle quoted fields and escapes properly
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Loading all to memory | OOM on large files | Use chunking or streaming |
-| Guessing encoding | Corrupted characters | Detect with chardet first |
-| Ignoring quoting | Broken field parsing | Use proper CSV parser |
-| No validation | Silent data corruption | Validate row/column counts |
-| Manual string splitting | Breaks on edge cases | Use csv module or pandas |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 모두 메모리에 로드 중 | 대용량 파일의 OOM | 청크 또는 스트리밍 사용 |
+| 인코딩 추측 | 손상된 문자 | 먼저 chardet으로 감지 |
+| 인용 무시 | 손상된 필드 구문 분석 | 적절한 CSV 파서 사용 |
+| 유효성 검사 없음 | 조용한 데이터 손상 | 행/열 개수 확인 |
+| 수동 문자열 분할 | 극단적인 경우 중단 | csv 모듈 또는 pandas 사용 |

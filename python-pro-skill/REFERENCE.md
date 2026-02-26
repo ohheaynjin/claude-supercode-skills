@@ -1,9 +1,8 @@
-# Python Pro - Technical Reference
+# Python Pro - 기술 참조
 
-## Repository Pattern with Async SQLAlchemy
+## Async SQLAlchemy를 사용한 리포지토리 패턴
 
-**When to use:** Clean separation of data access from business logic
-
+**사용 시기:** 비즈니스 로직에서 데이터 액세스를 깔끔하게 분리
 ```python
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
@@ -91,13 +90,11 @@ async def get_db() -> AsyncSession:
     async with SessionLocal() as session:
         yield session
 ```
-
 ---
 
-## Background Tasks with Celery + FastAPI
+## Celery + FastAPI를 사용한 백그라운드 작업
 
-**When to use:** Long-running tasks, async job processing
-
+**사용 시기:** 장기 실행 작업, 비동기 작업 처리
 ```python
 from celery import Celery
 from fastapi import BackgroundTasks, UploadFile
@@ -154,11 +151,9 @@ async def get_video_status(video_id: int):
         "result": task.result if task.ready() else None
     }
 ```
-
 ---
 
-## FastAPI with Advanced Type Safety
-
+## 고급 유형 안전성을 갖춘 FastAPI
 ```python
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
@@ -266,11 +261,9 @@ async def get_user(
         raise HTTPException(status_code=404, detail="User not found")
     return user
 ```
-
 ---
 
-## Async Semaphore for Concurrency Control
-
+## 동시성 제어를 위한 비동기 세마포어
 ```python
 import asyncio
 from typing import List
@@ -290,11 +283,9 @@ async def fetch_all_urls(urls: List[str], max_concurrent: int = 10) -> List[str]
     
     return [r for r in results if not isinstance(r, Exception)]
 ```
-
 ---
 
-## Custom Exception Hierarchy
-
+## 사용자 정의 예외 계층 구조
 ```python
 class AppError(Exception):
     """Base exception for application errors"""
@@ -338,11 +329,9 @@ async def app_error_handler(request: Request, exc: AppError):
         content={"error": exc.code, "message": exc.message}
     )
 ```
-
 ---
 
-## Performance Profiling
-
+## 성능 프로파일링
 ```python
 import cProfile
 import pstats

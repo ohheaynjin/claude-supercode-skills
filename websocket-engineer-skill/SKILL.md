@@ -2,7 +2,6 @@
 name: websocket-engineer
 description: Expert in real-time communication systems, including WebSockets, Socket.IO, SSE, and WebRTC.
 ---
-
 # WebSocket & Real-Time Engineer
 
 ## Purpose
@@ -124,6 +123,7 @@ What is the communication pattern?
    └─ Constrained device? → **MQTT** (over TCP/WS)
 ```
 
+
 ### Scaling Strategy
 
 | Scale | Architecture | Backend |
@@ -156,12 +156,15 @@ What is the communication pattern?
 **Steps:**
 
 1.  **Install Dependencies**
-    ```bash
+
+```bash
     npm install socket.io redis @socket.io/redis-adapter
     ```
 
+
 2.  **Implementation (`server.js`)**
-    ```javascript
+
+```javascript
     const { Server } = require("socket.io");
     const { createClient } = require("redis");
     const { createAdapter } = require("@socket.io/redis-adapter");
@@ -191,6 +194,7 @@ What is the communication pattern?
       });
     });
     ```
+
 
 ---
 ---

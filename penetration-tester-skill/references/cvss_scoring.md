@@ -1,94 +1,93 @@
-# CVSS Scoring Reference
+# CVSS 채점 참고자료
 
-## Overview
-Comprehensive guide to CVSS (Common Vulnerability Scoring System) scoring for penetration testing.
+## 개요
+침투 테스트를 위한 CVSS(Common Vulnerability Scoring System) 채점에 대한 종합 가이드입니다.
 
-## CVSS v3.1 Overview
+## CVSS v3.1 개요
 
-CVSS v3.1 provides a framework for characterizing and rating vulnerabilities. Scores range from 0.0 to 10.0.
+CVSS v3.1은 취약점을 특성화하고 평가하기 위한 프레임워크를 제공합니다. 점수 범위는 0.0~10.0입니다.
 
-## Base Metrics
+## 기본 측정항목
 
-### Attack Vector (AV)
+### 공격 벡터(AV)
 
-How the vulnerability is exploited.
+취약점이 악용되는 방식.
 
-| Metric | Value | Score | Description |
-|---------|--------|--------|-------------|
-| Network (N) | 0.85 | Exploitable over network |
-| Adjacent (A) | 0.62 | Requires same logical network |
-| Local (L) | 0.55 | Requires local access |
-| Physical (P) | 0.2 | Requires physical access |
+| 미터법 | 가치 | 점수 | 설명 |
+|---------|----------|---------|-------------|
+| 네트워크(N) | 0.85 | 네트워크를 통해 악용 가능 |
+| 인접(A) | 0.62 | 동일한 논리 네트워크 필요 |
+| 로컬(L) | 0.55 | 로컬 액세스 필요 |
+| 물리적(P) | 0.2 | 물리적 액세스가 필요합니다 |
 
-### Attack Complexity (AC)
+### 공격 복잡성(AC)
 
-Conditions beyond attacker's control.
+공격자가 통제할 수 없는 조건.
 
-| Metric | Value | Score | Description |
-|---------|--------|--------|-------------|
-| Low (L) | 0.77 | No specialized access conditions |
-| High (H) | 0.44 | Specialized conditions required |
+| 미터법 | 가치 | 점수 | 설명 |
+|---------|----------|---------|-------------|
+| 낮음(L) | 0.77 | 특별한 접근 조건 없음 |
+| 높음(H) | 0.44 | 특수한 조건이 필요함 |
 
-### Privileges Required (PR)
+### 필요한 권한(PR)
 
-Privileges the attacker must possess before exploiting.
+공격자가 악용하기 전에 소유해야 하는 권한입니다.
 
-| Metric | Value | Score | Description |
-|---------|--------|--------|-------------|
-| None (N) | 0.85 | No privileges required |
-| Low (L) | 0.62 | Low privileges required |
-| High (H) | 0.27 | High privileges required |
+| 미터법 | 가치 | 점수 | 설명 |
+|---------|----------|---------|-------------|
+| 없음(N) | 0.85 | 권한이 필요하지 않습니다 |
+| 낮음(L) | 0.62 | 낮은 권한 필요 |
+| 높음(H) | 0.27 | 높은 권한 필요 |
 
-### User Interaction (UI)
+### 사용자 상호작용(UI)
 
-Whether user interaction is required for exploitation.
+악용을 위해 사용자 상호 작용이 필요한지 여부입니다.
 
-| Metric | Value | Score | Description |
-|---------|--------|--------|-------------|
-| None (N) | 0.85 | No user interaction required |
-| Required (R) | 0.62 | User interaction required |
+| 미터법 | 가치 | 점수 | 설명 |
+|---------|----------|---------|-------------|
+| 없음(N) | 0.85 | 사용자 상호 작용이 필요하지 않습니다 |
+| 필수(R) | 0.62 | 사용자 상호작용 필요 |
 
-### Scope (S)
+### 범위(S)
 
-Does the vulnerable component impact other components?
+취약한 구성 요소가 다른 구성 요소에 영향을 줍니까?
 
-| Metric | Value | Description |
-|---------|--------|-------------|
-| Unchanged (U) | Vulnerable component only |
-| Changed (C) | Impacts other components |
+| 미터법 | 가치 | 설명 |
+|---------|---------|------------|
+| 변함없음(U) | 취약한 구성요소만 |
+| 변경됨(C) | 다른 구성요소에 영향을 미침 |
 
-### Confidentiality (C)
+### 기밀성(C)
 
-Impact on data confidentiality.
+데이터 기밀성에 영향을 미칩니다.
 
-| Metric | Value | Description |
-|---------|--------|-------------|
-| High (H) | Total loss of confidentiality |
-| Low (L) | Some data loss |
-| None (N) | No impact |
+| 미터법 | 가치 | 설명 |
+|---------|---------|------------|
+| 높음(H) | 기밀성 완전 상실 |
+| 낮음(L) | 일부 데이터 손실 |
+| 없음(N) | 영향 없음 |
 
-### Integrity (I)
+### 무결성(I)
 
-Impact on data integrity.
+데이터 무결성에 미치는 영향.
 
-| Metric | Value | Description |
-|---------|--------|-------------|
-| High (H) | Total loss of integrity |
-| Low (L) | Some data modification |
-| None (N) | No impact |
+| 미터법 | 가치 | 설명 |
+|---------|---------|------------|
+| 높음(H) | 완전성 상실 |
+| 낮음(L) | 일부 데이터 수정 |
+| 없음(N) | 영향 없음 |
 
-### Availability (A)
+### 가용성(A)
 
-Impact on availability of the component.
+구성 요소의 가용성에 미치는 영향.
 
-| Metric | Value | Description |
-|---------|--------|-------------|
-| High (H) | Total loss of availability |
-| Low (L) | Reduced performance |
-| None (N) | No impact |
+| 미터법 | 가치 | 설명 |
+|---------|---------|------------|
+| 높음(H) | 가용성의 총 손실 |
+| 낮음(L) | 성능 저하 |
+| 없음(N) | 영향 없음 |
 
-## Base Score Calculation
-
+## 기본 점수 계산
 ```python
 #!/usr/bin/env python3
 def calculate_base_score(av, ac, pr, ui, scope, c, i, a):
@@ -126,20 +125,19 @@ def calculate_base_score(av, ac, pr, ui, scope, c, i, a):
     
     return round(base, 1)
 ```
+## 심각도 등급
 
-## Severity Ratings
+| 점수 범위 | 심각도 | 색상 |
+|-------------|----------|---------|
+| 9.0 - 10.0 | 심각 | 🔴 |
+| 7.0 - 8.9 | 높음 | 🟠 |
+| 4.0 - 6.9 | 중간 | 🟡 |
+| 0.1 - 3.9 | 낮음 | 🟢 |
+| 0.0 | 없음 | ⚪ |
 
-| Score Range | Severity | Color |
-|-------------|----------|--------|
-| 9.0 - 10.0 | Critical | 🔴 |
-| 7.0 - 8.9 | High | 🟠 |
-| 4.0 - 6.9 | Medium | 🟡 |
-| 0.1 - 3.9 | Low | 🟢 |
-| 0.0 | None | ⚪ |
+## 공격 유형별 일반적인 CVSS 점수
 
-## Common CVSS Scores by Attack Type
-
-### SQL Injection
+### SQL 주입
 ```
 Attack Vector: Network (N) - 0.85
 Attack Complexity: Low (L) - 0.77
@@ -152,8 +150,7 @@ Availability: High (H) - 0.56
 
 Score: 9.8 (Critical)
 ```
-
-### Cross-Site Scripting (Reflected)
+### 교차 사이트 스크립팅(반영)
 ```
 Attack Vector: Network (N) - 0.85
 Attack Complexity: Low (L) - 0.77
@@ -166,8 +163,7 @@ Availability: None (N) - 0.0
 
 Score: 6.1 (Medium)
 ```
-
-### Stored XSS
+### 저장된 XSS
 ```
 Attack Vector: Network (N) - 0.85
 Attack Complexity: Low (L) - 0.77
@@ -180,7 +176,6 @@ Availability: None (N) - 0.0
 
 Score: 8.1 (High)
 ```
-
 ### CSRF
 ```
 Attack Vector: Network (N) - 0.85
@@ -194,8 +189,7 @@ Availability: None (N) - 0.0
 
 Score: 6.5 (Medium)
 ```
-
-### Broken Access Control
+### 손상된 액세스 제어
 ```
 Attack Vector: Network (N) - 0.85
 Attack Complexity: Low (L) - 0.77
@@ -208,8 +202,7 @@ Availability: High (H) - 0.56
 
 Score: 9.6 (Critical)
 ```
-
-### Hardcoded Credentials
+### 하드코딩된 자격 증명
 ```
 Attack Vector: Network (N) - 0.85
 Attack Complexity: Low (L) - 0.77
@@ -222,48 +215,46 @@ Availability: None (N) - 0.0
 
 Score: 9.8 (Critical)
 ```
+## 시간 측정항목(선택사항)
 
-## Temporal Metrics (Optional)
+### 익스플로잇 코드 성숙도(E)
+- **정의되지 않음(X):** 점수를 할당하지 않음
+- **증명되지 않음(U):** 익스플로잇 코드가 존재하지 않습니다.
+- **개념 증명(P):** 개념 증명 코드
+- **기능(F):** 기능적 익스플로잇 존재
+- **높음(H):** 안정적이고 무기화된 악용
 
-### Exploit Code Maturity (E)
-- **Not Defined (X):** Assign no score
-- **Unproven (U):** No exploit code exists
-- **Proof of Concept (P):** Proof-of-concept code
-- **Functional (F):** Functional exploit exists
-- **High (H):** Reliable, weaponized exploit
+### 교정 수준(R)
+- **정의되지 않음(X):** 점수를 할당하지 않음
+- **공식 픽스(O):** 공급업체에서 픽스를 발행했습니다.
+- **임시 수정(T):** 임시 해결 방법 사용 가능
+- **해결 방법(W):** 공급업체가 아닌 경우 해결 방법 사용 가능
+- **사용 불가(U):** 사용 가능한 수정 사항 없음
 
-### Remediation Level (R)
-- **Not Defined (X):** Assign no score
-- **Official Fix (O):** Vendor has issued fix
-- **Temporary Fix (T):** Temporary workaround available
-- **Workaround (W):** Non-vendor workaround available
-- **Unavailable (U):** No fix available
+### 보고 신뢰도(C)
+- **정의되지 않음(X):** 점수를 할당하지 않음
+- **알 수 없음(U):** 알 수 없음
+- **합리적(R):** 합리적인 자신감
+- **확인됨 (C):** 취약점 확인됨
 
-### Report Confidence (C)
-- **Not Defined (X):** Assign no score
-- **Unknown (U):** Unknown
-- **Reasonable (R):** Reasonable confidence
-- **Confirmed (C):** Vulnerability confirmed
+## 환경 지표(선택 사항)
 
-## Environmental Metrics (Optional)
+### 기밀 유지 요구 사항(CR)
+- **정의되지 않음(X):** 점수를 할당하지 않음
+- **낮음(L):** 조직에 미치는 영향이 낮음
+- **중간(M):** 조직에 미치는 중간 영향
+- **높음(H):** 조직에 미치는 영향이 높음
 
-### Confidentiality Requirement (CR)
-- **Not Defined (X):** Assign no score
-- **Low (L):** Low impact to organization
-- **Medium (M):** Medium impact to organization
-- **High (H):** High impact to organization
+### 무결성 요구사항(IR)
+기밀성 요구 사항과 동일
 
-### Integrity Requirement (IR)
-Same as Confidentiality Requirement
+### 가용성 요구 사항(AR)
+기밀성 요구 사항과 동일
 
-### Availability Requirement (AR)
-Same as Confidentiality Requirement
+### 수정된 기본 측정항목
+기본 측정항목과 동일하지만 환경에 맞게 조정됨
 
-### Modified Base Metrics
-Same as Base Metrics but adjusted for environment
-
-## CVSS Calculator
-
+## CVSS 계산기
 ```python
 #!/usr/bin/env python3
 """
@@ -339,9 +330,7 @@ if __name__ == '__main__':
     score, severity = calc.calculate_base('N', 'L', 'N', 'R', 'U', 'L', 'L', 'N')
     print(f"Reflected XSS: {score} ({severity})")
 ```
-
-## CVSS String Format
-
+## CVSS 문자열 형식
 ```
 CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
          |  |  |  |  |  |  |  |
@@ -354,9 +343,7 @@ CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
          |  + Attack Complexity
          + Attack Vector
 ```
-
-## Quick Reference Card
-
+## 빠른 참조 카드
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    CVSS v3.1                         │
@@ -379,17 +366,16 @@ CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
 │                                                     │
 └─────────────────────────────────────────────────────────┘
 ```
+## 모범 사례
 
-## Best Practices
+1. **보수적으로 행동하세요:** 의심스러운 경우에는 점수를 낮추세요
+2. **가정 문서화:** 가정한 내용을 기록합니다.
+3. **계산기 사용:** 공식 CVSS 계산기를 사용하세요.
+4. **상황 고려:** 환경에 맞게 조정
+5. **정기적으로 검토:** 점수는 새로운 정보에 따라 변경될 수 있습니다.
 
-1. **Be Conservative:** When in doubt, score lower
-2. **Document Assumptions:** Record what you assumed
-3. **Use Calculators:** Use official CVSS calculators
-4. **Consider Context:** Adjust for your environment
-5. **Review Regularly:** Scores can change with new info
+## 참고자료
 
-## References
-
-- [First.org CVSS Calculator](https://www.first.org/cvss/calculator/3.1)
-- [NIST CVSS Standard](https://nvd.nist.gov/vuln-metrics/cvss)
-- [CVSS v3.1 Specification](https://www.first.org/cvss/specification-document)
+- [First.org CVSS 계산기](https://www.first.org/cvss/calculator/3.1)
+- [NIST CVSS 표준](https://nvd.nist.gov/vuln-metrics/cvss)
+- [CVSS v3.1 사양](https://www.first.org/cvss/specation-document)

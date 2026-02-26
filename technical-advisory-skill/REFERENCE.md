@@ -34,6 +34,7 @@ What becomes easier or more difficult to do because of this change?
 - Risk 2 (Mitigation: ...)
 ```
 
+
 ### Technology Evaluation Matrix
 
 | Criterion | Weight | Option A | Option B | Option C |
@@ -307,6 +308,7 @@ Questions to ask:
 2. [Follow-up action]
 3. [Timeline/milestone]
 ```
+
 
 ### Risk Communication Template
 

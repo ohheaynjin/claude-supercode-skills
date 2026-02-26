@@ -1,210 +1,207 @@
 ---
 name: machine-learning-engineer
-description: Use when user needs ML model deployment, production serving infrastructure, optimization strategies, and real-time inference systems. Designs and implements scalable ML systems with focus on reliability and performance.
+description: 사용자에게 ML 모델 배포, 프로덕션 서비스 인프라, 최적화 전략, 실시간 추론 시스템이 필요할 때 사용하세요. 안정성과 성능에 중점을 두고 확장 가능한 ML 시스템을 설계하고 구현합니다.
 ---
+# 머신러닝 엔지니어
 
-# Machine Learning Engineer
+## 목적
 
-## Purpose
+모델 배포, 프로덕션 서비스 인프라, 실시간 추론 시스템을 전문으로 하는 ML 엔지니어링 전문 지식을 제공합니다. 안정적인 프로덕션 기계 학습 워크로드를 위한 모델 최적화, 자동 크기 조정 및 모니터링 기능을 갖춘 확장 가능한 ML 플랫폼을 설계합니다.
 
-Provides ML engineering expertise specializing in model deployment, production serving infrastructure, and real-time inference systems. Designs scalable ML platforms with model optimization, auto-scaling, and monitoring for reliable production machine learning workloads.
+## 사용 시기
 
-## When to Use
+- 프로덕션에 ML 모델 배포
+- 실시간 추론 API 개발
+- 모델 최적화 및 압축
+- 일괄 예측 시스템
+- 자동 확장 및 로드 밸런싱
+- IoT/모바일을 위한 엣지 구축
+- 다중 모델 제공 오케스트레이션
+- 성능 튜닝 및 대기 시간 최적화
 
-- ML model deployment to production
-- Real-time inference API development
-- Model optimization and compression
-- Batch prediction systems
-- Auto-scaling and load balancing
-- Edge deployment for IoT/mobile
-- Multi-model serving orchestration
-- Performance tuning and latency optimization
+이 기술은 기계 학습 모델을 대규모로 배포하고 제공하기 위한 전문적인 ML 엔지니어링 기능을 제공합니다. 프로덕션 워크로드를 위한 안정적이고 성능이 뛰어난 ML 시스템 구축에 중점을 두고 모델 최적화, 추론 인프라, 실시간 서비스 및 엣지 배포에 중점을 둡니다.
 
-This skill provides expert ML engineering capabilities for deploying and serving machine learning models at scale. It focuses on model optimization, inference infrastructure, real-time serving, and edge deployment with emphasis on building reliable, performant ML systems for production workloads.
+## 사용 시기
 
-## When to Use
+사용자 요구사항:
+- 프로덕션에 ML 모델 배포
+- 실시간 추론 API 개발
+- 모델 최적화 및 압축
+- 일괄 예측 시스템
+- 자동 확장 및 로드 밸런싱
+- IoT/모바일을 위한 엣지 구축
+- 다중 모델 제공 오케스트레이션
+- 성능 튜닝 및 대기 시간 최적화
 
-User needs:
-- ML model deployment to production
-- Real-time inference API development
-- Model optimization and compression
-- Batch prediction systems
-- Auto-scaling and load balancing
-- Edge deployment for IoT/mobile
-- Multi-model serving orchestration
-- Performance tuning and latency optimization
+## 이 스킬의 역할
 
-## What This Skill Does
+이 기술은 포괄적인 인프라를 갖춘 프로덕션에 ML 모델을 배포합니다. 추론을 위해 모델을 최적화하고, 제공 파이프라인을 구축하고, 자동 크기 조정을 구성하고, 모니터링을 구현하고, 모델이 프로덕션 환경에서 성능, 안정성, 확장성 요구 사항을 충족하는지 확인합니다.
 
-This skill deploys ML models to production with comprehensive infrastructure. It optimizes models for inference, builds serving pipelines, configures auto-scaling, implements monitoring, and ensures models meet performance, reliability, and scalability requirements in production environments.
+### ML 배포 구성요소
 
-### ML Deployment Components
+- 모델 최적화 및 압축
+- 인프라 제공(REST/gRPC API, 배치 작업)
+- 로드 밸런싱 및 요청 라우팅
+- Auto Scaling 및 리소스 관리
+- 실시간 및 일괄 예측 시스템
+- 모니터링, 로깅 및 관찰 가능성
+- Edge 배포 및 모델 압축
+- A/B 테스트 및 카나리아 배포
 
-- Model optimization and compression
-- Serving infrastructure (REST/gRPC APIs, batch jobs)
-- Load balancing and request routing
-- Auto-scaling and resource management
-- Real-time and batch prediction systems
-- Monitoring, logging, and observability
-- Edge deployment and model compression
-- A/B testing and canary deployments
+## 핵심 기능
 
-## Core Capabilities
+### 모델 배포 파이프라인
+- ML 모델을 위한 CI/CD 통합
+- 자동화된 테스트 및 검증
+- 모델 성능 벤치마킹
+- 보안 스캐닝 및 취약점 평가
+- 컨테이너 구축 및 레지스트리 관리
+- 점진적 출시 및 블루-그린 배포
 
-### Model Deployment Pipelines
-- CI/CD integration for ML models
-- Automated testing and validation
-- Model performance benchmarking
-- Security scanning and vulnerability assessment
-- Container building and registry management
-- Progressive rollout and blue-green deployment
+### 서비스 인프라
+- 로드밸런서 구성(NGINX, HAProxy)
+- 요청 라우팅 및 모델 캐싱
+- 연결 풀링 및 상태 확인
+- 정상 종료 및 자원 할당
+- 다중 지역 배포 및 장애 조치
+- 컨테이너 오케스트레이션(Kubernetes, ECS)
 
-### Serving Infrastructure
-- Load balancer configuration (NGINX, HAProxy)
-- Request routing and model caching
-- Connection pooling and health checking
-- Graceful shutdown and resource allocation
-- Multi-region deployment and failover
-- Container orchestration (Kubernetes, ECS)
+### 모델 최적화
+- 양자화(FP32, FP16, INT8, INT4)
+- 모델 가지치기 및 희소화
+- 지식 증류 기술
+- ONNX 및 TensorRT 변환
+- 그래프 최적화 및 연산자 융합
+- 메모리 최적화 및 처리량 튜닝
 
-### Model Optimization
-- Quantization (FP32, FP16, INT8, INT4)
-- Model pruning and sparsification
-- Knowledge distillation techniques
-- ONNX and TensorRT conversion
-- Graph optimization and operator fusion
-- Memory optimization and throughput tuning
+### 실시간 추론
+- 요청 전처리 및 검증
+- 모델 예측 실행
+- 응답 형식화 및 오류 처리
+- 타임아웃 관리 및 회로 차단
+- 요청 일괄 처리 및 응답 캐싱
+- 스트리밍 예측 및 비동기 처리
 
-### Real-time Inference
-- Request preprocessing and validation
-- Model prediction execution
-- Response formatting and error handling
-- Timeout management and circuit breaking
-- Request batching and response caching
-- Streaming predictions and async processing
+### 배치 예측 시스템
+- 작업 일정 조정 및 조정
+- 데이터 분할 및 병렬 처리
+- 진행 상황 추적 및 오류 처리
+- 결과 집계 및 저장
+- 비용 최적화 및 자원 관리
 
-### Batch Prediction Systems
-- Job scheduling and orchestration
-- Data partitioning and parallel processing
-- Progress tracking and error handling
-- Result aggregation and storage
-- Cost optimization and resource management
+### 자동 확장 전략
+- 메트릭 기반 확장(CPU, GPU, 요청 속도)
+- 확장 및 축소 정책
+- 워밍업 기간 및 예측 스케일링
+- 비용 관리 및 지역별 유통
+- 교통예측 및 용량계획
 
-### Auto-scaling Strategies
-- Metric-based scaling (CPU, GPU, request rate)
-- Scale-up and scale-down policies
-- Warm-up periods and predictive scaling
-- Cost controls and regional distribution
-- Traffic prediction and capacity planning
+### 다중 모델 제공
+- 모델 라우팅 및 버전 관리
+- A/B 테스트 및 트래픽 분할
+- 앙상블 서빙 및 모델 캐스케이딩
+- 대체 전략 및 성능 격리
+- 섀도우 모드 테스트 및 검증
 
-### Multi-model Serving
-- Model routing and version management
-- A/B testing and traffic splitting
-- Ensemble serving and model cascading
-- Fallback strategies and performance isolation
-- Shadow mode testing and validation
+### 엣지 배포
+- 에지 장치에 대한 모델 압축
+- 하드웨어 최적화 및 전력 효율성
+- 오프라인 기능 및 업데이트 메커니즘
+- 원격 수집 및 보안 강화
+- 자원 제약 및 최적화
 
-### Edge Deployment
-- Model compression for edge devices
-- Hardware optimization and power efficiency
-- Offline capability and update mechanisms
-- Telemetry collection and security hardening
-- Resource constraints and optimization
+## 도구 제한사항- 읽기: 모델 아티팩트, 인프라 구성 및 모니터링 데이터에 액세스합니다.
+- 쓰기/편집: 배포 구성, 제공 코드 및 최적화 스크립트 생성
+- Bash: 배포 명령 실행, 모니터링 설정 및 성능 테스트
+- Glob/Grep: 모델 통합 및 엔드포인트 제공을 위한 코드베이스 검색
 
-## Tool Restrictions
+## 다른 기술과의 통합
 
-- Read: Access model artifacts, infrastructure configs, and monitoring data
-- Write/Edit: Create deployment configs, serving code, and optimization scripts
-- Bash: Execute deployment commands, monitoring setup, and performance tests
-- Glob/Grep: Search codebases for model integration and serving endpoints
+- ml-engine: 모델 최적화 및 교육 파이프라인 통합
+- mlops-engineer: 인프라 및 플랫폼 설정
+- 데이터 엔지니어: 데이터 파이프라인 및 특성 저장소
+- devops-engineer: CI/CD 및 배포 자동화
+- cloud-architect: 클라우드 인프라 및 아키텍처
+- sre-engineer: 신뢰성 및 가용성
+- 성능 엔지니어: 성능 프로파일링 및 최적화
+- ai-engineer: 모델 선택 및 통합
 
-## Integration with Other Skills
+## 상호작용 예시
 
-- ml-engineer: Model optimization and training pipeline integration
-- mlops-engineer: Infrastructure and platform setup
-- data-engineer: Data pipelines and feature stores
-- devops-engineer: CI/CD and deployment automation
-- cloud-architect: Cloud infrastructure and architecture
-- sre-engineer: Reliability and availability
-- performance-engineer: Performance profiling and optimization
-- ai-engineer: Model selection and integration
+### 시나리오 1: 실시간 추론 API 배포
 
-## Example Interactions
+**사용자:** "자동 확장 기능을 갖춘 실시간 API로 ML 모델 배포"
 
-### Scenario 1: Real-time Inference API Deployment
+**상호작용:**
+1. 기술은 모델 특성 및 요구 사항을 분석합니다.
+2. 서비스 인프라 구현:
+   - ONNX 변환으로 모델 최적화(60% 크기 감소)
+   - FastAPI/gRPC 제공 엔드포인트 생성
+   - 요청 속도에 따라 GPU 자동 크기 조정 구성
+   - 처리량을 위한 요청 일괄 처리 구현
+   - 모니터링 및 알림 설정
+3. 수평형 포드 자동 크기 조정기를 사용하여 Kubernetes에 배포
+4. <50ms P99 대기 시간 및 2000+ RPS 처리량 달성
 
-**User:** "Deploy our ML model as a real-time API with auto-scaling"
+### 시나리오 2: 다중 모델 제공 플랫폼
 
-**Interaction:**
-1. Skill analyzes model characteristics and requirements
-2. Implements serving infrastructure:
-   - Optimizes model with ONNX conversion (60% size reduction)
-   - Creates FastAPI/gRPC serving endpoints
-   - Configures GPU auto-scaling based on request rate
-   - Implements request batching for throughput
-   - Sets up monitoring and alerting
-3. Deploys to Kubernetes with horizontal pod autoscaler
-4. Achieves <50ms P99 latency and 2000+ RPS throughput
+**사용자:** "지능형 라우팅을 통해 50개 이상의 모델을 지원하는 플랫폼 구축"
 
-### Scenario 2: Multi-model Serving Platform
+**상호작용:**
+1. 스킬 디자인 다중 모델 아키텍처:
+   - 모델 레지스트리 및 버전 관리
+   - 요청 유형에 따른 지능형 라우팅
+   - 다양한 사용 사례를 위한 전문 모델
+   - 폴백 및 회로 차단
+   - 간단한 쿼리를 위한 더 작은 모델로 비용 최적화
+2. 다음을 사용하여 서비스 프레임워크를 구현합니다.
+   - 모델 로딩 및 언로딩
+   - 요청 큐잉 및 로드 밸런싱
+   - A/B 테스트 및 트래픽 분할
+   - 중요한 경로에 대한 앙상블 서빙
+3. 포괄적인 모니터링 및 비용 추적을 통해 배포
 
-**User:** "Build a platform to serve 50+ models with intelligent routing"
+### 시나리오 3: IoT용 엣지 배포
 
-**Interaction:**
-1. Skill designs multi-model architecture:
-   - Model registry and version management
-   - Intelligent routing based on request type
-   - Specialist models for different use cases
-   - Fallback and circuit breaking
-   - Cost optimization with smaller models for simple queries
-2. Implements serving framework with:
-   - Model loading and unloading
-   - Request queuing and load balancing
-   - A/B testing and traffic splitting
-   - Ensemble serving for critical paths
-3. Deploys with comprehensive monitoring and cost tracking
+**사용자:** "리소스가 제한된 에지 장치에 ML 모델 배포"
 
-### Scenario 3: Edge Deployment for IoT
+**상호작용:**
+1. 기술은 장치 제약 조건 및 요구 사항을 분석합니다.
+2. 가장자리에 맞게 모델을 최적화합니다.
+   - INT8로 양자화(4배 크기 감소)
+   - 모델을 정리하고 압축합니다.
+   - 효율적인 추론을 위해 ONNX Runtime을 구현합니다.
+   - 오프라인 기능 및 로컬 캐싱 추가
+3. 배포 패키지를 생성합니다.
+   - 엣지 최적화 추론 런타임
+   - 델타 업데이트를 통한 업데이트 메커니즘
+   - 원격 측정 수집 및 모니터링
+   - 보안 강화 및 암호화
+4. 대상 하드웨어에서 테스트하고 성능을 검증합니다.
 
-**User:** "Deploy ML model to edge devices with limited resources"
+## 모범 사례
 
-**Interaction:**
-1. Skill analyzes device constraints and requirements
-2. Optimizes model for edge:
-   - Quantizes to INT8 (4x size reduction)
-   - Prunes and compresses model
-   - Implements ONNX Runtime for efficient inference
-   - Adds offline capability and local caching
-3. Creates deployment package:
-   - Edge-optimized inference runtime
-   - Update mechanism with delta updates
-   - Telemetry collection and monitoring
-   - Security hardening and encryption
-4. Tests on target hardware and validates performance
+- 성능: 실시간 추론을 위한 목표 <100ms P99 지연 시간
+- 신뢰성: 우아한 성능 저하 및 폴백 모델 구현
+- 모니터링: 대기 시간, 처리량, 오류율 및 리소스 사용량 추적
+- 테스트: 로드 테스트를 수행하고 프로덕션 트래픽 패턴에 대해 검증합니다.
+- 보안: 인증, 암호화, 모델 보안 구현
+- 문서화: 모든 배포 구성 및 운영 절차를 문서화합니다.
+- 비용: 비용 효율성을 위해 리소스 사용량을 최적화하고 Auto Scaling을 구현합니다.
 
-## Best Practices
+## 예
 
-- Performance: Target <100ms P99 latency for real-time inference
-- Reliability: Implement graceful degradation and fallback models
-- Monitoring: Track latency, throughput, error rates, and resource usage
-- Testing: Conduct load testing and validate against production traffic patterns
-- Security: Implement authentication, encryption, and model security
-- Documentation: Document all deployment configurations and operational procedures
-- Cost: Optimize resource usage and implement auto-scaling for cost efficiency
+### 예시 1: 프로덕션을 위한 실시간 추론 API
 
-## Examples
+**시나리오:** 자동 확장 기능을 갖춘 실시간 API로 사기 탐지 모델을 배포합니다.
 
-### Example 1: Real-Time Inference API for Production
+**배포 접근 방식:**
+1. **모델 최적화**: 모델을 ONNX로 변환(60% 크기 감소)
+2. **서빙 프레임워크**: 비동기 처리 기능을 갖춘 FastAPI 엔드포인트 구축
+3. **인프라**: 수평형 포드 자동 크기 조정기를 사용한 Kubernetes 배포
+4. **모니터링**: 통합 Prometheus 측정항목 및 Grafana 대시보드
 
-**Scenario:** Deploy a fraud detection model as a real-time API with auto-scaling.
-
-**Deployment Approach:**
-1. **Model Optimization**: Converted model to ONNX (60% size reduction)
-2. **Serving Framework**: Built FastAPI endpoints with async processing
-3. **Infrastructure**: Kubernetes deployment with Horizontal Pod Autoscaler
-4. **Monitoring**: Integrated Prometheus metrics and Grafana dashboards
-
-**Configuration:**
+**구성:**
 ```python
 # FastAPI serving with optimization
 from fastapi import FastAPI
@@ -219,138 +216,135 @@ async def predict(features: List[float]):
     outputs = session.run(None, {"input": input_tensor})
     return {"prediction": outputs[0].tolist()}
 ```
+**성능 결과:**
+| 미터법 | 가치 |
+|---------|-------|
+| P99 대기 시간 | 45ms |
+| 처리량 | 2,500RPS |
+| 가용성 | 99.99% |
+| 자동 크기 조정 | 포드 2~50개 |
 
-**Performance Results:**
-| Metric | Value |
-|--------|-------|
-| P99 Latency | 45ms |
-| Throughput | 2,500 RPS |
-| Availability | 99.99% |
-| Auto-scaling | 2-50 pods |
+### 예시 2: 다중 모델 제공 플랫폼
 
-### Example 2: Multi-Model Serving Platform
+**시나리오:** 다양한 예측 유형에 대해 50개 이상의 ML 모델을 제공하는 플랫폼을 구축하세요.
 
-**Scenario:** Build a platform serving 50+ ML models for different prediction types.
+**아키텍처 디자인:**
+1. **모델 레지스트리**: 버전 관리가 포함된 중앙 레지스트리
+2. **라우터**: 요청 유형에 따른 지능형 라우팅
+3. **리소스 관리자**: 모델별 동적 리소스 할당
+4. **폴백 시스템**: 사용할 수 없는 모델에 대한 점진적 성능 저하
 
-**Architecture Design:**
-1. **Model Registry**: Central registry with versioning
-2. **Router**: Intelligent routing based on request type
-3. **Resource Manager**: Dynamic resource allocation per model
-4. **Fallback System**: Graceful degradation for unavailable models
+**구현:**
+- 요청 패턴에 따른 모델 로딩/언로딩
+- 모델 비교를 위한 A/B 테스트 프레임워크
+- 모델 우선순위를 통한 비용 최적화
+- 새 모델에 대한 섀도우 모드 테스트
 
-**Implementation:**
-- Model loading/unloading based on request patterns
-- A/B testing framework for model comparisons
-- Cost optimization with model prioritization
-- Shadow mode testing for new models
+**결과:**
+- 99.9% 가동 시간으로 배포된 50개 이상의 모델
+- 인프라 비용 40% 절감
+- 모델 업데이트 중 다운타임 없음
+- 빈번한 요청에 대한 캐시 적중률 95%
 
-**Results:**
-- 50+ models deployed with 99.9% uptime
-- 40% reduction in infrastructure costs
-- Zero downtime during model updates
-- 95% cache hit rate for frequent requests
+### 예시 3: 모바일 장치용 엣지 배포
 
-### Example 3: Edge Deployment for Mobile Devices
+**시나리오:** iOS 및 Android 앱에 이미지 분류 모델을 배포합니다.
 
-**Scenario:** Deploy image classification model to iOS and Android apps.
+**가장자리 최적화:**
+1. **모델 압축**: INT8로 양자화됨(4배 크기 감소)
+2. **런타임 선택**: iOS용 CoreML, Android용 TFLite
+3. **온디바이스 캐싱**: 지능형 모델 캐싱 및 업데이트
+4. **개인정보 보호 규정 준수**: 모든 처리는 기기 내에서 이루어집니다.
 
-**Edge Optimization:**
-1. **Model Compression**: Quantized to INT8 (4x size reduction)
-2. **Runtime Selection**: CoreML for iOS, TFLite for Android
-3. **On-Device Caching**: Intelligent model caching and updates
-4. **Privacy Compliance**: All processing on-device
+**성능 지표:**
+| 플랫폼 | 모델 크기 | 추론 시간 | 정확도 |
+|------------|------------|---|---------|
+| 원본 | 25MB | 150ms | 94.2% |
+| 최적화 | 6MB | 35ms | 93.8% |
 
-**Performance Metrics:**
-| Platform | Model Size | Inference Time | Accuracy |
-|----------|------------|----------------|----------|
-| Original | 25 MB | 150ms | 94.2% |
-| Optimized | 6 MB | 35ms | 93.8% |
+**결과:**
+- 앱 다운로드 크기 80% 감소
+- 장치에서 4배 더 빠른 추론
+- 로컬 추론을 통한 오프라인 기능
+- GDPR 준수(기기에 데이터가 남지 않음)
 
-**Results:**
-- 80% reduction in app download size
-- 4x faster inference on device
-- Offline capability with local inference
-- GDPR compliant (no data leaves device)
+## 모범 사례
 
-## Best Practices
+### 모델 최적화
 
-### Model Optimization
+- **양자화**: FP16으로 시작하고 가장자리를 위해 INT8로 이동
+- **가지치기**: 효율성을 위해 불필요한 가중치를 제거합니다.
+- **증류**: 지식을 더 작은 모델로 이전
+- **ONNX 내보내기**: 크로스 플랫폼 배포를 위한 표준 형식
+- **벤치마킹**: 항상 대상 하드웨어에서 테스트하세요.
 
-- **Quantization**: Start with FP16, move to INT8 for edge
-- **Pruning**: Remove unnecessary weights for efficiency
-- **Distillation**: Transfer knowledge to smaller models
-- **ONNX Export**: Standard format for cross-platform deployment
-- **Benchmarking**: Always test on target hardware
+### 프로덕션 서비스
 
-### Production Serving
+- **상태 확인**: /health 및 /ready 엔드포인트 구현
+- **Graceful Degradation**: 더 간단한 모델이나 경험적 방법으로 대체
+- **회로 차단기**: 계단식 오류 방지
+- **속도 제한**: 남용 및 남용으로부터 보호
+- **캐싱**: 동일한 입력에 대한 캐시 예측
 
-- **Health Checks**: Implement /health and /ready endpoints
-- **Graceful Degradation**: Fallback to simpler models or heuristics
-- **Circuit Breakers**: Prevent cascade failures
-- **Rate Limiting**: Protect against abuse and overuse
-- **Caching**: Cache predictions for identical inputs
+### 모니터링 및 관찰 가능성
 
-### Monitoring and Observability
+- **대기 시간 추적**: P50, P95, P99 대기 시간 모니터링
+- **오류율**: 오류 및 오류 유형을 추적합니다.
+- **예측 분포**: 분포 변화에 대한 경고
+- **리소스 사용량**: CPU, GPU, 메모리 모니터링
+- **비즈니스 지표**: KPI에 대한 모델 영향 추적
 
-- **Latency Tracking**: Monitor P50, P95, P99 latencies
-- **Error Rates**: Track failures and error types
-- **Prediction Distribution**: Alert on distribution shifts
-- **Resource Usage**: CPU, GPU, memory monitoring
-- **Business Metrics**: Track model impact on KPIs
+### 보안 및 규정 준수
 
-### Security and Compliance
+- **모델 보안**: 모델 가중치 및 아티팩트 보호
+- **입력 유효성 검사**: 모든 예측 입력을 삭제합니다.
+- **출력 필터링**: 민감한 데이터 노출 방지
+- **감사 로깅**: 모든 예측 요청을 기록합니다.
+- **규정 준수**: 업계 규정(HIPAA, GDPR) 충족
 
-- **Model Security**: Protect model weights and artifacts
-- **Input Validation**: Sanitize all prediction inputs
-- **Output Filtering**: Prevent sensitive data exposure
-- **Audit Logging**: Log all prediction requests
-- **Compliance**: Meet industry regulations (HIPAA, GDPR)
+## 안티 패턴
 
-## Anti-Patterns
+### 모델 배포 방지 패턴
 
-### Model Deployment Anti-Patterns
+- **수동 배포**: 자동화 없이 모델 배포 - 모델용 CI/CD 구현
+- **버전 관리 없음**: 버전 추적 없이 모델 교체 - 모델 버전 기록 유지
+- **핫픽스 문화**: 테스트 없이 긴급 모델 변경 - 배포 전에 검증 필요
+- **블랙박스 배포**: 설명 없이 모델 배포 - 모델 해석성 구현
 
-- **Manual Deployment**: Deploying models without automation - implement CI/CD for models
-- **No Versioning**: Replacing models without tracking versions - maintain model version history
-- **Hotfix Culture**: Making urgent model changes without testing - require validation before deployment
-- **Black Box Deployment**: Deploying models without explainability - implement model interpretability
+### 성능 방지 패턴
 
-### Performance Anti-Patterns
+- **기준 없음**: 성능 벤치마크 없이 배포 - 성능 기준 설정
+- **과잉 최적화**: 실질적인 이점을 넘어서는 조정 - 고객에게 영향을 미치는 지표에 집중
+- **지연 시간 무시**: 정확성에만 집중하고 지연 시간은 무시합니다. 실제 사용 사례에 맞게 최적화합니다.
+- **리소스 낭비**: 인프라 과잉 프로비저닝 - 실제 로드를 기준으로 적절한 크기의 리소스
 
-- **No Baselines**: Deploying without performance benchmarks - establish performance baselines
-- **Over-Optimization**: Tuning beyond practical benefit - focus on customer-impacting metrics
-- **Ignore Latency**: Focusing only on accuracy, ignoring latency - optimize for real-world use cases
-- **Resource Waste**: Over-provisioning infrastructure - right-size resources based on actual load
+### 안티 패턴 모니터링- **자동 오류**: 감지 없이 모델이 실패함 - 포괄적인 상태 확인 구현
+- **측정항목 과부하**: 너무 많은 측정항목을 모니터링합니다. - 실행 가능한 측정항목에 집중합니다.
+- **데이터 드리프트 맹목**: 모델 저하를 감지하지 못함 - 입력 데이터 분포 모니터링
+- **경고 피로**: 경고가 너무 많아 경고가 무시되었습니다. - 경고 임계값 조정
 
-### Monitoring Anti-Patterns
+### 확장성 방지 패턴
 
-- **Silent Failures**: Models failing without detection - implement comprehensive health checks
-- **Metric Overload**: Monitoring too many metrics - focus on actionable metrics
-- **Data Drift Blindness**: Not detecting model degradation - monitor input data distribution
-- **Alert Fatigue**: Too many alerts causing ignored warnings - tune alert thresholds
+- **부하 테스트 없음**: 성능 테스트 없이 배포 - 프로덕션과 유사한 트래픽으로 테스트
+- **단일 장애 지점**: 서비스 제공 인프라에 중복성 없음 - 장애 조치 구현
+- **자동 확장 없음**: 수동 용량 관리 - 자동 확장 구현
+- **상태 저장 설계**: 상태가 필요한 추론 - 상태 비저장 추론 설계
 
-### Scalability Anti-Patterns
+## 출력 형식
 
-- **No Load Testing**: Deploying without performance testing - test with production-like traffic
-- **Single Point of Failure**: No redundancy in serving infrastructure - implement failover
-- **No Autoscaling**: Manual capacity management - implement automatic scaling
-- **Stateful Design**: Inference that requires state - design stateless inference
+이 기술은 다음을 제공합니다.
+- 완전한 모델 제공 인프라(Docker, Kubernetes 구성)
+- 프로덕션 배포 파이프라인 및 CI/CD 워크플로
+- 실시간 및 일괄 예측 API
+- 모델 최적화 결과물 및 구성
+- 자동 확장 정책 및 코드형 인프라
+- 대시보드 및 경고 구성 모니터링
+- 성능 벤치마크 및 부하 테스트 보고서
 
-## Output Format
-
-This skill delivers:
-- Complete model serving infrastructure (Docker, Kubernetes configs)
-- Production deployment pipelines and CI/CD workflows
-- Real-time and batch prediction APIs
-- Model optimization artifacts and configurations
-- Auto-scaling policies and infrastructure as code
-- Monitoring dashboards and alert configurations
-- Performance benchmarks and load test reports
-
-All outputs include:
-- Detailed architecture documentation
-- Deployment scripts and configurations
-- Performance metrics and SLA validations
-- Security hardening guidelines
-- Operational runbooks and troubleshooting guides
-- Cost analysis and optimization recommendations
+모든 출력에는 다음이 포함됩니다.
+- 자세한 아키텍처 문서
+- 배포 스크립트 및 구성
+- 성능 지표 및 SLA 검증
+- 보안 강화 지침
+- 운영 런북 및 문제 해결 가이드
+- 비용 분석 및 최적화 권장 사항

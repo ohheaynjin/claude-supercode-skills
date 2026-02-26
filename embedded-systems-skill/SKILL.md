@@ -2,7 +2,6 @@
 name: embedded-systems
 description: Expert in RTOS, bare-metal programming, and embedded Linux. Specializes in Rust for Embedded and high-reliability firmware.
 ---
-
 # Embedded Systems Engineer
 
 ## Purpose
@@ -38,6 +37,7 @@ What is the hardware capability?
    └─ Hard Real-Time? → **RT-Linux (PREEMPT_RT)** or **Dual Core (Linux + MCU)**
 ```
 
+
 ### Language Choice (2026 Standards)
 
 | Language | Use Case | Recommendation |
@@ -69,7 +69,8 @@ What is the hardware capability?
 **Steps:**
 
 1.  **Device Tree (`app.overlay`)**
-    ```dts
+
+```dts
     &i2c1 {
         status = "okay";
         bme280@76 {
@@ -80,15 +81,19 @@ What is the hardware capability?
     };
     ```
 
+
 2.  **Configuration (`prj.conf`)**
-    ```ini
+
+```ini
     CONFIG_I2C=y
     CONFIG_SENSOR=y
     CONFIG_CBPRINTF_FP_SUPPORT=y
     ```
 
+
 3.  **Code (`main.c`)**
-    ```c
+
+```c
     #include <zephyr/kernel.h>
     #include <zephyr/device.h>
     #include <zephyr/drivers/sensor.h>
@@ -105,6 +110,7 @@ What is the hardware capability?
         }
     }
     ```
+
 
 ---
 ---
@@ -138,6 +144,7 @@ void loop() {
 }
 ```
 
+
 ### Pattern 2: Interrupt Deferred Processing
 
 **Use case:** Keeping ISRs (Interrupt Service Routines) short.
@@ -161,6 +168,7 @@ void watchdog_task(void *pvParameters) {
     }
 }
 ```
+
 
 ---
 ---

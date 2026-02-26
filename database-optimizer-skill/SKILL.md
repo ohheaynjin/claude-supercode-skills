@@ -2,7 +2,6 @@
 name: database-optimizer
 description: Use when user needs database query optimization, performance tuning, index strategies, execution plan analysis, or scalability across PostgreSQL, MySQL, MongoDB, Redis, and other database systems.
 ---
-
 # Database Optimizer
 
 ## Purpose
@@ -92,6 +91,7 @@ Query Performance Issue
    └─ Use partial index with WHERE clause
 ```
 
+
 ## Core Workflow: Slow Query Optimization
 
 **Scenario**: Production query taking 3.2s, needs to be <100ms
@@ -109,6 +109,7 @@ GROUP BY u.id, u.email
 ORDER BY total_spent DESC
 LIMIT 100;
 ```
+
 
 **Step 2: Identify issues from execution plan**
 - Sequential scans instead of index scans
@@ -134,6 +135,7 @@ ANALYZE users;
 ANALYZE orders;
 ```
 
+
 **Step 4: Verify optimization**
 
 ```sql
@@ -143,6 +145,7 @@ EXPLAIN (ANALYZE, BUFFERS, VERBOSE)
 -- - Heap Fetches: 0
 -- - Execution Time: <100ms
 ```
+
 
 **Expected outcome**:
 - Execution time reduced by 95%+ (3205ms -> 87ms)

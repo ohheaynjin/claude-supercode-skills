@@ -1,37 +1,36 @@
 ---
 name: context-manager
-description: Expert in managing the "Memory" of AI systems. Specializes in Vector Databases (RAG), Short/Long-term memory architectures, and Context Window optimization. Use when designing AI memory systems, optimizing context usage, or implementing conversation history management.
+description: AI 시스템의 "메모리"를 관리하는 전문가입니다. 벡터 데이터베이스(RAG), 단기/장기 메모리 아키텍처 및 컨텍스트 창 최적화를 전문으로 합니다. AI 메모리 시스템을 설계하거나, 컨텍스트 사용을 최적화하거나, 대화 기록 관리를 구현할 때 사용합니다.
 ---
+# 컨텍스트 관리자
 
-# Context Manager
+## 목적
+AI 컨텍스트 관리, 메모리 아키텍처 및 컨텍스트 창 최적화에 대한 전문 지식을 제공합니다. LLM 애플리케이션에 대한 대화 기록, RAG 메모리 시스템 및 효율적인 컨텍스트 활용을 처리합니다.
 
-## Purpose
-Provides expertise in AI context management, memory architectures, and context window optimization. Handles conversation history, RAG memory systems, and efficient context utilization for LLM applications.
+## 사용 시기
+- AI 메모리 및 컨텍스트 시스템 설계
+- 컨텍스트 창 사용 최적화
+- 대화내역 관리 구현
+- AI 에이전트를 위한 장기 기억 구축
+- RAG 검색 컨텍스트 관리
+- 품질을 유지하면서 토큰 사용량을 줄입니다.
+- 다중 세션 메모리 지속성 설계
 
-## When to Use
-- Designing AI memory and context systems
-- Optimizing context window usage
-- Implementing conversation history management
-- Building long-term memory for AI agents
-- Managing RAG retrieval context
-- Reducing token usage while preserving quality
-- Designing multi-session memory persistence
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- AI 메모리 및 컨텍스트 시스템 설계
+- 컨텍스트 창 사용 최적화
+- 대화내역 관리 구현
+- AI 에이전트를 위한 장기 기억 구축
+- 품질을 유지하면서 토큰 사용량을 줄입니다.
 
-## Quick Start
-**Invoke this skill when:**
-- Designing AI memory and context systems
-- Optimizing context window usage
-- Implementing conversation history management
-- Building long-term memory for AI agents
-- Reducing token usage while preserving quality
+**다음과 같은 경우에는 호출하지 마세요.**
+- 전체 RAG 파이프라인 구축(ai-engineer 사용)
+- 벡터 데이터베이스 관리(데이터 엔지니어 사용)
+- 여러 에이전트 조정(에이전트-주최자 사용)
+- 임베딩 모델 학습(ml-engine 사용)
 
-**Do NOT invoke when:**
-- Building full RAG pipelines (use ai-engineer)
-- Managing vector databases (use data-engineer)
-- Coordinating multiple agents (use agent-organizer)
-- Training embedding models (use ml-engineer)
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Memory Type Selection:
 ├── Single conversation → Sliding window context
@@ -43,46 +42,45 @@ Memory Type Selection:
     ├── Semantic memory → Knowledge graph
     └── Procedural memory → Learned patterns
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 컨텍스트 창 최적화
+1. 현재 토큰 사용량 측정
+2. 중복되거나 장황한 콘텐츠 식별
+3. 오래된 메시지에 대한 요약 구현
+4. 최근의 관련 맥락에 우선순위를 두세요
+5. 압축 기술을 사용하세요
+6. 품질과 토큰의 균형을 모니터링하세요
 
-### 1. Context Window Optimization
-1. Measure current token usage
-2. Identify redundant or verbose content
-3. Implement summarization for old messages
-4. Prioritize recent and relevant context
-5. Use compression techniques
-6. Monitor quality vs. token tradeoff
+### 2. 대화 메모리 디자인
+1. 메모리 보존 요구 사항 정의
+2. 스토리지 전략 선택(인메모리, DB)
+3. 메시지 윈도우 구현
+4. 오버플로에 대한 요약 추가
+5. 관련 이력에 대한 디자인 검색
+6. 세션 경계 처리
 
-### 2. Conversation Memory Design
-1. Define memory retention requirements
-2. Choose storage strategy (in-memory, DB)
-3. Implement message windowing
-4. Add summarization for overflow
-5. Design retrieval for relevant history
-6. Handle session boundaries
+### 3. 장기 기억 구현
+1. 필요한 메모리 유형 정의
+2. 메모리 저장 스키마 설계
+3. 메모리 쓰기 트리거 구현
+4. 검색 메커니즘 구축
+5. 메모리 통합 추가
+6. 망각 정책 구현
 
-### 3. Long-term Memory Implementation
-1. Define memory types needed
-2. Design memory storage schema
-3. Implement memory write triggers
-4. Build retrieval mechanisms
-5. Add memory consolidation
-6. Implement forgetting policies
+## 모범 사례
+- 잘라내기보다는 이전 컨텍스트를 요약합니다.
+- 관련 이력 검색을 위해 의미 검색을 사용합니다.
+- 대화와 시스템 지침을 분리합니다.
+- 자주 액세스되는 컨텍스트를 캐시합니다.
+- 컨텍스트 활용 지표 모니터링
+- 한계에서 우아한 성능 저하 구현
 
-## Best Practices
-- Summarize old context rather than truncating
-- Use semantic search for relevant history retrieval
-- Separate system instructions from conversation
-- Cache frequently accessed context
-- Monitor context utilization metrics
-- Implement graceful degradation at limits
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Full history always | Exceeds context limits | Sliding window + summaries |
-| No summarization | Lost important context | Summarize before eviction |
-| Equal priority | Wastes tokens on irrelevant | Weight recent/relevant higher |
-| No persistence | Lost memory across sessions | Store important memories |
-| Ignoring token costs | Expensive API calls | Monitor and optimize usage |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 전체 기록은 항상 | 컨텍스트 제한을 초과했습니다 | 슬라이딩 창 + 요약 |
+| 요약 없음 | 중요한 컨텍스트 손실 | 퇴거 전 요약 |
+| 동등한 우선순위 | 관련 없는 토큰을 낭비합니다 | 최근/관련 가중치 높음 |
+| 지속성 없음 | 세션 전반에 걸쳐 메모리 손실 | 중요한 추억을 저장하세요 |
+| 토큰 비용 무시 | 비용이 많이 드는 API 호출 | 사용량 모니터링 및 최적화 |

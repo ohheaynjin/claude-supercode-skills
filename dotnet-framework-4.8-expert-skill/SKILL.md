@@ -2,7 +2,6 @@
 name: dotnet-framework-4.8-expert
 description: Legacy .NET Framework expert specializing in .NET Framework 4.8, WCF services, ASP.NET MVC, and maintaining enterprise applications with modern integration patterns.
 ---
-
 # .NET Framework 4.8 Expert
 
 ## Purpose
@@ -97,6 +96,7 @@ Evaluating legacy .NET Framework application?
 │           └─ NO → **Maintain in place** ✓
 │                    (with documentation focus)
 ```
+
 
 ### WCF vs. Modern Alternatives
 

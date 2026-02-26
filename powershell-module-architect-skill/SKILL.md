@@ -1,51 +1,49 @@
 ---
 name: powershell-module-architect
-description: Use when user needs PowerShell module design, function structure, reusable libraries, profile optimization, or cross-version compatibility across PowerShell 5.1 and PowerShell 7+.
+description: 사용자에게 PowerShell 모듈 디자인, 함수 구조, 재사용 가능한 라이브러리, 프로필 최적화 또는 PowerShell 5.1 및 PowerShell 7+ 전반의 버전 간 호환성이 필요할 때 사용합니다.
 ---
+# PowerShell 모듈 설계자
 
-# PowerShell Module Architect
+## 목적
 
-## Purpose
+구조화되고 재사용 가능하며 유지 관리 가능한 PowerShell 모듈 생성을 전문으로 하는 PowerShell 모듈 설계 및 아키텍처 전문 지식을 제공합니다. 엔터프라이즈 PowerShell 환경을 위한 모듈 아키텍처, 기능 설계, 버전 간 호환성 및 프로필 최적화에 중점을 둡니다.
 
-Provides PowerShell module design and architecture expertise specializing in creating structured, reusable, and maintainable PowerShell modules. Focuses on module architecture, function design, cross-version compatibility, and profile optimization for enterprise PowerShell environments.
+## 사용 시기
 
-## When to Use
+- 흩어져 있는 스크립트를 구조화되고 재사용 가능한 모듈로 변환
+- Public/Private 기능 분리를 통한 모듈 아키텍처 설계
+- 버전 간 호환 모듈 생성(PowerShell 5.1 및 7+)
+- 더 빠른 로드 시간을 위해 PowerShell 프로필 최적화
+- 적절한 매개변수 검증을 통해 고급 기능 구축
 
-- Transforming scattered scripts into structured, reusable modules
-- Designing module architecture with public/private function separation
-- Creating cross-version compatible modules (PowerShell 5.1 & 7+)
-- Optimizing PowerShell profiles for faster load times
-- Building advanced functions with proper parameter validation
+## 빠른 시작
 
-## Quick Start
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 흩어져 있는 스크립트를 구조화되고 재사용 가능한 모듈로 변환
+- Public/Private 기능 분리를 통한 모듈 아키텍처 설계
+- 버전 간 호환 모듈 생성(PowerShell 5.1 및 7+)
+- 더 빠른 로드 시간을 위해 PowerShell 프로필 최적화
+- 적절한 매개변수 검증을 통해 고급 기능 구축
 
-**Invoke this skill when:**
-- Transforming scattered scripts into structured, reusable modules
-- Designing module architecture with public/private function separation
-- Creating cross-version compatible modules (PowerShell 5.1 & 7+)
-- Optimizing PowerShell profiles for faster load times
-- Building advanced functions with proper parameter validation
+**다음과 같은 경우에는 호출하지 마세요.**
+- 재사용되지 않는 간단한 일회용 스크립트(powershell-5.1-expert 또는 powershell-7-expert 사용)
+- 기능 추가가 필요한 잘 구성된 모듈이 이미 있음(관련 도메인 기술 사용)
+- UI 개발(대신 powershell-ui-architect 사용)
+- 보안 강화(대신 powershell-security-hardening 사용)
 
-**Do NOT invoke when:**
-- Simple one-off scripts that won't be reused (use powershell-5.1-expert or powershell-7-expert)
-- Already have well-structured modules needing functionality additions (use relevant domain skill)
-- UI development (use powershell-ui-architect instead)
-- Security hardening (use powershell-security-hardening instead)
+## 의사결정 프레임워크
 
-## Decision Framework
+### 모듈을 생성해야 하는 경우
 
-### When to Create a Module
+| 시나리오 | 추천 |
+|----------|---|
+| 3개 이상의 관련 기능 | 모듈 생성 |
+| 팀 간 공유 필요 | 모듈 + 매니페스트 만들기 |
+| 일회용 자동화 | 스크립트로 유지 |
+| 복잡한 매개변수 세트 | 모듈의 고급 기능 |
+| 버전 호환성 필요 | 호환성 레이어가 있는 모듈 |
 
-| Scenario | Recommendation |
-|----------|----------------|
-| 3+ related functions | Create module |
-| Cross-team sharing needed | Create module + manifest |
-| Single-use automation | Keep as script |
-| Complex parameter sets | Advanced function in module |
-| Version compatibility needed | Module with compatibility layer |
-
-### Module Structure Decision
-
+### 모듈 구조 결정
 ```
 Script Organization Need
 │
@@ -61,13 +59,11 @@ Script Organization Need
 └─ Team collaboration?
    └─ Git repo + CI/CD + Pester tests
 ```
+## 핵심 작업 흐름: 스크립트를 모듈로 변환
 
-## Core Workflow: Transform Scripts into Module
+**사용 사례:** 10-50개의 흩어져 있는 .ps1 스크립트를 체계적인 모듈로 리팩터링
 
-**Use case:** Refactor 10-50 scattered .ps1 scripts into organized module
-
-### Step 1: Analysis
-
+### 1단계: 분석
 ```powershell
 # Inventory existing scripts
 $scripts = Get-ChildItem -Path ./scripts -Filter *.ps1 -Recurse
@@ -85,9 +81,7 @@ foreach ($script in $scripts) {
 # AD-GroupManagement.ps1: 8 functions
 # Common-Helpers.ps1: 15 functions (candidates for Private/)
 ```
-
-### Step 2: Design Module Structure
-
+### 2단계: 모듈 구조 설계
 ```powershell
 # Create module skeleton
 $moduleName = "Organization.ActiveDirectory"
@@ -99,9 +93,7 @@ New-Item -Path "$modulePath/Tests" -ItemType Directory -Force
 New-Item -Path "$modulePath/$moduleName.psm1" -ItemType File -Force
 New-Item -Path "$modulePath/$moduleName.psd1" -ItemType File -Force
 ```
-
-### Step 3: Categorize Functions
-
+### 3단계: 기능 분류
 ```
 Public functions (exported to users):
   ├─ Get-OrgADUser
@@ -116,9 +108,7 @@ Private functions (internal helpers):
   ├─ _ConvertToCanonicalName
   └─ ... (utility functions)
 ```
-
-### Step 4: Implement Module File
-
+### 4단계: 모듈 파일 구현
 ```powershell
 # Organization.ActiveDirectory.psm1
 
@@ -145,9 +135,7 @@ foreach ($import in $Public) {
 # Export Public functions explicitly
 Export-ModuleMember -Function $Public.BaseName
 ```
-
-### Step 5: Create Module Manifest
-
+### 5단계: 모듈 매니페스트 생성
 ```powershell
 # Generate manifest
 $manifestParams = @{
@@ -169,9 +157,7 @@ $manifestParams = @{
 }
 New-ModuleManifest @manifestParams
 ```
-
-### Step 6: Add Pester Tests
-
+### 6단계: Pester 테스트 추가
 ```powershell
 # Tests/Module.Tests.ps1
 BeforeAll {
@@ -196,9 +182,7 @@ Describe "Get-OrgADUser" {
     }
 }
 ```
-
-## Quick Reference: Advanced Function Template
-
+## 빠른 참조: 고급 기능 템플릿
 ```powershell
 function Get-OrgUser {
     <#
@@ -233,42 +217,41 @@ function Get-OrgUser {
     }
 }
 ```
+## 통합 패턴
 
-## Integration Patterns
+### powershell-5.1-전문가
+- **Handoff**: 모듈 아키텍처 설계 → 5.1 전문가가 Windows 특정 기능 구현
+- **협업**: 5.1 호환성을 고려한 모듈 구조 결정
 
-### powershell-5.1-expert
-- **Handoff**: Module architecture designed → 5.1 expert implements Windows-specific functions
-- **Collaboration**: Module structure decisions considering 5.1 compatibility
+### powershell-7-전문가
+- **핸드오프**: 모듈 구조 정의 → 7명의 전문가가 최신 구문 최적화 추가
+- **협업**: 버전 감지를 이용한 듀얼 모드 기능
 
-### powershell-7-expert
-- **Handoff**: Module structure defined → 7 expert adds modern syntax optimizations
-- **Collaboration**: Dual-mode functions using version detection
+### windows-인프라-관리자
+- **Handoff**: 모듈 아키텍처 → Windows 관리자가 도메인별 로직을 구현합니다.
+- **공동 책임**: Active Directory, GPO, DNS 모듈 기능
 
-### windows-infra-admin
-- **Handoff**: Module architecture → Windows admin implements domain-specific logic
-- **Shared responsibility**: Active Directory, GPO, DNS module functions
+### Azure 인프라 엔지니어
+- **핸드오프**: 모듈 패턴 → Azure 엔지니어가 클라우드 자동화 모듈 구축
+- **통합**: 온프레미스와 Azure를 결합한 크로스 클라우드 모듈
 
-### azure-infra-engineer
-- **Handoff**: Module patterns → Azure engineer builds cloud automation modules
-- **Integration**: Cross-cloud modules combining on-prem & Azure
+## 위험 신호 - 에스컬레이션해야 하는 경우
 
-## Red Flags - When to Escalate
+| 관찰 | 액션 |
+|-------------|---------|
+| 단일 모듈에 100개 이상의 기능 | 하위 모듈로 분할하는 것을 고려해보세요 |
+| 복잡한 버전 간 문제 | powershell-5.1 및 7명의 전문가에게 문의 |
+| 성능 <1s 프로필 로드 | 지연 로딩 패턴 적용 |
+| 보안에 민감한 작업 | powershell-security-hardening 참여 |
 
-| Observation | Action |
-|-------------|--------|
-| 100+ functions in single module | Consider splitting into sub-modules |
-| Complex cross-version issues | Consult powershell-5.1 and 7 experts |
-| Performance <1s profile load | Apply lazy loading patterns |
-| Security-sensitive operations | Involve powershell-security-hardening |
+## 추가 리소스
 
-## Additional Resources
-
-- **Detailed Technical Reference**: See [REFERENCE.md](REFERENCE.md)
-  - Profile optimization workflow
-  - Module manifest template
-  - Dynamic parameters pattern
+- **자세한 기술 참조**: [REFERENCE.md](REFERENCE.md) 참조
+  - 프로필 최적화 작업 흐름
+  - 모듈 매니페스트 템플릿
+  - 동적 매개변수 패턴
   
-- **Code Examples & Patterns**: See [EXAMPLES.md](EXAMPLES.md)
-  - Anti-patterns (monolithic files, missing help)
-  - Cross-version compatibility patterns
-  - Advanced parameter validation
+- **코드 예제 및 패턴**: [EXAMPLES.md](EXAMPLES.md) 참조
+  - 안티 패턴(모놀리식 파일, 도움말 누락)
+  - 버전 간 호환성 패턴
+  - 고급 매개변수 검증

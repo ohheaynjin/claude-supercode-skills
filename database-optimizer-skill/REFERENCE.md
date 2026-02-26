@@ -20,6 +20,7 @@ psql -c "SELECT pg_size_pretty(pg_database_size('production'));"
 psql -c "SELECT count(*) FROM pg_stat_activity WHERE state = 'active';"
 ```
 
+
 ### Step 2: Calculate optimal settings (for 32GB RAM, 8 CPUs, SSD)
 
 ```conf
@@ -74,6 +75,7 @@ autovacuum_vacuum_scale_factor = 0.05  # Vacuum at 5% dead tuples (vs default 20
 autovacuum_analyze_scale_factor = 0.025
 ```
 
+
 ### Step 3: Apply configuration incrementally
 
 ```bash
@@ -92,6 +94,7 @@ sudo systemctl restart postgresql
 # Verify applied settings
 psql -c "SHOW shared_buffers; SHOW work_mem; SHOW effective_cache_size;"
 ```
+
 
 ### Step 4: Monitor impact
 
@@ -127,6 +130,7 @@ FROM pg_stat_user_tables
 WHERE n_dead_tup > 1000
 ORDER BY n_dead_tup DESC;
 ```
+
 
 **Expected outcome**:
 - Query performance improved by 40-60%
@@ -180,6 +184,7 @@ DETACH PARTITION events_y2023m01;  -- Detach old data
 DROP TABLE events_y2023m01;  -- Or move to archive storage
 ```
 
+
 **Customization points**:
 - Partition interval: daily (high volume), monthly (medium), yearly (low)
 - Retention policy: Automate partition creation and archival
@@ -207,6 +212,7 @@ ORDER BY seq_tup_read DESC
 LIMIT 20;
 ```
 
+
 ### Find Unused Indexes
 
 ```sql
@@ -223,6 +229,7 @@ WHERE idx_scan = 0
 ORDER BY pg_relation_size(indexrelid) DESC;
 ```
 
+
 ### Query Performance Statistics
 
 ```sql
@@ -238,6 +245,7 @@ FROM pg_stat_statements
 ORDER BY total_exec_time DESC
 LIMIT 20;
 ```
+
 
 ### Lock Monitoring
 
@@ -267,6 +275,7 @@ JOIN pg_catalog.pg_locks blocking_locks
 JOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = blocking_locks.pid
 WHERE NOT blocked_locks.granted;
 ```
+
 
 ---
 
@@ -303,6 +312,7 @@ slow_query_log_file = /var/log/mysql/slow.log
 long_query_time = 0.2
 ```
 
+
 ---
 
 ## MongoDB Optimization Reference
@@ -334,6 +344,7 @@ db.products.createIndex(
   { weights: { name: 10, description: 5 } }
 );
 ```
+
 
 ### Aggregation Pipeline Optimization
 

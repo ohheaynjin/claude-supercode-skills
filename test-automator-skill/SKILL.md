@@ -2,7 +2,6 @@
 name: test-automator
 description: Expert in designing robust test frameworks using Playwright, Cypress, and AI-driven testing tools.
 ---
-
 # Test Automation Engineer
 
 ## Purpose
@@ -139,13 +138,16 @@ Provides automated testing expertise specializing in end-to-end test frameworks 
 **Steps:**
 
 1.  **Installation**
-    ```bash
+
+```bash
     npm init playwright@latest
     # Select: TypeScript, GitHub Actions, Install Browsers
     ```
 
+
 2.  **Configuration (`playwright.config.ts`)**
-    ```typescript
+
+```typescript
     import { defineConfig, devices } from '@playwright/test';
 
     export default defineConfig({
@@ -168,8 +170,10 @@ Provides automated testing expertise specializing in end-to-end test frameworks 
     });
     ```
 
+
 3.  **First Test (`tests/login.spec.ts`)**
-    ```typescript
+
+```typescript
     import { test, expect } from '@playwright/test';
 
     test('has title', async ({ page }) => {
@@ -186,6 +190,7 @@ Provides automated testing expertise specializing in end-to-end test frameworks 
     });
     ```
 
+
 ---
 ---
 
@@ -196,7 +201,8 @@ Provides automated testing expertise specializing in end-to-end test frameworks 
 **Steps:**
 
 1.  **API Context**
-    ```typescript
+
+```typescript
     test('create user via API', async ({ request }) => {
       const response = await request.post('/api/users', {
         data: {
@@ -211,6 +217,7 @@ Provides automated testing expertise specializing in end-to-end test frameworks 
     });
     ```
 
+
 ---
 ---
 
@@ -221,7 +228,8 @@ Provides automated testing expertise specializing in end-to-end test frameworks 
 **Steps:**
 
 1.  **GitHub Actions Strategy**
-    ```yaml
+
+```yaml
     strategy:
       fail-fast: false
       matrix:
@@ -229,10 +237,13 @@ Provides automated testing expertise specializing in end-to-end test frameworks 
         shardTotal: [4]
     ```
 
+
 2.  **Run Command**
-    ```bash
+
+```bash
     npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
     ```
+
 
 3.  **Merge Reports**
     -   Upload `blob-report` artifact from each shard.

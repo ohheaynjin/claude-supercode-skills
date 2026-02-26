@@ -1,30 +1,28 @@
 ---
 name: performance-engineer
-description: Expert in system optimization, profiling, and scalability. Specializes in eBPF, Flamegraphs, and kernel-level tuning.
+description: 시스템 최적화, 프로파일링 및 확장성 분야의 전문가입니다. eBPF, Flamegraphs 및 커널 수준 튜닝을 전문으로 합니다.
+---
+# 퍼포먼스 엔지니어
+
+## 목적
+
+eBPF 및 Flamegraph를 사용한 심층 성능 분석, 로드 테스트, 커널 수준 튜닝을 전문으로 하는 시스템 최적화 및 프로파일링 전문 지식을 제공합니다. 애플리케이션과 인프라의 성능 병목 현상을 식별하고 해결합니다.
+
+## 사용 시기
+
+- 높은 대기 시간(P99 스파이크) 또는 낮은 처리량 조사
+- CPU/메모리 프로필 분석(Flamegraphs)
+- 부하시험 수행(K6, Gatling, Locust)
+- Linux 커널 매개변수 조정(sysctl)
+- 지속적인 프로파일링 구현(Parca, Pyrscope)
+- "내 컴퓨터에서는 작동하지만 프로덕션에서는 느립니다" 문제 디버깅
+
+---
 ---
 
-# Performance Engineer
+## 2. 의사결정 프레임워크
 
-## Purpose
-
-Provides system optimization and profiling expertise specializing in deep-dive performance analysis, load testing, and kernel-level tuning using eBPF and Flamegraphs. Identifies and resolves performance bottlenecks in applications and infrastructure.
-
-## When to Use
-
-- Investigating high latency (P99 spikes) or low throughput
-- Analyzing CPU/Memory profiles (Flamegraphs)
-- Conducting Load Tests (K6, Gatling, Locust)
-- Tuning Linux Kernel parameters (sysctl)
-- Implementing Continuous Profiling (Parca, Pyroscope)
-- Debugging "It works on my machine but slow in prod" issues
-
----
----
-
-## 2. Decision Framework
-
-### Profiling Strategy
-
+### 프로파일링 전략
 ```
 What is the bottleneck?
 │
@@ -43,93 +41,90 @@ What is the bottleneck?
 └─ **Latency (Wait Time)?**
    └─ Distributed? → **Tracing** (OpenTelemetry, Jaeger)
 ```
+### 부하 테스트 도구
 
-### Load Testing Tools
-
-| Tool | Language | Best For |
+| 도구 | 언어 | 최고의 대상 |
 |------|----------|----------|
-| **K6** | JS | Developer-friendly, CI/CD integration. |
-| **Gatling** | Scala/Java | High concurrency, complex scenarios. |
-| **Locust** | Python | Rapid prototyping, code-based tests. |
-| **Wrk2** | C | Raw HTTP throughput benchmarking (simple). |
+| **K6** | JS | 개발자 친화적인 CI/CD 통합. |
+| **개틀링** | 스칼라/자바 | 높은 동시성, 복잡한 시나리오. |
+| **메뚜기** | 파이썬 | 신속한 프로토타이핑, 코드 기반 테스트. |
+| **워크2** | 다 | 원시 HTTP 처리량 벤치마킹(단순) |
 
-### Optimization Hierarchy
+### 최적화 계층 구조
 
-1.  **Algorithm:** O(n^2) → O(n log n). Biggest wins.
-2.  **Architecture:** Caching, Async processing.
-3.  **Code/Language:** Memory allocation, loop unrolling.
-4.  **System/Kernel:** TCP stack tuning, CPU affinity.
+1. **알고리즘:** O(n^2) → O(n log n). 가장 큰 승리.
+2. **아키텍처:** 캐싱, 비동기 처리.
+3. **코드/언어:** 메모리 할당, 루프 풀기.
+4. **시스템/커널:** TCP 스택 튜닝, CPU 선호도.
 
-**Red Flags → Escalate to `database-optimizer`:**
-- "Slow performance" turns out to be a single SQL query missing an index
-- Database locks/deadlocks causing application stalls
-- Disk I/O saturation on the DB server
+**위험 신호 → 에스컬레이션`database-optimizer`:**
+- "느린 성능"은 인덱스가 누락된 단일 SQL 쿼리로 밝혀졌습니다.
+- 애플리케이션 중단을 유발하는 데이터베이스 잠금/교착 상태
+- DB 서버의 디스크 I/O 포화 상태
 
 ---
 ---
 
-## 3. Core Workflows
+## 3. 핵심 워크플로
 
-### Workflow 1: CPU Profiling with Flamegraphs
+### 워크플로 1: Flamegraph를 사용한 CPU 프로파일링
 
-**Goal:** Identify which function is consuming 80% CPU.
+**목표:** CPU를 80% 소비하는 함수를 식별합니다.
 
-**Steps:**
+**단계:**
 
-1.  **Capture Profile (Linux perf)**
-    ```bash
+1. **캡처 프로필(Linux 성능)**
+```bash
     # Record stack traces at 99Hz for 30 seconds
     perf record -F 99 -a -g -- sleep 30
     ```
-
-2.  **Generate Flamegraph**
-    ```bash
+2. **Flamegraph 생성**
+```bash
     perf script > out.perf
     ./stackcollapse-perf.pl out.perf > out.folded
     ./flamegraph.pl out.folded > profile.svg
     ```
-
-3.  **Analysis**
-    -   Open `profile.svg` in browser.
-    -   Look for **wide towers** (functions taking time).
-    -   *Example:* `json_parse` is 40% width → Optimize JSON handling.
-
----
----
-
-### Workflow 3: Interaction to Next Paint (INP)
-
-**Goal:** Improve Frontend responsiveness (Core Web Vital).
-
-**Steps:**
-
-1.  **Measure**
-    -   Use Chrome DevTools Performance tab.
-    -   Look for "Long Tasks" (Red blocks > 50ms).
-
-2.  **Identify**
-    -   Is it hydration? Event handlers?
-    -   *Example:* A click handler forcing a synchronous layout recalculation.
-
-3.  **Optimize**
-    -   **Yield to Main Thread:** `await new Promise(r => setTimeout(r, 0))` or `scheduler.postTask()`.
-    -   **Web Workers:** Move heavy logic off-thread.
+3. **분석**
+    - 개방형`profile.svg`브라우저에서.
+    - **넓은 타워**를 찾으세요(기능에는 시간이 걸립니다).
+    -   *예:*`json_parse`너비는 40%입니다. → JSON 처리를 최적화합니다.
 
 ---
 ---
 
-### Workflow 5: Interaction to Next Paint (INP) Optimization
+### 작업 흐름 3: 다음 페인트(INP)와의 상호 작용
 
-**Goal:** Fix "Laggy Click" (INP > 200ms) on a React button.
+**목표:** 프런트엔드 응답성 향상(핵심 웹 바이탈)
 
-**Steps:**
+**단계:**
 
-1.  **Identify Interaction**
-    -   Use React DevTools Profiler (Interaction Tracing).
-    -   Find the `click` handler duration.
+1. **측정**
+    - Chrome DevTools 성능 탭을 사용하세요.
+    - "장기 작업"(빨간색 블록 > 50ms)을 찾으세요.
 
-2.  **Break Up Long Tasks**
-    ```javascript
+2. **식별**
+    - 수분 공급인가요? 이벤트 핸들러?
+    - *예:* 동기식 레이아웃 재계산을 강제하는 클릭 핸들러.
+
+3. **최적화**
+    - **메인 스레드에 대한 양보:**`await new Promise(r => setTimeout(r, 0))`또는`scheduler.postTask()`.
+    - **웹 작업자:** 무거운 논리를 스레드 외부로 이동합니다.
+
+---
+---
+
+### 작업 흐름 5: 다음 페인트(INP) 최적화에 대한 상호 작용
+
+**목표:** React 버튼의 "Laggy Click"(INP > 200ms)을 수정합니다.
+
+**단계:**
+
+1. **상호작용 식별**
+    - React DevTools Profiler(상호작용 추적)를 사용하세요.
+    - 찾기`click`처리기 기간.
+
+2. **긴 작업 분할**
+```javascript
     async function handleClick() {
       // 1. UI Update (Immediate)
       setLoading(true);
@@ -142,177 +137,175 @@ What is the bottleneck?
       setLoading(false);
     }
     ```
-
-3.  **Verify**
-    -   Use `Web Vitals` extension. Check if INP drops below 200ms.
-
----
----
-
-## 5. Anti-Patterns & Gotchas
-
-### ❌ Anti-Pattern 1: Premature Optimization
-
-**What it looks like:**
--   Replacing a readable `map()` with a complex `for` loop because "it's faster" without measuring.
-
-**Why it fails:**
--   Wasted dev time.
--   Code becomes unreadable.
--   Usually negligible impact compared to I/O.
-
-**Correct approach:**
--   **Measure First:** Only optimize hot paths identified by a profiler.
-
-### ❌ Anti-Pattern 2: Testing "localhost" vs Production
-
-**What it looks like:**
--   "It handles 10k req/s on my MacBook."
-
-**Why it fails:**
--   Network latency (0ms on localhost).
--   Database dataset size (tiny on local).
--   Cloud limits (CPU credits, I/O bursts).
-
-**Correct approach:**
--   Test in a **Staging Environment** that mirrors Prod capacity (or a scaled-down ratio).
-
-### ❌ Anti-Pattern 3: Ignoring Tail Latency (Averages)
-
-**What it looks like:**
--   "Average latency is 200ms, we are fine."
-
-**Why it fails:**
--   P99 could be 10 seconds. 1% of users are suffering.
--   In microservices, tail latencies multiply.
-
-**Correct approach:**
--   Always measure **P50, P95, and P99**. Optimize for P99.
+3. **확인**
+    - 사용`Web Vitals`확대. INP가 200ms 미만으로 떨어지는지 확인하세요.
 
 ---
 ---
 
-## Examples
+## 5. 안티 패턴 및 문제점
 
-### Example 1: CPU Performance Optimization Using Flamegraphs
+### ❌ 안티 패턴 1: 조기 최적화
 
-**Scenario:** Production API experiencing 80% CPU utilization causing latency spikes.
+**모습:**
+- 읽을 수 있는 것으로 교체하기`map()`콤플렉스가 있는`for`측정하지 않고 "더 빠르기" 때문에 루프를 반복합니다.
 
-**Investigation Approach:**
-1. **Profile Collection**: Used perf to capture CPU stack traces
-2. **Flamegraph Generation**: Created visualization of CPU usage
-3. **Analysis**: Identified hot functions consuming most CPU
-4. **Optimization**: Targeted the top 3 functions
+**실패하는 이유:**
+- 개발 시간을 낭비했습니다.
+- 코드를 읽을 수 없게 됩니다.
+- 일반적으로 I/O에 비해 영향은 미미합니다.
 
-**Key Findings:**
-| Function | CPU % | Optimization Action |
-|----------|-------|-------------------|
-| json_serialize | 35% | Switch to binary format |
-| crypto_hash | 25% | Batch hashing operations |
-| regex_match | 20% | Pre-compile patterns |
+**올바른 접근 방식:**
+- **먼저 측정:** 프로파일러에 의해 식별된 핫 경로만 최적화합니다.
 
-**Results:**
-- CPU utilization: 80% → 35%
-- P99 latency: 1.2s → 150ms
-- Throughput: 500 RPS → 2,000 RPS
+### ❌ 안티 패턴 2: "localhost" 테스트와 프로덕션 테스트
 
-### Example 2: Distributed Tracing for Microservices Latency
+**모습:**
+- "내 MacBook에서는 초당 10,000개의 요청을 처리합니다."
 
-**Scenario:** Distributed system with 15 services experiencing end-to-end latency issues.
+**실패하는 이유:**
+- 네트워크 대기 시간(로컬 호스트에서는 0ms).
+- 데이터베이스 데이터 세트 크기(로컬에서는 작음).
+- 클라우드 제한(CPU 크레딧, I/O 버스트).
 
-**Investigation Approach:**
-1. **Trace Collection**: Deployed OpenTelemetry collectors
-2. **Latency Analysis**: Identified service with highest latency contribution
-3. **Dependency Analysis**: Mapped service dependencies and data flows
-4. **Root Cause**: Database connection pool exhaustion
+**올바른 접근 방식:**
+- 프로덕션 용량(또는 축소 비율)을 미러링하는 **스테이징 환경**에서 테스트합니다.
 
-**Trace Analysis:**
+### ❌ 안티 패턴 3: 테일 지연 시간 무시(평균)
+
+**모습:**
+- "평균 대기 시간은 200ms입니다. 괜찮습니다."
+
+**실패하는 이유:**
+- P99는 10초일 수 있습니다. 1%의 사용자가 고통받고 있습니다.
+- 마이크로서비스에서는 꼬리 지연 시간이 늘어납니다.
+
+**올바른 접근 방식:**
+- 항상 **P50, P95, P99**를 측정하세요. P99에 최적화합니다.
+
+---
+---
+
+## 예
+
+### 예 1: Flamegraph를 사용한 CPU 성능 최적화
+
+**시나리오:** 프로덕션 API에서 80%의 CPU 사용률이 발생하여 지연 시간이 급증합니다.
+
+**조사 접근 방식:**
+1. **프로필 수집**: CPU 스택 추적을 캡처하기 위해 성능을 사용했습니다.
+2. **Flamegraph Generation**: CPU 사용량 시각화 생성
+3. **분석**: 대부분의 CPU를 소비하는 핫 기능 식별
+4. **최적화**: 상위 3개 기능을 대상으로 함
+
+**주요 결과:**
+| 기능 | CPU % | 최적화 조치 |
+|----------|-------|------|
+| json_직렬화 | 35% | 바이너리 형식으로 전환 |
+| 암호화해시 | 25% | 일괄 해싱 작업 |
+| 정규식 일치 | 20% | 사전 컴파일 패턴 |
+
+**결과:**
+- CPU 사용률: 80% → 35%
+- P99 대기 시간: 1.2s → 150ms
+- 처리량: 500RPS → 2,000RPS
+
+### 예시 2: 마이크로서비스 지연 시간에 대한 분산 추적
+
+**시나리오:** 15개 서비스가 포함된 분산 시스템에서 엔드투엔드 대기 시간 문제가 발생합니다.
+
+**조사 접근 방식:**
+1. **추적 수집**: 배포된 OpenTelemetry 수집기
+2. **지연 분석**: 지연 시간 기여도가 가장 높은 식별된 서비스
+3. **종속성 분석**: 매핑된 서비스 종속성 및 데이터 흐름
+4. **근본 원인**: 데이터베이스 연결 풀 고갈
+
+**추적 분석:**
 ```
 Service A (50ms) → Service B (200ms) → Service C (500ms) → Database (1s)
                                      ↑
                                Connection pool exhaustion
 ```
+**해결 방법:**
+- 연결 풀 크기 증가
+- 쿼리 최적화 구현
+- 무거운 쿼리를 위한 읽기 복제본을 추가했습니다.
 
-**Resolution:**
-- Increased connection pool size
-- Implemented query optimization
-- Added read replicas for heavy queries
+**결과:**
+- 엔드 투 엔드 P99: 2.5s → 300ms
+- 데이터베이스 CPU: 95% → 60%
+- 오류율 : 5% → 0.1%
 
-**Results:**
-- End-to-end P99: 2.5s → 300ms
-- Database CPU: 95% → 60%
-- Error rate: 5% → 0.1%
+### 예 3: 용량 계획을 위한 부하 테스트
 
-### Example 3: Load Testing for Capacity Planning
+**시나리오:** 블랙 프라이데이 트래픽(10배 일반 로드)을 준비하는 전자상거래 플랫폼입니다.
 
-**Scenario:** E-commerce platform preparing for Black Friday traffic (10x normal load).
+**부하 테스트 접근 방식:**
+1. **테스트 설계**: 현실적인 사용자 여정 시나리오 생성
+2. **테스트 실행**: 목표 로드까지 점진적으로 증가
+3. **병목 식별**: 한계점 발견
+4. **용량 계획**: 필요한 리소스 결정
 
-**Load Testing Approach:**
-1. **Test Design**: Created realistic user journey scenarios
-2. **Test Execution**: Gradual ramp-up to target load
-3. **Bottleneck Identification**: Found breaking points
-4. **Capacity Planning**: Determined required resources
-
-**Load Test Results:**
-| Virtual Users | RPS | P95 Latency | Error Rate |
-|---------------|-----|--------------|------------|
+**부하 테스트 결과:**
+| 가상 사용자 | RPS | P95 대기 시간 | 오류율 |
+|---------------|------|---------------|------------|
 | 1,000 | 500 | 150ms | 0.1% |
 | 5,000 | 2,400 | 280ms | 0.3% |
 | 10,000 | 4,800 | 550ms | 1.2% |
-| 15,000 | 6,200 | 1.2s | 5.8% |
+| 15,000 | 6,200 | 1.2초 | 5.8% |
 
-**Capacity Recommendations:**
-- Scale to 12,000 concurrent users
-- Add 3 more application servers
-- Increase database read replicas to 5
-- Implement rate limiting at 10,000 RPS
+**용량 권장사항:**
+- 동시 사용자 12,000명으로 확장
+- 애플리케이션 서버 3대 추가
+- 데이터베이스 읽기 복제본을 5개로 늘립니다.
+- 10,000 RPS로 속도 제한 구현
 
-## Best Practices
+## 모범 사례
 
-### Profiling and Analysis
+### 프로파일링 및 분석
 
-- **Measure First**: Always profile before optimizing
-- **Comprehensive Coverage**: Analyze CPU, memory, I/O, and network
-- **Production Safe**: Use low-overhead profiling in production
-- **Regular Baselines**: Establish performance baselines for comparison
+- **먼저 측정**: 최적화하기 전에 항상 프로필을 작성하세요.
+- **포괄적인 범위**: CPU, 메모리, I/O 및 네트워크 분석
+- **프로덕션 안전성**: 프로덕션에서 오버헤드가 낮은 프로파일링을 사용합니다.
+- **정기 기준**: 비교를 위한 성능 기준 설정
 
-### Load Testing
+### 부하 테스트
 
-- **Realistic Scenarios**: Model actual user behavior and workflows
-- **Progressive Ramp-up**: Start low, increase gradually
-- **Bottleneck Identification**: Find limiting factors systematically
-- **Repeatability**: Maintain consistent test environments
+- **현실적인 시나리오**: 실제 사용자 행동 및 워크플로 모델링
+- **점진적 증가**: 낮게 시작하여 점차 증가합니다.
+- **병목 식별**: 제한 요소를 체계적으로 찾아냅니다.
+- **반복성**: 일관된 테스트 환경 유지
 
-### Performance Optimization
+### 성능 최적화
 
-- **Algorithm First**: Optimize algorithms before micro-optimizations
-- **Caching Strategy**: Implement appropriate caching layers
-- **Database Optimization**: Indexes, queries, connection pooling
-- **Resource Management**: Efficient allocation and pooling
+- **알고리즘 우선**: 미세 최적화 전에 알고리즘을 최적화합니다.
+- **캐싱 전략**: 적절한 캐싱 레이어 구현
+- **데이터베이스 최적화**: 인덱스, 쿼리, 연결 풀링
+- **자원 관리**: 효율적인 할당 및 풀링
 
-### Monitoring and Observability
+### 모니터링 및 관찰 가능성
 
-- **Comprehensive Metrics**: CPU, memory, disk, network, application
-- **Distributed Tracing**: End-to-end visibility in microservices
-- **Alerting**: Proactive identification of performance degradation
-- **Dashboarding**: Real-time visibility into system health
+- **포괄적인 지표**: CPU, 메모리, 디스크, 네트워크, 애플리케이션
+- **분산 추적**: 마이크로서비스의 엔드투엔드 가시성
+- **알림**: 성능 저하를 사전에 식별
+- **대시보드**: 시스템 상태에 대한 실시간 가시성
 
-## Quality Checklist
+## 품질 체크리스트
 
-**Profiling:**
--   [ ] **Symbols:** Debug symbols available for accurate stack traces.
--   [ ] **Overhead:** Profiler overhead verified (< 1-2% for production).
--   [ ] **Scope:** Both CPU and Wall-clock time analyzed.
--   [ ] **Context:** Profile includes full request lifecycle.
+**프로파일링:**
+- [ ] **기호:** 정확한 스택 추적을 위해 디버그 기호를 사용할 수 있습니다.
+- [ ] **오버헤드:** 프로파일러 오버헤드가 확인되었습니다(프로덕션의 경우 < 1-2%).
+- [ ] **범위:** CPU 및 벽시계 시간을 모두 분석했습니다.
+- [ ] **컨텍스트:** 프로필에는 전체 요청 수명 주기가 포함됩니다.
 
-**Load Testing:**
--   [ ] **Scenarios:** Realistic user behavior (not just hitting one endpoint).
--   [ ] **Warmup:** System warmed up before measurement (JIT/Caches).
--   [ ] **Bottleneck:** Identified the limiting factor (CPU, DB, Bandwidth).
--   [ ] **Repeatable:** Tests can be run consistently.
+**부하 테스트:**
+- [ ] **시나리오:** 현실적인 사용자 행동(단순히 하나의 엔드포인트에 도달하는 것이 아님).
+- [ ] **워밍업:** 측정 전에 시스템이 워밍업되었습니다(JIT/캐시).
+- [ ] **병목 현상:** 제한 요소(CPU, DB, 대역폭)를 식별했습니다.
+- [ ] **반복 가능:** 테스트를 일관되게 실행할 수 있습니다.
 
-**Optimization:**
--   [ ] **Validation:** Benchmark run *after* fix to confirm improvement.
--   [ ] **Regression:** Ensured optimization didn't break functionality.
--   [ ] **Documentation:** Documented *why* the optimization was done.
--   [ ] **Monitoring:** Added metrics to track optimization impact.
+**최적화:**
+- [ ] **검증:** 개선 사항을 확인하기 위해 수정 후 *벤치마크를 실행합니다.
+- [ ] **회귀:** 최적화로 인해 기능이 중단되지 않았는지 확인했습니다.
+- [ ] **문서:** 최적화가 수행된 *이유*가 문서화되어 있습니다.
+- [ ] **모니터링:** 최적화 영향을 추적하기 위한 측정항목이 추가되었습니다.

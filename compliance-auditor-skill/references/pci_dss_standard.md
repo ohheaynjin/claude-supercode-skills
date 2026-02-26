@@ -1,541 +1,533 @@
-# PCI DSS Standard Reference
-
-## Overview
-Payment Card Industry Data Security Standard (PCI DSS) v4.0 requirements and compliance checklist.
-
-## PCI DSS v4.0 Requirements Overview
-
-### Requirement 1: Install and maintain network security controls
-
-**1.1 - Network Security Policy**
-- [ ] Network security policy established
-- [ ] Policy reviewed annually and updated
-- [ ] Policy communicated to all personnel
-
-**1.2 - Network Security Configuration**
-- [ ] Default passwords changed on all systems
-- [ ] Default security parameters changed
-- [ ] Unused services disabled
-- [ ] Strong cryptography for passwords
-
-**1.3 - Secure Network Connections**
-- [ ] Network segmentation implemented
-- [ ] Wireless networks secured
-- [ ] VPN for remote access
-- [ ] VPN authentication and encryption
-
-**1.4 - Firewalls**
-- [ ] Firewall configuration reviewed every 6 months
-- [ ] Firewall rules documented
-- [ ] Unnecessary services blocked
-- [ ] Direct internet access prohibited for cardholder systems
-
-**1.5 - Wireless Networks**
-- [ ] Wireless networks scanned quarterly
-- [ ] Wireless authentication required
-- [ ] Wireless encryption (WPA2+)
-- [ ] Wireless infrastructure outside cardholder data environment
-
-**1.6 - Mobile Device Security**
-- [ ] Mobile device security policy
-- [ ] Mobile device inventory
-- [ ] Mobile device management implemented
-- [ ] Remote wipe capability
-
-### Requirement 2: Apply secure configurations to all system components
-
-**2.1 - Process and Procedures**
-- [ ] Configuration standards documented
-- [ ] Process for secure configuration
-- [ ] Configuration verification
-- [ ] Configuration management
-
-**2.2 - Vendor Defaults**
-- [ ] All vendor defaults changed
-- [ ] Default accounts removed or disabled
-- [ ] Default passwords removed
-- [ ] Default security parameters modified
-
-**2.3 - System Hardening**
-- [ ] System hardening procedures
-- [ ] Unnecessary services disabled
-- [ ] System components hardened according to standards
-- [ ] Secure protocols only (SSHv2, TLS 1.2+)
-
-**2.4 - Shared Systems**
-- [ ] Shared hosting risks assessed
-- [ ] Shared hosting only if cardholder data environment isolated
-- [ ] Separate cardholder data environment
-
-**2.5 - Configuration Maintenance**
-- [ ] Configuration changes documented
-- [ ] Change control process
-- [ ] Testing before deployment
-- [ ] Impact analysis
-
-### Requirement 3: Protect stored account data
-
-**3.1 - Keep Cardholder Data to a Minimum**
-- [ ] Data retention policy defined
-- [ ] Data retention policy communicated
-- [ ] Data disposal process
-- [ ] Verification of data disposal
-- [ ] Storage retention reviewed quarterly
-
-**3.2 - Encryption of Stored Cardholder Data**
-- [ ] Full track data not stored
-- [ ] Card verification codes not stored
-- [ ] Sensitive authentication data not stored after authorization
-- [ ] PAN displayed masked (showing no more than first six/last four digits)
-- [ ] PAN rendered unreadable (hashed, truncated, indexed)
-- [ ] Cryptographic keys managed securely
-
-**3.3 - Primary Account Number (PAN) Protection**
-- [ ] Display of PAN restricted
-- [ ] Unmasked PAN not displayed
-- [ ] Access to unmasked PAN restricted
-- [ ] Encryption keys stored securely
-- [ ] Secure key storage devices
-
-**3.4 - Encryption Key Management**
-- [ ] Key generation process documented
-- [ ] Secure key distribution
-- [ ] Secure key storage
-- [ ] Key rotation schedule
-- [ ] Key decommissioning process
-- [ ] Dual control for key management
-- [ ] Split knowledge for key management
-- [ ] Key backup procedures
-
-**3.5 - Cryptographic Keys**
-- [ ] Keys managed in compliance with standards
-- [ ] Key management processes documented
-- [ ] Key custodians identified
-- [ ] Key access restrictions
-- [ ] Key compromise procedures
-
-### Requirement 4: Protect cardholder data in transit
-
-**4.1 - Encryption of Cardholder Data in Transit**
-- [ ] Strong cryptography and security protocols (TLS 1.2+)
-- [ ] Only trusted certificates and keys
-- [ ] Trusted keys/certificates maintained
-- [ ] Protocol supported by system and client
-- [ ] Secure connections only
-
-**4.2 - Network Security Controls**
-- [ ] Sensitive data transmitted only over secure channels
-- [ ] Never sent over insecure protocols (HTTP, FTP, telnet)
-- [ ] Network security controls prevent interception
-- [ ] Wireless transmissions encrypted
-- [ ] End-to-end encryption for wireless communications
-
-**4.3 - Encryption Key Management**
-- [ ] Cryptographic keys used for encryption in transit managed securely
-- [ ] Key generation and distribution secure
-- [ ] Key storage secure
-- [ ] Key rotation per industry standards
-
-### Requirement 5: Protect all systems and networks from malicious software
-
-**5.1 - Anti-Virus Software**
-- [ ] Anti-virus software deployed on all systems
-- [ ] Anti-virus updated regularly
-- [ ] Regular anti-virus scans
-- [ ] Anti-virus software active at all times
-- [ ] Anti-virus protection maintained
-
-**5.2 - Malicious Software Protection**
-- [ ] Systems protected against malicious software
-- [ ] Protection mechanisms up-to-date
-- [ ] Regular scans for malicious software
-- [ ] Malicious software detection and prevention
-
-**5.3 - Anti-Malware Processes**
-- [ ] Anti-malware processes and procedures
-- [ ] Malicious software response procedures
-- [ ] Malware incident management
-- [ ] Post-malware incident review
-
-**5.4 - Malicious Software Awareness**
-- [ ] User awareness training for malicious software
-- [ ] Phishing awareness
-- [ ] Social engineering awareness
-- [ ] Security awareness training
-
-### Requirement 6: Develop and maintain secure systems and applications
-
-**6.1 - Security Development Lifecycle**
-- [ ] Secure development lifecycle process
-- [ ] Secure coding practices
-- [ ] Application security training
-- [ ] Security requirements included in development
-
-**6.2 - Security Testing**
-- [ ] Regular security testing of applications
-- [ ] Vulnerability scanning
-- [ ] Penetration testing
-- [ ] Testing after significant changes
-
-**6.3 - Secure Authentication**
-- [ ] Multi-factor authentication implemented
-- [ ] Strong authentication for remote access
-- [ ] Encryption for authentication over open networks
-
-**6.4 - Input Validation**
-- [ ] Input validation on all data
-- [ ] Output validation
-- [ ] Data sanitization
-- [ ] SQL injection prevention
-- [ ] XSS prevention
-
-**6.5 - Secure Coding Practices**
-- [ ] Code reviews
-- [ ] Secure coding standards
-- [ ] Error handling without information disclosure
-- [ ] Parameterized queries
-
-**6.6 - Software Updates**
-- [ ] Security patches applied promptly
-- [ ] Software updates according to vendor schedule
-- [ ] Critical security patches within 1 month
-- [ ] Vulnerability monitoring
-
-**6.7 - Development and Test Environments**
-- [ ] Development/test environments separate from production
-- [ ] Test data masked or obfuscated
-- [ ] Production data not used for testing
-- [ ] Access controls for development environments
-
-### Requirement 7: Restrict access to system components and cardholder data
-
-**7.1 - Access Control Policy**
-- [ ] Access control policy established
-- [ ] Policy reviewed annually
-- [ ] Principle of least privilege
-- [ ] Need-to-know basis
-
-**7.2 - User Identification and Authentication**
-- [ ] Unique user ID for each person
-- [ ] Multi-factor authentication for remote access
-- [ ] Strong password policies
-- [ ] Password change at first login
-- [ ] Temporary passwords changed at first use
-- [ ] Lockout after failed attempts
-- [ ] Session timeouts
-
-**7.3 - Access Rights**
-- [ ] Access granted based on business need
-- [ ] Access rights documented
-- [ ] Regular access reviews (quarterly)
-- [ ] Access rights removed when no longer needed
-
-**7.4 - System Administrators**
-- [ ] Separate accounts for administrative duties
-- [ ] Administrator authentication required
-- [ ] Root/admin access controlled
-- [ ] Use of personal accounts for administration prohibited
-
-**7.5 - In-House and Third-Party Personnel**
-- [ ] Background checks for personnel with cardholder data access
-- [ ] Personnel screened before access granted
-- [ ] Background check policy documented
-- [ ] Contractual obligations for third parties
-
-**7.6 - Personnel Termination**
-- [ ] Access revoked immediately upon termination
-- [ ] Personnel termination procedures
-- [ ] Inventory of all access items returned
-- [ ] Logical and physical access removed
-
-**7.7 - Access Revocation**
-- [ ] Access revoked when no longer needed
-- [ ] Revocation process documented
-- [ ] Regular access review
-- [ ] Access log review
-
-### Requirement 8: Identify users and authenticate access to system components
-
-**8.1 - Authentication Mechanisms**
-- [ ] Authentication mechanisms for all users
-- [ ] Strong authentication (MFA for remote access)
-- [ ] Password complexity requirements
-- [ ] Password change frequency
-- [ ] Password history requirements
-- [ ] Password hashing/encryption
-
-**8.2 - Multi-Factor Authentication**
-- [ ] MFA implemented for all access to cardholder data
-- [ ] MFA implemented for remote network access
-- [ ] MFA for administrative access
-- [ ] MFA factors independent (something you have, know, are)
-
-**8.3 - Password Management**
-- [ ] Passwords never shared
-- [ ] Passwords never written down
-- [ ] Passwords not in scripts or code
-- [ ] Passwords rotated periodically
-- [ ] Forced password changes
-- [ ] Default passwords never used
-
-**8.4 - Identification and Authentication**
-- [ ] Users uniquely identified
-- [ ] Identification and authentication mechanisms
-- [ ] Authenticated sessions monitored
-- [ ] Session timeout configured
-
-**8.5 - Security Policy**
-- [ ] Authentication security policy
-- [ ] Policy communicated to all users
-- [ ] Policy acceptance confirmation
-- [ ] Regular security awareness training
-
-### Requirement 9: Restrict physical access to cardholder data
-
-**9.1 - Physical Access Control**
-- [ ] Physical access control policy
-- [ ] Physical access restricted to authorized personnel
-- [ ] Access logs maintained
-- [ ] Access badges/keys controlled
-- [ ] Visitor management
-
-**9.2 - Media Handling**
-- [ ] Secure media storage
-- [ ] Media transport secured
-- [ ] Media destruction procedures
-- [ ] Media inventory maintained
-- [ ] Hard drive destruction/cryptographic erase
-
-**9.3 - Physical Security**
-- [ ] Physical barriers and fences
-- [ ] Security cameras and monitoring
-- [ ] Alarm systems
-- [ ] Security guards (if applicable)
-- [ ] Security lighting
-
-**9.4 - Visitors**
-- [ ] Visitor authorization process
-- [ ] Visitor escorts
-- [ ] Visitor badges/IDs
-- [ ] Visitor log
-
-**9.5 - Media Destruction**
-- [ ] Secure media destruction
-- [ ] Destruction process documented
-- [ ] Destruction verified
-- [ ] Certificates of destruction maintained
-
-**9.6 - Equipment Maintenance**
-- [ ] Equipment maintenance procedures
-- [ ] Maintenance personnel authorization
-- [ ] Supervision of maintenance
-- [ ] Media removal before maintenance
-
-### Requirement 10: Log and monitor access to system components and cardholder data
-
-**10.1 - Audit Trails**
-- [ ] Audit trail for all system components
-- [ ] Audit logs capture user identification
-- [ ] Audit logs capture event type
-- [ ] Audit logs capture date and time
-- [ ] Audit logs capture success/failure
-- [ ] Audit logs capture source of event
-
-**10.2 - Log Review**
-- [ ] Regular review of logs
-- [ ] Security event detection
-- [ ] Daily review of critical systems
-- [ ] Weekly review of other systems
-- [ ] Retention of audit logs (at least 1 year, 3 months available)
-
-**10.3 - Log Protection**
-- [ ] Logs protected from tampering
-- [ ] Log backup and storage
-- [ ] Immediate review of log failures
-- [ ] Log integrity verification
-
-**10.4 - Synchronization**
-- [ ] Time synchronization across systems
-- [ ] NTP servers used
-- [ ] Time drift monitoring
-
-### Requirement 11: Test security systems and processes regularly
-
-**11.1 - Wireless Network Testing**
-- [ ] Quarterly wireless network scans
-- [ ] Wireless access point testing
-- [ ] Unauthorized wireless device detection
-- [ ] Wireless security testing tools
-
-**11.2 - Vulnerability Scanning**
-- [ ] Quarterly external vulnerability scans
-- [ ] Quarterly internal vulnerability scans
-- [ ] Annual penetration testing by ASV
-- [ ] Scanning after significant changes
-- [ ] Remediation of vulnerabilities
-
-**11.3 - Penetration Testing**
-- [ ] Annual internal penetration testing
-- [ ] Annual external penetration testing
-- [ ] Testing by qualified internal resources or third party
-- [ ] Network and application layer testing
-- [ ] Testing of segmentation and scope
-- [ ] Remediation of identified vulnerabilities
-
-**11.4 - Intrusion Detection Systems**
-- [ ] IDS/IPS monitoring
-- [ ] Intrusion detection logs reviewed daily
-- [ ] Security event alerts
-- [ ] Incident response procedures
-
-**11.5 - Incident Response Plan**
-- [ ] Incident response plan documented
-- [ ] Incident response team identified
-- [ ] Response procedures defined
-- [ ] Notification procedures
-- [ ] Post-incident review
-
-**11.6 - Regular Testing**
-- [ ] Regular testing of security systems
-- [ ] Testing of security controls
-- [ ] Testing of detection systems
-- [ ] Testing of incident response
-
-### Requirement 12: Support information security with organizational policies and programs
-
-**12.1 - Security Policy**
-- [ ] Information security policy established
-- [ ] Policy reviewed annually
-- [ ] Policy communicated to all personnel
-- [ ] Security awareness training
-- [ ] Policy acknowledgment by personnel
-
-**12.2 - Risk Management**
-- [ ] Risk assessment process
-- [ ] Risk assessment performed annually
-- [ ] Risk management program
-- [ ] Risk remediation tracking
-
-**12.3 - Security Incidents**
-- [ ] Incident response procedures
-- [ ] Incident escalation procedures
-- [ ] Incident notification procedures
-- [ ] Incident documentation
-- [ ] Post-incident analysis
-
-**12.4 - Security Awareness Training**
-- [ ] Security awareness program
-- [ ] Training upon hire
-- [ ] Regular training updates
-- [ ] Security incident reporting training
-
-**12.5 - Third-Party Service Providers**
-- [ ] Due diligence for third parties
-- [ ] Contracts with security requirements
-- [ ] Monitoring of third-party compliance
-- [ ] Annual verification of third-party compliance
-
-## Evidence Collection
-
-### Required Evidence Types
-
-**Policies and Procedures**
-- [ ] Information security policy
-- [ ] Network security policy
-- [ ] Access control policy
-- [ ] Incident response plan
-- [ ] Change management process
-- [ ] Risk assessment procedures
-
-**Configuration Documentation**
-- [ ] Firewall configurations
-- [ ] Router configurations
-- [ ] System configurations
-- [ ] Security control configurations
-- [ ] Encryption configurations
-
-**Monitoring and Logging**
-- [ ] Firewall logs
-- [ ] System logs
-- [ ] Application logs
-- [ ] Access logs
-- [ ] Monitoring reports
-
-**Testing Evidence**
-- [ ] Vulnerability scan reports
-- [ ] Penetration test reports
-- [ ] Wireless scan reports
-- [ ] Security control test results
-- [ ] Remediation verification
-
-**Training Evidence**
-- [ ] Training materials
-- [ ] Training attendance records
-- [ ] Training assessments
-- [ ] Security awareness programs
-
-## Audit Preparation
-
-### Pre-Audit Checklist
-
-**Documentation**
-- [ ] All policies reviewed and updated
-- [ ] All procedures documented
-- [ ] Evidence collected and organized
-- [ ] Gap analysis completed
-- [ ] Remediation of gaps
-
-**Internal Assessment**
-- [ ] Internal audit conducted
-- [ ] Self-Assessment Questionnaire (SAQ) completed
-- [ ] Remediation of findings
-- [ ] Re-assessment after remediation
-
-**Staff Preparation**
-- [ ] Staff trained on PCI DSS requirements
-- [ ] Interview preparation conducted
-- [ ] Point of contact identified
-- [ ] Staff awareness of audit
-
-**System Preparation**
-- [ ] Evidence collection systems verified
-- [ ] Monitoring systems verified
-- [ ] Documentation repositories organized
-- [ ] Access controls reviewed
-
-## Scoping
-
-### System Scope Identification
-
-**In-Scope Systems**
-- [ ] Systems that process cardholder data
-- [ ] Systems that transmit cardholder data
-- [ ] Systems that store cardholder data
-- [ ] Systems that provide security for above
-
-**Out-of-Scope Systems**
-- [ ] Systems that do not process cardholder data
-- [ ] Systems with network segmentation
-- [ ] Systems with no access to cardholder data
-- [ ] Systems that meet exclusion criteria
-
-### Documentation Required
-
-**Network Diagram**
-- [ ] Current network diagram
-- [ ] Data flow diagram
-- [ ] System connections documented
-- [ ] Out-of-scope systems identified
-
-**Data Flow**
-- [ ] Cardholder data entry points
-- [ ] Cardholder data storage points
-- [ ] Cardholder data transmission paths
-- [ ] Cardholder data exit points
-
-## References
-
-- [PCI SSC Standards](https://www.pcisecuritystandards.org/)
+# PCI DSS 표준 참조
+
+## 개요
+PCI DSS(지불 카드 산업 데이터 보안 표준) v4.0 요구 사항 및 규정 준수 체크리스트입니다.
+
+## PCI DSS v4.0 요구 사항 개요
+
+### 요구 사항 1: 네트워크 보안 제어 장치 설치 및 유지 관리
+
+**1.1 - 네트워크 보안 정책**
+- [ ] 네트워크 보안 정책 수립
+- [ ] 정책은 매년 검토되고 업데이트됩니다.
+- [ ] 모든 직원에게 정책 전달
+
+**1.2 - 네트워크 보안 구성**
+- [ ] 모든 시스템에서 기본 비밀번호가 변경되었습니다.
+- [ ] 기본 보안 매개변수가 변경됨
+- [ ] 사용하지 않는 서비스가 비활성화되었습니다.
+- [ ] 비밀번호에 대한 강력한 암호화
+
+**1.3 - 보안 네트워크 연결**
+- [ ] 네트워크 분할 구현
+- [ ] 무선 네트워크 보안
+- [ ] 원격 액세스용 VPN
+- [ ] VPN 인증 및 암호화
+
+**1.4 - 방화벽**
+- [ ] 6개월마다 방화벽 구성 검토
+- [ ] 방화벽 규칙이 문서화되었습니다.
+- [ ] 불필요한 서비스 차단
+- [ ] 카드 소지자 시스템에 대한 직접 인터넷 접속 금지
+
+**1.5 - 무선 네트워크**
+- [ ] 분기별 무선 네트워크 검색
+- [ ] 무선 인증 필요
+- [ ] 무선 암호화(WPA2+)
+- [ ] 카드 소지자 데이터 환경 외부의 무선 인프라
+
+**1.6 - 모바일 장치 보안**
+- [ ] 모바일 기기 보안 정책
+- [ ] 모바일 장치 인벤토리
+- [ ] 모바일 장치 관리 구현
+- [ ] 원격 삭제 기능
+
+### 요구 사항 2: 모든 시스템 구성 요소에 보안 구성 적용
+
+**2.1 - 프로세스 및 절차**
+- [ ] 구성 표준이 문서화됨
+- [ ] 보안 구성 프로세스
+- [ ] 구성 확인
+- [ ] 구성 관리
+
+**2.2 - 공급업체 기본값**
+- [ ] 모든 공급업체 기본값이 변경됨
+- [ ] 기본 계정이 제거되거나 비활성화되었습니다.
+- [ ] 기본 비밀번호가 제거되었습니다.
+- [ ] 기본 보안 매개변수가 수정됨
+
+**2.3 - 시스템 강화**
+- [ ] 시스템 강화 절차
+- [ ] 불필요한 서비스가 비활성화되었습니다.
+- [ ] 표준에 따라 강화된 시스템 구성 요소
+- [ ] 보안 프로토콜만 해당(SSHv2, TLS 1.2+)
+
+**2.4 - 공유 시스템**
+- [ ] 공유 호스팅 위험 평가
+- [ ] 카드 소지자 데이터 환경이 격리된 경우에만 공유 호스팅
+- [ ] 별도의 카드 소지자 데이터 환경
+
+**2.5 - 구성 유지 관리**
+- [ ] 구성 변경 사항이 문서화됨
+- [ ] 변경 관리 프로세스
+- [ ] 배포 전 테스트
+- [ ] 영향 분석
+
+### 요구사항 3: 저장된 계정 데이터를 보호하세요.
+
+**3.1 - 카드 소지자 데이터를 최소한으로 유지**
+- [ ] 데이터 보존 정책이 정의됨
+- [ ] 데이터 보존 정책이 전달됨
+- [ ] 데이터 폐기 프로세스
+- [ ] 데이터 폐기 확인
+- [ ] 분기별로 스토리지 보존 검토
+
+**3.2 - 저장된 카드 소지자 데이터의 암호화**
+- [ ] 전체 트랙 데이터가 저장되지 않음
+- [ ] 카드 인증 코드가 저장되지 않았습니다.
+- [ ] 인증 후 민감한 인증 데이터가 저장되지 않음
+- [ ] PAN이 마스크되어 표시됨(처음 6자리/마지막 4자리 이하 표시)
+- [ ] PAN이 읽을 수 없게 렌더링됨(해시, 잘림, 색인화됨)
+- [ ] 안전하게 관리되는 암호화 키
+
+**3.3 - 기본 계정 번호(PAN) 보호**
+- [ ] PAN 표시가 제한됨
+- [ ] 마스크되지 않은 PAN이 표시되지 않음
+- [ ] 마스크되지 않은 PAN에 대한 액세스가 제한됨
+- [ ] 암호화 키가 안전하게 저장됨
+- [ ] 보안 키 저장 장치
+
+**3.4 - 암호화 키 관리**
+- [ ] 키 생성 프로세스가 문서화되었습니다.
+- [ ] 보안 키 배포
+- [ ] 안전한 키 저장
+- [ ] 키 순환 일정
+- [ ] 주요 폐기 프로세스
+- [ ] 키 관리를 위한 이중 제어
+- [ ] 키 관리를 위한 지식 분할
+- [ ] 주요 백업 절차
+
+**3.5 - 암호화 키**
+- [ ] 표준에 따라 키 관리
+- [ ] 주요 관리 프로세스가 문서화됨
+- [ ] 주요 관리인 확인
+- [ ] 키 액세스 제한
+- [ ] 주요 침해 절차
+
+### 요구사항 4: 전송 중인 카드 소지자 데이터를 보호하세요.**4.1 - 전송 중인 카드 소지자 데이터의 암호화**
+- [ ] 강력한 암호화 및 보안 프로토콜(TLS 1.2+)
+- [ ] 신뢰할 수 있는 인증서 및 키만
+- [ ] 신뢰할 수 있는 키/인증서 유지
+- [ ] 시스템 및 클라이언트에서 지원되는 프로토콜
+- [ ] 보안 연결만 가능
+
+**4.2 - 네트워크 보안 제어**
+- [ ] 민감한 데이터는 보안 채널을 통해서만 전송됩니다.
+- [ ] 안전하지 않은 프로토콜(HTTP, FTP, 텔넷)을 통해 전송되지 않음
+- [ ] 네트워크 보안 제어로 차단 방지
+- [ ] 암호화된 무선 전송
+- [ ] 무선 통신을 위한 종단 간 암호화
+
+**4.3 - 암호화 키 관리**
+- [ ] 전송 중 암호화에 사용되는 암호화 키가 안전하게 관리됨
+- [ ] 키 생성 및 배포 보안
+- [ ] 키 저장 보안
+- [ ] 업계 표준에 따른 키 순환
+
+### 요구사항 5: 악성 소프트웨어로부터 모든 시스템과 네트워크를 보호하세요.
+
+**5.1 - 안티바이러스 소프트웨어**
+- [ ] 모든 시스템에 바이러스 백신 소프트웨어 배포
+- [ ] 안티 바이러스가 정기적으로 업데이트됨
+- [ ] 정기적인 바이러스 백신 검사
+- [ ] 항상 활성화된 바이러스 백신 소프트웨어
+- [ ] 안티바이러스 보호가 유지됨
+
+**5.2 - 악성 소프트웨어 보호**
+- [ ] 악성 소프트웨어로부터 시스템 보호
+- [ ] 최신 보호 메커니즘
+- [ ] 악성 소프트웨어 정기 검사
+- [ ] 악성 소프트웨어 탐지 및 예방
+
+**5.3 - 맬웨어 방지 프로세스**
+- [ ] 맬웨어 방지 프로세스 및 절차
+- [ ] 악성 소프트웨어 대응 절차
+- [ ] 악성 코드 사고 관리
+- [ ] 악성코드 사후 검토
+
+**5.4 - 악성 소프트웨어 인식**
+- [ ] 악성 소프트웨어에 대한 사용자 인식 교육
+- [ ] 피싱 인식
+- [ ] 사회 공학 인식
+- [ ] 보안 인식 교육
+
+### 요구 사항 6: 보안 시스템 및 애플리케이션 개발 및 유지 관리
+
+**6.1 - 보안 개발 수명주기**
+- [ ] 안전한 개발 라이프사이클 프로세스
+- [ ] 보안 코딩 관행
+- [ ] 애플리케이션 보안 교육
+- [ ] 개발에 포함된 보안 요구 사항
+
+**6.2 - 보안 테스트**
+- [ ] 정기적인 애플리케이션 보안 테스트
+- [ ] 취약점 검색
+- [ ] 침투 테스트
+- [ ] 중요한 변경 후 테스트
+
+**6.3 - 보안 인증**
+- [ ] 다단계 인증 구현
+- [ ] 원격 액세스를 위한 강력한 인증
+- [ ] 개방형 네트워크를 통한 인증을 위한 암호화
+
+**6.4 - 입력 유효성 검사**
+- [ ] 모든 데이터에 대한 입력 검증
+- [ ] 출력 검증
+- [ ] 데이터 정리
+- [ ] SQL 주입 방지
+- [ ] XSS 방지
+
+**6.5 - 보안 코딩 방식**
+- [ ] 코드 검토
+- [ ] 보안 코딩 표준
+- [ ] 정보 공개 없이 오류 처리
+- [ ] 매개변수화된 쿼리
+
+**6.6 - 소프트웨어 업데이트**
+- [ ] 보안 패치가 즉시 적용됨
+- [ ] 공급업체 일정에 따른 소프트웨어 업데이트
+- [ ] 1개월 이내 중요 보안 패치
+- [ ] 취약점 모니터링
+
+**6.7 - 개발 및 테스트 환경**
+- [ ] 프로덕션과 분리된 개발/테스트 환경
+- [ ] 마스킹되거나 난독화된 테스트 데이터
+- [ ] 테스트에 사용되지 않은 생산 데이터
+- [ ] 개발 환경에 대한 액세스 제어
+
+### 요구 사항 7: 시스템 구성 요소 및 카드 소지자 데이터에 대한 액세스를 제한합니다.
+
+**7.1 - 액세스 제어 정책**
+- [ ] 접근통제 정책 수립
+- [ ] 매년 정책 검토
+- [ ] 최소 권한의 원칙
+- [ ] 꼭 알아야 할 근거
+
+**7.2 - 사용자 식별 및 인증**
+- [ ] 각 개인의 고유한 사용자 ID
+- [ ] 원격 액세스를 위한 다단계 인증
+- [ ] 강력한 비밀번호 정책
+- [ ] 최초 로그인 시 비밀번호 변경
+- [ ] 처음 사용할 때 임시 비밀번호가 변경됨
+- [ ] 시도 실패 후 잠금
+- [ ] 세션 시간 초과
+
+**7.3 - 액세스 권한**
+- [ ] 비즈니스 요구에 따라 액세스 권한이 부여됨
+- [ ] 액세스 권한이 문서화됨
+- [ ] 정기 액세스 검토(분기별)
+- [ ] 더 이상 필요하지 않을 때 액세스 권한이 제거됨**7.4 - 시스템 관리자**
+- [ ] 관리 업무를 위한 별도 계정
+- [ ] 관리자 인증 필요
+- [ ] 루트/관리자 액세스가 제어됨
+- [ ] 관리를 위한 개인 계정 사용 금지
+
+**7.5 - 사내 및 제3자 직원**
+- [ ] 카드 소지자 데이터에 접근할 수 있는 직원에 대한 배경 조사
+- [ ] 접근 권한이 부여되기 전에 직원을 선별했습니다.
+- [ ] 신원 조사 정책이 문서화되었습니다.
+- [ ] 제3자에 대한 계약상 의무
+
+**7.6 - 직원 해고**
+- [ ] 종료 즉시 액세스가 취소됩니다.
+- [ ] 인사 해고 절차
+- [ ] 반환된 모든 액세스 항목의 목록
+- [ ] 논리적 및 물리적 액세스가 제거되었습니다.
+
+**7.7 - 액세스 취소**
+- [ ] 더 이상 필요하지 않을 때 액세스가 취소되었습니다.
+- [ ] 해지 프로세스가 문서화됨
+- [ ] 정기 액세스 검토
+- [ ] 액세스 로그 검토
+
+### 요구 사항 8: 사용자를 식별하고 시스템 구성 요소에 대한 액세스를 인증합니다.
+
+**8.1 - 인증 메커니즘**
+- [ ] 모든 사용자를 위한 인증 메커니즘
+- [ ] 강력한 인증(원격 액세스를 위한 MFA)
+- [ ] 비밀번호 복잡성 요구 사항
+- [ ] 비밀번호 변경 빈도
+- [ ] 비밀번호 기록 요구 사항
+- [ ] 비밀번호 해싱/암호화
+
+**8.2 - 다단계 인증**
+- [ ] 카드 소지자 데이터에 대한 모든 액세스에 대해 MFA 구현
+- [ ] 원격 네트워크 액세스를 위해 구현된 MFA
+- [ ] 관리 액세스를 위한 MFA
+- [ ] MFA 요소는 독립적입니다(귀하가 알고 있고 알고 있는 것).
+
+**8.3 - 비밀번호 관리**
+- [ ] 비밀번호가 공유되지 않음
+- [ ] 비밀번호가 기록되지 않았습니다.
+- [ ] 스크립트나 코드에 없는 비밀번호
+- [ ] 비밀번호가 주기적으로 교체됩니다.
+- [ ] 강제 비밀번호 변경
+- [ ] 기본 비밀번호는 사용되지 않았습니다.
+
+**8.4 - 식별 및 인증**
+- [ ] 고유하게 식별된 사용자
+- [ ] 식별 및 인증 메커니즘
+- [ ] 인증된 세션이 모니터링됨
+- [ ] 세션 시간 초과가 구성되었습니다.
+
+**8.5 - 보안 정책**
+- [ ] 인증 보안 정책
+- [ ] 모든 사용자에게 정책 전달
+- [ ] 정책 승인 확인
+- [ ] 정기 보안 인식 교육
+
+### 요구사항 9: 카드 소지자 데이터에 대한 물리적 접근을 제한하세요.
+
+**9.1 - 물리적 접근 제어**
+- [ ] 물리적 접근 통제 정책
+- [ ] 승인된 직원으로 제한된 물리적 접근
+- [ ] 액세스 로그가 유지됩니다.
+- [ ] 액세스 배지/키 제어
+- [ ] 방문객 관리
+
+**9.2 - 미디어 처리**
+- [ ] 안전한 미디어 저장
+- [ ] 미디어 전송 보안
+- [ ] 미디어 파기 절차
+- [ ] 미디어 인벤토리 유지
+- [ ] 하드 드라이브 파괴/암호화 삭제
+
+**9.3 - 물리적 보안**
+- [ ] 물리적 장벽 및 울타리
+- [ ] 보안 카메라 및 모니터링
+- [ ] 경보 시스템
+- [ ] 경비원(해당되는 경우)
+- [ ] 보안 조명
+
+**9.4 - 방문자**
+- [ ] 방문객 승인 절차
+- [ ] 방문객 에스코트
+- [ ] 방문자 배지/ID
+- [ ] 방문자 기록
+
+**9.5 - 미디어 파괴**
+- [ ] 안전한 미디어 파기
+- [ ] 파기 과정이 문서화되었습니다.
+- [ ] 파괴 확인됨
+- [ ] 파기 증명서가 유지됨
+
+**9.6 - 장비 유지 관리**
+- [ ] 장비 유지보수 절차
+- [ ] 유지보수 인력 승인
+- [ ] 유지보수 감독
+- [ ] 유지보수 전 미디어 제거
+
+### 요구 사항 10: 시스템 구성 요소 및 카드 소지자 데이터에 대한 액세스를 기록하고 모니터링합니다.
+
+**10.1 - 감사 추적**
+- [ ] 모든 시스템 구성 요소에 대한 감사 추적
+- [ ] 감사 로그는 사용자 식별 정보를 캡처합니다.
+- [ ] 감사 로그 캡처 이벤트 유형
+- [ ] 감사 로그 캡처 날짜 및 시간
+- [ ] 감사 로그는 성공/실패를 캡처합니다.
+- [ ] 감사 로그는 이벤트 소스를 캡처합니다.
+
+**10.2 - 로그 검토**
+- [ ] 정기적인 로그 검토
+- [ ] 보안 이벤트 감지
+- [ ] 중요 시스템의 일일 검토
+- [ ] 다른 시스템의 주간 검토
+- [ ] 감사로그 보관(최소 1년 3개월 이상 가능)
+
+**10.3 - 로그 보호**
+- [ ] 로그가 변조되지 않도록 보호됨
+- [ ] 로그 백업 및 저장
+- [ ] 로그 실패에 대한 즉각적인 검토
+- [ ] 로그 무결성 확인**10.4 - 동기화**
+- [ ] 시스템 간 시간 동기화
+- [ ] NTP 서버가 사용됨
+- [ ] 시간 드리프트 모니터링
+
+### 요구사항 11: 보안 시스템과 프로세스를 정기적으로 테스트하세요.
+
+**11.1 - 무선 네트워크 테스트**
+- [ ] 분기별 무선 네트워크 검색
+- [ ] 무선 액세스 포인트 테스트
+- [ ] 승인되지 않은 무선 장치 감지
+- [ ] 무선 보안 테스트 도구
+
+**11.2 - 취약점 검색**
+- [ ] 분기별 외부 취약점 스캔
+- [ ] 분기별 내부 취약점 스캔
+- [ ] ASV의 연간 침투 테스트
+- [ ] 중요한 변경 후 검색 중
+- [ ] 취약점 해결
+
+**11.3 - 침투 테스트**
+- [ ] 연간 내부 침투 테스트
+- [ ] 연간 외부 침투 테스트
+- [ ] 자격을 갖춘 내부 리소스 또는 제3자에 의한 테스트
+- [ ] 네트워크 및 애플리케이션 계층 테스트
+- [ ] 세분화 및 범위 테스트
+- [ ] 식별된 취약점의 해결
+
+**11.4 - 침입 탐지 시스템**
+- [ ] IDS/IPS 모니터링
+- [ ] 매일 검토되는 침입 탐지 로그
+- [ ] 보안 이벤트 경고
+- [ ] 사고 대응 절차
+
+**11.5 - 사고 대응 계획**
+- [ ] 사고 대응 계획이 문서화됨
+- [ ] 사고 대응팀 확인
+- [ ] 대응 절차가 정의됨
+- [ ] 통지 절차
+- [ ] 사고 후 검토
+
+**11.6 - 정기 테스트**
+- [ ] 보안 시스템 정기 테스트
+- [ ] 보안 통제 테스트
+- [ ] 탐지 시스템 테스트
+- [ ] 사고 대응 테스트
+
+### 요구 사항 12: 조직 정책 및 프로그램을 통해 정보 보안을 지원합니다.
+
+**12.1 - 보안 정책**
+- [ ] 정보보호 정책 수립
+- [ ] 매년 정책 검토
+- [ ] 모든 직원에게 정책 전달
+- [ ] 보안 인식 교육
+- [ ] 담당자의 정책 승인
+
+**12.2 - 위험 관리**
+- [ ] 위험 평가 프로세스
+- [ ] 매년 위험 평가 수행
+- [ ] 위험 관리 프로그램
+- [ ] 위험 해결 추적
+
+**12.3 - 보안 사고**
+- [ ] 사고 대응 절차
+- [ ] 사고 에스컬레이션 절차
+- [ ] 사건 통보 절차
+- [ ] 사건 문서
+- [ ] 사고 후 분석
+
+**12.4 - 보안 인식 교육**
+- [ ] 보안 인식 프로그램
+- [ ] 고용 시 교육
+- [ ] 정기 교육 업데이트
+- [ ] 보안 사고 보고 교육
+
+**12.5 - 제3자 서비스 제공업체**
+- [ ] 제3자에 대한 실사
+- [ ] 보안 요구 사항이 있는 계약
+- [ ] 제3자 규정 준수 모니터링
+- [ ] 제3자 규정 준수 여부에 대한 연간 검증
+
+## 증거 수집
+
+### 필수 증거 유형
+
+**정책 및 절차**
+- [ ] 정보보호정책
+- [ ] 네트워크 보안 정책
+- [ ] 접근 제어 정책
+- [ ] 사고 대응 계획
+- [ ] 변경 관리 프로세스
+- [ ] 위험 평가 절차
+
+**구성 문서**
+- [ ] 방화벽 구성
+- [ ] 라우터 구성
+- [ ] 시스템 구성
+- [ ] 보안 제어 구성
+- [ ] 암호화 구성
+
+**모니터링 및 로깅**
+- [ ] 방화벽 로그
+- [ ] 시스템 로그
+- [ ] 애플리케이션 로그
+- [ ] 액세스 로그
+- [ ] 모니터링 보고서
+
+**테스트 증거**
+- [ ] 취약점 검색 보고서
+- [ ] 침투 테스트 보고서
+- [ ] 무선 검색 보고서
+- [ ] 보안관제 테스트 결과
+- [ ] 교정 확인
+
+**교육 증거**
+- [ ] 교육 자료
+- [ ] 교육 출석 기록
+- [ ] 교육 평가
+- [ ] 보안 인식 프로그램
+
+## 감사 준비
+
+### 사전 감사 체크리스트
+
+**문서**
+- [ ] 모든 정책을 검토하고 업데이트했습니다.
+- [ ] 모든 절차가 문서화됨
+- [ ] 증거 수집 및 정리
+- [ ] 격차 분석 완료
+- [ ] 격차 해소
+
+**내부 평가**
+- [ ] 내부 감사 실시
+- [ ] 자체 평가 설문지(SAQ) 완료
+- [ ] 결과 수정
+- [ ] 교정 후 재평가**직원 준비**
+- [ ] PCI DSS 요구 사항에 대한 교육을 받은 직원
+- [ ] 면접 준비 진행
+- [ ] 연락처 확인됨
+- [ ] 감사에 대한 직원의 인식
+
+**시스템 준비**
+- [ ] 증거 수집 시스템 검증
+- [ ] 모니터링 시스템 검증
+- [ ] 문서 저장소 구성
+- [ ] 액세스 제어가 검토됨
+
+## 범위 지정
+
+### 시스템 범위 식별
+
+**범위 내 시스템**
+- [ ] 카드 소지자 데이터를 처리하는 시스템
+- [ ] 카드 소지자 데이터를 전송하는 시스템
+- [ ] 카드 소지자 데이터를 저장하는 시스템
+- [ ] 상기에 대한 보안을 제공하는 시스템
+
+**지원 범위 외 시스템**
+- [ ] 카드 소유자 데이터를 처리하지 않는 시스템
+- [ ] 네트워크 분할이 가능한 시스템
+- [ ] 카드 소유자 데이터에 접근할 수 없는 시스템
+- [ ] 제외 기준을 충족하는 시스템
+
+### 서류 필요
+
+**네트워크 다이어그램**
+- [ ] 현재 네트워크 다이어그램
+- [ ] 데이터 흐름도
+- [ ] 시스템 연결이 문서화되었습니다.
+- [ ] 범위를 벗어난 시스템이 식별되었습니다.
+
+**데이터 흐름**
+- [ ] 카드 소지자 데이터 입력 지점
+- [ ] 카드 소지자 데이터 저장 지점
+- [ ] 카드 소지자 데이터 전송 경로
+- [ ] 카드 소지자 데이터 종료 지점
+
+## 참고자료
+
+- [PCI SSC 표준](https://www.pcisecuritystandards.org/)
 - [PCI DSS v4.0](https://www.pcisecuritystandards.org/documents/PCI-DSS-v4_0.pdf)
-- [PCI SAQ Instructions](https://www.pcisecuritystandards.org/documents/PCI-DSS-v4_0-SAQ-Instructions.pdf)
-- [ASV Program Guide](https://www.pcisecuritystandards.org/documents/ASV-Program-Guide-v1.0.2.pdf)
+- [PCI SAQ 지침](https://www.pcisecuritystandards.org/documents/PCI-DSS-v4_0-SAQ-Instructions.pdf)
+- [ASV 프로그램 가이드](https://www.pcisecuritystandards.org/documents/ASV-Program-Guide-v1.0.2.pdf)

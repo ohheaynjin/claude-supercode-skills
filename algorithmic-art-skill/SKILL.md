@@ -1,29 +1,27 @@
 ---
 name: algorithmic-art
-description: Expert in generative art, creative coding, and mathematical visualizations using p5.js and JavaScript.
+description: p5.js 및 JavaScript를 사용한 생성적 예술, 창의적 코딩, 수학적 시각화 전문가입니다.
+---
+# 알고리즘 아티스트
+
+## 목적
+
+p5.js를 사용한 생성 예술, 수학적 시각화 및 대화형 설치를 전문으로 하는 창의적 코딩 전문 지식을 제공합니다. 창의적이고 교육적인 목적을 위해 유동장, 입자 시스템, 노이즈 알고리즘 및 알고리즘 패턴이 포함된 코드를 통해 시각 예술을 만듭니다.
+
+## 사용 시기
+
+- 생성적 아트워크 만들기(NFT, 월페이퍼, 포스터)
+- 대화형 데이터 시각화 구축
+- 자연현상 시뮬레이션(Flocking, Cellular Automata)
+- 수학적 패턴 설계(프랙탈, 테셀레이션)
+- 창의적인 코딩 개념 교육
+
+---
 ---
 
-# Algorithmic Artist
+## 2. 의사결정 프레임워크
 
-## Purpose
-
-Provides creative coding expertise specializing in generative art, mathematical visualizations, and interactive installations using p5.js. Creates visual art through code with flow fields, particle systems, noise algorithms, and algorithmic patterns for creative and educational purposes.
-
-## When to Use
-
-- Creating generative artwork (NFTs, wallpapers, posters)
-- Building interactive data visualizations
-- Simulating natural phenomena (flocking, cellular automata)
-- Designing mathematical patterns (fractals, tessellations)
-- Teaching creative coding concepts
-
----
----
-
-## 2. Decision Framework
-
-### Algorithm Selection
-
+### 알고리즘 선택
 ```
 What is the visual goal?
 │
@@ -41,145 +39,140 @@ What is the visual goal?
    ├─ Physics? → **Verlet Integration / Springs**
    └─ Behavior? → **Boids (Flocking) / Cellular Automata**
 ```
+### 무작위성 전략
 
-### Randomness Strategy
-
-| Type | Function | Description |
+| 유형 | 기능 | 설명 |
 |------|----------|-------------|
-| **Uniform** | `random()` | Complete chaos. White noise. |
-| **Gaussian** | `randomGaussian()` | Bell curve. Most values near mean. |
-| **Perlin** | `noise()` | Smooth, gradient randomness. "Cloud-like". |
-| **Seeded** | `randomSeed()` | Deterministic. Same output every time. |
+| **유니폼** |`random()`| 완전한 혼란. 백색 잡음. |
+| **가우스** |`randomGaussian()`| 벨 곡선. 대부분의 값은 평균에 가깝습니다. |
+| **펄린** |`noise()`| 부드러운 그라데이션 무작위성. "구름같은". |
+| **시드** |`randomSeed()`| 결정적. 매번 같은 출력. |
 
-**Red Flags → Escalate to `threejs-pro`:**
-- Requirement for heavy 3D rendering (p5.js WebGL mode is limited compared to Three.js)
-- Complex lighting/shadow requirements
-- VR/AR integration needed
-
----
----
-
-### Workflow 2: Recursive Tree (Fractal)
-
-**Goal:** Draw a tree using recursion.
-
-**Steps:**
-
-1.  **Branch Function**
-    -   Draw line of length `len`.
-    -   Translate to end of line.
-    -   Rotate `theta`.
-    -   Call `branch(len * 0.67)`.
-    -   Rotate `-theta * 2`.
-    -   Call `branch(len * 0.67)`.
-
-2.  **Termination**
-    -   Stop when `len < 2`.
+**위험 신호 → 에스컬레이션`threejs-pro`:**
+- 무거운 3D 렌더링 요구 사항(p5.js WebGL 모드는 Three.js에 비해 제한됨)
+- 복잡한 조명/그림자 요구사항
+- VR/AR 통합 필요
 
 ---
 ---
 
-## Core Capabilities
+### 작업 흐름 2: 재귀 트리(프랙탈)
 
-### Generative Art Creation
-- Creates visual artwork using mathematical algorithms and randomness
-- Implements flow fields, particle systems, and noise-based visualizations
-- Generates geometric patterns, fractals, and tessellations
-- Creates procedural animations and interactive installations
+**목표:** 재귀를 사용하여 트리를 그립니다.
 
-### Mathematical Visualization
-- Implements algorithms for data-driven visual representations
-- Creates visualizations of mathematical concepts (fractals, chaos theory)
-- Builds interactive simulations of natural phenomena
-- Develops educational visualizations for mathematical concepts
+**단계:**
 
-### Performance Optimization
-- Optimizes rendering performance for complex generative systems
-- Implements canvas/WebGL optimizations for real-time artwork
-- Creates efficient particle systems and spatial data structures
-- Manages memory usage for large-scale generative projects
+1. **분기 기능**
+    - 길이의 선 그리기`len`.
+    - 줄 끝으로 번역합니다.
+    - 회전`theta`.
+    -   부르다`branch(len * 0.67)`.
+    - 회전`-theta * 2`.
+    -   부르다`branch(len * 0.67)`.
 
-### Creative Technology Integration
-- Integrates generative art with web technologies
-- Creates exportable artwork in various formats (PNG, SVG, GIF, video)
-- Implements interactivity and user input responsiveness
-- Develops installations combining code with physical outputs
+2. **해지**
+    - 언제 멈춰요`len < 2`.
 
 ---
 ---
 
-## 5. Anti-Patterns & Gotchas
+## 핵심 기능
 
-### ❌ Anti-Pattern 1: Heavy Computation in `draw()`
+### 생성 예술 창작
+- 수학적 알고리즘과 무작위성을 사용하여 시각적 작품을 만듭니다.
+- 유동장, 입자 시스템 및 소음 기반 시각화 구현
+- 기하학적 패턴, 프랙탈 및 테셀레이션을 생성합니다.
+- 절차적 애니메이션과 대화형 설치물 제작
 
-**What it looks like:**
--   Creating 10,000 objects every frame.
--   Resizing array every frame.
+### 수학적 시각화
+- 데이터 중심의 시각적 표현을 위한 알고리즘 구현
+- 수학적 개념(프랙탈, 카오스 이론)의 시각화 생성
+- 자연 현상에 대한 대화형 시뮬레이션 구축
+- 수학적 개념에 대한 교육적 시각화 개발
 
-**Why it fails:**
--   FPS drops to 5. Browser hangs.
+### 성능 최적화
+- 복잡한 생성 시스템의 렌더링 성능을 최적화합니다.
+- 실시간 아트웍을 위한 캔버스/WebGL 최적화 구현
+- 효율적인 입자 시스템 및 공간 데이터 구조 생성
+- 대규모 생성 프로젝트의 메모리 사용량을 관리합니다.
 
-**Correct approach:**
--   **Pre-calculate:** Generate static geometry in `setup()`.
--   **Pool Objects:** Reuse particles instead of `new Particle()`.
-
-### ❌ Anti-Pattern 2: Ignoring Resolution
-
-**What it looks like:**
--   Hardcoding `width = 500`.
--   Art looks pixelated on Retina screens.
-
-**Why it fails:**
--   Looks bad on high-DPI monitors or prints.
-
-**Correct approach:**
--   `pixelDensity(2)` (or higher).
--   Use relative units (`width * 0.5`) instead of absolute pixels.
-
-### ❌ Anti-Pattern 3: Pure Randomness
-
-**What it looks like:**
--   `fill(random(255), random(255), random(255))`
-
-**Why it fails:**
--   "Clown vomit" aesthetic. No cohesion.
-
-**Correct approach:**
--   **Curated Palettes:** Pick 5 colors and stick to them.
--   **Constraints:** Randomness should be the spice, not the meal.
+### 창의적 기술 융합
+- 생성 예술과 웹 기술을 통합합니다.
+- 다양한 형식(PNG, SVG, GIF, 비디오)으로 내보낼 수 있는 아트워크 생성
+- 상호작용성과 사용자 입력 응답성을 구현합니다.
+- 코드와 물리적 출력을 결합한 설치 개발
 
 ---
 ---
 
-## 7. Quality Checklist
+## 5. 안티 패턴 및 문제점
 
-**Visuals:**
--   [ ] **Resolution:** Sharp on Retina (`pixelDensity`).
--   [ ] **Composition:** Follows Rule of Thirds or Golden Ratio.
--   [ ] **Color:** Palette is cohesive (not pure random).
+### ❌ 안티 패턴 1: 과도한 계산`draw()`**모습:**
+- 매 프레임마다 10,000개의 개체를 생성합니다.
+- 매 프레임마다 배열의 크기를 조정합니다.
 
-**Performance:**
--   [ ] **FPS:** 60fps for interactive, any FPS for static generation.
--   [ ] **Memory:** No memory leaks (arrays growing infinitely).
+**실패하는 이유:**
+- FPS가 5로 떨어집니다. 브라우저가 중단됩니다.
 
-**Code:**
--   [ ] **Seeding:** `randomSeed()` used for reproducibility.
--   [ ] **Resizing:** `windowResized()` handles layout changes.
--   [ ] **Modularity:** Classes used for complex entities (Agent, Particle).
+**올바른 접근 방식:**
+- **사전 계산:** 다음에서 정적 형상을 생성합니다.`setup()`.
+- **풀 개체:** 대신 입자를 재사용합니다.`new Particle()`.
 
-## Examples
+### ❌ 안티 패턴 2: 해상도 무시
 
-### Example 1: Interactive Data Visualization
+**모습:**
+- 하드코딩`width = 500`.
+- 레티나 화면에서는 아트가 픽셀화되어 보입니다.
 
-**Scenario:** A data analyst wants to visualize population growth data as an animated circle packing visualization where circle sizes represent population figures.
+**실패하는 이유:**
+- 높은 DPI 모니터나 인쇄물에서는 보기 좋지 않습니다.
 
-**Approach:**
-1. **Data Processing**: Load CSV data and normalize population values to circle radii
-2. **Circle Packing Algorithm**: Implement iterative circle placement with collision detection
-3. **Color Mapping**: Create HSL color palette based on geographic region
-4. **Interactivity**: Add mouse hover to display country name and population
+**올바른 접근 방식:**
+-`pixelDensity(2)`(또는 그 이상).
+- 상대단위 사용(`width * 0.5`) 절대 픽셀 대신.
 
-**Key Implementation:**
+### ❌ 안티 패턴 3: 순수한 무작위성
+
+**모습:**
+-`fill(random(255), random(255), random(255))`**실패하는 이유:**
+- "광대 구토" 미학. 응집력이 없습니다.
+
+**올바른 접근 방식:**
+- **선별된 팔레트:** 5가지 색상을 선택하고 이를 고수하세요.
+- **제약사항:** 무작위성은 식사가 아니라 양념이 되어야 합니다.
+
+---
+---
+
+## 7. 품질 체크리스트
+
+**영상:**
+- [ ] **해상도:** Retina에서 선명함(`pixelDensity`).
+- [ ] **구성:** 3분할 법칙 또는 황금비를 따릅니다.
+- [ ] **색상:** 팔레트는 응집력이 있습니다(순전히 무작위가 아님).
+
+**성능:**
+- [ ] **FPS:** 대화형의 경우 60fps, 정적 생성의 경우 모든 FPS.
+- [ ] **메모리:** 메모리 누수가 없습니다(배열이 무한히 증가함).
+
+**코드:**
+- [ ] **시딩:**`randomSeed()`재현성을 위해 사용됩니다.
+- [ ] **크기 조정:**`windowResized()`레이아웃 변경을 처리합니다.
+- [ ] **모듈화:** 복잡한 엔터티(에이전트, 입자)에 사용되는 클래스입니다.
+
+## 예
+
+### 예시 1: 대화형 데이터 시각화
+
+**시나리오:** 데이터 분석가는 원 크기가 인구 수치를 나타내는 애니메이션 원 채우기 시각화로 인구 증가 데이터를 시각화하려고 합니다.
+
+**접근방식:**
+1. **데이터 처리**: CSV 데이터를 로드하고 인구 값을 원 반경으로 정규화합니다.
+2. **원 패킹 알고리즘**: 충돌 감지를 통해 반복적인 원 배치 구현
+3. **색상 매핑**: 지리적 지역을 기반으로 HSL 색상 팔레트 만들기
+4. **상호작용**: 마우스를 올리면 국가 이름과 인구가 표시됩니다.
+
+**주요 구현:**
 ```javascript
 // Circle packing with growth animation
 function draw() {
@@ -195,79 +188,78 @@ function draw() {
   }
 }
 ```
+**결과:** 색상으로 구분된 지역, 부드러운 성장 애니메이션 및 마우스 오버 툴팁을 통해 50개 국가를 보여주는 대화형 시각화입니다.
 
-**Result:** Interactive visualization showing 50 countries with color-coded regions, smooth growth animations, and hover tooltips.
+### 예 2: 생성 예술 NFT 컬렉션
 
-### Example 2: Generative Art NFT Collection
+**시나리오:** 아티스트는 프로그래밍 방식으로 생성된 꽃으로 10,000개의 NFT 컬렉션을 만들어 희귀성 배포와 시각적 응집성을 보장하려고 합니다.
 
-**Scenario:** An artist wants to create a 10,000-piece NFT collection with programmatically generated flowers, ensuring rarity distribution and visual cohesion.
+**접근방식:**
+1. **특성 아키텍처**: 희귀 가중치를 사용하여 레이어(배경, 줄기, 꽃잎, 중앙)를 정의합니다.
+2. **해시 기반 생성**: 해시 함수를 사용하여 특성을 결정적으로 선택합니다.
+3. **색상 조화**: 보색 강조 색상으로 HSL 기반 색상 팔레트를 구현합니다.
+4. **일괄 생성**: 메타데이터가 포함된 이미지 10,000개 생성 및 내보내기
 
-**Approach:**
-1. **Trait Architecture**: Define layers (background, stem, petals, center) with rarity weights
-2. **Hash-based Generation**: Use hash function to deterministically select traits
-3. **Color Harmony**: Implement HSL-based color palettes with complementary accent colors
-4. **Batch Generation**: Generate and export 10,000 images with metadata
+**주요 기능:**
+- 희귀도가 다양한 5가지 배경 유형(전설에서 공통)
+- 각각 4가지 색상의 20가지 꽃 유형
+- 미적 응집력을 유지하면서 시각적 독창성을 보장합니다.
+- Opensea 호환성을 위한 메타데이터 JSON 생성
 
-**Key Features:**
-- 5 background types with varying rarity (common to legendary)
-- 20 flower types with 4 color variations each
-- Guaranteed visual uniqueness while maintaining aesthetic cohesion
-- Metadata JSON generation for Opensea compatibility
+### 예시 3: 교육 물리학 시뮬레이션
 
-### Example 3: Educational Physics Simulation
+**시나리오:** 물리학 교사는 고등학교 수업에서 입자 충돌과 운동량 보존에 대한 대화형 시연이 필요합니다.
 
-**Scenario:** A physics teacher needs an interactive demonstration of particle collision and momentum conservation for a high school class.
+**접근방식:**
+1. **입자 시스템**: 위치, 속도, 질량을 갖는 입자 생성
+2. **충돌 감지**: 탄성 충돌 물리학 구현
+3. **컨트롤**: 중력, 탄성 및 입자 수에 대한 슬라이더를 추가합니다.
+4. **시각화**: 속도 벡터와 운동량 합계를 실시간으로 표시합니다.
 
-**Approach:**
-1. **Particle System**: Create particles with position, velocity, and mass
-2. **Collision Detection**: Implement elastic collision physics
-3. **Controls**: Add sliders for gravity, elasticity, and particle count
-4. **Visualization**: Show velocity vectors and momentum totals in real-time
+**교육적 특징:**
+- 조정 가능한 매개변수(중력 계수, 벽 바운스)
+- 상세한 분석을 위한 일시정지/단계 제어
+- 실시간 운동량 계산 표시
+- 입자 경로를 보여주는 트레일 효과
 
-**Educational Features:**
-- Adjustable parameters (gravity coefficient, wall bounce)
-- Pause/step controls for detailed analysis
-- Real-time momentum calculations displayed
-- Trail effect showing particle paths
+## 모범 사례
 
-## Best Practices
+### 시각 디자인 우수성
 
-### Visual Design Excellence
+- **구성 계획**: 복잡한 시각화를 코딩하기 전에 디자인 도구를 스케치하거나 사용합니다.
+- **신중하게 색상 사용**: 임의의 색상이 아닌 의도적인 팔레트를 만듭니다.
+- **디자인 원칙 적용**: 황금 비율, 삼등분의 법칙, 시각적 계층 구조
+- **접근성 고려**: 충분한 대비를 보장하고 색맹 친화적인 팔레트를 고려합니다.
+- **다양한 해상도로 테스트**: 파비콘부터 포스터 크기까지 시각적 무결성을 확인합니다.
 
-- **Plan Your Composition**: Sketch or use design tools before coding complex visualizations
-- **Use Color Thoughtfully**: Create intentional palettes rather than random colors
-- **Apply Design Principles**: Golden ratio, rule of thirds, visual hierarchy
-- **Consider Accessibility**: Ensure sufficient contrast and consider colorblind-friendly palettes
-- **Test at Multiple Resolutions**: Verify visual integrity from favicon to poster size
+### 성능 최적화
 
-### Performance Optimization
+- **가능한 경우 사전 계산**: 정적 형상 생성을 setup()으로 이동합니다.
+- **풀 개체**: 매 프레임마다 새 개체를 만드는 대신 입자 개체를 재사용합니다.
+- **배열 작업 제한**: 배열 길이를 캐시하고 draw() 루프에서 배열 메서드를 사용하지 마세요.
+- **pixelDensity를 현명하게 사용**: 대상 디스플레이에 적절하게 설정합니다(성능용 1, Retina용 2).
+- **정기적으로 프로필 작성**: 브라우저 개발 도구를 사용하여 병목 현상 식별
 
-- **Pre-calculate When Possible**: Move static geometry generation to setup()
-- **Pool Objects**: Reuse particle objects instead of creating new ones each frame
-- **Limit Array Operations**: Cache array length, avoid array methods in draw() loops
-- **Use pixelDensity Wisely**: Set appropriately for target display (1 for performance, 2 for Retina)
-- **Profile Regularly**: Use browser dev tools to identify bottlenecks
+### 알고리즘 선택
 
-### Algorithm Selection
+- **목표에 대한 일치 알고리즘**: 유기체의 경우 노이즈, 프랙탈의 재귀, 동작의 보이드
+- **간단하게 시작**: 기본 버전을 먼저 구현하고 점차적으로 복잡성을 추가합니다.
+- **수학 이해**: 사용하는 알고리즘의 기본 수학을 알아보세요.
+- **매개변수 반복**: 작은 매개변수 변경으로 인해 종종 극적으로 다른 결과가 발생합니다.
+- **결합 기법**: 복잡한 시각적 효과를 위한 다중 알고리즘 계층화(노이즈 + 유동장 + 입자)
 
-- **Match Algorithm to Goal**: Noise for organic, recursion for fractals, boids for behavior
-- **Start Simple**: Implement basic version first, add complexity incrementally
-- **Understand the Math**: Know the underlying mathematics of algorithms you use
-- **Iterate Parameters**: Small parameter changes often yield dramatically different results
-- **Combine Techniques**: Layer multiple algorithms for complex visuals (noise + flow fields + particles)
+### 코드 구성
 
-### Code Organization
+- **복잡한 엔터티에 클래스 사용**: 조직을 위한 입자, 에이전트, 차량 클래스
+- **별도 구성**: 구성 가능한 개체에 대한 매개변수 추출
+- **알고리즘 문서화**: 수학과 논리를 설명하는 주석 추가
+- **유틸리티 기능 생성**: 일반적인 작업(색상 생성, 임의 범위)을 모듈화합니다.
+- **작업 버전 관리**: 반복을 저장하여 창작 과정을 이해하세요
 
-- **Use Classes for Complex Entities**: Particle, Agent, Vehicle classes for organization
-- **Separate Configuration**: Extract parameters to configurable objects
-- **Document Your Algorithms**: Add comments explaining the math and logic
-- **Create Utility Functions**: Modularize common operations (color generation, random ranges)
-- **Version Your Work**: Save iterations to understand your creative process
+### 수출 및 유통
 
-### Export and Distribution
-
-- **Preserve Reproducibility**: Use randomSeed() for deterministic exports
-- **Optimize for Target**: Export at appropriate resolution and format
-- **Include Metadata**: Add creator attribution and generation parameters
-- **Test Export Pipeline**: Verify exported images match on-screen appearance
-- **Backup Source Code**: Keep editable source for future modifications
+- **재현성 유지**: 결정론적 내보내기에 RandomSeed()를 사용합니다.
+- **대상에 맞게 최적화**: 적절한 해상도와 형식으로 내보내기
+- **메타데이터 포함**: 창작자 속성 및 생성 매개변수 추가
+- **내보내기 파이프라인 테스트**: 내보낸 이미지가 화면 모양과 일치하는지 확인
+- **백업 소스 코드**: 향후 수정을 위해 편집 가능한 소스를 유지합니다.

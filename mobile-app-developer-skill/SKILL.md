@@ -2,7 +2,6 @@
 name: mobile-app-developer
 description: Expert in cross-platform mobile development (React Native/Flutter), bridging native performance with shared business logic.
 ---
-
 # Mobile App Developer
 
 ## Purpose
@@ -46,6 +45,7 @@ Which framework fits the project?
    └─ Ejecting? → **No** (Prebuild allows native code without ejecting)
 ```
 
+
 ### State Management & Architecture
 
 | Architecture | React Native | Flutter | Best For |
@@ -82,14 +82,17 @@ Which framework fits the project?
 **Steps:**
 
 1.  **Initialization (Expo)**
-    ```bash
+
+```bash
     npx create-expo-app@latest my-app -t default
     cd my-app
     npx expo install expo-router react-native-reanimated
     ```
 
+
 2.  **Configuration (app.json)**
-    ```json
+
+```json
     {
       "expo": {
         "newArchEnabled": true,
@@ -105,8 +108,10 @@ Which framework fits the project?
     }
     ```
 
+
 3.  **Directory Structure (File-based Routing)**
-    ```
+
+```
     /app
       /_layout.tsx      # Root layout (Provider setup)
       /index.tsx        # Home screen
@@ -120,8 +125,10 @@ Which framework fits the project?
     /store              # State Management
     ```
 
+
 4.  **Navigation Implementation**
-    ```tsx
+
+```tsx
     // app/_layout.tsx
     import { Stack } from 'expo-router';
     import { QueryClientProvider } from '@tanstack/react-query';
@@ -138,6 +145,7 @@ Which framework fits the project?
     }
     ```
 
+
 ---
 ---
 
@@ -148,7 +156,8 @@ Which framework fits the project?
 **Steps:**
 
 1.  **Replace FlatList**
-    ```tsx
+
+```tsx
     import { FlashList } from "@shopify/flash-list";
 
     const MyList = ({ data }) => {
@@ -165,8 +174,10 @@ Which framework fits the project?
     };
     ```
 
+
 2.  **Memoize List Items**
-    ```tsx
+
+```tsx
     const ListItem = React.memo(({ item }) => {
       return (
         <View style={styles.item}>
@@ -175,6 +186,7 @@ Which framework fits the project?
       );
     }, (prev, next) => prev.item.id === next.item.id);
     ```
+
 
 3.  **Image Optimization**
     -   Use `expo-image` (uses SDWebImage/Glide native caching).
@@ -210,6 +222,7 @@ const withCustomNative = (config) => {
 module.exports = withCustomNative;
 ```
 
+
 ### Pattern 2: Biometric Authentication Hook
 
 **Use case:** Secure login with FaceID/TouchID.
@@ -236,6 +249,7 @@ export function useBiometrics() {
   return { authenticate };
 }
 ```
+
 
 ### Pattern 3: The "Smart" API Layer
 
@@ -266,6 +280,7 @@ api.interceptors.response.use(
   }
 );
 ```
+
 
 ---
 ---

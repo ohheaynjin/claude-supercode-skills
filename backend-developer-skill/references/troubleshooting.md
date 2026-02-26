@@ -272,12 +272,14 @@ python scripts/scaffold_api.py express my-api --verbose
 python scripts/generate_model.py typeorm --schema schema.json --output src/models --verbose
 ```
 
+
 ### Dry Run Mode
 
 ```bash
 # Test without creating files
 python scripts/scaffold_api.py express my-api --dry-run
 ```
+
 
 ### Help Documentation
 
@@ -287,6 +289,7 @@ python scripts/scaffold_api.py --help
 python scripts/generate_model.py --help
 python scripts/setup_auth.py --help
 ```
+
 
 ## Framework-Specific Issues
 

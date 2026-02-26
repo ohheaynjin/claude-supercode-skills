@@ -1,7 +1,6 @@
-# Backend Developer - Code Examples & Patterns
+# 백엔드 개발자 - 코드 예제 및 패턴
 
-## Pattern 1: Repository Pattern for Data Access
-
+## 패턴 1: 데이터 액세스를 위한 저장소 패턴
 ```typescript
 // src/repositories/user.repository.ts
 import { PrismaClient, User } from '@prisma/client';
@@ -38,9 +37,7 @@ export class UserRepository {
 const userRepo = new UserRepository(prisma);
 const user = await userRepo.findByEmail('test@example.com');
 ```
-
-## Pattern 2: Service Layer for Business Logic
-
+## 패턴 2: 비즈니스 로직을 위한 서비스 계층
 ```typescript
 // src/services/user.service.ts
 import bcrypt from 'bcrypt';
@@ -89,9 +86,7 @@ export class UserService {
   }
 }
 ```
-
-## Pattern 3: Custom Error Classes
-
+## 패턴 3: 사용자 정의 오류 클래스
 ```typescript
 // src/errors/index.ts
 export class AppError extends Error {
@@ -153,10 +148,9 @@ if (existingUser) {
   throw new ConflictError('User already exists');
 }
 ```
+## 안티 패턴 1: 입력 유효성을 검사하지 않음
 
-## Anti-Pattern 1: Not Validating Input
-
-### What it looks like (BAD):
+### 외관(나쁨):
 ```typescript
 // ❌ BAD: No validation, trusting client input
 router.post('/users', async (req, res) => {
@@ -170,14 +164,13 @@ router.post('/users', async (req, res) => {
   res.json(user);
 });
 ```
+### 실패 이유:
+- SQL 주입 취약점
+- 데이터베이스에 잘못된 데이터가 있습니다.
+- 좋지 않은 사용자 경험(불명확한 오류)
+- 보안 위험(취약한 비밀번호 허용)
 
-### Why it fails:
-- SQL injection vulnerabilities
-- Invalid data in database
-- Poor user experience (unclear errors)
-- Security risks (weak passwords accepted)
-
-### Correct approach:
+### 올바른 접근 방식:
 ```typescript
 // ✅ GOOD: Validate with Zod
 import { z } from 'zod';
@@ -208,10 +201,9 @@ router.post('/users', async (req, res) => {
   }
 });
 ```
+## 안티 패턴 2: Express에서 비동기 오류를 처리하지 않음
 
-## Anti-Pattern 2: Not Handling Async Errors in Express
-
-### What it looks like (BAD):
+### 외관(나쁨):
 ```typescript
 // ❌ BAD: Unhandled promise rejection crashes server
 router.get('/users/:id', async (req, res) => {
@@ -222,13 +214,12 @@ router.get('/users/:id', async (req, res) => {
   res.json(user);
 });
 ```
+### 실패 이유:
+- 처리되지 않은 약속 거부로 인해 서버가 충돌합니다.
+- 클라이언트에 오류 응답이 전송되지 않습니다.
+- 불량한 디버깅 경험
 
-### Why it fails:
-- Server crashes on unhandled promise rejections
-- No error response sent to client
-- Poor debugging experience
-
-### Correct approach:
+### 올바른 접근 방식:
 ```typescript
 // ✅ GOOD: Wrap in try-catch OR use express-async-errors
 import 'express-async-errors'; // Auto-catches async errors
@@ -253,9 +244,7 @@ app.use((err, req, res, next) => {
   });
 });
 ```
-
-## API Client Example (Axios)
-
+## API 클라이언트 예시(Axios)
 ```typescript
 // src/api/client.ts
 import axios, { AxiosInstance, AxiosError } from 'axios';
@@ -327,11 +316,9 @@ const updatedUser = await api.put('/users/123', { name: 'Updated Name' });
 // DELETE request
 await api.delete('/users/123');
 ```
+## 테스트 예
 
-## Testing Examples
-
-### Unit Test (Jest)
-
+### 단위 테스트(Jest)
 ```typescript
 // src/services/__tests__/user.service.test.ts
 import { UserService } from '../user.service';
@@ -389,9 +376,7 @@ describe('UserService', () => {
   });
 });
 ```
-
-### Integration Test (Supertest)
-
+### 통합 테스트(슈퍼테스트)
 ```typescript
 // src/routes/__tests__/auth.routes.test.ts
 import request from 'supertest';
@@ -495,9 +480,7 @@ describe('Auth Routes', () => {
   });
 });
 ```
-
-## Verification Commands
-
+## 확인 명령
 ```bash
 # Start dev server
 npm run dev

@@ -81,6 +81,7 @@ public class InventoryController : ApiController
 }
 ```
 
+
 ---
 
 ## Example 2: WCF to Modern Integration Bridge
@@ -155,6 +156,7 @@ public class PatientBridgeService : IPatientBridgeService
 }
 ```
 
+
 ---
 
 ## Example 3: Windows Service Migration Assessment
@@ -208,6 +210,7 @@ Option C: Strangler Fig Pattern
 */
 ```
 
+
 ---
 
 ## Common Patterns
@@ -244,6 +247,7 @@ protected void Application_Error(object sender, EventArgs e)
 }
 ```
 
+
 ### Dependency Injection (Unity Container)
 
 ```csharp
@@ -269,6 +273,7 @@ public static class UnityConfig
     }
 }
 ```
+
 
 ### Async/Await Pattern (EF6)
 
@@ -312,6 +317,7 @@ public class ProductService : IProductService
 }
 ```
 
+
 ---
 
 ## Anti-Patterns and Fixes
@@ -331,6 +337,7 @@ public static class DatabaseHelper
     }
 }
 ```
+
 
 **Solution:**
 ```csharp
@@ -356,6 +363,7 @@ public class ProductRepository : IProductRepository, IDisposable
 }
 ```
 
+
 ### Anti-Pattern: N+1 Queries
 
 **Problem:**
@@ -369,6 +377,7 @@ foreach (var product in products)
 }
 ```
 
+
 **Solution:**
 ```csharp
 // GOOD: Eager loading with Include
@@ -381,6 +390,7 @@ foreach (var product in products)
     Console.WriteLine(product.Category.Name);
 }
 ```
+
 
 ---
 

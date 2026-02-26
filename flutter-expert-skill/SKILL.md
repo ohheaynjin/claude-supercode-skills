@@ -2,7 +2,6 @@
 name: flutter-expert
 description: Expert in building cross-platform apps with Flutter 3+. Specializes in Dart, Riverpod, Flame (Game Engine), and FFI (Native Integration).
 ---
-
 # Flutter Expert
 
 ## Purpose
@@ -50,6 +49,7 @@ How to talk to Native?
    └─ Performance Critical? → **Hybrid Composition**
 ```
 
+
 ### Rendering Engine (Impeller vs Skia)
 
 *   **Impeller (Default iOS):** Predetermined shaders. Zero jank.
@@ -71,7 +71,8 @@ How to talk to Native?
 **Steps:**
 
 1.  **Shader Code (`shaders/pixelate.frag`)**
-    ```glsl
+
+```glsl
     #include <flutter/runtime_effect.glsl>
 
     uniform vec2 uSize;
@@ -87,8 +88,10 @@ How to talk to Native?
     }
     ```
 
+
 2.  **Load & Apply**
-    ```dart
+
+```dart
     // Load asset
     final program = await FragmentProgram.fromAsset('shaders/pixelate.frag');
     
@@ -103,6 +106,7 @@ How to talk to Native?
       canvas.drawRect(Offset.zero & size, paint);
     }
     ```
+
 
 ---
 ---
@@ -128,6 +132,7 @@ lib/
     controllers/
 ```
 
+
 ### Pattern 2: Repository Pattern (Riverpod)
 
 **Use case:** Decoupling API from UI.
@@ -143,6 +148,7 @@ Future<User> currentUser(CurrentUserRef ref) {
   return ref.watch(authRepositoryProvider).getCurrentUser();
 }
 ```
+
 
 ### Pattern 3: Responsive Layout (Adaptive)
 
@@ -166,6 +172,7 @@ class AdaptiveScaffold extends StatelessWidget {
   }
 }
 ```
+
 
 ---
 ---

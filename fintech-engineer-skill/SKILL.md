@@ -1,38 +1,32 @@
 ---
 name: fintech-engineer
-description: Expert in financial technology systems, double-entry ledger design, high-precision math, and regulatory compliance. Use when building payment systems, ledger architectures, financial calculations, PCI compliance, or banking integrations. Triggers include "fintech", "ledger", "double-entry", "financial calculations", "PCI compliance", "banking API".
+description: 금융 기술 시스템, 복식 원장 설계, 고정밀 수학 및 규정 준수 분야의 전문가입니다. 결제 시스템, 원장 아키텍처, 재무 계산, PCI 규정 준수 또는 은행 통합을 구축할 때 사용하세요. 트리거에는 "핀테크", "원장", "복식 입력", "재무 계산", "PCI 준수", "뱅킹 API"가 포함됩니다.
 ---
+# 핀테크 엔지니어
 
-# Fintech Engineer
+## 목적
+적절한 회계 원칙, 규정 준수 및 고정밀 계산을 통해 금융 기술 시스템 구축에 대한 전문적인 지침을 제공합니다. 원장 설계, 지불 처리 아키텍처 및 금융 데이터 무결성을 전문으로 합니다.
 
-## Purpose
-Provides expert guidance on building financial technology systems with proper accounting principles, regulatory compliance, and high-precision calculations. Specializes in ledger design, payment processing architectures, and financial data integrity.
+## 사용 시기
+- 복식 원장 시스템 또는 회계 데이터베이스 설계
+- 고정밀 재무 계산 구현(부동 소수점 오류 방지)
+- 결제 처리 파이프라인 구축
+- PCI-DSS 또는 SOX 규정 준수 보장
+- 뱅킹 API(Plaid, Stripe 등)와 통합
+- 통화 변환 및 다중 통화 시스템 처리
+- 금융거래 감사추적 구축
+- 화해 시스템 설계
 
-## When to Use
-- Designing double-entry ledger systems or accounting databases
-- Implementing high-precision financial calculations (avoiding floating-point errors)
-- Building payment processing pipelines
-- Ensuring PCI-DSS or SOX compliance
-- Integrating with banking APIs (Plaid, Stripe, etc.)
-- Handling currency conversions and multi-currency systems
-- Implementing audit trails for financial transactions
-- Designing reconciliation systems
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 원장 또는 회계 시스템 구축
+- 정확성이 요구되는 재무계산 구현
+- 결제 처리 아키텍처 설계
+- 규정 준수 보장(PCI, SOX, PSD2)
+- 뱅킹 또는 결제 API 통합
 
-## Quick Start
-**Invoke this skill when:**
-- Building ledger or accounting systems
-- Implementing financial calculations requiring precision
-- Designing payment processing architectures
-- Ensuring regulatory compliance (PCI, SOX, PSD2)
-- Integrating banking or payment APIs
-
-**Do NOT invoke when:**
-- General database design without financial context → use `/database-administrator`
-- API integration without financial specifics → use `/api-designer`
-- Generic security hardening → use `/security-engineer`
-- ML-based fraud detection models → use `/ml-engineer`
-
-## Decision Framework
+**다음과 같은 경우에는 호출하지 마세요.**
+- 재무적 맥락이 없는 일반 데이터베이스 설계 → 활용`/database-administrator`- 금융 세부사항이 없는 API 통합 → 사용`/api-designer`- 일반 보안강화 → 활용`/security-engineer`- ML 기반 부정행위 탐지 모델 → 활용`/ml-engineer`## 의사결정 프레임워크
 ```
 Financial Calculation Needed?
 ├── Yes: Currency/Money
@@ -45,44 +39,43 @@ Financial Calculation Needed?
     ├── Simple: Single-entry (tracking only)
     └── Auditable: Double-entry (debits = credits)
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 복식 원장 구현
+1. 계정과목표 정의(자산, 부채, 자본, 수익, 비용)
+2. 차변/신용 열이 포함된 분개 테이블 생성
+3. 잔액 검증 구현(차변 합계 = 대변 합계)
+4. 변경 불가능한 트랜잭션 로그로 감사 추적 추가
+5. 조정 쿼리 작성
 
-### 1. Double-Entry Ledger Implementation
-1. Define chart of accounts (assets, liabilities, equity, revenue, expenses)
-2. Create journal entry table with debit/credit columns
-3. Implement balance validation (sum of debits = sum of credits)
-4. Add audit trail with immutable transaction logs
-5. Build reconciliation queries
+### 2. 결제 처리 파이프라인
+1. 결제 요청 및 멱등성 키 검증
+2. 대기 중인 거래 기록 생성
+3. 재시도 로직을 사용하여 결제 프로세서를 호출합니다.
+4. 비동기 확인을 위한 웹훅 처리
+5. 원장 항목을 원자적으로 업데이트합니다.
+6. 영수증 및 감사 로그 생성
 
-### 2. Payment Processing Pipeline
-1. Validate payment request and idempotency key
-2. Create pending transaction record
-3. Call payment processor with retry logic
-4. Handle webhook for async confirmation
-5. Update ledger entries atomically
-6. Generate receipt and audit log
+### 3. 정밀 계산 설정
+1. 적절한 숫자 유형(DECIMAL, NUMERIC, BigDecimal)을 선택합니다.
+2. 통화에 따른 척도(소수점 자릿수) 정의
+3. 관할권별로 반올림 규칙을 구현합니다.
+4. 계산 도우미 함수 만들기
+5. 오버플로/언더플로에 대한 유효성 검사 추가
 
-### 3. Precision Calculation Setup
-1. Choose appropriate numeric type (DECIMAL, NUMERIC, BigDecimal)
-2. Define scale (decimal places) based on currency
-3. Implement rounding rules per jurisdiction
-4. Create calculation helper functions
-5. Add validation for overflow/underflow
+## 모범 사례
+- 화폐 가치를 가장 작은 단위(센트, 파이스)의 정수로 저장합니다.
+- FLOAT가 아닌 DECIMAL/NUMERIC 데이터베이스 유형을 사용하십시오.
+- 모든 재무 운영에 대한 멱등성을 구현합니다.
+- 모든 거래에 대해 불변의 감사 로그를 유지합니다.
+- 다중 테이블 업데이트에 데이터베이스 트랜잭션 사용
+- 반올림 규칙을 문서화하고 일관되게 적용합니다.
 
-## Best Practices
-- Store monetary values as integers in smallest unit (cents, paise)
-- Use DECIMAL/NUMERIC database types, never FLOAT
-- Implement idempotency for all financial operations
-- Maintain immutable audit logs for every transaction
-- Use database transactions for multi-table updates
-- Document rounding rules and apply consistently
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Using floats for money | Precision errors accumulate | Use decimal types or integer cents |
-| Mutable transaction records | Audit trail destroyed | Append-only logs, soft deletes |
-| Missing idempotency | Duplicate charges possible | Idempotency keys on all mutations |
-| Single-entry for auditable systems | Cannot reconcile or audit | Double-entry with balanced journals |
-| Hardcoded tax rates | Compliance failures | Configuration-driven, versioned rules |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 돈을 위해 수레 사용하기 | 정밀도 오류가 누적됩니다 | 소수 유형 또는 정수 센트 사용 |
+| 변경 가능한 거래 기록 | 감사 추적이 파괴됨 | 추가 전용 로그, 일시 삭제 |
+| 멱등성 누락 | 중복 청구 가능 | 모든 변이에 대한 멱등성 키 |
+| 감사 가능한 시스템을 위한 단일 항목 | 조정하거나 감사할 수 없음 | 균형 저널을 사용한 복식 |
+| 하드코드된 세율 | 규정 준수 실패 | 구성 기반, 버전 관리 규칙 |

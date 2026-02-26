@@ -2,7 +2,6 @@
 name: laravel-specialist
 description: Expert Laravel developer specializing in Laravel 11+, Octane, Livewire 3, and PHP 8.3 features. Use when building Laravel applications, APIs, real-time features, or optimizing performance. Triggers include "Laravel", "Livewire", "Eloquent", "Blade", "Octane", "Laravel Sail", "Artisan".
 ---
-
 # Laravel Specialist
 
 ## Purpose
@@ -46,6 +45,7 @@ Feature Type?
 └── Real-time
     └── Laravel Echo + Pusher/Soketi
 ```
+
 
 ## Core Workflows
 

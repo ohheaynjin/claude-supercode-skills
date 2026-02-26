@@ -1,11 +1,10 @@
-# Backend Testing Strategies
+# 백엔드 테스트 전략
 
-## Overview
+## 개요
 
-Testing backend APIs requires a comprehensive approach covering unit, integration, and end-to-end tests. This guide covers strategies for modern backend frameworks.
+백엔드 API를 테스트하려면 단위, 통합, 엔드투엔드 테스트를 포괄하는 포괄적인 접근 방식이 필요합니다. 이 가이드에서는 최신 백엔드 프레임워크에 대한 전략을 다룹니다.
 
-## Testing Pyramid
-
+## 피라미드 테스트
 ```
         /\
        /E2E\     - Few, slow, high value
@@ -15,11 +14,9 @@ Testing backend APIs requires a comprehensive approach covering unit, integratio
    /    Unit      \ - Many, fast, focused
   /----------------\
 ```
+## 단위 테스트
 
-## Unit Testing
-
-### Test Structure
-
+### 테스트 구조
 ```typescript
 describe('UserService', () => {
   let userService: UserService;
@@ -35,9 +32,7 @@ describe('UserService', () => {
   });
 });
 ```
-
-### Testing Pure Functions
-
+### 순수 함수 테스트
 ```typescript
 describe('Password Validation', () => {
   it('should validate strong password', () => {
@@ -49,9 +44,7 @@ describe('Password Validation', () => {
   });
 });
 ```
-
-### Mocking Dependencies
-
+### 모의 의존성
 ```typescript
 describe('UserService', () => {
   it('should send welcome email', async () => {
@@ -68,9 +61,7 @@ describe('UserService', () => {
   });
 });
 ```
-
-### Testing Edge Cases
-
+### 엣지 케이스 테스트
 ```typescript
 describe('User Creation', () => {
   it('should handle duplicate email', async () => {
@@ -90,11 +81,9 @@ describe('User Creation', () => {
   });
 });
 ```
+## 통합 테스트
 
-## Integration Testing
-
-### Test Database Setup
-
+### 테스트 데이터베이스 설정
 ```typescript
 // tests/setup.ts
 import { setupTestDatabase, teardownTestDatabase } from './test-utils';
@@ -111,9 +100,7 @@ beforeEach(async () => {
   await truncateDatabase();
 });
 ```
-
-### API Endpoint Testing
-
+### API 엔드포인트 테스트
 ```typescript
 describe('POST /api/v1/users', () => {
   it('should create user', async () => {
@@ -143,9 +130,7 @@ describe('POST /api/v1/users', () => {
   });
 });
 ```
-
-### Database Integration
-
+### 데이터베이스 통합
 ```typescript
 describe('User Repository Integration', () => {
   let repository: UserRepository;
@@ -167,9 +152,7 @@ describe('User Repository Integration', () => {
   });
 });
 ```
-
-### Authentication Testing
-
+### 인증 테스트
 ```typescript
 describe('Authentication', () => {
   it('should authenticate with valid credentials', async () => {
@@ -201,11 +184,9 @@ describe('Authentication', () => {
   });
 });
 ```
+## 엔드투엔드 테스트
 
-## End-to-End Testing
-
-### API Flow Testing
-
+### API 흐름 테스트
 ```typescript
 describe('User Registration Flow', () => {
   it('should complete full registration flow', async () => {
@@ -241,9 +222,7 @@ describe('User Registration Flow', () => {
   });
 });
 ```
-
-### External Service Integration
-
+### 외부 서비스 통합
 ```typescript
 describe('Payment Integration', () => {
   it('should process payment', async () => {
@@ -264,11 +243,9 @@ describe('Payment Integration', () => {
   });
 });
 ```
+## 테스트 데이터 관리
 
-## Test Data Management
-
-### Fixtures
-
+### 비품
 ```typescript
 // tests/fixtures/user.fixture.ts
 export class UserFixture {
@@ -289,9 +266,7 @@ export class UserFixture {
   }
 }
 ```
-
-### Factories
-
+### 공장
 ```typescript
 // tests/factories/user.factory.ts
 export class UserFactory {
@@ -309,11 +284,9 @@ export class UserFactory {
   }
 }
 ```
+## 테스트 조직
 
-## Test Organization
-
-### File Structure
-
+### 파일 구조
 ```
 tests/
 ├── unit/
@@ -340,20 +313,16 @@ tests/
 ├── setup.ts
 └── teardown.ts
 ```
+## 테스트 범위
 
-## Test Coverage
-
-### Coverage Targets
-
+### 적용 대상
 ```
 Lines:      80%
 Functions:  80%
 Branches:   75%
 Statements: 80%
 ```
-
-### Coverage Configuration
-
+### 커버리지 구성
 ```javascript
 // jest.config.js
 module.exports = {
@@ -372,11 +341,9 @@ module.exports = {
   }
 };
 ```
+## 조롱 및 스텁
 
-## Mocking and Stubs
-
-### HTTP Request Mocking
-
+### HTTP 요청 모의
 ```typescript
 import nock from 'nock';
 
@@ -394,9 +361,7 @@ describe('External API Service', () => {
   });
 });
 ```
-
-### Database Mocking
-
+### 데이터베이스 조롱
 ```typescript
 describe('User Repository', () => {
   it('should find user by email', async () => {
@@ -417,11 +382,9 @@ describe('User Repository', () => {
   });
 });
 ```
+## 성능 테스트
 
-## Performance Testing
-
-### Load Testing
-
+### 부하 테스트
 ```typescript
 import { check, sleep } from 'k6';
 import http from 'k6/http';
@@ -451,9 +414,7 @@ export default function() {
   sleep(1);
 }
 ```
-
-### Benchmarking
-
+### 벤치마킹
 ```typescript
 describe('Performance Benchmarks', () => {
   it('should process 1000 users in < 1s', async () => {
@@ -470,11 +431,9 @@ describe('Performance Benchmarks', () => {
   });
 });
 ```
+## 지속적인 테스트
 
-## Continuous Testing
-
-### CI/CD Integration
-
+### CI/CD 통합
 ```yaml
 # .github/workflows/test.yml
 name: Tests
@@ -507,11 +466,9 @@ jobs:
       - run: npm test
       - run: npm run test:coverage
 ```
+## 테스트 모범 사례
 
-## Test Best Practices
-
-### Naming Conventions
-
+### 명명 규칙
 ```typescript
 // BAD
 it('should work', () => {});
@@ -521,9 +478,7 @@ it('should create user with valid data', () => {});
 it('should return 400 when email is invalid', () => {});
 it('should throw error when duplicate email exists', () => {});
 ```
-
-### AAA Pattern
-
+### AAA 패턴
 ```typescript
 it('should create user', () => {
   // Arrange
@@ -537,9 +492,7 @@ it('should create user', () => {
   expect(result.email).toBe(userData.email);
 });
 ```
-
-### One Assertion per Test
-
+### 테스트당 하나의 어설션
 ```typescript
 // GOOD
 it('should set user email', () => {
@@ -552,11 +505,9 @@ it('should hash user password', () => {
   expect(user.password).not.toBe('password');
 });
 ```
+## 문제 해결
 
-## Troubleshooting
-
-### Flaky Tests
-
+### 불안정한 테스트
 ```typescript
 // Use retries for flaky tests
 describe('Flaky Integration', () => {
@@ -567,9 +518,7 @@ describe('Flaky Integration', () => {
   });
 });
 ```
-
-### Test Isolation
-
+### 테스트 격리
 ```typescript
 // Reset state between tests
 beforeEach(async () => {
@@ -578,9 +527,7 @@ beforeEach(async () => {
   jest.clearAllMocks();
 });
 ```
-
-### Debugging
-
+### 디버깅 중
 ```typescript
 // Enable debug logging
 describe('Debug', () => {
@@ -594,11 +541,10 @@ describe('Debug', () => {
   });
 });
 ```
+## 리소스
 
-## Resources
-
-- Jest: https://jestjs.io/
-- pytest: https://docs.pytest.org/
-- Supertest: https://github.com/visionmedia/supertest
+- 제스트: https://jestjs.io/
+- 파이테스트: https://docs.pytest.org/
+- 슈퍼테스트: https://github.com/visionmedia/supertest
 - K6: https://k6.io/
-- Testcontainers: https://www.testcontainers.org/
+- 테스트컨테이너: https://www.testcontainers.org/

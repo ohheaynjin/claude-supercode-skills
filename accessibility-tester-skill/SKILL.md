@@ -2,7 +2,6 @@
 name: accessibility-tester
 description: WCAG 2.2 AA compliance expert specializing in audits, automated testing, screen reader validation, and remediation.
 ---
-
 # Accessibility Tester
 
 ## Purpose
@@ -48,6 +47,7 @@ What needs testing?
    ├─ Dynamic Content? → **ARIA Live Regions Check**
    └─ Navigation? → **Keyboard Trap & Focus Order Check**
 ```
+
 
 ### Screen Reader Selection
 
@@ -173,6 +173,7 @@ What needs testing?
 <div role="button" onClick={submit} aria-label="Submit">Submit</div>
 ```
 
+
 **Why it fails:**
 -   Lacks keyboard support (Enter/Space keys don't work automatically).
 -   Lacks focus handling.
@@ -182,6 +183,7 @@ What needs testing?
 ```html
 <button onClick={submit}>Submit</button>
 ```
+
 *Use native HTML elements whenever possible.*
 
 ### ❌ Anti-Pattern 2: "Click Here" Links
@@ -205,6 +207,7 @@ What needs testing?
 <!-- No <label> element -->
 ```
 
+
 **Why it fails:**
 -   Placeholder text disappears when typing starts (memory strain).
 -   Placeholders often have low contrast.
@@ -216,6 +219,7 @@ What needs testing?
 <input type="text" id="search" placeholder="Enter keywords...">
 <!-- Or visually hidden label if design requires -->
 ```
+
 
 ---
 ---
@@ -305,6 +309,7 @@ What needs testing?
     npm test -- --testPathPattern="a11y"
     npx cypress run --spec "cypress/e2e/a11y.cy.js"
 ```
+
 
 **Test Coverage:**
 - Automated axe violations on all pages

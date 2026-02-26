@@ -1,11 +1,10 @@
-# Backend Developer - Technical Reference
+# 백엔드 개발자 - 기술 참조
 
-## Workflow 1: Setting Up Production-Ready Express + TypeScript API with JWT Auth
+## 워크플로 1: JWT 인증을 사용하여 Production-Ready Express + TypeScript API 설정
 
-**Goal:** Bootstrap secure REST API with TypeScript, Prisma ORM, JWT auth, validation, error handling in <1 hour.
+**목표:** TypeScript, Prisma ORM, JWT 인증, 유효성 검사, 오류 처리 기능을 갖춘 부트스트랩 보안 REST API를 1시간 이내에 완료하세요.
 
-### Step 1: Initialize Project with TypeScript
-
+### 1단계: TypeScript를 사용하여 프로젝트 초기화
 ```bash
 mkdir my-backend-api && cd my-backend-api
 npm init -y
@@ -13,14 +12,13 @@ npm install express cors helmet dotenv
 npm install -D typescript @types/node @types/express ts-node-dev
 npx tsc --init
 ```
-
-### Step 2: Setup Prisma ORM
-
+### 2단계: Prisma ORM 설정
 ```bash
 npm install prisma @prisma/client
 npm install -D prisma
 npx prisma init
 ```
+
 
 ```prisma
 # prisma/schema.prisma
@@ -43,14 +41,13 @@ model User {
 }
 ```
 
+
 ```bash
 # Run migrations
 npx prisma migrate dev --name init
 npx prisma generate
 ```
-
-### Step 3: Implement JWT Authentication
-
+### 3단계: JWT 인증 구현
 ```typescript
 // src/auth/jwt.ts
 import jwt from 'jsonwebtoken';
@@ -99,12 +96,11 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
   }
 }
 ```
-
-### Step 4: Setup Input Validation with Zod
-
+### 4단계: Zod를 사용하여 입력 유효성 검사 설정
 ```bash
 npm install zod
 ```
+
 
 ```typescript
 // src/validators/user.validator.ts
@@ -139,9 +135,7 @@ export function validate(schema: z.ZodSchema) {
   };
 }
 ```
-
-### Step 5: Implement Auth Routes
-
+### 5단계: 인증 경로 구현
 ```typescript
 // src/routes/auth.routes.ts
 import { Router } from 'express';
@@ -218,9 +212,7 @@ router.post('/login', validate(loginSchema), async (req, res, next) => {
 
 export default router;
 ```
-
-### Step 6: Global Error Handler
-
+### 6단계: 전역 오류 처리기
 ```typescript
 // src/middleware/error.middleware.ts
 import { Request, Response, NextFunction } from 'express';
@@ -239,9 +231,7 @@ export function errorHandler(
   });
 }
 ```
-
-### Step 7: Main Server Setup
-
+### 7단계: 주 서버 설정
 ```typescript
 // src/server.ts
 import express from 'express';
@@ -271,19 +261,15 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 ```
+## 워크플로 2: Bull Queue를 사용하여 백그라운드 작업 구현
 
-## Workflow 2: Implementing Background Jobs with Bull Queue
+**목표:** 장기 실행 작업(이메일 전송, 이미지 처리)을 비동기식으로 처리합니다.
 
-**Goal:** Process long-running tasks (email sending, image processing) asynchronously.
-
-### Step 1: Install Dependencies
-
+### 1단계: 종속성 설치
 ```bash
 npm install bull @types/bull
 ```
-
-### Step 2: Setup Queue
-
+### 2단계: 대기열 설정
 ```typescript
 // src/queues/email.queue.ts
 import Queue from 'bull';
@@ -323,9 +309,7 @@ export function queueEmail(to: string, subject: string, body: string) {
 
 export { emailQueue };
 ```
-
-### Step 3: Use in API Route
-
+### 3단계: API 경로에서 사용
 ```typescript
 // src/routes/user.routes.ts
 import { queueEmail } from '../queues/email.queue';
@@ -347,65 +331,59 @@ router.post('/send-welcome-email', authMiddleware, async (req, res) => {
   res.json({ message: 'Welcome email queued' });
 });
 ```
+## 통합 패턴
 
-## Integration Patterns
+### API 디자이너
+- **핸드오프:** 백엔드 개발자가 API 경로를 구현 → API 디자이너가 OpenAPI 사양 준수 여부를 확인합니다.
+- **협업:** 백엔드 개발자가 엔드포인트 생성 → API 디자이너가 RESTful 규칙, HTTP 상태 코드 보장
+- **도구:** 백엔드 개발자는 Express/FastAPI를 사용합니다. api-designer는 Swagger/Postman으로 유효성을 검사합니다.
 
-### api-designer
-- **Handoff:** backend-developer implements API routes → api-designer validates OpenAPI spec compliance
-- **Collaboration:** backend-developer creates endpoints → api-designer ensures RESTful conventions, HTTP status codes
-- **Tools:** backend-developer uses Express/FastAPI; api-designer validates with Swagger/Postman
+### 데이터베이스 관리자
+- **핸드오프:** 백엔드 개발자가 ORM 모델 구현 → 데이터베이스 관리자가 데이터베이스 스키마, 인덱스 최적화
+- **협업:** 백엔드 개발자가 쿼리 작성 → 데이터베이스 관리자가 쿼리 성능 조정
+- **도구:** 백엔드 개발자는 Prisma/TypeORM을 사용합니다. 데이터베이스 관리자는 EXPLAIN ANALYZE, pg_stat_statements를 사용합니다.
 
-### database-administrator
-- **Handoff:** backend-developer implements ORM models → database-administrator optimizes database schema, indexes
-- **Collaboration:** backend-developer writes queries → database-administrator tunes query performance
-- **Tools:** backend-developer uses Prisma/TypeORM; database-administrator uses EXPLAIN ANALYZE, pg_stat_statements
+### 프론트엔드 개발자
+- **Handoff:** 백엔드 개발자가 API 엔드포인트 생성 → 프런트엔드 개발자가 Axios/Fetch를 통해 소비
+- **협업:** 백엔드 개발자가 API 계약 정의 → 프런트엔드 개발자가 TypeScript 유형 구현
+- **도구:** 둘 다 TypeScript를 사용합니다. backend-developer는 프런트엔드 코드 생성을 위한 OpenAPI 사양을 제공합니다.
 
-### frontend-developer
-- **Handoff:** backend-developer creates API endpoints → frontend-developer consumes via Axios/Fetch
-- **Collaboration:** backend-developer defines API contracts → frontend-developer implements TypeScript types
-- **Tools:** Both use TypeScript; backend-developer provides OpenAPI spec for frontend code generation
+### 데브옵스 엔지니어
+- **핸드오프:** 백엔드 개발자가 Dockerfile을 생성 → devops-엔지니어가 CI/CD 파이프라인 설정
+- **협업:** 백엔드 개발자가 상태 확인을 구현 → devops-엔지니어가 Kubernetes 프로브 구성
+- **도구:** 백엔드 개발자는 Docker를 사용합니다. devops-engineer는 Kubernetes, GitHub Actions를 사용합니다.
 
-### devops-engineer
-- **Handoff:** backend-developer creates Dockerfile → devops-engineer sets up CI/CD pipeline
-- **Collaboration:** backend-developer implements health checks → devops-engineer configures Kubernetes probes
-- **Tools:** backend-developer uses Docker; devops-engineer uses Kubernetes, GitHub Actions
+### 보안 감사자
+- **인계:** 백엔드 개발자가 인증 구현 → 취약점에 대한 보안 감사자 감사(SQL 주입, XSS)
+- **협업:** 백엔드 개발자가 입력 유효성 검사를 추가 → 보안 감사자가 보안 코딩 방식을 확인합니다.
+- **도구:** 백엔드 개발자는 Zod/Joi를 사용합니다. 보안 감사자는 OWASP ZAP, Burp Suite를 사용합니다.
 
-### security-auditor
-- **Handoff:** backend-developer implements auth → security-auditor audits for vulnerabilities (SQL injection, XSS)
-- **Collaboration:** backend-developer adds input validation → security-auditor verifies secure coding practices
-- **Tools:** backend-developer uses Zod/Joi; security-auditor uses OWASP ZAP, Burp Suite
+## 스크립트 참조
 
-## Scripts Reference
-
-### API Scaffolding
+### API 스캐폴딩
 ```bash
 python scripts/scaffold_api.py <framework> <project_name>
 # Frameworks: express, fastapi, django, spring
 ```
-
-### Database Model Generation
+### 데이터베이스 모델 생성
 ```bash
 python scripts/generate_model.py <orm> --schema <schema_file> --output <output_dir>
 # ORMs: sequelize, typeorm, sqlalchemy, django, jpa
 ```
-
-### Authentication Setup
+### 인증 설정
 ```bash
 python scripts/setup_auth.py <framework> <auth_type>
 # Auth types: jwt, oauth2, session
 ```
-
-### Middleware Generation
+### 미들웨어 세대
 ```bash
 python scripts/create_middleware.py <framework> --output <output_dir>
 ```
-
-### Error Handler Setup
+### 오류 처리기 설정
 ```bash
 python scripts/error_handler.py <framework> --output <output_dir>
 ```
-
-### Deployment Script
+### 배포 스크립트
 ```bash
 ./scripts/deploy.sh [OPTIONS]
 # Options:

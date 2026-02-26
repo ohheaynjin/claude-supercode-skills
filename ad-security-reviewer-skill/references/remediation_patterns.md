@@ -1,11 +1,10 @@
-# Active Directory Security Remediation Patterns
+# Active Directory 보안 수정 패턴
 
-Common patterns and best practices for remediating Active Directory security findings.
+Active Directory 보안 결과를 수정하기 위한 일반적인 패턴 및 모범 사례입니다.
 
-## Privileged Group Remediation
+## 권한 있는 그룹 수정
 
-### Automated Privilege Reduction
-
+### 자동 권한 감소
 ```powershell
 function Remove-ExcessivePrivilegedMembers {
     param(
@@ -40,9 +39,7 @@ function Remove-ExcessivePrivilegedMembers {
     }
 }
 ```
-
-### Just-In-Time Admin Access
-
+### 적시 관리 액세스
 ```typescript
 interface JitAccessRequest {
   requesterId: string;
@@ -85,9 +82,7 @@ async function grantJitAccess(request: JitAccessRequest): Promise<boolean> {
   return true;
 }
 ```
-
-### PIM (Privileged Identity Management) Integration
-
+### PIM(Privileged Identity Management) 통합
 ```typescript
 async function configurePIMRole(
   roleId: string,
@@ -127,11 +122,9 @@ async function configurePIMRole(
   }
 }
 ```
+## 계정 보안 문제 해결
 
-## Account Security Remediation
-
-### Stale Account Remediation
-
+### 오래된 계정 문제 해결
 ```powershell
 function Disable-StaleAccounts {
     param(
@@ -179,9 +172,7 @@ function Disable-StaleAccounts {
     }
 }
 ```
-
-### Password Reset and MFA Enforcement
-
+### 비밀번호 재설정 및 MFA 시행
 ```typescript
 async function enforceMFAForPrivilegedUsers(): Promise<{ enforced: number; failed: number }> {
   let enforced = 0;
@@ -225,11 +216,9 @@ async function enforceMFAForPrivilegedUsers(): Promise<{ enforced: number; faile
   return { enforced, failed };
 }
 ```
+## 위임 수정
 
-## Delegation Remediation
-
-### Removing Excessive Delegation
-
+### 과도한 위임 제거
 ```powershell
 function Remove-ExcessiveDelegation {
     param(
@@ -260,9 +249,7 @@ function Remove-ExcessiveDelegation {
     }
 }
 ```
-
-### Implementing Role-Based Access Control
-
+### 역할 기반 액세스 제어 구현
 ```typescript
 interface RoleDefinition {
   roleName: string;
@@ -314,11 +301,9 @@ async function implementRBAC(roleDefinitions: RoleDefinition[]): Promise<boolean
   }
 }
 ```
+## 조건부 액세스 수정
 
-## Conditional Access Remediation
-
-### Enforcing MFA for Admins
-
+### 관리자를 위한 MFA 시행
 ```typescript
 async function createMFAForAdminsPolicy(): Promise<boolean> {
   try {
@@ -357,9 +342,7 @@ async function createMFAForAdminsPolicy(): Promise<boolean> {
   }
 }
 ```
-
-### Geographic Access Restrictions
-
+### 지리적 접근 제한
 ```typescript
 async function createGeoRestrictionPolicy(
   allowedLocations: string[]
@@ -409,11 +392,9 @@ async function createGeoRestrictionPolicy(
   }
 }
 ```
+## 자동 응답 패턴
 
-## Automated Response Patterns
-
-### Incident Response Workflow
-
+### 사고 대응 워크플로
 ```typescript
 async function handleSecurityIncident(incident: SecurityIncident): Promise<boolean> {
   const incidentId = await createIncidentTicket(incident);
@@ -456,9 +437,7 @@ async function containIncident(incident: SecurityIncident): Promise<void> {
   await revokeAllSessions(incident.affectedUsers);
 }
 ```
-
-### Continuous Monitoring Pattern
-
+### 지속적인 모니터링 패턴
 ```typescript
 async function continuousSecurityMonitoring(): Promise<void> {
   console.log('Starting continuous security monitoring...');
@@ -486,11 +465,9 @@ async function continuousSecurityMonitoring(): Promise<void> {
   }, 3600000); // Every hour
 }
 ```
+## 규정 준수 보고
 
-## Compliance Reporting
-
-### Automated Compliance Checks
-
+### 자동화된 규정 준수 확인
 ```typescript
 interface ComplianceFramework {
   name: string;
@@ -537,11 +514,9 @@ async function runComplianceAssessment(
   return report;
 }
 ```
+## 복구 및 복원
 
-## Recovery and Restoration
-
-### Post-Remediation Verification
-
+### 교정 후 확인
 ```powershell
 function Test-RemediationSuccess {
     param(
@@ -584,9 +559,7 @@ function Test-RemediationSuccess {
     return $results
 }
 ```
-
-### Rollback Procedures
-
+### 롤백 절차
 ```typescript
 async function rollbackSecurityChanges(changeId: string): Promise<boolean> {
   try {

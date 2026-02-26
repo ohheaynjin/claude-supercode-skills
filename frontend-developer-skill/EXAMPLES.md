@@ -1,8 +1,8 @@
-# Frontend Developer - Code Examples & Patterns
+# 프론트엔드 개발자 - 코드 예제 및 패턴
 
-## Anti-Pattern 1: useState for Server Data
+## 안티 패턴 1: 서버 데이터에 대한 useState
 
-### What it looks like (BAD):
+### 외관(나쁨):
 ```typescript
 // ❌ BAD: Managing API data with useState
 const UserProfile = () => {
@@ -23,15 +23,14 @@ const UserProfile = () => {
   return <div>{user?.name}</div>;
 };
 ```
+### 실패 이유:
+- 자동 캐싱 없음(마운트할 때마다 다시 가져옴)
+- 오래된 데이터에 대해 백그라운드를 다시 가져오는 일이 없습니다.
+- 수동 로딩/오류 상태 관리
+- 낙관적 업데이트 지원 없음
+- 구성 요소 전반에 걸쳐 중복된 논리
 
-### Why it fails:
-- No automatic caching (refetches on every mount)
-- No background refetching for stale data
-- Manual loading/error state management
-- No optimistic updates support
-- Duplicated logic across components
-
-### Correct approach:
+### 올바른 접근 방식:
 ```typescript
 // ✅ GOOD: Use TanStack Query for server data
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -59,12 +58,11 @@ const UserProfile = () => {
   return <div>{user?.name}</div>;
 };
 ```
+**영향:** 상용구 90% 감소, 자동 캐싱, UX 개선.
 
-**Impact:** 90% less boilerplate, automatic caching, better UX.
+## 안티 패턴 2: 값비싼 계산을 메모하지 않음
 
-## Anti-Pattern 2: Not Memoizing Expensive Computations
-
-### What it looks like (BAD):
+### 외관(나쁨):
 ```typescript
 // ❌ BAD: Expensive computation runs on every render
 function ProductList({ products }) {
@@ -77,14 +75,13 @@ function ProductList({ products }) {
   return <div>{sortedProducts.map(p => <ProductCard {...p} />)}</div>;
 }
 ```
+### 실패 이유:
+- 렌더링할 때마다 값비싼 계산이 실행됩니다.
+- 상위 재렌더링으로 인해 불필요한 작업 발생
+- 대규모 데이터 세트의 성능 저하
+- 종속성 추적 없음
 
-### Why it fails:
-- Expensive calculation runs on every render
-- Parent re-renders cause unnecessary work
-- Poor performance with large datasets
-- No dependency tracking
-
-### Correct approach:
+### 올바른 접근 방식:
 ```typescript
 // ✅ GOOD: Memoize expensive computation
 import { useMemo, memo } from 'react';
@@ -105,11 +102,9 @@ const ProductCard = memo(({ id, name, score }) => {
   return <div>{name} - {score}</div>;
 });
 ```
+**영향:** 10배 이상 빠른 렌더링, 더 부드러운 UX, 더 나은 성능.
 
-**Impact:** 10x+ faster renders, smoother UX, better performance.
-
-## Zustand Store Pattern
-
+## Zustand 매장 패턴
 ```typescript
 // src/store/useCartStore.ts
 import { create } from 'zustand';
@@ -190,11 +185,9 @@ const ShoppingCart = () => {
   );
 };
 ```
+## 테스트 예
 
-## Testing Examples
-
-### Unit Test (Vitest)
-
+### 단위 테스트(Vitest)
 ```typescript
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -216,9 +209,7 @@ describe('UserProfile', () => {
   });
 });
 ```
-
-### E2E Test (Playwright)
-
+### E2E 테스트(극작가)
 ```typescript
 import { test, expect } from '@playwright/test';
 
@@ -240,11 +231,9 @@ test('add item to cart', async ({ page }) => {
   await expect(page.locator('[data-testid="cart-count"]')).toHaveText('1');
 });
 ```
+## 성능 패턴
 
-## Performance Patterns
-
-### Code Splitting with React.lazy
-
+### React.lazy를 사용한 코드 분할
 ```typescript
 import { lazy, Suspense } from 'react';
 
@@ -258,9 +247,7 @@ const App = () => {
   );
 };
 ```
-
-### Memoization with useMemo and useCallback
-
+### useMemo 및 useCallback을 사용한 메모
 ```typescript
 import { memo, useMemo, useCallback } from 'react';
 
@@ -280,9 +267,7 @@ const ExpensiveComponent = memo(({ data, onAction }: Props) => {
   );
 });
 ```
-
-### Virtualization for Long Lists
-
+### 긴 목록을 위한 가상화
 ```typescript
 import { useVirtualizer } from '@tanstack/react-virtual';
 
@@ -318,9 +303,7 @@ function VirtualList({ items }) {
   );
 }
 ```
-
-## Error Boundary Pattern
-
+## 오류 경계 패턴
 ```typescript
 import { Component, ErrorInfo, ReactNode } from 'react';
 
@@ -370,9 +353,7 @@ class ErrorBoundary extends Component<Props, State> {
   <App />
 </ErrorBoundary>
 ```
-
-## Form Handling with React Hook Form
-
+## React Hook Form을 사용한 폼 처리
 ```typescript
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';

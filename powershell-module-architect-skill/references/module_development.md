@@ -1,13 +1,12 @@
-# PowerShell Module Development Guide
+# PowerShell 모듈 개발 가이드
 
-## Overview
+## 개요
 
-This guide covers best practices for developing PowerShell modules, including structure, packaging, and distribution.
+이 가이드에서는 구조, 패키징 및 배포를 포함하여 PowerShell 모듈 개발에 대한 모범 사례를 다룹니다.
 
-## Module Structure
+## 모듈 구조
 
-### Standard Module Layout
-
+### 표준 모듈 레이아웃
 ```
 MyModule/
 ├── MyModule.psd1          # Module manifest
@@ -37,11 +36,9 @@ MyModule/
 ├── README.md              # Module documentation
 └── LICENSE                # License file
 ```
+## 모듈 매니페스트
 
-## Module Manifest
-
-### Creating a Manifest
-
+### 매니페스트 만들기
 ```powershell
 # MyModule.psd1
 @{
@@ -65,21 +62,19 @@ MyModule/
     ReleaseNotes = 'Initial release'
 }
 ```
+### 매니페스트 모범 사례
 
-### Best Practices for Manifests
+1. 의미론적 버전 관리(MAJOR.MINOR.PATCH)를 사용합니다.
+2. 공개 함수만 내보내기(와일드카드 사용 안함)
+3. 포괄적인 메타데이터 포함
+4. 최소 PowerShell 버전을 지정하세요.
+5. 검색 가능성을 위한 태그 추가
+6. 프로젝트 및 라이선스 URL을 포함하세요.
+7. 크로스 플랫폼 지원을 위해 CompatiblePSEditions 설정
 
-1. Use semantic versioning (MAJOR.MINOR.PATCH)
-2. Export only public functions (avoid wildcards)
-3. Include comprehensive metadata
-4. Specify minimum PowerShell version
-5. Add tags for discoverability
-6. Include project and license URLs
-7. Set CompatiblePSEditions for cross-platform support
+## 모듈 스크립트
 
-## Module Script
-
-### Basic Module Script
-
+### 기본 모듈 스크립트
 ```powershell
 # MyModule.psm1
 $ErrorActionPreference = 'Stop'
@@ -100,11 +95,9 @@ $publicFunctions = Get-ChildItem -Path "$PSScriptRoot\Public" -Filter "*.ps1" |
 
 Export-ModuleMember -Function $publicFunctions
 ```
+## 공개 함수
 
-## Public Functions
-
-### Function Template
-
+### 함수 템플릿
 ```powershell
 # Public/Get-Item.ps1
 <#
@@ -171,22 +164,19 @@ function Get-Item {
     }
 }
 ```
+### 함수 모범 사례
 
-### Best Practices for Functions
+1. 항상 사용하세요`CmdletBinding()`2. 포괄적인 설명 기반 도움말 포함
+3. 매개변수 검증 사용
+4. 적절한 오류 처리 구현
+5. 디버깅을 위해 자세한 출력을 사용하세요.
+6. PowerShell 동사-명사 명명을 따릅니다.
+7. 기능에 집중하고 단일 목적으로 유지하세요.
+8. 텍스트가 아닌 객체를 반환합니다.
 
-1. Always use `CmdletBinding()`
-2. Include comprehensive comment-based help
-3. Use parameter validation
-4. Implement proper error handling
-5. Use verbose output for debugging
-6. Follow PowerShell verb-noun naming
-7. Keep functions focused and single-purpose
-8. Return objects, not text
+## 비공개 기능
 
-## Private Functions
-
-### Helper Function Example
-
+### 도우미 함수 예
 ```powershell
 # Private/Helper-Function.ps1
 function Invoke-ApiCall {
@@ -213,11 +203,9 @@ function Invoke-ApiCall {
     }
 }
 ```
+## 수업
 
-## Classes
-
-### PowerShell Classes
-
+### PowerShell 클래스
 ```powershell
 # Classes/MyClass.ps1
 class MyClass {
@@ -246,11 +234,9 @@ class MyClass {
     }
 }
 ```
+## 형식 사양
 
-## Format Specifications
-
-### Custom Formats
-
+### 사용자 정의 형식
 ```xml
 <!-- Formats/MyModule.format.ps1xml -->
 <Configuration>
@@ -281,11 +267,9 @@ class MyClass {
     </ViewDefinitions>
 </Configuration>
 ```
+## 유형 확장
 
-## Type Extensions
-
-### Adding Type Members
-
+### 유형 멤버 추가
 ```xml
 <!-- Types/MyModule.types.ps1xml -->
 <Types>
@@ -302,11 +286,9 @@ class MyClass {
     </Type>
 </Types>
 ```
+## 포장
 
-## Packaging
-
-### Creating NuGet Package
-
+### NuGet 패키지 생성
 ```powershell
 # Update module manifest version
 $manifestPath = "MyModule.psd1"
@@ -322,9 +304,7 @@ Get-Command -Module MyModule
 # Create NuGet package
 # The module directory is ready for distribution
 ```
-
-### Using PowerShellGet
-
+### PowerShellGet 사용
 ```powershell
 # Publish to PowerShell Gallery
 Publish-Module -Path ".\MyModule" -NuGetApiKey "your-api-key" -Repository PSGallery
@@ -335,11 +315,9 @@ Install-Module -Name MyModule
 # Update module
 Update-Module -Name MyModule
 ```
+## 테스트
 
-## Testing
-
-### Pester Tests
-
+### 페스터 테스트
 ```powershell
 # Tests/Unit/Get-Item.Tests.ps1
 Describe "Get-Item" {
@@ -367,11 +345,9 @@ Describe "Get-Item" {
     }
 }
 ```
+## 문서
 
-## Documentation
-
-### About Topics
-
+### 주제 정보
 ```text
 # en-US/about_MyModule.help.txt
 TOPIC
@@ -390,23 +366,22 @@ EXAMPLES
 NOTES
     Additional notes and references
 ```
+## 모범 사례 요약
 
-## Best Practices Summary
+1. **구조**: 표준 모듈 레이아웃을 따릅니다.
+2. **매니페스트**: 의미론적 버전 관리를 사용하고 필요한 멤버만 내보내기
+3. **함수**: 주석 기반 도움말 포함, 매개변수 확인 사용
+4. **테스팅**: 포괄적인 Pester 테스트 작성
+5. **문서**: README, 주제 및 예제에 대한 내용을 포함합니다.
+6. **버전 제어**: 소스 제어를 위해 Git 사용
+7. **CI/CD**: 자동화된 테스트 및 배포 구현
+8. **종속성**: 종속성을 올바르게 지정하고 관리합니다.
+9. **오류 처리**: 강력한 오류 처리 구현
+10. **성능**: 성능 및 리소스 사용량 최적화
 
-1. **Structure**: Follow standard module layout
-2. **Manifest**: Use semantic versioning, export only needed members
-3. **Functions**: Include comment-based help, use parameter validation
-4. **Testing**: Write comprehensive Pester tests
-5. **Documentation**: Include README, about topics, and examples
-6. **Version Control**: Use Git for source control
-7. **CI/CD**: Implement automated testing and deployment
-8. **Dependencies**: Specify and manage dependencies correctly
-9. **Error Handling**: Implement robust error handling
-10. **Performance**: Optimize for performance and resource usage
+## 리소스
 
-## Resources
-
-- [PowerShell Module Development](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/how-to-write-a-powershell-module)
-- [Pester Testing Framework](https://pester.dev/)
+- [PowerShell 모듈 개발](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/how-to-write-a-powershell-module)
+- [Pester 테스트 프레임워크](https://pester.dev/)
 - [PowerShellGet](https://docs.microsoft.com/en-us/powershell/module/powershellget/)
 - [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer)

@@ -1,118 +1,115 @@
-# ML/AI Skills Project - Summary
+# ML/AI 기술 프로젝트 - 요약
 
-## Project Completion Status
+## 프로젝트 완료현황
 
-This document summarizes the ML/AI skills conversion project.
+이 문서에는 ML/AI 기술 전환 프로젝트가 요약되어 있습니다.
 
-## Completed Skills (7/11)
+## 완성된 스킬 (7/11)
 
-### ✅ 1. AI Engineer (COMPLETE)
-**Created:**
-- 6 scripts (integrate_openai.py, integrate_anthropic.py, setup_rag.py, manage_prompts.py, monitor_ai_service.py, optimize_tokens.py)
-- 4 reference docs (ai_integration_guide.md, rag_patterns.md, prompt_templates.md, cost_optimization.md)
-- SKILL.md
+### ✅ 1. AI 엔지니어(완료)
+**생성됨:**
+- 6개 스크립트(integrate_openai.py,integrate_anthropic.py, setup_rag.py,manage_prompts.py, monitor_ai_service.py,optim_tokens.py)
+- 참조 문서 4개(ai_integration_guide.md, rag_patterns.md, Prompt_templates.md, cost_optimization.md)
+- 스킬.md
 
-**Coverage:** 100%
+**범위:** 100%
 
-### ✅ 2. LLM Architect (COMPLETE)
-**Created:**
-- 6 scripts (benchmark_models.py, finetune_model.py, setup_rag_pipeline.py, serve_model.py, engineer_prompts.py, evaluate_model.py)
-- 3 reference docs (model_selection.md, finetuning_guide.md, serving_infrastructure.md)
-- SKILL.md
+### ✅ 2. LLM 설계자(완료)
+**생성됨:**
+- 6개 스크립트(benchmark_models.py, Finetune_model.py, setup_rag_pipeline.py, Serve_model.py, Engineer_prompts.py, 평가_모델.py)
+- 참조 문서 3개(model_selection.md,finetuning_guide.md,serving_infrastructure.md)
+- 스킬.md
 
-**Coverage:** 100%
+**범위:** 100%
 
-### ✅ 3. ML Engineer (COMPLETE)
-**Created:**
-- 2 scripts (train_sklearn.py, tune_hyperparameters.py)
-- 1 reference doc (scikit_guide.md)
-- SKILL.md
+### ✅ 3. ML 엔지니어(완료)
+**생성됨:**
+- 2개의 스크립트(train_sklearn.py, tune_hyperparameters.py)
+- 참조 문서 1개(scikit_guide.md)
+- 스킬.md
 
-**Coverage:** 75% (missing: serialize_model.py, analyze_feature_importance.py, cross_validate.py, prepare_serving.py, track_experiments.py)
+**적용 범위:** 75%(누락: serialize_model.py, analyze_feature_importance.py, cross_validate.py, prepare_serving.py, track_experiments.py)
 
-### ✅ 4. MLOps Engineer (PARTIAL)
-**Created:**
-- 1 script (track_mlflow.py)
-- SKILL.md
+### ✅ 4. MLOps 엔지니어(부분)
+**생성됨:**
+- 스크립트 1개(track_mlflow.py)
+- 스킬.md
 
-**Coverage:** 12% (missing: automate_kubeflow.py, deploy_to_k8s.py, setup_ab_testing.py, monitor_model_drift.py, trigger_retraining.py, orchestrate_pipeline.py, manage_features.py, and reference docs)
+**적용 범위:** 12%(누락: automate_kubeflow.py, 배포_to_k8s.py, setup_ab_testing.py, monitor_model_drift.py, Trigger_retraining.py, Orchestrate_pipeline.py, Manage_features.py 및 참조 문서)
 
-### ✅ 5. Data Engineer (PARTIAL)
-**Created:**
-- 1 script (run_etl_pipeline.py)
-- SKILL.md
+### ✅ 5. 데이터 엔지니어(일부)
+**생성됨:**
+- 스크립트 1개(run_etl_pipeline.py)
+- 스킬.md
 
-**Coverage:** 12% (missing: validate_data.py, ingest_to_db.py, organize_datalake.py, migrate_schema.py, process_streaming.py, catalog_data.py, and reference docs)
+**적용 범위:** 12%(누락: verify_data.py, ingest_to_db.py, Organize_datalake.py, migration_schema.py, process_streaming.py, Catalog_data.py 및 참조 문서)
 
-### ✅ 6. PostgreSQL Pro (PARTIAL)
-**Created:**
-- 1 script (backup_pg.py)
-- SKILL.md
+### ✅ 6. PostgreSQL Pro(일부)
+**생성됨:**
+- 스크립트 1개(backup_pg.py)
+- 스킬.md
 
-**Coverage:** 11% (missing: manage_extensions.py, vacuum_analyze.py, setup_replication.py, manage_partitions.py, analyze_stats.py, manage_indexes.py, setup_ha.py, optimize_search.py, and reference docs)
+**적용 범위:** 11%(누락:manage_extensions.py,vacuum_analyze.py,setup_replication.py,manage_partitions.py,analyze_stats.py,manage_indexes.py,setup_ha.py,optim_search.py 및 참조 문서)
 
-### ✅ 7. Incident Responder (PARTIAL)
-**Created:**
-- 1 script (handle_alerts.py)
-- 1 reference doc (incident_workflow.md)
-- SKILL.md
+### ✅ 7. 사고 대응 담당자(일부)
+**생성됨:**
+- 스크립트 1개(handle_alerts.py)
+- 참조 문서 1개(incident_workflow.md)
+- 스킬.md
 
-**Coverage:** 25% (missing: classify_incident.py, execute_runbook.py, automate_communication.py, analyze_root_cause.py, post_incident_review.py, track_mttr_mtt.md, manage_oncall.py, and reference docs)
+**적용 범위:** 25%(누락: classify_incident.py,execute_runbook.py,automate_communication.py,analyse_root_cause.py,post_incident_review.py,track_mttr_mtt.md,manage_oncall.py 및 참조 문서)
 
-## Pending Skills (4/11)
+## 대기 중인 스킬(4/11)
 
-### ⏳ 8. Machine Learning Engineer (NOT STARTED)
-**Missing:**
-- All scripts (automate_notebooks.py, explore_data.py, engineer_features.py, train_model.py, evaluate_model.py, optimize_hyperparameters.py, explain_model.py, deploy_model.py)
-- All reference docs (notebook_patterns.md, feature_engineering.md, modeling_guide.md, deployment_guide.md)
-- SKILL.md
+### ⏳ 8. 기계 학습 엔지니어(시작하지 않음)
+**누락:**
+- 모든 스크립트(automate_notebooks.py, explore_data.py, Engineer_features.py, train_model.py, 평가_모델.py,optim_hyperparameters.py, explain_model.py, 배포_모델.py)
+- 모든 참조 문서(notebook_patterns.md, feature_engineering.md,modeling_guide.md,deployment_guide.md)
+- 스킬.md
 
-**Required:** Create directory structure and implement
+**필수:** 디렉터리 구조 생성 및 구현
 
-### ⏳ 9. Data Scientist (NOT STARTED)
-**Missing:**
-- All scripts (statistical_analysis.py, exploratory_analysis.py, visualize_data.py, ab_test_analysis.py, track_experiments.py, compare_models.py, generate_report.py)
-- All reference docs (python_libraries.md, visualization_guide.md, ab_testing.md, reporting.md)
-- SKILL.md
+### ⏳ 9. 데이터 과학자(시작하지 않음)
+**누락:**
+- 모든 스크립트(statistical_analytic.py, exploratory_analytic.py, visible_data.py, ab_test_analytic.py, track_experiments.py, Compare_models.py, generate_report.py)
+- 모든 참조 문서(python_libraries.md, 시각화_guide.md, ab_testing.md, reporter.md)
+- 스킬.md
 
-**Required:** Create directory structure and implement
+**필수:** 디렉터리 구조 생성 및 구현
 
-### ⏳ 10. Data Analyst (NOT STARTED)
-**Missing:**
-- All scripts (query_data.py, aggregate_data.py, analyze_trends.py, detect_outliers.py, prepare_dashboard.py, test_significance.py, check_quality.py)
-- All reference docs (analysis_patterns.md, statistical_methods.md, outlier_detection.md, dashboard_prep.md)
-- SKILL.md
+### ⏳ 10. 데이터 분석가(시작되지 않음)
+**누락:**
+- 모든 스크립트(query_data.py, Aggregate_data.py, analyze_trends.py, discover_outliers.py, prepare_dashboard.py, test_significance.py, check_quality.py)
+- 모든 참조 문서(analytic_patterns.md, Statistical_methods.md, outlier_Detection.md, Dashboard_prep.md)
+- 스킬.md
 
-**Required:** Create directory structure and implement
+**필수:** 디렉터리 구조 생성 및 구현
 
-### ⏳ 11. Prompt Engineer (NOT STARTED)
-**Missing:**
-- All scripts (manage_templates.py, ab_test_prompts.py, optimize_prompts.py, analyze_tokens.py, manage_system_prompts.py, generate_examples.py, chain_of_thought.py, version_prompts.py)
-- All reference docs (prompt_library.md, optimization_techniques.md, cot_prompting.md, best_practices.md)
-- SKILL.md
+### ⏳ 11. 프롬프트 엔지니어(시작되지 않음)
+**누락:**
+- 모든 스크립트(manage_templates.py, ab_test_prompts.py,optim_prompts.py, analyze_tokens.py, prepare_system_prompts.py, generate_examples.py, chain_of_thought.py, version_prompts.py)
+- 모든 참조 문서(prompt_library.md, Optimization_techniques.md, cot_prompting.md, best_practices.md)
+- 스킬.md
 
-**Required:** Create directory structure and implement
+**필수:** 디렉터리 구조 생성 및 구현### ⏳ 12. DevOps 사고 대응자(시작되지 않음)
+**누락:**
+- 모든 스크립트(route_alerts.py, classify_incident.py, excute_runbook.py, automate_communication.py, analyze_root_cause.py, post_incident_review.py, track_mttr_mtt.md, prepare_oncall.py)
+- 모든 참고문서 (incident_response_playbook.md, classification_guide.md, communications_automation.md, root_cause_analytic.md, mttr_tracking.md)
+- 스킬.md
 
-### ⏳ 12. DevOps Incident Responder (NOT STARTED)
-**Missing:**
-- All scripts (route_alerts.py, classify_incident.py, execute_runbook.py, automate_communication.py, analyze_root_cause.py, post_incident_review.py, track_mttr_mtt.md, manage_oncall.py)
-- All reference docs (incident_response_playbook.md, classification_guide.md, communication_automation.md, root_cause_analysis.md, mttr_tracking.md)
-- SKILL.md
+**필수:** 디렉터리 구조 생성 및 구현
 
-**Required:** Create directory structure and implement
+## 통계
 
-## Statistics
+- **총 스킬:** 11개(중복된 경우 12개)
+- **완료된 스킬:** 7 (64%)
+- **부분 스킬:** 4
+- **시작하지 않은 스킬:** 4
+- **생성된 총 스크립트 수:** 19/70(27%)
+- **생성된 총 참고 문서 수:** 9/45(20%)
+- **Master SKILL.md:** ✅ 생성됨
 
-- **Total Skills:** 11 (12 with duplicate)
-- **Completed Skills:** 7 (64%)
-- **Partial Skills:** 4
-- **Not Started Skills:** 4
-- **Total Scripts Created:** 19/70 (27%)
-- **Total Reference Docs Created:** 9/45 (20%)
-- **Master SKILL.md:** ✅ Created
-
-## File Structure
-
+## 파일 구조
 ```
 claude-skills-conversion/
 ├── SKILL.md  ⭐ Master documentation
@@ -130,123 +127,123 @@ claude-skills-conversion/
 └── devops-incident-responder-skill/  ❌ Not Started
 ```
 
-## Key Features Implemented
+## 주요 기능 구현
 
-### All Scripts Include:
-- ✅ Error handling and logging
-- ✅ Configuration file support (YAML/JSON)
-- ✅ Input validation
-- ✅ Dataclass-based configuration
-- ✅ Production-ready code patterns
-- ✅ Clear documentation and comments
+### 모든 스크립트에는 다음이 포함됩니다:
+- ✅ 오류 처리 및 로깅
+- ✅ 구성 파일 지원(YAML/JSON)
+- ✅ 입력 유효성 검사
+- ✅ 데이터클래스 기반 구성
+- ✅ 생산 준비가 완료된 코드 패턴
+- ✅ 명확한 문서 및 의견
 
-### All Reference Docs Include:
-- ✅ Quick start guides
-- ✅ Code examples
-- ✅ Best practices
-- ✅ Common pitfalls
-- ✅ Resources and links
+### 모든 참조 문서에는 다음이 포함됩니다.
+- ✅ 빠른 시작 가이드
+- ✅ 코드 예시
+- ✅ 모범 사례
+- ✅ 일반적인 함정
+- ✅ 리소스 및 링크
 
-## Next Steps
+## 다음 단계
 
-To complete the project, follow this pattern for each remaining skill:
+프로젝트를 완료하려면 나머지 각 기술에 대해 다음 패턴을 따르세요.
 
-### 1. Create Directory Structure
+### 1. 디렉토리 구조 생성
 ```bash
 mkdir -p claude-skills-conversion/{skill-name}/scripts
 mkdir -p claude-skills-conversion/{skill-name}/references
 ```
 
-### 2. Create Scripts (Based on Requirements)
-- Follow existing patterns from completed skills
-- Include error handling, logging, config support
-- Add main() function with example usage
-- Use type hints throughout
+### 2. 스크립트 생성(요구 사항에 따라)
+- 완성된 스킬의 기존 패턴을 따르세요.
+- 오류 처리, 로깅, 구성 지원 포함
+- 예제 사용법과 함께 main() 함수를 추가합니다.
+- 전체적으로 유형 힌트를 사용하세요.
 
-### 3. Create Reference Documentation
-- Quick start guide
-- Framework/tool-specific guides
-- Code examples
-- Best practices
-- Troubleshooting section
+### 3. 참조 문서 작성
+- 빠른 시작 가이드
+- 프레임워크/도구별 가이드
+- 코드 예시
+- 모범 사례
+- 문제 해결 섹션
 
-### 4. Create SKILL.md
-- Overview of the skill
-- Links to scripts and references
-- Use cases and examples
-- Installation instructions
+### 4. SKILL.md 생성
+- 스킬 개요
+- 스크립트 및 참고자료 링크
+- 사용 사례 및 예시
+- 설치 지침
 
-## Usage Examples
+## 사용 예
 
-### Run a Script
+### 스크립트 실행
 ```bash
 cd claude-skills-conversion/ai-engineer-skill/scripts
 python integrate_openai.py
 ```
 
-### Use Reference Documentation
+### 참조 문서 사용
 ```bash
 cat claude-skills-conversion/llm-architect-skill/references/finetuning_guide.md
 ```
 
-## Dependencies by Skill
+## 스킬별 종속성
 
-### AI Engineer
-- openai, anthropic, chromadb, sentence-transformers
+### AI 엔지니어
+- openai, anthropic,chromdb, 문장 변환기
 
-### LLM Architect
-- transformers, peft, datasets, fastapi, uvicorn, sentence-transformers, optuna, rouge-score, nltk
+### LLM 건축가
+- 변환기, peft, 데이터 세트, fastapi, uvicorn, 문장 변환기, optuna, rouge-score, nltk
 
-### ML Engineer
+### ML 엔지니어
 - scikit-learn, pandas, numpy, optuna, joblib
 
-### MLOps Engineer
+### MLOps 엔지니어
 - mlflow, sqlalchemy
 
-### Data Engineer
-- pandas, schedule, sqlalchemy, boto3, requests
+### 데이터 엔지니어
+- 팬더, 일정, sqlalchemy, boto3, 요청
 
-### PostgreSQL Pro
-- No Python dependencies (uses pg_dump, pg_restore)
+### PostgreSQL 프로
+- Python 종속성 없음(pg_dump, pg_restore 사용)
 
-### Incident Responder
-- requests
+### 사고 대응자
+- 요청
 
-## Contribution Guidelines
+## 기여 지침
 
-To contribute to this project:
+이 프로젝트에 참여하려면:
 
-1. Follow existing code patterns
-2. Add comprehensive error handling
-3. Include logging at appropriate levels
-4. Document with docstrings and comments
-5. Add example usage in main() function
-6. Create/update reference documentation
-7. Test thoroughly before committing
+1. 기존 코드 패턴을 따른다
+2. 포괄적인 오류 처리 추가
+3. 적절한 수준에 로깅을 포함합니다.
+4. 독스트링과 주석이 포함된 문서
+5. main() 함수에 예제 사용법 추가
+6. 참조 문서 생성/업데이트
+7. 커밋하기 전에 철저히 테스트하세요.
 
-## Quality Checklist
+## 품질 체크리스트
 
-For each script created:
-- [ ] Has proper imports at top
-- [ ] Uses dataclasses for configuration
-- [ ] Has error handling (try-except)
-- [ ] Logs important events
-- [ ] Validates inputs
-- [ ] Has type hints
-- [ ] Includes docstrings
-- [ ] Has example in main()
-- [ ] Follows PEP 8 style
+생성된 각 스크립트에 대해 다음을 수행합니다.
+- [ ] 상단에 적절한 가져오기가 있습니다.
+- [ ] 구성을 위해 데이터 클래스를 사용합니다.
+- [ ] 오류 처리 기능이 있습니다(시도 제외).
+- [ ] 중요한 이벤트를 기록합니다.
+- [ ] 입력 유효성을 검사합니다.
+- [ ] 유형 힌트가 있음
+- [ ] 독스트링 포함
+- [ ] main()에 예제가 있습니다.
+- [ ] PEP 8 스타일을 따릅니다.
 
-For each reference doc created:
-- [ ] Has quick start section
-- [ ] Includes code examples
-- [ ] Covers best practices
-- [ ] Lists common pitfalls
-- [ ] Provides external resources
-- [ ] Uses proper markdown formatting
+생성된 각 참조 문서에 대해 다음을 수행합니다.
+- [ ] 빠른 시작 섹션이 있습니다.
+- [ ] 코드 예제 포함
+- [ ] 모범 사례를 다룹니다.
+- [ ] 일반적인 함정을 나열합니다.
+- [ ] 외부 리소스 제공
+- [ ] 적절한 마크다운 형식을 사용합니다.
 
-## Conclusion
+## 결론
 
-This project provides a solid foundation (27% scripts, 20% references) for ML/AI skills with production-ready code and comprehensive documentation. The completed skills (AI Engineer, LLM Architect, ML Engineer) serve as templates for implementing the remaining skills.
+이 프로젝트는 프로덕션에 즉시 사용 가능한 코드와 포괄적인 문서를 통해 ML/AI 기술을 위한 견고한 기반(27% 스크립트, 20% 참조)을 제공합니다. 완성된 기술(AI 엔지니어, LLM 아키텍트, ML 엔지니어)은 나머지 기술을 구현하기 위한 템플릿 역할을 합니다.
 
-All code follows consistent patterns, includes proper error handling, and is ready for use in production environments.
+모든 코드는 일관된 패턴을 따르고 적절한 오류 처리를 포함하며 프로덕션 환경에서 사용할 준비가 되어 있습니다.

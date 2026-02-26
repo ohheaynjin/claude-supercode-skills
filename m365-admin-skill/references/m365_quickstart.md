@@ -1,51 +1,45 @@
-# Microsoft 365 Admin - Quick Start Guide
+# Microsoft 365 관리자 - 빠른 시작 가이드
 
-This guide helps you get started with the M365 admin skill's scripts and tools.
+이 가이드는 M365 관리 기술의 스크립트 및 도구를 시작하는 데 도움이 됩니다.
 
-## Prerequisites
+## 전제 조건
 
-- Node.js 16+ installed
-- Microsoft 365 tenant with Global Administrator access
-- App registered in Azure AD with necessary permissions
-- TypeScript installed globally
+- Node.js 16+ 설치
+- 전역 관리자 액세스 권한이 있는 Microsoft 365 테넌트
+- 필요한 권한으로 Azure AD에 등록된 앱
+- TypeScript가 전역적으로 설치됨
 
-## Azure AD App Registration
+## Azure AD 앱 등록
 
-1. **Create App Registration:**
-   ```bash
+1. **앱 등록 생성:**
+```bash
    # Go to Azure Portal → App registrations → New registration
    # Name: M365 Admin Script
    # Supported account types: Accounts in this organizational directory only
    ```
-
-2. **Add API Permissions:**
-   - Microsoft Graph → User.ReadWrite.All
-   - Microsoft Graph → Group.ReadWrite.All
-   - Microsoft Graph → Team.Create
+2. **API 권한 추가:**
+   - 마이크로소프트 그래프 → User.ReadWrite.All
+   - 마이크로소프트 그래프 → Group.ReadWrite.All
+   - 마이크로소프트 그래프 → Team.Create
    - Microsoft Graph → TeamSettings.ReadWrite.All
 
-3. **Generate Client Secret:**
-   ```bash
+3. **클라이언트 비밀번호 생성:**
+```bash
    # Go to Certificates & secrets → New client secret
    # Copy the secret value (you won't see it again)
    ```
-
-4. **Grant Admin Consent:**
-   ```bash
+4. **관리자 동의 부여:**
+```bash
    # Go to API permissions → Click Grant admin consent for your organization
    ```
-
-## Installation
-
+## 설치
 ```bash
 npm install @azure/identity @microsoft/microsoft-graph-client @azure/msal-node isomorphic-fetch
 npm install -D typescript @types/node
 ```
+## 인증
 
-## Authentication
-
-The scripts use Azure AD app authentication:
-
+스크립트는 Azure AD 앱 인증을 사용합니다.
 ```typescript
 const userManager = new M365UserManager(
   'client-id',
@@ -53,19 +47,15 @@ const userManager = new M365UserManager(
   'tenant-id'
 );
 ```
-
-Or use environment variables:
-
+또는 환경 변수를 사용하십시오.
 ```bash
 export AZURE_CLIENT_ID='your-client-id'
 export AZURE_CLIENT_SECRET='your-client-secret'
 export AZURE_TENANT_ID='your-tenant-id'
 ```
+## 빠른 예
 
-## Quick Examples
-
-### Managing Users
-
+### 사용자 관리
 ```typescript
 import { M365UserManager } from './scripts/create_m365_users';
 
@@ -100,9 +90,7 @@ await userManager.blockUser('user-id');
 // Reset password
 await userManager.resetPassword('user-id', 'NewPassword123!');
 ```
-
-### Configuring Teams
-
+### 팀 구성
 ```typescript
 import { TeamsManager } from './scripts/configure_teams';
 
@@ -142,9 +130,7 @@ console.log(teams.map(t => t.displayName));
 // Create group chat
 const chatId = await teamsManager.createGroupChat(['user1-id', 'user2-id', 'user3-id']);
 ```
-
-### Managing Exchange Online
-
+### Exchange Online 관리
 ```typescript
 import { ExchangeManager } from './scripts/setup_exchange';
 
@@ -197,11 +183,9 @@ const eventId = await exchangeManager.createCalendarEvent('user-id', {
   isOnlineMeeting: true
 });
 ```
+## 일반적인 패턴
 
-## Common Patterns
-
-### Bulk User Creation
-
+### 대량 사용자 생성
 ```typescript
 const users = [
   {
@@ -225,9 +209,7 @@ const users = [
 const { successes, failures } = await bulkCreateUsers(userManager, users);
 console.log(`Created: ${successes.length}, Failed: ${failures.length}`);
 ```
-
-### Team Onboarding Workflow
-
+### 팀 온보딩 워크플로
 ```typescript
 async function onboardNewTeam(teamName: string, ownerIds: string[], memberIds: string[]) {
   // Create team
@@ -268,9 +250,7 @@ async function onboardNewTeam(teamName: string, ownerIds: string[], memberIds: s
   }
 }
 ```
-
-### User Offboarding Workflow
-
+### 사용자 오프보딩 워크플로
 ```typescript
 async function offboardUser(userId: string) {
   // Block user account
@@ -300,86 +280,73 @@ async function offboardUser(userId: string) {
   }
 }
 ```
+## 모범 사례
 
-## Best Practices
+1. **입력 유효성 검사** - 내장된 유효성 검사 기능 사용
+2. **오류를 적절하게 처리** - 진행하기 전에 result.success를 확인하세요.
+3. **최소 권한 사용** - 앱에 꼭 필요한 권한만 부여
+4. **모든 작업 기록** - 감사 목적으로 사용자 관리 추적
+5. **비프로덕션에서 테스트** - 먼저 테스트 테넌트에서 스크립트를 테스트합니다.
+6. **재시도 로직 구현** - 일시적인 오류에 대한 재시도 추가
+7. **환경 변수 사용** - 자격 증명을 안전하게 저장
+8. **API 제한 모니터링** - 그래프 API 조절 제한에 유의하세요.
 
-1. **Validate inputs** - Use built-in validation functions
-2. **Handle errors gracefully** - Check result.success before proceeding
-3. **Use least privilege** - Grant only necessary permissions to the app
-4. **Log all operations** - Track user management for audit purposes
-5. **Test in non-production** - Test scripts in a test tenant first
-6. **Implement retry logic** - Add retries for transient failures
-7. **Use environment variables** - Store credentials securely
-8. **Monitor API limits** - Be aware of Graph API throttling limits
+## 문제 해결
 
-## Troubleshooting
-
-### Authentication Failed
-
+### 인증 실패
 ```
 Error: Access token request failed
 ```
+**해결책:**
+1. 클라이언트 ID, 클라이언트 비밀번호, 테넌트 ID가 올바른지 확인하세요.
+2. 앱 등록이 아직 활성화되어 있는지 확인하세요.
+3. 관리자 동의가 부여되었는지 확인하세요.
+4. API 권한이 올바른지 확인
 
-**Solutions:**
-1. Verify client ID, client secret, and tenant ID are correct
-2. Check if app registration is still active
-3. Ensure admin consent has been granted
-4. Verify API permissions are correct
-
-### User Already Exists
-
+### 사용자가 이미 존재합니다.
 ```
 Error: Request returned status code 400 with message: Another object with the same value for property userPrincipalName already exists
 ```
+**해결책:**
+1. 다음을 사용하여 사용자가 이미 존재하는지 확인하십시오.`getUserByEmail()`2. 사용`updateUser()`새로운 사용자를 생성하는 대신
+3. 또는 기존 사용자를 먼저 삭제하세요.
 
-**Solutions:**
-1. Check if user already exists using `getUserByEmail()`
-2. Use `updateUser()` instead of creating a new user
-3. Or delete the existing user first
-
-### Permission Denied
-
+### 권한이 거부되었습니다
 ```
 Error: Access is denied. Check credentials and try again.
 ```
+**해결책:**
+1. 앱에 필요한 권한이 있는지 확인
+2. 권한에 대한 관리자 동의 부여
+3. 올바른 앱 등록을 사용하고 있는지 확인하세요.
 
-**Solutions:**
-1. Verify app has necessary permissions
-2. Grant admin consent for the permissions
-3. Check if you're using the correct app registration
-
-### Team Creation Failed
-
+### 팀 생성 실패
 ```
 Error: Failed to create team
 ```
+**해결책:**
+1. 팀 이름이 아직 존재하지 않는지 확인하세요.
+2. 그래프 API 권한이 올바른지 확인하세요.
+3. Microsoft Teams 라이선스가 사용자에게 할당되었는지 확인하세요.
 
-**Solutions:**
-1. Verify team name doesn't already exist
-2. Check if Graph API permissions are correct
-3. Ensure Microsoft Teams license is assigned to users
-
-### License Assignment Failed
-
+### 라이선스 할당 실패
 ```
 Error: Insufficient licenses available
 ```
+**해결책:**
+1. Microsoft 365 관리 센터에서 사용 가능한 라이선스 확인
+2. 라이선스 SKU ID가 올바른지 확인하세요.
+3. 필요한 경우 추가 라이선스를 구매하세요.
 
-**Solutions:**
-1. Check available licenses in Microsoft 365 admin center
-2. Verify license SKU ID is correct
-3. Purchase additional licenses if needed
+## API 제한
 
-## API Limits
+Microsoft Graph API에는 제한 한도가 있습니다.
 
-Microsoft Graph API has throttling limits:
+- **분당 요청**: 앱당 최대 100개 요청
+- **10초당 요청**: 앱당 최대 15개 요청
+- **동시 요청**: 최대 10개 요청
 
-- **Requests per minute**: Up to 100 requests per app
-- **Requests per 10 seconds**: Up to 15 requests per app
-- **Concurrent requests**: Up to 10 requests
-
-For bulk operations, implement batching and retry logic:
-
+대량 작업의 경우 일괄 처리 및 재시도 논리를 구현합니다.
 ```typescript
 async function bulkOperationWithRetry<T>(
   operation: () => Promise<T>,
@@ -396,21 +363,20 @@ async function bulkOperationWithRetry<T>(
   throw new Error('Max retries exceeded');
 }
 ```
+## 보안 고려 사항
 
-## Security Considerations
+1. **자격 증명을 하드코딩하지 마세요** - 환경 변수 또는 Key Vault를 사용하세요.
+2. **클라이언트 비밀번호를 정기적으로 교체** - 90일마다 비밀번호 업데이트
+3. **인증서 기반 인증 사용** - 프로덕션용 클라이언트 비밀번호보다 더 안전합니다.
+4. **감사 로그 모니터링** - Microsoft 365 감사 로그를 정기적으로 검토합니다.
+5. **조건부 액세스 구현** - 관리 작업에 MFA가 필요합니다.
+6. **권한 있는 ID 관리 사용** - 적시 관리자 액세스
+7. **정기적으로 권한 검토** - 불필요한 앱 권한 제거
 
-1. **Never hardcode credentials** - Use environment variables or key vault
-2. **Rotate client secrets regularly** - Update secrets every 90 days
-3. **Use certificate-based auth** - More secure than client secrets for production
-4. **Monitor audit logs** - Review Microsoft 365 audit logs regularly
-5. **Implement conditional access** - Require MFA for admin operations
-6. **Use privileged identity management** - Just-in-time admin access
-7. **Regularly review permissions** - Remove unnecessary app permissions
+## 추가 리소스
 
-## Additional Resources
-
-- [Microsoft Graph API Documentation](https://docs.microsoft.com/graph/api)
-- [Microsoft Graph SDK for TypeScript](https://github.com/microsoftgraph/msgraph-sdk-typescript)
-- [Microsoft 365 Admin Center](https://admin.microsoft.com/)
-- [Azure AD App Registration](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
-- [Graph API Limits](https://docs.microsoft.com/graph/throttling)
+- [Microsoft Graph API 설명서](https://docs.microsoft.com/graph/api)
+- [TypeScript용 Microsoft Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-typescript)
+- [Microsoft 365 관리 센터](https://admin.microsoft.com/)
+- [Azure AD 앱 등록](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
+- [그래프 API 제한](https://docs.microsoft.com/graph/throttling)

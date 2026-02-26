@@ -1,38 +1,32 @@
 ---
 name: nlp-engineer
-description: Expert in Natural Language Processing, designing systems for text classification, NER, translation, and LLM integration using Hugging Face, spaCy, and LangChain. Use when building NLP pipelines, text analysis, or LLM-powered features. Triggers include "NLP", "text classification", "NER", "named entity", "sentiment analysis", "spaCy", "Hugging Face", "transformers".
+description: Hugging Face, spaCy 및 LangChain을 사용하여 텍스트 분류, NER, 번역 및 LLM 통합을 위한 시스템을 설계하는 자연어 처리 전문가입니다. NLP 파이프라인, 텍스트 분석 또는 LLM 기반 기능을 구축할 때 사용합니다. 트리거에는 "NLP", "텍스트 분류", "NER", "명명된 엔터티", "감정 분석", "spaCy", "Hugging Face", "transformers"가 포함됩니다.
 ---
+# NLP 엔지니어
 
-# NLP Engineer
+## 목적
+자연어 처리 시스템 설계 및 구현에 대한 전문 지식을 제공합니다. Hugging Face, spaCy 및 LangChain과 같은 프레임워크를 사용하여 텍스트 분류, 명명된 엔터티 인식, 감정 분석 및 최신 LLM 통합을 전문으로 합니다.
 
-## Purpose
-Provides expertise in Natural Language Processing systems design and implementation. Specializes in text classification, named entity recognition, sentiment analysis, and integrating modern LLMs using frameworks like Hugging Face, spaCy, and LangChain.
+## 사용 시기
+- 텍스트 분류 시스템 구축
+- 명명된 개체 인식(NER) 구현
+- 감정 분석 파이프라인 생성
+- 변압기 모델 미세 조정
+- LLM 기반 기능 설계
+- 텍스트 전처리 파이프라인 구현
+- 검색 및 검색 시스템 구축
+- 텍스트 생성 애플리케이션 만들기
 
-## When to Use
-- Building text classification systems
-- Implementing named entity recognition (NER)
-- Creating sentiment analysis pipelines
-- Fine-tuning transformer models
-- Designing LLM-powered features
-- Implementing text preprocessing pipelines
-- Building search and retrieval systems
-- Creating text generation applications
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- NLP 파이프라인 구축(분류, NER, 감성)
+- 변압기 모델 미세 조정
+- 텍스트 전처리 구현
+- 텍스트 작업을 위한 LLM 통합
+- 의미 검색 시스템 설계
 
-## Quick Start
-**Invoke this skill when:**
-- Building NLP pipelines (classification, NER, sentiment)
-- Fine-tuning transformer models
-- Implementing text preprocessing
-- Integrating LLMs for text tasks
-- Designing semantic search systems
-
-**Do NOT invoke when:**
-- RAG architecture design → use `/ai-engineer`
-- LLM prompt optimization → use `/prompt-engineer`
-- ML model deployment → use `/mlops-engineer`
-- General data processing → use `/data-engineer`
-
-## Decision Framework
+**다음과 같은 경우에는 호출하지 마세요.**
+- RAG 아키텍처 설계 → 사용`/ai-engineer`- LLM 프롬프트 최적화 → 사용`/prompt-engineer`- ML 모델 배포 → 사용`/mlops-engineer`- 일반자료 처리 → 이용`/data-engineer`## 의사결정 프레임워크
 ```
 NLP Task Type?
 ├── Classification
@@ -46,46 +40,45 @@ NLP Task Type?
 └── Semantic Search
     └── Embeddings + Vector store
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 텍스트 분류 파이프라인
+1. 훈련 데이터 수집 및 라벨링
+2. 텍스트 전처리(토큰화, 정리)
+3. 기본 모델 선택(BERT, RoBERTa)
+4. 레이블이 지정된 데이터 세트를 미세 조정합니다.
+5. 적절한 지표로 평가
+6. 추론 최적화를 통한 배포
 
-### 1. Text Classification Pipeline
-1. Collect and label training data
-2. Preprocess text (tokenization, cleaning)
-3. Select base model (BERT, RoBERTa)
-4. Fine-tune on labeled dataset
-5. Evaluate with appropriate metrics
-6. Deploy with inference optimization
+### 2. NER 시스템
+1. 도메인의 엔터티 유형 정의
+2. 레이블이 지정된 훈련 데이터 생성
+3. 프레임워크 선택(spaCy, Hugging Face)
+4. 맞춤형 NER 모델 학습
+5. 정밀도, 재현율, F1 평가
+6. 후처리 규칙과 통합
 
-### 2. NER System
-1. Define entity types for domain
-2. Create labeled training data
-3. Choose framework (spaCy, Hugging Face)
-4. Train custom NER model
-5. Evaluate precision, recall, F1
-6. Integrate with post-processing rules
+### 3. 임베딩 기반 검색
+1. 임베딩 모델 선택(문장 변환기)
+2. 말뭉치에 대한 임베딩 생성
+3. 벡터 데이터베이스의 색인
+4. 쿼리 임베딩 구현
+5. 하이브리드 검색 추가(키워드 + 의미)
+6. 유사성 임계값 조정
 
-### 3. Embedding-Based Search
-1. Select embedding model (sentence-transformers)
-2. Generate embeddings for corpus
-3. Index in vector database
-4. Implement query embedding
-5. Add hybrid search (keyword + semantic)
-6. Tune similarity thresholds
+## 모범 사례
+- 사전 훈련된 모델로 시작하여 필요에 따라 미세 조정
+- 도메인별 전처리 사용
+- 업무에 적합한 지표로 평가
+- 프로덕션을 위한 추론 대기 시간 고려
+- 적절한 텍스트 정리 파이프라인 구현
+- 효율적인 추론을 위해 일괄 처리 사용
 
-## Best Practices
-- Start with pretrained models, fine-tune as needed
-- Use domain-specific preprocessing
-- Evaluate with task-appropriate metrics
-- Consider inference latency for production
-- Implement proper text cleaning pipelines
-- Use batching for efficient inference
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Training from scratch | Wastes data and compute | Fine-tune pretrained |
-| No preprocessing | Noisy inputs hurt performance | Clean and normalize text |
-| Wrong metrics | Misleading evaluation | Task-appropriate metrics |
-| Ignoring class imbalance | Biased predictions | Balance or weight classes |
-| Overfitting to eval set | Poor generalization | Proper train/val/test splits |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 처음부터 훈련 | 데이터와 컴퓨팅 낭비 | 사전 훈련된 미세 조정 |
+| 전처리 없음 | 시끄러운 입력으로 인해 성능이 저하됨 | 텍스트 정리 및 정규화 |
+| 잘못된 측정항목 | 오해의 소지가 있는 평가 | 작업에 적합한 지표 |
+| 계급 불균형 무시 | 편향된 예측 | 균형 또는 무게 등급 |
+| 평가 세트에 과적합 | 일반화가 잘못됨 | 적절한 열차/발행/테스트 분할 |

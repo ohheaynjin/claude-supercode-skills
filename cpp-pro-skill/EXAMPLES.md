@@ -1,7 +1,6 @@
-# C++ Professional - Code Examples & Patterns
+# C++ Professional - 코드 예제 및 패턴
 
-## Lock-Free Queue Implementation
-
+## 잠금 없는 대기열 구현
 ```cpp
 // Lock-free queue for high-performance scenarios
 template<typename T>
@@ -50,9 +49,7 @@ private:
 
 using OrderQueue = LockFreeQueue<Order>;
 ```
-
-## Custom Smart Pointer with Pool Allocation
-
+## 풀 할당이 포함된 사용자 정의 스마트 포인터
 ```cpp
 template<typename T>
 class PooledPtr {
@@ -111,9 +108,7 @@ private:
     T* ptr_;
 };
 ```
-
-## Testing with Google Test
-
+## Google 테스트로 테스트하기
 ```cpp
 // order_service_test.cpp
 #include <gtest/gtest.h>
@@ -237,35 +232,34 @@ TEST(OrderBenchmark, ParallelProcessing) {
         }));
 }
 ```
+## 사용 사례 예시
 
-## Example Use Cases
+### 예시 1: 고성능 거래 엔진
 
-### Example 1: High-Performance Trading Engine
+**시나리오:** 마이크로초 수준의 응답 시간이 필요한 지연 시간이 짧은 금융 거래 엔진을 구축합니다.
 
-**Scenario:** Building a low-latency financial trading engine requiring microsecond-level response times.
+**구현 접근 방식:**
+1. **잠금 없는 아키텍처**: 경합이 없는 데이터 경로를 위해 원자 연산 및 메모리 순서를 사용했습니다.
+2. **SIMD 최적화**: AVX-512를 사용하여 벡터화된 가격 계산을 구현했습니다.
+3. **캐시 최적화**: 캐시 라인 정렬 및 프리페치를 위한 데이터 구조 설계
+4. **코루틴 기반 동시성**: 효율적인 I/O 다중화를 위해 C++20 코루틴을 사용했습니다.
 
-**Implementation Approach:**
-1. **Lock-Free Architecture**: Used atomic operations and memory ordering for zero-contention data paths
-2. **SIMD Optimization**: Implemented vectorized price calculations using AVX-512
-3. **Cache Optimization**: Designed data structures for cache-line alignment and prefetching
-4. **Coroutine-Based Concurrency**: Used C++20 coroutines for efficient I/O multiplexing
+**성능 결과:**
+- 주문 처리 지연 시간: 50μs(기존 500μs)
+- 처리량: 초당 100,000개 주문(20,000개에서 증가)
+- CPU 사용률: 캐시 지역성 향상을 통해 40% 감소
 
-**Performance Results:**
-- Order processing latency: 50μs (down from 500μs)
-- Throughput: 100K orders/second (up from 20K)
-- CPU utilization: Reduced by 40% through better cache locality
+### 예 2: 내장형 실시간 컨트롤러
 
-### Example 2: Embedded Real-Time Controller
+**시나리오:** 엄격한 실시간 제약 조건(< 1ms 응답)이 있는 의료 기기용 펌웨어를 개발합니다.
 
-**Scenario:** Developing firmware for a medical device with hard real-time constraints (< 1ms response).
+**구현 전략:**
+1. **제로 할당 설계**: 사전 할당된 메모리 풀, 핫 경로에 동적 할당 없음
+2. **constexpr Everything**: 구성 및 검증을 위한 컴파일 타임 계산
+3. **개념 기반 API**: 컴파일 시 오용을 방지하는 유형 안전 인터페이스
+4. **하드웨어 추상화**: 여러 마이크로컨트롤러 플랫폼을 지원하는 휴대용 레이어
 
-**Implementation Strategy:**
-1. **Zero-Allocation Design**: Pre-allocated memory pools, no dynamic allocation in hot paths
-2. **constexpr Everything**: Compile-time computation for configuration and validation
-3. **Concepts-Based API**: Type-safe interfaces preventing misuse at compile time
-4. **Hardware Abstraction**: Portable layer supporting multiple microcontroller platforms
-
-**Key Techniques:**
+**주요 기술:**
 ```cpp
 // Compile-time validated configuration
 template<RealTimeSystem T>
@@ -277,24 +271,22 @@ class Controller {
     std::atomic_size_t pool_index_{0};
 };
 ```
+### 예시 3: 크로스 플랫폼 게임 엔진 라이브러리
 
-### Example 3: Cross-Platform Game Engine Library
+**시나리오:** Windows, macOS, Linux 및 콘솔로 컴파일되는 게임 엔진 SDK를 만듭니다.
 
-**Scenario:** Creating a game engine SDK that compiles to Windows, macOS, Linux, and consoles.
+**아키텍처 결정:**
+1. **모듈 기반 빌드**: 더 빠른 컴파일과 깔끔한 인터페이스를 위해 C++20 모듈 사용
+2. **개념 제약**: 플랫폼별 코드가 인터페이스 요구 사항을 충족하는지 확인
+3. **최신 RAII**: 스마트 포인터 및 RAII 래퍼를 통한 리소스 관리
+4. **오류 처리**: 예외 없이 복구 가능한 오류에 대해 std::expected 사용
 
-**Architecture Decisions:**
-1. **Module-Based Build**: Using C++20 modules for faster compilation and cleaner interfaces
-2. **Concept Constraints**: Ensuring platform-specific code meets interface requirements
-3. **Modern RAII**: Resource management through smart pointers and RAII wrappers
-4. **Error Handling**: Using std::expected for recoverable errors without exceptions
+**결과:**
+- 컴파일 시간 단축: 모듈을 통해 45%
+- 크로스 플랫폼 호환성: 95% 공유 코드
+- 메모리 안전성: 2년 내 메모리 관련 CVE 제로화
 
-**Results:**
-- Compile time reduction: 45% through modules
-- Cross-platform compatibility: 95% shared code
-- Memory safety: Zero memory-related CVEs in 2 years
-
-## Concepts Example
-
+## 개념 예
 ```cpp
 // Using concepts for type-safe templates
 template<typename T>
@@ -316,9 +308,7 @@ concept OrderComponent = Serializable<T> && requires(T t) {
     { t.validate() } -> std::same_as<bool>;
 };
 ```
-
-## Ranges Example
-
+## 범위 예
 ```cpp
 // Modern ranges-based data processing
 auto get_top_orders_by_value(const std::vector<Order>& orders, size_t n) {
@@ -347,9 +337,7 @@ for (const auto& order : pending_high_value | std::views::take(10)) {
     process(order);
 }
 ```
-
-## std::format Example
-
+## std::format 예
 ```cpp
 // Type-safe formatting with std::format
 std::string format_order_summary(const Order& order) {

@@ -2,7 +2,6 @@
 name: rails-expert
 description: Rails 7+ specialist with expertise in Hotwire, Turbo, Stimulus, and modern Rails development
 ---
-
 # Rails Expert
 
 ## Purpose
@@ -88,6 +87,7 @@ Rails Development Decision
     ├─ Complex validations → Form Objects
     └─ Business logic in controllers → Move to services
 ```
+
 
 ### Performance Optimization Matrix
 

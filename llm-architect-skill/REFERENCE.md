@@ -1,11 +1,10 @@
-# LLM Architect - Technical Reference
+# LLM 설계자 - 기술 참조
 
-## RAG System Implementation
+## RAG 시스템 구현
 
-**Use case:** Build retrieval-augmented generation for document Q&A
+**사용 사례:** 문서 Q&A를 위한 검색 증강 생성 구축
 
-### 1. Document Processing Pipeline
-
+### 1. 문서 처리 파이프라인
 ```python
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from datetime import datetime
@@ -27,9 +26,7 @@ for chunk in chunks:
     chunk.metadata["chunk_index"] = chunks.index(chunk)
     chunk.metadata["created_at"] = datetime.now().isoformat()
 ```
-
-### 2. Embedding & Vector Store
-
+### 2. 임베딩 및 벡터 스토어
 ```python
 from pinecone import Pinecone, ServerlessSpec
 from openai import OpenAI
@@ -63,9 +60,7 @@ def embed_chunks(chunks, batch_size=100):
 embeddings = embed_chunks(chunks)
 index.upsert(vectors=zip(ids, embeddings, metadatas))
 ```
-
-### 3. Retrieval with Hybrid Search
-
+### 3. 하이브리드 검색을 통한 검색
 ```python
 from sentence_transformers import CrossEncoder
 
@@ -91,9 +86,7 @@ def retrieve_context(query, top_k=5):
     # Return top-k after reranking
     return reranked[:top_k]
 ```
-
-### 4. Generation with Retrieved Context
-
+### 4. 검색된 컨텍스트를 사용한 생성
 ```python
 import anthropic
 
@@ -136,9 +129,7 @@ def rag_query(query):
         "confidence": calculate_confidence(context_chunks)
     }
 ```
-
-### 5. Evaluation & Iteration
-
+### 5. 평가 및 반복
 ```python
 from ragas import evaluate
 from ragas.metrics import faithfulness, answer_relevancy
@@ -153,13 +144,11 @@ results = evaluate(
 # - Answer relevancy: >85%
 # - Retrieval precision@5: >70%
 ```
-
 ---
 
-## Semantic Caching Layer
+## 시맨틱 캐싱 레이어
 
-**When to use:** Repeated or similar queries (60%+ hit rate achievable)
-
+**사용 시기:** 반복되거나 유사한 쿼리(60% 이상의 적중률 달성 가능)
 ```python
 import hashlib
 import time
@@ -212,13 +201,11 @@ class SemanticCache:
             }]
         )
 ```
-
-**Expected savings:** 40-80% cost reduction if 60%+ queries are cacheable
+**예상 절감액:** 60% 이상의 쿼리를 캐시할 수 있는 경우 40-80% 비용 절감
 
 ---
 
-## Kubernetes Deployment
-
+## 쿠버네티스 배포
 ```yaml
 # kubernetes/llm-deployment.yaml
 apiVersion: apps/v1
@@ -251,11 +238,9 @@ spec:
           initialDelaySeconds: 60
           periodSeconds: 10
 ```
-
 ---
 
-## Multi-Model Routing
-
+## 다중 모델 라우팅
 ```python
 from enum import Enum
 from typing import Literal
@@ -302,13 +287,11 @@ async def route_and_call(query: str) -> str:
     
     return response.content[0].text
 ```
-
 ---
 
-## Safety Guardrails
+## 안전 가드레일
 
-### Content Filtering
-
+### 콘텐츠 필터링
 ```python
 from typing import Tuple
 
@@ -359,13 +342,11 @@ async def safe_llm_call(query: str) -> str:
     
     return response
 ```
-
 ---
 
-## Monitoring Setup
+## 모니터링 설정
 
-### Key Metrics to Track
-
+### 추적할 주요 지표
 ```python
 import prometheus_client as prom
 

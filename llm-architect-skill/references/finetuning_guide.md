@@ -1,50 +1,50 @@
-# Fine-Tuning Guide
+# 미세 조정 가이드
 
-## Overview
+## 개요
 
-Fine-tuning adapts pre-trained models to specific tasks or domains, improving performance on specialized data.
+미세 조정은 사전 훈련된 모델을 특정 작업이나 영역에 맞게 조정하여 특화된 데이터의 성능을 향상시킵니다.
 
-## Methods
+## 방법
 
-### 1. Full Fine-Tuning
+### 1. 전체 미세 조정
 
-Updates all model parameters.
+모든 모델 매개변수를 업데이트합니다.
 
-**Pros:**
-- Maximum performance gains
-- No architectural changes
-- Works for any model
+**장점:**
+- 최대 성능 향상
+- 아키텍처 변경 없음
+- 모든 모델에서 작동
 
-**Cons:**
-- High computational cost
-- Large storage requirements
-- Risk of catastrophic forgetting
+**단점:**
+- 높은 계산 비용
+- 대용량 저장 요구 사항
+- 치명적인 망각의 위험
 
-**Use case:**
-- Critical tasks requiring maximum accuracy
-- Sufficient compute resources
-- Domain-specific models
+**사용 사례:**
+- 최대의 정확성이 요구되는 중요한 작업
+- 충분한 컴퓨팅 리소스
+- 도메인별 모델
 
-### 2. LoRA (Low-Rank Adaptation)
+### 2. LoRA(낮은 순위 적응)
 
-Adds trainable rank decomposition matrices.
+훈련 가능한 순위 분해 행렬을 추가합니다.
 
-**Pros:**
-- 100-1000x faster training
-- Small storage (1-100MB)
-- No performance degradation
-- Easy to switch between adapters
+**장점:**
+- 100-1000배 더 빠른 훈련
+- 작은 저장 공간(1-100MB)
+- 성능저하 없음
+- 어댑터 간 전환이 용이함
 
-**Cons:**
-- Slightly lower performance than full fine-tuning
-- Requires LoRA-supporting codebase
+**단점:**
+- Full Fine-tuning에 비해 약간 낮은 성능
+- LoRA를 지원하는 코드베이스가 필요합니다.
 
-**Use case:**
-- Most production use cases
-- Multiple task adapters
-- Resource-constrained environments
+**사용 사례:**
+- 대부분의 프로덕션 사용 사례
+- 다중 작업 어댑터
+- 자원이 제한된 환경
 
-**Configuration:**
+**구성:**
 ```python
 lora_config = LoraConfig(
     r=8,  # Rank (4-16 typical)
@@ -55,34 +55,32 @@ lora_config = LoraConfig(
     task_type=TaskType.CAUSAL_LM
 )
 ```
+### 3. 접두사 튜닝
 
-### 3. Prefix Tuning
+연속 프롬프트 임베딩을 학습합니다.
 
-Learns continuous prompt embeddings.
+**장점:**
+- 모델을 통한 그라데이션 없음
+- 매우 효율적
 
-**Pros:**
-- No gradient through model
-- Very efficient
+**단점:**
+- 구현이 더 복잡함
+- LoRA에 비해 성능이 낮음
 
-**Cons:**
-- More complex to implement
-- Lower performance than LoRA
+### 4. P-Tuning(즉시튜닝)
 
-### 4. P-Tuning (Prompt Tuning)
+부드러운 프롬프트를 배웁니다.
 
-Learns soft prompts.
+**장점:**
+- 간단한 구현
+- 매개변수 효율성
 
-**Pros:**
-- Simple implementation
-- Parameter efficient
+**단점:**
+- 프롬프트 기반 학습으로 제한
 
-**Cons:**
-- Limited to prompt-based learning
+## 데이터 준비
 
-## Data Preparation
-
-### Dataset Format
-
+### 데이터세트 형식
 ```json
 [
     {
@@ -93,17 +91,15 @@ Learns soft prompts.
     }
 ]
 ```
+### 데이터 품질 요구사항
 
-### Data Quality Requirements
+1. **관련성**: 데이터가 대상 작업과 일치해야 합니다.
+2. **다양성**: 극단적인 경우와 변형을 다루세요.
+3. **크기**: 작업에 따라 100~10,000개 이상의 예시
+4. **균형**: 분류를 위한 균형 클래스
+5. **청결함**: 중복 및 오류 제거
 
-1. **Relevance**: Data must match target task
-2. **Diversity**: Cover edge cases and variations
-3. **Size**: 100-10,000+ examples depending on task
-4. **Balance**: Balanced classes for classification
-5. **Cleanliness**: Remove duplicates and errors
-
-### Data Augmentation
-
+### 데이터 증대
 ```python
 def augment_data(text):
     variations = []
@@ -119,11 +115,9 @@ def augment_data(text):
 
     return variations
 ```
+## 훈련 과정
 
-## Training Process
-
-### Step 1: Prepare Data
-
+### 1단계: 데이터 준비
 ```python
 from finetune_model import ModelFinetuner, FinetuningConfig
 
@@ -141,15 +135,11 @@ config = FinetuningConfig(
 finetuner = ModelFinetuner(config)
 finetuner.load_model()
 ```
-
-### Step 2: Train
-
+### 2단계: 훈련
 ```python
 finetuner.train()
 ```
-
-### Step 3: Evaluate
-
+### 3단계: 평가
 ```python
 # Use validation set
 validation_loss = finetuner.evaluate()
@@ -157,28 +147,24 @@ validation_loss = finetuner.evaluate()
 # Or test on held-out examples
 test_results = finetuner.test(test_data)
 ```
-
-### Step 4: Save Model
-
+### 4단계: 모델 저장
 ```python
 finetuner.save_model()
 ```
+## 하이퍼파라미터 튜닝
 
-## Hyperparameter Tuning
+### 주요 매개변수
 
-### Key Parameters
+| 매개변수 | 일반적인 범위 | 영향 |
+|------------|---------------|---------|
+| 학습률 | 1e-5에서 5e-4 | 큰 영향 |
+| 배치 크기 | 1-16 | 보통 영향 |
+| 시대 | 1-10 | 데이터 크기에 따라 다름 |
+| LoRA 순위(r) | 4-32 | 낮음-보통 영향 |
+| LoRA 알파 | 16-128 | 낮은 영향 |
+| 워밍업 단계 | 100-1000 | 보통 영향 |
 
-| Parameter | Typical Range | Impact |
-|-----------|---------------|--------|
-| Learning Rate | 1e-5 to 5e-4 | High impact |
-| Batch Size | 1-16 | Moderate impact |
-| Epochs | 1-10 | Depends on data size |
-| LoRA Rank (r) | 4-32 | Low-Moderate impact |
-| LoRA Alpha | 16-128 | Low impact |
-| Warmup Steps | 100-1000 | Moderate impact |
-
-### Tuning Strategy
-
+### 튜닝 전략
 ```python
 # Grid search
 learning_rates = [1e-5, 5e-5, 1e-4]
@@ -191,30 +177,28 @@ for lr in learning_rates:
         finetuner.train()
         results.append(evaluate())
 ```
+## 평가
 
-## Evaluation
+### 측정항목
 
-### Metrics
+**언어 생성:**
+- 당혹감
+- BLEU 점수
+- 루즈 점수
+- 인간 평가
 
-**Language Generation:**
-- Perplexity
-- BLEU score
-- ROUGE score
-- Human evaluation
+**분류:**
+- 정확성
+- F1 점수
+- 정밀도/재현율
+- 혼란 매트릭스
 
-**Classification:**
-- Accuracy
-- F1 score
-- Precision/Recall
-- Confusion matrix
+**질문 답변:**
+- 정확한 일치
+- F1 점수(토큰 수준)
+- 의미적 유사성
 
-**Question Answering:**
-- Exact match
-- F1 score (token-level)
-- Semantic similarity
-
-### Evaluation Framework
-
+### 평가 프레임워크
 ```python
 from evaluate_model import ModelEvaluator
 
@@ -234,11 +218,9 @@ report = evaluator.evaluate_model(
     dataset=test_dataset
 )
 ```
+## 배포
 
-## Deployment
-
-### Loading Fine-Tuned Models
-
+### 미세 조정된 모델 로드
 ```python
 finetuner.load_finetuned_model("path/to/model")
 
@@ -249,9 +231,7 @@ response = finetuner.generate(
     temperature=0.7
 )
 ```
-
-### Serving Fine-Tuned Models
-
+### 미세 조정된 모델 제공
 ```python
 from serve_model import ModelServer
 
@@ -259,9 +239,7 @@ server = ModelServer(config)
 server.load_model("finetuned_model", "path/to/model")
 server.start()
 ```
-
-### Multi-Adapter Deployment
-
+### 다중 어댑터 배포
 ```python
 # Switch between adapters
 model.set_adapter("adapter_1")
@@ -270,11 +248,9 @@ output_1 = model.generate(prompt)
 model.set_adapter("adapter_2")
 output_2 = model.generate(prompt)
 ```
+## 고급 기술
 
-## Advanced Techniques
-
-### Instruction Tuning
-
+### 명령어 튜닝
 ```python
 # Format: instruction + input + output
 data = [
@@ -285,9 +261,7 @@ data = [
     }
 ]
 ```
-
-### Multi-Task Learning
-
+### 다중 작업 학습
 ```python
 # Train on multiple tasks simultaneously
 tasks = ["summarization", "translation", "qa"]
@@ -296,39 +270,36 @@ for task in tasks:
     task_data = load_task_data(task)
     finetuner.train(task_data)
 ```
-
-### Continual Learning
-
+### 지속적인 학습
 ```python
 # Learn new tasks without forgetting
 for task in new_tasks:
     finetuner.train(task_data, replay_buffer=old_data)
 ```
+## 일반적인 문제
 
-## Common Issues
+### 치명적인 망각
+- **증상**: 이전 작업의 성능이 저하됩니다.
+- **해결책**: 재생 버퍼 사용, 탄력적 가중치 통합
 
-### Catastrophic Forgetting
-- **Symptom**: Performance on old tasks degrades
-- **Solution**: Use replay buffer, elastic weight consolidation
+### 과적합
+- **증상**: 훈련 손실이 감소하고 검증 손실이 증가합니다.
+- **해결책**: 에포크 감소, 드롭아웃 증가, 정규화 추가
 
-### Overfitting
-- **Symptom**: Training loss decreases, validation loss increases
-- **Solution**: Reduce epochs, increase dropout, add regularization
+### 과소적합
+- **증상**: 학습 및 검증 손실이 모두 높음
+- **해결책**: 모델 용량을 늘리고 학습 시간을 연장하세요.
 
-### Underfitting
-- **Symptom**: Both training and validation loss high
-- **Solution**: Increase model capacity, train longer
+### 열악한 융합
+- **증상**: 손실이 진동하거나 감소하지 않음
+- **해결책**: 학습률 조정, 데이터 품질 확인
 
-### Poor Convergence
-- **Symptom**: Loss oscillates or doesn't decrease
-- **Solution**: Adjust learning rate, check data quality
+## 모범 사례
 
-## Best Practices
-
-1. **Start with LoRA**: Most cases don't need full fine-tuning
-2. **Monitor validation loss**: Stop before overfitting
-3. **Use checkpoints**: Save best performing model
-4. **Evaluate on held-out data**: Don't trust training metrics alone
-5. **Test on edge cases**: Validate model robustness
-6. **Document hyperparameters**: Enable reproducibility
-7. **Version control models**: Track model iterations
+1. **LoRA로 시작**: 대부분의 경우 완전한 미세 조정이 필요하지 않습니다.
+2. **검증 손실 모니터링**: 과적합 전에 중지
+3. **체크포인트 사용**: 최고 성능 모델 저장
+4. **보존 데이터에 대한 평가**: 학습 측정항목만 신뢰하지 마세요.
+5. **특정 사례에 대한 테스트**: 모델 견고성 검증
+6. **문서 하이퍼파라미터**: 재현성 지원
+7. **버전 관리 모델**: 모델 반복 추적

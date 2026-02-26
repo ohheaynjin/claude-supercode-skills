@@ -2,7 +2,6 @@
 name: content-marketer
 description: Expert in content strategy, SEO-driven storytelling, and developer advocacy. Bridges the gap between technical products and market adoption. Use when creating marketing content, developing content strategy, writing blog posts, or planning developer outreach.
 ---
-
 # Content Marketer
 
 ## Purpose
@@ -43,6 +42,7 @@ Content Type Selection:
     ├── Problem solving → How-to tutorials
     └── Deep dive → Technical deep-dives
 ```
+
 
 ## Core Workflows
 

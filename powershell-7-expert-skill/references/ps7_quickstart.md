@@ -23,6 +23,7 @@ winget install Microsoft.PowerShell
 # https://github.com/PowerShell/PowerShell/releases
 ```
 
+
 #### Linux (Ubuntu)
 ```bash
 # Download and install
@@ -30,11 +31,13 @@ wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershel
 sudo dpkg -i powershell_7.4.0-1.deb_amd64.deb
 ```
 
+
 #### macOS
 ```bash
 # Using Homebrew
 brew install powershell
 ```
+
 
 ### 2. Verify Installation
 
@@ -47,6 +50,7 @@ if ($IsWindows) { Write-Host "Running on Windows" }
 if ($IsLinux) { Write-Host "Running on Linux" }
 if ($IsMacOS) { Write-Host "Running on macOS" }
 ```
+
 
 ### 3. Cross-Platform Automation
 
@@ -63,6 +67,7 @@ if ($IsMacOS) { Write-Host "Running on macOS" }
 # Monitor platform
 .\scripts\crossplatform_automation.ps1 -TargetOS macOS -Action Monitor
 ```
+
 
 ### 4. REST API Consumption
 
@@ -89,6 +94,7 @@ if ($IsMacOS) { Write-Host "Running on macOS" }
     -RetryDelaySeconds 2
 ```
 
+
 ### 5. Publish to PowerShell Gallery
 
 ```powershell
@@ -105,6 +111,7 @@ if ($IsMacOS) { Write-Host "Running on macOS" }
     -Prerelease
 ```
 
+
 ## Modern PowerShell 7 Features
 
 ### Ternary Operator
@@ -117,6 +124,7 @@ $result = if ($condition) { "yes" } else { "no" }
 $result = $condition ? "yes" : "no"
 ```
 
+
 ### Null-Coalescing Operator
 
 ```powershell
@@ -128,6 +136,7 @@ if ($null -eq $value) {
 # New way
 $value = $value ?? "default"
 ```
+
 
 ### Pipeline Chain Operators
 
@@ -142,6 +151,7 @@ Get-ChildItem | Where-Object Extension -eq '.txt'
 Get-ChildItem | Where-Object Extension -eq '.txt' | ForEach-Object FullName
 ```
 
+
 ### Foreach Method
 
 ```powershell
@@ -151,6 +161,7 @@ Get-ChildItem | Where-Object Extension -eq '.txt' | ForEach-Object FullName
 # New way
 1..5.ForEach({ Write-Host $_ })
 ```
+
 
 ### Where Method
 
@@ -163,6 +174,7 @@ $even = $numbers | Where-Object { $_ % 2 -eq 0 }
 $numbers = 1..100
 $even = $numbers.Where({ $_ % 2 -eq 0 })
 ```
+
 
 ## Container Support
 
@@ -185,6 +197,7 @@ docker stop ps7-container
 docker rm ps7-container
 ```
 
+
 ### PowerShell in Containers
 
 ```powershell
@@ -197,6 +210,7 @@ docker run --rm -it -v ${PWD}:/data mcr.microsoft.com/powershell:latest
 # Run script in container
 docker run --rm -v ${PWD}:/data mcr.microsoft.com/powershell:latest pwsh -File /data/script.ps1
 ```
+
 
 ## TypeScript Integration
 
@@ -232,6 +246,7 @@ await ps7.publishToGallery({
   skipTests: false
 });
 ```
+
 
 ## Best Practices
 

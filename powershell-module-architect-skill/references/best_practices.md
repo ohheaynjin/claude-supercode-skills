@@ -1,13 +1,12 @@
-# PowerShell Module Best Practices
+# PowerShell 모듈 모범 사례
 
-## Overview
+## 개요
 
-This guide outlines best practices for developing, testing, and distributing PowerShell modules.
+이 가이드에서는 PowerShell 모듈 개발, 테스트 및 배포에 대한 모범 사례를 간략하게 설명합니다.
 
-## Code Quality
+## 코드 품질
 
-### PSScriptAnalyzer Rules
-
+### PSScriptAnalyzer 규칙
 ```powershell
 # Install PSScriptAnalyzer
 Install-Module PSScriptAnalyzer
@@ -28,11 +27,9 @@ $env:POWERSHELL_FORMAT_SETTINGS = @{
     Rules = @('PSUseCorrectCasing')
 }
 ```
+### 코드 스타일 지침
 
-### Code Style Guidelines
-
-#### Naming Conventions
-
+#### 명명 규칙
 ```powershell
 # Good: Approved verbs
 Get-Item
@@ -49,9 +46,7 @@ Make-Item
 Delete-Item
 Check-Item
 ```
-
-#### Variable Naming
-
+#### 변수 명명
 ```powershell
 # Good: PascalCase for variables, camelCase for parameters
 $ServerName
@@ -65,11 +60,9 @@ param(
 $servername
 $ConfigData
 ```
+### 오류 처리
 
-### Error Handling
-
-#### Try-Catch-Finally Pattern
-
+#### Try-Catch-Finally 패턴
 ```powershell
 function Invoke-Operation {
     [CmdletBinding()]
@@ -102,9 +95,7 @@ function Invoke-Operation {
     }
 }
 ```
-
-#### Custom Error Messages
-
+#### 사용자 정의 오류 메시지
 ```powershell
 function Set-Configuration {
     [CmdletBinding()]
@@ -130,11 +121,9 @@ function Set-Configuration {
     }
 }
 ```
+## 매개변수 검증
 
-## Parameter Validation
-
-### Built-in Validators
-
+### 내장 유효성 검사기
 ```powershell
 param(
     # Validate not null or empty
@@ -177,9 +166,7 @@ param(
     [pscredential]$Credential
 )
 ```
-
-### Custom Validators
-
+### 사용자 정의 유효성 검사기
 ```powershell
 function Validate-EmailAddress {
     param(
@@ -205,11 +192,9 @@ param(
     [string]$Email
 )
 ```
+## 성능 최적화
 
-## Performance Optimization
-
-### Pipeline Best Practices
-
+### 파이프라인 모범 사례
 ```powershell
 # Good: Use pipeline
 Get-ChildItem | Where-Object Extension -eq '.txt' | ForEach-Object Name
@@ -219,9 +204,7 @@ $files = Get-ChildItem
 $txtFiles = $files | Where-Object { $_.Extension -eq '.txt' }
 $names = $txtFiles | ForEach-Object { $_.Name }
 ```
-
-### Object Creation
-
+### 객체 생성
 ```powershell
 # Good: Use PSCustomObject
 $object = [PSCustomObject]@{
@@ -235,9 +218,7 @@ $object = [PSCustomObject][ordered]@{
     Value = 123
 }
 ```
-
-### Avoid Unnecessary Operations
-
+### 불필요한 작업을 피하세요
 ```powershell
 # Bad: Repeated property access
 if ($object.Property -eq 'value') {
@@ -250,11 +231,9 @@ if ($propertyValue -eq 'value') {
     $result = $propertyValue
 }
 ```
+## 테스트
 
-## Testing
-
-### Test Organization
-
+### 테스트 조직
 ```
 Tests/
 ├── Unit/
@@ -267,9 +246,7 @@ Tests/
 │   └── EndToEnd.Tests.ps1
 └── Tests.ps1
 ```
-
-### Test Structure
-
+### 테스트 구조
 ```powershell
 Describe "Get-Item Unit Tests" {
     BeforeAll {
@@ -299,11 +276,9 @@ Describe "Get-Item Unit Tests" {
     }
 }
 ```
+## 보안
 
-## Security
-
-### Secure Strings
-
+### 보안 문자열
 ```powershell
 # Read credential securely
 $credential = Get-Credential
@@ -315,9 +290,7 @@ $secureString = Read-Host "Enter password" -AsSecureString
 # Use in commands
 Invoke-Command -ComputerName "server" -Credential $credential
 ```
-
-### Execution Policy
-
+### 실행 정책
 ```powershell
 # Check execution policy
 Get-ExecutionPolicy -List
@@ -325,9 +298,7 @@ Get-ExecutionPolicy -List
 # Set execution policy
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ```
-
-### Signing Scripts
-
+### 서명 스크립트
 ```powershell
 # Sign script
 Set-AuthenticodeSignature -FilePath ".\script.ps1" -Certificate $cert
@@ -335,11 +306,9 @@ Set-AuthenticodeSignature -FilePath ".\script.ps1" -Certificate $cert
 # Verify signature
 Get-AuthenticodeSignature -FilePath ".\script.ps1"
 ```
+## 문서
 
-## Documentation
-
-### Comment-Based Help
-
+### 댓글 기반 도움말
 ```powershell
 <#
 .SYNOPSIS
@@ -366,19 +335,17 @@ Get-AuthenticodeSignature -FilePath ".\script.ps1"
     https://docs.example.com/get-item
 #>
 ```
+### 외부 문서
 
-### External Documentation
+1. **README.md**: 모듈 개요 및 빠른 시작
+2. **CHANGELOG.md**: 버전 기록 및 변경 사항
+3. **라이선스**: 라이선스 정보
+4. **CONTRIBUTING.md**: 기여 지침
+5. **예/**: 사용 예
 
-1. **README.md**: Module overview and quick start
-2. **CHANGELOG.md**: Version history and changes
-3. **LICENSE**: License information
-4. **CONTRIBUTING.md**: Contribution guidelines
-5. **Examples/**: Usage examples
+## 버전 관리
 
-## Version Management
-
-### Semantic Versioning
-
+### 의미적 버전 관리
 ```
 MAJOR.MINOR.PATCH
 
@@ -386,29 +353,25 @@ MAJOR: Incompatible API changes
 MINOR: Backward-compatible functionality additions
 PATCH: Backward-compatible bug fixes
 ```
-
-### Module Manifest Version
-
+### 모듈 매니페스트 버전
 ```powershell
 @{
     ModuleVersion = '1.2.3'
     # ...
 }
 ```
+### 출시 프로세스
 
-### Release Process
+1. 매니페스트의 버전 업데이트
+2. CHANGELOG.md 업데이트
+3. 버전 관리의 태그 릴리스
+4. 테스트 실행
+5. 갤러리에 게시
+6. 릴리스 노트 작성
 
-1. Update version in manifest
-2. Update CHANGELOG.md
-3. Tag release in version control
-4. Run tests
-5. Publish to gallery
-6. Create release notes
+## 배포
 
-## Distribution
-
-### PowerShell Gallery
-
+### 파워셸 갤러리
 ```powershell
 # Publish module
 Publish-Module -Path ".\MyModule" -NuGetApiKey "your-api-key"
@@ -419,9 +382,7 @@ Update-Module -Name MyModule
 # Find module
 Find-Module -Name MyModule
 ```
-
-### Private Repository
-
+### 개인 저장소
 ```powershell
 # Register private repository
 Register-PSRepository -Name "MyRepo" -SourceLocation "https://myrepo.local/nuget"
@@ -429,35 +390,31 @@ Register-PSRepository -Name "MyRepo" -SourceLocation "https://myrepo.local/nuget
 # Publish to private repository
 Publish-Module -Path ".\MyModule" -NuGetApiKey "your-api-key" -Repository MyRepo
 ```
+## 문제 해결
 
-## Troubleshooting
+### 일반적인 문제
 
-### Common Issues
+**문제:** 설치 후 모듈을 찾을 수 없음
 
-**Issue:** Module not found after installation
-
-**Solution:** Refresh module path
+**해결책:** 모듈 경로 새로 고침
 ```powershell
 Import-Module MyModule -Force
 ```
+**문제:** 함수가 내보내지지 않음
 
-**Issue:** Functions not exported
-
-**Solution:** Check FunctionsToExport in manifest
+**해결책:** 매니페스트에서 FunctionsToExport를 확인하세요.
 ```powershell
 Get-Module MyModule | Select-Object ExportedFunctions
 ```
+**문제:** 테스트 실패
 
-**Issue:** Tests failing
-
-**Solution:** Run Pester with verbose output
+**해결책:** 자세한 출력으로 Pester를 실행하세요.
 ```powershell
 Invoke-Pester -Path ".\Tests" -Verbose
 ```
+## 리소스
 
-## Resources
-
-- [PSScriptAnalyzer Rules](https://github.com/PowerShell/PSScriptAnalyzer#rules)
-- [Pester Documentation](https://pester.dev/docs/)
-- [PowerShell Best Practices](https://docs.microsoft.com/en-us/powershell/scripting/dev-cross-plat/best-practices)
-- [PowerShell Gallery Guidelines](https://docs.microsoft.com/en-us/powershell/gallery/psgallery/publishing-guidelines)
+- [PSScriptAnalyzer 규칙](https://github.com/PowerShell/PSScriptAnalyzer#rules)
+- [페스터 문서](https://pester.dev/docs/)
+- [PowerShell 모범 사례](https://docs.microsoft.com/en-us/powershell/scripting/dev-cross-plat/best-practices)
+- [PowerShell 갤러리 지침](https://docs.microsoft.com/en-us/powershell/gallery/psgallery/publishing-guidelines)

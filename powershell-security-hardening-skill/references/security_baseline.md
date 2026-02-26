@@ -1,50 +1,49 @@
-# PowerShell Security Baseline
+# PowerShell 보안 기준
 
-## Overview
+## 개요
 
-This guide establishes security baselines for PowerShell environments, including execution policies, constrained language mode, and logging.
+이 가이드에서는 실행 정책, 제한된 언어 모드 및 로깅을 포함하여 PowerShell 환경에 대한 보안 기준을 설정합니다.
 
-## Security Checklist
+## 보안 체크리스트
 
-### Execution Policy
+### 실행 정책
 
-- [ ] Set appropriate execution policy (RemoteSigned recommended)
-- [ ] Enforce execution policy across all scopes
-- [ ] Regularly audit execution policy compliance
-- [ ] Use Group Policy for enterprise-wide enforcement
+- [ ] 적절한 실행 정책 설정(RemoteSigned 권장)
+- [ ] 모든 범위에 걸쳐 실행 정책 시행
+- [ ] 실행 정책 준수 여부를 정기적으로 감사합니다.
+- [ ] 전사적 시행을 위해 그룹 정책을 사용합니다.
 
-### Constrained Language Mode
+### 제한된 언어 모드
 
-- [ ] Enable constrained language mode for production
-- [ ] Test in non-production environment first
-- [ ] Document restricted operations
-- [ ] Monitor for bypass attempts
+- [ ] 프로덕션을 위해 제한된 언어 모드를 활성화합니다.
+- [ ] 먼저 비프로덕션 환경에서 테스트
+- [ ] 문서 제한 작업
+- [ ] 우회 시도 모니터링
 
-### Script Block Logging
+### 스크립트 블록 로깅
 
-- [ ] Enable script block logging
-- [ ] Enable invocation header logging
-- [ ] Configure log retention policies
-- [ ] Regularly review script block logs
+- [ ] 스크립트 블록 로깅 활성화
+- [ ] 호출 헤더 로깅 활성화
+- [ ] 로그 보존 정책 구성
+- [ ] 스크립트 블록 로그를 정기적으로 검토합니다.
 
-### Module Logging
+### 모듈 로깅
 
-- [ ] Enable module logging
-- [ ] Specify modules to log
-- [ ] Monitor module usage
-- [ ] Alert on suspicious module activity
+- [ ] 모듈 로깅 활성화
+- [ ] 기록할 모듈 지정
+- [ ] 모니터 모듈 사용량
+- [ ] 의심스러운 모듈 활동에 대한 경고
 
-### Transcription
+### 전사
 
-- [ ] Enable PowerShell transcription
-- [ ] Set appropriate transcription path
-- [ ] Configure secure storage for transcripts
-- [ ] Implement transcript retention policy
+- [ ] PowerShell 기록 활성화
+- [ ] 적절한 전사 경로 설정
+- [ ] 성적 증명서를 위한 보안 저장소 구성
+- [ ] 성적표 보존 정책 구현
 
-## Execution Policy Configuration
+## 실행 정책 구성
 
-### Recommended Settings
-
+### 권장 설정
 ```powershell
 # Set RemoteSigned for LocalMachine scope
 Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy RemoteSigned
@@ -55,9 +54,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Restricted
 # Verify settings
 Get-ExecutionPolicy -List
 ```
-
-### Group Policy Enforcement
-
+### 그룹 정책 시행
 ```
 Computer Configuration → Administrative Templates →
 Windows Components → Windows PowerShell
@@ -67,11 +64,9 @@ Turn on Script Execution:
 - Execution Policy: Allow only signed scripts
 
 ```
+## 제한된 언어 모드
 
-## Constrained Language Mode
-
-### Enabling Constrained Mode
-
+### 제한 모드 활성화
 ```powershell
 # Set constrained language mode
 $ExecutionContext.SessionState.LanguageMode = "ConstrainedLanguage"
@@ -79,17 +74,13 @@ $ExecutionContext.SessionState.LanguageMode = "ConstrainedLanguage"
 # Verify
 $ExecutionContext.SessionState.LanguageMode
 ```
-
-### System-Wide Enforcement
-
+### 시스템 전체 시행
 ```powershell
 # Set system-wide constrained mode
 $registryPath = "HKLM:\SOFTWARE\Microsoft\PowerShell\1\ShellIds"
 Set-ItemProperty -Path $registryPath -Name "ConsoleSessionConfigurationName" -Value "ConstrainedLanguage"
 ```
-
-### Testing Constrained Mode
-
+### 제한 모드 테스트
 ```powershell
 # Test restricted operations
 try {
@@ -108,11 +99,9 @@ catch {
     Write-Host "✓ Object creation blocked (SECURE)" -ForegroundColor Green
 }
 ```
+## 스크립트 블록 로깅
 
-## Script Block Logging
-
-### Enabling Script Block Logging
-
+### 스크립트 블록 로깅 활성화
 ```powershell
 # Enable script block logging
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging"
@@ -124,9 +113,7 @@ if (-not (Test-Path $registryPath)) {
 Set-ItemProperty -Path $registryPath -Name "EnableScriptBlockLogging" -Value 1 -Force
 Set-ItemProperty -Path $registryPath -Name "EnableScriptBlockInvocationLogging" -Value 1 -Force
 ```
-
-### Analyzing Script Block Logs
-
+### 스크립트 블록 로그 분석
 ```powershell
 # Query script block events
 $events = Get-WinEvent -LogName "Microsoft-Windows-PowerShell/Operational" `
@@ -143,9 +130,7 @@ foreach ($event in $events) {
     }
 }
 ```
-
-### Detecting Suspicious Activity
-
+### 의심스러운 활동 감지
 ```powershell
 function Find-SuspiciousScripts {
     $suspiciousPatterns = @(
@@ -174,11 +159,9 @@ function Find-SuspiciousScripts {
     }
 }
 ```
+## 모듈 로깅
 
-## Module Logging
-
-### Enabling Module Logging
-
+### 모듈 로깅 활성화
 ```powershell
 # Enable module logging
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging"
@@ -197,9 +180,7 @@ if (-not (Test-Path $moduleNamesPath)) {
 
 Set-ItemProperty -Path $moduleNamesPath -Name "*" -Value "*" -Force
 ```
-
-### Monitoring Module Usage
-
+### 모듈 사용량 모니터링
 ```powershell
 function Get-ModuleUsage {
     $events = Get-WinEvent -LogName "Microsoft-Windows-PowerShell/Operational" `
@@ -223,11 +204,9 @@ function Get-ModuleUsage {
         Format-Table -AutoSize
 }
 ```
+## 전사
 
-## Transcription
-
-### Enabling Transcription
-
+### 전사 활성화
 ```powershell
 # Enable transcription
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription"
@@ -245,9 +224,7 @@ Set-ItemProperty -Path $registryPath -Name "EnableTranscripting" -Value 1 -Force
 Set-ItemProperty -Path $registryPath -Name "EnableInvocationHeader" -Value 1 -Force
 Set-ItemProperty -Path $registryPath -Name "OutputDirectory" -Value $transcriptionPath -Force
 ```
-
-### Configuring Transcription
-
+### 전사 구성
 ```powershell
 # Start transcription manually
 Start-Transcript -Path "C:\Logs\transcript_$(Get-Date -Format 'yyyyMMdd_HHmmss').txt"
@@ -258,11 +235,9 @@ Stop-Transcript
 # Enable transcription for all sessions
 $PSDefaultParameterValues['Start-Transcript:IncludeInvocationHeader'] = $true
 ```
+## 충분한 행정(JEA)
 
-## Just Enough Administration (JEA)
-
-### Creating JEA Session Configuration
-
+### JEA 세션 구성 생성
 ```powershell
 # Create role capability file
 $roleParams = @{
@@ -292,11 +267,9 @@ New-PSSessionConfigurationFile @sessionParams
 # Register session configuration
 Register-PSSessionConfiguration -Path ".\JEAConfig.pssc" -Name "JEA" -Force
 ```
+## 코드 서명
 
-## Code Signing
-
-### Signing Scripts
-
+### 서명 스크립트
 ```powershell
 # Get code signing certificate
 $cert = Get-ChildItem -Path Cert:\CurrentUser\My -CodeSigningCert | Select-Object -First 1
@@ -307,9 +280,7 @@ Set-AuthenticodeSignature -FilePath ".\script.ps1" -Certificate $cert -Timestamp
 # Verify signature
 Get-AuthenticodeSignature -FilePath ".\script.ps1"
 ```
-
-### Enforcing Signed Scripts
-
+### 서명된 스크립트 시행
 ```powershell
 # Require signed scripts only
 Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy AllSigned
@@ -317,11 +288,9 @@ Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy AllSigned
 # Test compliance
 Get-AuthenticodeSignature -FilePath ".\script.ps1" | Select-Object Status
 ```
+## 모니터링 및 경고
 
-## Monitoring and Alerting
-
-### PowerShell Security Events
-
+### PowerShell 보안 이벤트
 ```powershell
 # Key event IDs to monitor
 $securityEventIds = @{
@@ -341,9 +310,7 @@ foreach ($eventId in $securityEventIds.Values) {
     Write-Host "Event ID $eventId: $($events.Count) events"
 }
 ```
-
-### Alert Configuration
-
+### 경고 구성
 ```powershell
 # Create scheduled task for monitoring
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-File C:\Scripts\Monitor-PowerShell.ps1"
@@ -351,11 +318,9 @@ $trigger = New-ScheduledTaskTrigger -Daily -At "3:00 AM"
 
 Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "PowerShell Security Monitor" -Description "Monitor PowerShell security events"
 ```
+## 규정 준수 검사
 
-## Compliance Scanning
-
-### Security Compliance Check
-
+### 보안 준수 확인
 ```powershell
 function Test-PowerShellSecurityCompliance {
     $compliance = @{
@@ -406,20 +371,19 @@ function Test-PowerShellSecurityCompliance {
     return $compliance
 }
 ```
+## 모범 사례
 
-## Best Practices
+1. **심층 방어**: 여러 보안 제어 계층화
+2. **정기 감사**: 보안 로그를 정기적으로 검토합니다.
+3. **변경 사항 테스트**: 비프로덕션에서 보안 변경 사항을 테스트합니다.
+4. **문서화**: 모든 보안 구성을 문서화합니다.
+5. **모니터링**: 지속적인 모니터링 구현
+6. **알림**: 의심스러운 활동에 대한 알림을 설정합니다.
+7. **업데이트**: PowerShell과 시스템을 최신 상태로 유지하세요.
+8. **교육**: PowerShell 보안에 대해 직원 교육
 
-1. **Defense in Depth**: Layer multiple security controls
-2. **Regular Audits**: Review security logs regularly
-3. **Test Changes**: Test security changes in non-production
-4. **Document**: Document all security configurations
-5. **Monitor**: Implement continuous monitoring
-6. **Alert**: Set up alerts for suspicious activity
-7. **Update**: Keep PowerShell and systems updated
-8. **Train**: Train staff on PowerShell security
+## 리소스
 
-## Resources
-
-- [PowerShell Security Documentation](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/wsman-credentials-in-security-descriptions)
-- [Script Block Logging](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_script_block_logging)
-- [JEA Documentation](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/jea/overview)
+- [PowerShell 보안 설명서](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/wsman-credentials-in-security-descriptions)
+- [스크립트 블록 로깅](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_script_block_logging)
+- [JEA 문서](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/jea/overview)

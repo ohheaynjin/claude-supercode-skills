@@ -267,6 +267,7 @@ export DEBUG=true
 logging.basicConfig(level=logging.DEBUG)
 ```
 
+
 ### Dry Run Mode
 
 ```bash
@@ -274,12 +275,14 @@ logging.basicConfig(level=logging.DEBUG)
 python scripts/incident_triage.py --incident TEST-001 --dry-run
 ```
 
+
 ### Verbose Output
 
 ```bash
 # Get detailed output
 python scripts/incident_response.py --incident INC-001 --action-type containment --verbose
 ```
+
 
 ## Getting Help
 
@@ -293,6 +296,7 @@ python scripts/incident_response.py --help
 python scripts/runbook_generator.py --help
 python scripts/maintenance_automation.py --help
 ```
+
 
 ### Error Messages
 

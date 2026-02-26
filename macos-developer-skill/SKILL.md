@@ -2,7 +2,6 @@
 name: macos-developer
 description: Expert in macOS app development using AppKit, SwiftUI for Mac, and XPC. Specializes in system extensions, menu bar apps, and deep OS integration.
 ---
-
 # macOS Developer
 
 ## Purpose
@@ -58,7 +57,8 @@ Provides native macOS application development expertise specializing in AppKit, 
 **Steps:**
 
 1.  **App Setup**
-    ```swift
+
+```swift
     @main
     struct MenuBarApp: App {
         var body: some Scene {
@@ -70,6 +70,7 @@ Provides native macOS application development expertise specializing in AppKit, 
         }
     }
     ```
+
 
 2.  **Hide Dock Icon**
     -   Info.plist: `LSUIElement` = `YES`.
@@ -87,7 +88,8 @@ Provides native macOS application development expertise specializing in AppKit, 
     -   `com.apple.developer.endpoint-security.client` = `YES`.
 
 2.  **Implementation (C API)**
-    ```c
+
+```c
     es_client_t *client;
     es_new_client(&client, ^(es_client_t *c, const es_message_t *msg) {
         if (msg->event_type == ES_EVENT_TYPE_NOTIFY_EXEC) {
@@ -95,6 +97,7 @@ Provides native macOS application development expertise specializing in AppKit, 
         }
     });
     ```
+
 
 ---
 ---
@@ -159,6 +162,7 @@ struct SystemUtilityApp: App {
 }
 ```
 
+
 **Key Features:**
 - LSUIElement in Info.plist to hide dock icon
 - Keyboard shortcuts for quick actions
@@ -197,6 +201,7 @@ class ProcessingService: NSObject, ProcessingServiceProtocol {
 }
 ```
 
+
 **Benefits:**
 - Crash isolation (service crash doesn't kill app)
 - Reduced memory footprint
@@ -230,6 +235,7 @@ class NetworkExtensionHandler: NEProvider {
     }
 }
 ```
+
 
 **Requirements:**
 - Notarization for distribution outside App Store

@@ -1,257 +1,252 @@
-# GDPR Requirements Reference
+# GDPR 요구 사항 참조
 
-## Overview
-Comprehensive guide to GDPR (General Data Protection Regulation) requirements and compliance checks.
+## 개요
+GDPR(일반 데이터 보호 규정) 요구 사항 및 규정 준수 확인에 대한 종합 가이드입니다.
 
-## GDPR Principles
+## GDPR 원칙
 
-### Article 5: Principles Relating to Processing of Personal Data
+### 제5조: 개인정보 처리에 관한 원칙
 
-1. **Lawfulness, Fairness, and Transparency**
-   - Personal data must be processed lawfully, fairly, and transparently
-   - Legal basis for processing must be documented
-   - Privacy notices must be clear and accessible
+1. **합법성, 공정성, 투명성**
+   - 개인정보는 적법하고 공정하며 투명하게 처리되어야 합니다.
+   - 처리에 대한 법적 근거를 문서화해야 합니다.
+   - 개인정보 보호정책은 명확하고 접근 가능해야 합니다.
 
-2. **Purpose Limitation**
-   - Data must be collected for specified, explicit, and legitimate purposes
-   - No further processing incompatible with those purposes
-   - Purposes must be documented and communicated
+2. **목적 제한**
+   - 데이터는 구체적이고 명시적이며 합법적인 목적으로 수집되어야 합니다.
+   - 해당 목적에 부합하지 않는 추가 처리는 없습니다.
+   - 목적을 문서화하고 전달해야 합니다.
 
-3. **Data Minimization**
-   - Data must be adequate, relevant, and limited to what is necessary
-   - Collect only data needed for the stated purpose
-   - Regular reviews of data collected
+3. **데이터 최소화**
+   - 데이터는 적절하고 관련성이 있어야 하며 필요한 만큼만 제한되어야 합니다.
+   - 명시된 목적에 필요한 데이터만 수집
+   - 수집된 데이터에 대한 정기적인 검토
 
-4. **Accuracy**
-   - Data must be accurate and kept up to date
-   - Inaccurate data must be erased or rectified
-   - Reasonable steps taken to ensure accuracy
+4. **정확성**
+   - 데이터는 정확하고 최신 상태로 유지되어야 합니다.
+   - 부정확한 데이터는 삭제하거나 정정해야 합니다.
+   - 정확성을 보장하기 위해 합리적인 조치를 취함
 
-5. **Storage Limitation**
-   - Data must be kept in a form that permits identification for no longer than necessary
-   - Data retention policies must be established
-   - Secure deletion when no longer needed
+5. **저장 용량 제한**
+   - 데이터는 필요한 기간 동안만 식별이 가능한 형태로 보관되어야 합니다.
+   - 데이터 보존 정책을 수립해야 합니다.
+   - 더 이상 필요하지 않을 때 안전하게 삭제
 
-6. **Integrity and Confidentiality**
-   - Data must be processed securely
-   - Protection against unauthorized processing
-   - Protection against accidental loss, destruction, or damage
+6. **무결성 및 기밀성**
+   - 데이터는 안전하게 처리되어야 합니다.
+   - 무단 처리로부터 보호
+   - 우발적인 손실, 파괴 또는 손상으로부터 보호
 
-7. **Accountability**
-   - Controller must be responsible for and demonstrate compliance
-   - Documentation of compliance measures
-   - Regular audits and reviews
+7. **책임**
+   - 컨트롤러는 규정 준수에 대한 책임을 갖고 입증해야 합니다.
+   - 규정 준수 조치 문서화
+   - 정기 감사 및 검토
 
-## Data Subject Rights
+## 데이터 주체 권리
 
-### Right to be Informed (Articles 13-14)
-- [ ] Privacy notice provided before data collection
-- [ ] Clear identification of controller and DPO
-- [ ] Purposes and legal basis for processing
-- [ ] Data retention period
-- [ ] Transfer information (if applicable)
-- [ ] Data subject rights information
-- [ ] Right to withdraw consent
+### 알 권리(13~14조)
+- [ ] 데이터 수집 전 개인정보 보호정책 제공
+- [ ] 컨트롤러와 DPO의 명확한 식별
+- [ ] 처리 목적 및 법적 근거
+- [ ] 데이터 보유 기간
+- [ ] 이체 정보(해당되는 경우)
+- [ ] 데이터 주체 권리 정보
+- [ ] 동의를 철회할 권리
 
-### Right of Access (Article 15)
-- [ ] Data subjects can access their personal data
-- [ ] Access request process documented
-- [ ] Response within 1 month (extendable by 2 months)
-- [ ] Information provided in structured, commonly used format
-- [ ] Details of processing activities provided
+### 접근 권한(제15조)
+- [ ] 데이터 주체는 자신의 개인 데이터에 접근할 수 있습니다.
+- [ ] 액세스 요청 프로세스가 문서화되었습니다.
+- [ ] 1개월 이내 답변 (2개월 연장 가능)
+- [ ] 구조화되고 일반적으로 사용되는 형식으로 정보가 제공됩니다.
+- [ ] 제공된 처리 활동 내역
 
-### Right to Rectification (Article 16)
-- [ ] Data subjects can correct inaccurate data
-- [ ] Process for updating personal data
-- [ ] Correction acknowledgment provided
-- [ ] Third parties informed of corrections
+### 정정권(제16조)
+- [ ] 데이터 주체는 부정확한 데이터를 수정할 수 있습니다.
+- [ ] 개인정보 업데이트 프로세스
+- [ ] 정정 승인 제공됨
+- [ ] 제3자에게 수정 사항 통보
 
-### Right to Erasure (Right to be Forgotten) (Article 17)
-- [ ] Process for data deletion requests
-- [ ] Deletion completed within 1 month
-- [ ] Exceptions documented and communicated
-- [ ] Third-party deletions tracked
-- [ ] Backups and archives addressed
+### 삭제권(잊혀질 권리)(제17조)
+- [ ] 데이터 삭제 요청 처리
+- [ ] 1개월 이내 삭제 완료
+- [ ] 문서화되고 전달된 예외 사항
+- [ ] 제3자 삭제가 추적됨
+- [ ] 백업 및 아카이브 문제 해결
 
-### Right to Restrict Processing (Article 18)
-- [ ] Process for restricting processing
-- [ ] Clear communication of restriction
-- [ ] Storage while restriction in place
+### 처리를 제한할 권리(18조)
+- [ ] 처리제한 프로세스
+- [ ] 명확한 제한사항 전달
+- [ ] 제한이 적용되는 동안 보관
 
-### Right to Data Portability (Article 20)
-- [ ] Data can be transferred to another controller
-- [ ] Data provided in structured, machine-readable format
-- [ ] Direct transfer to another controller where technically feasible
-- [ ] Portability request process documented
+### 데이터 이동성에 대한 권리(20조)
+- [ ] 데이터를 다른 컨트롤러로 전송할 수 있습니다.
+- [ ] 구조화되고 기계가 읽을 수 있는 형식으로 제공되는 데이터
+- [ ] 기술적으로 가능한 경우 다른 컨트롤러로 직접 전송
+- [ ] 이동성 요청 프로세스가 문서화되었습니다.
 
-### Right to Object (Article 21)
-- [ ] Data subjects can object to processing
-- [ ] Objection process documented
-- [ ] Automated decision-making objection process
-- [ ] Marketing opt-out available
+### 반대할 권리(제21조)
+- [ ] 데이터 주체는 처리에 반대할 수 있습니다.
+- [ ] 이의제기 프로세스가 문서화됨
+- [ ] 자동화된 의사결정 이의제기 프로세스
+- [ ] 마케팅 수신 거부 가능
 
-### Rights in Relation to Automated Decision Making and Profiling (Articles 22-23)
-- [ ] Human intervention available
-- [ ] Information about logic used provided
-- [ ] Right to contest decision
-- [ ] Impact of profiling explained
+### 자동화된 의사결정 및 프로파일링과 관련된 권리(22~23조)
+- [ ] 사람의 개입 가능
+- [ ] 사용된 로직에 대한 정보 제공
+- [ ] 이의제기 결정권
+- [ ] 프로파일링의 영향 설명
 
-## Legal Bases for Processing (Article 6)
+## 처리에 대한 법적 근거(6조)
 
-### Consent
-- [ ] Freely given, specific, informed, unambiguous
-- [ ] Explicit consent for sensitive data
-- [ ] Consent can be withdrawn
-- [ ] Proof of consent maintained
-- [ ] Granular consent where appropriate
+### 동의
+- [ ] 자유롭게 제공됨, 구체적, 정보 제공, 모호하지 않음
+- [ ] 민감한 데이터에 대한 명시적 동의
+- [ ] 동의 철회 가능
+- [ ] 동의 증명이 유지됨
+- [ ] 적절한 경우 세부적인 동의
 
-### Contract
-- [ ] Processing necessary for contract performance
-- [ ] Contract terms specify data processing
-- [ ] Data subject party to contract
+### 계약
+- [ ] 계약 이행에 필요한 처리
+- [ ] 계약 조건에 따라 데이터 처리가 명시됩니다.
+- [ ] 정보주체 계약 당사자### 법적 의무
+- [ ] 법적으로 요구되는 처리
+- [ ] 법적 근거가 문서화됨
+- [ ] 적용 가능한 법률 확인
 
-### Legal Obligation
-- [ ] Processing required by law
-- [ ] Legal basis documented
-- [ ] Applicable legislation identified
+### 중요한 관심사
+- [ ] 중요한 이익을 보호하기 위해 필요한 처리
+- [ ] 삶과 죽음의 상황
+- [ ] 긴급 상황
 
-### Vital Interests
-- [ ] Processing necessary to protect vital interests
-- [ ] Life or death situations
-- [ ] Emergency circumstances
+### 공개 작업
+- [ ] 공익을 위한 업무에 필요한 처리
+- [ ] 공식적인 권한 근거가 문서화됨
+- [ ] 법률 또는 규정의 법적 근거
 
-### Public Task
-- [ ] Processing necessary for task in public interest
-- [ ] Official authority basis documented
-- [ ] Legal basis in law or regulation
+### 정당한 이익
+- [ ] 컨트롤러 또는 제3자의 정당한 이익
+- [ ] 데이터 주체의 이익 및 권리가 무시되지 않음
+- [ ] 적법한 관심도 평가 완료
+- [ ] 이해관계 균형이 문서화됨
 
-### Legitimate Interests
-- [ ] Legitimate interests of controller or third party
-- [ ] Data subject interests and rights override not overridden
-- [ ] Legitimate interest assessment completed
-- [ ] Balance of interests documented
+## 특별 카테고리 데이터(제9조)
 
-## Special Category Data (Article 9)
+### 가공조건
+- [ ] 명시적인 동의를 얻었습니다.
+- [ ] 고용 및 사회보장법 근거
+- [ ] 중요한 이익 기반
+- [ ] 법적 청구 근거
+- [ ] 공익 기반
+- [ ] 보건/공익 기반
+- [ ] 공공 데이터 기반
+- [ ] 적절한 보호 장치가 마련되어 있습니다.
 
-### Processing Conditions
-- [ ] Explicit consent obtained
-- [ ] Employment and social security law basis
-- [ ] Vital interests basis
-- [ ] Legal claims basis
-- [ ] Public interest basis
-- [ ] Health/public interest basis
-- [ ] Public data basis
-- [ ] Appropriate safeguards in place
+### 민감한 데이터 유형
+- 인종 또는 민족 출신
+- 정치적 견해
+- 종교적 또는 철학적 신념
+- 노동조합 가입
+- 유전자 데이터
+- 생체정보
+- 건강 데이터
+- 성생활이나 성적 취향
 
-### Sensitive Data Types
-- Racial or ethnic origin
-- Political opinions
-- Religious or philosophical beliefs
-- Trade union membership
-- Genetic data
-- Biometric data
-- Health data
-- Sex life or sexual orientation
+## 컨트롤러 및 프로세서 의무
 
-## Controller and Processor Obligations
+### 컨트롤러 의무(24~43조)
+- [ ] 설계 및 기본에 따른 데이터 보호 구현
+- [ ] 기술적, 조직적 조치가 마련되어 있습니다.
+- [ ] 프로세서 계약 체결
+- [ ] 고위험 처리를 위한 DPIA(데이터 보호 영향 평가)
+- [ ] DPO 임명(필요한 경우)
+- [ ] 처리 활동 기록 유지
+- [ ] 보안 위반 통지 프로세스(72시간)
+- [ ] 국경 간 이전 메커니즘이 확립되어 있습니다.
 
-### Controller Obligations (Articles 24-43)
-- [ ] Data Protection by Design and Default implemented
-- [ ] Technical and organizational measures in place
-- [ ] Processor agreements in place
-- [ ] Data Protection Impact Assessments (DPIAs) for high-risk processing
-- [ ] DPO appointed (if required)
-- [ ] Records of processing activities maintained
-- [ ] Security breach notification process (72 hours)
-- [ ] Cross-border transfer mechanisms in place
+### 프로세서 의무(28-32조)
+- [ ] 컨트롤러의 지시에 따라서만 처리합니다.
+- [ ] SAR로 컨트롤러 지원
+- [ ] 보안 위반 알림을 통해 컨트롤러 지원
+- [ ] 컨트롤러의 규정 준수 의무 지원
+- [ ] 서비스 종료 후 데이터 반환 또는 삭제
+- [ ] 컨트롤러 감사 및 검사 허용
+- [ ] 서면 계약상의 의무
 
-### Processor Obligations (Articles 28-32)
-- [ ] Only process on controller's instructions
-- [ ] Assist controller with SARs
-- [ ] Assist controller with security breach notifications
-- [ ] Assist controller with compliance obligations
-- [ ] Return or delete data after services
-- [ ] Allow controller audits and inspections
-- [ ] Contractual obligations in writing
+## 국경 간 데이터 전송(44-50조)
 
-## Cross-Border Data Transfers (Articles 44-50)
+### 적절성 결정
+- [ ] 적절한 국가로만 이전
+- [ ] 문서화된 타당성 결정
+- [ ] 유럽연합 집행위원회 타당성 목록 협의
 
-### Adequacy Decisions
-- [ ] Transfers only to adequate countries
-- [ ] Adequacy decisions documented
-- [ ] European Commission adequacy list consulted
+### 적절한 보호 조치
+- [ ] 구속력 있는 기업 규칙(BCR)이 확립되어 있습니다.
+- [ ] 표준 계약 조항(SCC) 사용
+- [ ] 승인된 행동 강령
+- [ ] 승인된 인증 메커니즘
 
-### Appropriate Safeguards
-- [ ] Binding Corporate Rules (BCRs) in place
-- [ ] Standard Contractual Clauses (SCCs) used
-- [ ] Approved codes of conduct
-- [ ] Approved certification mechanisms
+### 경멸
+- [ ] 정보주체 동의 획득
+- [ ] 계약 이행 필요
+- [ ] 중요한 공익적 근거
+- [ ] 법적 청구 근거
+- [ ] 중요한 이익 기반
+- [ ] 공공등록 기준
 
-### Derogations
-- [ ] Data subject consent obtained
-- [ ] Contract performance required
-- [ ] Important public interest basis
-- [ ] Legal claims basis
-- [ ] Vital interests basis
-- [ ] Public register basis
+## 설계 및 기본에 따른 데이터 보호(25조)
 
-## Data Protection by Design and by Default (Article 25)
+### 디자인별
+- [ ] 설계 단계에서 개인 정보 보호를 고려함
+- [ ] 데이터 보호 원칙 통합
+- [ ] 영향평가 실시
+- [ ] 이해관계자 협의
 
-### by Design
-- [ ] Privacy considered at design phase
-- [ ] Data protection principles integrated
-- [ ] Impact assessments conducted
-- [ ] Stakeholders consulted
+### 기본적으로
+- [ ] 기본 개인 정보 보호 설정은 데이터 주체를 보호합니다.
+- [ ] 개인정보가 자동으로 공개되지 않음
+- [ ] 기본적으로 최소한의 데이터 처리
+- [ ] 기본적으로 액세스가 제한됨
 
-### by Default
-- [ ] Default privacy settings protect data subjects
-- [ ] Personal data not automatically made public
-- [ ] Minimal data processing by default
-- [ ] Access restricted by default
+## 데이터 보호 영향 평가(DPIA)(제35조)
 
-## Data Protection Impact Assessment (DPIA) (Article 35)
+### 필요한 경우
+- 체계적이고 광범위한 처리
+- 대규모 모니터링
+- 특수 카테고리의 대규모 처리
+- 법적으로 요구되는 공개 접근
+- 형사범죄 관련 평가
+- 권리와 자유에 대한 높은 위험
 
-### When Required
-- Systematic and extensive processing
-- Large-scale monitoring
-- Large-scale processing of special categories
-- Public access required by law
-- Criminal offense related evaluation
-- High risk to rights and freedoms
+### DPIA 프로세스
+1. **처리설명**
+   - 처리목적
+   - 데이터 카테고리
+   - 관련 데이터 주체
+   - 보관기간
+   - 데이터 흐름
 
-### DPIA Process
-1. **Description of Processing**
-   - Purposes of processing
-   - Categories of data
-   - Data subjects involved
-   - Storage period
-   - Data flows
+2. **필요성 및 비례성 평가**
+   - 처리가 필요한가요?
+   - 목적이 비례하는가?
+   - 덜 방해적인 대안을 고려하고 있습니까?
 
-2. **Assessment of Necessity and Proportionality**
-   - Is processing necessary?
-   - Are purposes proportionate?
-   - Less intrusive alternatives considered?
+3. **위험 평가**
+   - 데이터 주체에 대한 위험 식별
+   - 가능성 및 영향 평가
+   - 특별한 카테고리를 고려하세요
 
-3. **Assessment of Risks**
-   - Identify risks to data subjects
-   - Evaluate likelihood and impact
-   - Consider special categories
+4. **위험 완화**
+   - 리스크 대응 방안 파악
+   - 안전 장치 구현
+   - 잔존 위험 평가5. **DPO와 협의**
+   - 프로세스에 DPO를 참여시킵니다.
+   - DPO 조언 문서화
 
-4. **Risk Mitigation**
-   - Identify measures to address risks
-   - Implement safeguards
-   - Evaluate residual risk
+6. **감독당국과의 협의(필요시)**
+   - 고위험 처리는 상담 필요
+   - 당국에 평가 제공
 
-5. **Consultation with DPO**
-   - Involve DPO in process
-   - Document DPO advice
-
-6. **Consultation with Supervisory Authority (if needed)**
-   - High-risk processing requires consultation
-   - Provide assessment to authority
-
-### DPIA Template
-
+### DPIA 템플릿
 ```markdown
 # Data Protection Impact Assessment
 
@@ -307,20 +302,18 @@ Less intrusive alternatives considered:
 Processing: Approved/Not Approved
 Rationale: [Explanation]
 ```
+## 처리 활동 기록(제30조)
 
-## Records of Processing Activities (Article 30)
+### 필수정보
+- 컨트롤러와 DPO의 이름과 연락처
+- 처리목적
+- 데이터 주체 및 데이터의 범주
+- 수신자 카테고리
+- 국제 송금
+- 삭제 시간 제한
+- 보안 조치
 
-### Required Information
-- Name and contact details of controller and DPO
-- Purposes of processing
-- Categories of data subjects and data
-- Categories of recipients
-- International transfers
-- Time limits for erasure
-- Security measures
-
-### Record Template
-
+### 레코드 템플릿
 ```markdown
 # Record of Processing Activities
 
@@ -337,114 +330,113 @@ Rationale: [Explanation]
 **Erase After:** [Time period]
 **Security Measures:** [Measures]
 ```
+## 보안 위반 통지(33~34조)
 
-## Security Breach Notification (Articles 33-34)
+### 감독당국에 대한 통지(제33조)
+- [ ] 인지 후 72시간 이내 통보
+- [ ] 위반의 성격을 설명합니다.
+- [ ] 관련 정보주체의 범주
+- [ ] 액세스 가능성이 높은 데이터 카테고리
+- [ ] 예상되는 결과
+- [ ] 취한 조치 또는 제안된 조치
+- [ ] 72시간을 초과하는 경우 지연 이유 제공
 
-### Notification to Supervisory Authority (Article 33)
-- [ ] Notification within 72 hours of awareness
-- [ ] Describe nature of breach
-- [ ] Categories of data subjects concerned
-- [ ] Data likely accessed categories
-- [ ] Likely consequences
-- [ ] Measures taken or proposed
-- [ ] Provide reasons for delay if >72 hours
+### 정보주체에 대한 통지(제34조)
+- [ ] 권리와 자유에 대한 위험이 높은 경우 알림
+- [ ] 부당한 지체 없이 통지
+- [ ] 위반 사항을 명확하게 설명하십시오.
+- [ ] 자세한 문의처
+- [ ] 위험 완화 조치
 
-### Notification to Data Subject (Article 34)
-- [ ] Notify if high risk to rights and freedoms
-- [ ] Notification without undue delay
-- [ ] Describe breach clearly
-- [ ] Contact point for more information
-- [ ] Measures to mitigate risks
+### 위반 대응 프로세스
 
-### Breach Response Process
+1. **탐지 및 격리**
+   - 위반 소스 식별
+   - 침해를 억제한다
+   - 증거를 보존하세요
 
-1. **Detection and Containment**
-   - Identify breach source
-   - Contain breach
-   - Preserve evidence
+2. **평가**
+   - 침해범위 파악
+   - 영향을 받은 데이터 식별
+   - 영향 평가
 
-2. **Assessment**
-   - Determine scope of breach
-   - Identify affected data
-   - Assess impact
+3. **알림**
+   - DPO에게 알림(해당되는 경우)
+   - 감독당국에 통보(필요한 경우)
+   - 정보주체에게 통지(필요한 경우)
 
-3. **Notification**
-   - Notify DPO (if applicable)
-   - Notify supervisory authority (if required)
-   - Notify data subjects (if required)
+4. **사고 후**
+   - 배운 내용을 문서로 작성하세요.
+   - 보안 조치 업데이트
+   - 해당하는 경우 DPIA를 검토합니다.
 
-4. **Post-Incident**
-   - Document lessons learned
-   - Update security measures
-   - Review DPIA if applicable
+## 규정 준수 체크리스트
 
-## Compliance Checklist
+### 일반 규정 준수
+- [ ] GDPR 정책 및 절차가 문서화됨
+- [ ] 직원 교육 완료
+- [ ] DPO 임명(필요한 경우)
+- [ ] 처리 기록이 유지됩니다.
+- [ ] 설계에 따른 데이터 보호 구현
+- [ ] 데이터 보호가 기본적으로 구현됨
 
-### General Compliance
-- [ ] GDPR policies and procedures documented
-- [ ] Staff training completed
-- [ ] DPO appointed (if required)
-- [ ] Records of processing maintained
-- [ ] Data protection by design implemented
-- [ ] Data protection by default implemented
+### 데이터 주체 권리
+- [ ] 알 권리 - 구현됨
+- [ ] 액세스 권한 - 구현됨
+- [ ] 수정할 권리 - 구현됨
+- [ ] 삭제 권리 - 구현됨
+- [ ] 제한권 - 구현됨
+- [ ] 이동성에 대한 권리 - 구현됨
+- [ ] 반대할 권리 - 구현됨
+- [ ] 자동화된 의사결정과 관련된 권리 - 구현됨
 
-### Data Subject Rights
-- [ ] Right to be informed - implemented
-- [ ] Right of access - implemented
-- [ ] Right to rectification - implemented
-- [ ] Right to erasure - implemented
-- [ ] Right to restriction - implemented
-- [ ] Right to portability - implemented
-- [ ] Right to object - implemented
-- [ ] Rights related to automated decision-making - implemented
+### 보안 조치
+- [ ] 기술적 보안 조치가 마련되어 있습니다.
+- [ ] 조직의 보안 조치가 확립되어 있습니다.
+- [ ] 미사용 암호화 구현
+- [ ] 전송 중 암호화 구현
+- [ ] 액세스 제어 구현
+- [ ] 인증 메커니즘이 확립되어 있습니다.
+- [ ] 정기적인 보안 검토 수행
+- [ ] 사고 대응 계획 수립
 
-### Security Measures
-- [ ] Technical security measures in place
-- [ ] Organizational security measures in place
-- [ ] Encryption at rest implemented
-- [ ] Encryption in transit implemented
-- [ ] Access controls implemented
-- [ ] Authentication mechanisms in place
-- [ ] Regular security reviews conducted
-- [ ] Incident response plan in place
+### 문서
+- [ ] 처리 활동 기록
+- [ ] 동의가 기록되고 유지됩니다.
+- [ ] 고위험 처리를 위한 DPIA 완료
+- [ ] 프로세서 계약 체결
+- [ ] 국경 간 이전 메커니즘이 문서화됨
+- [ ] 위반 통지 절차가 문서화되어 있습니다.
 
-### Documentation
-- [ ] Processing activities recorded
-- [ ] Consent recorded and maintained
-- [ ] DPIAs completed for high-risk processing
-- [ ] Processor agreements in place
-- [ ] Cross-border transfer mechanisms documented
-- [ ] Breach notification procedures documented
+## 도구 및 리소스
 
-## Tools and Resources
+### DPIA 템플릿
+- [ICO DPIA 템플릿](https://ico.org.uk)
+- [CNIL DPIA 도구](https://www.cnil.fr)
+- [유럽 DPIA 템플릿](https://edpb.europa.eu)
 
-### DPIA Templates
-- [ICO DPIA Template](https://ico.org.uk)
-- [CNIL DPIA Tool](https://www.cnil.fr)
-- [European DPIA Template](https://edpb.europa.eu)
+### 동의 관리
+- 쿠키 동의 배너
+- 선호도 센터
+- 세부적인 동의 옵션
+- 출금 메커니즘
 
-### Consent Management
-- Cookie consent banners
-- Preference centers
-- Granular consent options
-- Withdrawal mechanisms
+### 데이터 주체 요청 관리
+- [ ] 요청을 위한 웹 양식
+- [ ] 이메일 기반 요청 처리
+- [ ] 요청 추적 시스템
+- [ ] 응답 템플릿
 
-### Data Subject Request Management
-- [ ] Web form for requests
-- [ ] Email-based request handling
-- [ ] Request tracking system
-- [ ] Response templates
+### 규정 준수 모니터링
+- 자동화된 규정 준수 확인
+- 개인정보 영향 평가
+- 정기감사
+- 지속적인 모니터링
 
-### Compliance Monitoring
-- Automated compliance checks
-- Privacy impact assessments
-- Regular audits
-- Continuous monitoring
+## 참고자료
 
-## References
-
-- [GDPR Text](https://gdpr-info.eu/)
-- [EDPB Guidelines](https://edpb.europa.eu/)
-- [ICO Guidance](https://ico.org.uk/for-organisations/guide-to-data-protection/)
-- [CNIL Guidance](https://www.cnil.fr/en)
-- [European Data Protection Supervisor](https://edps.europa.eu/)
+- [GDPR 텍스트](https://gdpr-info.eu/)
+- [EDPB 가이드라인](https://edpb.europa.eu/)
+- [ICO 지침](https://ico.org.uk/for-organisations/guide-to-data-protection/)
+- [CNIL 지침](https://www.cnil.fr/en)
+- [유럽 데이터 보호 감독관](https://edps.europa.eu/)

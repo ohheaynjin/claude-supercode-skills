@@ -1,13 +1,12 @@
-# PowerShell GUI Patterns
+# 파워셸 GUI 패턴
 
-## Overview
+## 개요
 
-This guide covers GUI development patterns for PowerShell, including WinForms, WPF, and Terminal User Interfaces (TUI).
+이 가이드에서는 WinForms, WPF 및 TUI(터미널 사용자 인터페이스)를 포함한 PowerShell용 GUI 개발 패턴을 다룹니다.
 
-## WinForms Patterns
+## WinForms 패턴
 
-### Basic Form Structure
-
+### 기본 양식 구조
 ```powershell
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
@@ -34,9 +33,7 @@ function Show-WinFormsDialog {
     $form.ShowDialog()
 }
 ```
-
-### Data Binding
-
+### 데이터 바인딩
 ```powershell
 function Show-BoundData {
     # Create data source
@@ -60,9 +57,7 @@ function Show-BoundData {
     $form.ShowDialog()
 }
 ```
-
-### Event Handling
-
+### 이벤트 처리
 ```powershell
 function Show-EventHandling {
     $form = New-Object System.Windows.Forms.Form
@@ -90,11 +85,9 @@ function Show-EventHandling {
     $form.ShowDialog()
 }
 ```
+## WPF 패턴
 
-## WPF Patterns
-
-### XAML-Based WPF
-
+### XAML 기반 WPF
 ```powershell
 $xaml = @"
 <Window x:Class="MainWindow"
@@ -124,9 +117,7 @@ $btnClick.Add_Click({
 
 $window.ShowDialog()
 ```
-
-### MVVM Pattern
-
+### MVVM 패턴
 ```powershell
 # ViewModel
 class MyViewModel : System.ComponentModel.INotifyPropertyChanged {
@@ -160,9 +151,7 @@ class MyViewModel : System.ComponentModel.INotifyPropertyChanged {
     hidden [System.ComponentModel.PropertyChangedEventHandler]$PropertyChanged
 }
 ```
-
-### Data Binding in WPF
-
+### WPF의 데이터 바인딩
 ```powershell
 $xaml = @"
 <Window x:Class="MainWindow"
@@ -189,11 +178,9 @@ $txtName.SetBinding([System.Windows.Controls.TextBox]::TextProperty, "Name")
 
 $window.ShowDialog()
 ```
+## TUI(터미널 사용자 인터페이스) 패턴
 
-## TUI (Terminal User Interface) Patterns
-
-### Basic TUI Menu
-
+### 기본 TUI 메뉴
 ```powershell
 function Show-TuiMenu {
     $menuItems = @(
@@ -233,9 +220,7 @@ function Show-TuiMenu {
     }
 }
 ```
-
-### TUI Table Display
-
+### TUI 테이블 표시
 ```powershell
 function Show-TuiTable {
     $data = @(
@@ -254,9 +239,7 @@ function Show-TuiTable {
     Read-Host "Press Enter to continue"
 }
 ```
-
-### TUI Progress Bar
-
+### TUI 진행 표시줄
 ```powershell
 function Show-TuiProgress {
     $totalItems = 100
@@ -276,68 +259,66 @@ function Show-TuiProgress {
     Write-Host "`nComplete!" -ForegroundColor Green
 }
 ```
+## 프레임워크 선택
 
-## Framework Selection
+### WinForms를 사용해야 하는 경우
 
-### When to Use WinForms
+**장점:**
+- 구현이 간단함
+- 경량
+- 간단한 대화에 적합
 
-**Pros:**
-- Simple to implement
-- Lightweight
-- Good for simple dialogs
+**단점:**
+- 제한된 스타일링 옵션
+- 현대적이지 않음
+- 제한된 데이터 바인딩
 
-**Cons:**
-- Limited styling options
-- Not modern looking
-- Limited data binding
+**사용 사례:**
+- 간단한 입력 양식
+- 유틸리티 대화상자
+- 빠른 프로토타입
 
-**Use Cases:**
-- Simple input forms
-- Utility dialogs
-- Quick prototypes
+### WPF를 사용해야 하는 경우
 
-### When to Use WPF
+**장점:**
+- 현대적인 외관
+- 풍부한 스타일링 옵션
+- 고급 데이터 바인딩
+- MVVM 패턴 지원
 
-**Pros:**
-- Modern appearance
-- Rich styling options
-- Advanced data binding
-- MVVM pattern support
+**단점:**
+- 가파른 학습 곡선
+- 구현이 더 복잡함
+- WinForms보다 무겁습니다.
 
-**Cons:**
-- Steeper learning curve
-- More complex to implement
-- Heavier than WinForms
+**사용 사례:**
+- 복잡한 애플리케이션
+- 데이터가 많은 인터페이스
+- 전문가 수준의 GUI
+- MVVM 패턴이 필요합니다.
 
-**Use Cases:**
-- Complex applications
-- Data-heavy interfaces
-- Professional-looking GUIs
-- MVVM pattern required
+### TUI를 사용해야 하는 경우
 
-### When to Use TUI
+**장점:**
+- 크로스 플랫폼 호환
+- 경량
+- GUI 종속성 없음
+- SSH를 통해 작동
 
-**Pros:**
-- Cross-platform compatible
-- Lightweight
-- No GUI dependencies
-- Works over SSH
+**단점:**
+- 제한된 상호 작용 옵션
+- 그래픽 없음
+- 터미널 기반만 해당
 
-**Cons:**
-- Limited interaction options
-- No graphics
-- Terminal-based only
+**사용 사례:**
+- 서버 관리
+- SSH/원격 세션
+- 명령줄 도구
+- 크로스 플랫폼 호환성이 필요합니다.
 
-**Use Cases:**
-- Server administration
-- SSH/remote sessions
-- Command-line tools
-- Cross-platform compatibility needed
+## 일반적인 패턴
 
-## Common Patterns
-
-### Modal Dialogs
-
+### 모달 대화 상자
 ```powershell
 function Show-ModalDialog {
     $form = New-Object System.Windows.Forms.Form
@@ -345,9 +326,7 @@ function Show-ModalDialog {
     $form.ShowDialog() | Out-Null
 }
 ```
-
-### Asynchronous Operations
-
+### 비동기 작업
 ```powershell
 function Show-Progress {
     $form = New-Object System.Windows.Forms.Form
@@ -375,20 +354,19 @@ function Show-Progress {
     $form.ShowDialog()
 }
 ```
+## 모범 사례
 
-## Best Practices
+1. **프레임워크 선택**: 필요에 맞는 프레임워크를 선택하세요.
+2. **이벤트 처리**: 적절한 이벤트 핸들러 구현
+3. **오류 처리**: 사용자 상호 작용을 위한 try-catch 블록 추가
+4. **응답성**: 작업 중에 UI 응답성을 유지합니다.
+5. **접근성**: 접근성 기능을 고려하세요.
+6. **교차 플랫폼**: 교차 플랫폼 요구 사항에는 TUI를 사용하세요.
+7. **테스트**: GUI 애플리케이션을 철저히 테스트합니다.
+8. **성능**: 대규모 데이터세트의 성능을 최적화합니다.
 
-1. **Framework Selection**: Choose the right framework for your needs
-2. **Event Handling**: Implement proper event handlers
-3. **Error Handling**: Add try-catch blocks for user interactions
-4. **Responsiveness**: Keep UI responsive during operations
-5. **Accessibility**: Consider accessibility features
-6. **Cross-Platform**: Use TUI for cross-platform needs
-7. **Testing**: Test GUI applications thoroughly
-8. **Performance**: Optimize for performance with large datasets
+## 리소스
 
-## Resources
-
-- [WinForms Documentation](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/)
-- [WPF Documentation](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/)
-- [PowerShell GUI Examples](https://github.com/pscookiemonster/GUI-Examples)
+- [WinForms 설명서](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/)
+- [WPF 설명서](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/)
+- [PowerShell GUI 예](https://github.com/pscookiemonster/GUI-Examples)

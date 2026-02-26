@@ -1,49 +1,48 @@
-# Incident Responder - Best Practices
+# 사고 대응자 - 모범 사례
 
-This guide outlines best practices for incident response, automation script usage, and continuous improvement.
+이 가이드에서는 사고 대응, 자동화 스크립트 사용 및 지속적인 개선에 대한 모범 사례를 간략하게 설명합니다.
 
-## Incident Response Principles
+## 사고 대응 원칙
 
-### Respond Rapidly
+### 신속한 대응
 
-- **Target**: Acknowledge incidents within 5 minutes of detection
-- **Action**: Set up automated alerts with immediate notifications
-- **Metric**: Track time to first response (MTTR initiation)
+- **목표**: 사건 감지 후 5분 이내 인지
+- **조치**: 즉각적인 알림을 제공하는 자동 알림 설정
+- **측정항목**: 첫 번째 응답까지의 시간 추적(MTTR 시작)
 
-### Preserve Evidence
+### 증거 보존
 
-- **Always**: Collect logs before making changes
-- **Method**: Use read-only access for initial investigation
-- **Storage**: Save evidence in secure, tamper-proof location
-- **Chain of Custody**: Document who accessed what evidence when
+- **항상**: 변경 전 로그를 수집합니다.
+- **방법**: 초기 조사를 위해 읽기 전용 액세스를 사용합니다.
+- **저장**: 안전하고 변조할 수 없는 위치에 증거를 저장합니다.
+- **Chain of Custody**: 누가 언제 어떤 증거에 접근했는지 문서
 
-### Communicate Clearly
+### 명확하게 의사소통하기
 
-- **Audience**: Tailor messages to recipients (technical vs. non-technical)
-- **Frequency**: Regular updates at defined intervals (every 15-30 minutes for critical incidents)
-- **Channels**: Use appropriate channels (Slack for team, email for stakeholders, status page for customers)
-- **Tone**: Be transparent about what's known, what's not known, and next steps
+- **대상**: 수신자에 맞게 메시지를 맞춤화합니다(기술적 및 비기술적)
+- **빈도**: 정의된 간격으로 정기적인 업데이트(중요한 사건의 경우 15~30분마다)
+- **채널**: 적절한 채널 사용(팀용 Slack, 이해관계자용 이메일, 고객용 상태 페이지)
+- **어조**: 알려진 것과 알려지지 않은 것, 다음 단계에 대해 투명하게 설명하세요.
 
-### Document Thoroughly
+### 철저하게 문서화하기
 
-- **Timeline**: Maintain chronological record of all actions
-- **Decisions**: Record decision rationale for accountability
-- **Outcomes**: Document what worked and what didn't
-- **Artifacts**: Save all reports, logs, and communications
+- **타임라인**: 모든 작업을 시간순으로 기록합니다.
+- **결정**: 책임에 대한 결정 근거를 기록합니다.
+- **결과**: 효과가 있었던 것과 효과가 없었던 것을 문서화하세요.
+- **아티팩트**: 모든 보고서, 로그, 커뮤니케이션을 저장합니다.
 
-### Conduct Blameless Postmortems
+### 비난 없는 사후 분석 실시
 
-- **Focus**: System and process improvement, not individual blame
-- **Questions**: Ask "what happened" not "who did this"
-- **Action**: Identify root causes and systemic issues
-- **Outcome**: Actionable improvements to prevent recurrence
+- **초점**: 개인 탓이 아닌 시스템과 프로세스 개선
+- **질문**: "누가 그랬는지"가 아니라 "무슨 일이 일어났는지" 물어보세요.
+- **조치**: 근본 원인 및 시스템 문제 파악
+- **결과**: 재발 방지를 위한 실행 가능한 개선
 
-## Automation Script Best Practices
+## 자동화 스크립트 모범 사례
 
-### Incident Triage
+### 사고 분류
 
-#### Use Automation for Initial Assessment
-
+#### 초기 평가에 자동화 사용
 ```python
 # Automate classification
 python scripts/incident_triage.py \
@@ -54,310 +53,308 @@ python scripts/incident_triage.py \
   --service api-service
 ```
 
-**Benefits**:
-- Consistent classification across incidents
-- Reduced time to assign teams
-- Initial evidence collection started immediately
+**이점**:
+- 사건 전반에 걸쳐 일관된 분류
+- 팀 배정 시간 단축
+- 초기 증거 수집이 즉시 시작되었습니다.
 
-#### Define Clear Impact Types
+#### 명확한 영향 유형 정의
 
-Use standard impact types:
-- `data_breach`: Unauthorized data access
-- `service_outage`: Service completely unavailable
-- `service_degradation`: Service available but slow
-- `security_violation`: Security policy breach
-- `compliance_issue`: Regulatory violation
-- `user_complaints`: Multiple user reports
-- `internal_error`: System-generated error
+표준 충격 유형을 사용합니다.
+-`data_breach`: 승인되지 않은 데이터 접근
+-`service_outage`: 서비스가 전혀 불가능함
+-`service_degradation`: 서비스가 가능하지만 느림
+-`security_violation`: 보안 정책 위반
+-`compliance_issue`: 규제 위반
+-`user_complaints`: 다수의 사용자 신고
+-`internal_error`: 시스템 생성 오류
 
-#### Route Teams Appropriately
+#### 팀을 적절하게 라우팅
 
-- **Critical**: security-engineer, devops-incident-responder, sre-engineer
-- **High**: devops-incident-responder, security-engineer, backend-developer
-- **Medium**: devops-incident-responder, backend-developer
-- **Low**: backend-developer, qa-expert
+- **중요**: 보안 엔지니어, DevOps 사고 대응자, SRE 엔지니어
+- **높음**: devops-incident-responder, 보안 엔지니어, 백엔드 개발자
+- **중간**: devops-incident-responder, 백엔드-개발자
+- **낮음**: 백엔드 개발자, QA 전문가
 
-### Incident Analysis
+### 사건 분석
 
-#### Correlate Logs Across Services
+#### 서비스 전반에 걸쳐 로그 상호 연관
 
-- Include all affected services in analysis
-- Use time windows to narrow search
-- Identify common error patterns
-- Map error propagation paths
+- 영향을 받는 모든 서비스를 분석에 포함합니다.
+- 검색 범위를 좁히려면 시간 창을 사용하세요.
+- 일반적인 오류 패턴 식별
+- 지도 오류 전파 경로
 
-#### Measure Business Impact
+#### 비즈니스 영향 측정
 
-- Calculate revenue impact: `affected_users * downtime_minutes * revenue_per_user_per_minute`
-- Assess SLA breaches: Compare downtime to SLA threshold
-- Track customer impact: Number of affected users and percentage of user base
+- 수익 영향 계산:`affected_users * downtime_minutes * revenue_per_user_per_minute`
+- SLA 위반 평가: 가동 중지 시간을 SLA 임계값과 비교
+- 고객 영향 추적: 영향을 받은 사용자 수 및 사용자 기반 비율
 
-#### Validate Root Causes
+#### 근본 원인 확인
 
-- Use five whys for deep analysis
-- Correlate patterns across incidents
-- Verify hypothesis with data
-- Consider multiple contributing factors
+- 심층 분석을 위해 5가지 Why를 활용하세요.
+- 사건 전반에 걸쳐 패턴을 연관시킵니다.
+- 데이터로 가설 검증
+- 다양한 요인을 고려하세요.
 
-### Incident Response
+### 사고 대응
 
-#### Contain Before Fixing
+#### 수정 전 포함
 
-- **Priority 1**: Stop damage from spreading
-- **Actions**: Isolate systems, revoke credentials, block traffic
-- **Target**: Containment within 15 minutes of detection
+- **우선순위 1**: 피해 확산 방지
+- **작업**: 시스템 격리, 자격 증명 취소, 트래픽 차단
+- **대상** : 탐지 후 15분 이내 격리
 
-#### Use Controlled Rollback
+#### 제어된 롤백 사용
 
-- **Target**: Rollback within 30 seconds if needed
-- **Method**: Automated rollback procedures
-- **Validation**: Verify system health after rollback
+- **목표**: 필요한 경우 30초 이내에 롤백
+- **방법**: 자동 롤백 절차
+- **검증**: 롤백 후 시스템 상태를 확인합니다.
 
-#### Coordinate Teams Effectively
+#### 효과적으로 팀 조정
 
-- Assign incident commander for coordination
-- Define clear roles and responsibilities
-- Establish communication cadence
-- Document all team actions
+- 조정을 위해 사고 지휘관 지정
+- 명확한 역할과 책임을 정의합니다.
+- 의사소통 흐름 확립
+- 모든 팀 활동을 문서화하세요.
 
-### Runbook Generation
+### 런북 생성
 
-#### Create Comprehensive Runbooks
+#### 포괄적인 Runbook 만들기
 
-- Include all response phases
-- Document step-by-step procedures
-- Add checklists for each phase
-- Include team contacts and escalation paths
+- 모든 대응 단계를 포함합니다.
+- 단계별 절차를 문서화합니다.
+- 각 단계에 대한 체크리스트 추가
+- 팀 연락처 및 에스컬레이션 경로 포함
 
-#### Standardize Communication Templates
+#### 커뮤니케이션 템플릿 표준화
 
-- Internal stakeholders: Technical details, action items
-- Customers: Plain language, impact summary, ETA
-- Executive: Business impact, financial impact, timeline
+- 내부 이해관계자 : 기술내용, 실천사항
+- 고객: 일반 언어, 영향 요약, ETA
+- 경영진: 비즈니스 영향, 재무 영향, 타임라인
 
-#### Test Runbooks Regularly
+#### 정기적으로 Runbook 테스트
 
-- Conduct quarterly game days
-- Validate procedures still work
-- Update based on lessons learned
-- Train new team members
+- 분기별 게임데이 실시
+- 검증 절차가 여전히 작동하는지 확인
+- 학습한 내용을 바탕으로 업데이트
+- 새로운 팀원 교육
 
-### Maintenance Automation
+### 유지보수 자동화
 
-#### Schedule During Low-Traffic Periods
+#### 트래픽이 적은 기간의 일정
 
-- Review historical traffic patterns
-- Choose maintenance windows
-- Notify stakeholders in advance
-- Minimize customer impact
+- 과거 트래픽 패턴 검토
+- 유지 관리 기간 선택
+- 이해관계자에게 사전에 공지
+- 고객 영향 최소화
 
-#### Always Backup Before Changes
+#### 변경 전 항상 백업
 
-- Create full backups before maintenance
-- Test backup restore procedures
-- Verify backup integrity
-- Store backups securely
+- 유지보수 전 전체 백업 생성
+- 백업 복원 절차 테스트
+- 백업 무결성 확인
+- 백업을 안전하게 저장
 
-#### Validate System Health Post-Maintenance
+#### 유지 관리 후 시스템 상태 확인
 
-- Run health checks on all components
-- Monitor for anomalies
-- Verify service levels met
-- Document validation results
+- 모든 구성 요소에 대해 상태 확인을 실행합니다.
+- 이상 징후 모니터링
+- 서비스 수준 충족 여부 확인
+- 문서 검증 결과
 
-## Communication Best Practices
+## 커뮤니케이션 모범 사례
 
-### Incident Updates
+### 사건 업데이트
 
-#### Internal Communication
+#### 내부 커뮤니케이션
 
-- **Frequency**: Every 15 minutes (critical), every 30 minutes (high)
-- **Content**: Status, actions taken, next steps, ETA
-- **Channels**: Slack #incidents, email for stakeholders
-- **Format**: Structured with incident ID and severity
+- **빈도**: 15분마다(중요), 30분마다(높음)
+- **내용**: 상태, 취해진 조치, 다음 단계, ETA
+- **채널**: Slack #incidents, 이해관계자를 위한 이메일
+- **형식**: 사고 ID 및 심각도로 구성됩니다.
 
-#### Customer Communication
+#### 고객 커뮤니케이션
 
-- **Frequency**: Initial, every 30 minutes until resolution
-- **Content**: What happened, what's being done, ETA for fix
-- **Channels**: Status page, email, Twitter
-- **Tone**: Apologetic but confident, transparent about uncertainty
+- **빈도**: 초기, 해결될 때까지 30분마다
+- **내용**: 발생한 일, 진행 중인 작업, 수정 예정 시간
+- **채널**: 상태 페이지, 이메일, Twitter
+- **어조**: 사과하지만 자신감 있고, 불확실성에 대해 투명합니다.
 
-#### Executive Communication
+#### 경영진 커뮤니케이션
 
-- **Frequency**: Initial, major updates, resolution
-- **Content**: Business impact, financial impact, timeline
-- **Channels**: Email, phone for critical incidents
-- **Format**: Executive summary with key metrics
+- **빈도**: 초기, 주요 업데이트, 해결
+- **내용**: 비즈니스 영향, 재무 영향, 타임라인
+- **채널**: 중요 사건에 대한 이메일, 전화
+- **형식**: 주요 측정항목이 포함된 요약
 
-### Status Page Management
+### 상태 페이지 관리
 
-- Update immediately on incident detection
-- Provide clear, concise information
-- Set clear expectations for resolution
-- Post postmortem summary after resolution
+- 사건 감지 즉시 업데이트
+- 명확하고 간결한 정보 제공
+- 해결에 대한 명확한 기대치를 설정합니다.
+- 해결 후 사후 사후 요약
 
-## Documentation Best Practices
+## 문서화 모범 사례
 
-### Incident Reports
+### 사건 보고서
 
-#### Structure
+#### 구조
 
-1. **Executive Summary**: High-level overview
-2. **Timeline**: Chronological events
-3. **Impact**: Affected users, services, revenue
-4. **Root Cause**: What happened and why
-5. **Resolution**: How it was fixed
-6. **Lessons Learned**: What to improve
+1. **경영요약**: 상위 수준 개요
+2. **타임라인**: 연대순 이벤트
+3. **영향**: 영향을 받는 사용자, 서비스, 수익
+4. **근본 원인**: 무슨 일이 일어났으며 그 이유는 무엇입니까?
+5. **해결 방법**: 해결 방법
+6. **배운 교훈**: 개선할 사항
 
-#### Artifacts
+#### 유물
 
-- Save all evidence (logs, metrics, screenshots)
-- Include code changes made
-- Attach configuration snapshots
-- Document communication history
+- 모든 증거(로그, 지표, 스크린샷) 저장
+- 코드 변경사항 포함
+- 구성 스냅샷 첨부
+- 문서통신 이력
 
-### Postmortem Reports
+### 사후 보고서
 
-#### Format
+#### 형식
 
-1. **Summary**: What happened
-2. **Impact**: How it affected the business
-3. **Timeline**: Key events and timestamps
-4. **Root Cause**: Why it happened
-5. **Resolution**: How it was fixed
-6. **Follow-up**: Action items and owners
+1. **요약**: 무슨 일이 일어났나요?
+2. **영향**: 비즈니스에 미친 영향
+3. **타임라인**: 주요 이벤트 및 타임스탬프
+4. **근본 원인**: 문제가 발생한 이유
+5. **해결 방법**: 해결 방법
+6. **후속 조치**: 작업 항목 및 소유자
 
-#### Action Items
+#### 조치 항목
 
-- Assign to specific people
-- Set clear deadlines
-- Track completion status
-- Review in future incidents
+- 특정 사람에게 할당
+- 명확한 마감일을 정하라
+- 완료 상태 추적
+- 향후 사건 검토
 
-## Continuous Improvement
+## 지속적인 개선
 
-### Metrics to Track
+### 추적할 측정항목- 평균 감지 시간(MTTD)
+- 평균 응답 시간(MTTR)
+- 평균 해결 시간(MTTR)
+- 유형별 사고빈도
+- 고객 만족도 점수
 
-- Mean Time to Detect (MTTD)
-- Mean Time to Respond (MTTR)
-- Mean Time to Resolve (MTTR)
-- Incident frequency by type
-- Customer satisfaction scores
+### 정기적으로 프로세스를 검토합니다.
 
-### Review Processes Regularly
+- 분기별 프로세스 검토
+- 연간 교육 재교육
+- 월별 도구 평가
+- 정기적인 피드백 수집
 
-- Quarterly process review
-- Annual training refreshers
-- Monthly tool evaluation
-- Regular feedback collection
+### 수업에 따른 업데이트 절차
 
-### Update Procedures Based on Lessons
+- 사후 조치 항목 통합
+- 각 사건 이후 런북 업데이트
+- 패턴을 기반으로 팀 라우팅 개선
+- 식별된 격차를 기반으로 자동화 개선
 
-- Incorporate postmortem action items
-- Update runbooks after each incident
-- Refine team routing based on patterns
-- Improve automation based on gaps identified
+## 팀 조정
 
-## Team Coordination
+### 역할 및 책임
 
-### Roles and Responsibilities
+- **사고지휘관**: 전반적인 조정, 결정, 의사소통
+- **서기**: 모든 행동과 결정을 문서화합니다.
+- **기술 책임자**: 근본 원인 조사
+- **커뮤니케이션 리더**: 이해관계자 업데이트
+- **운영 책임자**: 수정 사항 및 롤백 실행
 
-- **Incident Commander**: Overall coordination, decisions, communication
-- **Scribe**: Document all actions and decisions
-- **Technical Lead**: Root cause investigation
-- **Communication Lead**: Stakeholder updates
-- **Operations Lead**: Execute fixes and rollbacks
+### 에스컬레이션 경로
 
-### Escalation Paths
+- 명확한 에스컬레이션 기준 정의
+- 에스컬레이션을 위한 시간 임계값 설정
+- 문서 에스컬레이션 연락처
+- 시뮬레이션을 통해 에스컬레이션 연습
 
-- Define clear escalation criteria
-- Set time thresholds for escalation
-- Document escalation contacts
-- Practice escalation in simulations
+## 훈련 및 시뮬레이션
 
-## Training and Simulation
+### 정기교육
 
-### Regular Training
+- 새로운 팀원 온보딩
+- 분기별 기술 재교육
+- 연간 사고 대응 교육
+- 도구별 교육
 
-- New team member onboarding
-- Quarterly skill refreshers
-- Annual incident response training
-- Tool-specific training
+### 게임 데이
 
-### Game Days
+- 분기별 일정
+- 다양한 사건 유형을 연습해 보세요.
+- 사건지휘관 역할 순환
+- 모든 절차를 검증합니다.
 
-- Schedule quarterly
-- Practice different incident types
-- Rotate incident commander role
-- Validate all procedures
+### 시뮬레이션
 
-### Simulations
+- 커뮤니케이션 채널 테스트
+- 격리 절차를 연습한다
+- 팀 조정 확인
+- 응답 시간 측정
 
-- Test communication channels
-- Practice containment procedures
-- Validate team coordination
-- Measure response times
+## 보안 고려 사항
 
-## Security Considerations
+### 증거 처리
 
-### Evidence Handling
+- 한 번 쓰기, 많이 읽기 스토리지 사용
+- 민감한 증거를 암호화합니다.
+- 증거에 대한 접근을 제한합니다.
+- 관리 연속성을 유지합니다.
 
-- Use write-once, read-many storage
-- Encrypt sensitive evidence
-- Limit access to evidence
-- Maintain chain of custody
+### 통신보안
 
-### Communication Security
+- 민감한 정보에는 보안 채널을 사용하세요.
+- 자격 증명 및 비밀을 암호화합니다.
+- 사건 통신에 대한 액세스를 제한합니다.
+- 모든 사건 커뮤니케이션을 감사합니다.
 
-- Use secure channels for sensitive info
-- Encrypt credentials and secrets
-- Limit access to incident comms
-- Audit all incident communications
+### 사고 후 보안
 
-### Post-Incident Security
+- 손상된 자격 증명 순환
+- 패치 취약점 발견
+- 보안 정책 업데이트
+- 위반 시 보안 검토 실시
 
-- Rotate compromised credentials
-- Patch vulnerabilities discovered
-- Update security policies
-- Conduct security review if breach
+## 자동화 대 수동 균형
 
-## Automation vs. Manual Balance
+### 반복 작업 자동화
 
-### Automate Repetitive Tasks
+- 분류 및 라우팅
+- 증거 수집
+- 상태 페이지 업데이트
+- 보고서 생성
 
-- Classification and routing
-- Evidence collection
-- Status page updates
-- Report generation
+### 중요한 결정 매뉴얼 유지
 
-### Keep Critical Decisions Manual
+- 격리 전략 결정
+- 주요 롤백 결정
+- 공공 커뮤니케이션 승인
+- 근본 원인 검증
 
-- Containment strategy decisions
-- Major rollback decisions
-- Public communication approval
-- Root cause validation
+### 대체가 아닌 지원을 위해 자동화를 사용하세요
 
-### Use Automation to Assist, Not Replace
+- 자동화는 데이터와 제안을 제공합니다.
+- 인간이 최종 결정을 내린다.
+- 자동화 출력 검토
+- 적절한 경우 재정의
 
-- Automation provides data and suggestions
-- Humans make final decisions
-- Review automation outputs
-- Override when appropriate
+## 성공 측정
 
-## Measuring Success
+### 핵심 성과 지표
 
-### Key Performance Indicators
+- MTTD < 5분
+- MTTR < 60분(심각도가 높은 경우)
+- 95% 이상의 고객 만족도
+- <5% 반복 사고
+- 100% 문서 작성 완료
 
-- MTTD < 5 minutes
-- MTTR < 60 minutes (for high severity)
-- 95%+ customer satisfaction
-- <5% repeat incidents
-- 100% documentation completion
+### 지속적인 모니터링
 
-### Continuous Monitoring
-
-- Track all KPIs
-- Set up dashboards for visibility
-- Alert on degradation
-- Report monthly to management
+- 모든 KPI 추적
+- 가시성을 위한 대시보드 설정
+- 성능 저하에 대한 경고
+- 매월 경영진에게 보고
