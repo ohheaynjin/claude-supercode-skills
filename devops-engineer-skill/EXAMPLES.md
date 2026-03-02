@@ -134,6 +134,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 ```
 
+
 ## Terraform EKS Infrastructure
 
 ```hcl
@@ -229,6 +230,7 @@ output "cluster_endpoint" {
 }
 ```
 
+
 ## Anti-Patterns & Fixes
 
 ### Anti-Pattern 1: Manual Server Configuration (Snowflake Servers)
@@ -242,6 +244,7 @@ sudo vi /etc/nginx/nginx.conf  # Hand-edit config
 sudo systemctl restart nginx
 # Result: Undocumented changes, impossible to replicate
 ```
+
 
 **GOOD:**
 ```yaml
@@ -272,6 +275,7 @@ sudo systemctl restart nginx
         state: reloaded
 ```
 
+
 ### Anti-Pattern 2: No Rollback Strategy
 
 **BAD:**
@@ -281,6 +285,7 @@ kubectl set image deployment/webapp webapp=webapp:v2.0.0
 # Panic! How do we go back?
 # Downtime: 45 minutes
 ```
+
 
 **GOOD:**
 ```bash
@@ -293,6 +298,7 @@ helm rollback webapp 5
 # Method 3: Blue-Green (instant rollback)
 kubectl patch service webapp -p '{"spec":{"selector":{"version":"blue"}}}'
 ```
+
 
 ## Kubernetes Deployment Example
 

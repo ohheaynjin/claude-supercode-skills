@@ -1,504 +1,498 @@
-# SOC 2 Controls Reference
+# SOC 2 제어 참조
 
-## Overview
-SOC 2 (System and Organization Controls) Type 2 examination criteria for security, availability, processing integrity, confidentiality, and privacy.
+## 개요
+SOC 2(시스템 및 조직 제어) 보안, 가용성, 처리 무결성, 기밀성 및 개인 정보 보호에 대한 유형 2 검사 기준입니다.
 
-## Trust Services Criteria (TSC)
+## 신뢰 서비스 기준(TSC)
 
-### Common Criteria
+### 공통 기준
 
-1. **CC1.1 - Control Environment**
-   Governance and risk management processes must be established
+1. **CC1.1 - 제어 환경**
+   거버넌스 및 위험 관리 프로세스를 확립해야 합니다.
 
-2. **CC2.1 - Communication of Responsibilities**
-   Responsibilities must be communicated throughout the organization
+2. **CC2.1 - 책임 전달**
+   책임은 조직 전체에 전달되어야 합니다.
 
-3. **CC3.1 - Risk Assessment**
-   Organization must identify and assess risks
+3. **CC3.1 - 위험 평가**
+   조직은 위험을 식별하고 평가해야 합니다.
 
-4. **CC4.1 - System Monitoring**
-   System must be monitored to detect security events
+4. **CC4.1 - 시스템 모니터링**
+   보안 이벤트를 감지하려면 시스템을 모니터링해야 합니다.
 
-5. **CC5.1 - System Control**
-   Controls must be designed and implemented
+5. **CC5.1 - 시스템 제어**
+   컨트롤을 설계하고 구현해야 합니다.
 
-6. **CC6.1 - System Maintenance**
-   System must be maintained to ensure continued operation
+6. **CC6.1 - 시스템 유지 관리**
+   지속적인 운영을 위해서는 시스템을 유지관리해야 합니다.
 
-7. **CC7.1 - System Data**
-   Data must be protected throughout its lifecycle
+7. **CC7.1 - 시스템 데이터**
+   데이터는 수명주기 전반에 걸쳐 보호되어야 합니다.
 
-8. **CC8.1 - Vendor Management**
-   Third-party relationships must be managed
+8. **CC8.1 - 공급업체 관리**
+   제3자 관계를 관리해야 합니다.
 
-## Security Criteria (CC6)
+## 보안 기준(CC6)
 
-### CC6.1 - Logical and Physical Access Controls
+### CC6.1 - 논리적 및 물리적 액세스 제어
 
 **CC6.1**
-- Logical access to system components must be restricted
-- Access granted based on least privilege
-- Access approved by authorized personnel
-- Periodic access reviews
+- 시스템 구성요소에 대한 논리적 접근은 제한되어야 합니다.
+- 최소 권한을 기준으로 접근 권한 부여
+- 승인된 담당자에 의해 접근이 승인되었습니다.
+- 주기적인 접속 검토
 
-**Implementation Checklist:**
-- [ ] User accounts created with unique identifiers
-- [ ] Password complexity requirements enforced
-- [ ] Multi-factor authentication implemented
-- [ ] Access approval workflow in place
-- [ ] Access granted based on job function
-- [ ] Access review schedule established (quarterly)
-- [ ] Immediate revocation on termination
+**구현 체크리스트:**
+- [ ] 고유 식별자로 생성된 사용자 계정
+- [ ] 비밀번호 복잡성 요구 사항 시행
+- [ ] 다단계 인증 구현
+- [ ] 액세스 승인 워크플로가 마련되어 있습니다.
+- [ ] 직무에 따라 액세스 권한이 부여됨
+- [ ] 접근 검토 일정 수립(분기별)
+- [ ] 해지 시 즉시 철회
 
-**Evidence:**
-- User access request forms
-- Access approval documentation
-- Access review reports
-- MFA configuration documentation
+**증거:**
+- 사용자 액세스 요청 양식
+- 접근 승인 문서
+- 접속 검토 보고서
+- MFA 구성 문서
 
-### CC6.2 - Logical Access Security
+### CC6.2 - 논리적 액세스 보안
 
 **CC6.2**
-- Logical access security facilities must be managed
-- Physical and environmental access protected
-- Logical access monitors for suspicious activity
+- 논리적 접근 보안시설을 관리해야 함
+- 물리적, 환경적 접근 보호
+- 의심스러운 활동에 대한 논리적 액세스 모니터
 
-**Implementation Checklist:**
-- [ ] Login failure monitoring configured
-- [ ] Account lockout after failed attempts
-- [ ] Session timeout implemented
-- [ ] Concurrent login restrictions
-- [ ] Geographic restrictions configured
-- [ ] Suspicious activity alerts configured
+**구현 체크리스트:**
+- [ ] 로그인 실패 모니터링이 구성되었습니다.
+- [ ] 시도 실패 후 계정 잠금
+- [ ] 세션 시간 초과가 구현되었습니다.
+- [ ] 동시 로그인 제한
+- [ ] 지리적 제한이 구성됨
+- [ ] 의심스러운 활동 경고가 구성되었습니다.
 
-**Evidence:**
-- Security configuration files
-- Monitoring logs
-- Alert configuration documentation
+**증거:**
+- 보안 구성 파일
+- 모니터링 로그
+- 경고 구성 문서
 
-### CC6.3 - System Boundaries
+### CC6.3 - 시스템 경계
 
 **CC6.3**
-- System boundaries must be identified
-- Access control at boundaries
-- Network segmentation implemented
+- 시스템 경계를 식별해야 합니다.
+- 경계에서의 접근 통제
+- 네트워크 분할 구현
 
-**Implementation Checklist:**
-- [ ] System architecture documented
-- [ ] Network segments defined
-- [ ] Firewall rules documented
-- [ ] DMZ configured for public-facing services
-- [ ] Internal network segmentation
-- [ ] Access controls at each boundary
+**구현 체크리스트:**
+- [ ] 시스템 아키텍처 문서화
+- [ ] 네트워크 세그먼트가 정의됨
+- [ ] 방화벽 규칙이 문서화되었습니다.
+- [ ] 공개 서비스를 위해 구성된 DMZ
+- [ ] 내부 네트워크 분할
+- [ ] 각 경계의 접근 통제
 
-**Evidence:**
-- Network diagrams
-- Firewall rule sets
-- System architecture documentation
-- Boundary documentation
+**증거:**
+- 네트워크 다이어그램
+- 방화벽 규칙 세트
+- 시스템 아키텍처 문서
+- 경계 문서
 
-### CC6.4 - Encryption
+### CC6.4 - 암호화
 
 **CC6.4**
-- Encryption implemented for data in transit
-- Encryption implemented for data at rest
-- Key management procedures
+- 전송 중인 데이터에 대한 암호화 구현
+- 미사용 데이터에 대한 암호화 구현
+- 주요 관리 절차
 
-**Implementation Checklist:**
-- [ ] TLS 1.2+ for all connections
-- [ ] VPN for remote access
-- [ ] Database encryption (AES-256)
-- [ ] File system encryption
-- [ ] Backup encryption
-- [ ] Key rotation schedule
-- [ ] Secure key storage
+**구현 체크리스트:**
+- [ ] 모든 연결에 대한 TLS 1.2+
+- [ ] 원격 액세스용 VPN
+- [ ] 데이터베이스 암호화(AES-256)
+- [ ] 파일 시스템 암호화
+- [ ] 백업 암호화
+- [ ] 키 순환 일정
+- [ ] 안전한 키 저장
 
-**Evidence:**
-- SSL/TLS certificates
-- Encryption configuration files
-- Key management procedures
-- Encryption policy documentation
+**증거:**
+- SSL/TLS 인증서
+- 암호화 구성 파일
+- 주요 관리 절차
+- 암호화 정책 문서
 
-### CC6.5 - Monitoring of System Components
+### CC6.5 - 시스템 구성 요소 모니터링
 
 **CC6.5**
-- System components monitored for security events
-- Anomalous activity detection
-- Security event correlation
+- 보안 이벤트를 모니터링하는 시스템 구성 요소
+- 이상활동 탐지
+- 보안 이벤트 상관관계
 
-**Implementation Checklist:**
-- [ ] Security information and event management (SIEM)
-- [ ] Log collection from all systems
-- [ ] Real-time monitoring
-- [ ] Alert thresholds configured
-- [ ] Anomaly detection rules
-- [ ] Incident correlation
+**구현 체크리스트:**
+- [ ] 보안 정보 및 이벤트 관리(SIEM)
+- [ ] 모든 시스템에서 로그 수집
+- [ ] 실시간 모니터링
+- [ ] 경고 임계값이 구성되었습니다.
+- [ ] 이상 탐지 규칙
+- [ ] 사건 상관관계
 
-**Evidence:**
-- SIEM configuration
-- Monitoring policies
-- Alert rules
-- Log retention policy
+**증거:**
+- SIEM 구성
+- 모니터링 정책
+- 경고 규칙
+- 로그 보존 정책
 
-### CC6.6 - Malware Protection
+### CC6.6 - 악성 코드 방지
 
 **CC6.6**
-- Anti-malware software deployed
-- Regular updates and scans
-- Malware incident response
+- 맬웨어 방지 소프트웨어 배포
+- 정기 업데이트 및 검사
+- 악성코드 사고 대응**구현 체크리스트:**
+- [ ] 엔드포인트 보호가 설치됨
+- [ ] 서버 보호 설치됨
+- [ ] 정의 업데이트 일정
+- [ ] 정기검사 일정
+- [ ] 이메일 필터링
+- [ ] 웹 필터링
+- [ ] 악성코드 대응 절차
 
-**Implementation Checklist:**
-- [ ] Endpoint protection installed
-- [ ] Server protection installed
-- [ ] Definition update schedule
-- [ ] Regular scan schedule
-- [ ] Email filtering
-- [ ] Web filtering
-- [ ] Malware response procedures
+**증거:**
+- 바이러스 백신 소프트웨어 기록
+- 보고서 스캔
+- 업데이트 로그
+- 사고 대응 절차
 
-**Evidence:**
-- Antivirus software records
-- Scan reports
-- Update logs
-- Incident response procedures
-
-### CC6.7 - Vulnerability Management
+### CC6.7 - 취약점 관리
 
 **CC6.7**
-- Vulnerability scanning performed
-- Patch management process
-- Risk assessment and remediation
+- 취약점 스캔 수행
+- 패치 관리 프로세스
+- 위험 평가 및 해결
 
-**Implementation Checklist:**
-- [ ] Regular vulnerability scanning schedule
-- [ ] Automated vulnerability scanning
-- [ ] Patch management process
-- [ ] Prioritization based on risk
-- [ ] Remediation SLAs defined
-- [ ] Vulnerability tracking
-- [ ] Remediation verification
+**구현 체크리스트:**
+- [ ] 정기 취약점 검사 일정
+- [ ] 자동화된 취약점 검색
+- [ ] 패치 관리 프로세스
+- [ ] 위험에 따른 우선순위 지정
+- [ ] 수정 SLA가 정의됨
+- [ ] 취약점 추적
+- [ ] 교정 확인
 
-**Evidence:**
-- Scan reports
-- Patch records
-- Vulnerability management documentation
-- Risk assessment reports
+**증거:**
+- 보고서 스캔
+- 패치 기록
+- 취약점 관리 문서
+- 위험 평가 보고서
 
-### CC6.8 - Network Security
+### CC6.8 - 네트워크 보안
 
 **CC6.8**
-- Network security controls implemented
-- Network device hardening
-- Network monitoring
+- 네트워크 보안 통제 구현
+- 네트워크 장비 강화
+- 네트워크 모니터링
 
-**Implementation Checklist:**
-- [ ] Network segmentation implemented
-- [ ] Firewall configuration reviewed
-- [ ] IDS/IPS deployed
-- [ ] Network monitoring
-- [ ] Wireless security
-- [ ] VPN security
-- [ ] Network device hardening
+**구현 체크리스트:**
+- [ ] 네트워크 분할 구현
+- [ ] 방화벽 구성을 검토했습니다.
+- [ ] IDS/IPS 배포
+- [ ] 네트워크 모니터링
+- [ ] 무선 보안
+- [ ] VPN 보안
+- [ ] 네트워크 장치 강화
 
-**Evidence:**
-- Network configuration files
-- Firewall rules
-- IDS/IPS logs
-- Network monitoring reports
+**증거:**
+- 네트워크 구성 파일
+- 방화벽 규칙
+- IDS/IPS 로그
+- 네트워크 모니터링 보고서
 
-### CC6.9 - Incident Response
+### CC6.9 - 사고 대응
 
 **CC6.9**
-- Incident response plan established
-- Incident response team identified
-- Incident notification procedures
+- 사고 대응 계획 수립
+- 사고 대응팀 파악
+- 사건 통보 절차
 
-**Implementation Checklist:**
-- [ ] Incident response plan documented
-- [ ] Response team roles defined
-- [ ] Incident classification process
-- [ ] Escalation procedures
-- [ ] Communication plan
-- [ ] Post-incident reviews
-- [ ] Response plan testing
+**구현 체크리스트:**
+- [ ] 사고 대응 계획이 문서화됨
+- [ ] 대응팀 역할이 정의됨
+- [ ] 사건 분류 프로세스
+- [ ] 에스컬레이션 절차
+- [ ] 커뮤니케이션 계획
+- [ ] 사고 후 검토
+- [ ] 대응 계획 테스트
 
-**Evidence:**
-- Incident response plan
-- Team contact information
-- Incident logs
-- Post-incident review reports
+**증거:**
+- 사고 대응 계획
+- 팀 연락처
+- 사건 기록
+- 사고 후 검토 보고서
 
-## Availability Criteria (A1)
+## 가용성 기준(A1)
 
-### A1.1 - Availability Monitoring
+### A1.1 - 가용성 모니터링
 
 **A1.1**
-- System availability monitored
-- Performance metrics tracked
-- Uptime targets defined
+- 시스템 가용성 모니터링
+- 성능 지표 추적
+- 가동 시간 목표가 정의됨
 
-**Implementation Checklist:**
-- [ ] Availability monitoring tools deployed
-- [ ] Performance metrics collected
-- [ ] Uptime targets defined (e.g., 99.9%)
-- [ ] Alerting configured
-- [ ] Dashboards for visibility
+**구현 체크리스트:**
+- [ ] 가용성 모니터링 도구 배포
+- [ ] 성능 지표 수집
+- [ ] 가동 시간 목표가 정의됨(예: 99.9%)
+- [ ] 경고 구성됨
+- [ ] 가시성을 위한 대시보드
 
-**Evidence:**
-- Monitoring configuration
-- Availability reports
-- SLA documentation
-- Performance metrics
+**증거:**
+- 모니터링 구성
+- 가용성 보고서
+- SLA 문서
+- 성과 지표
 
-### A1.2 - Redundancy
+### A1.2 - 중복성
 
 **A1.2**
-- Redundant components implemented
-- Failover mechanisms
-- Geographic distribution
+- 중복 구성 요소 구현
+- 장애 조치 메커니즘
+- 지리적 분포
 
-**Implementation Checklist:**
-- [ ] Load balancing configured
-- [ ] Redundant servers
-- [ ] Redundant databases
-- [ ] Multiple network paths
-- [ ] Geographic distribution (multi-region)
-- [ ] Failover tested regularly
-- [ ] Backup power supplies
+**구현 체크리스트:**
+- [ ] 로드 밸런싱이 구성됨
+- [ ] 중복 서버
+- [ ] 중복 데이터베이스
+- [ ] 다중 네트워크 경로
+- [ ] 지리적 분포(다중 지역)
+- [ ] 장애 조치가 정기적으로 테스트됨
+- [ ] 백업 전원 공급 장치
 
-**Evidence:**
-- Architecture diagrams
-- Load balancer configuration
-- Failover test results
-- Redundancy documentation
+**증거:**
+- 아키텍처 다이어그램
+- 로드밸런서 구성
+- 장애 조치 테스트 결과
+- 중복 문서
 
-### A1.3 - Data Backup and Recovery
+### A1.3 - 데이터 백업 및 복구
 
 **A1.3**
-- Regular backups performed
-- Backup encryption
-- Recovery testing
+- 정기적인 백업 수행
+- 백업 암호화
+- 회복 테스트
 
-**Implementation Checklist:**
-- [ ] Backup schedule defined
-- [ ] Backups encrypted
-- [ ] Offsite backup storage
-- [ ] Backup integrity verification
-- [ ] Recovery procedures documented
-- [ ] Regular recovery testing
-- [ ] RTO and RPO defined
+**구현 체크리스트:**
+- [ ] 백업 일정이 정의됨
+- [ ] 백업 암호화됨
+- [ ] 오프사이트 백업 스토리지
+- [ ] 백업 무결성 확인
+- [ ] 복구 절차가 문서화되었습니다.
+- [ ] 정기 복구 테스트
+- [ ] RTO 및 RPO 정의
 
-**Evidence:**
-- Backup schedules
-- Backup logs
-- Recovery test reports
-- RTO/RPO documentation
+**증거:**
+- 백업 일정
+- 백업 로그
+- 복구 테스트 보고서
+- RTO/RPO 문서
 
-## Processing Integrity Criteria (PI1)
+## 처리 무결성 기준(PI1)
 
-### PI1.1 - Data Processing Controls
+### PI1.1 - 데이터 처리 제어
 
 **PI1.1**
-- Input validation implemented
-- Output validation
-- Processing controls
+- 입력 검증 구현
+- 출력 검증
+- 처리관리
 
-**Implementation Checklist:**
-- [ ] Input validation on all inputs
-- [ ] Data type checking
-- [ ] Business rule validation
-- [ ] Output validation
-- [ ] Processing logs
-- [ ] Error handling
-- [ ] Data reconciliation
+**구현 체크리스트:**
+- [ ] 모든 입력에 대한 입력 검증
+- [ ] 데이터 유형 확인
+- [ ] 비즈니스 규칙 검증
+- [ ] 출력 검증
+- [ ] 처리 로그
+- [ ] 오류 처리
+- [ ] 데이터 조정
 
-**Evidence:**
-- Validation code samples
-- Business rule documentation
-- Processing logs
-- Error handling procedures
+**증거:**
+- 검증 코드 샘플
+- 비즈니스 규칙 문서
+- 처리 로그
+- 오류 처리 절차
 
-### PI1.2 - Change Management
+### PI1.2 - 변경 관리
 
 **PI1.2**
-- Change management process
-- Authorization for changes
-- Testing before deployment
+- 변경 관리 프로세스
+- 변경 승인
+- 배포 전 테스트**구현 체크리스트:**
+- [ ] 변경 관리 프로세스가 문서화되었습니다.
+- [ ] 변경 요청 양식
+- [ ] 변경 승인 워크플로
+- [ ] 테스트 요구 사항
+- [ ] 롤백 절차
+- [ ] 변경 후 확인
 
-**Implementation Checklist:**
-- [ ] Change management process documented
-- [ ] Change request forms
-- [ ] Change approval workflow
-- [ ] Testing requirements
-- [ ] Rollback procedures
-- [ ] Post-change verification
+**증거:**
+- 변경 요청 로그
+- 승인기록
+- 테스트 결과
+- 배치 기록
 
-**Evidence:**
-- Change request logs
-- Approval records
-- Test results
-- Deployment records
-
-### PI1.3 - Data Quality
+### PI1.3 - 데이터 품질
 
 **PI1.3**
-- Data quality controls
-- Data validation
-- Data correction processes
+- 데이터 품질 관리
+- 데이터 검증
+- 데이터 수정 프로세스
 
-**Implementation Checklist:**
-- [ ] Data quality standards defined
-- [ ] Data validation rules
-- [ ] Data profiling
-- [ ] Data correction procedures
-- [ ] Data quality reports
-- [ ] Regular data audits
+**구현 체크리스트:**
+- [ ] 데이터 품질 표준 정의
+- [ ] 데이터 유효성 검사 규칙
+- [ ] 데이터 프로파일링
+- [ ] 데이터 수정 절차
+- [ ] 데이터 품질 보고서
+- [ ] 정기 데이터 감사
 
-**Evidence:**
-- Data quality standards
-- Validation rules
-- Quality reports
-- Audit results
+**증거:**
+- 데이터 품질 표준
+- 검증 규칙
+- 품질 보고서
+- 감사결과
 
-## Confidentiality Criteria (C1)
+## 기밀성 기준(C1)
 
-### C1.1 - Confidentiality Controls
+### C1.1 - 기밀성 통제
 
 **C1.1**
-- Confidential data identified
-- Access controls implemented
-- Encryption implemented
+- 기밀 데이터가 확인됨
+- 접근 통제 구현
+- 암호화 구현
 
-**Implementation Checklist:**
-- [ ] Data classification performed
-- [ ] Confidential data inventory
-- [ ] Access controls on confidential data
-- [ ] Encryption of confidential data
-- [ ] Secure transmission
-- [ ] Data masking for non-production
-- [ ] NDA requirements
+**구현 체크리스트:**
+- [ ] 데이터 분류 수행
+- [ ] 기밀 데이터 인벤토리
+- [ ] 기밀 데이터에 대한 접근 통제
+- [ ] 기밀 데이터 암호화
+- [ ] 보안 전송
+- [ ] 비생산을 위한 데이터 마스킹
+- [ ] NDA 요구사항
 
-**Evidence:**
-- Data classification policy
-- Confidential data inventory
-- Access control matrices
-- Encryption documentation
+**증거:**
+- 데이터 분류 정책
+- 기밀 데이터 인벤토리
+- 접근 제어 매트릭스
+- 암호화 문서
 
-## Privacy Criteria (P1)
+## 개인정보 보호 기준(P1)
 
-### P1.1 - Privacy Principles
+### P1.1 - 개인정보 보호 원칙
 
 **P1.1**
-- Privacy notice provided
-- Consent obtained
-- Data subject rights implemented
+- 개인정보 보호정책 제공
+- 동의 획득
+- 데이터 주체 권리 구현
 
-**Implementation Checklist:**
-- [ ] Privacy notice published
-- [ ] Consent mechanism implemented
-- [ ] Right to access
-- [ ] Right to rectification
-- [ ] Right to erasure
-- [ ] Right to portability
-- [ ] Right to object
-- [ ] Privacy impact assessments
+**구현 체크리스트:**
+- [ ] 개인정보 보호정책 게시됨
+- [ ] 동의 메커니즘 구현
+- [ ] 액세스 권한
+- [ ] 정정 권리
+- [ ] 삭제할 권리
+- [ ] 이동성에 대한 권리
+- [ ] 반대할 권리
+- [ ] 개인 정보 보호 영향 평가
 
-**Evidence:**
-- Privacy notice
-- Consent records
-- DSAR procedures
-- PIA documentation
+**증거:**
+- 개인정보 보호정책
+- 동의기록
+- DSAR 절차
+- PIA 문서
 
-## Evidence Collection
+## 증거 수집
 
-### Required Evidence Types
+### 필수 증거 유형
 
-**Governance and Risk Management**
-- [ ] Risk assessment reports
-- [ ] Risk register
-- [ ] Governance documentation
-- [ ] Policies and procedures
-- [ ] Organizational charts
+**거버넌스 및 위험 관리**
+- [ ] 위험 평가 보고서
+- [ ] 위험 등록부
+- [ ] 거버넌스 문서
+- [ ] 정책 및 절차
+- [ ] 조직도
 
-**Security**
-- [ ] Security policies
-- [ ] Access control records
-- [ ] Encryption certificates
-- [ ] Monitoring reports
-- [ ] Incident reports
-- [ ] Vulnerability scan reports
-- [ ] Penetration test reports
+**보안**
+- [ ] 보안 정책
+- [ ] 접근통제 기록
+- [ ] 암호화 인증서
+- [ ] 모니터링 보고서
+- [ ] 사건 보고서
+- [ ] 취약점 검색 보고서
+- [ ] 침투 테스트 보고서
 
-**Availability**
-- [ ] Availability reports
-- [ ] Performance metrics
-- [ ] Uptime calculations
-- [ ] Incident reports
-- [ ] Backup logs
-- [ ] Recovery test reports
+**가용성**
+- [ ] 가용성 보고서
+- [ ] 성능 지표
+- [ ] 가동 시간 계산
+- [ ] 사건 보고서
+- [ ] 백업 로그
+- [ ] 복구 테스트 보고서
 
-**Processing Integrity**
-- [ ] Change management records
-- [ ] Validation documentation
-- [ ] Data quality reports
-- [ ] Processing logs
+**처리 무결성**
+- [ ] 변경 관리 기록
+- [ ] 검증 문서
+- [ ] 데이터 품질 보고서
+- [ ] 처리 로그
 
-**Confidentiality**
-- [ ] Data classification documentation
-- [ ] Confidentiality agreements
-- [ ] Access request records
-- [ ] Encryption documentation
+**비밀유지**
+- [ ] 데이터 분류 문서
+- [ ] 기밀 유지 계약
+- [ ] 접근요청 기록
+- [ ] 암호화 문서
 
-**Privacy**
-- [ ] Privacy notice
-- [ ] Consent records
-- [ ] DSAR logs
-- [ ] PIA documentation
+**개인정보 보호**
+- [ ] 개인정보 보호정책
+- [ ] 동의 기록
+- [ ] DSAR 로그
+- [ ] PIA 문서
 
-## Audit Preparation
+## 감사 준비
 
-### Pre-Audit Checklist
+### 사전 감사 체크리스트
 
-**Documentation Review**
-- [ ] All policies reviewed and updated
-- [ ] Procedures documented
-- [ ] Evidence collected and organized
-- [ ] Gap analysis completed
+**문서 검토**
+- [ ] 모든 정책을 검토하고 업데이트했습니다.
+- [ ] 문서화된 절차
+- [ ] 증거 수집 및 정리
+- [ ] 격차 분석 완료
 
-**Internal Assessment**
-- [ ] Internal audit conducted
-- [ ] Self-assessment completed
-- [ ] Remediation of identified gaps
-- [ ] Re-assessment after remediation
+**내부 평가**
+- [ ] 내부 감사 실시
+- [ ] 자체평가 완료
+- [ ] 확인된 격차 해소
+- [ ] 교정 후 재평가
 
-**Staff Preparation**
-- [ ] Staff trained on SOC 2 requirements
-- [ ] Roles and responsibilities communicated
-- [ ] Interview preparation conducted
-- [ ] Point of contact identified
+**직원 준비**
+- [ ] SOC 2 요구 사항에 대한 교육을 받은 직원
+- [ ] 역할과 책임이 전달됨
+- [ ] 면접 준비 진행
+- [ ] 연락처 확인됨
 
-**System Preparation**
-- [ ] Evidence collection systems tested
-- [ ] Monitoring systems verified
-- [ ] Documentation repositories organized
-- [ ] Access controls reviewed
+**시스템 준비**
+- [ ] 증거 수집 시스템 테스트
+- [ ] 모니터링 시스템 검증
+- [ ] 문서 저장소 구성
+- [ ] 액세스 제어가 검토됨
 
-### Audit Response
+### 감사 응답
 
-**During Audit**
-- [ ] Point of contact available
-- [ ] Evidence provided promptly
-- [ ] Questions answered clearly
-- [ ] Additional information gathered as needed
+**감사 중**
+- [ ] 연락 가능
+- [ ] 증거가 즉시 제공됨
+- [ ] 질문에 명확하게 답변됨
+- [ ] 필요에 따라 추가 정보 수집
 
-**Post-Audit**
-- [ ] Report reviewed
-- [ ] Findings addressed
-- [ ] Corrective action plan developed
-- [ ] Timeline for remediation established
+**사후감사**
+- [ ] 보고서가 검토됨
+- [ ] 해결된 결과
+- [ ] 시정 조치 계획 수립
+- [ ] 수정 일정이 수립되었습니다.
 
-## References
-
-- [AICPA SOC 2 Guide](https://www.aicpa.org/soc4so)
-- [AICPA Trust Services Criteria](https://www.aicpa.org/content/dam/aicpa/research/standards/trustservices/2017-aicpa-trust-services-criteria.pdf)
-- [SOC 2 Type 2 Reporting](https://www.aicpa.org/soc4so)
+## 참고자료- [AICPA SOC 2 가이드](https://www.aicpa.org/soc4so)
+- [AICPA 신뢰 서비스 기준](https://www.aicpa.org/content/dam/aicpa/research/standards/trustservices/2017-aicpa-trust-services-criteria.pdf)
+- [SOC 2 Type 2 보고](https://www.aicpa.org/soc4so)

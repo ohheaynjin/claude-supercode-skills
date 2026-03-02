@@ -1,13 +1,12 @@
-# Backend Deployment Guide
+# 백엔드 배포 가이드
 
-## Overview
+## 개요
 
-This guide covers deployment strategies for backend applications across different platforms and environments.
+이 가이드에서는 다양한 플랫폼과 환경에 걸친 백엔드 애플리케이션 배포 전략을 다룹니다.
 
-## Deployment Strategies
+## 배포 전략
 
-### Blue-Green Deployment
-
+### 블루-그린 배포
 ```
 Current Flow:  User -> Blue  (v1)
                     ↓
@@ -19,9 +18,7 @@ Switch Traffic: User -> Green (v2)
                     ↓
 Rollback:     User -> Blue  (v1)
 ```
-
-### Canary Deployment
-
+### 카나리아 배포
 ```
 v1 (90%) ────────┬─────── v2 (10%)
                 ↓
@@ -31,19 +28,15 @@ Gradual shift: v1 (50%) ─ v2 (50%)
                 ↓
 Full switch: v2 (100%)
 ```
-
-### Rolling Update
-
+### 롤링 업데이트
 ```
 Pod 1: v1 -> v2 ── Health Check
 Pod 2: v1 -> v2 ── Health Check
 Pod 3: v1 -> v2 ── Health Check
 ```
+## 도커 배포
 
-## Docker Deployment
-
-### Dockerfile Best Practices
-
+### Dockerfile 모범 사례
 ```dockerfile
 # Multi-stage build
 FROM node:18-alpine AS builder
@@ -65,9 +58,7 @@ HEALTHCHECK --interval=30s --timeout=3s \
   CMD curl -f http://localhost:3000/health || exit 1
 CMD ["node", "dist/index.js"]
 ```
-
-### Docker Compose
-
+### 도커 작성
 ```yaml
 version: '3.8'
 
@@ -105,11 +96,9 @@ volumes:
   postgres_data:
   redis_data:
 ```
+## 쿠버네티스 배포
 
-## Kubernetes Deployment
-
-### Deployment Manifest
-
+### 배포 매니페스트
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -165,9 +154,7 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 5
 ```
-
-### Service Manifest
-
+### 서비스 매니페스트
 ```yaml
 apiVersion: v1
 kind: Service
@@ -182,9 +169,7 @@ spec:
     targetPort: 3000
   type: LoadBalancer
 ```
-
-### ConfigMap
-
+### 컨피그맵
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -196,9 +181,7 @@ data:
   REDIS_HOST: "redis"
   REDIS_PORT: "6379"
 ```
-
-### Secret
-
+### 비밀
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -209,9 +192,7 @@ data:
   url: cG9zdGdyZXNxbDovL3Bvc3RncmVzOnBhc3N3b3JkQGRiOjU0MzIvbXlkYg==
   password: cGFzc3dvcmQ=
 ```
-
-### Horizontal Pod Autoscaler
-
+### 수평형 포드 자동 확장 처리
 ```yaml
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -238,13 +219,11 @@ spec:
         type: Utilization
         averageUtilization: 80
 ```
+## 클라우드 배포
 
-## Cloud Deployment
+### AWS(ECS)
 
-### AWS (ECS)
-
-#### Task Definition
-
+#### 작업 정의
 ```json
 {
   "family": "backend-api",
@@ -295,11 +274,9 @@ spec:
   "memory": "512"
 }
 ```
+### 구글 클라우드(클라우드 런)
 
-### Google Cloud (Cloud Run)
-
-#### Deployment
-
+#### 배포
 ```bash
 gcloud run deploy backend-api \
   --image gcr.io/my-project/backend-api:latest \
@@ -315,9 +292,7 @@ gcloud run deploy backend-api \
   --set-env-vars NODE_ENV=production \
   --set-secrets DATABASE_URL=db-url:latest
 ```
-
-### Azure (Container Instances)
-
+### Azure(컨테이너 인스턴스)
 ```bash
 az container create \
   --resource-group myResourceGroup \
@@ -330,11 +305,9 @@ az container create \
   --secrets DATABASE_URL=$DATABASE_URL \
   --dns-name-label backend-api-unique
 ```
+## CI/CD 파이프라인
 
-## CI/CD Pipelines
-
-### GitHub Actions
-
+### GitHub 작업
 ```yaml
 name: Deploy
 
@@ -379,9 +352,7 @@ jobs:
         kubectl set image deployment/backend-api api=backend-api:${{ github.sha }}
         kubectl rollout status deployment/backend-api
 ```
-
-### GitLab CI
-
+### GitLab에서
 ```yaml
 stages:
   - build
@@ -411,11 +382,9 @@ deploy:
   only:
     - main
 ```
+## 데이터베이스 마이그레이션
 
-## Database Migrations
-
-### Migration Strategy
-
+### 마이그레이션 전략
 ```bash
 # Apply migrations
 npm run migrate:up
@@ -426,9 +395,7 @@ npm run migrate:down
 # Create new migration
 npm run migrate:create
 ```
-
-### Zero-Downtime Migration
-
+### 다운타임 없는 마이그레이션
 ```sql
 -- Phase 1: Add new column
 ALTER TABLE users ADD COLUMN new_email VARCHAR(255);
@@ -441,11 +408,9 @@ UPDATE users SET new_email = email;
 -- Phase 4: Drop old column
 ALTER TABLE users DROP COLUMN email;
 ```
+## 모니터링 및 관찰 가능성
 
-## Monitoring and Observability
-
-### Logging
-
+### 로깅
 ```typescript
 import winston from 'winston';
 
@@ -459,9 +424,7 @@ const logger = winston.createLogger({
   ]
 });
 ```
-
-### Metrics
-
+### 측정항목
 ```typescript
 import { Counter, Histogram, register } from 'prom-client';
 
@@ -493,9 +456,7 @@ app.use((req, res, next) => {
   next();
 });
 ```
-
-### Health Checks
-
+### 상태 점검
 ```typescript
 app.get('/health', async (req, res) => {
   const health = {
@@ -515,11 +476,9 @@ app.get('/health', async (req, res) => {
   res.status(isHealthy ? 200 : 503).json(health);
 });
 ```
+## 보안
 
-## Security
-
-### Secrets Management
-
+### 비밀 관리
 ```bash
 # Kubernetes
 kubectl create secret generic db-secrets \
@@ -535,9 +494,7 @@ gcloud secrets create db-url --data-file=- <<EOF
 postgresql://user:pass@host:5432/db
 EOF
 ```
-
-### SSL/TLS Configuration
-
+### SSL/TLS 구성
 ```yaml
 # Ingress with TLS
 apiVersion: networking.k8s.io/v1
@@ -563,11 +520,9 @@ spec:
             port:
               number: 80
 ```
+## 성능 최적화
 
-## Performance Optimization
-
-### Nginx Configuration
-
+### Nginx 구성
 ```nginx
 upstream backend {
     server backend-api-service:3000;
@@ -596,9 +551,7 @@ server {
     }
 }
 ```
-
-### Connection Pooling
-
+### 연결 풀링
 ```typescript
 const pool = new Pool({
   host: process.env.DB_HOST,
@@ -611,12 +564,11 @@ const pool = new Pool({
   connectionTimeoutMillis: 2000
 });
 ```
+## 문제 해결
 
-## Troubleshooting
+### 일반적인 문제
 
-### Common Issues
-
-#### Pod Not Starting
+#### 포드가 시작되지 않음
 ```bash
 # Check pod status
 kubectl describe pod backend-api-xxx
@@ -627,8 +579,7 @@ kubectl logs backend-api-xxx
 # Check events
 kubectl get events
 ```
-
-#### Database Connection Issues
+#### 데이터베이스 연결 문제
 ```bash
 # Check connectivity
 kubectl run -it --rm debug --image=nicolaka/netshoot --restart=Never -- nslookup db-service
@@ -636,8 +587,7 @@ kubectl run -it --rm debug --image=nicolaka/netshoot --restart=Never -- nslookup
 # Test connection
 kubectl run -it --rm psql --image=postgres:15 --restart=Never -- psql postgresql://user:pass@host:5432/db
 ```
-
-#### Memory Issues
+#### 메모리 문제
 ```bash
 # Check resource usage
 kubectl top pods
@@ -645,11 +595,10 @@ kubectl top pods
 # Adjust limits
 kubectl patch deployment backend-api -p '{"spec":{"template":{"spec":{"containers":[{"name":"api","resources":{"limits":{"memory":"1Gi"}}}]}}}}'
 ```
+## 리소스
 
-## Resources
-
-- Kubernetes Docs: https://kubernetes.io/docs/
-- Docker Docs: https://docs.docker.com/
+- 쿠버네티스 문서: https://kubernetes.io/docs/
+- 도커 문서: https://docs.docker.com/
 - AWS ECS: https://aws.amazon.com/ecs/
-- GCP Cloud Run: https://cloud.google.com/run
-- Azure Container Instances: https://azure.microsoft.com/services/container-instances/
+- GCP 클라우드 런: https://cloud.google.com/run
+- Azure 컨테이너 인스턴스: https://azure.microsoft.com/services/container-instances/

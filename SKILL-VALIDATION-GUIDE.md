@@ -1,276 +1,272 @@
 ---
 name: skill-validation-guide
-description: Validation and testing guide for Agent Skills to ensure quality, functionality, and compliance with best practices. Use when creating, reviewing, or validating skills to verify they meet standards and work correctly.
+description: 품질, 기능, 모범 사례 준수를 보장하기 위한 상담사 기술 검증 및 테스트 가이드입니다. 기술을 생성, 검토 또는 검증할 때 기술이 표준을 충족하고 올바르게 작동하는지 확인하는 데 사용합니다.
 ---
+# 기술 검증 및 테스트 가이드
 
-# Skill Validation and Testing Guide
+이 가이드는 품질, 기능 및 Anthropic 모범 사례 준수를 보장하기 위해 에이전트 기술에 대한 포괄적인 검증 기준 및 테스트 절차를 제공합니다.
 
-This guide provides comprehensive validation criteria and testing procedures for Agent Skills to ensure quality, functionality, and compliance with Anthropic best practices.
+## 검증 체크리스트
 
-## Validation Checklist
+### 머리말 검증
 
-### Frontmatter Validation
+**필수 입력사항:**
+- [ ]`name`존재하며 명명 규칙을 따릅니다.
+  - 소문자, 숫자, 하이픈만 가능
+  - 최대 3~64자
+  - 공백, 밑줄, 특수문자 금지
+  - 디렉터리 이름과 일치합니다.
+- [ ]`description`존재하고 효과적입니다:
+  - 3인칭 시점
+  - 해당 스킬이 무엇을 하는지 명확하게 명시
+  - 스킬 사용 시기 포함
+  - 자동 검색을 위한 트리거 키워드가 포함되어 있습니다.
+  - 10~1024자 길이
 
-**Required Fields:**
-- [ ] `name` is present and follows naming conventions:
-  - Lowercase letters, numbers, and hyphens only
-  - 3-64 characters maximum
-  - No spaces, underscores, or special characters
-  - Matches directory name
-- [ ] `description` is present and effective:
-  - Third-person perspective
-  - Clearly states what the skill does
-  - Includes when to use the skill
-  - Contains trigger keywords for auto-discovery
-  - 10-1024 characters in length
+**선택 필드 유효성 검사:**
+- [ ]`allowed-tools`최소한의 필수 도구로만 범위가 지정됩니다.
+- [ ]`license`사용된 경우 실제 LICENSE.txt 파일을 가리킵니다.
+- [ ]`model`기술 요구 사항에 적합한 모델을 지정합니다.
+- [ ]`user-invocable`의도된 용도에 따라 올바르게(true/false) 설정되었습니다.
+- [ ]`disable-model-invocation`적절하게 사용된다
 
-**Optional Fields Validation:**
-- [ ] `allowed-tools` is scoped to minimum necessary tools only
-- [ ] `license` points to actual LICENSE.txt file if used
-- [ ] `model` specifies appropriate model for skill requirements
-- [ ] `user-invocable` is set correctly (true/false) based on intended use
-- [ ] `disable-model-invocation` is used appropriately
+### 콘텐츠 검증
 
-### Content Validation
+**구조:**
+- [ ] SKILL.md는 머리말 바로 다음에 시작됩니다(빈 줄 없음).
+- [ ] 마크다운은 적절한 헤더로 형식이 잘 지정되어 있습니다.
+- [ ] 줄 수가 500줄 미만입니다(성능에 최적).
+- [ ] 콘텐츠가 간결하고 인간의 문서가 아닌 AI 지침에 중점을 둡니다.
 
-**Structure:**
-- [ ] SKILL.md starts immediately after frontmatter (no blank lines)
-- [ ] Markdown is well-formatted with proper headers
-- [ ] Line count is under 500 lines (optimal for performance)
-- [ ] Content is concise and focused on AI guidance, not human documentation
+**콘텐츠 품질:**
+- [ ] 지침이 명확하고 실행 가능하며 구체적입니다.
+- [ ] 스킬에는 명확한 목적과 철학이 있습니다.
+- [ ] 기능이 잘 정의되어 있고 범위가 지정되어 있습니다.
+- [ ] 행동 특성이 설명됩니다.
+- [ ] 사용 시기 기준이 구체적임
+- [ ] 예시 상호작용이 제공됩니다.
+- [ ] 지원 파일에 대한 참조에는 슬래시가 사용됩니다.
 
-**Content Quality:**
-- [ ] Instructions are clear, actionable, and specific
-- [ ] Skill has a clear purpose and philosophy
-- [ ] Capabilities are well-defined and scoped
-- [ ] Behavioral traits are described
-- [ ] When-to-use criteria are specific
-- [ ] Example interactions are provided
-- [ ] References to supporting files use forward slashes
+**점진적 공개:**
+- [ ] Main SKILL.md는 필수 지침만 제공합니다.
+- [ ] 자세한 참고자료는 별도 파일로 제공
+- [ ] 지원 파일이 다음과 연결되어 있습니다.`[filename](path)`- [ ] 스크립트 디렉터리에는 실행 가능한 코드가 포함되어 있습니다(문서 아님).
+- [ ] 참조 파일에는 필요에 따라 로드된 자세한 정보가 포함되어 있습니다.
 
-**Progressive Disclosure:**
-- [ ] Main SKILL.md provides essential guidance only
-- [ ] Detailed reference materials are in separate files
-- [ ] Supporting files are linked with `[filename](path)`
-- [ ] Scripts directory contains executable code (not documentation)
-- [ ] Reference files contain detailed information loaded as needed
+### 기능 검증
 
-### Functionality Validation
+**테스트 단계:**
 
-**Testing Steps:**
-
-1. **Basic Loading Test:**
-   ```bash
+1. **기본 로딩 테스트:**
+```bash
    # Test that skill is discovered
    claude
    # Ask: "What skills are available?"
    # Verify your skill appears in the list
    ```
+2. **트리거 테스트:**
+   - 귀하의 기술 설명과 일치하는 작업을 설명하십시오.
+   - 클로드가 스킬 사용 제안을 확인
+   - 제안을 수락하고 올바르게 로드되는지 확인하세요.
 
-2. **Trigger Test:**
-   - Describe a task matching your skill's description
-   - Verify Claude offers to use the skill
-   - Accept the offer and confirm it loads correctly
+3. **실행 테스트:**
+   - 스킬이 처리해야 하는 실제 작업 제공
+   - 스킬이 지시 사항을 올바르게 따르는지 확인합니다.
+   - 출력이 예상 동작과 일치하는지 확인
 
-3. **Execution Test:**
-   - Provide a real task the skill should handle
-   - Verify skill follows its instructions correctly
-   - Check that output matches expected behavior
+4. **참조 로딩 테스트**(해당되는 경우):
+   - 참조 파일이 필요한 시나리오 트리거
+   - 필요에 따라 스킬 로드 참조를 확인합니다.
+   - 참고문헌이 접근 가능하고 완전한지 확인하세요.
 
-4. **Reference Loading Test** (if applicable):
-   - Trigger a scenario that requires reference files
-   - Verify skill loads references as needed
-   - Confirm references are accessible and complete
+5. **다중 파일 테스트**(해당하는 경우):
+   - 여러 파일이 필요한 시나리오로 테스트
+   - 스킬 참조 파일을 올바르게 확인하십시오.
+   - 모든 링크가 작동하는지 확인하세요.
 
-5. **Multi-File Test** (if applicable):
-   - Test with scenarios requiring multiple files
-   - Verify skill references files correctly
-   - Check that all links work
+6. **오류 처리 테스트:**
+   - 유효하지 않은 입력 또는 극단적인 경우로 테스트
+   - 유용한 오류 메시지를 제공하는 스킬 확인
+   - 스킬이 갑자기 깨지지 않는지 확인
 
-6. **Error Handling Test:**
-   - Test with invalid inputs or edge cases
-   - Verify skill provides helpful error messages
-   - Confirm skill doesn't break unexpectedly
+7. **도구 제한 테스트**(사용하는 경우)`allowed-tools`):
+   - 허용된 세트 이외의 도구를 사용하려고 시도했습니다.
+   - 도구가 차단되었거나 권한이 요청되었는지 확인하세요.
+   - 프롬프트 없이 허용된 도구가 작동하는지 확인
 
-7. **Tool Restrictions Test** (if using `allowed-tools`):
-   - Attempt to use tools outside allowed set
-   - Verify tool is blocked or permission is requested
-   - Confirm allowed tools work without prompts
+### 모범 사례 규정 준수
 
-### Best Practices Compliance
+**콘텐츠 가이드라인:**
+- [ ] 보조 문서 파일 없음(README.md, INSTALLATION_GUIDE.md 등)
+- [ ] 기술은 인간 대 인간 문서가 아닌 AI 안내에 중점을 둡니다.
+- [ ] 설명에서는 모호한 용어("도우미", "유틸리티", "도구")를 사용하지 않습니다.
+- [ ] 스킬 이름은 설명적입니다("helper", "utils"와 같은 일반적인 이름은 아님).
+- [ ] 이름에 예약어가 없습니다(예: "anthropic-helper")
 
-**Content Guidelines:**
-- [ ] No auxiliary documentation files (README.md, INSTALLATION_GUIDE.md, etc.)
-- [ ] Skill focuses on AI guidance, not human-to-human documentation
-- [ ] Description avoids vague terms ("helper", "utilities", "tools")
-- [ ] Skill name is descriptive (not generic like "helper", "utils")
-- [ ] No reserved words in name (e.g., "anthropic-helper")
+**점진적 공개:**
+- [ ] SKILL.md는 간결합니다(< 500줄, < 5,000 단어 권장).
+- [ ] 참고 자료는 도메인이나 주제별로 정리되어 있습니다.
+- [ ] 스크립트는 실행 가능하며 독립적으로 테스트됩니다.
+- [ ] 참조 파일에 순환 참조가 없습니다.
 
-**Progressive Disclosure:**
-- [ ] SKILL.md is concise (< 500 lines, < 5,000 words recommended)
-- [ ] Reference materials are organized by domain or topic
-- [ ] Scripts are executable and tested independently
-- [ ] No circular references in reference files
+**도구 사용법:**
+- [ ]`allowed-tools`꼭 필요한 도구로만 최소화
+- [ ] 와일드카드 패턴의 범위가 적절하게 지정되었습니다(예:`Bash(git:*)`)
+- [ ] 도구 설명이 명확하고 구체적입니다.
+- [ ] 스크립트 사용`{baseDir}`스킬 디렉토리 참조용
 
-**Tool Usage:**
-- [ ] `allowed-tools` is minimized to essential tools only
-- [ ] Wildcard patterns are scoped appropriately (e.g., `Bash(git:*)`)
-- [ ] Tool descriptions are clear and specific
-- [ ] Scripts use `{baseDir}` for skill directory references
+## 테스트 시나리오
 
-## Testing Scenarios
+### 시나리오 1: 자동 검색
+**목적:** 관련 쿼리에서 스킬이 자동으로 트리거되는지 확인합니다.
 
-### Scenario 1: Auto-Discovery
-**Purpose:** Verify skill triggers automatically on relevant queries.
+**단계:**
+1. 당신의 기술 설명과 일치하는 질문을 클로드에게 물어보세요
+2. 클로드가 스킬을 제공할 때까지 기다립니다.
+3. 제안을 수락하세요
+4. 스킬로드 검증 및 올바른 안내 제공
 
-**Steps:**
-1. Ask Claude a question that matches your skill's description
-2. Wait for Claude to offer the skill
-3. Accept the offer
-4. Verify skill loads and provides correct guidance
+**성공 기준:**
+- 클로드는 수동 발동 없이 스킬을 제공합니다.
+- 스킬 설명이 제안에 올바르게 표시됩니다.
+- 스킬이 활성화되어 기대되는 출력을 제공합니다.
 
-**Success Criteria:**
-- Claude offers the skill without manual invocation
-- Skill description appears correctly in offer
-- Skill activates and provides expected output
+### 시나리오 2: 수동 호출
+**목적:** 스킬이 다음을 통해 호출될 수 있는지 확인합니다.`/skill-name`명령.
 
-### Scenario 2: Manual Invocation
-**Purpose:** Verify skill can be invoked via `/skill-name` command.
+**단계:**
+1. 유형`/skill-name`(실제 스킬명으로 대체)
+2. 스킬에 대한 작업 제공
+3. 스킬이 활성화되고 올바르게 실행되는지 확인합니다.
 
-**Steps:**
-1. Type `/skill-name` (replace with actual skill name)
-2. Provide a task for the skill
-3. Verify skill activates and executes correctly
+**성공 기준:**
+- 슬래시 명령을 통해 스킬에 접근할 수 있습니다.`user-invocable: true`)
+- 스킬이 예상대로 실행됩니다.
+- 출력은 스킬 지시를 따릅니다.
 
-**Success Criteria:**
-- Skill is accessible via slash command (if `user-invocable: true`)
-- Skill executes as expected
-- Output follows skill instructions
+### 시나리오 3: 다중 파일 조정
+**목적:** 기술이 참조 파일과 올바르게 조화되는지 확인합니다.
 
-### Scenario 3: Multi-File Coordination
-**Purpose:** Verify skill correctly coordinates with reference files.
+**단계:**
+1. 상세한 참고자료가 필요한 업무를 선택하세요.
+2. 스킬을 사용하여 작업을 실행합니다.
+3. 기술이 참조 파일을 적절하게 로드하는지 관찰
 
-**Steps:**
-1. Choose a task requiring detailed reference material
-2. Execute task using the skill
-3. Observe if skill loads reference files appropriately
+**성공 기준:**
+- 필요할 때 참조 파일이 로드됩니다.
+- 참고자료의 정보가 올바르게 적용되었습니다.
+- 불필요한 참조 로딩 없음 (효율적인 컨텍스트 사용)
 
-**Success Criteria:**
-- Reference files are loaded when needed
-- Information from references is correctly applied
-- No unnecessary reference loading (efficient context use)
+### 시나리오 4: 오류 복구
+**목적:** 기술이 오류를 정상적으로 처리하는지 확인합니다.
 
-### Scenario 4: Error Recovery
-**Purpose:** Verify skill handles errors gracefully.
+**단계:**
+1. 유효하지 않거나 문제가 있는 입력을 제공합니다.
+2. 스킬의 동작 관찰
 
-**Steps:**
-1. Provide invalid or problematic input
-2. Observe skill's behavior
+**성공 기준:**
+- 스킬은 유용한 오류 메시지를 제공합니다.
+- 스킬이 충돌하거나 상황을 깨뜨리지 않습니다.
+- 올바른 사용법을 안내하는 오류 메시지
 
-**Success Criteria:**
-- Skill provides helpful error message
-- Skill doesn't crash or break context
-- Error message guides toward correct usage
+### 시나리오 5: 도구 제한사항
+**목적:** 확인`allowed-tools`제한사항이 올바르게 작동합니다.
 
-### Scenario 5: Tool Restrictions
-**Purpose:** Verify `allowed-tools` restrictions work correctly.
+**단계:**
+1. 스킬을 사용한다`allowed-tools`구성된
+2. 제한된 도구를 사용하려고 시도
+3. 동작 확인
 
-**Steps:**
-1. Use a skill with `allowed-tools` configured
-2. Attempt to use a restricted tool
-3. Verify behavior
+**성공 기준:**
+- 제한된 도구는 차단되거나 권한이 필요합니다.
+- 허용된 도구는 메시지 없이 작동합니다.
+- 스킬 기능은 크게 저하되지 않습니다.
 
-**Success Criteria:**
-- Restricted tools are blocked or require permission
-- Allowed tools work without prompting
-- Skill functionality isn't significantly impaired
+## 일반적인 문제 및 수정 사항
 
-## Common Issues and Fixes
+### 문제: 스킬이 자동으로 발동되지 않음
 
-### Issue: Skill Not Triggering Automatically
+**증상:**
+- 클로드는 절대 스킬을 제공하지 않습니다.
+- 설명이 검색어와 일치하지만 스킬이 표시되지 않습니다.
 
-**Symptoms:**
-- Claude never offers the skill
-- Description matches query but skill doesn't appear
+**해결책:**
+1. **설명 개선:** 보다 구체적인 키워드 및 트리거 용어를 추가합니다.
+2. **머리말 확인:** YAML이 유효하고 필수 필드가 있는지 확인하세요.
+3. **위치 확인:** 스킬이 올바른 디렉터리에 있는지 확인합니다(`~/.claude/skills/`또는`.claude/skills/`)
+4. **Claude 다시 시작:** Claude Code를 종료하고 다시 시작하세요.
 
-**Solutions:**
-1. **Improve Description:** Add more specific keywords and trigger terms
-2. **Check Frontmatter:** Ensure YAML is valid and required fields are present
-3. **Verify Location:** Ensure skill is in correct directory (`~/.claude/skills/` or `.claude/skills/`)
-4. **Restart Claude:** Exit and restart Claude Code
+### 문제: 스킬이 로드되지 않습니다.
 
-### Issue: Skill Doesn't Load
+**증상:**
+- 스킬이 목록에 표시되지만 활성화되면 실패합니다.
+- 클로드가 스킬 사용 시 오류를 보고합니다.
 
-**Symptoms:**
-- Skill appears in list but fails when activated
-- Claude reports errors when using skill
+**해결책:**
+1. **YAML 유효성 검사:** 다음으로 시작하는 머리말을 확인하세요.`---`그리고 다음으로 끝납니다`---`2. **구문 확인:** 실행`claude --debug`로딩 오류를 보려면
+3. **경로 확인:** 모든 파일 참조가 슬래시를 사용하는지 확인하세요.
+4. **파일 권한 확인:** SKILL.md를 읽을 수 있는지 확인하세요.
 
-**Solutions:**
-1. **Validate YAML:** Check frontmatter starts with `---` and ends with `---`
-2. **Check Syntax:** Run `claude --debug` to see loading errors
-3. **Verify Paths:** Ensure all file references use forward slashes
-4. **Check File Permissions:** Verify SKILL.md is readable
+### 문제: 컨텍스트가 너무 큼
 
-### Issue: Context Too Large
+**증상:**
+- 스킬로 인해 컨텍스트 제한 오류가 발생함
+- 스킬이 활성화되면 성능이 느려집니다.
 
-**Symptoms:**
-- Skill causes context limit errors
-- Performance is slow with skill active
+**해결책:**
+1. **내용 줄이기:** SKILL.md를 필수 지침으로만 단순화하세요.
+2. **점진적 공개 사용:** 세부 정보를 참조 파일로 이동
+3. **줄 수 확인:** SKILL.md가 500줄 미만인지 확인하세요.
+4. **참조 로딩 검토:** 불필요한 참조 파일 로드 최소화
 
-**Solutions:**
-1. **Reduce Content:** Simplify SKILL.md to essential guidance only
-2. **Use Progressive Disclosure:** Move detailed info to reference files
-3. **Check Line Count:** Ensure SKILL.md is under 500 lines
-4. **Review Reference Loading:** Minimize unnecessary reference file loads
+### 문제: 도구 제한이 너무 엄격함
 
-### Issue: Tool Restrictions Too Strict
+**증상:**
+- 도구 제한으로 인해 스킬이 작업을 완료할 수 없습니다.
+- 클로드는 반복적으로 권한을 요청합니다.
 
-**Symptoms:**
-- Skill can't complete tasks due to tool limitations
-- Claude asks for permissions repeatedly
+**해결책:**
+1. **검토`allowed-tools`:** 누락된 필수 도구 추가
+2. **와일드카드 사용:** 범위가 지정된 와일드카드를 고려하세요(예:`Bash(python scripts/*:*)`)
+3. **문서 제한 사항:** 어떤 도구를 사용할 수 있는지 설명에 명확하게 명시하세요.
 
-**Solutions:**
-1. **Review `allowed-tools`:** Add missing essential tools
-2. **Use Wildcards:** Consider scoped wildcards (e.g., `Bash(python scripts/*:*)`)
-3. **Document Limitations:** Clearly state in description what tools are available
+## 최종 검증
 
-## Final Validation
+스킬을 게시하거나 사용하기 전에 다음을 확인하세요.
 
-Before publishing or using a skill, ensure:
+**필수사항:**
+- [ ] 머리말은 필수 필드가 있는 유효한 YAML입니다.
+- [ ] 설명은 자동 검색에 유효합니다.
+- [ ] SKILL.md가 500줄 미만입니다.
+- [ ] 스킬이 기본 트리거 테스트를 통과했습니다.
+- [ ] 스킬이 실행 테스트를 통과했습니다.
+- [ ] 보조 문서 파일 없음(README.md 등)
 
-**Essential:**
-- [ ] Frontmatter is valid YAML with required fields
-- [ ] Description is effective for auto-discovery
-- [ ] SKILL.md is under 500 lines
-- [ ] Skill passes basic trigger test
-- [ ] Skill passes execution test
-- [ ] No auxiliary documentation files (README.md, etc.)
+**권장:**
+- [ ] 점진적 공개 시행
+- [ ] 지원 참조 파일 정리
+- [ ] 도구 제한사항 테스트 및 검증됨
+- [ ] 여러 시나리오가 성공적으로 테스트되었습니다.
+- [ ] 오류 처리 확인됨
+- [ ] 문서가 명확하고 실행 가능합니다.
 
-**Recommended:**
-- [ ] Progressive disclosure implemented
-- [ ] Supporting reference files organized
-- [ ] Tool restrictions tested and validated
-- [ ] Multiple scenarios tested successfully
-- [ ] Error handling verified
-- [ ] Documentation is clear and actionable
+**복잡한 기술의 경우:**
+- [ ] 참조 파일에 목차가 있습니다(100줄을 초과하는 경우).
+- [ ] 스크립트가 테스트되고 실행 가능합니다.
+- [ ] 다중 파일 조정 테스트됨
+- [ ] 현실적인 워크로드로 성능 테스트
 
-**For Complex Skills:**
-- [ ] Reference files have table of contents (if > 100 lines)
-- [ ] Scripts are tested and executable
-- [ ] Multi-file coordination tested
-- [ ] Performance tested with realistic workloads
+## 지속적인 개선
 
-## Continuous Improvement
+**스킬 사용 후:**
+1. 클로드가 스킬을 어떻게 발동하고 사용하는지 관찰해보세요
+2. Claude가 지시사항에서 어려움을 겪거나 벗어나는 영역을 식별합니다.
+3. 실제 사용 패턴을 기반으로 스킬 콘텐츠 반복
+4. 여러 Claude 인스턴스 또는 모델을 사용하여 변경 사항 테스트
+5. 기술을 공유하는 경우 팀원으로부터 피드백을 수집합니다.
 
-**After Using Skills:**
-1. Observe how Claude invokes and uses the skill
-2. Identify areas where Claude struggles or deviates from instructions
-3. Iterate on skill content based on real usage patterns
-4. Test changes with multiple Claude instances or models
-5. Gather feedback from teammates if sharing skill
-
-**Testing Frequency:**
-- Test skills whenever Claude updates (new model versions)
-- Revalidate after significant content changes
-- Test across different projects and contexts
-- Verify with different user intents and query types
+**테스트 빈도:**
+- Claude가 업데이트될 때마다 스킬 테스트(새 모델 버전)
+- 중요한 콘텐츠 변경 후 재검증
+- 다양한 프로젝트와 컨텍스트에 걸쳐 테스트
+- 다양한 사용자 의도와 쿼리 유형으로 확인

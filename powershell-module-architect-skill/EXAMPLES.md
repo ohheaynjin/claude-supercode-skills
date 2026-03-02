@@ -1,10 +1,10 @@
-# PowerShell Module Architect - Examples & Patterns
+# PowerShell 모듈 설계자 - 예제 및 패턴
 
-## Anti-Patterns
+## 안티 패턴
 
-### Anti-Pattern: Monolithic .psm1 File
+### 안티 패턴: 모놀리식 .psm1 파일
 
-**What it looks like:**
+**모습:**
 ```powershell
 # BadModule.psm1 (3000 lines in one file)
 function Get-User { ... 200 lines ... }
@@ -12,13 +12,12 @@ function Set-User { ... 250 lines ... }
 function Remove-User { ... 180 lines ... }
 # ... 15 more functions ...
 ```
+**실패하는 이유:**
+- 유지보수가 불가능하고 탐색이 어려움
+- 모든 변경 시 Git 충돌
+- 공공/민간이 명확하게 구분되지 않음
 
-**Why it fails:**
-- Unmaintainable, hard to navigate
-- Git conflicts on every change
-- No clear public/private separation
-
-**Correct approach:**
+**올바른 접근 방식:**
 ```powershell
 # Module structure:
 # MyModule/
@@ -37,25 +36,23 @@ $Private = @(Get-ChildItem -Path $PSScriptRoot\Private\*.ps1)
 ($Private + $Public) | ForEach-Object { . $_.FullName }
 Export-ModuleMember -Function $Public.BaseName
 ```
-
 ---
 
-### Anti-Pattern: Using Wildcards in Exports
+### 안티 패턴: 내보내기에 와일드카드 사용
 
-**What it looks like:**
+**모습:**
 ```powershell
 # Module manifest
 FunctionsToExport = '*'
 CmdletsToExport = '*'
 AliasesToExport = '*'
 ```
+**실패하는 이유:**
+- 실수로 개인 도우미 기능을 내보냅니다.
+- 모듈 로딩 속도가 느림(명시적인 목록 없음)
+- 주요 변경 사항을 추적하기 어렵습니다.
 
-**Why it fails:**
-- Exports private helper functions accidentally
-- Slower module loading (no explicit list)
-- Hard to track breaking changes
-
-**Correct approach:**
+**올바른 접근 방식:**
 ```powershell
 # Explicit exports
 FunctionsToExport = @(
@@ -67,12 +64,11 @@ FunctionsToExport = @(
 CmdletsToExport = @()
 AliasesToExport = @('gou', 'sou')
 ```
-
 ---
 
-### Anti-Pattern: Missing Comment-Based Help
+### 안티 패턴: 주석 기반 도움말 누락
 
-**What it looks like:**
+**모습:**
 ```powershell
 function Get-OrgUser {
     param($Name)
@@ -82,13 +78,12 @@ function Get-OrgUser {
 # User runs: Get-Help Get-OrgUser
 # Output: Minimal or no help available
 ```
+**실패하는 이유:**
+- 사용자를 위한 문서가 없습니다.
+- 매개변수 이름을 기억하기 어려움
+- 배울 만한 사례가 없습니다.
 
-**Why it fails:**
-- No documentation for users
-- Hard to remember parameter names
-- No examples to learn from
-
-**Correct approach:**
+**올바른 접근 방식:**
 ```powershell
 function Get-OrgUser {
     <#
@@ -124,25 +119,23 @@ function Get-OrgUser {
 
 # Now: Get-Help Get-OrgUser shows comprehensive help
 ```
-
 ---
 
-### Anti-Pattern: Hardcoded Paths
+### 안티 패턴: 하드코딩된 경로
 
-**What it looks like:**
+**모습:**
 ```powershell
 function Get-Config {
     $configPath = "C:\Scripts\Config\settings.json"
     Get-Content $configPath | ConvertFrom-Json
 }
 ```
+**실패하는 이유:**
+- 다른 시스템의 중단
+- 단위 테스트가 불가능함
+- 환경에 대한 유연성이 없음
 
-**Why it fails:**
-- Breaks on other systems
-- Can't be unit tested
-- No flexibility for environments
-
-**Correct approach:**
+**올바른 접근 방식:**
 ```powershell
 function Get-Config {
     [CmdletBinding()]
@@ -158,13 +151,11 @@ function Get-Config {
 # Or use environment variables
 $defaultPath = $env:ORG_CONFIG_PATH ?? (Join-Path $PSScriptRoot 'Config\settings.json')
 ```
-
 ---
 
-## Pester Testing Patterns
+## 페스터 테스트 패턴
 
-### Basic Module Tests
-
+### 기본 모듈 테스트
 ```powershell
 # Tests/Module.Tests.ps1
 
@@ -199,9 +190,7 @@ Describe "$moduleName Module" {
     }
 }
 ```
-
-### Function Tests with Mocking
-
+### 모킹을 사용한 기능 테스트
 ```powershell
 # Tests/Get-OrgUser.Tests.ps1
 
@@ -237,11 +226,9 @@ Describe "Get-OrgUser" {
     }
 }
 ```
-
 ---
 
-## Error Handling Pattern
-
+## 오류 처리 패턴
 ```powershell
 function Invoke-OrgOperation {
     [CmdletBinding()]
@@ -307,11 +294,9 @@ function Invoke-OrgOperation {
     }
 }
 ```
-
 ---
 
-## Script to Module Conversion Tool
-
+## 스크립트-모듈 변환 도구
 ```powershell
 function Convert-ScriptToModule {
     <#
@@ -394,13 +379,11 @@ Export-ModuleMember -Function $Public.BaseName
     Write-Host "Module created at: $modulePath" -ForegroundColor Green
 }
 ```
-
 ---
 
-## Integration Examples
+## 통합 예
 
-### Integration with CI/CD
-
+### CI/CD와의 통합
 ```yaml
 # azure-pipelines.yml
 trigger:

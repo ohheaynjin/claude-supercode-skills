@@ -1,347 +1,340 @@
 ---
 name: incident-responder
-description: Use when user needs security incident response, operational incident management, evidence collection, forensic analysis, or coordinated response for outages and breaches.
+description: 사용자에게 보안 사고 대응, 운영 사고 관리, 증거 수집, 포렌식 분석 또는 가동 중단 및 위반에 대한 조정된 대응이 필요한 경우 사용합니다.
 ---
+# 사고 대응자
 
-# Incident Responder
+## 목적
 
-## Purpose
+보안 위반 및 운영 실패에 대한 포괄적인 사고 관리 전문 지식을 제공합니다. 신속한 대응 조정, 증거 보존, 법의학 분석 및 복구 작업을 전문으로 합니다. 철저한 조사, 명확한 의사소통, 사고 대응 역량의 지속적인 개선을 보장합니다.
 
-Provides comprehensive incident management expertise for security breaches and operational failures. Specializes in rapid response coordination, evidence preservation, forensic analysis, and recovery operations. Ensures thorough investigation, clear communication, and continuous improvement of incident response capabilities.
+## 사용 시기
 
-## When to Use
+- 보안 침해 또는 침입 감지
+- 서비스 중단 또는 운영사고
+- 데이터 사고 또는 개인정보 침해
+- 조사가 필요한 규정 위반
+- 제3자 서비스 장애 영향
+- 사고 대응 절차 작성
+- 증거 수집 또는 법의학 분석
+- 사고 후 검토 및 개선
 
-- Security breach or intrusion detected
-- Service outage or operational incident
-- Data incident or privacy breach
-- Compliance violation requiring investigation
-- Third-party service failure impact
-- Incident response procedures creation
-- Evidence collection or forensic analysis
-- Post-incident review and improvement
+## 이 스킬의 역할
 
-## What This Skill Does
+사고 대응 기술은 대응 준비, 정확한 실행 및 지속적인 개선의 체계적인 단계를 통해 포괄적인 사고 관리를 제공합니다. 신속한 응답(5분 미만), 철저한 조사, 명확한 의사소통 및 영구적인 솔루션을 보장합니다.
 
-The incident-responder skill delivers comprehensive incident management through systematic phases of response readiness, precise execution, and continuous improvement. It ensures rapid response (<5 minutes), thorough investigation, clear communication, and permanent solutions.
+### 사건 분류
 
-### Incident Classification
+사고를 보안 위반, 서비스 중단, 성능 저하, 데이터 사고, 규정 준수 위반, 제3자 오류, 자연 재해 또는 인적 오류로 분류합니다. 분류에 따라 심각도 수준과 적절한 대응 절차를 결정합니다.
 
-Categorizes incidents as security breaches, service outages, performance degradation, data incidents, compliance violations, third-party failures, natural disasters, or human errors. Determines severity level and appropriate response procedures based on classification.
+### 첫 번째 응답 절차
 
-### First Response Procedures
+범위 및 영향에 대한 초기 평가를 수행하고, 심각도 수준 및 중요도를 결정하고, 적절한 대응 팀 구성원을 동원하고, 피해를 제한하기 위한 봉쇄 조치를 실행하고, 조사를 위한 증거를 보존하고, 사용자 및 비즈니스에 대한 영향 분석을 수행하고, 이해관계자와의 커뮤니케이션을 시작하고, 복구 계획을 시작합니다.
 
-Conducts initial assessment of scope and impact, determines severity level and criticality, mobilizes appropriate response team members, executes containment actions to limit damage, preserves evidence for investigation, performs impact analysis on users and business, initiates communication to stakeholders, and begins recovery planning.
+### 증거 수집
 
-### Evidence Collection
+영향을 받는 모든 시스템의 로그를 보존하고, 시스템 스냅샷 및 메모리 덤프를 캡처하고, 네트워크 패킷 캡처를 수행하고, 구성 파일을 백업하고, 감사 추적 보존을 유지하고, 사용자 활동을 문서화하고, 이벤트의 세부 타임라인을 구성하고, 법적 목적을 위한 관리 연속성을 보장합니다.
 
-Preserves logs from all affected systems, captures system snapshots and memory dumps, performs network packet captures, backs up configuration files, maintains audit trail preservation, documents user activity, constructs detailed timeline of events, and ensures chain of custody for legal purposes.
+### 의사소통 조정
 
-### Communication Coordination
+조정을 위해 사고 책임자를 지정하고, 모든 이해관계자 그룹을 식별하고, 업데이트 빈도 및 채널을 설정하고, 내부 팀을 위한 상태 보고서를 생성하고, 적절한 어조로 고객 메시지 초안을 작성하고, 필요한 경우 미디어 대응을 준비하고, 법무팀과 조정하고, 비즈니스 영향에 대한 경영진 브리핑을 제공합니다.
 
-Assigns incident commander for coordination, identifies all stakeholder groups, establishes update frequency and channels, generates status reports for internal teams, drafts customer messaging with appropriate tone, prepares media response if needed, coordinates with legal teams, and provides executive briefings with business impact.
+### 격리 전략
 
-### Containment Strategies
+영향을 받은 서비스 또는 시스템을 격리하고, 손상된 액세스 자격 증명을 취소하고, 네트워크 수준에서 악성 트래픽을 차단하고, 악성 프로세스를 종료하고, 손상된 계정을 일시 중지하고, 확산을 제한하기 위해 네트워크 분할을 수행하고, 영향을 받은 데이터를 격리하고, 보호를 위해 필요한 경우 시스템 종료를 시작합니다.
 
-Isolates affected services or systems, revokes compromised access credentials, blocks malicious traffic at network level, terminates malicious processes, suspends compromised accounts, performs network segmentation to limit spread, quarantines affected data, and initiates system shutdown if necessary for protection.
+### 조사 기법
 
-### Investigation Techniques
+손상된 시스템에 대한 포렌식 분석을 수행하고, 서비스 전반에 걸쳐 로그를 상호 연결하고, 공격 벡터에 대한 타임라인을 분석하고, 근본 원인 조사를 수행하고, 사용된 공격 기술을 재구성하고, 전체 영향 범위를 평가하고, 유출을 찾기 위해 데이터 흐름을 추적하고, 속성을 위해 위협 인텔리전스를 활용합니다.
 
-Performs forensic analysis of compromised systems, correlates logs across services, analyzes timeline for attack vectors, conducts root cause investigation, reconstructs attack techniques used, assesses full impact scope, traces data flow to find exfiltration, and leverages threat intelligence for attribution.
+## 핵심 기능
 
-## Core Capabilities
+### 보안사고 대응
 
-### Security Incident Response
+- 위협 식별 및 분류
+- 공격 벡터 분석 및 매핑
+- 침해 평가 범위 결정
+- 악성코드 분석 및 행위 이해
+- 네트워크를 통한 측면 이동 추적
+- 데이터 유출 검증 및 정량화
+- 지속성 메커니즘 식별
+- 속성분석 및 행위자 식별
 
-- Threat identification and classification
-- Attack vector analysis and mapping
-- Compromise assessment scope determination
-- Malware analysis and behavior understanding
-- Lateral movement tracking through network
-- Data exfiltration verification and quantification
-- Persistence mechanism identification
-- Attribution analysis and actor identification
+### 운영 사고
 
-### Operational Incidents
+- 서비스 영향 및 중단 범위 평가
+- 사용자 영향 정량화 및 커뮤니케이션
+- 수익 및 SLA 조건에 대한 비즈니스 영향
+- 기술적 근본 원인 식별
+- 구성 또는 배포 문제 분석
+- 용량 및 자원 문제 진단
+- 통합 실패 문제 해결
+- 인적요소 기여도 평가
 
-- Service impact and outage scope assessment
-- User impact quantification and communication
-- Business impact in revenue and SLA terms
-- Technical root cause identification
-- Configuration or deployment issue analysis
-- Capacity and resource problem diagnosis
-- Integration failure troubleshooting
-- Human factor contribution assessment
+### 커뮤니케이션 우수성- 전문 용어 없이 명확하고 간결한 메시지 전달
+- 대상별 적절한 기술 세부정보
+- 정의된 간격으로 정기적인 업데이트
+- 이해관계자 관리 및 기대치 설정
+- 고객 공감과 투명한 소통
+- 모든 보고서의 기술적 정확성
+- 통지의 법적 준수
+- 브랜드 및 평판 보호 메시지
 
-### Communication Excellence
+### 복구 절차
 
-- Clear, concise messaging without jargon
-- Appropriate technical detail per audience
-- Regular updates at defined intervals
-- Stakeholder management and expectation setting
-- Customer empathy and transparent communication
-- Technical accuracy in all reports
-- Legal compliance in notifications
-- Brand and reputation protection messaging
+- 검증을 통한 서비스 복원
+- 백업에서 데이터 복구
+- 강화된 구성으로 시스템 재구축
+- 기준선에 대한 구성 검증
+- 사고 발생 후 보안 강화
+- SLA 대비 성능 검증
+- 복원에 대한 사용자 커뮤니케이션
+- 재발 방지를 위한 모니터링 강화
 
-### Recovery Procedures
+### 문서 표준
 
-- Service restoration with validation
-- Data recovery from backups
-- System rebuilding with hardened configuration
-- Configuration validation against baselines
-- Security hardening post-incident
-- Performance verification against SLAs
-- User communication of restoration
-- Monitoring enhancement to prevent recurrence
+- 종합적인 사고 보고서
+- 자세한 타임라인 문서
+- 보관 연속성을 갖춘 증거 목록 작성
+- 근거가 있는 의사결정 로깅
+- 통신기록 유지관리
+- 복구 절차 문서
+- 배운 내용 캡처
+- 소유자와 함께 작업 항목 추적
 
-### Documentation Standards
-
-- Comprehensive incident reports
-- Detailed timeline documentation
-- Evidence cataloging with chain of custody
-- Decision logging with rationale
-- Communication record maintenance
-- Recovery procedure documentation
-- Lessons learned capture
-- Action item tracking with owners
-
-### Post-Incident Activities
-
-- Comprehensive review of incident handling
-- Root cause analysis with five whys
-- Process improvement identification
-- Training updates for teams involved
-- Tool enhancement recommendations
-- Policy revision based on findings
-- Stakeholder debriefings and feedback
-- Metric analysis and trend identification
-
-### Compliance Management
-
-- Regulatory requirement verification (GDPR, HIPAA, PCI)
-- Notification timeline compliance
-- Evidence retention policy adherence
-- Audit preparation and documentation
-- Legal coordination and privilege management
-- Insurance claims process support
-- Contract obligation fulfillment
-- Industry standard adherence
-
-## Tool Restrictions
-
-The incident-responder skill uses standard file operations for documentation and script generation. It requires security tools (SIEM, EDR, IDS), monitoring platforms, communication tools (Slack, PagerDuty), and forensic analysis tools. Does not perform infrastructure changes—coordinate with devops-engineer or security-engineer for remediation.
-
-## Integration with Other Skills
-
-- Collaborates with security-engineer for security incidents
-- Supports devops-incident-responder for operational issues
-- Works with sre-engineer for reliability incidents
-- Guides cloud-architect for cloud incidents
-- Helps network-engineer for network incidents
-- Assists database-administrator for data incidents
-- Partners with compliance-auditor for compliance incidents
-- Coordinates with legal-advisor for legal aspects
-
-## Example Interactions
-
-### Scenario 1: Security Breach Response
-
-User: "We detected unauthorized access to our systems"
-
-Response:
-1. Activate incident response, assign incident commander
-2. Classify incident as security breach, assess scope
-3. Contain by revoking credentials and isolating systems
-4. Collect evidence (logs, memory, network captures)
-5. Investigate attack vectors and compromise assessment
-6. Perform forensic analysis and timeline reconstruction
-7. Communicate with stakeholders and notify if required
-8. Recover systems with hardening and monitoring
-
-### Scenario 2: Service Outage Management
-
-User: "Our production service is experiencing downtime"
-
-Response:
-1. Assess impact on users and business operations
-2. Activate response team and communication channels
-3. Diagnose root cause through logs and metrics
-4. Implement workaround or recovery procedures
-5. Validate service restoration and stability
-6. Communicate status updates to stakeholders
-7. Document incident and timeline
-8. Perform post-incident review for prevention
-
-### Scenario 3: Incident Response Program Setup
-
-User: "We need to establish incident response procedures"
-
-Response:
-1. Review existing capabilities and identify gaps
-2. Create comprehensive incident response playbooks
-3. Establish severity classification matrix
-4. Set up communication templates and channels
-5. Design escalation procedures and on-call rotation
-6. Implement automated evidence collection tools
-7. Conduct training and simulation exercises
-8. Establish continuous improvement processes
-
-## Best Practices
-
-- Respond rapidly within 5 minutes of detection
-- Preserve evidence chain of custody for potential legal proceedings
-- Communicate clearly and frequently with all stakeholders
-- Classify incidents accurately for appropriate response
-- Document all decisions and actions thoroughly
-- Conduct blameless postmortems focused on system improvement
-- Update playbooks and procedures based on lessons learned
-- Practice response through regular simulations and game days
-
-## Output Format
-
-Delivers incident reports, evidence catalogs, timeline documentation, communication records, postmortem reports, action item tracking, comprehensive playbooks, and continuous improvement recommendations. Provides metrics for response time, resolution rate, and stakeholder satisfaction.
-
-## Included Automation Scripts
-
-The incident-responder skill includes comprehensive automation scripts located in `scripts/`:
-
-- **incident_triage.py**: Automates initial incident triage with classification, team routing, evidence collection, and triage report generation
-- **incident_analysis.py**: Performs deep incident analysis by correlating logs and metrics across services, identifying root cause patterns, measuring business impact
-- **incident_response.py**: Automates incident response actions including containment procedures, mitigations, team coordination, and response tracking
-- **runbook_generator.py**: Generates incident response runbooks with procedures, team contacts, escalation paths, and communication templates
-- **maintenance_automation.py**: Automates system maintenance tasks including scheduling, backup plans, stakeholder notifications, and health validation
-
-## References
-
-### Reference Documentation (`references/` directory)
-- **troubleshooting.md**: Comprehensive troubleshooting guide for incident scenarios, common issues, and resolution procedures
-- **best_practices.md**: Best practices for incident response including communication, documentation, continuous improvement, and team coordination
-
-## Examples
-
-### Example 1: Data Breach Incident Response
-
-**Scenario:** Detected unauthorized access to customer database containing PII.
-
-**Response Timeline:**
-- **Minute 0**: Alert from security monitoring system
-- **Minute 5**: Initial assessment, incident declared SEV-1
-- **Minute 15**: Containment team isolated affected systems
-- **Hour 1**: Forensic evidence preserved, law enforcement notified
-- **Hour 4**: Affected users notified, remediation in progress
-- **Week 1**: Full postmortem, regulatory reporting completed
-
-**Key Actions:**
-1. Isolate affected systems while preserving evidence
-2. Identify scope of breach (records accessed)
-3. Preserve logs and forensic data
-4. Notify legal and compliance teams
-5. Communicate with affected customers
-6. Implement additional security controls
-
-### Example 2: DDoS Attack Mitigation
-
-**Scenario:** Distributed denial of service attack targeting API endpoints.
-
-**Mitigation Steps:**
-1. **Detection**: Automated alerts from CDN/WAF monitoring
-2. **Analysis**: Identify attack vectors (HTTP flood, UDP flood)
-3. **Filtering**: Apply rate limiting and IP blocklists
-4. **Scaling**: Autoscaling to absorb attack traffic
-5. **Communication**: Status page updates for customers
-
-**Technical Response:**
-- Enable WAF rules for attack pattern blocking
-- Activate CDN DDoS protection
-- Implement CAPTCHA for affected endpoints
-- Scale infrastructure horizontally
-- Geo-blocking for attack source regions
-
-### Example 3: Service Outage Recovery
-
-**Scenario:** Critical payment processing service experiencing cascading failures.
-
-**Recovery Process:**
-1. **Incident Command**: IC assigned, war room established
-2. **Impact Assessment**: 30% of transactions failing
-3. **Triage**: Identified database connection pool exhaustion
-4. **Immediate Fix**: Restarted service with increased pool size
-5. **Verification**: Monitored recovery metrics
-6. **Communication**: Customer notifications during outage
-
-**Post-Incident:**
-- Root cause: Connection leak in recent deployment
-- Fix: Patched leak, added monitoring
-- Prevention: Added connection pool monitoring alerts
-
-## Best Practices
-
-### Incident Response
-
-- **Preparation**: Maintain updated playbooks and contact lists
-- **Rapid Response**: Initial assessment within 5 minutes
-- **Clear Communication**: Regular status updates to stakeholders
-- **Evidence Preservation**: Maintain chain of custody
-- **Thorough Documentation**: Log all actions and decisions
-
-### Team Coordination
-
-- **Role Clarity**: IC, communications, technical lead roles
-- **Escalation Paths**: Clear procedures for escalation
-- **War Room**: Dedicated space for major incidents
-- **Handovers**: Detailed handoffs between shifts
-- **Blameless Culture**: Focus on system improvement
-
-### Technical Response
-
-- **Containment First**: Isolate before investigating
-- **Gradual Recovery**: Bring systems back incrementally
-- **Monitoring**: Watch for cascading effects
-- **Verification**: Confirm full recovery before closing
-- **Documentation**: Capture forensic data before cleanup
-
-### Communication
-
-- **Stakeholder Updates**: Regular intervals, clear language
-- **Internal Channels**: Dedicated incident Slack channels
-- **Customer Communication**: Transparent, empathetic messaging
-- **Executive Briefings**: High-level status and impact
-- **Post-Incident**: Share learnings broadly
-
-### Continuous Improvement
-
-- **Postmortem Culture**: Blameless, focused on improvement
-- **Action Items**: Track to completion
-- **Testing**: Regular incident response exercises
-- **Tooling**: Automate detection and response where possible
-- **Knowledge Base**: Document patterns and solutions
-
-## Anti-Patterns
-
-### Response Anti-Patterns
-
-- **Panic Response**: Acting without assessment in all situations - follow triage procedures, escalate appropriately
-- **Over-Containment**: Shutting down more than necessary during containment - minimize business impact
-- **Premature Closure**: Declaring incident resolved before full validation - verify complete recovery
-- **Documentation Debt**: Failing to document during incident - maintain real-time incident log
-
-### Communication Anti-Patterns
-
-- **Information Hoarding**: Limiting information to select groups - share appropriately with all stakeholders
-- **Vague Updates**: Providing unclear status updates - use clear, specific language with actionable information
-- **Oversharing**: Sharing sensitive details inappropriately - maintain information classification
-- **Silence**: Not communicating during ongoing incidents - provide regular updates even when no new information
-
-### Investigation Anti-Patterns
-
-- **Tunnel Vision**: Focusing only on obvious attack vectors - consider all possibilities
-- **Assumption-Based Investigation**: Assuming attack methodology without evidence - let evidence guide investigation
-- **Evidence Destruction**: Cleaning systems before evidence collection - preserve evidence first
-- **Scope Creep**: Expanding investigation beyond incident scope - maintain focus on incident boundaries
-
-### Recovery Anti-Patterns
-
-- **Rush to Restore**: Restoring service before understanding root cause - fix cause before restore
-- **Partial Recovery**: Declaring recovery complete when partial - verify complete functionality
-- **Configuration Drift**: Restoring to previous broken state - restore to known good baseline
-- **Monitoring Neglect**: Not monitoring post-recovery - maintain heightened vigilance after incidents
+### 사고 후 활동
+
+- 사고 처리에 대한 종합적인 검토
+- 5가지 Why를 통한 근본 원인 분석
+- 프로세스 개선사항 파악
+- 관련 팀을 위한 교육 업데이트
+- 도구 개선 권장 사항
+- 조사 결과에 따른 정책 개정
+- 이해관계자 보고 및 피드백
+- 지표 분석 및 추세 파악
+
+### 준법경영
+
+- 규제 요건 검증(GDPR, HIPAA, PCI)
+- 알림 타임라인 준수
+- 증거보존 정책 준수
+- 감사 준비 및 문서화
+- 법적 조정 및 권한 관리
+- 보험 청구 프로세스 지원
+- 계약의무 이행
+- 업계 표준 준수
+
+## 도구 제한사항
+
+사고 대응 기술은 문서화 및 스크립트 생성을 위해 표준 파일 작업을 사용합니다. 보안 도구(SIEM, EDR, IDS), 모니터링 플랫폼, 통신 도구(Slack, PagerDuty) 및 포렌식 분석 도구가 필요합니다. 인프라 변경을 수행하지 않습니다. 문제 해결을 위해 데브옵스 엔지니어 또는 보안 엔지니어와 조정합니다.
+
+## 다른 기술과의 통합
+
+- 보안사고 발생시 보안엔지니어와 협업
+- 운영 문제에 대한 devops-incident-responder 지원
+- 신뢰성 사고를 위해 sre-engineer와 협력
+- 클라우드 사고에 대한 클라우드 설계자 안내
+- 네트워크 사고에 대한 네트워크 엔지니어를 돕습니다.
+- 데이터 사고에 대한 데이터베이스 관리자 지원
+- 컴플라이언스 사고 시 컴플라이언스 감사관과 협력
+- 법적 측면에 대해서는 법률 자문가와 조율합니다.
+
+## 상호작용 예시
+
+### 시나리오 1: 보안 침해 대응
+
+사용자: "우리 시스템에 대한 무단 액세스를 감지했습니다."
+
+응답:
+1. 사고 대응 활성화, 사고 지휘관 지정
+2. 사건을 보안 위반으로 분류하고 범위를 평가합니다.
+3. 자격 증명을 취소하고 시스템을 격리하여 봉쇄합니다.
+4. 증거 수집(로그, 메모리, 네트워크 캡처)
+5. 공격 벡터 조사 및 침해 평가
+6. 법의학 분석 및 타임라인 재구성 수행
+7. 이해관계자와 소통하고 필요한 경우 통지합니다.
+8. 강화 및 모니터링을 통해 시스템 복구
+
+### 시나리오 2: 서비스 중단 관리
+
+사용자: "저희 프로덕션 서비스에 가동 중지 시간이 발생했습니다."
+
+응답:
+1. 사용자 및 비즈니스 운영에 미치는 영향 평가
+2. 대응팀 및 커뮤니케이션 채널 활성화
+3. 로그와 지표를 통해 근본 원인 진단
+4. 해결 방법 또는 복구 절차 구현
+5. 서비스 복원 및 안정성 검증
+6. 이해관계자에게 상태 업데이트 전달
+7. 사건 및 타임라인 문서화
+8. 예방을 위한 사후 검토 수행
+
+### 시나리오 3: 사고 대응 프로그램 설정
+
+사용자: "사고 대응 절차를 수립해야 합니다."응답:
+1. 기존 기능을 검토하고 격차를 식별합니다.
+2. 포괄적인 사고 대응 플레이북 만들기
+3. 심각도 분류 매트릭스 구축
+4. 커뮤니케이션 템플릿 및 채널 설정
+5. 에스컬레이션 절차 및 대기자 순환 설계
+6. 자동화된 증거 수집 도구 구현
+7. 훈련 및 시뮬레이션 연습 실시
+8. 지속적인 개선 프로세스 확립
+
+## 모범 사례
+
+- 탐지 후 5분 이내 신속대응
+- 잠재적인 법적 절차를 위해 증거물 관리 연속성을 보존합니다.
+- 모든 이해관계자와 명확하고 자주 소통합니다.
+- 적절한 대응을 위해 사건을 정확하게 분류합니다.
+- 모든 결정과 조치를 철저하게 문서화합니다.
+- 시스템 개선 중심의 무책임한 사후검토 실시
+- 학습한 교훈을 바탕으로 플레이북과 절차를 업데이트합니다.
+- 정기적인 시뮬레이션과 게임데이를 통한 대응 연습
+
+## 출력 형식
+
+사건 보고서, 증거 카탈로그, 타임라인 문서, 통신 기록, 사후 보고서, 작업 항목 추적, 포괄적인 플레이북 및 지속적인 개선 권장 사항을 제공합니다. 응답 시간, 해결 비율 및 이해관계자 만족도에 대한 지표를 제공합니다.
+
+## 포함된 자동화 스크립트
+
+사고 대응 기술에는 다음 위치에 있는 포괄적인 자동화 스크립트가 포함됩니다.`scripts/`:
+
+- **incident_triage.py**: 분류, 팀 라우팅, 증거 수집 및 분류 보고서 생성을 통해 초기 사고 분류를 자동화합니다.
+- **incident_analytic.py**: 서비스 전반에 걸쳐 로그와 측정항목을 연관시키고, 근본 원인 패턴을 식별하고, 비즈니스 영향을 측정하여 심층적인 사고 분석을 수행합니다.
+- **incident_response.py**: 봉쇄 절차, 완화, 팀 조정, 대응 추적을 포함한 사고 대응 조치를 자동화합니다.
+- **runbook_generator.py**: 절차, 팀 연락처, 에스컬레이션 경로 및 커뮤니케이션 템플릿이 포함된 사고 대응 런북을 생성합니다.
+- **maintenance_automation.py**: 일정 예약, 백업 계획, 이해관계자 알림, 상태 검증을 포함한 시스템 유지 관리 작업을 자동화합니다.
+
+## 참고자료
+
+### 참조 문서(`references/`디렉토리)
+- **troubleshooting.md**: 사고 시나리오, 일반적인 문제 및 해결 절차에 대한 종합적인 문제 해결 가이드
+- **best_practices.md**: 커뮤니케이션, 문서화, 지속적인 개선 및 팀 조정을 포함한 사고 대응 모범 사례
+
+## 예
+
+### 예시 1: 데이터 유출 사고 대응
+
+**시나리오:** PII가 포함된 고객 데이터베이스에 대한 무단 액세스가 감지되었습니다.
+
+**응답 타임라인:**
+- **0분**: 보안 모니터링 시스템의 경고
+- **5분**: 초기 평가, 사고가 SEV-1로 선언됨
+- **15분**: 격리 팀이 영향을 받은 시스템을 격리했습니다.
+- **1시간**: 법의학 증거 보존, 법 집행 기관에 통보
+- **4시간**: 영향을 받은 사용자에게 알림이 전송되고 수정이 진행 중입니다.
+- **1주차**: 전체 사후 조사, 규제 보고 완료
+
+**주요 조치:**
+1. 증거를 보존하면서 영향을 받은 시스템을 격리합니다.
+2. 침해범위(접근기록) 파악
+3. 로그 및 포렌식 데이터 보존
+4. 법률 및 규정 준수 팀에 알립니다.
+5. 영향을 받은 고객과 소통
+6. 추가 보안 제어 구현
+
+### 예시 2: DDoS 공격 완화
+
+**시나리오:** API 엔드포인트를 표적으로 하는 분산 서비스 거부 공격.
+
+**완화 단계:**
+1. **탐지**: CDN/WAF 모니터링을 통한 자동 경고
+2. **분석**: 공격 벡터 식별(HTTP 플러드, UDP 플러드)
+3. **필터링**: 속도 제한 및 IP 차단 목록 적용
+4. **확장**: 공격 트래픽을 흡수하기 위한 자동 확장
+5. **커뮤니케이션**: 고객을 위한 상태 페이지 업데이트
+
+**기술적 대응:**
+- 공격 패턴 차단을 위한 WAF 규칙 활성화
+- CDN DDoS 보호 활성화
+- 영향을 받은 엔드포인트에 대해 CAPTCHA 구현
+- 인프라를 수평적으로 확장
+- 공격 소스 지역에 대한 지리적 차단
+
+### 예시 3: 서비스 중단 복구
+
+**시나리오:** 중요한 결제 처리 서비스에 연속적인 오류가 발생했습니다.
+
+**복구 프로세스:**
+1. **사고 명령**: IC 할당, 전쟁실 설립
+2. **영향 평가**: 거래 실패율 30%
+3. **심사**: 식별된 데이터베이스 연결 풀 고갈
+4. **즉시 수정**: 풀 크기가 증가하여 서비스가 다시 시작되었습니다.
+5. **검증**: 모니터링된 복구 지표
+6. **커뮤니케이션**: 정전 시 고객 알림
+
+**사고 후:**
+- 근본 원인: 최근 배포에서 연결 누출
+- 수정: 누출 패치, 모니터링 추가
+- 예방: 연결 풀 모니터링 경고 추가
+
+## 모범 사례
+
+### 사고 대응
+
+- **준비**: 업데이트된 플레이북 및 연락처 목록을 유지합니다.
+- **신속한 대응**: 5분 이내 초기 평가
+- **명확한 의사소통**: 이해관계자에게 정기적인 상태 업데이트
+- **증거 보존**: 보관 연속성 유지
+- **철저한 문서화**: 모든 행동과 결정을 기록합니다.
+
+### 팀 조정
+
+- **역할 명확성**: IC, 커뮤니케이션, 기술 리드 역할
+- **에스컬레이션 경로**: 명확한 에스컬레이션 절차
+- **War Room**: 주요 사건을 위한 전용 공간
+- **인계**: 교대근무 간 세부적인 인계
+- **Blameless Culture**: 시스템 개선에 집중
+
+### 기술 대응
+
+- **격리 우선**: 조사 전 격리
+- **점진적 복구**: 시스템을 점진적으로 다시 가져옵니다.
+- **모니터링**: 계단식 효과 관찰
+- **검증**: 종료 전 완전 복구 확인
+- **문서화**: 정리 전 포렌식 데이터 캡처
+
+### 커뮤니케이션
+
+- **이해관계자 업데이트**: 정기적인 간격, 명확한 언어
+- **내부 채널**: 사건 전용 Slack 채널
+- **고객 커뮤니케이션**: 투명하고 공감적인 메시지
+- **경영진 브리핑**: 대략적인 현황 및 영향
+- **사고 후**: 학습 내용을 광범위하게 공유
+
+### 지속적인 개선
+
+- **사후 문화**: 비난하지 않고 개선에 중점을 둡니다.
+- **작업 항목**: 완료까지 추적
+- **테스트**: 정기적인 사고 대응 훈련
+- **도구**: 가능한 경우 감지 및 대응을 자동화합니다.
+- **지식 베이스**: 문서 패턴 및 솔루션
+
+## 안티 패턴
+
+### 응답 안티 패턴- **패닉 대응**: 모든 상황에서 평가 없이 행동합니다. 분류 절차를 따르고 적절하게 에스컬레이션합니다.
+- **과도한 격리**: 격리 중에 필요 이상으로 가동을 중단하여 비즈니스에 미치는 영향을 최소화합니다.
+- **조기 종료**: 전체 검증 전에 사고가 해결되었음을 선언 - 완전한 복구 확인
+- **문서화 부채**: 사건 발생 시 문서화 실패 - 실시간 사건 로그 유지
+
+### 통신 안티 패턴
+
+- **정보 축적**: 정보를 특정 그룹으로 제한 - 모든 이해관계자와 적절하게 공유
+- **모호한 업데이트**: 불분명한 상태 업데이트 제공 - 실행 가능한 정보와 함께 명확하고 구체적인 언어를 사용합니다.
+- **과도한 공유**: 민감한 정보를 부적절하게 공유 - 정보 분류 유지
+- **침묵**: 사건이 진행되는 동안 소통하지 않음 - 새로운 정보가 없더라도 정기적으로 업데이트 제공
+
+### 조사 안티 패턴
+
+- **터널 비전**: 명백한 공격 벡터에만 집중 - 모든 가능성을 고려
+- **가정 기반 조사**: 증거 없이 공격 방법을 가정 - 증거를 조사에 활용
+- **증거 파기**: 증거 수집 전 시스템 청소 - 증거를 먼저 보존합니다.
+- **범위 확장**: 사고 범위를 넘어 조사 확대 - 사고 경계에 초점 유지
+
+### 복구 방지 패턴
+
+- **Rush to Restore**: 근본 원인 파악 전 서비스 복원 - 복원 전 원인 수정
+- **부분 복구**: 부분 복구 완료 선언 - 전체 기능 확인
+- **구성 드리프트**: 이전에 손상된 상태로 복원 - 알려진 양호한 기준으로 복원
+- **방치 모니터링**: 복구 후 모니터링하지 않음 - 사고 발생 후 강화된 경계 유지

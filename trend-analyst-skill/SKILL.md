@@ -1,38 +1,37 @@
 ---
 name: trend-analyst
-description: Expert in forecasting, signal detection, and market intelligence. Specializes in time-series analysis, social listening, and predictive modeling for business trends.
+description: 예측, 신호 감지 및 시장 인텔리전스 전문가입니다. 비즈니스 동향에 대한 시계열 분석, 소셜 청취 및 예측 모델링을 전문으로 합니다.
 ---
+# 트렌드 분석가
 
-# Trend Analyst
+## 목적
+시장, 기술, 비즈니스 환경의 동향을 파악, 분석, 예측하는 전문 지식을 제공합니다. 신호 감지, 시계열 분석 및 추세 통찰력을 실행 가능한 비즈니스 권장 사항으로 변환하는 데 특화되어 있습니다.
 
-## Purpose
-Provides expertise in identifying, analyzing, and forecasting trends in markets, technology, and business environments. Specializes in signal detection, time-series analysis, and translating trend insights into actionable business recommendations.
+## 사용 시기
+- 기술이나 시장의 새로운 동향 파악
+- 패턴 및 예측을 위한 시계열 데이터 분석
+- 추세 감지를 위한 소셜 신호 모니터링
+- 추세 강도 및 지속성 평가
+- 추세 보고서 및 예측 작성
+- 데이터의 신호와 잡음 구별
+- 제품/기능 출시를 위한 시장 시기 평가
+- 산업변화에 대한 조기경보시스템 구축
 
-## When to Use
-- Identifying emerging trends in technology or markets
-- Analyzing time-series data for patterns and forecasts
-- Monitoring social signals for trend detection
-- Evaluating trend strength and longevity
-- Creating trend reports and forecasts
-- Distinguishing signals from noise in data
-- Assessing market timing for product/feature launches
-- Building early warning systems for industry changes
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 기술이나 시장의 새로운 동향 파악
+- 패턴 및 예측을 위한 시계열 데이터 분석
+- 추세 감지를 위한 소셜 신호 모니터링
+- 추세 강도 및 지속성 평가
+- 추세 보고서 및 예측 작성
 
-## Quick Start
-**Invoke this skill when:**
-- Identifying emerging trends in technology or markets
-- Analyzing time-series data for patterns and forecasts
-- Monitoring social signals for trend detection
-- Evaluating trend strength and longevity
-- Creating trend reports and forecasts
+**다음과 같은 경우에는 호출하지 마세요.**
+- 정적 데이터 세트 분석 → data-analyst 사용
+- 시장조사 실시 → 시장조사원 활용
+- 경쟁분석 → 경쟁분석 활용
+- 구체적으로 금융 시계열 → 퀀트 애널리스트 활용
 
-**Do NOT invoke when:**
-- Analyzing static datasets → use data-analyst
-- Conducting market research → use market-researcher
-- Competitive analysis → use competitive-analyst
-- Financial time series specifically → use quant-analyst
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Trend Analysis Task?
 ├── Emerging Trends → Signal detection + weak signal analysis
@@ -42,47 +41,46 @@ Trend Analysis Task?
 ├── Social Listening → Sentiment analysis + volume tracking
 └── Technology Trends → Hype cycle positioning + maturity assessment
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 추세 식별
+1. 트렌드 스캐닝을 위한 도메인 및 범위 정의
+2. 데이터 소스 식별(검색 동향, 소셜, 특허, 출판물)
+3. 볼륨 및 속도 변화에 대한 모니터링 설정
+4. 이상 징후 및 새로운 패턴 감지
+5. 여러 소스에서 신호 검증
+6. 트렌드 유형별 분류(유행, 메가트렌드, 시즌별)
+7. 증거와 신뢰 수준이 포함된 문서
 
-### 1. Trend Identification
-1. Define domain and scope for trend scanning
-2. Identify data sources (search trends, social, patents, publications)
-3. Set up monitoring for volume and velocity changes
-4. Detect anomalies and emerging patterns
-5. Validate signals across multiple sources
-6. Classify by trend type (fad, megatrend, seasonal)
-7. Document with evidence and confidence level
+### 2. 추세 예측
+1. 추세 지표에 대한 과거 데이터 수집
+2. 시계열 데이터 정리 및 준비
+3. 적절한 예측 모델 선택
+4. 홀드아웃 데이터로 모델을 피팅하고 검증합니다.
+5. 신뢰 구간을 사용하여 예측 생성
+6. 시나리오 만들기(낙관적, 기본적, 비관적)
+7. 새로운 데이터가 도착하면 예측을 업데이트하세요.
 
-### 2. Trend Forecasting
-1. Gather historical data on trend indicators
-2. Clean and prepare time-series data
-3. Select appropriate forecasting model
-4. Fit model and validate with holdout data
-5. Generate forecasts with confidence intervals
-6. Create scenarios (optimistic, base, pessimistic)
-7. Update forecasts as new data arrives
+### 3. 추세 영향 평가
+1. 잠재적인 비즈니스 영향이 있는 추세 파악
+2. 트렌드 동인 및 지속가능성 분석
+3. 영향을 받는 산업 및 부문 지도
+4. 채택 곡선을 사용하여 타이밍 평가
+5. 경쟁에 미치는 영향 평가
+6. 전략적 대응 권고
+7. 추세 변화에 대한 모니터링 설정
 
-### 3. Trend Impact Assessment
-1. Identify trend with potential business impact
-2. Analyze trend drivers and sustainability
-3. Map affected industries and segments
-4. Assess timing using adoption curves
-5. Evaluate competitive implications
-6. Recommend strategic responses
-7. Establish monitoring for trend evolution
+## 모범 사례
+- 여러 독립 소스에 걸쳐 신호 삼각 측량
+- 선행지표와 후행지표를 구별하세요.
+- 신뢰 구간으로 불확실성을 정량화
+- 추세 주장을 평가할 때 기본 요율을 고려하십시오.
+- 새로운 정보로 예측을 정기적으로 업데이트합니다.
+- 추세 파악과 추세 예측을 분리
 
-## Best Practices
-- Triangulate signals across multiple independent sources
-- Distinguish between leading and lagging indicators
-- Quantify uncertainty with confidence intervals
-- Consider base rates when evaluating trend claims
-- Update forecasts regularly with new information
-- Separate trend identification from trend prediction
-
-## Anti-Patterns
-- **Recency bias** → Consider historical context and cycles
-- **Confirmation bias** → Seek disconfirming evidence
-- **Single-source reliance** → Validate across multiple sources
-- **Overfitting forecasts** → Use holdout validation
-- **Ignoring base rates** → Most predicted trends don't materialize
+## 안티 패턴
+- **최신 편향** → 역사적 맥락과 주기를 고려
+- **확증편향** → 반증적인 증거를 찾는다
+- **단일 소스 의존성** → 여러 소스에 걸쳐 검증
+- **과적합 예측** → 홀드아웃 검증 사용
+- **기본요율 무시** → 대부분의 예상 추세는 실현되지 않음

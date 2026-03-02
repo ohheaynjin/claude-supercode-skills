@@ -59,6 +59,7 @@
 }
 ```
 
+
 ## Pattern 2: Accessible Button Component (React + Tailwind)
 
 ```tsx
@@ -116,6 +117,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = 'Button';
 ```
 
+
 ## Pattern 3: Responsive Card Layout
 
 ```tsx
@@ -150,6 +152,7 @@ export const Card = ({ title, description, image, action }) => (
 );
 ```
 
+
 ## Anti-Pattern 1: Ignoring Color Contrast Requirements
 
 ### What it looks like (BAD):
@@ -167,6 +170,7 @@ export const Card = ({ title, description, image, action }) => (
   /* Contrast ratio: 1.4:1 ❌ (completely unreadable) */
 }
 ```
+
 
 ### Why it fails:
 - Users with low vision cannot read text
@@ -193,6 +197,7 @@ export const Card = ({ title, description, image, action }) => (
 /* https://webaim.org/resources/contrastchecker/ */
 ```
 
+
 ## Anti-Pattern 2: Over-Animating UI
 
 ### What it looks like (BAD):
@@ -214,6 +219,7 @@ export const Card = ({ title, description, image, action }) => (
   /* Constantly animating buttons = accessibility nightmare */
 }
 ```
+
 
 ### Why it fails:
 - Triggers motion sickness for users with vestibular disorders
@@ -254,6 +260,7 @@ export const Card = ({ title, description, image, action }) => (
   to { transform: rotate(360deg); }
 }
 ```
+
 
 ## Form Accessibility Examples
 
@@ -313,6 +320,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   }
 );
 ```
+
 
 ### Focus Management in Modal
 
@@ -385,6 +393,7 @@ export const Modal = ({ isOpen, onClose, title, children }) => {
 };
 ```
 
+
 ## Responsive Grid Pattern
 
 ```css
@@ -425,6 +434,7 @@ export const Modal = ({ isOpen, onClose, title, children }) => {
   }
 }
 ```
+
 
 ## Loading Skeleton Pattern
 

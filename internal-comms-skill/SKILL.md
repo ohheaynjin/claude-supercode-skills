@@ -1,38 +1,32 @@
 ---
 name: internal-comms
-description: Expert in corporate communication, employee engagement, and change management. Use when drafting internal announcements, change communications, leadership messages, or employee updates. Triggers include "internal announcement", "employee communication", "change management", "company update", "leadership message", "town hall".
+description: 기업 커뮤니케이션, 직원 참여 및 변화 관리 전문가입니다. 내부 공지사항, 커뮤니케이션 변경, 리더십 메시지 또는 직원 업데이트 초안을 작성할 때 사용하세요. 트리거에는 "내부 공지", "직원 커뮤니케이션", "변경 관리", "회사 업데이트", "리더십 메시지", "타운홀"이 포함됩니다.
 ---
+# 내부 커뮤니케이션
 
-# Internal Communications
+## 목적
+명확하고 공감적이며 전략적인 내부 커뮤니케이션을 만드는 데 필요한 전문 지식을 제공합니다. 변경 관리 메시징, 직원 참여, 복잡한 조직 업데이트를 소화 가능한 콘텐츠로 변환하는 작업을 전문으로 합니다.
 
-## Purpose
-Provides expertise in crafting clear, empathetic, and strategic internal communications. Specializes in change management messaging, employee engagement, and translating complex organizational updates into digestible content.
+## 사용 시기
+- 전사적 공지나 업데이트 초안 작성
+- 조직 변화(구조 조정, 해고, 인수) 전달
+- 리더십 메시지 또는 경영진 커뮤니케이션 작성
+- 직원 참여 콘텐츠 제작
+- 타운홀미팅 또는 전체회의 콘텐츠 준비
+- 정책 변경 공지 작성
+- 내부 청중을 위한 위기 커뮤니케이션 개발
+- 주요 이니셔티브에 대한 커뮤니케이션 계획 수립
 
-## When to Use
-- Drafting company-wide announcements or updates
-- Communicating organizational changes (restructuring, layoffs, acquisitions)
-- Writing leadership messages or executive communications
-- Creating employee engagement content
-- Preparing town hall or all-hands meeting content
-- Crafting policy change announcements
-- Developing crisis communication for internal audiences
-- Building communication plans for major initiatives
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 내부 공지사항 또는 회사 업데이트 작성
+- 민감한 조직 변화에 대한 커뮤니케이션
+- 리더십이나 임원 메시지 작성
+- 직원 참여 콘텐츠 개발
+- 내부 커뮤니케이션 전략 기획
 
-## Quick Start
-**Invoke this skill when:**
-- Writing internal announcements or company updates
-- Communicating sensitive organizational changes
-- Crafting leadership or executive messages
-- Developing employee engagement content
-- Planning internal communication strategies
-
-**Do NOT invoke when:**
-- External marketing content → use `/content-marketer`
-- Technical documentation → use `/technical-writer`
-- Customer-facing communications → use `/customer-success-manager`
-- Legal contract review → use `/legal-advisor`
-
-## Decision Framework
+**다음과 같은 경우에는 호출하지 마세요.**
+- 외부 마케팅 콘텐츠 → 활용`/content-marketer`- 기술문서 → 활용`/technical-writer`- 대고객 ​​커뮤니케이션 → 활용`/customer-success-manager`- 법률계약 검토 → 이용`/legal-advisor`## 의사결정 프레임워크
 ```
 Communication Type?
 ├── Sensitive Change (layoffs, restructuring)
@@ -44,46 +38,45 @@ Communication Type?
 └── Crisis Communication
     └── Facts first, acknowledge uncertainty, timeline for updates
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 변경 공지
+1. 주요 이해관계자 및 청중 식별
+2. 타이밍 및 채널 전략 결정
+3. 공감 우선 프레임을 갖춘 메시지 초안
+4. "이것이 귀하에게 의미하는 바" 섹션을 명확하게 포함하십시오.
+5. 리소스 및 다음 단계 제공
+6. Q&A 및 후속 커뮤니케이션 계획
 
-### 1. Change Announcement
-1. Identify key stakeholders and audiences
-2. Determine timing and channel strategy
-3. Draft message with empathy-first framing
-4. Include clear "what this means for you" section
-5. Provide resources and next steps
-6. Plan for Q&A and follow-up communications
+### 2. 리더십 메시지
+1. 핵심 메시지와 클릭 유도 문구 정의
+2. 진솔한 목소리로 작성하세요. (회사에서 쓰는 말이 아님)
+3. 회사 가치와 전략에 연결
+4. 문제를 솔직하게 인정하세요
+5. 미래 예측 진술로 마무리
+6. 어조와 명확성을 검토합니다.
 
-### 2. Leadership Message
-1. Define the core message and call to action
-2. Write in authentic voice (not corporate-speak)
-3. Connect to company values and strategy
-4. Acknowledge challenges honestly
-5. End with forward-looking statement
-6. Review for tone and clarity
+### 3. 커뮤니케이션 계획
+1. 영향을 받는 모든 대상을 매핑합니다.
+2. 우선순위에 따른 메시지 순서 지정
+3. 시청자별로 적절한 채널을 선택하세요.
+4. 핵심 메시지 및 요점 초안 작성
+5. FAQ 문서 준비
+6. 캐스케이드 및 피드백 루프 예약
 
-### 3. Communication Plan
-1. Map all affected audiences
-2. Sequence messages by priority
-3. Select appropriate channels per audience
-4. Draft key messages and talking points
-5. Prepare FAQ document
-6. Schedule cascade and feedback loops
+## 모범 사례
+- '무엇'보다 '왜'를 먼저 생각하세요.
+- 전문 용어와 약어를 피하고 일반 언어를 사용하십시오.
+- 어려운 소식은 직접적으로 전달하세요. 단서를 묻어두지 마세요.
+- 항상 명확한 다음 단계나 클릭 유도 문구를 포함하세요.
+- 민감한 변화가 있을 때 감정을 인정하세요.
+- 다양한 청중 대표와의 테스트 메시지
 
-## Best Practices
-- Lead with the "why" before the "what"
-- Use plain language, avoid jargon and acronyms
-- Be direct about difficult news—don't bury the lead
-- Always include clear next steps or calls to action
-- Acknowledge emotions during sensitive changes
-- Test messages with diverse audience representatives
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Burying bad news | Erodes trust | Lead with key information directly |
-| Corporate jargon overload | Message lost in buzzwords | Plain language, concrete examples |
-| No "what's next" | Leaves employees anxious | Always include clear next steps |
-| One-size-fits-all | Misses audience needs | Tailor by role, location, impact |
-| Delayed communication | Rumor mill fills void | Communicate early, update often |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 나쁜 소식을 묻다 | 신뢰를 약화 | 주요 정보를 직접 안내 |
+| 기업 전문 용어 과부하 | 유행어에서 메시지가 손실됨 | 평범한 언어, 구체적인 예 |
+| "다음은 무엇입니까" | 직원들을 불안하게 만듭니다 | 항상 명확한 다음 단계를 포함하세요 |
+| 모든 용도에 맞는 | 청중의 요구를 놓치다 | 역할, 위치, 영향에 따라 맞춤화 |
+| 지연된 의사소통 | 소문 밀이 공백을 채웁니다 | 일찍 소통하고 자주 업데이트하세요 |

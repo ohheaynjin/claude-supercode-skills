@@ -1,38 +1,32 @@
 ---
 name: performance-monitor
-description: Expert in observing, benchmarking, and optimizing AI agents. Specializes in token usage tracking, latency analysis, and quality evaluation metrics. Use when optimizing agent costs, measuring performance, or implementing evals. Triggers include "agent performance", "token usage", "latency optimization", "eval", "agent metrics", "cost optimization", "agent benchmarking".
+description: AI 에이전트 관찰, 벤치마킹, 최적화 전문가입니다. 토큰 사용 추적, 대기 시간 분석 및 품질 평가 지표를 전문으로 합니다. 상담원 비용 최적화, 성과 측정 또는 평가 구현 시 사용합니다. 트리거에는 "에이전트 성능", "토큰 사용량", "대기 시간 최적화", "평가", "에이전트 지표", "비용 최적화", "에이전트 벤치마킹"이 포함됩니다.
 ---
+# 성능 모니터
 
-# Performance Monitor
+## 목적
+AI 에이전트 성능 모니터링, 벤치마킹 및 최적화에 대한 전문 지식을 제공합니다. 토큰 사용량 추적, 대기 시간 분석, 비용 최적화 및 AI 시스템에 대한 품질 평가 지표(평가) 구현을 전문으로 합니다.
 
-## Purpose
-Provides expertise in monitoring, benchmarking, and optimizing AI agent performance. Specializes in token usage tracking, latency analysis, cost optimization, and implementing quality evaluation metrics (evals) for AI systems.
+## 사용 시기
+- AI 에이전트의 토큰 사용량 및 비용 추적
+- 에이전트 대기 시간 측정 및 최적화
+- 평가 지표(evals) 구현
+- 벤치마킹 에이전트 품질 및 정확성
+- 에이전트 비용 효율성 최적화
+- AI 파이프라인에 대한 가시성 구축
+- 상담원 대화 패턴 분석
+- 에이전트를 위한 A/B 테스트 설정
 
-## When to Use
-- Tracking token usage and costs for AI agents
-- Measuring and optimizing agent latency
-- Implementing evaluation metrics (evals)
-- Benchmarking agent quality and accuracy
-- Optimizing agent cost efficiency
-- Building observability for AI pipelines
-- Analyzing agent conversation patterns
-- Setting up A/B testing for agents
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- AI 에이전트 비용 및 토큰 사용 최적화
+- 에이전트 대기 시간 및 성능 측정
+- 평가 프레임워크 구현
+- AI 시스템에 대한 가시성 구축
+- 벤치마킹 에이전트 품질
 
-## Quick Start
-**Invoke this skill when:**
-- Optimizing AI agent costs and token usage
-- Measuring agent latency and performance
-- Implementing evaluation frameworks
-- Building observability for AI systems
-- Benchmarking agent quality
-
-**Do NOT invoke when:**
-- General application performance → use `/performance-engineer`
-- Infrastructure monitoring → use `/sre-engineer`
-- ML model training optimization → use `/ml-engineer`
-- Prompt design → use `/prompt-engineer`
-
-## Decision Framework
+**다음과 같은 경우에는 호출하지 마세요.**
+- 일반 애플리케이션 성능 → 사용`/performance-engineer`- 인프라 모니터링 → 활용`/sre-engineer`- ML 모델 학습 최적화 → 사용`/ml-engineer`- 신속한 디자인 → 활용`/prompt-engineer`## 의사결정 프레임워크
 ```
 Optimization Goal?
 ├── Cost Reduction
@@ -47,46 +41,45 @@ Optimization Goal?
 └── Reliability
     └── Error rates, retry patterns
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 토큰 사용 추적
+1. 사용량을 캡처하기 위한 계측기 API 호출
+2. 입력 토큰과 출력 토큰을 별도로 추적합니다.
+3. 에이전트, 작업, 사용자별로 집계
+4. 작업당 비용 계산
+5. 가시성을 위한 대시보드 구축
+6. 비정상적인 사용에 대한 알림 설정
 
-### 1. Token Usage Tracking
-1. Instrument API calls to capture usage
-2. Track input vs output tokens separately
-3. Aggregate by agent, task, user
-4. Calculate costs per operation
-5. Build dashboards for visibility
-6. Set alerts for anomalous usage
+### 2. 평가 프레임워크 설정
+1. 평가기준 정의
+2. 예상 출력으로 테스트 데이터 세트 만들기
+3. 채점 기능 구현
+4. 자동화된 평가 파이프라인 실행
+5. 시간 경과에 따른 점수 추적
+6. 회귀 테스트에 사용
 
-### 2. Eval Framework Setup
-1. Define evaluation criteria
-2. Create test dataset with expected outputs
-3. Implement scoring functions
-4. Run automated eval pipeline
-5. Track scores over time
-6. Use for regression testing
+### 3. 지연 시간 최적화
+1. 기준 대기 시간 측정
+2. 병목 현상 식별(모델, 네트워크, 구문 분석)
+3. 해당되는 경우 스트리밍 구현
+4. 프롬프트 길이 최적화
+5. 모델 크기의 장단점을 고려하세요.
+6. 반복 쿼리에 대한 캐싱 추가
 
-### 3. Latency Optimization
-1. Measure baseline latency
-2. Identify bottlenecks (model, network, parsing)
-3. Implement streaming where applicable
-4. Optimize prompt length
-5. Consider model size tradeoffs
-6. Add caching for repeated queries
+## 모범 사례
+- API 호출 횟수와 별도로 토큰을 추적합니다.
+- 최적화하기 전에 평가를 구현합니다.
+- 지연 시간에 평균이 아닌 백분위수(p50, p95, p99)를 사용합니다.
+- 디버깅을 위한 로그 프롬프트 및 응답
+- 비용 예산 및 알림 설정
+- 버전 프롬프트 및 버전별 성능 추적
 
-## Best Practices
-- Track tokens separately from API call counts
-- Implement evals before optimizing
-- Use percentiles (p50, p95, p99) not averages for latency
-- Log prompt and response for debugging
-- Set cost budgets and alerts
-- Version prompts and track performance per version
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| No token tracking | Surprise costs | Instrument all calls |
-| Optimizing without evals | Quality regression | Measure before optimizing |
-| Average-only latency | Hides tail latency | Use percentiles |
-| No prompt versioning | Can't correlate changes | Version and track |
-| Ignoring caching | Repeated costs | Cache stable responses |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 토큰 추적 없음 | 깜짝 비용 | 모든 통화 계측 |
+| 평가 없이 최적화 | 품질 회귀 | 최적화 전 측정 |
+| 평균 전용 대기 시간 | 꼬리 대기 시간을 숨깁니다 | 백분위수 사용 |
+| 프롬프트 버전 관리 없음 | 변경 사항을 연관시킬 수 없습니다 | 버전 및 트랙 |
+| 캐싱 무시 | 반복 비용 | 안정적인 응답 캐시 |

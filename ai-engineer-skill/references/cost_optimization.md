@@ -1,27 +1,26 @@
-# Cost Optimization Strategies
+# 비용 최적화 전략
 
-## Understanding Token Costs
+## 토큰 비용 이해하기
 
-### Token Pricing (per 1K tokens)
+### 토큰 가격(1,000개 토큰당)
 
-| Model | Input | Output | Context |
-|-------|-------|--------|---------|
+| 모델 | 입력 | 출력 | 컨텍스트 |
+|-------|-------|---------|---------|
 | GPT-4 | $0.03 | $0.06 | 8K |
-| GPT-4 Turbo | $0.01 | $0.03 | 128K |
-| GPT-3.5 Turbo | $0.0005 | $0.0015 | 16K |
-| Claude 3.5 Sonnet | $0.003 | $0.015 | 200K |
-| Claude 3 Opus | $0.015 | $0.075 | 200K |
+| GPT-4 터보 | $0.01 | $0.03 | 128K |
+| GPT-3.5 터보 | $0.0005 | $0.0015 | 16K |
+| 클로드 3.5 소네트 | $0.003 | $0.015 | 20만 |
+| 클로드 3 작품 | $0.015 | $0.075 | 20만 |
 
-### Cost Estimation
+### 비용 추정
 
-**Approximate tokens:**
+**대략적인 토큰:**
 ```python
 def estimate_tokens(text):
     # Rough estimate: 1 token ≈ 0.75 words
     return len(text.split()) * 1.3
 ```
-
-**Full request cost:**
+**전체 요청 비용:**
 ```python
 def calculate_cost(model, input_tokens, output_tokens):
     pricing = {
@@ -34,13 +33,11 @@ def calculate_cost(model, input_tokens, output_tokens):
 
     return input_cost + output_cost
 ```
+## 최적화 기술
 
-## Optimization Techniques
+### 1. 모델 선정
 
-### 1. Model Selection
-
-**Use the right model for the task:**
-
+**작업에 적합한 모델을 사용하세요.**
 ```python
 def select_model(task_complexity, budget):
     if task_complexity == 'simple' and budget < 0.01:
@@ -52,15 +49,14 @@ def select_model(task_complexity, budget):
     else:
         return 'gpt-3.5-turbo'  # Default cheapest
 ```
+**계층형 접근 방식:**
+1. 가장 작은 모델부터 시작하세요
+2. 품질이 부족한 경우 에스컬레이션하세요.
+3. 반복 통화를 피하기 위해 결과를 캐시합니다.
 
-**Tiered approach:**
-1. Start with smallest model
-2. Escalate if quality insufficient
-3. Cache results to avoid repeat calls
+### 2. 프롬프트 최적화
 
-### 2. Prompt Optimization
-
-**Reduce prompt length:**
+**메시지 길이 줄이기:**
 ```python
 def optimize_prompt(prompt, target_length=500):
     while estimate_tokens(prompt) > target_length:
@@ -73,8 +69,7 @@ def optimize_prompt(prompt, target_length=500):
 
     return prompt
 ```
-
-**Use system prompts:**
+**시스템 프롬프트 사용:**
 ```python
 # Bad: Repeats context in every prompt
 prompt = "You are a helpful assistant. Be concise. " + user_message
@@ -87,10 +82,9 @@ client.chat.completions.create(
     ]
 )
 ```
+### 3. 캐싱 전략
 
-### 3. Caching Strategies
-
-**Response caching:**
+**응답 캐싱:**
 ```python
 from functools import lru_cache
 import hashlib
@@ -103,8 +97,7 @@ def generate_with_cache(prompt):
     prompt_hash = hashlib.md5(prompt.encode()).hexdigest()
     return cached_llm_call(prompt_hash)
 ```
-
-**Embedding caching:**
+**캐싱 삽입:**
 ```python
 embedding_cache = {}
 
@@ -118,10 +111,9 @@ def get_embeddings(texts):
 
     return [embedding_cache[t] for t in texts]
 ```
+### 4. 일괄 처리
 
-### 4. Batching
-
-**Batch requests:**
+**일괄 요청:**
 ```python
 def batch_generate(prompts, batch_size=10):
     results = []
@@ -134,9 +126,7 @@ def batch_generate(prompts, batch_size=10):
 
     return results
 ```
-
-### 5. Streaming for Long Outputs
-
+### 5. 긴 출력을 위한 스트리밍
 ```python
 def generate_streaming(prompt):
     response = client.chat.completions.create(
@@ -155,10 +145,9 @@ def generate_streaming(prompt):
 
     return full_content
 ```
+### 6. 토큰 한도 관리
 
-### 6. Token Limit Management
-
-**Smart truncation:**
+**스마트 잘림:**
 ```python
 def smart_truncate(text, max_tokens, preserve_intro=True):
     if estimate_tokens(text) <= max_tokens:
@@ -172,8 +161,7 @@ def smart_truncate(text, max_tokens, preserve_intro=True):
     else:
         return truncate_from_start(text, max_tokens)
 ```
-
-**Context window optimization:**
+**컨텍스트 창 최적화:**
 ```python
 def optimize_context_window(query, context, max_tokens):
     query_tokens = estimate_tokens(query)
@@ -192,11 +180,9 @@ def optimize_context_window(query, context, max_tokens):
 
     return "\n\n".join(selected_contexts)
 ```
+## 모니터링 및 경고
 
-## Monitoring and Alerts
-
-### Cost Tracking
-
+### 비용 추적
 ```python
 class CostMonitor:
     def __init__(self, budget_limit):
@@ -222,9 +208,7 @@ class CostMonitor:
             'alerts': self.alerts
         }
 ```
-
-### Optimization Recommendations
-
+### 최적화 권장사항
 ```python
 def analyze_usage(usage_data):
     recommendations = []
@@ -244,22 +228,20 @@ def analyze_usage(usage_data):
 
     return recommendations
 ```
+## 비용 절감 패턴
 
-## Cost-Saving Patterns
-
-### 1. Tiered LLM Strategy
+### 1. 계층형 LLM 전략
 ```
 Level 1: Small model for simple tasks (gpt-3.5-turbo)
 Level 2: Medium model for complex tasks (gpt-4-turbo)
 Level 3: Large model for critical tasks (gpt-4)
 ```
+### 2. 하이브리드 접근 방식
+- 간단한 작업에는 로컬 모델을 사용하세요.
+- 복잡한 추론을 위해 API 모델을 사용하세요.
+- 가능한 모든 것을 캐시하세요
 
-### 2. Hybrid Approach
-- Use local models for simple tasks
-- Use API models for complex reasoning
-- Cache everything possible
-
-### 3. Fallback Patterns
+### 3. 대체 패턴
 ```python
 def generate_with_fallbacks(prompt, models=['gpt-4', 'gpt-3.5-turbo']):
     for model in models:
@@ -270,14 +252,13 @@ def generate_with_fallbacks(prompt, models=['gpt-4', 'gpt-3.5-turbo']):
 
     raise Exception("All models failed")
 ```
+## 모범 사례
 
-## Best Practices
-
-1. **Monitor continuously**: Track costs in real-time
-2. **Set budgets**: Enforce limits per user/project
-3. **Optimize prompts**: Remove unnecessary context
-4. **Cache aggressively**: Avoid repeat computations
-5. **Choose right model**: Match model to task complexity
-6. **Use streaming**: Reduce latency for long outputs
-7. **Batch requests**: When API supports it
-8. **Test with small models**: Before scaling to expensive ones
+1. **지속적으로 모니터링**: 실시간으로 비용을 추적합니다.
+2. **예산 설정**: 사용자/프로젝트당 한도 적용
+3. **프롬프트 최적화**: 불필요한 컨텍스트 제거
+4. **적극적으로 캐시**: 반복 계산 방지
+5. **올바른 모델 선택**: 작업 복잡성에 따라 모델 연결
+6. **스트리밍 사용**: 긴 출력에 대한 대기 시간 줄이기
+7. **일괄 요청**: API가 지원하는 경우
+8. **작은 모델로 테스트**: 값비싼 모델로 확장하기 전

@@ -2,7 +2,6 @@
 name: threejs-pro
 description: Expert in 3D web graphics using Three.js, React Three Fiber (R3F), and WebGL shaders.
 ---
-
 # Three.js & WebGL Developer
 
 ## Purpose
@@ -126,6 +125,7 @@ What is the project scope?
    └─ Abstract? → **Custom GLSL Shaders**
 ```
 
+
 ### Optimization Checklist (The 60FPS Rule)
 
 1.  **Geometry:** Use `Draco` or `Meshopt` compression.
@@ -151,12 +151,15 @@ What is the project scope?
 **Steps:**
 
 1.  **Setup**
-    ```bash
+
+```bash
     npm install three @types/three @react-three/fiber @react-three/drei
     ```
 
+
 2.  **Scene Component (`Scene.tsx`)**
-    ```tsx
+
+```tsx
     import { Canvas } from '@react-three/fiber';
     import { OrbitControls, Stage } from '@react-three/drei';
     
@@ -178,6 +181,7 @@ What is the project scope?
     }
     ```
 
+
 ---
 ---
 
@@ -192,7 +196,8 @@ What is the project scope?
     -   `gltf-transform optimize input.glb output.glb --compress draco`.
 
 2.  **Loading (R3F)**
-    ```tsx
+
+```tsx
     import { useGLTF } from '@react-three/drei';
     
     export function Model(props) {
@@ -205,6 +210,7 @@ What is the project scope?
     }
     useGLTF.preload('/optimized-model.glb');
     ```
+
 
 ---
 ---

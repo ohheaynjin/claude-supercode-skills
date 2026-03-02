@@ -1,7 +1,6 @@
-# Vue Expert - Code Examples & Patterns
+# Vue Expert - 코드 예제 및 패턴
 
-## Advanced Composables with TypeScript
-
+## TypeScript를 사용한 고급 컴포저블
 ```typescript
 // composables/useAsyncData.ts - Reusable async data composable
 import { ref, computed, readonly, type Ref } from 'vue'
@@ -94,9 +93,7 @@ const { data: user, error, pending, refresh } = useAsyncData(
   }
 )
 ```
-
-## Pinia Store with TypeScript
-
+## TypeScript를 사용한 Pinia 스토어
 ```typescript
 // stores/user.ts - Typed Pinia store
 import { defineStore } from 'pinia'
@@ -213,9 +210,7 @@ export const useUserStore = defineStore('user', () => {
   }
 })
 ```
-
-## Advanced DataTable Component
-
+## 고급 DataTable 구성 요소
 ```vue
 <!-- components/DataTable.vue -->
 <template>
@@ -443,12 +438,11 @@ const getNestedValue = (obj: any, path: string) => {
 }
 </script>
 ```
+## 안티 패턴 및 수정 사항
 
-## Anti-Patterns & Fixes
+### 안티 패턴 1: ref와 반응성을 일관되지 않게 혼합
 
-### Anti-Pattern 1: Mixing ref and reactive Inconsistently
-
-**BAD:**
+**나쁜:**
 ```typescript
 // ❌ BAD: Inconsistent reactivity patterns
 import { ref, reactive } from 'vue';
@@ -465,8 +459,7 @@ const userAge = ref(30);      // ❌ Mixing patterns unnecessarily
 const { name, age } = user;
 console.log(name); // Not reactive anymore!
 ```
-
-**GOOD:**
+**좋은:**
 ```typescript
 // ✅ GOOD: Consistent ref usage for primitives
 import { ref, computed } from 'vue';
@@ -489,12 +482,11 @@ console.log(name.value); // Still reactive!
 // ✅ Or: Use computed for derived values
 const userDisplayName = computed(() => `${user.name} (${user.age})`);
 ```
+**영향:** 일관된 반응성 패턴, 버그 감소, 유지 관리가 더 간편해졌습니다.
 
-**Impact:** Consistent reactivity patterns, fewer bugs, easier maintenance.
+### 안티 패턴 2: Props의 직접 돌연변이
 
-### Anti-Pattern 2: Direct Mutation of Props
-
-**BAD:**
+**나쁜:**
 ```vue
 <!-- ❌ BAD: Mutating props directly -->
 <script setup lang="ts">
@@ -510,8 +502,7 @@ function updateName(newName: string) {
 }
 </script>
 ```
-
-**GOOD:**
+**좋은:**
 ```vue
 <!-- ✅ GOOD: Emit events for parent updates -->
 <script setup lang="ts">
@@ -543,5 +534,4 @@ const userLocal = computed({
   <ChildComponent v-model:user="user" />
 </template>
 ```
-
-**Impact:** Proper data flow, no console warnings, predictable state management.
+**영향:** 적절한 데이터 흐름, 콘솔 경고 없음, 예측 가능한 상태 관리.

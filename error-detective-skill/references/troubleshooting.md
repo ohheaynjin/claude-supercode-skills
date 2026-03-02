@@ -1,200 +1,189 @@
-# Error Detective - Troubleshooting
+# 오류 감지 - 문제 해결
 
-This guide helps troubleshoot common issues when using error detection automation scripts and analyzing error patterns.
+이 가이드는 오류 감지 자동화 스크립트를 사용하고 오류 패턴을 분석할 때 발생하는 일반적인 문제를 해결하는 데 도움이 됩니다.
 
-## Script Execution Issues
+## 스크립트 실행 문제
 
-### Python Scripts Not Found
+### Python 스크립트를 찾을 수 없음
 
-**Problem**: `python scripts/error_detection_automation.py` returns "No such file or directory"
+**문제**:`python scripts/error_detection_automation.py`"해당 파일이나 디렉터리가 없습니다"를 반환합니다.
 
-**Solutions**:
-- Verify you're in the correct directory: `cd error-detective-skill`
-- Check scripts directory exists: `ls scripts/`
-- Ensure Python 3.7+ is installed: `python --version`
+**해결책**:
+- 올바른 디렉토리에 있는지 확인하세요.`cd error-detective-skill`- 스크립트 디렉터리가 있는지 확인하세요.`ls scripts/`- Python 3.7 이상이 설치되어 있는지 확인하십시오.`python --version`### 가져오기 오류
 
-### Import Errors
+**문제**:`ModuleNotFoundError: No module named 'json'`또는 기타 가져오기 오류
 
-**Problem**: `ModuleNotFoundError: No module named 'json'` or other import errors
+**해결책**:
+- Python 3을 사용하는지 확인하세요.`python3 scripts/error_detection_automation.py`- 요구 사항.txt가 있는 경우 필수 종속성을 설치합니다.
 
-**Solutions**:
-- Ensure using Python 3: `python3 scripts/error_detection_automation.py`
-- Install required dependencies if requirements.txt exists
+### 권한이 거부되었습니다
 
-### Permission Denied
+**문제**:`PermissionError: [Errno 13] Permission denied`출력 파일을 쓸 때
 
-**Problem**: `PermissionError: [Errno 13] Permission denied` when writing output files
+**해결책**:
+- 파일 권한 확인:`ls -la scripts/`- 스크립트를 실행 가능하게 만듭니다.`chmod +x scripts/*.py`- 출력 디렉터리에 대한 쓰기 권한을 확인합니다.
 
-**Solutions**:
-- Check file permissions: `ls -la scripts/`
-- Make scripts executable: `chmod +x scripts/*.py`
-- Verify write permissions for output directory
+## 로그 스캔 문제
 
-## Log Scanning Issues
+### 오류가 발견되지 않았습니다.
 
-### No Errors Found
+**문제**: 로그 스캔에서 0개의 오류가 반환됩니다.
 
-**Problem**: Log scan returns zero errors
+**해결책**:
+- 로그 항목이 제공되었는지 확인
+- 로그 형식이 예상 패턴과 일치하는지 확인하세요.
+- ERROR_PATTERNS의 오류 패턴을 검토합니다.
+- 로그가 다른 형식을 사용하는 경우 사용자 정의 패턴을 추가하세요.
+- 사용`--sample-logs`샘플 데이터로 테스트하기
 
-**Solutions**:
-- Verify log entries are provided
-- Check log format matches expected patterns
-- Review error patterns in ERROR_PATTERNS
-- Add custom patterns if your logs use different formats
-- Use `--sample-logs` to test with sample data
+### 잘못된 오류 심각도
 
-### Incorrect Error Severity
+**문제**: 잘못된 심각도 수준으로 분류된 오류
 
-**Problem**: Errors classified as wrong severity level
+**해결책**:
+- LogScanner.ERROR_PATTERNS에서 오류 패턴을 검토합니다.
+- 필요한 경우 패턴 일치 규칙을 조정합니다.
+- 패턴 키워드에 대한 로그 메시지 내용을 확인하세요.
+- 심각도 매핑이 적절한지 확인
 
-**Solutions**:
-- Review error patterns in LogScanner.ERROR_PATTERNS
-- Adjust pattern matching rules if needed
-- Check log message content for pattern keywords
-- Verify severity mapping is appropriate
+### 패턴 일치 문제
 
-### Pattern Matching Issues
+**문제**: 예상된 오류가 감지되지 않습니다.
 
-**Problem**: Expected errors not being detected
+**해결책**:
+- 대소문자 구분 확인(패턴은 대소문자를 구분하지 않음)
+- 정규식 패턴이 로그 형식과 일치하는지 확인하세요.
+- ERROR_PATTERNS에 맞춤 패턴 추가
+- 샘플 로그와 패턴 매칭 테스트
 
-**Solutions**:
-- Check case sensitivity (patterns are case-insensitive)
-- Verify regex patterns match your log format
-- Add custom patterns to ERROR_PATTERNS
-- Test pattern matching with sample logs
+## 오류 상관 문제
 
-## Error Correlation Issues
+### 관련 사건 없음
 
-### No Correlated Incidents
+**문제**: 상관 관계는 0개의 사건을 반환합니다.
 
-**Problem**: Correlation returns zero incidents
+**해결책**:
+- 상관관계를 위한 서비스를 2개 이상 제공
+- 서비스 간에 기간이 겹치는지 확인
+- 오류 타임스탬프가 유효한 ISO 형식인지 확인하세요.
+- 시간 창에 오류가 있는지 확인
 
-**Solutions**:
-- Provide at least 2 services for correlation
-- Verify time windows overlap across services
-- Check error timestamps are in valid ISO format
-- Ensure errors exist in time window
+### 계단식 감지 실패
 
-### Cascade Detection Fails
+**문제**: 계단식 오류가 식별되지 않습니다.
 
-**Problem**: Error cascades not being identified
+**해결책**:
+- _find_cascade_between_services()에서 계단식 감지 논리를 검토합니다.
+- 연속 감지 시간 범위 조정(현재 60초)
+- 캐스케이드를 놓친 경우 감도를 높입니다.
+- 오류 심각도 분류 확인
 
-**Solutions**:
-- Review cascade detection logic in _find_cascade_between_services()
-- Adjust time window for cascade detection (currently 60 seconds)
-- Increase sensitivity if cascades are being missed
-- Check error severity classification
+### 타임라인 구성 문제
 
-### Timeline Construction Issues
+**문제**: 타임라인이 올바르게 구축되지 않는 오류
 
-**Problem**: Error timeline not being built correctly
+**해결책**:
+- 로그에서 타임스탬프 추출 확인
+- 타임스탬프 형식이 인식되는지 확인하세요.
+- _create_time_windows() 로직을 검토하세요.
+- 시간 창 크기 조정(현재 5분)
 
-**Solutions**:
-- Verify timestamp extraction from logs
-- Check timestamp format is recognized
-- Review _create_time_windows() logic
-- Adjust time window size (currently 5 minutes)
+## 이상 탐지 문제
 
-## Anomaly Detection Issues
+### 데이터 부족 오류
 
-### Insufficient Data Error
+**문제**:`Insufficient data for anomaly detection`**해결책**:
+- 분석을 위해 최소 10개 이상의 데이터 포인트 제공
+- error_history 길이를 늘립니다.
+- 오류율 데이터가 있는지 확인하세요.
+- 더 나은 기준을 위해 과거 데이터를 사용하세요.
 
-**Problem**: `Insufficient data for anomaly detection`
+### 오탐지가 너무 많음
 
-**Solutions**:
-- Provide at least 10 data points for analysis
-- Increase error_history length
-- Verify error rate data is available
-- Use historical data for better baseline
+**문제**: 실제 문제가 아닌 많은 변칙 사항이 감지되었습니다.
 
-### Too Many False Positives
+**해결책**:
+- 임계값 승수 조정(현재 2 표준편차)
+- 감도를 낮추려면 2.5 또는 3으로 늘립니다.
+- 기준 계산 로직 검토
+- 다양한 탐지 알고리즘 고려
 
-**Problem**: Many anomalies detected that aren't real issues
+### 변칙이 너무 적음
 
-**Solutions**:
-- Adjust threshold multiplier (currently 2 standard deviations)
-- Increase to 2.5 or 3 for less sensitivity
-- Review baseline calculation logic
-- Consider different detection algorithms
+**문제**: 실제 이상 현상이 감지되지 않습니다.
 
-### Too Few Anomalies
+**해결책**:
+- 임계값 승수를 1.5 또는 1로 줄입니다.
+- 실제 이상 징후에 대한 데이터 검토
+- 표준편차 계산 확인
+- 기준선에 대한 시간 창 조정
 
-**Problem**: Real anomalies not being detected
+## 모든 스크립트의 일반적인 문제
 
-**Solutions**:
-- Decrease threshold multiplier to 1.5 or 1
-- Review data for actual anomalies
-- Check standard deviation calculation
-- Adjust time window for baseline
+### JSON 출력 오류
 
-## Common Issues Across All Scripts
+**문제**: 출력 파일에 잘못된 JSON이 있습니다.
 
-### JSON Output Errors
+**해결책**:
+- 스크립트에 구문 오류가 없는지 확인하세요.
+- 출력시 특수문자 확인
+- JSON 유효성 검사 도구를 사용하여 출력을 확인합니다.
+- 생성 중 메모리 문제 확인
 
-**Problem**: Invalid JSON in output files
+### 시간대 혼란
 
-**Solutions**:
-- Verify no syntax errors in script
-- Check for special characters in output
-- Use JSON validator tool to verify output
-- Check for memory issues during generation
+**문제**: 잘못된 시간대의 타임스탬프
 
-### Time Zone Confusion
+**해결책**:
+- 스크립트는 기본적으로 UTC를 사용합니다.
+- 표시를 위해 현지 시간으로 변환
+- 시스템 시간이 올바른지 확인
+- 시간대 구성 확인
 
-**Problem**: Timestamps in wrong time zone
+### 성능 문제
 
-**Solutions**:
-- Scripts use UTC by default
-- Convert to local time for display
-- Verify system time is correct
-- Check time zone configuration
+**문제**: 스크립트 실행 시간이 너무 오래 걸림
 
-### Performance Issues
+**해결책**:
+- 스캔할 로그 수를 줄입니다.
+- 분석되는 서비스 수 제한
+- 가능한 경우 병렬 처리를 사용합니다.
+- 상관 관계를 위한 시간 창을 줄입니다.
 
-**Problem**: Scripts taking too long to execute
+## 통합 문제
 
-**Solutions**:
-- Reduce number of logs to scan
-- Limit number of services analyzed
-- Use parallel processing if available
-- Reduce time windows for correlation
+### 로그 소스 연결 실패
 
-## Integration Issues
+**문제**: 로그 집계 시스템에서 로그를 읽을 수 없습니다.
 
-### Log Source Connection Fails
+**해결책**:
+- ELK, Splunk 또는 Loki에 대한 연결 확인
+- API 자격 증명이 유효한지 확인하세요.
+- API로 직접 쿼리 테스트
+- 서비스 검색 구성 검토
 
-**Problem**: Cannot read logs from log aggregation system
+### 모니터링 통합 문제
 
-**Solutions**:
-- Verify connection to ELK, Splunk, or Loki
-- Check API credentials are valid
-- Test query directly with API
-- Review service discovery configuration
+**문제**: 이상 감지를 위한 측정항목이 수집되지 않습니다.
 
-### Monitoring Integration Issues
+**해결책**:
+- 모니터링 시스템이 실행 중인지 확인
+- API 엔드포인트에 액세스할 수 있는지 확인하세요.
+- 직접 쿼리 테스트:`curl http://prometheus:9090/api/v1/query`- 서비스 검색 구성 검토
 
-**Problem**: Metrics not being collected for anomaly detection
+### 알림 통합 실패
 
-**Solutions**:
-- Verify monitoring system is running
-- Check API endpoints are accessible
-- Test query directly: `curl http://prometheus:9090/api/v1/query`
-- Review service discovery configuration
+**문제**: 감지된 변칙에 대해 경고가 트리거되지 않습니다.
 
-### Alerting Integration Fails
+**해결책**:
+- 경보 시스템 구성 확인
+- 웹훅 URL이 올바른지 확인하세요.
+- 수동으로 경고 생성 테스트
+- 경고 규칙 및 임계값 검토
 
-**Problem**: Alerts not triggered on detected anomalies
+## 디버그 모드
 
-**Solutions**:
-- Verify alerting system configuration
-- Check webhook URLs are correct
-- Test alert generation manually
-- Review alert rules and thresholds
-
-## Debug Mode
-
-### Enable Debug Logging
-
+### 디버그 로깅 활성화
 ```bash
 # Set environment variable
 export DEBUG=true
@@ -202,86 +191,77 @@ export DEBUG=true
 # Or modify script logging level
 logging.basicConfig(level=logging.DEBUG)
 ```
-
-### Dry Run Mode
-
+### 테스트 실행 모드
 ```bash
 # Test without actual processing
 python scripts/error_detection_automation.py --scan --services api-service database-service --dry-run
 ```
-
-### Verbose Output
-
+### 자세한 출력
 ```bash
 # Get detailed execution information
 python scripts/error_detection_automation.py --scan --services api-service --verbose
 ```
-
-### Sample Logs Generation
-
+### 샘플 로그 생성
 ```bash
 # Generate sample logs for testing
 python scripts/error_detection_automation.py --sample-logs --error-count 50
 ```
+## 도움 받기
 
-## Getting Help
-
-### Script Help
-
+### 스크립트 도움말
 ```bash
 # Get help for the script
 python scripts/error_detection_automation.py --help
 ```
+### 오류 메시지
 
-### Error Messages
+- 오류 메시지를 주의 깊게 읽으세요.
+- 전체 스택 추적 로그를 확인하세요.
+- 문서에서 오류 코드 검색
+- 최근 환경 변화 검토
 
-- Read error messages carefully
-- Check logs for full stack traces
-- Search error codes in documentation
-- Review recent changes to environment
+### 일반적인 오류 코드
 
-### Common Error Codes
+-`E001`: 로그 구문 분석 실패
+-`E002`: 패턴 매칭 오류
+-`E003`: 상관관계 시간 초과
+-`E004`: 분석을 위한 데이터가 부족함
+-`E005`: 이상 탐지 임계값 오류
 
-- `E001`: Log parsing failed
-- `E002`: Pattern matching error
-- `E003`: Correlation timeout
-- `E004`: Insufficient data for analysis
-- `E005`: Anomaly detection threshold error
+## 예방
 
-## Prevention
+### 배포 전 체크리스트
 
-### Pre-Deployment Checklist
+- [ ] 샘플 데이터를 사용한 테스트 로그 스캐닝
+- [ ] 오류 패턴이 로그 형식과 일치하는지 확인
+- [ ] 여러 서비스와의 상관관계 테스트
+- [ ] 이상 탐지 기준 검증
+- [ ] 모니터링 시스템과의 통합 확인
+- [ ] 테스트 경고 생성
 
-- [ ] Test log scanning with sample data
-- [ ] Verify error patterns match your log format
-- [ ] Test correlation with multiple services
-- [ ] Validate anomaly detection baseline
-- [ ] Check integration with monitoring systems
-- [ ] Test alert generation
+### 모니터링 설정
 
-### Monitoring Setup
+- 오류율 증가에 대한 알림 설정
+- 오류 시각화를 위한 대시보드 구성
+- 스크립트 실행 시간 모니터링
+- 거짓 긍정 비율 추적
+- 감지된 이상 현상을 정기적으로 검토합니다.
 
-- Set up alerts for error rate increases
-- Configure dashboards for error visualization
-- Monitor script execution time
-- Track false positive rates
-- Review detected anomalies regularly
+### 데이터 관리
 
-### Data Management
+- 과거 오류 데이터 보관
+- 성능 유지를 위해 오래된 로그를 정리합니다.
+- 오류 패턴 라이브러리 유지
+- 시스템이 발전함에 따라 패턴 업데이트
+- 정기적으로 임계값을 검토하고 조정합니다.
 
-- Archive historical error data
-- Clean up old logs to maintain performance
-- Maintain error pattern library
-- Update patterns as systems evolve
-- Regularly review and tune thresholds
+## 모범 사례 요약
 
-## Best Practices Summary
-
-- Start with sample logs to test functionality
-- Use appropriate time windows for your incident patterns
-- Tune anomaly detection thresholds for your environment
-- Integrate with existing monitoring and alerting
-- Review and update error patterns regularly
-- Validate findings with incident data
-- Build knowledge base of common error patterns
-- Use automation to scale analysis across many services
+- 샘플 로그로 시작하여 기능 테스트
+- 사고 패턴에 적합한 시간대를 사용하세요.
+- 환경에 대한 이상 탐지 임계값 조정
+- 기존 모니터링 및 알림과 통합
+- 정기적으로 오류 패턴을 검토하고 업데이트합니다.
+- 사건 데이터로 조사 결과 검증
+- 일반적인 오류 패턴에 대한 지식 기반 구축
+- 자동화를 사용하여 여러 서비스 전반에 걸쳐 분석 확장

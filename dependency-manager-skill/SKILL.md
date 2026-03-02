@@ -1,37 +1,36 @@
 ---
 name: dependency-manager
-description: Expert at package management and supply chain security. Use when managing dependencies, updating packages, resolving version conflicts, ensuring supply chain security, or auditing vulnerabilities in project dependencies.
+description: 패키지 관리 및 공급망 보안 전문가입니다. 종속성을 관리하고, 패키지를 업데이트하고, 버전 충돌을 해결하고, 공급망 보안을 보장하거나 프로젝트 종속성의 취약성을 감사할 때 사용합니다.
 ---
+# 의존성 관리자
 
-# Dependency Manager
+## 목적
+패키지 관리, 버전 확인 및 소프트웨어 공급망 보안에 대한 전문 지식을 제공합니다. 여러 패키지 생태계 전반에 걸쳐 종속성 업데이트, 취약성 감사 및 충돌 해결을 처리합니다.
 
-## Purpose
-Provides expertise in package management, version resolution, and software supply chain security. Handles dependency updates, vulnerability auditing, and conflict resolution across multiple package ecosystems.
+## 사용 시기
+- 프로젝트 종속성 업데이트
+- 버전 충돌 해결
+- 보안 취약점 감사
+- 잠금 파일 및 재현성 관리
+- 패키지 관리자 간 마이그레이션
+- 종속성 정책 구현
+- 종속성 분석을 통한 번들 크기 감소
 
-## When to Use
-- Updating project dependencies
-- Resolving version conflicts
-- Auditing for security vulnerabilities
-- Managing lockfiles and reproducibility
-- Migrating between package managers
-- Implementing dependency policies
-- Reducing bundle size via dependency analysis
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 프로젝트 종속성 업데이트
+- 버전 충돌 해결
+- 보안 취약점 감사
+- 잠금 파일 및 재현성 관리
+- 종속성 정책 구현
 
-## Quick Start
-**Invoke this skill when:**
-- Updating project dependencies
-- Resolving version conflicts
-- Auditing for security vulnerabilities
-- Managing lockfiles and reproducibility
-- Implementing dependency policies
+**다음과 같은 경우에는 호출하지 마세요.**
+- CI/CD 파이프라인 구축(devops-engineer 사용)
+- 레지스트리에 패키지 게시(빌드 엔지니어 사용)
+- 컨테이너 이미지 관리(kubernetes-specialist 사용)
+- 클라우드 인프라 종속성(terraform-engineer 사용)
 
-**Do NOT invoke when:**
-- Building CI/CD pipelines (use devops-engineer)
-- Publishing packages to registries (use build-engineer)
-- Container image management (use kubernetes-specialist)
-- Cloud infrastructure dependencies (use terraform-engineer)
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Update Strategy:
 ├── Security patch → Update immediately
@@ -49,46 +48,46 @@ Ecosystem Tools:
 └── .NET → NuGet
 ```
 
-## Core Workflows
+## 핵심 워크플로
 
-### 1. Dependency Audit
-1. Run package audit tool
-2. Review vulnerability reports
-3. Prioritize by severity (CVSS)
-4. Check for available patches
-5. Update or find alternatives
-6. Verify fixes don't break app
-7. Document remediation
+### 1. 종속성 감사
+1. 패키지 감사 도구 실행
+2. 취약점 보고서 검토
+3. 심각도에 따른 우선순위 지정(CVSS)
+4. 사용 가능한 패치 확인
+5. 대안 업데이트 또는 찾기
+6. 수정 사항이 앱을 중단시키지 않는지 확인
+7. 문서 교정
 
-### 2. Major Version Upgrade
-1. Read changelog and migration guide
-2. Check for breaking changes
-3. Update in isolated branch
-4. Run full test suite
-5. Fix breaking changes
-6. Review for deprecated APIs
-7. Deploy to staging first
+### 2. 메이저 버전 업그레이드
+1. 변경 로그 및 마이그레이션 가이드 읽기
+2. 주요 변경 사항 확인
+3. 격리된 지점에서 업데이트
+4. 전체 테스트 스위트 실행
+5. 주요 변경 사항 수정
+6. 더 이상 사용되지 않는 API 검토
+7. 먼저 스테이징에 배포
 
-### 3. Lockfile Management
-1. Ensure lockfile is committed
-2. Use CI to verify lockfile matches
-3. Regenerate on conflict resolution
-4. Audit lockfile for tampering
-5. Update lockfile atomically
+### 3. 잠금 파일 관리
+1. 잠금 파일이 커밋되었는지 확인
+2. CI를 사용하여 잠금 파일 일치 확인
+3. 갈등 해결을 위한 재생성
+4. 변조에 대한 감사 잠금 파일
+5. 원자적으로 잠금 파일 업데이트
 
-## Best Practices
-- Always use lockfiles for reproducibility
-- Run security audits in CI/CD
-- Pin exact versions in production
-- Use renovate/dependabot for automation
-- Audit transitive dependencies
-- Minimize dependency count
+## 모범 사례
+- 재현성을 위해 항상 잠금 파일을 사용하십시오.
+- CI/CD에서 보안 감사 실행
+- 생산 중인 정확한 버전 고정
+- 자동화를 위해 renovate/dependentbot 사용
+- 전이적 종속성을 감사합니다.
+- 의존성 수 최소화
 
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| No lockfile | Non-reproducible builds | Commit lockfiles |
-| Ignoring audits | Security vulnerabilities | Address all high/critical |
-| Auto-merge updates | Breaking changes in prod | Test before merge |
-| Too many deps | Large attack surface | Audit and minimize |
-| Outdated deps | Missing security patches | Regular update cadence |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 잠금 파일 없음 | 재현 불가능한 빌드 | 잠금 파일 커밋 |
+| 감사 무시 | 보안 취약점 | 높음/위험 모두 해결 |
+| 자동 병합 업데이트 | 프로덕션의 주요 변경 사항 | 병합 전 테스트 |
+| 깊이가 너무 많습니다 | 대규모 공격 표면 | 감사 및 최소화 |
+| 오래된 뎁스 | 누락된 보안 패치 | 정기 업데이트 주기 |

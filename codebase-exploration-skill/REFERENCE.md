@@ -16,6 +16,7 @@ rg "middleware.*auth|auth.*middleware"
 rg "guard|protect|require.*auth"
 ```
 
+
 **Medium** (deeper context):
 ```bash
 # Find auth implementations
@@ -28,6 +29,7 @@ rg "password|hash|bcrypt|argon"
 rg "session|token|jwt"
 ```
 
+
 **Very Thorough** (comprehensive):
 ```bash
 # Trace full auth flow
@@ -35,6 +37,7 @@ rg -C 10 "login.*request"
 ast-grep --pattern "async function login($$$) { $$$ }"
 lsp_find_references on auth symbols
 ```
+
 
 ### Finding Data Models
 
@@ -48,6 +51,7 @@ fd -e ts -e js . src/models
 rg "class.*Model|interface.*Model"
 ```
 
+
 **Medium**:
 ```bash
 # Find schemas/types
@@ -60,6 +64,7 @@ rg "@Entity|@Table|@Model"
 rg "validator|validate|schema|zod|yup"
 ```
 
+
 **Very Thorough**:
 ```bash
 # Map all data structures
@@ -67,6 +72,7 @@ ast-grep --pattern "interface $NAME { $$$ }"
 ast-grep --pattern "class $NAME { $$$ }"
 lsp_document_symbols on model files
 ```
+
 
 ### Finding API Endpoints
 
@@ -80,6 +86,7 @@ fd controller
 rg "class.*Controller"
 ```
 
+
 **Medium**:
 ```bash
 # Find endpoint handlers
@@ -92,6 +99,7 @@ rg "use\(|middleware|guard"
 rg "Request|Response|Dto|Input|Output"
 ```
 
+
 **Very Thorough**:
 ```bash
 # Trace full request flow
@@ -99,6 +107,7 @@ rg -C 15 "router\.(get|post|put|delete)"
 ast-grep --pattern "router.$METHOD('$PATH', $$$)"
 # Find all references to route handlers
 ```
+
 
 ### Finding State Management
 
@@ -108,6 +117,7 @@ ast-grep --pattern "router.$METHOD('$PATH', $$$)"
 fd store state
 rg "createStore|createSlice|useState|Vuex|Redux"
 ```
+
 
 **Medium**:
 ```bash
@@ -121,6 +131,7 @@ rg "selector|useSelector|mapState"
 rg "Context|Provider|createContext"
 ```
 
+
 **Very Thorough**:
 ```bash
 # Map state architecture
@@ -128,6 +139,7 @@ ast-grep --pattern "const $NAME = createSlice({ $$$ })"
 rg -C 20 "combineReducers|configureStore"
 # Trace state flow from components to store
 ```
+
 
 ## Exploration Techniques
 
@@ -147,6 +159,7 @@ find . -type f -exec du -h {} + | sort -rh | head -20
 git log --name-only --pretty=format: --since="1 month ago" | sort | uniq -c | sort -nr
 ```
 
+
 ### Pattern Discovery
 
 ```bash
@@ -160,6 +173,7 @@ find src/ -name "*.ts" | sed 's/.*\///' | sed 's/\..*//' | sort
 rg "class.*Service|class.*Controller|class.*Repository" | wc -l
 ```
 
+
 ### Dependency Mapping
 
 ```bash
@@ -170,6 +184,7 @@ rg "^import.*from ['\"][^.]"    # External imports
 # Find common dependencies
 rg "^import.*from" | cut -d"'" -f2 | grep -v "^\." | sort | uniq -c | sort -nr
 ```
+
 
 ### Code Hotspots
 
@@ -183,6 +198,7 @@ find . -name "*.ts" -exec wc -l {} + | sort -rn | head -20
 # Find complex files (many functions)
 rg -c "function|const.*= \(" src/**/*.ts | sort -t: -k2 -rn
 ```
+
 
 ## Exploration Reports
 

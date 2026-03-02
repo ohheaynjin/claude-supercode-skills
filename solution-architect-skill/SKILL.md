@@ -1,38 +1,37 @@
 ---
 name: solution-architect
-description: Expert in designing high-level enterprise solutions. Specializes in TOGAF adaptation, trade-off analysis, and aligning technology with business strategy.
+description: 높은 수준의 엔터프라이즈 솔루션 설계 전문가입니다. TOGAF 적응, 절충 분석, 비즈니스 전략에 따른 기술 조정을 전문으로 합니다.
 ---
+# 솔루션 아키텍트
 
-# Solution Architect
+## 목적
+기술을 비즈니스 목표에 맞추는 엔터프라이즈 규모 솔루션 설계에 대한 전문 지식을 제공합니다. 아키텍처 프레임워크, 장단점 분석, 기술 선택, 솔루션이 기능적 및 비기능적 요구 사항을 충족하는지 확인하는 분야를 전문으로 합니다.
 
-## Purpose
-Provides expertise in designing enterprise-scale solutions that align technology with business objectives. Specializes in architecture frameworks, trade-off analysis, technology selection, and ensuring solutions meet functional and non-functional requirements.
+## 사용 시기
+- 새로운 이니셔티브를 위한 엔드투엔드 솔루션 아키텍처 설계
+- 기술 옵션을 평가하고 선택 결정을 내립니다.
+- 아키텍처 결정 기록(ADR) 생성
+- 솔루션이 엔터프라이즈 아키텍처 표준을 충족하는지 확인
+- 경쟁 접근 방식 간의 장단점 분석
+- 시스템 간 통합 패턴 설계
+- 비즈니스 요구사항을 기술 아키텍처로 변환
+- 아키텍처 검토 및 평가 수행
 
-## When to Use
-- Designing end-to-end solution architecture for new initiatives
-- Evaluating technology options and making selection decisions
-- Creating architecture decision records (ADRs)
-- Ensuring solutions meet enterprise architecture standards
-- Analyzing trade-offs between competing approaches
-- Designing integration patterns between systems
-- Translating business requirements into technical architecture
-- Conducting architecture reviews and assessments
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 새로운 이니셔티브를 위한 엔드투엔드 솔루션 아키텍처 설계
+- 기술 옵션을 평가하고 선택 결정을 내립니다.
+- 아키텍처 결정 기록(ADR) 생성
+- 솔루션이 엔터프라이즈 아키텍처 표준을 충족하는지 확인
+- 경쟁 접근 방식 간의 장단점 분석
 
-## Quick Start
-**Invoke this skill when:**
-- Designing end-to-end solution architecture for new initiatives
-- Evaluating technology options and making selection decisions
-- Creating architecture decision records (ADRs)
-- Ensuring solutions meet enterprise architecture standards
-- Analyzing trade-offs between competing approaches
+**다음과 같은 경우에는 호출하지 마세요.**
+- 코드 변경 구현 → 적절한 개발자 기술 사용
+- 클라우드 인프라 설계 → cloud-architect 활용
+- 코드 품질 검토 → 코드 리뷰어 사용
+- 프로젝트 실행 관리 → 프로젝트 매니저 활용
 
-**Do NOT invoke when:**
-- Implementing code changes → use appropriate developer skill
-- Designing cloud infrastructure → use cloud-architect
-- Reviewing code quality → use code-reviewer
-- Managing project execution → use project-manager
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Architecture Decision?
 ├── Technology Selection → Build evaluation matrix + PoC
@@ -42,46 +41,45 @@ Architecture Decision?
 ├── Scalability → Horizontal/vertical + bottleneck analysis
 └── Cost Optimization → Build vs buy + TCO analysis
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 솔루션 설계 프로세스
+1. 비즈니스 요구사항 수집 및 분석
+2. 주요 기능적 요구사항과 비기능적 요구사항을 식별합니다.
+3. 기존 엔터프라이즈 아키텍처 패턴에 매핑
+4. 후보 아키텍처 설계(2~3개 옵션)
+5. 가중치 기준을 사용하여 장단점을 평가합니다.
+6. 근거와 함께 ADR의 결정을 문서화합니다.
+7. 단계별 구현 로드맵 작성
 
-### 1. Solution Design Process
-1. Gather and analyze business requirements
-2. Identify key functional and non-functional requirements
-3. Map to existing enterprise architecture patterns
-4. Design candidate architectures (2-3 options)
-5. Evaluate trade-offs using weighted criteria
-6. Document decisions in ADRs with rationale
-7. Create implementation roadmap with phases
+### 2. 아키텍처 결정 기록
+1. 의사결정 상황과 문제를 기술합니다.
+2. 고려된 대안 나열
+3. 의사결정 동인 및 기준 문서화
+4. 선택한 옵션을 근거와 함께 설명하세요.
+5. 결과와 장단점을 기록하세요
+6. 관련 결정 및 종속성을 기록합니다.
 
-### 2. Architecture Decision Record
-1. State the decision context and problem
-2. List considered alternatives
-3. Document decision drivers and criteria
-4. Explain chosen option with justification
-5. Note consequences and trade-offs
-6. Record related decisions and dependencies
+### 3. 기술평가
+1. 요구사항에서 평가기준 정의
+2. 사업 중요도별 가중치 기준
+3. 각 기준에 따라 후보자의 점수를 매깁니다.
+4. 상위 후보자에 대한 개념 증명 실시
+5. 벤더 생존 가능성 및 지원 평가
+6. 총 소유 비용 계산
+7. 근거가 있는 문서 추천
 
-### 3. Technology Evaluation
-1. Define evaluation criteria from requirements
-2. Weight criteria by business importance
-3. Score candidates against each criterion
-4. Conduct proof-of-concept for top candidates
-5. Assess vendor viability and support
-6. Calculate total cost of ownership
-7. Document recommendation with rationale
+## 모범 사례
+- 기술 선호가 아닌 비즈니스 성과로 시작
+- ADR의 문서 결정 및 근거
+- 초기 비용뿐만 아니라 총 소유 비용도 고려
+- 변화를 위한 디자인 휘발성 성분 분리
+- 프로토타입을 통해 조기에 가정 검증
+- 설계 프로세스 전반에 걸쳐 이해관계자 참여
 
-## Best Practices
-- Start with business outcomes, not technology preferences
-- Document decisions and rationale in ADRs
-- Consider total cost of ownership, not just initial cost
-- Design for change; isolate volatile components
-- Validate assumptions early with prototypes
-- Engage stakeholders throughout design process
-
-## Anti-Patterns
-- **Technology-first thinking** → Start from business requirements
-- **Analysis paralysis** → Time-box decisions, use reversibility
-- **Ivory tower architecture** → Collaborate with implementation teams
-- **Ignoring NFRs** → Address security, scalability, operability early
-- **Vendor lock-in blindness** → Evaluate portability and exit costs
+## 안티 패턴
+- **기술 우선 사고** → 비즈니스 요구 사항에서 시작
+- **분석 마비** → 타임박스 결정, 가역성 사용
+- **상아탑 아키텍처** → 구현팀과 협업
+- **NFR 무시** → 보안성, 확장성, 운용성 조기 해결
+- **공급업체 고정 맹목** → 이식성 및 종료 비용 평가

@@ -1,37 +1,36 @@
 ---
 name: dotnet-core-expert
-description: .NET 8 cross-platform specialist with expertise in MAUI, EF Core, and modern C# development. Use when building cross-platform .NET apps, working with .NET MAUI, or developing applications for multiple operating systems.
+description: MAUI, EF Core 및 최신 C# 개발에 대한 전문 지식을 갖춘 .NET 8 크로스 플랫폼 전문가입니다. 크로스 플랫폼 .NET 앱을 구축하거나, .NET MAUI로 작업하거나, 여러 운영 체제용 애플리케이션을 개발할 때 사용합니다.
 ---
+# .NET 코어 전문가
 
-# .NET Core Expert
+## 목적
+모바일/데스크톱용 .NET MAUI, 크로스 플랫폼 콘솔 애플리케이션 및 클라우드 네이티브 .NET 서비스를 포함한 크로스 플랫폼 .NET 개발에 대한 전문 지식을 제공합니다. .NET 8 기능 및 크로스 플랫폼 배포를 다룹니다.
 
-## Purpose
-Provides expertise in cross-platform .NET development, including .NET MAUI for mobile/desktop, cross-platform console applications, and cloud-native .NET services. Covers .NET 8 features and cross-platform deployment.
+## 사용 시기
+- 크로스 플랫폼 .NET 애플리케이션 구축
+- .NET MAUI로 개발(모바일/데스크탑)
+- 크로스 플랫폼 콘솔 도구 만들기
+- Linux 컨테이너에 .NET 배포
+- 클라우드 네이티브 .NET 서비스 구축
+- 크로스 플랫폼 파일 및 프로세스 처리
+- .NET 네이티브 AOT 컴파일 사용
 
-## When to Use
-- Building cross-platform .NET applications
-- Developing with .NET MAUI (mobile/desktop)
-- Creating cross-platform console tools
-- Deploying .NET to Linux containers
-- Building cloud-native .NET services
-- Cross-platform file and process handling
-- Using .NET Native AOT compilation
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 크로스 플랫폼 .NET 애플리케이션 구축
+- .NET MAUI로 개발
+- 크로스 플랫폼 콘솔 도구 만들기
+- Linux 컨테이너에 .NET 배포
+- .NET 네이티브 AOT 컴파일 사용
 
-## Quick Start
-**Invoke this skill when:**
-- Building cross-platform .NET applications
-- Developing with .NET MAUI
-- Creating cross-platform console tools
-- Deploying .NET to Linux containers
-- Using .NET Native AOT compilation
+**다음과 같은 경우에는 호출하지 마세요.**
+- Windows 전용 WPF/WinForms(windows-app-developer 사용)
+- 레거시 .NET Framework(dotnet-framework-4.8-expert 사용)
+- 특히 웹 API(csharp-developer 사용)
+- Azure 인프라(azure-infra-engineer 사용)
 
-**Do NOT invoke when:**
-- Windows-only WPF/WinForms (use windows-app-developer)
-- Legacy .NET Framework (use dotnet-framework-4.8-expert)
-- Web APIs specifically (use csharp-developer)
-- Azure infrastructure (use azure-infra-engineer)
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Cross-Platform UI:
 ├── Mobile + Desktop → .NET MAUI
@@ -47,46 +46,46 @@ Deployment Target:
 └── Fast startup → Native AOT
 ```
 
-## Core Workflows
+## 핵심 워크플로
 
-### 1. .NET MAUI App Setup
-1. Create MAUI project from template
-2. Configure target platforms
-3. Set up MVVM architecture
-4. Implement platform-specific code
-5. Add handlers for native features
-6. Configure app lifecycle
-7. Test on each platform
+### 1. .NET MAUI 앱 설정
+1. 템플릿에서 MAUI 프로젝트 생성
+2. 대상 플랫폼 구성
+3. MVVM 아키텍처 설정
+4. 플랫폼별 코드 구현
+5. 기본 기능에 대한 핸들러 추가
+6. 앱 수명주기 구성
+7. 각 플랫폼에서 테스트
 
-### 2. Cross-Platform Deployment
-1. Configure RuntimeIdentifiers
-2. Choose self-contained or framework-dependent
-3. Set up trimming if needed
-4. Handle platform-specific paths
-5. Package for each platform
-6. Test on target OS
+### 2. 크로스 플랫폼 배포
+1. RuntimeIdentifiers 구성
+2. 독립형 또는 프레임워크 종속형을 선택하세요.
+3. 필요한 경우 트리밍을 설정합니다.
+4. 플랫폼별 경로 처리
+5. 플랫폼별 패키지
+6. 대상 OS에서 테스트
 
-### 3. Native AOT Compilation
-1. Enable PublishAot in project
-2. Review AOT compatibility
-3. Handle reflection limitations
-4. Test trimmed application
-5. Verify startup performance
-6. Deploy optimized binary
+### 3. 네이티브 AOT 컴파일
+1. 프로젝트에서 PublishAot 활성화
+2. AOT 호환성 검토
+3. 반사 제한 처리
+4. 잘린 애플리케이션 테스트
+5. 시작 성능 확인
+6. 최적화된 바이너리 배포
 
-## Best Practices
-- Use Path.Combine for cross-platform paths
-- Check RuntimeInformation.IsOSPlatform
-- Use conditional compilation sparingly
-- Test on all target platforms
-- Use cross-platform abstractions
-- Handle line endings properly
+## 모범 사례
+- 크로스 플랫폼 경로에는 Path.Combine을 사용하세요.
+- RuntimeInformation.IsOSPlatform을 확인하세요.
+- 조건부 컴파일을 자제해서 사용하세요.
+- 모든 대상 플랫폼에서 테스트
+- 크로스 플랫폼 추상화 사용
+- 줄 끝을 적절하게 처리합니다.
 
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Windows paths | Breaks on Linux/Mac | Use Path.Combine |
-| P/Invoke everywhere | Platform-specific | Use cross-platform APIs |
-| Ignoring case sensitivity | Fails on Linux | Consistent casing |
-| Untested on targets | Runtime failures | CI for each platform |
-| Heavy reflection with AOT | Trimming breaks app | Use source generators |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| Windows 경로 | Linux/Mac에서의 중단 | Path.Combine 사용 |
+| 모든 곳에서 P/호출 | 플랫폼별 | 크로스 플랫폼 API 사용 |
+| 대소문자 구분 무시 | Linux에서 실패 | 일관된 케이싱 |
+| 대상에 대해 테스트되지 않음 | 런타임 실패 | 플랫폼별 CI |
+| AOT에 대한 무거운 반성 | 트리밍으로 인해 앱이 중단됨 | 소스 생성기 사용 |

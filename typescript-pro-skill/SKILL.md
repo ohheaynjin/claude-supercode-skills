@@ -1,51 +1,50 @@
 ---
 name: typescript-pro
-description: Expert TypeScript developer specializing in advanced type system features, generic programming, and type-safe application architecture. This agent excels at leveraging TypeScript 5+ features for building robust, maintainable applications with comprehensive type safety and excellent developer experience.
+description: 고급 유형 시스템 기능, 일반 프로그래밍 및 유형 안전 애플리케이션 아키텍처를 전문으로 하는 전문 TypeScript 개발자입니다. 이 에이전트는 TypeScript 5+ 기능을 활용하여 포괄적인 유형 안전성과 뛰어난 개발자 경험을 갖춘 강력하고 유지 관리 가능한 애플리케이션을 구축하는 데 탁월합니다.
+---
+# TypeScript Pro 전문가
+
+## 목적
+
+고급 유형 시스템 기능, 일반 프로그래밍 패턴 및 유형이 안전한 애플리케이션 아키텍처를 갖춘 전문적인 TypeScript 개발 기능을 제공합니다. 포괄적인 유형 안전성을 갖춘 강력하고 유지 관리 가능한 애플리케이션을 구축하기 위해 TypeScript 5+를 활용하는 데 특화되어 있습니다.
+
+## 사용 시기
+
+- 고급 제네릭 및 매핑된 유형을 사용하여 복잡한 유형 시스템 설계
+- 프런트엔드-백엔드 경계를 넘어 유형이 안전한 API 구현
+- JavaScript 코드베이스를 TypeScript로 점진적으로 마이그레이션
+- 복잡한 유형 오류 또는 추론 문제 해결
+- 유형이 안전한 라이브러리, SDK 또는 프레임워크 통합 구축
+- 대규모 프로젝트에서 TypeScript 빌드 성능 최적화
+- 브랜드형, 차별적 조합, 유틸리티형 만들기
+
+## 빠른 시작
+
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 고급 제네릭 및 매핑된 유형을 사용하여 복잡한 유형 시스템 설계
+- 프런트엔드-백엔드 경계를 넘어 유형이 안전한 API 구현
+- JavaScript 코드베이스를 TypeScript로 점진적으로 마이그레이션
+- 복잡한 유형 오류 또는 추론 문제 해결
+- 유형이 안전한 라이브러리, SDK 또는 프레임워크 통합 구축
+
+**다음과 같은 경우에는 호출하지 마세요.**
+- 간단한 JavaScript 작업(유형 주석이 필요하지 않음)
+- 런타임 로직 버그(대신 디버거 사용)
+- 빌드 구성만(대신 빌드 엔지니어 사용)
+- React/Vue 특정 패턴(react-specialist/vue-expert 사용)
+
+---
 ---
 
-# TypeScript Pro Specialist
+## 핵심 워크플로
 
-## Purpose
+### 작업 흐름 1: 유형 안전 API 클라이언트 설계
 
-Provides expert TypeScript development capabilities with advanced type system features, generic programming patterns, and type-safe application architecture. Specializes in leveraging TypeScript 5+ for building robust, maintainable applications with comprehensive type safety.
+**사용 사례:** 자동 완성 기능을 사용하여 완전히 유형이 안전한 REST API 클라이언트 생성
 
-## When to Use
+**단계:**
 
-- Designing complex type systems with advanced generics and mapped types
-- Implementing type-safe APIs across frontend-backend boundaries
-- Migrating JavaScript codebases to TypeScript gradually
-- Troubleshooting complex type errors or inference issues
-- Building type-safe libraries, SDKs, or framework integrations
-- Optimizing TypeScript build performance in large projects
-- Creating branded types, discriminated unions, and utility types
-
-## Quick Start
-
-**Invoke this skill when:**
-- Designing complex type systems with advanced generics and mapped types
-- Implementing type-safe APIs across frontend-backend boundaries
-- Migrating JavaScript codebases to TypeScript gradually
-- Troubleshooting complex type errors or inference issues
-- Building type-safe libraries, SDKs, or framework integrations
-
-**Do NOT invoke when:**
-- Simple JavaScript tasks (type annotations not needed)
-- Runtime logic bugs (use debugger instead)
-- Build configuration only (use build-engineer instead)
-- React/Vue-specific patterns (use react-specialist/vue-expert)
-
----
----
-
-## Core Workflows
-
-### Workflow 1: Design Type-Safe API Client
-
-**Use case:** Create fully type-safe REST API client with auto-completion
-
-**Steps:**
-
-**1. Define API Schema (Contract-First)**
+**1. API 스키마 정의(계약 우선)**
 ```typescript
 // api-schema.ts - Single source of truth for API contract
 export const apiSchema = {
@@ -108,8 +107,7 @@ type ResponseData<
   Method extends ApiMethods<Path>
 > = ApiSchema[Path][Method] extends { response: infer R } ? R : never;
 ```
-
-**2. Implement Type-Safe API Client**
+**2. 유형 안전 API 클라이언트 구현**
 ```typescript
 // api-client.ts
 class ApiClient {
@@ -191,8 +189,7 @@ api.request('/users/{id}', 'PUT', {
   body: { name: 'Test' }
 });
 ```
-
-**3. Add Runtime Validation with Zod**
+**3. Zod로 런타임 검증 추가**
 ```typescript
 import { z } from 'zod';
 
@@ -241,15 +238,14 @@ const user = await validatedApi.request('/users/{id}', 'GET', {
 });
 // If API returns invalid data, Zod throws detailed error
 ```
-
 ---
 ---
 
-### Workflow 3: Gradual TypeScript Migration
+### 작업 흐름 3: 점진적 TypeScript 마이그레이션
 
-**Use case:** Migrate large JavaScript codebase incrementally
+**사용 사례:** 대규모 JavaScript 코드베이스를 점진적으로 마이그레이션
 
-**Phase 1: Enable TypeScript with Zero Changes (Week 1)**
+**1단계: 변경 사항 없이 TypeScript 활성화(1주차)**
 ```json
 // tsconfig.json - Initial configuration
 {
@@ -267,8 +263,7 @@ const user = await validatedApi.request('/users/{id}', 'GET', {
   "exclude": ["node_modules", "dist"]
 }
 ```
-
-**Phase 2: Add JSDoc Type Hints (Weeks 2-4)**
+**2단계: JSDoc 유형 힌트 추가(2~4주)**
 ```javascript
 // user.js - Add JSDoc comments for type checking
 /**
@@ -297,8 +292,7 @@ function filterUsers(users, searchTerm) {
   return users.filter(u => u.name.includes(searchTerm));
 }
 ```
-
-**Phase 3: Enable checkJs Gradually (Weeks 5-8)**
+**3단계: 점차적으로 checkJ 활성화(5~8주)**
 ```json
 // tsconfig.json - Start checking JavaScript
 {
@@ -309,8 +303,7 @@ function filterUsers(users, searchTerm) {
   }
 }
 ```
-
-**Fix errors directory by directory:**
+**디렉터리별 오류 디렉터리 수정:**
 ```bash
 # Disable checkJs for specific files with errors
 // @ts-nocheck at top of file
@@ -319,8 +312,7 @@ function filterUsers(users, searchTerm) {
 // @ts-ignore
 const result = unsafeOperation();
 ```
-
-**Phase 4: Rename Files to TypeScript (Weeks 9-12)**
+**4단계: 파일 이름을 TypeScript로 바꾸기(9~12주)**
 ```bash
 # Rename .js → .ts one directory at a time
 mv src/utils/user.js src/utils/user.ts
@@ -329,8 +321,7 @@ mv src/utils/user.js src/utils/user.ts
 - import { getUserById } from './user.js'
 + import { getUserById } from './user'
 ```
-
-**Add explicit types:**
+**명시적 유형 추가:**
 ```typescript
 // user.ts - Full TypeScript with explicit types
 interface User {
@@ -349,8 +340,7 @@ function filterUsers(users: User[], searchTerm: string): User[] {
   return users.filter(u => u.name.includes(searchTerm));
 }
 ```
-
-**Phase 5: Enable Strict Mode (Weeks 13-16)**
+**5단계: 엄격 모드 활성화(13~16주)**
 ```json
 // tsconfig.json - Enable strict mode progressively
 {
@@ -363,8 +353,7 @@ function filterUsers(users: User[], searchTerm: string): User[] {
   }
 }
 ```
-
-**Fix strict mode errors:**
+**엄격 모드 오류 수정:**
 ```typescript
 // Before (implicit any)
 function processData(data) {  // ❌ Parameter 'data' implicitly has 'any' type
@@ -386,14 +375,12 @@ function getUserName(user: User | null): string {
   return user?.name ?? 'Unknown';
 }
 ```
-
 ---
 ---
 
-### Pattern 2: Template Literal Types for String Validation
+### 패턴 2: 문자열 검증을 위한 템플릿 리터럴 유형
 
-**When to use:** CSS class names, API routes, environment variables
-
+**사용 시기:** CSS 클래스 이름, API 경로, 환경 변수
 ```typescript
 // Type-safe CSS class names
 type Size = 'sm' | 'md' | 'lg';
@@ -415,26 +402,24 @@ type Environment = `${Stage}_${Region}`;
 const env: Environment = 'prod_us';  // ✅ Valid
 const invalid: Environment = 'production_us';  // ❌ Error
 ```
-
 ---
 ---
 
-### ❌ Anti-Pattern 2: Not Defining Return Types
+### ❌ 안티 패턴 2: 반환 유형을 정의하지 않음
 
-**What it looks like:**
+**모습:**
 ```typescript
 function getUser(id: string) {  // ❌ No return type
   return fetch(`/api/users/${id}`).then(r => r.json());
 }
 // Return type inferred as Promise<any>
 ```
+**실패하는 이유:**
+- 구현이 변경되면 반환 유형이 자동으로 변경됩니다.
+- 어떤 함수가 반환되는지 보장하지 않음
+- 주요 변경 사항을 파악하기가 더 어렵습니다.
 
-**Why it fails:**
-- Return type changes silently if implementation changes
-- No guarantee of what function returns
-- Harder to catch breaking changes
-
-**Correct approach:**
+**올바른 접근 방식:**
 ```typescript
 interface User {
   id: string;
@@ -446,25 +431,24 @@ function getUser(id: string): Promise<User> {  // ✅ Explicit return type
   return fetch(`/api/users/${id}`).then(r => r.json());
 }
 ```
-
 ---
 ---
 
-## Integration Patterns
+## 통합 패턴
 
-### typescript-pro ↔ react-specialist
-- **Handoff**: TypeScript pro defines types → React specialist uses in components
-- **Collaboration**: Shared type definitions for props, state, API contracts
-- **Tools**: TypeScript for types, React for UI logic
+### typescript-pro ⇔ 반응 전문가
+- **Handoff**: TypeScript pro는 유형을 정의하고 → React 전문가는 구성 요소에서 사용합니다.
+- **협업**: props, state, API 계약에 대한 공유 유형 정의
+- **도구**: 유형용 TypeScript, UI 로직용 React
 
-### typescript-pro ↔ backend-developer
-- **Handoff**: TypeScript pro designs API types → Backend implements matching types
-- **Collaboration**: Shared schema definitions (OpenAPI, tRPC, GraphQL)
-- **Shared responsibility**: End-to-end type safety
+### typescript-pro ← 백엔드-개발자
+- **Handoff**: TypeScript pro는 API 유형을 설계 → 백엔드는 일치하는 유형을 구현합니다.
+- **협업**: 공유 스키마 정의(OpenAPI, tRPC, GraphQL)
+- **공동 책임**: 엔드투엔드형 안전
 
-### typescript-pro ↔ nextjs-developer
-- **Handoff**: TypeScript types → Next.js App Router Server/Client Components
-- **Collaboration**: Server Actions types, API route types
-- **Dependency**: Next.js benefits heavily from TypeScript
+### typescript-pro ← nextjs-developer
+- **Handoff**: TypeScript 유형 → Next.js 앱 라우터 서버/클라이언트 구성 요소
+- **협업**: 서버 액션 유형, API 경로 유형
+- **종속성**: Next.js는 TypeScript의 큰 이점을 얻습니다.
 
 ---

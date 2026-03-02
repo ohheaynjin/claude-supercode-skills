@@ -1,11 +1,10 @@
-# Windows Infrastructure Patterns
+# Windows 인프라 패턴
 
-Common patterns and best practices for Windows infrastructure administration.
+Windows 인프라 관리에 대한 일반적인 패턴 및 모범 사례.
 
-## Active Directory Patterns
+## Active Directory 패턴
 
-### OU Structure Design
-
+### OU 구조 설계
 ```powershell
 # Recommended OU hierarchy
 $OUStructure = @(
@@ -43,9 +42,7 @@ foreach ($OU in $OUStructure) {
     }
 }
 ```
-
-### User Group Management Pattern
-
+### 사용자 그룹 관리 패턴
 ```powershell
 function Add-UserToGroupSmart {
     param(
@@ -79,9 +76,7 @@ foreach ($user in $users) {
     Add-UserToGroupSmart -Username $user -GroupName "Department-IT"
 }
 ```
-
-### Computer Object Lifecycle
-
+### 컴퓨터 객체 수명주기
 ```powershell
 # New computer onboarding
 $computerName = "DESKTOP-001"
@@ -110,11 +105,9 @@ foreach ($group in $groups) {
     Remove-ADGroupMember -Identity $group -Members $computerName -Confirm:$false
 }
 ```
+## DNS 관리 패턴
 
-## DNS Management Patterns
-
-### DNS Zone Standardization
-
+### DNS 영역 표준화
 ```powershell
 # Standard DNS records for new domain
 function Initialize-StandardDNSRecords {
@@ -147,9 +140,7 @@ function Initialize-StandardDNSRecords {
         -DescriptiveText $spfRecord -ComputerName $DNSServer
 }
 ```
-
-### DNS Failover Pattern
-
+### DNS 장애 조치 패턴
 ```powershell
 # Configure round-robin DNS for load balancing
 function Set-DNSRoundRobin {
@@ -176,9 +167,7 @@ Set-DNSRoundRobin -Domain "example.com" -RecordName "www" `
     -IPAddresses @("192.168.1.10", "192.168.1.11", "192.168.1.12") `
     -DNSServer "dc01.example.com"
 ```
-
-### DNS Aging and Scavenging
-
+### DNS 에이징 및 청소
 ```powershell
 # Enable DNS scavenging to remove stale records
 $zone = "example.com"
@@ -195,11 +184,9 @@ Set-DnsServerScavenging -ComputerName $server `
     -ScavengingState $true `
     -ScavengingInterval 7.00:00:00
 ```
+## 그룹 정책 패턴
 
-## Group Policy Patterns
-
-### GPO Naming Convention
-
+### GPO 명명 규칙
 ```powershell
 # Standard GPO naming: <Scope>-<Function>-<Environment>
 $gpoTemplates = @(
@@ -215,9 +202,7 @@ foreach ($gpoName in $gpoTemplates) {
     New-GPO -Name $gpoName
 }
 ```
-
-### GPO Inheritance Control
-
+### GPO 상속 제어
 ```powershell
 # Block inheritance at OU level
 Set-GPInheritance -Target "OU=Computers,DC=example,DC=com" -IsBlocked Yes
@@ -229,9 +214,7 @@ New-GPLink -Guid $gpo.Id -Target "OU=Servers,DC=example,DC=com" -Enforced Yes
 # Remove block inheritance
 Set-GPInheritance -Target "OU=Computers,DC=example,DC=com" -IsBlocked No
 ```
-
-### WMI Filters for Conditional GPO Application
-
+### 조건부 GPO 적용을 위한 WMI 필터
 ```powershell
 # Create WMI filter for laptops
 $wmiQuery = "SELECT * FROM Win32_ComputerSystem WHERE PCSystemType = 2"
@@ -252,9 +235,7 @@ $gpo = Get-GPO -Name "Laptop Security Policy"
 Set-GPRegistryValue -Guid $gpo.Id -Key "HKLM\Software\Policies\Microsoft" `
     -ValueName "WmiFilter" -Type String -Value $wmiFilter.Name
 ```
-
-### GPO Security Baseline Pattern
-
+### GPO 보안 기본 패턴
 ```powershell
 function Apply-SecurityBaseline {
     param(
@@ -298,11 +279,9 @@ LockoutObservationWindow = 15
     Remove-Item $infFile -Force
 }
 ```
+## 보안 패턴
 
-## Security Patterns
-
-### Privileged Account Management
-
+### 권한 있는 계정 관리
 ```powershell
 # Tier 0: Enterprise Admin, Domain Admin (rarely used, no internet access)
 # Tier 1: Server Admins (manage servers)
@@ -338,9 +317,7 @@ function Create-AdminAccount {
     Add-ADGroupMember -Identity $adminGroup -Members $Username
 }
 ```
-
-### Account Lockout Monitoring
-
+### 계정 잠금 모니터링
 ```powershell
 # Monitor for account lockouts
 function Get-AccountLockouts {
@@ -364,9 +341,7 @@ function Get-AccountLockouts {
         } | Format-Table -AutoSize
 }
 ```
-
-### Password Expiration Notifications
-
+### 비밀번호 만료 알림
 ```powershell
 function Send-PasswordExpirationAlerts {
     param(
@@ -389,11 +364,9 @@ function Send-PasswordExpirationAlerts {
         }
 }
 ```
+## 백업 및 복구 패턴
 
-## Backup and Recovery Patterns
-
-### Automated AD Backup
-
+### 자동 AD 백업
 ```powershell
 function Backup-ActiveDirectory {
     param(
@@ -422,9 +395,7 @@ function Backup-ActiveDirectory {
     Write-Host "Backup completed to $BackupPath"
 }
 ```
-
-### GPO Restoration
-
+### GPO 복원
 ```powershell
 function Restore-GPOFromBackup {
     param(
@@ -449,11 +420,9 @@ function Restore-GPOFromBackup {
     }
 }
 ```
+## 모니터링 패턴
 
-## Monitoring Patterns
-
-### Event Log Monitoring
-
+### 이벤트 로그 모니터링
 ```powershell
 function Get-SecurityEvents {
     param(
@@ -476,9 +445,7 @@ Get-SecurityEvents -EventID 4625 -Hours 24
 # Monitor privileged group changes
 Get-SecurityEvents -EventID 4728 -Hours 24
 ```
-
-### System Health Check
-
+### 시스템 상태 점검
 ```powershell
 function Test-SystemHealth {
     param([string]$ComputerName = $env:COMPUTERNAME)

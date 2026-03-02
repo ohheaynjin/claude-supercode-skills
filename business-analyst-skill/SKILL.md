@@ -1,37 +1,36 @@
 ---
 name: business-analyst
-description: Expert in bridging the gap between business needs and technical solutions. Specializes in Requirements Engineering, BPMN, and Agile User Stories. Use when gathering requirements, creating user stories, modeling business processes, or translating business needs to technical specs.
+description: 비즈니스 요구 사항과 기술 솔루션 간의 격차를 해소하는 전문가입니다. 요구사항 엔지니어링, BPMN 및 Agile 사용자 스토리를 전문으로 합니다. 요구 사항 수집, 사용자 스토리 생성, 비즈니스 프로세스 모델링 또는 비즈니스 요구 사항을 기술 사양으로 변환할 때 사용합니다.
 ---
+# 비즈니스 분석가
 
-# Business Analyst
+## 목적
+요구 사항 수집, 비즈니스 프로세스 모델링 및 이해 관계자 요구 사항을 실행 가능한 기술 사양으로 변환하는 데 대한 전문 지식을 제공합니다. 비즈니스 이해관계자와 개발팀 간의 커뮤니케이션을 연결합니다.
 
-## Purpose
-Provides expertise in requirements gathering, business process modeling, and translating stakeholder needs into actionable technical specifications. Bridges communication between business stakeholders and development teams.
+## 사용 시기
+- 요구사항 수집 및 문서화
+- 사용자 스토리 및 수용 기준 작성
+- BPMN을 이용한 비즈니스 프로세스 모델링
+- 기능 사양 작성
+- 이해관계자 요구사항 분석
+- 제품 요구사항 문서(PRD) 정의
+- 현재 상태와 미래 상태 프로세스 매핑
 
-## When to Use
-- Gathering and documenting requirements
-- Writing user stories and acceptance criteria
-- Modeling business processes with BPMN
-- Creating functional specifications
-- Analyzing stakeholder needs
-- Defining product requirements documents (PRDs)
-- Mapping current vs future state processes
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 요구사항 수집 및 문서화
+- 사용자 스토리 및 수용 기준 작성
+- BPMN을 이용한 비즈니스 프로세스 모델링
+- 기능 사양 작성
+- 비즈니스 요구사항을 기술 사양으로 변환
 
-## Quick Start
-**Invoke this skill when:**
-- Gathering and documenting requirements
-- Writing user stories and acceptance criteria
-- Modeling business processes with BPMN
-- Creating functional specifications
-- Translating business needs to technical specs
+**다음과 같은 경우에는 호출하지 마세요.**
+- 시스템 아키텍처 설계(solution-architect 사용)
+- 프로젝트 일정 및 리소스 관리(프로젝트 관리자 사용)
+- 사용자 리서치 수행 (ux-researcher 사용)
+- 제품 전략 정의(제품 관리자 사용)
 
-**Do NOT invoke when:**
-- Designing system architecture (use solution-architect)
-- Managing project timeline and resources (use project-manager)
-- Conducting user research (use ux-researcher)
-- Defining product strategy (use product-manager)
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Requirements Type:
 ├── New feature → User stories + acceptance criteria
@@ -40,47 +39,46 @@ Requirements Type:
 ├── Compliance need → Regulatory requirements matrix
 └── Stakeholder request → Impact analysis + prioritization
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 요구 사항 수집
+1. 모든 이해관계자 식별
+2. 발견 인터뷰 실시
+3. 현재 문제점을 문서화하세요.
+4. 성공 지표 정의
+5. 초기 요구사항 초안
+6. 이해관계자와의 검증
+7. MoSCoW 또는 이와 유사한 것을 우선적으로 사용하세요.
 
-### 1. Requirements Gathering
-1. Identify all stakeholders
-2. Conduct discovery interviews
-3. Document current pain points
-4. Define success metrics
-5. Draft initial requirements
-6. Validate with stakeholders
-7. Prioritize using MoSCoW or similar
+### 2. 사용자 스토리 생성
+1. 사용자 페르소나 식별
+2. 사용자 여정 지도
+3. 표준 형식으로 스토리 작성
+4. 승인 기준 정의(주어진/언제/그때)
+5. 팀과 함께 복잡성 추정
+6. 백로그 그루밍을 통해 개선
 
-### 2. User Story Creation
-1. Identify user personas
-2. Map user journeys
-3. Write stories in standard format
-4. Define acceptance criteria (Given/When/Then)
-5. Estimate complexity with team
-6. Refine through backlog grooming
+### 3. 비즈니스 프로세스 모델링
+1. 현재 상태 매핑(AS-IS) 프로세스
+2. 병목 현상과 문제점 식별
+3. 미래 상태(TO-BE) 프로세스 설계
+4. 전환 요구 사항 정의
+5. 역할에 대한 RACI 매트릭스 생성
+6. 문서화 프로세스 지표
 
-### 3. Business Process Modeling
-1. Map current state (AS-IS) process
-2. Identify bottlenecks and pain points
-3. Design future state (TO-BE) process
-4. Define transition requirements
-5. Create RACI matrix for roles
-6. Document process metrics
+## 모범 사례
+- 표준 사용자 스토리 형식을 사용합니다: "[사용자]로서 나는 [목표]를 원하므로 [혜택]"
+- 테스트 가능한 승인 기준 작성
+- 요구사항 추적성 매트릭스 유지
+- 실제 사용자를 대상으로 요구사항 검증
+- 문서를 생생하게 유지하고 업데이트하세요.
+- 시각적 모델을 사용하여 복잡한 프로세스를 전달합니다.
 
-## Best Practices
-- Use standard user story format: "As a [user], I want [goal], so that [benefit]"
-- Write testable acceptance criteria
-- Maintain requirements traceability matrix
-- Validate requirements with real users
-- Keep documentation living and updated
-- Use visual models to communicate complex processes
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Solution in requirements | Constrains implementation | Focus on the "what", not "how" |
-| Missing acceptance criteria | Unclear definition of done | Every story needs testable criteria |
-| No stakeholder validation | Building wrong thing | Regular stakeholder reviews |
-| Waterfall requirements | Can't adapt to change | Iterative refinement |
-| Technical jargon | Business can't validate | Use business language |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 요구사항에 대한 솔루션 | 구현 제약 | "어떻게"가 아닌 "무엇"에 집중 |
+| 누락된 승인 기준 | 완료의 불분명한 정의 | 모든 이야기에는 테스트 가능한 기준이 필요합니다 |
+| 이해관계자 검증 없음 | 잘못된 것을 짓는 것 | 이해관계자 정기 검토 |
+| 폭포수 요구사항 | 변화에 적응할 수 없다 | 반복적 개선 |
+| 기술 전문 용어 | 비즈니스를 확인할 수 없습니다 | 비즈니스 언어 사용 |

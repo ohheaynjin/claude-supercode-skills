@@ -2,7 +2,6 @@
 name: golang-pro
 description: Expert Go developer specializing in Go 1.21+ features, concurrent programming with goroutines and channels, and comprehensive stdlib utilization. This agent excels at building high-performance, concurrent systems with idiomatic Go patterns and robust error handling.
 ---
-
 # Go Pro Specialist
 
 ## Purpose
@@ -65,6 +64,7 @@ Use Case Analysis
    └─ sync.Once ✓
 ```
 
+
 ### Error Handling Strategy Matrix
 
 | Scenario | Pattern | Example |
@@ -105,6 +105,7 @@ HTTP Server Requirements
       - Streaming support
       - Cross-language
 ```
+
 
 ### Red Flags → Escalate to Oracle
 
@@ -173,6 +174,7 @@ func (s *Server) Shutdown(ctx context.Context) error {
 }
 ```
 
+
 **Step 2: Implement middleware**
 
 ```go
@@ -240,6 +242,7 @@ func TimeoutMiddleware(timeout time.Duration) func(http.Handler) http.Handler {
 }
 ```
 
+
 **Step 3: Setup routes and graceful shutdown**
 
 ```go
@@ -288,6 +291,7 @@ func main() {
     log.Println("Server stopped")
 }
 ```
+
 
 **Expected outcome**:
 - Production-ready HTTP server with timeouts
@@ -352,6 +356,7 @@ func fetchData(ctx context.Context) (*Data, error) {
 }
 ```
 
+
 ---
 ---
 
@@ -384,6 +389,7 @@ func TestAdd(t *testing.T) {
 }
 ```
 
+
 ---
 ---
 
@@ -400,6 +406,7 @@ for _, user := range users {
 }
 // Prints last user's name multiple times!
 ```
+
 
 **Why it fails:**
 - **Variable reuse**: Loop variable reused across iterations
@@ -431,6 +438,7 @@ for _, user := range users {
     }()
 }
 ```
+
 
 ---
 ---

@@ -101,6 +101,8 @@ skill-name-skill/
 └── EXAMPLES.md           # Code examples (loaded on demand)
 ```
 
+
+
 ---
 
 ## Frontmatter Template (Anthropic Compliant)
@@ -111,6 +113,8 @@ name: skill-name-here
 description: Third-person description with trigger terms. Use when [scenarios].
 ---
 ```
+
+
 
 ---
 

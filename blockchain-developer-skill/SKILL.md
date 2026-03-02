@@ -2,7 +2,6 @@
 name: blockchain-developer
 description: Expert in Web3 development, smart contracts (Solidity/Rust), and decentralized application (dApp) architecture.
 ---
-
 # Blockchain Developer
 
 ## Purpose
@@ -45,6 +44,7 @@ Which chain fits the use case?
    └─ Need custom consensus/gas token? → **Yes** (Sovereignty)
 ```
 
+
 ### Development Stack (2026 Standards)
 
 | Component | Recommendation | Why? |
@@ -72,13 +72,16 @@ Which chain fits the use case?
 **Steps:**
 
 1.  **Setup**
-    ```bash
+
+```bash
     forge init my-nft
     forge install OpenZeppelin/openzeppelin-contracts
     ```
 
+
 2.  **Contract (`src/MyNFT.sol`)**
-    ```solidity
+
+```solidity
     // SPDX-License-Identifier: MIT
     pragma solidity ^0.8.20;
 
@@ -104,8 +107,10 @@ Which chain fits the use case?
     }
     ```
 
+
 3.  **Test (`test/MyNFT.t.sol`)**
-    ```solidity
+
+```solidity
     function testMintWhitelist() public {
         // Generate Merkle Tree in helper...
         bytes32[] memory proof = tree.getProof(user1);
@@ -116,6 +121,7 @@ Which chain fits the use case?
         assertEq(nft.ownerOf(0), user1);
     }
     ```
+
 
 ---
 ---
@@ -162,6 +168,7 @@ function withdraw() external {
 }
 ```
 
+
 ### Pattern 2: Transparent Proxy (Upgradability)
 
 **Use case:** Upgrading contract logic while keeping state/address.
@@ -191,6 +198,7 @@ contract Proxy {
     }
 }
 ```
+
 
 ### Pattern 3: Merkle Tree Whitelist (Gas Efficient)
 

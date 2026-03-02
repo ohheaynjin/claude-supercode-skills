@@ -2,7 +2,6 @@
 name: mobile-developer
 description: Expert in pure native development (Swift/Kotlin) for iOS and Android, maximizing platform capabilities and performance.
 ---
-
 # Native Mobile Developer
 
 ## Purpose
@@ -43,6 +42,7 @@ Architecture Choice?
    └─ Single codebase priority? → **Yes**
 ```
 
+
 ### UI Framework Selection
 
 | Platform | Framework | State of Tech (2026) | Recommendation |
@@ -80,7 +80,8 @@ Architecture Choice?
     -   Swift Strict Concurrency Checking: `Complete`.
 
 2.  **ViewModel Definition (Observable)**
-    ```swift
+
+```swift
     import SwiftUI
     import Observation
 
@@ -109,8 +110,10 @@ Architecture Choice?
     }
     ```
 
+
 3.  **View Implementation**
-    ```swift
+
+```swift
     struct ProductListView: View {
         @State private var viewModel = ProductListViewModel()
 
@@ -131,6 +134,7 @@ Architecture Choice?
     }
     ```
 
+
 ---
 ---
 
@@ -141,15 +145,18 @@ Architecture Choice?
 **Steps:**
 
 1.  **Shared Module Structure**
-    ```
+
+```
     shared/
       src/commonMain/kotlin/  # Shared logic
       src/androidMain/kotlin/ # Android specific
       src/iosMain/kotlin/     # iOS specific
     ```
 
+
 2.  **Networking (Ktor)**
-    ```kotlin
+
+```kotlin
     // commonMain
     class ApiClient {
         private val client = HttpClient {
@@ -161,6 +168,7 @@ Architecture Choice?
         suspend fun getData(): Data = client.get("...").body()
     }
     ```
+
 
 3.  **Consumption**
     -   **Android:** Call `ApiClient().getData()` directly in ViewModel.
@@ -251,6 +259,7 @@ func authenticateWithBiometrics() async throws {
 }
 ```
 
+
 **Results:**
 - Released on both App Store and Play Store
 - 500,000+ downloads in first month
@@ -285,6 +294,7 @@ val encryptedPrefs = EncryptedSharedPreferences.create(
 // Usage
 encryptedPrefs.edit().putString("patient_id", "12345").apply()
 ```
+
 
 **Results:**
 - HIPAA audit passed with zero critical findings

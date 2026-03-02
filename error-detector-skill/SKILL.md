@@ -1,360 +1,354 @@
 ---
 name: error-detector
-description: Advanced error analysis and pattern detection specialist for identifying, analyzing, and preventing software errors
+description: 소프트웨어 오류 식별, 분석, 예방을 위한 고급 오류 분석 및 패턴 감지 전문가
 ---
+# 오류 감지 스킬
 
-# Error Detector Skill
+## 목적
 
-## Purpose
+소프트웨어 결함의 사전 식별, 코드 분석 및 시스템 동작 모니터링을 전문으로 하는 오류 분석 및 패턴 감지 전문 지식을 제공합니다. 정적 및 동적 분석 기술을 통해 소프트웨어 오류를 식별, 분석하고 방지합니다.
 
-Provides error analysis and pattern detection expertise specializing in proactive identification of software defects, code analysis, and system behavior monitoring. Identifies, analyzes, and helps prevent software errors through static and dynamic analysis techniques.
+## 사용 시기
 
-## When to Use
+- 정적 코드 분석 및 안티 패턴 탐지 수행
+- 런타임 오류 및 예외 패턴 분석
+- 메모리 누수 및 성능 병목 현상 감지
+- 오류 로그 모니터링 및 분석
+- 코드 패턴을 통한 보안 취약점 식별
+- 선제적인 오류 예방 분석 수행
 
-- Performing static code analysis and anti-pattern detection
-- Analyzing runtime errors and exception patterns
-- Detecting memory leaks and performance bottlenecks
-- Monitoring and analyzing error logs
-- Identifying security vulnerabilities through code patterns
-- Conducting proactive error prevention analysis
+## 개요
+코드 분석, 로그 모니터링 및 시스템 동작 분석을 통해 오류 분석, 패턴 감지 및 소프트웨어 결함 사전 식별을 전문으로 합니다.
 
-## Overview
-Specialized in error analysis, pattern detection, and proactive identification of software defects through code analysis, log monitoring, and system behavior analysis.
+## 오류 감지 방법론
 
-## Error Detection Methodologies
+### 정적 분석
+- 코드 패턴 인식
+- 안티 패턴 식별
+- 복잡성 분석
+- 보안 취약점 탐지
+- 성능 병목 현상 식별
 
-### Static Analysis
-- Code pattern recognition
-- Anti-pattern identification
-- Complexity analysis
-- Security vulnerability detection
-- Performance bottleneck identification
+### 동적 분석
+- 런타임 오류 모니터링
+- 예외 패턴 분석
+- 메모리 누수 감지
+- 성능 프로파일링
+- 자원 활용도 추적
 
-### Dynamic Analysis
-- Runtime error monitoring
-- Exception pattern analysis
-- Memory leak detection
-- Performance profiling
-- Resource utilization tracking
-
-### Log-Based Analysis
+### 로그 기반 분석
 ```bash
 # Example patterns for error detection
 grep -r "ERROR\|FATAL\|CRITICAL" logs/ --include="*.log" --include="*.txt"
 grep -r "exception\|error\|failed" src/ --include="*.js" --include="*.py" --include="*.java"
 grep -r "TODO\|FIXME\|HACK" src/ --include="*.*" --exclude-dir=node_modules
 ```
+## 오류 카테고리 및 패턴
 
-## Error Categories & Patterns
+### 일반적인 프로그래밍 오류
+- 널 포인터 예외
+- 배열 인덱스가 범위를 벗어났습니다.
+- 유형 변환 오류
+- 리소스 누수 문제
+- 동시성 문제
 
-### Common Programming Errors
-- Null pointer exceptions
-- Array index out of bounds
-- Type conversion errors
-- Resource leak issues
-- Concurrency problems
+### 논리 오류
+- 개별 오류
+- 잘못된 조건문
+- 루프 종료 문제
+- 상태 관리 문제
+- 데이터 검증 실패
 
-### Logic Errors
-- Off-by-one errors
-- Incorrect conditionals
-- Loop termination issues
-- State management problems
-- Data validation failures
+### 성능 오류
+- 비효율적인 알고리즘
+- 메모리 최적화 문제
+- 데이터베이스 쿼리 문제
+- 네트워크 시간 초과 처리
+- 자원 경합
 
-### Performance Errors
-- Inefficient algorithms
-- Memory optimization issues
-- Database query problems
-- Network timeout handling
-- Resource contention
+## 고급 탐지 기술
 
-## Advanced Detection Techniques
+### 머신러닝 기반 탐지
+- 시스템 동작 이상 징후 탐지
+- 오류 로그의 패턴 인식
+- 예측적 고장 모델링
+- 오류 유형 분류
+- 자동화된 근본 원인 분석
 
-### Machine Learning-Based Detection
-- Anomaly detection in system behavior
-- Pattern recognition in error logs
-- Predictive failure modeling
-- Classification of error types
-- Automated root cause analysis
+### 통계분석
+- 오류 빈도 분포
+- 장애 시계열 분석
+- 구성요소 간 상관관계 분석
+- 회귀 테스트 실패 패턴
+- 성능 저하 감지
 
-### Statistical Analysis
-- Error frequency distribution
-- Time series analysis of failures
-- Correlation analysis between components
-- Regression testing failure patterns
-- Performance degradation detection
+### 코드 복잡도 측정항목
+- 순환복잡도 분석
+- 인지복잡도 평가
+- 유지보수성 지수 계산
+- 기술부채 정량화
+- 코드 중복 감지
 
-### Code Complexity Metrics
-- Cyclomatic complexity analysis
-- Cognitive complexity assessment
-- Maintainability index calculation
-- Technical debt quantification
-- Code duplication detection
+## 오류 분석 프레임워크
 
-## Error Analysis Frameworks
+### 근본 원인 분석(RCA)
+- Five Whys 방법론
+- Fishbone 다이어그램 분석
+- 우선순위를 위한 파레토 분석
+- 결함나무 분석
+- 변경영향평가
 
-### Root Cause Analysis (RCA)
-- Five Whys methodology
-- Fishbone diagram analysis
-- Pareto analysis for prioritization
-- Fault tree analysis
-- Change impact assessment
+### 오류 분류 시스템
+- 심각도 분류
+- 우선순위 할당 프레임워크
+- 영향평가 매트릭스
+- 빈도 기반 우선 순위
+- 비즈니스 리스크 평가
 
-### Error Classification Systems
-- Severity categorization
-- Priority assignment frameworks
-- Impact assessment matrices
-- Frequency-based prioritization
-- Business risk evaluation
+### 패턴 인식
+- 반복적인 오류 식별
+- 오류 클러스터링 알고리즘
+- 서열 패턴 분석
+- 상관관계 탐지
+- 시간적 패턴 분석
 
-### Pattern Recognition
-- Repetitive error identification
-- Error clustering algorithms
-- Sequence pattern analysis
-- Correlation detection
-- Temporal pattern analysis
+## 모니터링 및 경고
 
-## Monitoring & Alerting
+### 실시간 모니터링
+- 시스템 상태 대시보드
+- 오류율 모니터링
+- 성능 임계값 경고
+- 로그 집계 및 분석
+- 자동화된 사고 대응
 
-### Real-Time Monitoring
-- System health dashboards
-- Error rate monitoring
-- Performance threshold alerts
-- Log aggregation and analysis
-- Automated incident response
+### 예측 분석
+- 고장 예측 모델
+- 조기 경보 시스템
+- 동향 분석 및 예측
+- 용량 계획 알림
+- 사전 예방적 유지 관리 일정
 
-### Predictive Analysis
-- Failure prediction models
-- Early warning systems
-- Trend analysis and forecasting
-- Capacity planning alerts
-- Proactive maintenance scheduling
+### 로깅 모범 사례
+- 구조화된 로깅 구현
+- 로그 수준 최적화
+- 민감한 데이터 보호
+- 로그 순환 정책
+- 중앙 집중식 로그 관리
 
-### Logging Best Practices
-- Structured logging implementation
-- Log level optimization
-- Sensitive data protection
-- Log rotation policies
-- Centralized log management
+## 오류 예방 전략
 
-## Error Prevention Strategies
+### 코드 품질 개선
+- 동료 검토 프로세스
+- 자동화된 테스트 범위
+- 정적 분석 도구 통합
+- 코드 스타일 적용
+- 문서화 표준
 
-### Code Quality Improvement
-- Peer review processes
-- Automated testing coverage
-- Static analysis tools integration
-- Code style enforcement
-- Documentation standards
+### 개발 프로세스 최적화
+- 테스트 주도 개발(TDD)
+- 지속적인 통합 관행
+- 자동화된 배포 파이프라인
+- 롤백 절차
+- 기능 플래그 구현
 
-### Development Process Optimization
-- Test-driven development (TDD)
-- Continuous integration practices
-- Automated deployment pipelines
-- Rollback procedures
-- Feature flag implementation
+### 시스템 설계 패턴
+- 회로 차단기 패턴
+- 재시도 메커니즘
+- 우아한 저하
+- 폴백 시스템
+- 이중화 구현
 
-### System Design Patterns
-- Circuit breaker patterns
-- Retry mechanisms
-- Graceful degradation
-- Fallback systems
-- Redundancy implementation
+## 오류 감지 도구 및 통합
 
-## Error Detection Tools & Integration
+### 정적 분석 도구
+- JavaScript/TypeScript용 ESLint
+- Python용 Pylint
+- 다국어 분석을 위한 SonarQube
+- Java용 체크스타일
+- C#용 FxCop
 
-### Static Analysis Tools
-- ESLint for JavaScript/TypeScript
-- Pylint for Python
-- SonarQube for multi-language analysis
-- Checkstyle for Java
-- FxCop for C#
+### 동적 모니터링 도구
+- 애플리케이션 성능 모니터링(APM)
+- 오류 추적 서비스(Sentry, Bugsnag)
+- 로그 관리 시스템(ELK 스택)
+- 분산 추적 도구
+- 인프라 모니터링
 
-### Dynamic Monitoring Tools
-- Application Performance Monitoring (APM)
-- Error tracking services (Sentry, Bugsnag)
-- Log management systems (ELK stack)
-- Distributed tracing tools
-- Infrastructure monitoring
+### 사용자 정의 탐지 스크립트
+- 오류 패턴 매칭
+- 이상 탐지 알고리즘
+- 자동화된 회귀 테스트
+- 성능 벤치마킹
+- 데이터 유효성 검사
 
-### Custom Detection Scripts
-- Error pattern matching
-- Anomaly detection algorithms
-- Automated regression testing
-- Performance benchmarking
-- Data validation checks
+## 오류 응답 및 해결
 
-## Error Response & Resolution
+### 사고 관리
+- 오류 분류 절차
+- 에스컬레이션 프로토콜
+- 커뮤니케이션 템플릿
+- 해상도 추적
+- 사고 후 검토
 
-### Incident Management
-- Error triage procedures
-- Escalation protocols
-- Communication templates
-- Resolution tracking
-- Post-incident reviews
+### 자동 복구
+- 자가 치유 메커니즘
+- 자동 재시작 절차
+- 장애 조치 시스템
+- 데이터 복구 프로세스
+- 서비스 복원 워크플로우
 
-### Automated Recovery
-- Self-healing mechanisms
-- Automatic restart procedures
-- Failover systems
-- Data recovery processes
-- Service restoration workflows
+### 지식경영
+- 오류 문서 데이터베이스
+- 솔루션 저장소
+- 모범 사례 라이브러리
+- 교육자료
+- 교훈을 얻은 아카이브
 
-### Knowledge Management
-- Error documentation databases
-- Solution repositories
-- Best practice libraries
-- Training materials
-- Lessons learned archives
+## 특정 도메인 전문 지식### 웹 애플리케이션 오류
+- HTTP 오류 코드 분석
+- 자바스크립트 런타임 오류
+- API 실패 패턴
+- 데이터베이스 연결 문제
+- 프론트엔드 성능 문제
 
-## Specific Domain Expertise
+### 모바일 애플리케이션 오류
+- 기기별 문제
+- 네트워크 연결 문제
+- 앱스토어 거부 패턴
+- 배터리 사용량 최적화
+- 메모리 관리 문제
 
-### Web Application Errors
-- HTTP error code analysis
-- JavaScript runtime errors
-- API failure patterns
-- Database connection issues
-- Frontend performance problems
+### 백엔드 시스템 오류
+- 데이터베이스 트랜잭션 실패
+- 메시지 큐 처리 오류
+- 인증 및 승인 문제
+- 마이크로서비스 통신 문제
+- 자원 고갈 시나리오
 
-### Mobile Application Errors
-- Device-specific issues
-- Network connectivity problems
-- App store rejection patterns
-- Battery usage optimization
-- Memory management issues
+## 보고 및 분석
 
-### Backend System Errors
-- Database transaction failures
-- Message queue processing errors
-- Authentication and authorization issues
-- Microservices communication problems
-- Resource exhaustion scenarios
+### 오류 측정항목
+- 평균 탐지 시간(MTTD)
+- 평균 해결 시간(MTTR)
+- 오류 빈도 추세
+- 해결 효과
+- 예방조치 영향
 
-## Reporting & Analytics
+### 품질 대시보드
+- 실시간 오류 모니터링
+- 과거 동향 분석
+- 팀 성과 지표
+- 시스템 상태 표시기
+- 준수현황 추적
 
-### Error Metrics
-- Mean Time To Detection (MTTD)
-- Mean Time To Resolution (MTTR)
-- Error frequency trends
-- Resolution effectiveness
-- Preventive action impact
+## 결과물
 
-### Quality Dashboards
-- Real-time error monitoring
-- Historical trend analysis
-- Team performance metrics
-- System health indicators
-- Compliance status tracking
+### 분석 보고서
+- 종합적인 오류 분석
+- 근본 원인 파악
+- 영향 평가 문서
+- 해결 권장 사항
+- 예방 전략
 
-## Deliverables
+### 구현 계획
+- 오류 감지 시스템 설계
+- 모니터링 설정 절차
+- 알림 구성 가이드
+- 자동화된 테스트 프레임워크
+- 프로세스 개선 권고사항
 
-### Analysis Reports
-- Comprehensive error analysis
-- Root cause identification
-- Impact assessment documentation
-- Resolution recommendations
-- Prevention strategies
+### 교육 자료
+- 오류 처리 모범 사례
+- 문제 해결 가이드
+- 도구 사용 문서
+- 프로세스 워크플로 다이어그램
+- 기술 자료 문서
 
-### Implementation Plans
-- Error detection system design
-- Monitoring setup procedures
-- Alerting configuration guides
-- Automated testing frameworks
-- Process improvement recommendations
+## 예
 
-### Training Materials
-- Error handling best practices
-- Troubleshooting guides
-- Tool usage documentation
-- Process workflow diagrams
-- Knowledge base articles
+### 예시 1: 전자상거래 플랫폼 오류 모니터링
 
-## Examples
+**시나리오:** 트래픽이 많은 전자상거래 사이트에 대한 포괄적인 오류 추적을 구현합니다.
 
-### Example 1: E-Commerce Platform Error Monitoring
+**구현:**
+1. **오류 추적**: 모든 서비스에 걸친 Sentry 통합
+2. **로그 집계**: 중앙 집중식 로그 관리를 위한 ELK 스택
+3. **경고**: 심각한 오류에 대한 PagerDuty 통합
+4. **대시보드**: 오류 측정항목을 위한 사용자 정의 Grafana 대시보드
 
-**Scenario:** Implementing comprehensive error tracking for a high-traffic e-commerce site.
+**결과:**
+- MTTD가 몇 시간에서 몇 분으로 단축되었습니다.
+- 문제 해결 시간 40% 단축
+- 새로운 이슈에 대한 선제적 식별
 
-**Implementation:**
-1. **Error Tracking**: Sentry integration across all services
-2. **Log Aggregation**: ELK stack for centralized log management
-3. **Alerting**: PagerDuty integration for critical errors
-4. **Dashboard**: Custom Grafana dashboards for error metrics
+### 예시 2: 모바일 앱 충돌 보고
 
-**Results:**
-- MTTD reduced from hours to minutes
-- 40% reduction in time-to-resolution
-- Proactive identification of emerging issues
+**시나리오:** iOS 및 Android 애플리케이션에 대한 충돌 보고를 설정합니다.
 
-### Example 2: Mobile App Crash Reporting
+**접근방식:**
+1. **충돌 보고**: Firebase Crashlytics 통합
+2. **기호**: 읽기 가능한 스택 추적을 위한 자동 dSYM 업로드
+3. **탐색경로**: 컨텍스트에 대한 사용자 작업 추적
+4. **릴리스 추적**: 앱 버전과 충돌의 상관관계
 
-**Scenario:** Setting up crash reporting for iOS and Android applications.
+**추적된 주요 지표:**
+- 충돌 없는 사용자 비율(목표: 99.5%)
+- 기기 및 OS 버전별 상위 크래셔
+- 충돌 없는 비율 추세를 보여주는 세션 데이터
+- 충돌과 사용자 피드백의 상관관계
 
-**Approach:**
-1. **Crash Reporting**: Firebase Crashlytics integration
-2. **Symbolication**: Automated dSYM upload for readable stack traces
-3. **Breadcrumbs**: User action tracking for context
-4. **Release Tracking**: Correlation of crashes with app versions
+### 예시 3: API 게이트웨이 오류 분석
 
-**Key Metrics Tracked:**
-- Crash-free users rate (target: 99.5%)
-- Top crashers by device and OS version
-- Session data with crash-free rate trends
-- User feedback correlation with crashes
+**시나리오:** SaaS 플랫폼에 대한 API 게이트웨이 수준에서 오류를 모니터링하고 분석합니다.
 
-### Example 3: API Gateway Error Analysis
+**모니터링 설정:**
+1. **요청 로깅**: 모든 API 요청이 상태 코드와 함께 기록됩니다.
+2. **비율 추적**: 429 요청이 너무 많음 패턴 모니터링
+3. **지연 분석**: 엔드포인트별 P95, P99 지연 추적
+4. **인증 오류**: 보안을 위해 실패한 인증 시도 추적
 
-**Scenario:** Monitoring and analyzing errors at API gateway level for a SaaS platform.
+**경고 구성:**
+- 오류율 급증(5분 동안 > 5%)
+- 지연 시간 저하(P95의 경우 > 1초)
+- 인증 실패(단일 IP에서 > 100/분)
+- 회로 차단기 상태 변경
 
-**Monitoring Setup:**
-1. **Request Logging**: All API requests logged with status codes
-2. **Rate Tracking**: Monitoring for 429 Too Many Requests patterns
-3. **Latency Analysis**: P95, P99 latency tracking by endpoint
-4. **Authentication Errors**: Tracking failed auth attempts for security
+## 모범 사례
 
-**Alert Configuration:**
-- Error rate spikes (> 5% for 5 minutes)
-- Latency degradation (> 1s for P95)
-- Authentication failures (> 100/min from single IP)
-- Circuit breaker state changes
+### 오류 감지 구성
 
-## Best Practices
+- **포괄적인 적용 범위**: 중요한 기능뿐만 아니라 모든 코드 경로를 계측합니다.
+- **컨텍스트가 풍부한 데이터**: 사용자 ID, 요청 ID, 환경 세부정보 포함
+- **민감한 데이터 처리**: 오류 보고 전에 PII 및 비밀을 스크럽합니다.
+- **샘플링 전략**: 세부 정보 수집과 성능 영향 간의 균형 유지
+- **태그**: 필터링 및 집계에 일관된 태그 사용
 
-### Error Detection Configuration
+### 경고 관리- **임계값 조정**: 민감도를 조정하여 경보 피로를 줄입니다.
+- **에스컬레이션 경로**: 다양한 심각도 수준에 대한 명확한 절차
+- **업무 시간**: 대기 시간과 업무 시간에 대한 기대치가 다릅니다.
+- **알림 피로 방지**: 관련 알림을 통합하고 중복을 방지합니다.
+- **통화 중 순환**: 명확한 책임이 있는 지속 가능한 일정
 
-- **Comprehensive Coverage**: Instrument all code paths, not just critical functions
-- **Context-Rich Data**: Include user IDs, request IDs, environment details
-- **Sensitive Data Handling**: Scrub PII and secrets before error reporting
-- **Sampling Strategy**: Balance detail collection with performance impact
-- **Tagging**: Use consistent tagging for filtering and aggregation
+### 측정항목 및 보고
 
-### Alert Management
+- **주요 지표**: MTTD, MTTR, 오류율, 해결률 추적
+- **트렌드 분석**: 주간/월간 비교를 통한 패턴 파악
+- **SLA 보고**: 서비스 수준 계약에 대한 오류 영향
+- **팀 대시보드**: 다양한 팀 및 역할에 대한 사용자 정의 보기
+- **경영진 보고**: 리더십에 대한 높은 수준의 요약
 
-- **Threshold Tuning**: Adjust sensitivity to reduce alert fatigue
-- **Escalation Paths**: Clear procedures for different severity levels
-- **Business Hours**: Different expectations for on-call vs. business hours
-- **Alert Fatigue Prevention**: Consolidate related alerts, avoid duplicates
-- **On-Call Rotation**: Sustainable schedules with clear responsibilities
+### 오류 처리 모범 사례
 
-### Metrics and Reporting
+- **방어적 프로그래밍**: 입력 검증, 극단적인 경우 처리
+- **Graceful Degradation**: 종속성이 실패할 경우 대체 메커니즘
+- **오류 복구**: 지수 백오프를 사용한 자동 재시도
+- **사용자 통신**: 최종 사용자를 위한 의미 있는 오류 메시지
+- **로깅**: 디버깅 및 감사 추적을 위한 포괄적인 로그
 
-- **Key Metrics**: Track MTTD, MTTR, error rate, resolution rate
-- **Trend Analysis**: Weekly/monthly comparisons to identify patterns
-- **SLA Reporting**: Error impact on service level agreements
-- **Team Dashboards**: Custom views for different teams and roles
-- **Executive Reporting**: High-level summaries for leadership
+### 지속적인 개선
 
-### Error Handling Best Practices
-
-- **Defensive Programming**: Validate inputs, handle edge cases
-- **Graceful Degradation**: Fallback mechanisms when dependencies fail
-- **Error Recovery**: Automatic retry with exponential backoff
-- **User Communication**: Meaningful error messages for end users
-- **Logging**: Comprehensive logs for debugging and audit trails
-
-### Continuous Improvement
-
-- **Post-Incident Reviews**: Learn from every significant error
-- **Pattern Analysis**: Identify recurring issues for systemic fixes
-- **Knowledge Base**: Document errors and solutions for future reference
-- **Tool Evolution**: Regularly evaluate and update detection tools
-- **Team Training**: Ensure consistent error handling practices
+- **사고 후 검토**: 모든 중대한 오류로부터 교훈을 얻습니다.
+- **패턴 분석**: 시스템 수정에 대한 반복되는 문제 식별
+- **지식 베이스**: 향후 참조를 위해 오류 및 해결 방법을 문서화합니다.
+- **도구의 진화**: 탐지 도구를 정기적으로 평가하고 업데이트합니다.
+- **팀 교육**: 일관된 오류 처리 방식 보장

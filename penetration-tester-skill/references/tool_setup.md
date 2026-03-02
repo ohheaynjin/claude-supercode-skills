@@ -1,12 +1,11 @@
-# Penetration Testing Tool Setup Guide
+# 침투 테스트 도구 설정 가이드
 
-## Overview
-Comprehensive guide for setting up penetration testing tools on various platforms.
+## 개요
+다양한 플랫폼에서 침투 테스트 도구를 설정하기 위한 종합 가이드입니다.
 
-## Kali Linux Setup
+## 칼리 리눅스 설정
 
-### Basic Kali Installation
-
+### 기본 Kali 설치
 ```bash
 # Update system
 sudo apt update && sudo apt upgrade -y
@@ -30,9 +29,7 @@ sudo apt install -y \
     git \
     python3-pip
 ```
-
-### Python Tools Installation
-
+### Python 도구 설치
 ```bash
 # Install Python tools
 pip3 install \
@@ -46,9 +43,7 @@ pip3 install \
     scapy \
     paramiko
 ```
-
-### Metasploit Setup
-
+### 메타스플로잇 설정
 ```bash
 # Start PostgreSQL
 sudo systemctl start postgresql
@@ -62,11 +57,9 @@ msfconsole
 # Update Metasploit
 sudo apt install metasploit-framework
 ```
+## 우분투/데비안 설정
 
-## Ubuntu/Debian Setup
-
-### System Preparation
-
+### 시스템 준비
 ```bash
 # Update system
 sudo apt update && sudo apt upgrade -y
@@ -81,9 +74,7 @@ sudo apt install -y \
     libffi-dev \
     python3-dev
 ```
-
-### Web Security Tools
-
+### 웹 보안 도구
 ```bash
 # OWASP ZAP
 sudo apt install zaproxy
@@ -103,9 +94,7 @@ pip3 install sqlmap
 # XSSer
 sudo apt install xsser
 ```
-
-### Network Security Tools
-
+### 네트워크 보안 도구
 ```bash
 # Nmap
 sudo apt install nmap
@@ -122,9 +111,7 @@ sudo apt install wireshark
 # Tcpdump
 sudo apt install tcpdump
 ```
-
-### Password Cracking Tools
-
+### 비밀번호 크래킹 도구
 ```bash
 # John the Ripper
 sudo apt install john
@@ -135,9 +122,7 @@ sudo apt install hashcat
 # Hydra
 sudo apt install hydra
 ```
-
-### Wordlists
-
+### 단어 목록
 ```bash
 # Install SecLists
 git clone https://github.com/danielmiessler/SecLists.git /usr/share/SecLists
@@ -147,11 +132,9 @@ sudo apt install wordlists
 # Or download
 wget https://github.com/brannondorsey/naughty-strings/blob/master/naughty-strings.txt
 ```
+## macOS 설정
 
-## macOS Setup
-
-### Package Manager Setup
-
+### 패키지 관리자 설정
 ```bash
 # Install Homebrew if not installed
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -159,9 +142,7 @@ wget https://github.com/brannondorsey/naughty-strings/blob/master/naughty-string
 # Update brew
 brew update
 ```
-
-### Tools Installation
-
+### 도구 설치
 ```bash
 # Security tools
 brew install \
@@ -188,20 +169,16 @@ brew install --cask \
     burp-suite \
     zap
 ```
+## 윈도우즈 설정
 
-## Windows Setup
-
-### Chocolatey Setup
-
+### 초콜릿 설정
 ```powershell
 # Install Chocolatey
 Set-ExecutionPolicy Bypass -Scope Process -Force
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
-
-### Tools Installation
-
+### 도구 설치
 ```powershell
 # Install security tools
 choco install \
@@ -216,9 +193,7 @@ choco install \
     python3 \
     git
 ```
-
-### WSL2 for Linux Tools
-
+### Linux 도구용 WSL2
 ```powershell
 # Enable WSL2
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
@@ -228,11 +203,9 @@ wsl --set-default-version 2
 # Install Ubuntu
 wsl --install -d Ubuntu-20.04
 ```
+## 클라우드 플랫폼
 
-## Cloud Platforms
-
-### AWS Penetration Testing
-
+### AWS 침투 테스트
 ```bash
 # AWS CLI setup
 pip3 install awscli
@@ -245,9 +218,7 @@ pip3 install \
     prowler \
     cloudmapper
 ```
-
-### Azure Penetration Testing
-
+### Azure 침투 테스트
 ```bash
 # Azure CLI setup
 pip3 install azure-cli
@@ -258,9 +229,7 @@ pip3 install \
     azurite \
     azure-security-center
 ```
-
-### GCP Penetration Testing
-
+### GCP 침투 테스트
 ```bash
 # GCP SDK setup
 pip3 install google-cloud-sdk
@@ -271,11 +240,9 @@ pip3 install \
     cloud-forensics-utils \
     cloudsql-proxy
 ```
+## 도커 보안 도구
 
-## Docker Security Tools
-
-### Quick Start Container
-
+### 빠른 시작 컨테이너
 ```dockerfile
 FROM kalilinux/kali-rolling:latest
 
@@ -299,9 +266,7 @@ RUN pip3 install \
 WORKDIR /tools
 CMD /bin/bash
 ```
-
-### Docker Security Tools
-
+### 도커 보안 도구
 ```bash
 # Run OWASP ZAP in Docker
 docker run -u zap -p 8080:8080 -i owasp/zap2docker-stable zap-webswing.sh
@@ -314,11 +279,9 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
 docker run --volume $(pwd):/dependency-check \
     owasp/dependency-check
 ```
+## 도구별 구성
 
-## Tool-Specific Configuration
-
-### OWASP ZAP Configuration
-
+### OWASP ZAP 구성
 ```bash
 # Start ZAP
 zap-cli quick-scan --self-contained --start-options '-config api.disablekey=true' http://localhost:8080
@@ -335,9 +298,7 @@ zap-cli active-scan http://target.com
 # Generate Report
 zap-cli report -o zap_report.html -f html
 ```
-
-### Burp Suite Configuration
-
+### Burp Suite 구성
 ```python
 # Burp Suite API setup
 # File: burp_config.py
@@ -356,9 +317,7 @@ class BurpExtender(IBurpExtender, IHttpListener):
         # Custom logic here
         pass
 ```
-
-### Nmap Configuration
-
+### Nmap 구성
 ```bash
 # Custom Nmap script
 # File: custom_scan.nse
@@ -379,9 +338,7 @@ action = function(host, port)
   return "Port is open: " .. port.number
 end
 ```
-
-### Metasploit Configuration
-
+### 메타스플로잇 구성
 ```bash
 # Start Metasploit with database
 msfdb init
@@ -398,9 +355,7 @@ msf6 > use post/linux/gather/enum_users
 msf6 post(linux/gather/enum_users) > set SESSION 1
 msf6 post(linux/gather/enum_users) > run
 ```
-
-## Environment Variables
-
+## 환경 변수
 ```bash
 # Add to ~/.bashrc or ~/.zshrc
 
@@ -419,11 +374,9 @@ export SHODAN_API_KEY="your_key_here"
 export VIRUSTOTAL_API_KEY="your_key_here"
 export XSSER_API_KEY="your_key_here"
 ```
+## 단어 목록
 
-## Wordlists
-
-### Location and Installation
-
+### 위치 및 설치
 ```bash
 # SecLists
 git clone https://github.com/danielmiessler/SecLists.git /usr/share/SecLists
@@ -437,9 +390,7 @@ gunzip /opt/rockyou.txt.gz
 # Custom wordlists
 mkdir -p /opt/custom-wordlists
 ```
-
-### Creating Custom Wordlists
-
+### 사용자 정의 단어 목록 만들기
 ```bash
 # Cewl - Custom Word List Generator
 cewl http://target.com -w target_words.txt -d 5
@@ -450,11 +401,9 @@ crunch 8 12 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ -o custom.txt
 # Hydra with custom wordlist
 hydra -l admin -P /opt/custom-wordlists/users.txt target.com http-post-form "/login:user=^USER^&pass=^PASS^"
 ```
+## VPN 및 프록시 구성
 
-## VPN and Proxy Configuration
-
-### Proxychains
-
+### 프록시체인
 ```bash
 # Configure /etc/proxychains4.conf
 proxychains
@@ -465,9 +414,7 @@ socks5 127.0.0.1 9050
 proxychains nmap -sT -p 80,443 target.com
 proxychains sqlmap -u http://target.com
 ```
-
-### Tor Configuration
-
+### 토르 구성
 ```bash
 # Install Tor
 sudo apt install tor
@@ -479,11 +426,9 @@ sudo systemctl start tor
 export http_proxy=http://127.0.0.1:9050
 export https_proxy=http://127.0.0.1:9050
 ```
-
-## Virtual Machine Setup
+## 가상 머신 설정
 
 ### VirtualBox PenTest Lab
-
 ```bash
 # Create network
 VBoxManage hostonlyif create
@@ -493,9 +438,7 @@ VBoxManage hostonlyif ipconfig vboxnet0 --ip 192.168.56.1 --netmask 255.255.255.
 VBoxManage startvm "metasploitable3" --type headless
 VBoxManage startvm "dvwa" --type headless
 ```
-
-### VMware PenTest Lab
-
+### VMware PenTest 연구소
 ```bash
 # Network configuration
 vmrun start "/path/to/VM.vmx" nogui
@@ -504,11 +447,9 @@ vmrun start "/path/to/VM.vmx" nogui
 vmrun snapshot "/path/to/VM.vmx" take "Before Testing"
 vmrun revertToSnapshot "/path/to/VM.vmx" "Before Testing"
 ```
+## 문서화 및 보고
 
-## Documentation and Reporting
-
-### Markdown Report Template
-
+### 마크다운 보고서 템플릿
 ```markdown
 # Penetration Test Report
 
@@ -531,9 +472,7 @@ vmrun revertToSnapshot "/path/to/VM.vmx" "Before Testing"
 ## Appendices
 [Additional data]
 ```
-
-### Automated Report Generation
-
+### 자동 보고서 생성
 ```python
 #!/usr/bin/env python3
 """
@@ -552,11 +491,9 @@ def generate_report(findings, output_file):
     with open(output_file, 'w') as f:
         f.write(report)
 ```
+## 업데이트 및 유지 관리
 
-## Updates and Maintenance
-
-### Regular Updates
-
+### 정기 업데이트
 ```bash
 # Daily/Weekly update script
 #!/bin/bash
@@ -579,9 +516,7 @@ pip3 install --upgrade sqlmap xsser sublist3r
 
 echo "Updating complete!"
 ```
-
-### Backup and Restore
-
+### 백업 및 복원
 ```bash
 # Backup configurations
 tar -czf pentest_configs_backup.tar.gz \
@@ -593,11 +528,9 @@ tar -czf pentest_configs_backup.tar.gz \
 # Restore
 tar -xzf pentest_configs_backup.tar.gz -C /
 ```
+## 문제 해결
 
-## Troubleshooting
-
-### Common Issues
-
+### 일반적인 문제
 ```bash
 # Permission denied
 sudo chown -R $USER:$USER /tools
@@ -613,10 +546,9 @@ sudo msfdb init
 sudo netstat -tlnp | grep :8080
 sudo kill -9 <PID>
 ```
+## 참고자료
 
-## References
-
-- [Kali Tools](https://www.kali.org/tools-listing/)
+- [칼리 도구](https://www.kali.org/tools-listing/)
 - [OWASP ZAP](https://www.zaproxy.org/)
-- [Metasploit Documentation](https://docs.metasploit.com/)
-- [Nmap Reference](https://nmap.org/book/man.html)
+- [Metasploit 문서](https://docs.metasploit.com/)
+- [Nmap 참고자료](https://nmap.org/book/man.html)

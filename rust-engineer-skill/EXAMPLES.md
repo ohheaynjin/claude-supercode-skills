@@ -20,6 +20,7 @@ async fn save_user(db: &PgPool, user: &User) {
 }
 ```
 
+
 **Why it fails:**
 - **Runtime panics**: `.unwrap()` crashes the program on `Err` or `None`
 - **Silent failures**: Ignoring `Result` hides database errors, network failures
@@ -50,6 +51,7 @@ let port: u16 = std::env::var("PORT")
     .parse()
     .expect("PORT must be a valid u16");
 ```
+
 
 **When .unwrap() is acceptable:**
 - Tests (failure should fail the test)
@@ -86,6 +88,7 @@ fn generate_ids(count: usize) -> Vec<String> {
         .collect()
 }
 ```
+
 
 **Why it fails:**
 - **Performance degradation**: Allocations are expensive
@@ -140,6 +143,7 @@ fn normalize_string(s: &str) -> Cow<str> {
     }
 }
 ```
+
 
 **Guidelines:**
 - **Default to borrowing** (`&T`) unless ownership transfer needed
@@ -302,6 +306,7 @@ impl IntoResponse for AppError {
 }
 ```
 
+
 ---
 
 ## Testing Patterns
@@ -342,6 +347,7 @@ mod tests {
 }
 ```
 
+
 ### Integration Testing
 
 ```rust
@@ -373,6 +379,7 @@ mod integration_tests {
 }
 ```
 
+
 ---
 
 ## Dockerfile for Rust Services
@@ -399,6 +406,7 @@ COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/myapp /usr/loc
 EXPOSE 3000
 CMD ["myapp"]
 ```
+
 
 **Build optimizations:**
 - Use `lto = true` in `Cargo.toml` for smaller binaries

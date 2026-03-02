@@ -1,48 +1,47 @@
-# Vue Expert - Technical Reference
+# Vue Expert - 기술 참조
 
-## Development Workflow
+## 개발 워크플로
 
-### Project Setup
-- Initializes Vue 3 project with Vite or Vue CLI
-- Configures TypeScript with strict type checking
-- Sets up Pinia for state management
-- Implements Vue Router with proper route guards
-- Configures Vitest for testing with Vue Test Utils
+### 프로젝트 설정
+- Vite 또는 Vue CLI를 사용하여 Vue 3 프로젝트 초기화
+- 엄격한 유형 검사로 TypeScript를 구성합니다.
+- 상태 관리를 위한 Pinia 설정
+- 적절한 경로 가드를 사용하여 Vue 라우터를 구현합니다.
+- Vue Test Utils를 사용한 테스트를 위해 Vitest를 구성합니다.
 
-### Component Development
-- Uses Single File Components with Composition API
-- Implements proper TypeScript interfaces for props and emits
-- Creates reusable composables for shared logic
-- Uses Vue DevTools for debugging and performance analysis
-- Implements component testing with Vue Test Utils
+### 부품 개발
+- Composition API와 함께 단일 파일 구성 요소를 사용합니다.
+- 소품 및 방출을 위한 적절한 TypeScript 인터페이스를 구현합니다.
+- 공유 로직을 위한 재사용 가능한 컴포저블 생성
+- 디버깅 및 성능 분석을 위해 Vue DevTools를 사용합니다.
+- Vue Test Utils를 사용하여 구성 요소 테스트 구현
 
-### State Management
-- Designs Pinia stores with proper TypeScript typing
-- Implements proper data flow with actions and getters
-- Uses store composables for reusable store logic
-- Implements persistence strategies with plugins
-- Monitors state changes with Vue DevTools
+### 상태 관리
+- 적절한 TypeScript 타이핑으로 Pinia 매장을 디자인합니다.
+- 액션과 게터를 사용해 적절한 데이터 흐름을 구현합니다.
+- 재사용 가능한 스토어 로직을 위해 스토어 컴포저블을 사용합니다.
+- 플러그인을 사용하여 지속성 전략 구현
+- Vue DevTools로 상태 변경을 모니터링합니다.
 
-## Problem Areas Addressed
+## 해결된 문제 영역
 
-- Complex state management in single-page applications
-- Performance optimization in reactive applications
-- Component communication and data flow challenges
-- SEO optimization for client-side rendered applications
-- Integration with third-party libraries and APIs
+- 단일 페이지 애플리케이션의 복잡한 상태 관리
+- 반응형 애플리케이션의 성능 최적화
+- 구성 요소 통신 및 데이터 흐름 문제
+- 클라이언트 측 렌더링 애플리케이션을 위한 SEO 최적화
+- 타사 라이브러리 및 API와의 통합
 
-## Reactivity System Deep Dive
+## 반응성 시스템 심층 분석
 
-### ref vs reactive
+### 참조 대 반응형
 
-**ref** - Best for primitive values and when you need `.value` access:
+**ref** - 기본 값과 필요할 때 가장 적합합니다.`.value`입장:
 ```typescript
 const count = ref(0)
 const name = ref('John')
 count.value++ // Access with .value
 ```
-
-**reactive** - Best for complex objects:
+**반응형** - 복잡한 객체에 가장 적합:
 ```typescript
 const user = reactive({
   name: 'John',
@@ -51,10 +50,9 @@ const user = reactive({
 })
 user.name = 'Jane' // Direct property access
 ```
+### 구조 분해를 위한 toRefs
 
-### toRefs for Destructuring
-
-When destructuring reactive objects, use `toRefs` to maintain reactivity:
+반응형 객체를 구조분해할 때 다음을 사용하세요.`toRefs`반응성을 유지하기 위해:
 ```typescript
 const user = reactive({ name: 'John', age: 30 })
 
@@ -65,37 +63,33 @@ const { name, age } = user
 const { name, age } = toRefs(user)
 console.log(name.value) // Still reactive!
 ```
+### 계산된 속성
 
-### Computed Properties
-
-Use computed for derived state that depends on reactive values:
+반응 값에 따라 파생된 상태에 대해 계산된 값을 사용합니다.
 ```typescript
 const firstName = ref('John')
 const lastName = ref('Doe')
 
 const fullName = computed(() => `${firstName.value} ${lastName.value}`)
 ```
+### 감시 및 WatchEffect
 
-### Watch vs WatchEffect
-
-**watch** - Explicit dependencies, access to old/new values:
+**감시** - 명시적인 종속성, 이전/새 값에 대한 액세스:
 ```typescript
 watch(count, (newValue, oldValue) => {
   console.log(`Count changed from ${oldValue} to ${newValue}`)
 }, { immediate: true, deep: true })
 ```
-
-**watchEffect** - Auto-tracks dependencies:
+**watchEffect** - 종속성을 자동 추적합니다.
 ```typescript
 watchEffect(() => {
   console.log(`Count is now: ${count.value}`)
   // Automatically re-runs when count changes
 })
 ```
+## 피니아 매장 패턴
 
-## Pinia Store Patterns
-
-### Setup Syntax Store (Recommended)
+### 구문 저장소 설정(권장)
 ```typescript
 export const useUserStore = defineStore('user', () => {
   // State
@@ -118,8 +112,7 @@ export const useUserStore = defineStore('user', () => {
   return { user, loading, isAuthenticated, login }
 })
 ```
-
-### Store Composition
+### 매장 구성
 ```typescript
 // Composing stores together
 export const useCartStore = defineStore('cart', () => {
@@ -130,10 +123,9 @@ export const useCartStore = defineStore('cart', () => {
   )
 })
 ```
+## Vue 라우터 패턴
 
-## Vue Router Patterns
-
-### Route Guards
+### 루트 가드
 ```typescript
 router.beforeEach(async (to, from) => {
   const userStore = useUserStore()
@@ -143,18 +135,16 @@ router.beforeEach(async (to, from) => {
   }
 })
 ```
-
-### Dynamic Routes
+### 동적 경로
 ```typescript
 const routes = [
   { path: '/users/:id', component: UserProfile },
   { path: '/products/:category/:id?', component: ProductPage }
 ]
 ```
+## Nuxt.js 세부 사항
 
-## Nuxt.js Specifics
-
-### File-based Routing
+### 파일 기반 라우팅
 ```
 pages/
 ├── index.vue          → /
@@ -164,8 +154,7 @@ pages/
 │   └── [id].vue       → /users/:id
 └── [...slug].vue      → catch-all route
 ```
-
-### useFetch and useAsyncData
+### useFetch 및 useAsyncData
 ```typescript
 // Auto-cached, SSR-friendly data fetching
 const { data, pending, error, refresh } = await useFetch('/api/users')
@@ -178,8 +167,7 @@ const { data } = await useFetch('/api/users', {
   transform: (data) => data.users
 })
 ```
-
-### Server API Routes
+### 서버 API 경로
 ```typescript
 // server/api/users.get.ts
 export default defineEventHandler(async (event) => {
@@ -187,10 +175,9 @@ export default defineEventHandler(async (event) => {
   return await db.users.findMany({ take: query.limit })
 })
 ```
+## 성능 최적화 기술
 
-## Performance Optimization Techniques
-
-### v-memo for List Optimization
+### 목록 최적화를 위한 v-memo
 ```vue
 <template>
   <div v-for="item in items" :key="item.id" v-memo="[item.selected]">
@@ -198,15 +185,13 @@ export default defineEventHandler(async (event) => {
   </div>
 </template>
 ```
-
-### defineAsyncComponent for Code Splitting
+### 코드 분할을 위한 정의AsyncComponent
 ```typescript
 const HeavyComponent = defineAsyncComponent(() =>
   import('./HeavyComponent.vue')
 )
 ```
-
-### Virtual Scrolling
+### 가상 스크롤
 ```vue
 <template>
   <RecycleScroller
@@ -218,10 +203,9 @@ const HeavyComponent = defineAsyncComponent(() =>
   </RecycleScroller>
 </template>
 ```
+## 타입스크립트 통합
 
-## TypeScript Integration
-
-### Typed Props and Emits
+### 유형화된 Prop과 방출
 ```typescript
 interface Props {
   user: User
@@ -238,14 +222,12 @@ const props = withDefaults(defineProps<Props>(), {
 })
 const emit = defineEmits<Emits>()
 ```
-
-### Typed Refs
+### 입력된 참조
 ```typescript
 const inputRef = ref<HTMLInputElement | null>(null)
 const componentRef = ref<InstanceType<typeof MyComponent> | null>(null)
 ```
-
-### Generic Composables
+### 일반 컴포저블
 ```typescript
 function useAsyncData<T>(asyncFn: () => Promise<T>) {
   const data = ref<T | null>(null) as Ref<T | null>

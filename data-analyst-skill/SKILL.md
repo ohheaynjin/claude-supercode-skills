@@ -1,70 +1,69 @@
 ---
 name: data-analyst
-description: Expert in business intelligence, SQL, data visualization, and translating data into actionable business insights.
+description: 비즈니스 인텔리전스, SQL, 데이터 시각화 및 데이터를 실행 가능한 비즈니스 통찰력으로 변환하는 전문가입니다.
 ---
+# 데이터 분석가
 
-# Data Analyst
+## 목적
 
-## Purpose
+SQL, 대시보드 디자인 및 메트릭 기반 통찰력을 전문으로 하는 비즈니스 인텔리전스 및 데이터 분석 전문 지식을 제공합니다. 쿼리 최적화, KPI 정의 및 강력한 시각화를 통해 원시 데이터를 실행 가능한 비즈니스 인텔리전스로 변환합니다.
 
-Provides business intelligence and data analysis expertise specializing in SQL, dashboard design, and metric-driven insights. Transforms raw data into actionable business intelligence through query optimization, KPI definition, and compelling visualizations.
+## 사용 시기
 
-## When to Use
-
-- Creating or optimizing dashboards (Tableau, Power BI, Looker, Superset)
-- Writing complex SQL queries for data extraction and analysis
-- Defining and standardizing business KPIs (Churn, ARR, MAU, Conversion)
-- Performing ad-hoc analysis to answer specific business questions
-- Analyzing user behavior (Cohorts, Funnels, Retention)
-- Automating reporting workflows
-
----
----
-
-## Core Capabilities
-
-### Business Intelligence
-- Designing and building interactive dashboards in BI tools
-- Creating automated reporting pipelines and data refresh schedules
-- Implementing self-service analytics capabilities for business users
-- Developing KPI frameworks and metric definitions
-
-### SQL and Data Extraction
-- Writing complex queries with window functions, CTEs, and advanced joins
-- Optimizing query performance for large datasets
-- Creating reusable views and materialized tables
-- Implementing data extraction from multiple data sources
-
-### Data Visualization
-- Selecting appropriate chart types for different data stories
-- Designing clear, intuitive dashboard layouts
-- Implementing color schemes and visual hierarchies
-- Creating interactive visualizations for exploration
-
-### Business Insights
-- Translating data findings into actionable business recommendations
-- Conducting cohort analysis, funnel analysis, and retention analysis
-- Performing trend analysis and forecasting
-- Communicating findings to non-technical stakeholders
+- 대시보드 생성 또는 최적화(Tableau, Power BI, Looker, Superset)
+- 데이터 추출 및 분석을 위한 복잡한 SQL 쿼리 작성
+- 비즈니스 KPI 정의 및 표준화(Churn, ARR, MAU, Conversion)
+- 특정 비즈니스 질문에 답하기 위한 임시 분석 수행
+- 사용자 행동 분석(Cohorts, Funnels, Retention)
+- 보고 워크플로우 자동화
 
 ---
 ---
 
-## 3. Core Workflows
+## 핵심 기능
 
-### Workflow 1: Dashboard Design & Implementation
+### 비즈니스 인텔리전스
+- BI 도구로 대화형 대시보드 설계 및 구축
+- 자동화된 보고 파이프라인 및 데이터 새로 고침 일정 생성
+- 비즈니스 사용자를 위한 셀프 서비스 분석 기능 구현
+- KPI 프레임워크 및 지표 정의 개발
 
-**Goal:** Create a "Sales Performance" dashboard for the executive team.
+### SQL 및 데이터 추출
+- 창 함수, CTE 및 고급 조인을 사용하여 복잡한 쿼리 작성
+- 대규모 데이터 세트에 대한 쿼리 성능 최적화
+- 재사용 가능한 뷰 및 구체화된 테이블 생성
+- 여러 데이터 소스에서 데이터 추출 구현
 
-**Steps:**
+### 데이터 시각화
+- 다양한 데이터 스토리에 적합한 차트 유형 선택
+- 명확하고 직관적인 대시보드 레이아웃 디자인
+- 색 구성표 및 시각적 계층 구현
+- 탐색을 위한 대화형 시각화 만들기
 
-1.  **Requirements Gathering**
-    -   **Audience:** VP of Sales, Regional Managers.
-    -   **Questions to Answer:** "Are we hitting target?", "Which region is lagging?", "Who are top reps?"
-    -   **Key Metrics:** Total Revenue, % to Quota, YoY Growth, Pipeline Coverage.
+### 비즈니스 통찰력
+- 데이터 결과를 실행 가능한 비즈니스 권장 사항으로 변환
+- 코호트 분석, 유입경로 분석, 유지 분석 실시
+- 추세 분석 및 예측 수행
+- 기술적이지 않은 이해관계자에게 결과 전달
 
-2.  **Data Preparation (SQL)**
-    ```sql
+---
+---
+
+## 3. 핵심 워크플로
+
+### 워크플로 1: 대시보드 디자인 및 구현
+
+**목표:** 경영진을 위한 "판매 성과" 대시보드를 만듭니다.
+
+**단계:**
+
+1. **요구사항 수집**
+    - **대상:** 영업 부사장, 지역 관리자.
+    - **답변 질문:** "목표를 달성하고 있나요?", "어느 지역이 뒤쳐져 있나요?", "최고 담당자는 누구인가요?"
+    - **주요 지표:** 총 수익, 할당량 대비 %, YoY 성장, 파이프라인 적용 범위.
+
+2. **데이터 준비(SQL)**
+```sql
     WITH sales_data AS (
         SELECT 
             r.region_name,
@@ -95,40 +94,39 @@ Provides business intelligence and data analysis expertise specializing in SQL, 
     LEFT JOIN quotas q ON s.sales_rep_name = q.sales_rep_name 
                        AND s.sales_month = q.month;
     ```
+3. **시각화 디자인(개념)**
+    - **최상위 수준(KPI 카드):** 총 수익 대비 목표, YoY 성장률(%).
+    - **추세(선 차트):** 월별 매출 대 할당량 추세선입니다.
+    - **분류(막대형 차트):** 지역별 달성률(%)(정렬된 설명)
+    - **세부 정보(표):** 상위 10개 영업 담당자(수익, 거래 건수, 성사율).
 
-3.  **Visualization Design (Conceptual)**
-    -   **Top Level (KPI Cards):** Total Revenue vs Target, YoY Growth %.
-    -   **Trend (Line Chart):** Monthly Revenue vs Quota trend line.
-    -   **Breakdown (Bar Chart):** Attainment % by Region (Sorted desc).
-    -   **Detail (Table):** Top 10 Sales Reps (Revenue, Deal Count, Win Rate).
+4. **구현 및 상호작용**
+    - '지역' 및 '기간' 필터를 추가합니다.
+    - 지역 막대 차트에서 담당자 세부 정보 목록까지 드릴스루를 설정합니다.
+    - MoM 변화를 보여주는 툴팁을 추가합니다.
 
-4.  **Implementation & Interactivity**
-    -   Add "Region" and "Date Range" filters.
-    -   Set up drill-through from Region bar chart to Rep detail list.
-    -   Add tooltips showing MoM change.
-
-5.  **Quality Check**
-    -   Validate numbers against source system (CRM).
-    -   Check performance (load time < 5s).
-    -   Verify filter interactions.
+5. **품질 확인**
+    - 소스 시스템(CRM)에 대해 숫자를 검증합니다.
+    - 성능을 확인하세요(로드 시간 < 5초).
+    - 필터 상호 작용을 확인합니다.
 
 ---
 ---
 
-### Workflow 3: Funnel Analysis (Conversion)
+### 워크플로 3: 유입경로 분석(전환)
 
-**Goal:** Identify bottlenecks in the signup flow.
+**목표:** 가입 과정에서 병목 현상을 식별합니다.
 
-**Steps:**
+**단계:**
 
-1.  **Define Steps**
-    1.  Landing Page View
-    2.  Signup Button Click
-    3.  Form Submit
-    4.  Email Confirmation
+1. **단계 정의**
+    1. 랜딩페이지 보기
+    2. 회원가입 버튼 클릭
+    3. 양식 제출
+    4. 이메일 확인
 
-2.  **SQL Analysis**
-    ```sql
+2. **SQL 분석**
+```sql
     SELECT
         COUNT(DISTINCT CASE WHEN step = 'landing_view' THEN user_session_id END) as step_1_landing,
         COUNT(DISTINCT CASE WHEN step = 'signup_click' THEN user_session_id END) as step_2_click,
@@ -137,37 +135,36 @@ Provides business intelligence and data analysis expertise specializing in SQL, 
     FROM web_events
     WHERE event_date >= DATEADD('day', -30, CURRENT_DATE);
     ```
+3. **전환율 계산**
+    - 1~2단계 : (2단계 / 1단계) * 100
+    - 2~3단계 : (3단계 / 2단계) * 100
+    - 3~4단계 : (4단계 / 3단계) * 100
+    - 전체 : (4단계 / 1단계) * 100
 
-3.  **Calculate Conversion Rates**
-    -   Step 1 to 2: (Step 2 / Step 1) * 100
-    -   Step 2 to 3: (Step 3 / Step 2) * 100
-    -   Step 3 to 4: (Step 4 / Step 3) * 100
-    -   Overall: (Step 4 / Step 1) * 100
-
-4.  **Insight Generation**
-    -   "Drop-off from Click to Submit is 60%. This is high. Potential form friction or validation errors."
-    -   **Recommendation:** "Simplify form fields or add social login."
+4. **인사이트 생성**
+    - "클릭하여 제출할 때의 이탈률은 60%입니다. 이는 높은 수치입니다. 잠재적인 양식 마찰 또는 유효성 검사 오류가 있습니다."
+    - **권장 사항:** "양식 필드를 단순화하거나 소셜 로그인을 추가하세요."
 
 ---
 ---
 
-### Workflow 5: Embedded Analytics (Product Integration)
+### 워크플로 5: 내장형 분석(제품 통합)
 
-**Goal:** Embed a "Customer Usage" dashboard inside your SaaS product for users to see.
+**목표:** 사용자가 볼 수 있도록 SaaS 제품 내부에 "고객 사용량" 대시보드를 삽입합니다.
 
-**Steps:**
+**단계:**
 
-1.  **Dashboard Creation (Parameterized)**
-    -   Create dashboard in BI tool (e.g., Looker/Superset).
-    -   Add a global parameter `customer_id`.
-    -   Filter all charts: `WHERE organization_id = {{ customer_id }}`.
+1. **대시보드 생성(매개변수화됨)**
+    - BI 도구(예: Looker/Superset)에서 대시보드를 만듭니다.
+    - 전역 매개변수 추가`customer_id`.
+    - 모든 차트 필터링:`WHERE organization_id = {{ customer_id }}`.
 
-2.  **Security (Row Level Security)**
-    -   Ensure `customer_id` cannot be changed by the client.
-    -   Use Signed URLs (JWT) generated by backend.
+2. **보안(행 수준 보안)**
+    - 보장`customer_id`클라이언트가 변경할 수 없습니다.
+    - 백엔드에서 생성된 서명된 URL(JWT)을 사용합니다.
 
-3.  **Frontend Integration (React)**
-    ```javascript
+3. **프런트엔드 통합(React)**
+```javascript
     import { EmbedDashboard } from '@superset-ui/embedded-sdk';
     
     useEffect(() => {
@@ -180,85 +177,84 @@ Provides business intelligence and data analysis expertise specializing in SQL, 
         });
     }, []);
     ```
-
-4.  **Performance Tuning**
-    -   Enable caching on the BI server (5-15 min TTL).
-    -   Use pre-aggregated tables for the underlying data.
-
----
----
-
-## 5. Anti-Patterns & Gotchas
-
-### ❌ Anti-Pattern 1: Pie Chart Overuse
-
-**What it looks like:**
--   Using a pie chart for 15 different categories.
--   Using a pie chart to compare similar values (e.g., 49% vs 51%).
-
-**Why it fails:**
--   Human brain struggles to compare angles/areas accurately.
--   Small slices become unreadable.
--   Impossible to see trends.
-
-**Correct approach:**
--   Use **Bar Charts** for comparison.
--   Limit Pie/Donut charts to 2-4 distinct categories (e.g., Mobile vs Desktop) where "Part-to-Whole" is the *only* message.
-
-### ❌ Anti-Pattern 2: Complex Logic in BI Tool
-
-**What it looks like:**
--   Creating 50+ calculated fields in Tableau/Power BI with complex `IF/ELSE` and string manipulation logic.
--   Doing joins and aggregations inside the BI tool layer instead of SQL.
-
-**Why it fails:**
--   **Performance:** Dashboard loads slowly as it computes logic on the fly.
--   **Maintenance:** Logic is hidden in the tool, hard to version control or debug.
--   **Reusability:** Other tools/analysts can't reuse the logic.
-
-**Correct approach:**
--   **Push logic upstream** to the database/SQL layer.
--   Create a clean View or Table (`mart_sales`) that has all calculated fields pre-computed.
--   BI tool should just *visualize* the data, not *transform* it.
-
-### ❌ Anti-Pattern 3: Inconsistent Metric Definitions
-
-**What it looks like:**
--   Marketing defines "Lead" as "Email capture".
--   Sales defines "Lead" as "Phone call qualification".
--   Dashboard shows conflicting numbers.
-
-**Why it fails:**
--   Loss of trust in data.
--   Time wasted reconciling numbers.
-
-**Correct approach:**
--   **Data Dictionary:** Document definitions explicitly.
--   **Certified Datasets:** Use a governed layer (e.g., Looker Explores, dbt Models) where the metric is defined once in code.
+4. **성능 튜닝**
+    - BI 서버에서 캐싱을 활성화합니다(5~15분 TTL).
+    - 기본 데이터에 대해 사전 집계된 테이블을 사용합니다.
 
 ---
 ---
 
-## 7. Quality Checklist
+## 5. 안티 패턴 및 문제점
 
-**Visual Design:**
--   [ ] **Title & Description:** Every chart has a clear title and subtitle explaining *what* it shows.
--   [ ] **Context:** Numbers include context (e.g., "% growth vs last month", "vs Target").
--   [ ] **Color:** Color is used intentionally (e.g., Red/Green for sentiment, consistent brand colors) and is colorblind accessible.
--   [ ] **Clutter:** unnecessary gridlines, borders, and backgrounds removed (Data-Ink Ratio).
+### ❌ 안티 패턴 1: 원형 차트 남용
 
-**Data Integrity:**
--   [ ] **Validation:** Dashboard totals match source system totals (spot check).
--   [ ] **Null Handling:** `NULL` values handled explicitly (filtered or labeled "Unknown").
--   [ ] **Filters:** Date filters work correctly across all charts.
--   [ ] **Duplicates:** Join logic checked for fan-outs (duplicates).
+**모습:**
+- 15가지 카테고리에 대한 원형 차트를 사용합니다.
+- 원형 차트를 사용하여 유사한 값을 비교합니다(예: 49% 대 51%).
 
-**Performance:**
--   [ ] **Load Time:** Dashboard loads in < 5 seconds.
--   [ ] **Query Cost:** SQL queries are optimized (partitions used, select * avoided).
--   [ ] **Extracts:** Use extracts/imports instead of Live connections for static historical data.
+**실패하는 이유:**
+- 인간의 두뇌는 각도/면적을 정확하게 비교하는 데 어려움을 겪습니다.
+- 작은 조각을 읽을 수 없게 됩니다.
+- 추세를 볼 수 없습니다.
 
-**Usability:**
--   [ ] **Tooltips:** Hover tooltips provide useful additional info.
--   [ ] **Mobile:** Dashboard is readable on mobile/tablet if required.
--   [ ] **Action:** The dashboard answers "So What?" (leads to action).
+**올바른 접근 방식:**
+- 비교를 위해 **막대형 차트**를 사용하세요.
+- 원형/도넛 차트를 2~4개의 개별 범주(예: 모바일 대 데스크톱)로 제한합니다. 여기서 "부분 대 전체"는 *유일한* 메시지입니다.
+
+### ❌ 안티 패턴 2: BI 도구의 복잡한 논리
+
+**모습:**
+- Tableau/Power BI에서 복잡한 계산 필드를 50개 이상 생성`IF/ELSE`및 문자열 조작 논리.
+- SQL 대신 BI 도구 계층 내에서 조인 및 집계를 수행합니다.
+
+**실패하는 이유:**
+- **성능:** 대시보드는 로직을 즉시 계산하므로 느리게 로드됩니다.
+- **유지 관리:** 로직은 도구에 숨겨져 있어 버전 관리나 디버그가 어렵습니다.
+- **재사용성:** 다른 도구/분석가는 논리를 재사용할 수 없습니다.
+
+**올바른 접근 방식:**
+- **논리 업스트림**을 데이터베이스/SQL 계층으로 푸시합니다.
+- 깨끗한 뷰 또는 테이블 만들기(`mart_sales`)에는 모든 계산된 필드가 미리 계산되어 있습니다.
+- BI 도구는 데이터를 *변환*하는 것이 아니라 데이터를 *시각화*해야 합니다.
+
+### ❌ 안티 패턴 3: 일관되지 않은 측정항목 정의
+
+**모습:**
+- 마케팅에서는 "리드"를 "이메일 캡처"로 정의합니다.
+- Sales에서는 "Lead"를 "전화 통화 자격"으로 정의합니다.
+- 대시보드에 충돌하는 숫자가 표시됩니다.
+
+**실패하는 이유:**
+- 데이터에 대한 신뢰 상실.
+- 숫자를 조정하는 데 시간이 낭비되었습니다.
+
+**올바른 접근 방식:**
+- **데이터 사전:** 명시적으로 문서 정의.
+- **인증된 데이터세트:** 지표가 코드에서 한 번 정의되는 관리 레이어(예: Looker Explore, dbt 모델)를 사용합니다.
+
+---
+---
+
+## 7. 품질 체크리스트
+
+**시각적 디자인:**
+- [ ] **제목 및 설명:** 모든 차트에는 표시되는 *내용*을 설명하는 명확한 제목과 부제목이 있습니다.
+- [ ] **컨텍스트:** 숫자에는 컨텍스트가 포함됩니다(예: "지난 달 대비 성장률(%)", "목표 대비").
+- [ ] **색상:** 색상은 의도적으로 사용되었으며(예: 감성을 위한 빨간색/녹색, 일관된 브랜드 색상) 색맹이 접근할 수 있습니다.
+- [ ] **클러터:** 불필요한 격자선, 테두리 및 배경이 제거되었습니다(데이터-잉크 비율).
+
+**데이터 무결성:**
+- [ ] **검증:** 대시보드 합계가 소스 시스템 합계와 일치합니다(즉시 확인).
+- [ ] **Null 처리:**`NULL`값은 명시적으로 처리됩니다(필터링되거나 '알 수 없음' 라벨 지정).
+- [ ] **필터:** 날짜 필터는 모든 차트에서 올바르게 작동합니다.
+- [ ] **중복:** 팬아웃(중복)에 대해 조인 논리가 확인되었습니다.
+
+**성능:**
+- [ ] **로드 시간:** 대시보드는 5초 이내에 로드됩니다.
+- [ ] **쿼리 비용:** SQL 쿼리가 최적화됩니다(파티션 사용, 선택 * 회피).
+- [ ] **추출:** 정적 기록 데이터에 대해 라이브 연결 대신 추출/가져오기를 사용합니다.
+
+**사용성:**
+- [ ] **툴팁:** 마우스오버 툴팁은 유용한 추가 정보를 제공합니다.
+- [ ] **모바일:** 필요한 경우 모바일/태블릿에서 대시보드를 읽을 수 있습니다.
+- [ ] **작업:** 대시보드는 "그래서 무엇을 하시겠습니까?"라고 대답합니다. (행동으로 이어진다).

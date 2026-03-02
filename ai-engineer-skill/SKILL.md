@@ -1,37 +1,36 @@
 ---
 name: ai-engineer
-description: Expert in building comprehensive AI systems, integrating LLMs, RAG architectures, and autonomous agents into production applications. Use when building AI-powered features, implementing LLM integrations, designing RAG pipelines, or deploying AI systems.
+description: 포괄적인 AI 시스템 구축, LLM, RAG 아키텍처 및 자율 에이전트를 프로덕션 애플리케이션에 통합하는 전문가입니다. AI 기반 기능 구축, LLM 통합 구현, RAG 파이프라인 설계 또는 AI 시스템 배포 시 사용하세요.
 ---
+# AI 엔지니어
 
-# AI Engineer
+## 목적
+LLM 통합부터 프로덕션 배포까지 엔드투엔드 AI 시스템 개발에 대한 전문 지식을 제공합니다. RAG 아키텍처, 임베딩 전략, 벡터 데이터베이스, 프롬프트 엔지니어링 및 AI 애플리케이션 패턴을 다룹니다.
 
-## Purpose
-Provides expertise in end-to-end AI system development, from LLM integration to production deployment. Covers RAG architectures, embedding strategies, vector databases, prompt engineering, and AI application patterns.
+## 사용 시기
+- LLM 기반 애플리케이션 또는 기능 구축
+- RAG(Retrieval-Augmented Generation) 시스템 구현
+- AI API(OpenAI, Anthropic 등) 통합
+- 임베딩 및 벡터 검색 파이프라인 설계
+- 챗봇 또는 대화형 AI 구축
+- 도구를 활용한 AI 에이전트 구현
+- AI 시스템 지연 시간 및 비용 최적화
 
-## When to Use
-- Building LLM-powered applications or features
-- Implementing RAG (Retrieval-Augmented Generation) systems
-- Integrating AI APIs (OpenAI, Anthropic, etc.)
-- Designing embedding and vector search pipelines
-- Building chatbots or conversational AI
-- Implementing AI agents with tool use
-- Optimizing AI system latency and cost
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- LLM 기반 애플리케이션 또는 기능 구축
+- 벡터 데이터베이스를 이용한 RAG 시스템 구현
+- AI API를 애플리케이션에 통합
+- 임베딩 및 검색 파이프라인 설계
+- 대화형 AI 또는 에이전트 구축
 
-## Quick Start
-**Invoke this skill when:**
-- Building LLM-powered applications or features
-- Implementing RAG systems with vector databases
-- Integrating AI APIs into applications
-- Designing embedding and retrieval pipelines
-- Building conversational AI or agents
+**다음과 같은 경우에는 호출하지 마세요.**
+- 처음부터 맞춤형 ML 모델 학습(ML-Engineer 사용)
+- 프로덕션 인프라에 ML 모델 배포(mlops-engineer 사용)
+- 다중 에이전트 조정 관리(에이전트-주최자 사용)
+- LLM 서비스 인프라 최적화(llm-architect 사용)
 
-**Do NOT invoke when:**
-- Training custom ML models from scratch (use ml-engineer)
-- Deploying ML models to production infrastructure (use mlops-engineer)
-- Managing multi-agent coordination (use agent-organizer)
-- Optimizing LLM serving infrastructure (use llm-architect)
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 AI Feature Type:
 ├── Simple Q&A → Direct LLM API call
@@ -41,46 +40,45 @@ AI Feature Type:
 ├── Real-time data → Streaming + function calling
 └── Complex workflows → Multi-agent orchestration
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. RAG 파이프라인 구현
+1. 적절한 전략으로 문서를 덩어리로 묶는다
+2. 적합한 모델을 사용하여 임베딩 생성
+3. 메타데이터와 함께 벡터 데이터베이스에 저장
+4. 재순위를 통한 의미 검색 구현
+5. 검색된 컨텍스트로 프롬프트 구성
+6. 평가 및 모니터링 추가
 
-### 1. RAG Pipeline Implementation
-1. Chunk documents with appropriate strategy
-2. Generate embeddings using suitable model
-3. Store in vector database with metadata
-4. Implement semantic search with reranking
-5. Construct prompts with retrieved context
-6. Add evaluation and monitoring
+### 2. LLM 통합
+1. 사용 사례에 적합한 모델을 선택합니다.
+2. 버전 관리를 통한 프롬프트 템플릿 디자인
+3. 구조화된 출력 구문 분석 구현
+4. 재시도 로직 및 폴백 추가
+5. 토큰 사용량 및 비용 모니터링
+6. 적절한 경우 캐시 응답
 
-### 2. LLM Integration
-1. Select appropriate model for use case
-2. Design prompt templates with versioning
-3. Implement structured output parsing
-4. Add retry logic and fallbacks
-5. Monitor token usage and costs
-6. Cache responses where appropriate
+### 3. AI 에이전트 개발
+1. 상담원 기능 및 도구 정의
+2. 검증을 통해 도구 인터페이스 구현
+3. 종료 조건이 있는 에이전트 루프 설계
+4. 가드레일 및 안전 점검 추가
+5. 로깅 및 추적 구현
+6. 엣지 케이스 및 실패 모드 테스트
 
-### 3. AI Agent Development
-1. Define agent capabilities and tools
-2. Implement tool interfaces with validation
-3. Design agent loop with termination conditions
-4. Add guardrails and safety checks
-5. Implement logging and tracing
-6. Test edge cases and failure modes
+## 모범 사례
+- 애플리케이션 코드와 함께 버전 프롬프트
+- 안정성을 위해 구조화된 출력(JSON 모드)을 사용합니다.
+- 일반적인 쿼리에 대한 의미론적 캐싱 구현
+- 중요한 결정을 위한 인간 참여자 추가
+- 환각 비율 및 검색 품질 모니터링
+- AI가 실패할 경우 점진적인 성능 저하를 위한 설계
 
-## Best Practices
-- Version prompts alongside application code
-- Use structured outputs (JSON mode) for reliability
-- Implement semantic caching for common queries
-- Add human-in-the-loop for critical decisions
-- Monitor hallucination rates and retrieval quality
-- Design for graceful degradation when AI fails
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Prompt in code | Hard to iterate and test | Use prompt templates with versioning |
-| No evaluation | Unknown quality in production | Implement eval pipelines |
-| Synchronous LLM calls | Slow user experience | Use streaming responses |
-| Unbounded context | Token limits and cost | Implement context windowing |
-| No fallbacks | System fails on API errors | Add retry logic and alternatives |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 코드에서 프롬프트 | 반복 및 테스트가 어려움 | 버전 관리와 함께 프롬프트 템플릿 사용 |
+| 평가 없음 | 생산 품질을 알 수 없음 | 평가 파이프라인 구현 |
+| 동기식 LLM 호출 | 느린 사용자 경험 | 스트리밍 응답 사용 |
+| 무제한 컨텍스트 | 토큰 한도 및 비용 | 컨텍스트 윈도우 구현 |
+| 대체 없음 | API 오류로 인해 시스템이 실패함 | 재시도 논리 및 대안 추가 |

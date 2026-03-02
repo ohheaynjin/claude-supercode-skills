@@ -1,51 +1,50 @@
 ---
 name: api-designer
-description: REST/GraphQL API architect specializing in OpenAPI 3.1, HATEOAS, pagination, and versioning strategies
+description: OpenAPI 3.1, HATEOAS, 페이지 매김 및 버전 관리 전략을 전문으로 하는 REST/GraphQL API 설계자
+---
+# API 디자이너
+
+## 목적
+
+OpenAPI 3.1 사양, API 버전 관리 전략, 페이지 매김 패턴 및 HATEOAS(하이퍼미디어 기반 디자인)를 전문으로 하는 전문가 REST 및 GraphQL API 아키텍처 전문 지식을 제공합니다. 적절한 오류 처리 및 표준화를 통해 확장 가능하고 잘 문서화되어 있으며 개발자 친화적인 API를 구축하는 데 중점을 둡니다.
+
+## 사용 시기
+
+- 요구사항에 따라 RESTful 또는 GraphQL API 설계
+- API 문서화를 위한 OpenAPI 3.1 사양 생성
+- API 버전 관리 전략 구현(URL, 헤더, 콘텐츠 협상)
+- 대규모 데이터 세트에 대한 페이지 매김, 필터링 및 정렬 패턴 설계
+- HATEOAS 호환 API 구축(하이퍼미디어 기반)
+- 서비스 전반의 오류 응답 및 상태 코드 표준화
+- API 인증 및 권한 부여 패턴 설계
+
+## 빠른 시작
+
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 요구사항에 따라 RESTful 또는 GraphQL API 설계
+- API 문서화를 위한 OpenAPI 3.1 사양 생성
+- API 버전 관리 전략 구현(URL, 헤더, 콘텐츠 협상)
+- 대규모 데이터 세트에 대한 페이지 매김, 필터링 및 정렬 패턴 설계
+- HATEOAS 호환 API 구축(하이퍼미디어 기반)
+- 서비스 전반의 오류 응답 및 상태 코드 표준화
+
+**다음과 같은 경우에는 호출하지 마세요.**
+- 사전 설계된 API 엔드포인트만 구현(백엔드 개발자 사용)
+- API 컨텍스트 없이 데이터베이스 스키마 설계(데이터베이스 관리자 사용)
+- Frontend API 통합(frontend-developer 사용)
+- API 보안 구현(인증/권한 부여를 위해 보안 엔지니어 사용)
+- API 성능 최적화(성능 엔지니어 사용)
+
+---
 ---
 
-# API Designer
+## 핵심 워크플로
 
-## Purpose
+### 워크플로 1: OpenAPI 3.1을 사용하여 RESTful API 설계
 
-Provides expert REST and GraphQL API architecture expertise specializing in OpenAPI 3.1 specifications, API versioning strategies, pagination patterns, and hypermedia-driven design (HATEOAS). Focuses on building scalable, well-documented, developer-friendly APIs with proper error handling and standardization.
+**사용 사례:** 전자상거래 플랫폼에는 제품 카탈로그 API가 필요합니다.
 
-## When to Use
-
-- Designing RESTful or GraphQL APIs from requirements
-- Creating OpenAPI 3.1 specifications for API documentation
-- Implementing API versioning strategies (URL, header, content negotiation)
-- Designing pagination, filtering, and sorting patterns for large datasets
-- Building HATEOAS-compliant APIs (hypermedia-driven)
-- Standardizing error responses and status codes across services
-- Designing API authentication and authorization patterns
-
-## Quick Start
-
-**Invoke this skill when:**
-- Designing RESTful or GraphQL APIs from requirements
-- Creating OpenAPI 3.1 specifications for API documentation
-- Implementing API versioning strategies (URL, header, content negotiation)
-- Designing pagination, filtering, and sorting patterns for large datasets
-- Building HATEOAS-compliant APIs (hypermedia-driven)
-- Standardizing error responses and status codes across services
-
-**Do NOT invoke when:**
-- Only implementing pre-designed API endpoints (use backend-developer)
-- Database schema design without API context (use database-administrator)
-- Frontend API integration (use frontend-developer)
-- API security implementation (use security-engineer for authentication/authorization)
-- API performance optimization (use performance-engineer)
-
----
----
-
-## Core Workflows
-
-### Workflow 1: Design RESTful API with OpenAPI 3.1
-
-**Use case:** E-commerce platform needs product catalog API
-
-**Step 1: Resource Modeling**
+**1단계: 리소스 모델링**
 ```yaml
 # Resources identified:
 # - Products (CRUD)
@@ -71,8 +70,7 @@ GET    /v1/categories/{id}       # Get category + subcategories
 # Query parameters (filtering, pagination, sorting):
 GET /v1/products?category=electronics&min_price=100&max_price=500&sort=price:asc&limit=20&cursor=abc123
 ```
-
-**Step 2: OpenAPI 3.1 Specification**
+**2단계: OpenAPI 3.1 사양**
 ```yaml
 # openapi.yaml
 openapi: 3.1.0
@@ -360,8 +358,7 @@ security:
   - ApiKey: []
   - BearerAuth: []
 ```
-
-**Step 3: Generate Documentation**
+**3단계: 문서 생성**
 ```bash
 # Install Redoc CLI
 npm install -g redoc-cli
@@ -378,15 +375,14 @@ docker run -p 8080:8080 -e SWAGGER_JSON=/docs/openapi.yaml \
 
 # Open http://localhost:8080 for interactive API testing
 ```
-
 ---
 ---
 
-## Anti-Patterns & Gotchas
+## 안티 패턴 및 문제점
 
-### ❌ Anti-Pattern 1: Inconsistent Error Responses
+### ❌ 안티 패턴 1: 일관성 없는 오류 응답
 
-**What it looks like:**
+**모습:**
 ```json
 // Endpoint 1: Login failure
 {
@@ -409,13 +405,12 @@ docker run -p 8080:8080 -e SWAGGER_JSON=/docs/openapi.yaml \
 
 // Problem: Clients need custom error handling per endpoint
 ```
+**실패하는 이유:**
+- 클라이언트 코드가 복잡해짐(여러 오류 구문 분석 전략)
+- 프론트엔드 개발자가 좌절함(일관되지 않은 계약)
+- 오류 로깅/모니터링 어려움(표준 형식 없음)
 
-**Why it fails:**
-- Client code becomes complex (multiple error parsing strategies)
-- Frontend developers frustrated (inconsistent contracts)
-- Error logging/monitoring difficult (no standard format)
-
-**Correct approach:**
+**올바른 접근 방식:**
 ```json
 // Standardized error response (all endpoints)
 {
@@ -465,30 +460,29 @@ function handleApiError(response) {
   }
 }
 ```
-
 ---
 ---
 
-## Integration Patterns
+## 통합 패턴
 
-**backend-developer:**
-- Handoff: API designer creates spec → Backend implements endpoints
-- Collaboration: Error response formats, authentication patterns
-- Tools: OpenAPI code generation, API mocking
+**백엔드 개발자:**
+- Handoff: API 디자이너가 사양 생성 → 백엔드에서 엔드포인트 구현
+- 협업: 오류 대응 형식, 인증 패턴
+- 도구: OpenAPI 코드 생성, API 모킹
 
-**frontend-developer:**
-- Handoff: API spec published → Frontend consumes API
-- Collaboration: Query patterns, pagination, error handling
-- Tools: TypeScript type generation from OpenAPI/GraphQL schema
+**프런트엔드 개발자:**
+- Handoff: API 사양 공개 → Frontend에서 API 사용
+- 협업: 쿼리 패턴, 페이지 매김, 오류 처리
+- 도구: OpenAPI/GraphQL 스키마에서 TypeScript 유형 생성
 
-**security-engineer:**
-- Handoff: API designer defines authentication needs → Security implements auth
-- Collaboration: Rate limiting, API key management, OAuth flows
-- Critical: JWT validation, API gateway security policies
+**보안 엔지니어:**
+- Handoff: API 디자이너가 인증 요구 정의 → 보안이 인증 구현
+- 협업: 속도 제한, API 키 관리, OAuth 흐름
+- 중요: JWT 검증, API 게이트웨이 보안 정책
 
-**devops-engineer:**
-- Handoff: API design finalized → DevOps deploys API gateway
-- Collaboration: API versioning deployment, blue-green releases
-- Tools: Kong, AWS API Gateway, Traefik configuration
+**개발 엔지니어:**
+- Handoff: API 설계 확정 → DevOps에서 API 게이트웨이 배포
+- 협업: API 버전 관리 배포, 블루-그린 릴리스
+- 도구: Kong, AWS API Gateway, Traefik 구성
 
 ---

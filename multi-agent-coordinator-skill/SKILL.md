@@ -1,65 +1,64 @@
 ---
 name: multi-agent-coordinator
-description: An advanced orchestration specialist that manages complex coordination of 100+ agents across distributed systems with hierarchical control, dynamic scaling, and intelligent resource allocation
+description: 계층적 제어, 동적 확장 및 지능형 리소스 할당을 통해 분산 시스템 전체에서 100개 이상의 에이전트의 복잡한 조정을 관리하는 고급 오케스트레이션 전문가입니다.
 ---
+# 다중 에이전트 코디네이터 스킬
 
-# Multi-Agent Coordinator Skill
+## 목적
 
-## Purpose
+분산 시스템 전체에서 에이전트의 복잡한 조정을 관리하기 위한 고급 다중 에이전트 오케스트레이션 전문 지식을 제공합니다. 엔터프라이즈 수준 다중 에이전트 환경을 위한 계층적 제어, 동적 확장, 지능형 리소스 할당 및 정교한 충돌 해결을 전문으로 합니다.
 
-Provides advanced multi-agent orchestration expertise for managing complex coordination of agents across distributed systems. Specializes in hierarchical control, dynamic scaling, intelligent resource allocation, and sophisticated conflict resolution for enterprise-level multi-agent environments.
+## 사용 시기
 
-## When to Use
+- 수백 명의 전문 에이전트를 갖춘 엔터프라이즈급 배포
+- 여러 시간대에 걸친 조정이 필요한 글로벌 운영
+- 상호의존적인 워크플로우를 갖춘 복잡한 비즈니스 프로세스
+- 대규모 병렬화가 필요한 대용량 처리
+- 연중무휴 안정성과 확장성을 요구하는 미션 크리티컬 시스템
 
-- Enterprise-level deployments with hundreds of specialized agents
-- Global operations requiring coordination across multiple time zones
-- Complex business processes with interdependent workflows
-- High-volume processing requiring massive parallelization
-- Mission-critical systems requiring 24/7 reliability and scaling
+## 핵심 기능
 
-## Core Capabilities
+### 대규모 오케스트레이션
+- **계층적 제어**: 효율적인 관리를 위한 다단계 조정 아키텍처
+- **동적 토폴로지**: 작업량에 따라 재구성되는 적응형 네트워크 구조
+- **자원 할당**: 전산 및 인적 자원의 지능적 분배
+- **로드 밸런싱**: 전체 시스템에 걸쳐 에이전트 워크로드의 글로벌 최적화
+- **클러스터 관리**: 공유된 목표를 가진 에이전트 그룹의 조율된 운영
 
-### Large-Scale Orchestration
-- **Hierarchical Control**: Multi-level coordination architecture for efficient management
-- **Dynamic Topology**: Adaptive network structures that reconfigure based on workload
-- **Resource Allocation**: Intelligent distribution of computational and human resources
-- **Load Balancing**: Global optimization of agent workload across the entire system
-- **Cluster Management**: Coordinated operation of agent groups with shared objectives
+### 고급 조정 패턴
+- **매트릭스 조직**: 여러 차원에 걸친 부서 간 조정
+- **군집 지능**: 긴급 행동에 대한 분산화된 조정
+- **파이프라인 오케스트레이션**: 병렬 처리를 통한 복잡한 다단계 워크플로
+- **이벤트 중심 아키텍처**: 시스템 이벤트를 기반으로 한 비동기식 조정
+- **하이브리드 조정**: 중앙 집중식 패턴과 분산형 패턴 결합
 
-### Advanced Coordination Patterns
-- **Matrix Organization**: Cross-functional coordination across multiple dimensions
-- **Swarm Intelligence**: Decentralized coordination with emergent behavior
-- **Pipeline Orchestration**: Complex multi-stage workflows with parallel processing
-- **Event-Driven Architecture**: Asynchronous coordination based on system events
-- **Hybrid Coordination**: Combining centralized and decentralized patterns
+### 지능형 자원 관리
+- **예측 확장**: 수요 패턴에 따른 예측적 리소스 프로비저닝
+- **스킬 기반 할당**: 능력과 전문성을 바탕으로 최적의 에이전트 할당
+- **비용 최적화**: 성능을 유지하면서 운영 비용을 최소화합니다.
+- **지리적 분포**: 여러 데이터 센터 및 지역 간의 조정
+- **다중 테넌트 격리**: 다양한 조직 컨텍스트를 안전하게 분리합니다.
 
-### Intelligent Resource Management
-- **Predictive Scaling**: Anticipatory resource provisioning based on demand patterns
-- **Skill-Based Allocation**: Optimal assignment of agents based on capabilities and expertise
-- **Cost Optimization**: Minimizing operational costs while maintaining performance
-- **Geographic Distribution**: Coordination across multiple data centers and regions
-- **Multi-Tenant Isolation**: Secure separation of different organizational contexts
+## 사용 시기
 
-## When to Use
+### 이상적인 시나리오
+- 수백 명의 전문 에이전트를 갖춘 엔터프라이즈급 배포
+- 여러 시간대에 걸친 조정이 필요한 글로벌 운영
+- 상호의존적인 워크플로우를 갖춘 복잡한 비즈니스 프로세스
+- 대규모 병렬화가 필요한 대용량 처리
+- 연중무휴 안정성과 확장성을 요구하는 미션 크리티컬 시스템
+- 보안 경계가 있는 다중 조직 협업
 
-### Ideal Scenarios
-- Enterprise-level deployments with hundreds of specialized agents
-- Global operations requiring coordination across multiple time zones
-- Complex business processes with interdependent workflows
-- High-volume processing requiring massive parallelization
-- Mission-critical systems requiring 24/7 reliability and scaling
-- Multi-organization collaboration with security boundaries
+### 적용 분야
+- **글로벌 고객 서비스**: 수백 명의 지원 상담원이 수백만 건의 상호작용을 처리합니다.
+- **금융 거래**: 시장 활동을 조정하는 다양한 거래 알고리즘
+- **제조 최적화**: 자동화 시스템의 공장 전체 조정
+- **헬스케어 네트워크**: 여러 의료 서비스 제공자를 갖춘 대규모 병원 시스템
+- **스마트 시티**: 도시 서비스 및 인프라의 조정된 관리
 
-### Application Areas
-- **Global Customer Service**: Hundreds of support agents handling millions of interactions
-- **Financial Trading**: Multiple trading algorithms coordinating market activities
-- **Manufacturing Optimization**: Factory-wide coordination of automated systems
-- **Healthcare Networks**: Large hospital systems with multiple care providers
-- **Smart Cities**: Coordinated management of urban services and infrastructure
+## 계층적 아키텍처
 
-## Hierarchical Architecture
-
-### Multi-Level Coordination
+### 다단계 조정
 ```yaml
 coordination_hierarchy:
   executive_level:
@@ -86,8 +85,7 @@ coordination_hierarchy:
     - monitoring_agents: system health and performance
     - backup_agents: redundancy and failover
 ```
-
-### Dynamic Reconfiguration
+### 동적 재구성
 ```python
 class MultiAgentCoordinator:
     def __init__(self):
@@ -122,10 +120,9 @@ class MultiAgentCoordinator:
             "expected_performance": self.predict_performance(scaling_plan)
         }
 ```
+## 고급 오케스트레이션 기능
 
-## Advanced Orchestration Features
-
-### Intelligent Load Distribution
+### 지능형 부하 분산
 ```yaml
 load_balancing_strategies:
   geographic_distribution:
@@ -146,17 +143,16 @@ load_balancing_strategies:
     - quality_optimization: balance speed with accuracy
     - cost_efficiency: minimize operational expenses
 ```
+### 확장 가능한 통신 패턴
+- **계층적 메시징**: 효율적인 다단계 통신 프로토콜
+- **방송 최적화**: 확장 가능한 일대다 통신
+- **멀티캐스트 라우팅**: 에이전트 그룹에 대한 타겟 통신
+- **적응형 프로토콜**: 네트워크 상황에 맞춰 조정되는 통신 패턴
+- **메시지 우선순위**: 중요한 메시지 전달 보장
 
-### Scalable Communication Patterns
-- **Hierarchical Messaging**: Efficient multi-level communication protocols
-- **Broadcast Optimization**: Scalable one-to-many communication
-- **Multicast Routing**: Targeted communication to agent groups
-- **Adaptive Protocols**: Communication patterns that adjust to network conditions
-- **Message Prioritization**: Critical message delivery guarantees
+## 리소스 최적화
 
-## Resource Optimization
-
-### Predictive Scaling
+### 예측 확장
 ```python
 class PredictiveScalingEngine:
     def __init__(self):
@@ -185,17 +181,16 @@ class PredictiveScalingEngine:
             "cost_impact": self.calculate_cost_impact(scaling_results)
         }
 ```
+### 다중 리소스 최적화
+- **CPU 및 메모리**: 컴퓨팅 리소스의 균형 있는 활용
+- **네트워크 대역폭**: 효율적인 통신 부하 분산
+- **스토리지 최적화**: 지능형 데이터 배치 및 캐싱
+- **특수 하드웨어**: AI/ML 워크로드를 위한 GPU/TPU 할당
+- **인적 자원**: 인간-에이전트 하이브리드 팀의 조정
 
-### Multi-Resource Optimization
-- **CPU and Memory**: Balanced utilization of computational resources
-- **Network Bandwidth**: Efficient distribution of communication load
-- **Storage Optimization**: Intelligent data placement and caching
-- **Specialized Hardware**: GPU/TPU allocation for AI/ML workloads
-- **Human Resources**: Coordination of human-agent hybrid teams
+## 고급 충돌 해결
 
-## Advanced Conflict Resolution
-
-### Multi-Dimensional Conflict Management
+### 다차원적 갈등 관리
 ```yaml
 conflict_types:
   resource_conflicts:
@@ -216,16 +211,15 @@ conflict_types:
     - external_sourcing: third-party service integration
     - task_decomposition: break down complex tasks into simpler ones
 ```
+### 분산 합의
+- **리더선출** : 조정리더 자동선정
+- **정족수 기반 결정**: 중요한 작업에 대한 과반수 합의
+- **내결함성 프로토콜**: 에이전트 오류에도 계속 작동
+- **Byzantine Fault Tolerance**: 악의적이거나 오작동하는 에이전트를 처리합니다.
 
-### Distributed Consensus
-- **Leader Election**: Automatic selection of coordination leaders
-- **Quorum-Based Decisions**: Majority agreement for critical operations
-- **Fault-Tolerant Protocols**: Continues operation despite agent failures
-- **Byzantine Fault Tolerance**: Handles malicious or malfunctioning agents
+## 엔터프라이즈 기능
 
-## Enterprise Features
-
-### Multi-Tenant Architecture
+### 다중 테넌트 아키텍처
 ```python
 class MultiTenantCoordinator:
     def __init__(self):
@@ -255,17 +249,16 @@ class MultiTenantCoordinator:
         
         return coordination_result
 ```
+### 보안 및 규정 준수
+- **역할 기반 액세스 제어**: 계층적 수준 전반에 걸쳐 세분화된 권한
+- **감사 추적**: 모든 조정 활동에 대한 완전한 기록
+- **규정 준수 시행**: 규제 요구 사항 자동 준수
+- **데이터 주권**: 지리적 데이터 상주 요구 사항 존중
+- **사고 대응**: 보안 이벤트에 대한 공동 대응
 
-### Security and Compliance
-- **Role-Based Access Control**: Granular permissions across hierarchical levels
-- **Audit Trailing**: Complete logging of all coordination activities
-- **Compliance Enforcement**: Automatic adherence to regulatory requirements
-- **Data Sovereignty**: Respect geographic data residency requirements
-- **Incident Response**: Coordinated response to security events
+## 성능 최적화
 
-## Performance Optimization
-
-### System-Wide Metrics
+### 시스템 전체 측정항목
 ```yaml
 performance_kpis:
   operational_metrics:
@@ -286,16 +279,15 @@ performance_kpis:
     - network_latency_distribution
     - resource_waste_percentage
 ```
+### 최적화 알고리즘
+- **머신러닝**: 과거 데이터를 기반으로 한 예측 최적화
+- **유전 알고리즘**: 조정 패턴의 진화적 최적화
+- **강화 학습**: 최적의 전략을 위한 적응형 학습
+- **운영 연구**: 자원 할당을 위한 수학적 최적화
 
-### Optimization Algorithms
-- **Machine Learning**: Predictive optimization based on historical data
-- **Genetic Algorithms**: Evolutionary optimization of coordination patterns
-- **Reinforcement Learning**: Adaptive learning for optimal strategies
-- **Operations Research**: Mathematical optimization for resource allocation
+## 재해 복구 및 복원력
 
-## Disaster Recovery and Resilience
-
-### High Availability Design
+### 고가용성 설계
 ```yaml
 resilience_strategies:
   geographic_redundancy:
@@ -310,167 +302,163 @@ resilience_strategies:
     - graceful_degradation: maintain partial functionality
     - self_healing_capabilities: automatic recovery procedures
 ```
+### 비즈니스 연속성
+- **복구 시간 목표**: 중요한 시스템의 목표 복구 시간
+- **복구 지점 목표**: 허용 가능한 최대 데이터 손실
+- **재해 복구 테스트**: 복구 절차의 정기적인 검증
+- **긴급 조정**: 시스템 전반의 장애에 대한 위기 관리 프로토콜
 
-### Business Continuity
-- **Recovery Time Objectives**: Target recovery time for critical systems
-- **Recovery Point Objectives**: Maximum acceptable data loss
-- **Disaster Recovery Testing**: Regular validation of recovery procedures
-- **Emergency Coordination**: Crisis management protocols for system-wide failures
+## 예
 
-## Examples
+### 예시 1: 글로벌 금융 거래 플랫폼
 
-### Example 1: Global Financial Trading Platform
+**시나리오:** 밀리초의 대기 시간 요구 사항으로 글로벌 시장에서 500명 이상의 거래 에이전트를 조정합니다.
 
-**Scenario:** Coordinate 500+ trading agents across global markets with millisecond latency requirements.
+**아키텍처 구현:**
+1. **계층적 구조**: 임원 → 지역 → 팀 → 에이전트 수준
+2. **지리적 분포**: 뉴욕, 런던, 도쿄, 싱가포르 허브의 에이전트
+3. **실시간 조정**: 밀리초 미만 메시지 라우팅
+4. **위험 관리**: 자동화된 규정 준수 및 포지션 한도
 
-**Architecture Implementation:**
-1. **Hierarchical Structure**: Executive → Regional → Team → Agent levels
-2. **Geographic Distribution**: Agents in NY, London, Tokyo, Singapore hubs
-3. **Real-Time Coordination**: Sub-millisecond message routing
-4. **Risk Management**: Automated compliance and position limits
-
-**Coordination Flow:**
+**조정 흐름:**
 ```
 Global Trading Floor → Regional Trading Centers → 
 Specialized Trading Teams → Algorithmic Trading Agents → 
 Market Data Analyzers → Risk Management Agents → Compliance Monitors
 ```
+**주요 구성 요소:**
+- 우선순위 큐를 사용한 계층적 메시지 라우팅
+- 지연 시간 최적화를 위한 지리적 로드 밸런싱
+- 지역 간 자동 장애 조치
+- 실시간 위험 계산 및 한도 집행
 
-**Key Components:**
-- Hierarchical message routing with priority queues
-- Geographic load balancing for latency optimization
-- Automated failover between regions
-- Real-time risk calculation and limit enforcement
+**결과:**
+- 99.999% 시스템 가동 시간
+- <1ms 평균 조정 대기 시간
+- 3년간 규제위반 0건
+- 일일 거래량 20억 달러 관리
 
-**Results:**
-- 99.999% system uptime
-- <1ms average coordination latency
-- Zero regulatory violations in 3 years
-- $2B daily trading volume managed
+### 예시 2: 의료 네트워크 조정
 
-### Example 2: Healthcare Network Coordination
+**시나리오:** 여러 병원 네트워크에서 1,000개 이상의 임상 에이전트를 조정합니다.
 
-**Scenario:** Coordinate 1,000+ clinical agents across a multi-hospital network.
+**코디네이션 디자인:**
+1. **환자 치료 조정**: 전문가, 간호사, 관리자
+2. **자원 관리**: 수술실, 장비, 직원
+3. **긴급 대응**: 분류 및 에스컬레이션 절차
+4. **규정 준수**: HIPAA 준수 데이터 공유 및 감사 추적
 
-**Coordination Design:**
-1. **Patient Care Coordination**: Specialists, nurses, administrators
-2. **Resource Management**: Operating rooms, equipment, staff
-3. **Emergency Response**: Triage and escalation procedures
-4. **Compliance**: HIPAA-compliant data sharing and audit trails
-
-**Network Structure:**
+**네트워크 구조:**
 ```
 Hospital Network → Regional Medical Centers → 
 Specialty Departments → Medical Teams → Clinical Agents → 
 Diagnostic Systems → Treatment Coordinators → Patient Care Managers
 ```
+**구현:**
+- 개인 정보 격리를 통한 환자 중심의 조정
+- 실시간 자원 가용성 추적
+- 중요한 사례에 대한 자동 에스컬레이션
+- 규정 준수를 위한 종합적인 감사 로깅
 
-**Implementation:**
-- Patient-centric coordination with privacy isolation
-- Real-time resource availability tracking
-- Automated escalation for critical cases
-- Comprehensive audit logging for compliance
+**결과:**
+- 환자 처리량 30% 향상
+- 일정 충돌 50% 감소
+- 의료 규정 99.9% 준수
+- 비상 대응 시간 40% 단축
 
-**Results:**
-- 30% improvement in patient throughput
-- 50% reduction in scheduling conflicts
-- 99.9% compliance with healthcare regulations
-- Emergency response time reduced by 40%
+### 예시 3: 스마트 시티 관리 시스템
 
-### Example 3: Smart City Management System
+**시나리오:** 도시 서비스 전반에 걸쳐 10,000명 이상의 IoT 에이전트와 운영자를 조정합니다.
 
-**Scenario:** Coordinate 10,000+ IoT agents and human operators across urban services.
+**시스템 아키텍처:**
+1. **센서 네트워크**: 교통, 환경, 인프라 센서
+2. **서비스 조정**: 경찰, 소방, 유틸리티, 교통
+3. **긴급 대응**: 통합 사고 관리
+4. **리소스 최적화**: 수요에 따른 동적 할당
 
-**System Architecture:**
-1. **Sensor Network**: Traffic, environmental, infrastructure sensors
-2. **Service Coordination**: Police, fire, utilities, transportation
-3. **Emergency Response**: Coordinated incident management
-4. **Resource Optimization**: Dynamic allocation based on demand
-
-**Coordination Framework:**
+**조정 프레임워크:**
 ```
 City Operations Center → District Management Offices → 
 Service Departments → Field Operations Teams → IoT Sensor Networks → 
 Traffic Management → Public Safety → Utilities Coordination → Emergency Services
 ```
+**주요 기능:**
+- 실시간 센서 데이터 융합 및 분석
+- 예측적 자원 할당
+- 자동화된 사고 감지 및 대응
+- 기관 간 소통 및 조정
 
-**Key Features:**
-- Real-time sensor data fusion and analysis
-- Predictive resource allocation
-- Automated incident detection and response
-- Cross-agency communication and coordination
+**결과:**
+- 평균 비상 대응 시간 25% 감소
+- 교통 흐름 효율 15% 향상
+- 유틸리티 중단 40% 감소
+- 연간 운영 비용 5천만 달러 절감
 
-**Results:**
-- 25% reduction in average emergency response time
-- 15% improvement in traffic flow efficiency
-- 40% reduction in utility outages
-- $50M annual operational savings
+## 모범 사례
 
-## Best Practices
+### 계층적 디자인
 
-### Hierarchical Design
+- **명확한 분리**: 레벨 간의 명확한 경계를 정의합니다.
+- **확장 가능한 통신**: 계층적 메시지 라우팅 사용
+- **위임**: 정의된 제약 내에서 하위 수준에 권한 부여
+- **모니터링**: 각 수준에서 포괄적인 관찰 가능성 구현
 
-- **Clear Separation**: Define clear boundaries between levels
-- **Scalable Communication**: Use hierarchical message routing
-- **Delegation**: Empower lower levels within defined constraints
-- **Monitoring**: Implement comprehensive observability at each level
+### 자원 관리
 
-### Resource Management
+- **예측적 할당**: 수요 예측에 ML을 사용합니다.
+- **동적 확장**: 실시간 요구 사항에 따라 리소스 확장
+- **비용 최적화**: 성능과 비용 효율성의 균형
+- **지리적 분포**: 대기 시간 및 규정 준수 최적화
 
-- **Predictive Allocation**: Use ML for demand forecasting
-- **Dynamic Scaling**: Scale resources based on real-time needs
-- **Cost Optimization**: Balance performance with cost efficiency
-- **Geographic Distribution**: Optimize for latency and compliance
+### 충돌 해결
 
-### Conflict Resolution
+- **우선순위 기반**: 명확한 우선순위 계층을 정의합니다.
+- **에스컬레이션 경로**: 사람의 개입을 위한 명확한 절차
+- **협상 프로토콜**: 적절한 경우 에이전트 간 협상
+- **공정성**: 공평한 자원 분배 보장
 
-- **Priority-Based**: Define clear priority hierarchies
-- **Escalation Paths**: Clear procedures for human intervention
-- **Negotiation Protocols**: Agent-to-agent bargaining when appropriate
-- **Fairness**: Ensure equitable resource distribution
+### 성능 최적화
 
-### Performance Optimization
+- **지연 관리**: 실시간 조정을 위해 최적화
+- **처리량 확장**: 최대 부하를 효율적으로 처리
+- **내결함성**: 장애가 발생해도 계속 작동
+- **자원 효율성**: 낭비 최소화 및 활용 최적화
 
-- **Latency Management**: Optimize for real-time coordination
-- **Throughput Scaling**: Handle peak loads efficiently
-- **Fault Tolerance**: Continue operation despite failures
-- **Resource Efficiency**: Minimize waste and optimize utilization
+### 보안 및 규정 준수
 
-### Security and Compliance
+- **액세스 제어**: 각 수준에서 RBAC 구현
+- **감사 로깅**: 모든 작업에 대한 완전한 감사 추적
+- **데이터 개인정보 보호**: 민감한 정보를 보호하세요
+- **규정 준수**: 산업별 요구 사항 충족
 
-- **Access Control**: Implement RBAC at each level
-- **Audit Logging**: Complete audit trail of all actions
-- **Data Privacy**: Protect sensitive information
-- **Regulatory Compliance**: Meet industry-specific requirements
+## 안티 패턴
 
-## Anti-Patterns
+### 조정 방지 패턴
 
-### Coordination Anti-Patterns
+- **긴밀한 결합**: 에이전트가 서로 너무 의존적임 - 느슨하게 결합된 에이전트 상호 작용 설계
+- **동기 대기**: 에이전트가 다른 사람을 기다리는 동안 차단 - 비동기 메시징 패턴을 사용합니다.
+- **단일 장애 지점**: 중복 없는 중앙 조정자 - 계층적 폴백 구현
+- **메시지 과부하**: 에이전트 간 과도한 통신 - 메시지 흐름 최적화
 
-- **Tight Coupling**: Agents too dependent on each other - design loosely coupled agent interactions
-- **Synchronous Wait**: Agents blocking while waiting for others - use async messaging patterns
-- **Single Point of Failure**: Central coordinator without redundancy - implement hierarchical fallback
-- **Message Overload**: Excessive communication between agents - optimize message flow
+### 확장성 방지 패턴
 
-### Scalability Anti-Patterns
+- **평면적 계층**: 모든 상담원이 동일한 수준에 있음 - 계층적 구성 구현
+- **리소스 경합**: 동일한 리소스를 놓고 경쟁하는 모든 에이전트 - 지능형 스케줄링 구현
+- **No Load Shedding**: 정상적인 성능 저하 없이 시스템 과부하 - 우선순위 기반 로드 차단 구현
+- **지리적 맹목**: 지역 간 대기 시간 무시 - 위치 인식 조정 최적화
 
-- **Flat Hierarchy**: All agents at same level - implement hierarchical organization
-- **Resource Contention**: All agents competing for same resources - implement intelligent scheduling
-- **No Load Shedding**: System overload without graceful degradation - implement priority-based load shedding
-- **Geographic Blindness**: Ignoring latency between regions - optimize for location-aware coordination
+### 충돌 해결 방지 패턴
 
-### Conflict Resolution Anti-Patterns
+- **우선순위 반전**: 우선순위가 낮은 작업이 높은 우선순위 작업을 차단 - 엄격한 우선순위 처리 시행
+- **순환 종속성**: 루프에서 서로 의존하는 에이전트 - 순환 종속성을 깨뜨림
+- **기아**: 일부 상담원은 리소스를 얻지 못합니다. - 공정한 일정을 구현합니다.
+- **에스컬레이션 실패**: 해결되지 않은 충돌이 에스컬레이션되지 않음 - 명확한 에스컬레이션 경로 정의
 
-- **Priority Inversion**: Low-priority tasks blocking high-priority ones - enforce strict priority handling
-- **Circular Dependencies**: Agents depending on each other in loops - break circular dependencies
-- **Starvation**: Some agents never getting resources - implement fair scheduling
-- **Escalation Failure**: Unresolved conflicts not escalating - define clear escalation paths
+### 성능 방지 패턴
 
-### Performance Anti-Patterns
+- **메시지 폭풍**: 하나의 에이전트가 다른 에이전트를 트리거함 - 속도 제한 및 일괄 처리 구현
+- **상태 동기화 오버헤드**: 지속적인 상태 동기화 - 최종 일관성 사용
+- **N+1 쿼리**: 유사한 쿼리 반복 - 결과 캐싱 구현
+- **모니터링 없음**: 가시성 없이 운영 - 포괄적인 지표 및 경고 구현
 
-- **Message Storm**: One agent triggering many others - implement rate limiting and batching
-- **State Synchronization Overhead**: Constant state synchronization - use eventual consistency
-- **N+1 Queries**: Repeated similar queries - implement result caching
-- **No Monitoring**: Operating without visibility - implement comprehensive metrics and alerting
-
-The Multi-Agent Coordinator enables enterprise-scale orchestration of hundreds of agents through intelligent hierarchical coordination, adaptive resource management, and sophisticated conflict resolution, ensuring optimal performance and reliability in complex distributed environments.
+멀티 에이전트 코디네이터는 지능적인 계층적 조정, 적응형 리소스 관리, 정교한 충돌 해결을 통해 수백 개의 에이전트를 기업 규모로 오케스트레이션할 수 있도록 하여 복잡한 분산 환경에서 최적의 성능과 안정성을 보장합니다.

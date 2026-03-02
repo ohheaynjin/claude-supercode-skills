@@ -1,37 +1,36 @@
 ---
 name: agent-organizer
-description: Expert in designing, orchestrating, and managing multi-agent systems (MAS). Specializes in agent collaboration patterns, hierarchical structures, and swarm intelligence. Use when building agent teams, designing agent communication, or orchestrating autonomous workflows.
+description: 다중 에이전트 시스템(MAS) 설계, 조정 및 관리 전문가입니다. 에이전트 협업 패턴, 계층 구조 및 떼 인텔리전스를 전문으로 합니다. 상담원 팀을 구성하거나, 상담원 커뮤니케이션을 설계하거나, 자율적인 워크플로를 조정할 때 사용하세요.
 ---
+# 에이전트 주최자
 
-# Agent Organizer
+## 목적
+다중 에이전트 시스템 아키텍처, 조정 패턴 및 자율 워크플로 설계에 대한 전문 지식을 제공합니다. 복잡한 AI 시스템에 대한 에이전트 분해, 통신 프로토콜 및 협업 전략을 처리합니다.
 
-## Purpose
-Provides expertise in multi-agent system architecture, coordination patterns, and autonomous workflow design. Handles agent decomposition, communication protocols, and collaboration strategies for complex AI systems.
+## 사용 시기
+- 다중 에이전트 아키텍처 또는 에이전트 팀 설계
+- 에이전트 간 통신 프로토콜 구현
+- 계층적 또는 떼 기반 에이전트 시스템 구축
+- 에이전트 전반에 걸쳐 자율적인 워크플로를 조정합니다.
+- 에이전트 조정 실패 디버깅
+- 생산용 스케일링제 시스템
+- 에이전트 메모리 공유 전략 설계
 
-## When to Use
-- Designing multi-agent architectures or agent teams
-- Implementing agent-to-agent communication protocols
-- Building hierarchical or swarm-based agent systems
-- Orchestrating autonomous workflows across agents
-- Debugging agent coordination failures
-- Scaling agent systems for production
-- Designing agent memory sharing strategies
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 다중 에이전트 아키텍처 또는 에이전트 팀 설계
+- 에이전트 간 통신 프로토콜 구현
+- 계층적 또는 떼 기반 에이전트 시스템 구축
+- 에이전트 전반에 걸쳐 자율적인 워크플로를 조정합니다.
+- 생산용 스케일링제 시스템
 
-## Quick Start
-**Invoke this skill when:**
-- Designing multi-agent architectures or agent teams
-- Implementing agent-to-agent communication protocols
-- Building hierarchical or swarm-based agent systems
-- Orchestrating autonomous workflows across agents
-- Scaling agent systems for production
+**다음과 같은 경우에는 호출하지 마세요.**
+- 단일 에이전트 LLM 애플리케이션 구축(ai-engineer 사용)
+- 개별 상담원에 대한 프롬프트 최적화(프롬프트 엔지니어 사용)
+- 에이전트 컨텍스트 창 관리(컨텍스트 관리자 사용)
+- 에이전트 장애 처리 및 복구(오류 조정자 사용)
 
-**Do NOT invoke when:**
-- Building single-agent LLM applications (use ai-engineer)
-- Optimizing prompts for individual agents (use prompt-engineer)
-- Managing agent context windows (use context-manager)
-- Handling agent failures and recovery (use error-coordinator)
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Agent System Design:
 ├── Single task, no coordination → Single agent
@@ -43,44 +42,43 @@ Agent System Design:
 │   └── Dynamic roles → Adaptive agent mesh
 └── Human-in-the-loop → Supervisor pattern
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 에이전트 팀 디자인
+1. 문제를 상담원의 책임으로 분해
+2. 에이전트 기능 및 인터페이스 정의
+3. 통신 토폴로지 설계(허브, 메시, 계층)
+4. 조정 프로토콜 구현
+5. 모니터링 및 관찰 가능성 추가
+6. 테스트 실패 시나리오
 
-### 1. Agent Team Design
-1. Decompose problem into agent responsibilities
-2. Define agent capabilities and interfaces
-3. Design communication topology (hub, mesh, hierarchy)
-4. Implement coordination protocol
-5. Add monitoring and observability
-6. Test failure scenarios
+### 2. 에이전트 통신 설정
+1. 메시지 형식 선택(구조화, 자연어, 하이브리드)
+2. 메시지 라우팅 전략 정의
+3. 핸드오프 프로토콜 구현
+4. 재시도 및 시간 초과 처리 추가
+5. 모든 에이전트 간 메시지를 기록합니다.
 
-### 2. Agent Communication Setup
-1. Choose message format (structured, natural language, hybrid)
-2. Define message routing strategy
-3. Implement handoff protocols
-4. Add retry and timeout handling
-5. Log all inter-agent messages
+### 3. 스케일링 에이전트 시스템
+1. 현재 아키텍처의 프로필 병목 현상
+2. 병렬화 기회 식별
+3. 에이전트 전체에 부하 분산 구현
+4. 버스트 용량을 위한 에이전트 풀링 추가
+5. 에이전트별 리소스 활용도 모니터링
 
-### 3. Scaling Agent Systems
-1. Profile bottlenecks in current architecture
-2. Identify parallelization opportunities
-3. Implement load balancing across agents
-4. Add agent pooling for burst capacity
-5. Monitor resource utilization per agent
+## 모범 사례
+- 상담원의 책임을 단일 목적으로 잘 정의하여 유지하세요.
+- 에이전트 간에 명시적인 핸드오프 프로토콜을 사용합니다.
+- 실패한 에이전트에 대한 회로 차단기 구현
+- 디버깅을 위해 모든 에이전트 간 통신을 기록합니다.
+- 에이전트 실패 시 점진적인 성능 저하를 위한 설계
+- 이전 버전과의 호환성을 위한 버전 에이전트 인터페이스
 
-## Best Practices
-- Keep agent responsibilities single-purpose and well-defined
-- Use explicit handoff protocols between agents
-- Implement circuit breakers for failing agents
-- Log all inter-agent communication for debugging
-- Design for graceful degradation when agents fail
-- Version agent interfaces for backward compatibility
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| God agent | Single agent doing everything | Decompose into specialized agents |
-| Chatty agents | Excessive inter-agent messages | Batch communications, async where possible |
-| Tight coupling | Agents depend on internal state | Use contracts and interfaces |
-| No supervision | Agents run without oversight | Add supervisor or human-in-loop |
-| Shared mutable state | Race conditions and conflicts | Use message passing or event sourcing |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 신의 대리인 | 모든 작업을 수행하는 단일 에이전트 | 전문 에이전트로 분해 |
+| 수다스러운 상담원 | 과도한 에이전트 간 메시지 | 일괄 통신, 가능한 경우 비동기 |
+| 긴밀한 커플 링 | 에이전트는 내부 상태에 따라 달라집니다 | 계약 및 인터페이스 사용 |
+| 감독 없음 | 감독 없이 에이전트가 실행됨 | 감독자 또는 인간 참여 루프 추가 |
+| 공유 변경 가능 상태 | 경쟁 조건 및 갈등 | 메시지 전달 또는 이벤트 소싱 사용 |

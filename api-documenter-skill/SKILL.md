@@ -1,37 +1,36 @@
 ---
 name: api-documenter
-description: API documentation specialist who creates comprehensive OpenAPI/Swagger specifications and technical documentation for RESTful APIs, GraphQL schemas, and microservices architectures. Use when writing API docs, creating OpenAPI specs, or documenting endpoints.
+description: RESTful API, GraphQL 스키마 및 마이크로서비스 아키텍처에 대한 포괄적인 OpenAPI/Swagger 사양 및 기술 문서를 작성하는 API 문서 전문가입니다. API 문서를 작성하거나 OpenAPI 사양을 생성하거나 엔드포인트를 문서화할 때 사용합니다.
 ---
+# API 문서 작성기
 
-# API Documenter
+## 목적
+명확하고 정확하며 개발자 친화적인 API 문서를 작성하는 데 필요한 전문 지식을 제공합니다. OpenAPI 3.x 사양, GraphQL 스키마 문서 및 대화형 API 참조를 전문으로 합니다.
 
-## Purpose
-Provides expertise in creating clear, accurate, and developer-friendly API documentation. Specializes in OpenAPI 3.x specifications, GraphQL schema documentation, and interactive API references.
+## 사용 시기
+- OpenAPI/Swagger 사양 작성
+- REST API 엔드포인트 문서화
+- GraphQL 스키마 문서 생성
+- 대화형 API 참조 구축
+- API 시작 가이드 작성
+- 인증 흐름 문서화
+- SDK 사용 예시 제작
 
-## When to Use
-- Writing OpenAPI/Swagger specifications
-- Documenting REST API endpoints
-- Creating GraphQL schema documentation
-- Building interactive API references
-- Writing API getting-started guides
-- Documenting authentication flows
-- Creating SDK usage examples
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- OpenAPI/Swagger 사양 작성
+- REST API 엔드포인트 문서화
+- GraphQL 스키마 문서 생성
+- 대화형 API 참조 구축
+- SDK 사용 예시 작성
 
-## Quick Start
-**Invoke this skill when:**
-- Writing OpenAPI/Swagger specifications
-- Documenting REST API endpoints
-- Creating GraphQL schema documentation
-- Building interactive API references
-- Writing SDK usage examples
+**다음과 같은 경우에는 호출하지 마세요.**
+- API 아키텍처 설계 (api-designer 사용)
+- 사용자 대상 제품 문서 작성(기술 작성자 사용)
+- 내부 시스템 문서 작성(문서 작성기 사용)
+- 실제 API 구축(백엔드 개발자 기술 사용)
 
-**Do NOT invoke when:**
-- Designing API architecture (use api-designer)
-- Writing user-facing product docs (use technical-writer)
-- Creating internal system docs (use document-writer)
-- Building the actual API (use backend developer skills)
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Documentation Type:
 ├── New API → OpenAPI spec first, then guides
@@ -40,46 +39,45 @@ Documentation Type:
 ├── SDK/Library → Code samples + quickstart
 └── Microservices → Service catalog + contracts
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. OpenAPI 사양 생성
+1. 모든 엔드포인트 및 메소드 목록 작성
+2. 요청/응답 스키마 정의
+3. 문서 매개변수 및 헤더
+4. 인증 요구 사항 추가
+5. 예시 요청/응답 포함
+6. 린팅 도구를 사용하여 사양 검증
 
-### 1. OpenAPI Specification Creation
-1. Inventory all endpoints and methods
-2. Define request/response schemas
-3. Document parameters and headers
-4. Add authentication requirements
-5. Include example requests/responses
-6. Validate spec with linting tools
+### 2. API 참조 문서
+1. 리소스 또는 도메인별로 엔드포인트 그룹화
+2. 명확한 엔드포인트 설명 작성
+3. 유형과 함께 모든 매개변수를 문서화하세요.
+4. 요청/응답 예시 제공
+5. 오류 코드 및 처리 포함
+6. 인증 예시 추가
 
-### 2. API Reference Documentation
-1. Group endpoints by resource or domain
-2. Write clear endpoint descriptions
-3. Document all parameters with types
-4. Provide request/response examples
-5. Include error codes and handling
-6. Add authentication examples
+### 3. API 시작 가이드
+1. 인증 설정 설명
+2. 첫 번째 API 호출 예시 표시
+3. 일반적인 사용 사례 살펴보기
+4. SDK 설치 단계 포함
+5. 문제 해결 팁 제공
+6. 전체 참조 문서 링크
 
-### 3. API Getting Started Guide
-1. Explain authentication setup
-2. Show first API call example
-3. Walk through common use cases
-4. Include SDK installation steps
-5. Provide troubleshooting tips
-6. Link to full reference docs
+## 모범 사례
+- 모든 문서에서 일관된 용어를 사용합니다.
+- 복사하여 붙여넣을 수 있는 코드 예제 제공
+- 성공 및 오류 응답을 모두 포함합니다.
+- API 버전이 포함된 버전 문서
+- 게시하기 전에 모든 코드 예제를 테스트하세요.
+- 속도 제한 및 할당량 정보 추가
 
-## Best Practices
-- Use consistent terminology across all docs
-- Provide copy-pasteable code examples
-- Include both success and error responses
-- Version documentation with API versions
-- Test all code examples before publishing
-- Add rate limiting and quota information
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| No examples | Developers guess at usage | Include request/response examples |
-| Outdated docs | Breaks developer trust | Automate doc generation from code |
-| Missing errors | Surprise failures in production | Document all error codes |
-| Jargon-heavy | Confuses new developers | Use clear, simple language |
-| No versioning | Breaking changes unclear | Version docs with API |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 예시 없음 | 개발자는 사용법을 추측 | 요청/응답 예시 포함 |
+| 오래된 문서 | 개발자 신뢰 깨기 | 코드에서 문서 생성 자동화 |
+| 누락된 오류 | 갑작스러운 생산 실패 | 모든 오류 코드를 문서화하세요 |
+| 전문 용어가 많이 사용됨 | 새로운 개발자를 혼란스럽게 함 | 명확하고 간단한 언어 사용 |
+| 버전 관리 없음 | 주요 변경 사항이 명확하지 않음 | API가 포함된 버전 문서 |

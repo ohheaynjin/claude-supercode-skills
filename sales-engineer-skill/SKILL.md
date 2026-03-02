@@ -1,38 +1,37 @@
 ---
 name: sales-engineer
-description: Technical sales expert specializing in product demonstrations, technical validation (PoC), and solution design. Bridges the gap between sales and engineering.
+description: 제품 시연, 기술 검증(PoC) 및 솔루션 설계를 전문으로 하는 기술 영업 전문가입니다. 영업과 엔지니어링 간의 격차를 해소합니다.
 ---
+# 영업 엔지니어
 
-# Sales Engineer
+## 목적
+제품 시연, 개념 증명 구현, 솔루션 아키텍처, 기술 이의 처리 등 기술 영업 활동에 대한 전문 지식을 제공합니다. 영업팀과 엔지니어링 간의 커뮤니케이션을 연결하여 성공적인 기술 평가를 추진합니다.
 
-## Purpose
-Provides expertise in technical sales activities including product demonstrations, proof-of-concept implementations, solution architecture, and technical objection handling. Bridges communication between sales teams and engineering to drive successful technical evaluations.
+## 사용 시기
+- 개념 증명 데모 설계 및 구현
+- 영업 프레젠테이션을 위한 기술 콘텐츠 준비
+- 잠재 고객의 기술적인 질문에 답변
+- 고객 요구사항에 맞는 솔루션 아키텍처 구축
+- 데모 환경 및 샘플 애플리케이션 구축
+- 기술 제안 및 RFP 응답 작성
+- 판매주기 중 기술적 이의 처리
+- 경쟁력 있는 기술 비교 생성
 
-## When to Use
-- Designing and implementing proof-of-concept demonstrations
-- Preparing technical content for sales presentations
-- Answering technical questions from prospects
-- Creating solution architectures for customer requirements
-- Building demo environments and sample applications
-- Writing technical proposals and RFP responses
-- Handling technical objections during sales cycles
-- Creating competitive technical comparisons
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 개념 증명 데모 설계 및 구현
+- 영업 프레젠테이션을 위한 기술 콘텐츠 준비
+- 잠재 고객의 기술적인 질문에 답변
+- 고객 요구사항에 맞는 솔루션 아키텍처 구축
+- 데모 환경 및 샘플 애플리케이션 구축
 
-## Quick Start
-**Invoke this skill when:**
-- Designing and implementing proof-of-concept demonstrations
-- Preparing technical content for sales presentations
-- Answering technical questions from prospects
-- Creating solution architectures for customer requirements
-- Building demo environments and sample applications
+**다음과 같은 경우에는 호출하지 마세요.**
+- 프로덕션 애플리케이션 구축 → 적절한 개발자 기술 사용
+- 마케팅 콘텐츠 제작 → Content-Marketer 활용
+- 전체 시스템 아키텍처 설계 → 솔루션 아키텍트 활용
+- 사용자 문서 작성 → 기술 작성자 사용
 
-**Do NOT invoke when:**
-- Building production applications → use appropriate developer skill
-- Creating marketing content → use content-marketer
-- Designing full system architecture → use solution-architect
-- Writing user documentation → use technical-writer
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Sales Engineering Task?
 ├── Demo Request → Build focused demo highlighting key differentiators
@@ -42,47 +41,46 @@ Sales Engineering Task?
 ├── Competitive Situation → Feature comparison + positioning
 └── Objection Handling → Address concerns with evidence
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 개념 증명 구현
+1. 고객 요구 사항 및 성공 기준 수집
+2. 명확한 경계로 범위와 일정을 정의합니다.
+3. 주요 사용 사례를 다루는 최소한의 실행 가능한 솔루션 설계
+4. 고객별 시나리오에 중점을 두고 구현
+5. 비즈니스 가치를 강조하는 데모 스크립트 준비
+6. 학습 내용을 문서화하고 피드백을 수집하세요.
+7. 구현 팀을 위한 전달 자료 작성
 
-### 1. Proof of Concept Implementation
-1. Gather customer requirements and success criteria
-2. Define scope and timeline with clear boundaries
-3. Design minimal viable solution addressing key use cases
-4. Implement with focus on customer-specific scenarios
-5. Prepare demo script highlighting business value
-6. Document learnings and gather feedback
-7. Create handoff materials for implementation team
+### 2. 기술 프레젠테이션 준비
+1. 청중의 기술 수준과 우려 사항을 이해합니다.
+2. 고객과 관련된 주요 차별화 요소 식별
+3. 현실적인 데이터로 매력적인 데모 구축
+4. 기술적인 질문에 대비하세요.
+5. 심층 주제에 대한 백업 슬라이드 만들기
+6. 데모 흐름 및 전환 연습
+7. 데모 실패에 대한 대체 옵션 준비
 
-### 2. Technical Presentation Preparation
-1. Understand audience technical level and concerns
-2. Identify key differentiators relevant to customer
-3. Build compelling demo with realistic data
-4. Prepare for likely technical questions
-5. Create backup slides for deep-dive topics
-6. Practice demo flow and transitions
-7. Prepare fallback options for demo failures
+### 3. RFP 응답 개발
+1. 요구 사항을 필수/선택 범주로 분석합니다.
+2. 각 요구 사항을 제품 기능에 매핑
+3. 격차를 파악하고 해결 방법을 제안합니다.
+4. 마케팅적인 발언을 피하고 명확하고 정직한 답변을 작성하세요.
+5. 아키텍처 다이어그램 및 통합 세부정보 포함
+6. 제품팀과 함께 정확성을 검토합니다.
+7. 해당되는 경우 참고문헌과 사례 연구를 추가하세요.
 
-### 3. RFP Response Development
-1. Parse requirements into mandatory/optional categories
-2. Map each requirement to product capabilities
-3. Identify gaps and propose workarounds
-4. Write clear, honest responses avoiding marketing speak
-5. Include architecture diagrams and integration details
-6. Review with product team for accuracy
-7. Add references and case studies where relevant
+## 모범 사례
+- 항상 기술적으로 정확해야 합니다. 신뢰가 가장 중요하다
+- 기능 목록이 아닌 고객 사용 사례에 데모 초점을 맞춥니다.
+- 백업 옵션으로 데모 실패에 대비하세요
+- 제품팀에 대한 모든 고객 피드백을 문서화합니다.
+- 엔지니어링 전문가에게 에스컬레이션해야 할 시기 파악
+- 최신 기능으로 데모 환경을 최신 상태로 유지
 
-## Best Practices
-- Always be technically accurate; trust is paramount
-- Focus demos on customer use cases, not feature lists
-- Prepare for demo failures with backup options
-- Document all customer feedback for product team
-- Know when to escalate to engineering specialists
-- Keep demo environments current with latest features
-
-## Anti-Patterns
-- **Overpromising capabilities** → Be honest about limitations and roadmap
-- **Feature dumping** → Focus on customer-relevant value
-- **Ignoring competitors** → Know competitive landscape thoroughly
-- **Demo-only mindset** → Ensure solution is production-viable
-- **Hiding limitations** → Address concerns proactively with workarounds
+## 안티 패턴
+- **과도한 기능** → 한계와 로드맵에 대해 솔직하게 설명하세요.
+- **기능 덤핑** → 고객 관련 가치에 집중
+- **경쟁사 무시** → 경쟁 구도를 철저히 파악
+- **데모 전용 사고방식** → 솔루션이 프로덕션에서 실행 가능한지 확인
+- **제한 사항 숨기기** → 해결 방법을 통해 사전에 우려 사항 해결

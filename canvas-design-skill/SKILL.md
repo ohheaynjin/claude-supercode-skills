@@ -1,158 +1,155 @@
 ---
 name: canvas-design
-description: Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.
+description: 디자인 철학을 사용하여 .png 및 .pdf 문서로 아름다운 시각 예술을 만들어 보세요. 사용자가 포스터, 예술 작품, 디자인 또는 기타 정적 작품을 만들도록 요청할 때 이 기술을 사용해야 합니다. 저작권 침해를 피하기 위해 기존 아티스트의 작품을 절대 복사하지 않고 독창적인 시각 디자인을 만드세요.
 ---
+# 캔버스 디자인
 
-# Canvas Design
+## 목적
 
-## Purpose
+.png 및 .pdf 형식으로 아름답고 독창적인 시각 예술과 디자인을 만듭니다. 디자인 원리, 색상 이론, 타이포그래피 및 구성을 적용하여 전문가 수준의 정적 시각적 작품을 제작하는 데 특화되어 있습니다. 항상 독창적인 작품을 만들고 기존 아티스트를 복사하지 않습니다.
 
-Creates beautiful, original visual art and designs in .png and .pdf formats. Specializes in applying design principles, color theory, typography, and composition to produce professional-quality static visual pieces. Always creates original work, never copies existing artists.
+## 사용 시기
 
-## When to Use
+- 사용자가 포스터, 전단지 또는 시각 디자인을 요청합니다.
+- 아트, 일러스트레이션, 그래픽을 제작해야 하는 경우
+- 로고, 아이콘, 브랜딩 요소를 디자인하고 싶으신 분
+- 인포그래픽 또는 데이터 시각화 만들기
+- 프레젠테이션 슬라이드 또는 마케팅 자료 디자인
+- 웹이나 인쇄용 맞춤형 그래픽이 필요합니다.
+- 사용자가 "디자인", "예술", "포스터", "비주얼", "그래픽"을 요청합니다.
 
-- User requests a poster, flyer, or visual design
-- Need to create art, illustrations, or graphics
-- Want to design a logo, icon, or branding element
-- Creating infographics or data visualizations
-- Designing presentation slides or marketing materials
-- Need custom graphics for web or print
-- User asks for "design", "art", "poster", "visual", "graphic"
+## 핵심 기능
 
-## Core Capabilities
+### 디자인 원칙
 
-### Design Principles
+- **균형**: 시각적 무게 분포(대칭, 비대칭, 방사형)
+- **대비**: 차이를 통해 시각적 흥미 유발
+- **계층 구조**: 중요도를 통해 시청자의 관심을 유도합니다.
+- **정렬**: 시각적 연결 및 구성 만들기
+- **반복**: 일관성과 결속력 구축
+- **근접성**: 관련 요소를 그룹화
+- **White Space**: 빈 공간을 전략적으로 활용
 
-- **Balance**: Visual weight distribution (symmetrical, asymmetrical, radial)
-- **Contrast**: Creating visual interest through differences
-- **Hierarchy**: Guiding viewer attention through importance
-- **Alignment**: Creating visual connections and organization
-- **Repetition**: Building consistency and cohesion
-- **Proximity**: Grouping related elements
-- **White Space**: Strategic use of empty areas
+### 색상 이론
 
-### Color Theory
+- **색상 하모니**
+  - 단색: 변형이 있는 단일 색상
+  - 유사성: 색상환의 인접한 색상
+  - 보색: 대비를 위한 반대 색상
+  - Triadic: 바퀴 위의 등거리에 있는 세 가지 색상
+  - 분할 상보형: 염기 + 보수에 인접한 두 개
 
-- **Color Harmonies**
-  - Monochromatic: Single hue with variations
-  - Analogous: Adjacent colors on color wheel
-  - Complementary: Opposite colors for contrast
-  - Triadic: Three colors equidistant on wheel
-  - Split-complementary: Base + two adjacent to complement
+- **색채 심리학**
+  - 빨간색 : 에너지, 열정, 긴급함
+  - 파란색 : 신뢰, 차분함, 전문성
+  - 녹색 : 자연, 성장, 건강
+  - 노란색: 낙천주의, 명확성, 따뜻함
+  - 보라색 : 고급스러움, 창의성, 지혜
+  - 주황색 : 열정, 친근감, 자신감
+  - 블랙: 세련미, 파워풀, 우아함
+  - 흰색 : 순수함, 단순함, 깨끗함
 
-- **Color Psychology**
-  - Red: Energy, passion, urgency
-  - Blue: Trust, calm, professionalism
-  - Green: Nature, growth, health
-  - Yellow: Optimism, clarity, warmth
-  - Purple: Luxury, creativity, wisdom
-  - Orange: Enthusiasm, friendliness, confidence
-  - Black: Sophistication, power, elegance
-  - White: Purity, simplicity, cleanliness
+- **컬러 적용**
+  - 60-30-10 규칙(주형, 보조형, 악센트)
+  - 색상으로 시각적 계층 구조 구축
+  - 접근성(명암비) 고려
+  - 문화적 색상 의미 설명
 
-- **Color Application**
-  - 60-30-10 rule (dominant, secondary, accent)
-  - Establish visual hierarchy with color
-  - Consider accessibility (contrast ratios)
-  - Account for cultural color meanings
+### 타이포그래피
 
-### Typography
+- **글꼴 카테고리**
+  - 세리프(Serif): 전통적, 권위적, 읽기 쉬운
+  - 산세리프체: 모던하고 깔끔하며 미니멀리스트
+  - 디스플레이: 장식적이고 눈길을 사로잡습니다.
+  - 스크립트: 우아함, 개인적, 격식을 차림
+  - 모노스페이스: 테크니컬, 코드, 레트로
 
-- **Font Categories**
-  - Serif: Traditional, authoritative, readable
-  - Sans-serif: Modern, clean, minimalist
-  - Display: Decorative, attention-grabbing
-  - Script: Elegant, personal, formal
-  - Monospace: Technical, code, retro
+- **유형 계층구조**
+  - 명확한 수준 설정(H1, H2, 본문, 캡션)
+  - 차별화를 위해 크기, 무게, 색상을 활용하세요.
+  - 최대 2~3개의 글꼴로 제한
+  - 모든 크기에서 가독성 보장
 
-- **Type Hierarchy**
-  - Establish clear levels (H1, H2, body, captions)
-  - Use size, weight, and color for differentiation
-  - Limit to 2-3 fonts maximum
-  - Ensure readability at all sizes
+- **간격 및 정렬**
+  - 줄 높이: 본문 텍스트의 경우 1.4-1.6
+  - 글자간격 : 가독성을 위해 조정
+  - 텍스트 정렬: 왼쪽, 가운데, 오른쪽, 양쪽 맞춤
+  - 텍스트 블록 주위의 공백
 
-- **Spacing & Alignment**
-  - Line height: 1.4-1.6 for body text
-  - Letter-spacing: Adjust for readability
-  - Text alignment: Left, center, right, justified
-  - Whitespace around text blocks
+### 구성 기술
 
-### Composition Techniques
+- **삼등분의 법칙**: 캔버스를 9개 부분으로 나누고 교차점에 초점을 배치합니다.
+- **황금 비율**: 미학적으로 만족스러운 레이아웃을 위한 1:1.618 비율
+- **초점**: 핵심 요소에 시청자의 주의를 집중시킵니다.
+- **시각적 흐름**: 디자인 전반에 걸쳐 눈의 움직임을 안내합니다.
+- **프레이밍**: 요소를 사용하여 중요한 콘텐츠의 프레임을 지정합니다.
+- **레이어링**: 전경/배경으로 깊이 만들기
+- **대칭 대 비대칭**: 메시지에 따라 선택
 
-- **Rule of Thirds**: Divide canvas into 9 parts, place focal points at intersections
-- **Golden Ratio**: 1:1.618 proportion for aesthetically pleasing layouts
-- **Focal Points**: Direct viewer attention to key elements
-- **Visual Flow**: Guide eye movement through design
-- **Framing**: Use elements to frame important content
-- **Layering**: Create depth with foreground/background
-- **Symmetry vs Asymmetry**: Choose based on message
+## 디자인 작업흐름
 
-## Design Workflow
+### 1단계: 요구 사항 이해
 
-### Step 1: Understand Requirements
+**묻고 싶은 질문**:
+- 목적/메시지는 무엇인가?
+- 타겟층은 누구인가?
+- 어떤 형식인가요? (포스터, 로고, 인포그래픽 등)
+- 크기/종횡비는 무엇입니까?
+- 선호하는 색상이나 브랜드 지침이 있나요?
+- 어떤 기분/느낌을 전달해야 하나요?
 
-**Questions to Ask**:
-- What is the purpose/message?
-- Who is the target audience?
-- What format? (poster, logo, infographic, etc.)
-- What dimensions/aspect ratio?
-- Any color preferences or brand guidelines?
-- What mood/feeling should it convey?
+**제공물**: 명확한 디자인 개요
 
-**Deliverable**: Clear design brief
+### 2단계: 컨셉 개발
 
-### Step 2: Concept Development
+**프로세스**:
+1. 핵심 메시지 정의(한 문장)
+2. 적절한 스타일을 선택하세요(최소화, 대담함, 우아함, 유쾌함 등).
+3. 색상 팔레트 선택(2~5개 색상)
+4. 타이포그래피 선택(글꼴 1~3개)
+5. 대략적인 레이아웃 컨셉 스케치
 
-**Process**:
-1. Define the core message (one sentence)
-2. Choose appropriate style (minimal, bold, elegant, playful, etc.)
-3. Select color palette (2-5 colors)
-4. Pick typography (1-3 fonts)
-5. Sketch rough layout concept
+**제공물**: 근거가 있는 설계 방향
 
-**Deliverable**: Design direction with rationale
+### 3단계: 레이아웃 디자인
 
-### Step 3: Layout Design
+**정의할 요소**:
+- 캔버스 크기 및 방향
+- 그리드 시스템 또는 레이아웃 구조
+- 텍스트 요소 배치
+- 시각적 요소의 배치
+- 정보의 계층 구조
+- 공백 할당
 
-**Elements to Define**:
-- Canvas size and orientation
-- Grid system or layout structure
-- Placement of text elements
-- Placement of visual elements
-- Hierarchy of information
-- White space allocation
+**제공물**: 구조화된 레이아웃 계획### 4단계: 시각적 실행
 
-**Deliverable**: Structured layout plan
+**구현**:
+1. 색상 팔레트 적용
+2. 계층 구조로 타이포그래피 설정
+3. 시각적 요소 추가(도형, 아이콘, 일러스트레이션)
+4. 효과 적용(그림자, 그라데이션, 텍스처)
+5. 균형과 정렬을 보장하세요
+6. 대비 및 가독성 테스트
 
-### Step 4: Visual Execution
+**제공 가능**: 요청한 형식으로 디자인 완성
 
-**Implementation**:
-1. Apply color palette
-2. Set typography with hierarchy
-3. Add visual elements (shapes, icons, illustrations)
-4. Apply effects (shadows, gradients, textures)
-5. Ensure balance and alignment
-6. Test contrast and readability
+### 5단계: 개선
 
-**Deliverable**: Complete design in requested format
+**검토**:
+- 정렬과 간격을 확인하세요.
+- 다양한 크기에서의 가독성 검증
+- 색상 대비(접근성) 테스트
+- 시각적 계층 구조가 명확한지 확인하세요.
+- 불필요한 요소 제거
+- 폴란드어 세부 정보
 
-### Step 5: Refinement
+**제공 가능**: 최종 광택 디자인
 
-**Review**:
-- Check alignment and spacing
-- Verify readability at different sizes
-- Test color contrast (accessibility)
-- Ensure visual hierarchy is clear
-- Remove unnecessary elements
-- Polish details
+## 디자인 패턴
 
-**Deliverable**: Final polished design
+### 포스터 디자인
 
-## Design Patterns
-
-### Poster Design
-
-**Structure**:
+**구조**:
 ```
 [Large Visual or Typography - Top 60%]
 - Eye-catching hero element
@@ -166,17 +163,16 @@ Creates beautiful, original visual art and designs in .png and .pdf formats. Spe
 - Contact info, dates, location
 - Small but essential details
 ```
+**모범 사례**:
+- 강한 초점부터 시작하세요.
+- 주요 메시지에는 크고 굵은 서체를 사용합니다.
+- 색상은 3~4개로 제한
+- 멀리서도 가독성 보장
+- 시각적 호흡 공간 포함
 
-**Best Practices**:
-- Start with strong focal point
-- Use large, bold typography for main message
-- Limit to 3-4 colors
-- Ensure readability from distance
-- Include visual breathing room
+### 로고 디자인
 
-### Logo Design
-
-**Structure**:
+**구조**:
 ```
 [Symbol/Icon]    [Wordmark]
      or
@@ -184,18 +180,17 @@ Creates beautiful, original visual art and designs in .png and .pdf formats. Spe
      +
 [Tagline (optional)]
 ```
+**모범 사례**:
+- 간단하고 기억에 남도록 유지하세요.
+- 먼저 흑백으로 작업하세요.
+- 확장성 보장(모든 규모에서 작동)
+- 다재다능하게 만드세요(다른 배경에서 작동)
+- 트렌드를 피하세요(시대를 초월한 것을 목표로 함)
+- 다양한 상황에서 테스트
 
-**Best Practices**:
-- Keep it simple and memorable
-- Work in black and white first
-- Ensure scalability (works at any size)
-- Make it versatile (works on different backgrounds)
-- Avoid trends (aim for timelessness)
-- Test in various contexts
+### 인포그래픽 디자인
 
-### Infographic Design
-
-**Structure**:
+**구조**:
 ```
 [Header: Title + Context]
      ↓
@@ -209,269 +204,266 @@ Creates beautiful, original visual art and designs in .png and .pdf formats. Spe
      ↓
 [Conclusion/Takeaway]
 ```
+**모범 사례**:
+- 명확한 시각적 계층 구조
+- 일관된 색상 코딩
+- 간단하고 소화하기 쉬운 덩어리
+- 텍스트와 영상을 혼합하세요
+- 데이터로 이야기를 전하세요
 
-**Best Practices**:
-- Clear visual hierarchy
-- Consistent color coding
-- Simple, digestible chunks
-- Mix text and visuals
-- Tell a story with data
+## 스타일 지침
 
-## Style Guidelines
+### 미니멀리스트 스타일
+- **색상**: 2~3가지 색상, 종종 단색
+- **타이포그래피**: 깔끔한 산세리프체
+- **요소**: 넉넉한 여백, 단순한 모양
+- **사용 시기**: 최신 브랜드, 기술 제품, 명확성이 핵심
 
-### Minimalist Style
-- **Colors**: 2-3 colors, often monochromatic
-- **Typography**: Clean sans-serif
-- **Elements**: Generous white space, simple shapes
-- **Use when**: Modern brand, tech product, clarity is key
+### 대담하고 생기 넘치는 스타일
+- **색상**: 고대비, 채도가 높은 색상
+- **타이포그래피**: 크고 인상적인 글꼴
+- **요소**: 동적 모양, 겹치는 레이어
+- **사용시점** : 청소년관객, 에너지드링크, 페스티벌
 
-### Bold/Vibrant Style
-- **Colors**: High contrast, saturated colors
-- **Typography**: Large, impactful fonts
-- **Elements**: Dynamic shapes, overlapping layers
-- **Use when**: Youth audience, energy drink, festival
+### 우아함/럭셔리 스타일
+- **색상**: 검정, 흰색, 금색, 차분한 톤
+- **타이포그래피**: Serif 글꼴, 세련된 스크립트
+- **요소**: 섬세한 디테일, 균형 잡힌 구성
+- **사용시기** : 고급제품, 공식행사, 프레스티지 브랜드
 
-### Elegant/Luxury Style
-- **Colors**: Black, white, gold, muted tones
-- **Typography**: Serif fonts, refined scripts
-- **Elements**: Subtle details, balanced composition
-- **Use when**: High-end product, formal event, prestige brand
+### 장난기/캐주얼 스타일
+- **색상**: 밝고 경쾌한 팔레트
+- **타이포그래피**: 둥글고 친숙한 글꼴
+- **요소**: 손으로 그린 요소, 유기적 모양
+- **사용시점** : 아동용품, 캐주얼 이벤트, 친근한 브랜드
 
-### Playful/Casual Style
-- **Colors**: Bright, cheerful palette
-- **Typography**: Rounded, friendly fonts
-- **Elements**: Hand-drawn elements, organic shapes
-- **Use when**: Children's product, casual event, approachable brand
+### 기업/전문 스타일
+- **색상**: 파란색, 회색, 보수적인 색상
+- **타이포그래피**: 깔끔한 산세리프 또는 클래식 세리프
+- **요소**: 그리드 기반, 구조적, 형식적
+- **사용 시기**: 비즈니스 문서, 기업 아이덴티티, 전문 서비스
 
-### Corporate/Professional Style
-- **Colors**: Blues, grays, conservative palette
-- **Typography**: Clean sans-serif or classic serif
-- **Elements**: Grid-based, structured, formal
-- **Use when**: Business document, corporate identity, professional service
+## 기술 사양
 
-## Technical Specifications
-
-### File Formats
+### 파일 형식
 
 **PNG**:
-- Use for: Web graphics, logos with transparency
-- Resolution: 72 DPI for web, 300 DPI for print
-- Color Mode: RGB for digital
+- 용도 : 웹 그래픽, 투명 로고
+- 해상도: 웹용 72DPI, 인쇄용 300DPI
+- 색상 모드: 디지털용 RGB
 
 **PDF**:
-- Use for: Print materials, professional documents
-- Resolution: 300 DPI minimum for print
-- Color Mode: CMYK for print, RGB for digital
-- Include bleed: 3mm on all sides for print
+- 용도: 인쇄 자료, 전문 문서
+- 해상도: 인쇄용 최소 300 DPI
+- 색상 모드: 인쇄용 CMYK, 디지털용 RGB
+- 블리드 포함: 인쇄 시 모든 면에 3mm
 
-### Canvas Sizes
+### 캔버스 크기
 
-**Social Media**:
-- Instagram Post: 1080x1080px (square)
-- Instagram Story: 1080x1920px (9:16)
-- Facebook Post: 1200x630px
-- Twitter Header: 1500x500px
+**소셜 미디어**:
+- 인스타그램 포스트: 1080x1080px (정사각형)
+- 인스타그램 스토리: 1080x1920px (9:16)
+- 페이스북 게시물: 1200x630px
+- 트위터 헤더: 1500x500px
 
-**Print**:
-- A4: 210x297mm (2480x3508px at 300 DPI)
-- Letter: 8.5x11in (2550x3300px at 300 DPI)
-- Poster (small): 11x17in
-- Poster (large): 24x36in
+**인쇄**:
+- A4: 210x297mm(300DPI에서 2480x3508px)
+- 레터: 8.5x11in(300DPI에서 2550x3300px)
+- 포스터(소): 11x17in
+- 포스터(대형): 24x36in
 
-**Web**:
-- Hero Image: 1920x1080px (16:9)
-- Banner: 728x90px, 300x250px
-- Thumbnail: 150x150px
+**웹**:
+- 히어로 이미지: 1920x1080px (16:9)
+- 배너: 728x90px, 300x250px
+- 썸네일: 150x150px
 
-## Best Practices
+## 모범 사례
 
-### Composition
-- **Use a grid**: Helps maintain alignment and consistency
-- **Create contrast**: Make important elements stand out
-- **Balance elements**: Distribute visual weight evenly
-- **Leave breathing room**: Don't overcrowd the design
-- **Guide the eye**: Use visual flow to lead viewer
+### 구성
+- **그리드 사용**: 정렬과 일관성을 유지하는 데 도움이 됩니다.
+- **대비 만들기**: 중요한 요소를 돋보이게 만듭니다.
+- **균형 요소**: 시각적 무게감을 균등하게 분배합니다.
+- **호흡 공간 확보**: 디자인을 너무 복잡하게 만들지 마세요.
+- **시선 안내**: 시각적 흐름을 사용하여 시청자를 안내합니다.
 
-### Color
-- **Start with fewer colors**: Add more only if needed
-- **Test accessibility**: Ensure sufficient contrast (WCAG AA: 4.5:1 for text)
-- **Consider context**: Colors look different on screen vs print
-- **Use color purposefully**: Every color should have a reason
-- **Create a palette first**: Don't pick colors on the fly
+### 색상
+- **더 적은 색상으로 시작**: 필요한 경우에만 색상을 더 추가하세요.
+- **접근성 테스트**: 충분한 대비 보장(WCAG AA: 텍스트의 경우 4.5:1)
+- **상황 고려**: 색상이 화면과 인쇄에서 다르게 보입니다.
+- **의도적으로 색상을 사용하세요**: 모든 색상에는 이유가 있어야 합니다.
+- **먼저 팔레트 만들기**: 즉석에서 색상을 선택하지 마세요.
 
-### Typography
-- **Hierarchy first**: Establish clear levels of importance
-- **Limit fonts**: 2-3 maximum, often 1-2 is enough
-- **Mind the spacing**: Proper kerning, leading, tracking
-- **Readability**: Ensure text is legible at intended size
-- **Pair wisely**: Combine fonts with different personalities
+### 타이포그래피
+- **계층 구조 우선**: 명확한 중요도 수준 설정
+- **글꼴 제한**: 최대 2~3개, 대개는 1~2개면 충분합니다.
+- **간격 주의**: 적절한 커닝, 행간, 자간
+- **가독성**: 텍스트를 의도한 크기로 읽을 수 있는지 확인하세요.
+- **현명하게 페어링**: 다양한 개성을 지닌 글꼴을 결합하세요
 
-### Workflow
-- **Start simple**: Add complexity gradually
-- **Design in black and white first**: Focus on structure
-- **Get feedback**: Show work-in-progress
-- **Sleep on it**: Fresh eyes catch issues
-- **Export multiple versions**: Different sizes/formats
+### 작업 흐름
+- **간단하게 시작**: 점차적으로 복잡성을 추가하세요.
+- **흑백 먼저 디자인**: 구조에 중점
+- **피드백 받기**: 진행 중인 작업 표시
+- **자자**: 신선한 시선이 이슈를 사로잡습니다.
+- **여러 버전 내보내기**: 다양한 크기/형식
 
-## Anti-Patterns
+## 안티 패턴
 
-❌ **Don't Copy Existing Art**
-- **Why**: Copyright infringement
-- **Instead**: Create original work inspired by concepts, not specific pieces
+❌ **기존 작품을 복사하지 마세요**
+- **이유**: 저작권 침해
+- **대신**: 특정 작품이 아닌 컨셉에서 영감을 받은 독창적인 작품을 만듭니다.
 
-❌ **Don't Use Too Many Fonts**
-- **Why**: Creates visual chaos
-- **Instead**: Limit to 2-3 fonts with clear hierarchy
+❌ **글꼴을 너무 많이 사용하지 마세요**
+- **이유**: 시각적 혼란을 야기합니다.
+- **대신**: 계층 구조가 명확한 글꼴을 2~3개로 제한합니다.
 
-❌ **Don't Ignore White Space**
-- **Why**: Design feels cramped and unprofessional
-- **Instead**: Give elements room to breathe
+❌ **공백을 무시하지 마세요**
+- **이유**: 디자인이 비좁고 전문성이 떨어지는 느낌
+- **대신**: 요소에 숨 쉴 수 있는 공간을 제공하세요.
 
-❌ **Don't Use All Caps for Long Text**
-- **Why**: Difficult to read, feels like shouting
-- **Instead**: Use for short headlines or emphasis only
+❌ **긴 텍스트에 모두 대문자를 사용하지 마세요**
+- **이유**: 읽기 어렵고, 소리 지르는 듯한 느낌
+- **대신**: 짧은 헤드라인이나 강조에만 사용
 
-❌ **Don't Center Everything**
-- **Why**: Can feel static and amateur
-- **Instead**: Mix alignments strategically
+❌ **모든 것을 중앙에 두지 마세요**
+- **이유**: 정적이고 아마추어적인 느낌을 받을 수 있음
+- **대신**: 전략적으로 정렬을 혼합합니다.❌ **낮은 대비를 사용하지 마세요**
+- **이유**: 읽기 어렵고 접근할 수 없음
+- **대신**: 명암비를 테스트하고 최소 4.5:1을 목표로 합니다.
 
-❌ **Don't Use Low Contrast**
-- **Why**: Hard to read, not accessible
-- **Instead**: Test contrast ratios, aim for 4.5:1 minimum
+❌ **이미지나 글꼴을 늘리거나 왜곡하지 마세요**
+- **이유**: 전문가답지 않아 보입니다.
+- **대신**: 종횡비를 유지하고 비례적으로 크기를 조정합니다.
 
-❌ **Don't Stretch/Distort Images or Fonts**
-- **Why**: Looks unprofessional
-- **Instead**: Maintain aspect ratios, scale proportionally
+❌ **효과를 남용하지 마세요**
+- **이유**: 낡고 복잡해 보입니다.
+- **대신**: 효과를 아껴서 의도적으로 사용하세요.
 
-❌ **Don't Overuse Effects**
-- **Why**: Looks dated and cluttered
-- **Instead**: Use effects sparingly and purposefully
+## 예
 
-## Examples
+### 예시 1: 이벤트 포스터
 
-### Example 1: Event Poster
+**컨텍스트**: 청소년 청중을 위한 음악 축제 포스터
 
-**Context**: Music festival poster for young adult audience
+**디자인 접근 방식**:
+- 스타일: 대담하고 생동감 있는 스타일
+- 색상: 보색 배색(보라색과 노란색)
+- 타이포그래피: 밴드 이름을 위한 큰 표시 글꼴, 세부 사항을 위한 깔끔한 산세리프체
+- 구성: 요소가 겹치는 동적 대각선 레이아웃
+- 시각적 요소 : 음악의 파동을 연상시키는 추상적인 형태
 
-**Design Approach**:
-- Style: Bold and vibrant
-- Colors: Complementary color scheme (purple and yellow)
-- Typography: Large display font for band names, clean sans-serif for details
-- Composition: Dynamic diagonal layout with overlapping elements
-- Visual elements: Abstract shapes suggesting music waves
+**결과**: 에너지와 설렘을 전하는 눈길을 사로잡는 포스터
 
-**Result**: Eye-catching poster that conveys energy and excitement
+### 예 2: 미니멀리스트 로고
 
-### Example 2: Minimalist Logo
+**컨텍스트**: 전문적인 느낌이 필요한 기술 스타트업 로고
 
-**Context**: Tech startup logo needing professional feel
+**디자인 접근 방식**:
+- 스타일: 미니멀리스트 및 현대적
+- 색상 : 단색(파란색)과 검정색
+- 타이포그래피: 깔끔하고 기하학적인 산세리프체
+- 구성 : 심플 아이콘 + 워드마크
+- 시각적 요소 : 연결을 암시하는 추상적인 기하학적 형태
 
-**Design Approach**:
-- Style: Minimalist and modern
-- Colors: Single color (blue) with black
-- Typography: Clean geometric sans-serif
-- Composition: Simple icon + wordmark
-- Visual elements: Abstract geometric shape suggesting connection
+**결과**: 모든 미디어에서 작동하는 깔끔하고 확장 가능한 로고
 
-**Result**: Clean, scalable logo that works across all media
+### 예시 3: 인포그래픽
 
-### Example 3: Infographic
+**컨텍스트**: 5단계로 프로세스 설명
 
-**Context**: Explaining a process with 5 steps
+**디자인 접근 방식**:
+- 스타일: 기업 전문가
+- 색상 : 브랜드 색상 (블루, 그레이, 액센트 오렌지)
+- 타이포그래피: 굵은 제목으로 명확한 계층 구조
+- 구성: 번호가 매겨진 섹션이 있는 수직 흐름
+- 시각적 요소: 각 단계의 아이콘, 연결 화살표
 
-**Design Approach**:
-- Style: Corporate professional
-- Colors: Brand colors (blue, gray, accent orange)
-- Typography: Clear hierarchy with bold headings
-- Composition: Vertical flow with numbered sections
-- Visual elements: Icons for each step, connecting arrows
+**결과**: 명확하고 스캔 가능한 정보 디자인
 
-**Result**: Clear, scannable information design
+## 품질 체크리스트
 
-## Quality Checklist
+마무리하기 전에 다음을 확인하세요.
 
-Before finalizing, verify:
+### 비주얼
+- [ ] 명확한 초점
+- [ ] 균형잡힌 구성
+- [ ] 일관된 간격 및 정렬
+- [ ] 적절한 공백
+- [ ] 시각적 계층 구조가 명확합니다.
 
-### Visual
-- [ ] Clear focal point
-- [ ] Balanced composition
-- [ ] Consistent spacing and alignment
-- [ ] Appropriate white space
-- [ ] Visual hierarchy is clear
+### 색상
+- [ ] 색상 팔레트가 응집력이 있습니다.
+- [ ] 가독성을 위한 충분한 대비
+- [ ] 메시지를 뒷받침하는 색상
+- [ ] 다양한 배경에서 테스트됨
 
-### Color
-- [ ] Color palette is cohesive
-- [ ] Sufficient contrast for readability
-- [ ] Colors support the message
-- [ ] Tested on different backgrounds
+### 타이포그래피
+- [ ] 텍스트는 모든 크기에서 읽을 수 있습니다.
+- [ ] 명확한 계층 구조 확립
+- [ ] 메시지에 적합한 글꼴입니다.
+- [ ] 적절한 간격(커닝, 행간)
 
-### Typography
-- [ ] Text is readable at all sizes
-- [ ] Clear hierarchy established
-- [ ] Fonts are appropriate for message
-- [ ] Proper spacing (kerning, leading)
+### 기술
+- [ ] 올바른 파일 형식(.png 또는 .pdf)
+- [ ] 적절한 해상도(인쇄용 300DPI)
+- [ ] 적절한 색상 모드(RGB 또는 CMYK)
+- [ ] 사용 사례에 대한 올바른 크기
 
-### Technical
-- [ ] Correct file format (.png or .pdf)
-- [ ] Appropriate resolution (300 DPI for print)
-- [ ] Proper color mode (RGB or CMYK)
-- [ ] Correct dimensions for use case
+### 전반적으로
+- [ ] 디자인이 명시된 목표를 달성합니다.
+- [ ] 타겟 고객에게 적합
+- [ ] 전문적이고 세련된
+- [ ] 원본 작품(복사되지 않음)
 
-### Overall
-- [ ] Design achieves stated goal
-- [ ] Appropriate for target audience
-- [ ] Professional and polished
-- [ ] Original work (not copied)
+## 일반적인 요청
 
-## Common Requests
+### "팝하게 만들어 보세요"
+**번역**: 대비 및 시각적 효과 증가
+**접근법**: 색상 채도 향상, 크기 차이 증가, 전략적 공백 추가
 
-### "Make it pop"
-**Translation**: Increase contrast and visual impact
-**Approach**: Boost color saturation, increase size differences, add strategic white space
+### "좀 더 전문적으로 만들어 보세요"
+**번역**: 혼란을 줄이고 일관성을 향상시키세요
+**접근 방식**: 색상 팔레트 단순화, 간격 표준화, 클래식 타이포그래피 사용
 
-### "Make it more professional"
-**Translation**: Reduce clutter, improve consistency
-**Approach**: Simplify color palette, standardize spacing, use classic typography
+### "더 현대적으로 만들어 보세요"
+**번역**: 현재 디자인 트렌드 업데이트
+**접근 방식**: 깔끔한 산세리프 글꼴, 대담한 색상 또는 최소한의 팔레트, 넉넉한 공백
 
-### "Make it more modern"
-**Translation**: Update to current design trends
-**Approach**: Clean sans-serif fonts, bold colors or minimal palette, generous white space
+### "눈에 띄게 만들어라"
+**번역**: 강력한 초점 만들기
+**접근법**: 큰 타이포그래피, 고대비 색상, 대담한 시각적 요소 사용
 
-### "Make it eye-catching"
-**Translation**: Create strong focal point
-**Approach**: Use large typography, high contrast colors, bold visual elements
+## 도구 및 기술
 
-## Tools and Techniques
+### 제한된 요소로 작업하기
 
-### Working with Limited Elements
+고급 도구 없이 디자인을 만드는 경우:
+- 기하학적 모양을 창의적으로 사용
+- 타이포그래피를 시각적 요소로 활용
+- 임팩트 있는 컬러 블록 적용
+- 반복을 통해 패턴 만들기
+- 네거티브 스페이스를 전략적으로 활용하라
 
-When creating designs without advanced tools:
-- Use geometric shapes creatively
-- Leverage typography as visual element
-- Apply color blocks for impact
-- Create patterns with repetition
-- Use negative space strategically
+### 깊이 만들기
 
-### Creating Depth
+복잡한 3D 도구 없이:
+- 레이어 요소(전경, 중간, 배경)
+- 그림자와 하이라이트를 사용하세요
+- 크기 변형 적용(원근감)
+- 겹치는 요소
+- 불투명도/투명도 변경
 
-Without complex 3D tools:
-- Layer elements (foreground, midground, background)
-- Use shadows and highlights
-- Apply size variation (perspective)
-- Overlap elements
-- Vary opacity/transparency
+### 시각적인 흥미를 더하기
 
-### Adding Visual Interest
+- 텍스처: 노이즈, 그레인, 패턴
+- 그라데이션: 미묘하거나 대담한 전환
+- 도형: 원, 삼각형, 유기적 형태
+- 라인: 구분선, 액센트, 프레임
+- 아이콘: 간단하고 인식 가능한 기호
 
-- Textures: Noise, grain, patterns
-- Gradients: Subtle or bold transitions
-- Shapes: Circles, triangles, organic forms
-- Lines: Dividers, accents, frames
-- Icons: Simple, recognizable symbols
+## 출력 형식
 
-## Output Formats
-
-When delivering designs:
+디자인을 제공할 때:
 
 **PNG**:
 ```
@@ -479,7 +471,6 @@ Resolution: 300 DPI for print, 72 DPI for web
 Color: RGB
 Transparency: As needed
 ```
-
 **PDF**:
 ```
 Resolution: 300 DPI minimum
@@ -487,14 +478,13 @@ Color: CMYK for print, RGB for digital
 Bleed: 3mm for print jobs
 Fonts: Embedded
 ```
+## 관련 스킬
 
-## Related Skills
+- 웹 UI 구성요소에는 [[frontend-design-skill]]을 사용합니다.
+- 인터페이스 디자인에는 [[ui-designer-skill]]을 사용하세요.
+- 브랜드 자산 작업 시 [[brand-guidelines-skill]]을 사용하세요.
+- 기존 설계를 분석하려면 [[multimodal-analytic-skill]]을 사용하세요.
 
-- Use [[frontend-design-skill]] for web UI components
-- Use [[ui-designer-skill]] for interface design
-- Use [[brand-guidelines-skill]] when working with brand assets
-- Use [[multimodal-analysis-skill]] to analyze existing designs
+## 메타
 
-## Meta
-
-This skill focuses on creating original, beautiful static visual designs across formats. Always prioritize originality and avoid copying existing artwork. Apply design principles thoughtfully to create professional, purposeful visual communication.
+이 기술은 다양한 형식에 걸쳐 독창적이고 아름다운 정적 시각적 디자인을 만드는 데 중점을 둡니다. 항상 독창성을 우선시하고 기존 작품을 복사하지 마십시오. 디자인 원칙을 신중하게 적용하여 전문적이고 목적이 분명한 시각적 커뮤니케이션을 만듭니다.

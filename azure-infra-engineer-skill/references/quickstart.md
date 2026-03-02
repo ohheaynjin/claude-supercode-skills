@@ -1,44 +1,39 @@
-# Azure Infrastructure Engineer - Quick Start Guide
+# Azure 인프라 엔지니어 - 빠른 시작 가이드
 
-This guide helps you get started with the Azure infrastructure engineer skill's scripts and tools.
+이 가이드는 Azure 인프라 엔지니어 기술의 스크립트 및 도구를 시작하는 데 도움이 됩니다.
 
-## Prerequisites
+## 전제 조건
 
-- Node.js 16+ installed
-- Azure CLI installed and configured (`az login`)
-- Azure subscription with appropriate permissions
-- TypeScript installed globally
+- Node.js 16+ 설치
+- Azure CLI가 설치 및 구성되었습니다(`az login`)
+- 적절한 권한이 있는 Azure 구독
+- TypeScript가 전역적으로 설치됨
 
-## Installation
-
+## 설치
 ```bash
 npm install @azure/arm-resources @azure/arm-network @azure/arm-monitor @azure/identity
 npm install -D typescript @types/node
 ```
+## 인증
 
-## Authentication
+스크립트는 여러 인증 방법을 지원하는 Azure DefaultAzureCredential을 사용합니다.
 
-The scripts use Azure DefaultAzureCredential which supports multiple authentication methods:
-
-1. **Azure CLI** (recommended for local development):
-   ```bash
+1. **Azure CLI**(로컬 개발에 권장):
+```bash
    az login
    ```
-
-2. **Service Principal** (for CI/CD):
-   ```bash
+2. **서비스 주체**(CI/CD용):
+```bash
    export AZURE_CLIENT_ID=<client-id>
    export AZURE_CLIENT_SECRET=<client-secret>
    export AZURE_TENANT_ID=<tenant-id>
    ```
+3. **관리 ID**(Azure 리소스용):
+   - 시스템 할당 또는 사용자 할당 관리 ID를 자동으로 사용합니다.
 
-3. **Managed Identity** (for Azure resources):
-   - Automatically uses system-assigned or user-assigned managed identity
+## 빠른 예
 
-## Quick Examples
-
-### Deploy a Virtual Network
-
+### 가상 네트워크 배포
 ```typescript
 import { deployVNet } from './scripts/deploy_azure_resources';
 
@@ -67,9 +62,7 @@ if (result.success) {
   console.error(`Errors: ${result.errors?.join(', ')}`);
 }
 ```
-
-### Deploy a Bicep Template
-
+### Bicep 템플릿 배포
 ```typescript
 import { deployBicepTemplate } from './scripts/configure_bicep_template';
 
@@ -91,9 +84,7 @@ if (result.success) {
   console.log(`Outputs: ${JSON.stringify(result.outputs, null, 2)}`);
 }
 ```
-
-### Set Up Monitoring
-
+### 모니터링 설정
 ```typescript
 import { createActionGroup, createMetricAlert } from './scripts/setup_monitoring';
 
@@ -133,20 +124,16 @@ if (actionGroupId) {
   console.log(`Alert created: ${alertCreated}`);
 }
 ```
+## 일반적인 패턴
 
-## Common Patterns
-
-### Validating Address Prefixes
-
+### 주소 접두사 확인 중
 ```typescript
 import { validateAddressPrefix } from './scripts/deploy_azure_resources';
 
 const isValid = validateAddressPrefix('10.0.1.0/24');
 console.log(`Valid CIDR: ${isValid}`);
 ```
-
-### Pre-flight Validation
-
+### 비행 전 확인
 ```typescript
 import { validateDeployment } from './scripts/configure_bicep_template';
 
@@ -158,10 +145,9 @@ if (isValid) {
   process.exit(1);
 }
 ```
+## 모범 사례
 
-## Best Practices
-
-1. **Always validate before deploying** - Use `validateDeployment()` before running deployments
+1. **배포하기 전에 항상 검증** - 사용`validateDeployment()` before running deployments
 2. **Use what-if** - Run `whatIfDeployment()` to preview changes
 3. **Implement proper error handling** - Check `result.errors` for detailed error messages
 4. **Use naming conventions** - Follow Azure naming conventions for resources
@@ -178,6 +164,7 @@ if (isValid) {
 Error: DefaultAzureCredential: Authentication failed
 ```
 
+
 **Solution**: Run `az login` to authenticate with Azure CLI
 
 ### Permission Errors
@@ -186,6 +173,7 @@ Error: DefaultAzureCredential: Authentication failed
 Error: AuthorizationFailed: The client has permission to perform action
 ```
 
+
 **Solution**: Ensure your account has Contributor or Owner role on the resource group
 
 ### Template Validation Failures
@@ -193,6 +181,7 @@ Error: AuthorizationFailed: The client has permission to perform action
 ```
 Error: Template validation failed
 ```
+
 
 **Solution**:
 1. Check the Bicep template syntax
@@ -206,6 +195,7 @@ Error: Template validation failed
 Error: ResourceNotFound: The resource with id could not be found
 ```
 
+
 **Solution**:
 1. Verify the resource ID is correct
 2. Check if the resource exists
@@ -216,6 +206,7 @@ Error: ResourceNotFound: The resource with id could not be found
 ```
 Error: Deployment operation timed out
 ```
+
 
 **Solution**:
 1. Increase timeout values in the deployment configuration

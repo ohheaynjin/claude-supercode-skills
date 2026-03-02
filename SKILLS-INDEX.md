@@ -1,402 +1,390 @@
-# Comprehensive Skills Index
+# 종합 기술 지수
 
-## Quick Stats
+## 빠른 통계
 
-- **Total Skills Created:** 177 Agent Skills
-- **Original Skills:** 133 (from initial conversion)
-- **New Skills from VoltAgent:** 44
-- **Total Conversion Time:** ~90 minutes
-- **Quality Compliance:** 100%
-- **Installation:** `cp -r ~/claude-skills-conversion/* ~/.claude/skills/`
-
----
-
-## Core Skills (9)
-
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **codebase-exploration** | Deep contextual grep for codebases with pattern recognition | explore-skill/ |
-| **technical-advisory** | Architecture decisions and complex problem-solving | oracle-skill/ |
-| **external-reference-research** | External documentation and open-source examples | librarian-skill/ |
-| **frontend-ui-ux-development** | Visual-first design approach, stunning UI output | frontend-ui-ux-engineer-skill/ |
-| **technical-documentation** | Clear, comprehensive documentation writing | document-writer-skill/ |
-| **media-analysis** | Interpretation beyond text extraction for PDFs/images/diagrams | multimodal-looker-skill/ |
-| **general-purpose** | Versatile multi-step execution and research | general-skill/ |
-| **build-systems** | Manual invocation for compilation, bundling, optimization | build-skill/ |
-| **strategic-planning** | Manual invocation for task breakdown and dependency management | plan-skill/ |
+- **생성된 총 스킬:** 177개의 에이전트 스킬
+- **기존 스킬:** 133 (초기 전환 기준)
+- **VoltAgent의 새로운 스킬:** 44
+- **총 전환 시간:** ~90분
+- **품질 준수:** 100%
+- **설치:**`cp -r ~/claude-skills-conversion/* ~/.claude/skills/`
 
 ---
 
-## Core Utilities (4)
+## 핵심 스킬 (9)
 
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **code-review** | Quality-focused code review with security emphasis | code-reviewer-skill/ |
-| **debugger** | Advanced debugging and root cause analysis | debugger-skill/ |
-| **code-refactoring** | Refactoring patterns and design principles | refactoring-specialist-skill/ |
-| **dependency-management** | Package management and supply chain security | dependency-manager-skill/ |
-
----
-
-## Language Specialists (23)
-
-### JavaScript/TypeScript
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **javascript-development** | ES2023+, Node.js, Bun, async patterns | javascript-pro-skill/ |
-| **typescript-development** | TS 5+, generics, utility types | typescript-pro-skill/ |
-| **react-development** | React 18+, Next.js, Zustand, TanStack Query | react-specialist-skill/ |
-| **nextjs-development** | Next.js 14+, App Router, Server Actions | nextjs-developer-skill/ |
-| **vue-development** | Vue 3, Pinia, Nuxt | vue-expert-skill/ |
-
-### Backend Languages
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **python-development** | Python 3.11+, type hints, async, FastAPI | python-pro-skill/ |
-| **golang-development** | Go 1.21+, goroutines, channels, stdlib | golang-pro-skill/ |
-| **java-enterprise-architecture** | Java 21, Spring Boot 3, Jakarta EE | java-architect-skill/ |
-| **spring-boot-development** | Spring Boot 3+, Spring Cloud, Kubernetes | spring-boot-engineer-skill/ |
-| **dotnet-core-development** | .NET 8, MAUI, EF Core | dotnet-core-expert-skill/ |
-| **rust-development** | Rust async, ownership, FFI, WebAssembly | rust-engineer-skill/ |
-| **cpp-development** | C++20, modern features, performance | cpp-pro-skill/ |
-| **csharp-development** | .NET 8, C# 12, ASP.NET Core, EF Core | csharp-developer-skill/ |
-| **php-development** | PHP 8.2+, modern patterns, Composer | php-pro-skill/ |
-| **rails-development** | Rails 7+, Hotwire, Turbo, Stimulus | rails-expert-skill/ |
-| **laravel-development** | Laravel 10+, PHP 8.2, Eloquent, Livewire | laravel-specialist-skill/ |
-
-### Mobile & Other
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **flutter-development** | Flutter 3+, Dart, Firebase, platform channels | flutter-expert-skill/ |
-| **kotlin-development** | Kotlin 2.0, KMP, Coroutines, Ktor | kotlin-specialist-skill/ |
-| **swift-development** | iOS/macOS, SwiftUI, Combine, concurrency | swift-expert-skill/ |
-| **angular-enterprise** | Angular 15+, RxJS, NgRx | angular-architect-skill/ |
-| **django-development** | Django 4+, DRF, PostgreSQL, Celery | django-developer-skill/ |
-| **dotnet-framework-legacy** | .NET Framework 4.8, WCF, ASP.NET MVC | dotnet-framework-4.8-expert-skill/ |
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **코드베이스 탐색** | 패턴 인식 기능을 갖춘 코드베이스에 대한 심층적인 상황별 grep | 탐색 기술/ |
+| **기술 자문** | 아키텍처 결정 및 복잡한 문제 해결 | 오라클 기술/ |
+| **외부 참조 연구** | 외부 문서 및 오픈 소스 예제 | 사서 기술/ |
+| **프런트엔드-UI-UX-개발** | 시각적 우선 디자인 접근 방식, 놀라운 UI 출력 | 프론트엔드-UI-UX-엔지니어-기술/ |
+| **기술 문서** | 명확하고 포괄적인 문서 작성 | 문서 작성자 기술/ |
+| **미디어 분석** | PDF/이미지/다이어그램에 대한 텍스트 추출 이상의 해석 | 멀티모달-룩커-스킬/ |
+| **범용** | 다양한 다단계 실행 및 연구 | 일반 기술/ |
+| **빌드 시스템** | 컴파일, 번들링, 최적화를 위한 수동 호출 | 빌드 스킬/ |
+| **전략기획** | 작업 분류 및 종속성 관리를 위한 수동 호출 | 계획-기술/ |
 
 ---
 
-## Infrastructure (19 total)
+## 핵심 유틸리티 (4)
 
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **cloud-architecture** | AWS/Azure/GCP, multi-cloud, cost optimization | cloud-architect-skill/ |
-| **kubernetes-orchestration** | K8s, Helm, operators, multi-cluster | kubernetes-specialist-skill/ |
-| **ci-cd-automation** | CI/CD, Docker, Kubernetes, GitOps | deployment-engineer-skill/ |
-| **database-administration** | PostgreSQL/MySQL, HA, backup, monitoring | database-administrator-skill/ |
-| **site-reliability-engineering** | SRE, SLOs, error budgets, reliability | sre-engineer-skill/ |
-| **devops-engineering** | CI/CD, IaC, monitoring, SRE | devops-engineer-skill/ |
-| **infrastructure-security** | Zero-trust, IAM, auditing | security-auditor-skill/ |
-| **performance-engineering** | Optimization, profiling, capacity planning | performance-engineer-skill/ |
-| **terraform-engineering** | Infrastructure as Code, multi-cloud | terraform-engineer-skill/ |
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **코드 검토** | 보안을 강조한 품질 중심 코드 검토 | 코드 검토자 기술/ |
+| **디버거** | 고급 디버깅 및 근본 원인 분석 | 디버거 기술/ |
+| **코드 리팩토링** | 리팩토링 패턴 및 디자인 원칙 | 리팩토링-전문가-기술/ |
+| **종속성 관리** | 패키지 관리 및 공급망 보안 | 종속성 관리자 기술/ |
 
 ---
 
-## Quality & Security (11 total)
+## 언어 전문가 (23)
 
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **accessibility-testing** | WCAG 2.1 AA, A11y audits | accessibility-tester-skill/ |
-| **penetration-testing** | Ethical hacking, OWASP Top 10 | penetration-tester-skill/ |
-| **compliance-auditing** | SOC2, HIPAA, GDPR | compliance-auditor-skill/ |
-| **quality-assurance** | Test strategy, QA processes | qa-expert-skill/ |
-| **test-automation** | Test frameworks, CI/CD integration | test-automator-skill/ |
-| **error-detection** | Error analysis, pattern detection | error-detector-skill/ |
+### 자바스크립트/타입스크립트
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **자바스크립트 개발** | ES2023+, Node.js, Bun, 비동기 패턴 | 자바스크립트-프로-기술/ |
+| **typescript 개발** | TS 5+, 제네릭, 유틸리티 유형 | typescript-pro-skill/ |
+| **반응 개발** | React 18+, Next.js, Zustand, TanStack 쿼리 | 반응 전문가 기술/ |
+| **nextjs 개발** | Next.js 14+, 앱 라우터, 서버 작업 | nextjs-개발자-기술/ |
+| **vue 개발** | Vue 3, 피니아, 누스트 | vue-전문가-기술/ |
 
----
+### 백엔드 언어
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **파이썬 개발** | Python 3.11+, 유형 힌트, 비동기, FastAPI | 파이썬-프로-기술/ |
+| **golang 개발** | Go 1.21+, 고루틴, 채널, stdlib | golang-pro-skill/ |
+| **java-enterprise-아키텍처** | Java 21, 스프링 부트 3, 자카르타 EE | 자바-건축가-기술/ |
+| **스프링 부트 개발** | 스프링 부트 3+, 스프링 클라우드, Kubernetes | 스프링 부트 엔지니어 기술/ |
+| **dotnet-코어 개발** | .NET 8, MAUI, EF 코어 | dotnet-core-expert-skill/ |
+| **녹개발** | Rust 비동기, 소유권, FFI, WebAssembly | 녹 엔지니어 기술/ |
+| **cpp 개발** | C++20, 최신 기능, 성능 | cpp-프로-기술/ |
+| **csharp-개발** | .NET 8, C# 12, ASP.NET 코어, EF 코어 | csharp-개발자-기술/ |
+| **php-개발** | PHP 8.2+, 최신 패턴, Composer | PHP-프로-기술/ |
+| **레일 개발** | Rails 7+, 핫와이어, 터보, 자극 | 레일스-전문가-기술/ |
+| **laravel 개발** | Laravel 10+, PHP 8.2, Eloquent, Livewire | laravel-전문가-기술/ |
 
-## Architecture (4 total)
-
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **api-design-architecture** | REST/GraphQL, OpenAPI 3.1, HATEOAS | api-designer-skill/ |
-| **microservices-architecture** | Service decomposition, orchestration | microservices-architect-skill/ |
-| **graphql-architecture** | Schema/federation, resolver optimization | graphql-architect-skill/ |
-| **fullstack-development** | End-to-end features, frontend-backend | fullstack-developer-skill/ |
-
----
-
-## Data & AI (10 total)
-
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **data-engineering** | ETL/ELT, data lakes, streaming | data-engineer-skill/ |
-| **machine-learning** | ML systems, TensorFlow, PyTorch | machine-learning-engineer-skill/ |
-| **mlops** | MLOps, model deployment, monitoring | mlops-engineer-skill/ |
-| **llm-architecture** | LLM architecture, RAG, fine-tuning | llm-architect-skill/ |
-| **data-science** | Analytics, ML models, statistical | data-scientist-skill/ |
-| **database-optimization** | Query optimization, indexing | database-optimizer-skill/ |
-| **nlp-engineering** | NLP, transformers, text processing | nlp-engineer-skill/ |
-| **ai-systems** | AI system design, ML pipelines | ai-engineer-skill/ |
-| **ml-engineering** | ML, feature engineering | ml-engineer-skill/ |
-| **prompt-engineering** | Prompt optimization, few-shot learning | prompt-engineer-skill/ |
+### 모바일 및 기타
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **플러터 개발** | Flutter 3+, Dart, Firebase, 플랫폼 채널 | flutter-전문가-기술/ |
+| **kotlin 개발** | Kotlin 2.0, KMP, 코루틴, Ktor | Kotlin-전문가-기술/ |
+| **신속한 개발** | iOS/macOS, SwiftUI, 결합, 동시성 | 신속한 전문가 기술/ |
+| **Angular-Enterprise** | 각도 15+, RxJS, NgRx | 각도 건축가 기술/ |
+| **장고 개발** | 장고 4+, DRF, PostgreSQL, 셀러리 | django-개발자-기술/ |
+| **dotnet-framework-레거시** | .NET 프레임워크 4.8, WCF, ASP.NET MVC | dotnet-framework-4.8-expert-skill/ |
 
 ---
 
-## Business & Product (8 total)
-
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **product-management** | Product strategy, roadmap, prioritization | product-manager-skill/ |
-| **business-analysis** | Requirements, business analysis | business-analyst-skill/ |
-| **project-management** | Project management, delivery | project-manager-skill/ |
-| **technical-writing** | Documentation, API docs (with web tools) | technical-writer-skill/ |
-| **ux-research** | User research, usability testing (with web tools) | ux-researcher-skill/ |
-| **scrum-management** | Agile, Scrum, ceremonies | scrum-master-skill/ |
-| **customer-success** | Customer success, retention | customer-success-manager-skill/ |
-| **technical-sales** | Technical demonstrations, solution design | sales-engineer-skill/ |
-
----
-
-## Specialized Domains (10 total)
-
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **api-documentation** | OpenAPI/Swagger | api-documenter-skill/ |
-| **blockchain-development** | Web3, smart contracts, DeFi | blockchain-developer-skill/ |
-| **embedded-systems** | RTOS, microcontrollers, IoT | embedded-systems-skill/ |
-| **fintech-engineering** | Trading systems, payments, compliance | fintech-engineer-skill/ |
-| **game-development** | Unity, Unreal, graphics | game-developer-skill/ |
-| **iot-engineering** | Edge computing, sensors, networks | iot-engineer-skill/ |
-| **payment-integration** | Stripe, PayPal, PCI | payment-integration-skill/ |
-| **quantitative-analysis** | Algorithmic trading, financial modeling | quant-analyst-skill/ |
-| **risk-management** | Enterprise risk assessment | risk-manager-skill/ |
-| **seo-optimization** | Search optimization, analytics | seo-specialist-skill/ |
+## 인프라(총 19개)| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **클라우드 아키텍처** | AWS/Azure/GCP, 멀티 클라우드, 비용 최적화 | 클라우드 설계자-기술/ |
+| **쿠버네티스 오케스트레이션** | K8s, Helm, 운영자, 멀티 클러스터 | kubernetes-전문가-기술/ |
+| **ci-cd-자동화** | CI/CD, 도커, 쿠버네티스, GitOps | 배포-엔지니어-기술/ |
+| **데이터베이스 관리** | PostgreSQL/MySQL, HA, 백업, 모니터링 | 데이터베이스-관리자-기술/ |
+| **사이트 안정성 엔지니어링** | SRE, SLO, 오류 예산, 안정성 | sre-엔지니어-기술/ |
+| **데브옵스 엔지니어링** | CI/CD, IaC, 모니터링, SRE | devops-엔지니어-기술/ |
+| **인프라 보안** | 제로 트러스트, IAM, 감사 | 보안 감사자 기술/ |
+| **성능공학** | 최적화, 프로파일링, 용량 계획 | 성능-엔지니어-기술/ |
+| **테라폼 엔지니어링** | 코드형 인프라, 멀티 클라우드 | 테라폼-엔지니어-기술/ |
 
 ---
 
-## Developer Experience (7 total)
+## 품질 및 보안(총 11개)
 
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **git-workflow-management** | Git workflows, branching strategies | git-workflow-manager-skill/ |
-| **tooling-development** | Developer tools, plugins, extensions | tooling-engineer-skill/ |
-| **cli-development** | CLI tools, argparse, UX | cli-developer-skill/ |
-| **legacy-modernization** | Legacy code refactoring, migration | legacy-modernizer-skill/ |
-| **dx-optimization** | Developer experience optimization | dx-optimizer-skill/ |
-| **documentation-engineering** | Tech docs, Docusaurus, MkDocs (with web tools) | documentation-engineer-skill/ |
-| **mcp-development** | Model Context Protocol (with web tools) | mcp-developer-skill/ |
-
----
-
-## Meta & Orchestration (8 total)
-
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **agent-organization** | Multi-agent coordination, team assembly | agent-organizer-skill/ |
-| **workflow-orchestration** | Complex workflow automation | workflow-orchestrator-skill/ |
-| **task-distribution** | Task allocation, load balancing | task-distributor-skill/ |
-| **knowledge-synthesis** | Knowledge aggregation | knowledge-synthesizer-skill/ |
-| **performance-monitoring** | Agent performance optimization | performance-monitor-skill/ |
-| **error-coordination** | Error handling, recovery coordination | error-coordinator-skill/ |
-| **context-management** | Context optimization, state sync | context-manager-skill/ |
-| **multi-agent-coordination** | Advanced orchestration, 100+ agents | multi-agent-coordinator-skill/ |
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **접근성 테스트** | WCAG 2.1 AA, A11y 감사 | 접근성-테스터-기술/ |
+| **침투 테스트** | 윤리적 해킹, OWASP Top 10 | 침투 테스터 기술/ |
+| **규정 준수 감사** | SOC2, HIPAA, GDPR | 규정 준수 감사자 기술/ |
+| **품질 보증** | 테스트 전략, QA 프로세스 | qa-전문가-기술/ |
+| **테스트 자동화** | 테스트 프레임워크, CI/CD 통합 | 테스트 자동화 기술/ |
+| **오류 감지** | 오류 분석, 패턴 감지 | 오류 감지기 기술/ |
 
 ---
 
-## Research & Analysis (6 total)
+## 아키텍처(총 4개)
 
-| Skill | Description | Directory | Web Tools |
-|--------|-------------|------------|------------------------|
-| **research-analysis** | Comprehensive research, synthesis | research-analyst-skill/ | WebSearch, WebFetch |
-| **information-retrieval** | Advanced information retrieval | search-specialist-skill/ | WebSearch, WebFetch |
-| **trend-analysis** | Trend analysis, forecasting | trend-analyst-skill/ | WebSearch, WebFetch |
-| **competitive-intelligence** | Competitive analysis | competitive-analyst-skill/ | WebSearch, WebFetch |
-| **market-research** | Market analysis, consumer insights | market-researcher-skill/ | WebSearch, WebFetch |
-| **data-research** | Data discovery, analysis | data-researcher-skill/ | WebSearch, WebFetch |
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **API-디자인-아키텍처** | REST/GraphQL, OpenAPI 3.1, HATEOAS | API-디자이너-기술/ |
+| **마이크로서비스 아키텍처** | 서비스 분해, 오케스트레이션 | 마이크로서비스-아키텍트-기술/ |
+| **graphql-아키텍처** | 스키마/연합, 확인자 최적화 | graphql-건축가-기술/ |
+| **풀스택 개발** | 엔드투엔드 기능, 프런트엔드-백엔드 | 풀스택-개발자-기술/ |
 
 ---
 
-## BMAD Methodology (14 total)
-
-### BMM Agents (8)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **bmad-master** | BMAD master coordinator | bmad-master-skill/ |
-| **business-model-analysis** | Business analysis | bmad-bmm-analyst-skill/ |
-| **business-model-architecture** | Architecture design | bmad-bmm-architect-skill/ |
-| **development** | Development | bmad-bmm-dev-skill/ |
-| **product-management** | Product management | bmad-bmm-pm-skill/ |
-| **quick-flow-solo-dev** | Quick development workflow | bmad-quick-flow-solo-dev-skill/ |
-| **scrum-master/testing** | Scrum master, testing | bmad-sm-skill/ |
-| **technical-writing** | Technical writing | bmad-tech-writer-skill/ |
-| **ux-design** | UX design | bmad-ux-designer-skill/ |
-
-### CIS Agents (6)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **brainstorming-coaching** | Brainstorming facilitation | bmad-cis-brainstorming-coach-skill/ |
-| **creative-problem-solving** | Creative problem solving | bmad-cis-creative-problem-solver-skill/ |
-| **design-thinking-coaching** | Design thinking methodology | bmad-cis-design-thinking-coach-skill/ |
-| **innovation-strategy** | Innovation strategy | bmad-cis-innovation-strategist-skill/ |
-| **presentation-mastery** | Presentation skills | bmad-cis-presentation-master-skill/ |
-| **storytelling** | Storytelling techniques | bmad-cis-storyteller-skill/ |
+## 데이터 및 AI(총 10개)| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **데이터 엔지니어링** | ETL/ELT, 데이터 레이크, 스트리밍 | 데이터 엔지니어 기술/ |
+| **머신러닝** | ML 시스템, TensorFlow, PyTorch | 기계 학습-엔지니어-기술/ |
+| **폭발** | MLOps, 모델 배포, 모니터링 | mlops-엔지니어-기술/ |
+| **llm-아키텍처** | LLM 아키텍처, RAG, 미세 조정 | llm-건축가-기술/ |
+| **데이터 과학** | 분석, ML 모델, 통계 | 데이터 과학자-기술/ |
+| **데이터베이스 최적화** | 쿼리 최적화, 인덱싱 | 데이터베이스-최적화-기술/ |
+| **nlp-엔지니어링** | NLP, 변환기, 텍스트 처리 | nlp-엔지니어-기술/ |
+| **AI 시스템** | AI 시스템 설계, ML 파이프라인 | AI-엔지니어-기술/ |
+| **ml-엔지니어링** | ML, 기능 엔지니어링 | ml-엔지니어-기술/ |
+| **신속 엔지니어링** | 신속한 최적화, 퓨샷 학습 | 프롬프트-엔지니어-기술/ |
 
 ---
 
-## Summary Statistics
+## 비즈니스 및 제품(총 8개)
 
-| Category | Skills | Percentage |
-|-----------|--------|------------|
-| **Core Skills** | 9 | 6.8% |
-| **Core Utilities** | 4 | 3.0% |
-| **Language Specialists** | 23 | 17.3% |
-| **Infrastructure** | 19 | 14.3% |
-| **Quality & Security** | 11 | 8.3% |
-| **Architecture** | 4 | 3.0% |
-| **Data & AI** | 10 | 7.5% |
-| **Business & Product** | 8 | 6.0% |
-| **Specialized Domains** | 10 | 7.5% |
-| **Developer Experience** | 7 | 5.3% |
-| **Meta & Orchestration** | 8 | 6.0% |
-| **Research & Analysis** | 6 | 4.5% |
-| **BMAD Methodology** | 14 | 10.5% |
-| **TOTAL** | **133** | **100%** |
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **제품 관리** | 제품 전략, 로드맵, 우선순위 | 제품 관리자 기술/ |
+| **비즈니스 분석** | 요구사항, 비즈니스 분석 | 비즈니스 분석가 기술/ |
+| **프로젝트 관리** | 프로젝트 관리, 납품 | 프로젝트 관리자 기술/ |
+| **기술적 글쓰기** | 문서, API 문서(웹 도구 포함) | 기술 작가 기술/ |
+| **ux-연구** | 사용자 조사, 사용성 테스트(웹 도구 사용) | ux-연구원-기술/ |
+| **스크럼 관리** | 애자일, 스크럼, 행사 | 스크럼-마스터-기술/ |
+| **고객 성공** | 고객 성공, 유지 | 고객-성공-관리자-기술/ |
+| **기술영업** | 기술 시연, 솔루션 설계 | 영업-엔지니어-기술/ |
 
 ---
 
-## Installation
+## 전문 도메인(총 10개)| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **API 문서** | OpenAPI/Swagger | API-문서-기술/ |
+| **블록체인 개발** | Web3, 스마트 계약, DeFi | 블록체인 개발자 기술/ |
+| **임베디드 시스템** | RTOS, 마이크로컨트롤러, IoT | 임베디드 시스템 기술/ |
+| **핀테크엔지니어링** | 거래 시스템, 결제, 규정 준수 | 핀테크-엔지니어-기술/ |
+| **게임 개발** | 유니티, 언리얼, 그래픽 | 게임 개발자 기술/ |
+| **IoT 엔지니어링** | 엣지 컴퓨팅, 센서, 네트워크 | IoT-엔지니어-기술/ |
+| **결제통합** | 스트라이프, 페이팔, PCI | 결제-통합-기술/ |
+| **정량분석** | 알고리즘 트레이딩, 금융 모델링 | 수량 분석가 기술/ |
+| **위험 관리** | 기업 위험 평가 | 위험 관리자 기술/ |
+| **서구 최적화** | 검색 최적화, 분석 | SEO 전문가-기술/ |
 
+---
+
+## 개발자 경험(총 7개)
+
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **git-워크플로 관리** | Git 워크플로, 분기 전략 | git-workflow-manager-skill/ |
+| **툴링 개발** | 개발자 도구, 플러그인, 확장 | 툴링-엔지니어-기술/ |
+| **cli 개발** | CLI 도구, argparse, UX | cli-개발자-기술/ |
+| **레거시-현대화** | 레거시 코드 리팩토링, 마이그레이션 | 레거시-현대화-기술/ |
+| **dx-최적화** | 개발자 경험 최적화 | dx-최적화-기술/ |
+| **문서 엔지니어링** | 기술 문서, Docusaurus, MkDocs(웹 도구 포함) | 문서-엔지니어-기술/ |
+| **mcp 개발** | 모델 컨텍스트 프로토콜(웹 도구 포함) | mcp-개발자-기술/ |
+
+---
+
+## 메타 & 오케스트레이션 (총 8개)
+
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **에이전트 조직** | 다중 에이전트 조정, 팀 조립 | 에이전트-주최자-기술/ |
+| **워크플로 조정** | 복잡한 워크플로우 자동화 | 워크플로-오케스트레이터-기술/ |
+| **작업 분배** | 작업 할당, 로드 밸런싱 | 작업 배포자 기술/ |
+| **지식 종합** | 지식 집합 | 지식-합성-기술/ |
+| **성능 모니터링** | 에이전트 성능 최적화 | 성능-모니터-기술/ |
+| **오류 조정** | 오류 처리, 복구 조정 | 오류 코디네이터 기술/ |
+| **컨텍스트 관리** | 컨텍스트 최적화, 상태 동기화 | 컨텍스트 관리자 기술/ |
+| **다중 에이전트 조정** | 고급 오케스트레이션, 100개 이상의 에이전트 | 다중 에이전트 코디네이터 기술/ |
+
+---
+
+## 연구 및 분석(총 6개)
+
+| 스킬 | 설명 | 디렉토리 | 웹 도구 |
+|---------|-------------|------------|-----------|
+| **연구-분석** | 종합연구, 종합 | 연구 분석가 기술/ | 웹서치, 웹패치 |
+| **정보 검색** | 고급 정보 검색 | 검색-전문가-기술/ | 웹서치, 웹패치 |
+| **추세 분석** | 동향 분석, 예측 | 추세 분석가 기술/ | 웹서치, 웹패치 |
+| **경쟁지능** | 경쟁 분석 | 경쟁 분석가 기술/ | 웹서치, 웹패치 |
+| **시장조사** | 시장 분석, 소비자 인사이트 | 시장조사자-기술/ | 웹서치, 웹패치 |
+| **데이터 조사** | 데이터 발견, 분석 | 데이터-연구원-기술/ | 웹서치, 웹패치 |
+
+---
+
+## BMAD 방법론(총 14개)### BMM 에이전트 (8)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **bmad-마스터** | BMAD 마스터코디네이터 | bmad-마스터-기술/ |
+| **비즈니스 모델 분석** | 비즈니스 분석 | bmad-bmm-분석-기술/ |
+| **비즈니스 모델 아키텍처** | 건축 디자인 | bmad-bmm-건축가-기술/ |
+| **개발** | 개발 | bmad-bmm-dev-skill/ |
+| **제품 관리** | 제품관리 | bmad-bmm-pm-기술/ |
+| **빠른 흐름-솔로-개발** | 빠른 개발 워크플로 | bmad-빠른 흐름-솔로-개발-기술/ |
+| **스크럼 마스터/테스트** | 스크럼 마스터, 테스트 | bmad-sm-기술/ |
+| **기술적 글쓰기** | 기술 문서 작성 | bmad-기술-작가-기술/ |
+| **UX 디자인** | UX 디자인 | bmad-ux-디자이너-기술/ |
+
+### CIS 에이전트 (6)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **브레인스토밍-코칭** | 브레인스토밍 촉진 | bmad-cis-브레인스토밍-코치-기술/ |
+| **창의적인 문제 해결** | 창의적 문제해결 | bmad-cis-창의적인 문제 해결사-기술/ |
+| **디자인 사고 코칭** | 디자인 사고 방법론 | bmad-cis-디자인-사고-코치-기술/ |
+| **혁신전략** | 혁신 전략 | bmad-cis-혁신-전략가-기술/ |
+| **프레젠테이션 숙달** | 프레젠테이션 스킬 | bmad-cis-프레젠테이션-마스터-기술/ |
+| **스토리텔링** | 스토리텔링 기법 | bmad-cis-스토리텔러-기술/ |
+
+---
+
+## 요약 통계
+
+| 카테고리 | 기술 | 백분율 |
+|------------|---------|------------|
+| **핵심 기술** | 9 | 6.8% |
+| **핵심 유틸리티** | 4 | 3.0% |
+| **언어 전문가** | 23 | 17.3% |
+| **인프라** | 19 | 14.3% |
+| **품질 및 보안** | 11 | 8.3% |
+| **건축** | 4 | 3.0% |
+| **데이터 및 AI** | 10 | 7.5% |
+| **사업 및 제품** | 8 | 6.0% |
+| **특수 도메인** | 10 | 7.5% |
+| **개발자 경험** | 7 | 5.3% |
+| **메타 및 오케스트레이션** | 8 | 6.0% |
+| **연구 및 분석** | 6 | 4.5% |
+| **BMAD 방법론** | 14 | 10.5% |
+| **총계** | **133** | **100%** |
+
+---
+
+## 설치
 ```bash
 # Install all 133 skills
 cp -r ~/claude-skills-conversion/* ~/.claude/skills/
 
 # Restart Claude Code to load all skills
 ```
+## 사용법
 
-## Usage
-
-After installation, skills will:
-- **Auto-trigger** when descriptions match user queries
-- **Load on-demand** via skill-specific commands
-- **Provide guidance** in their respective domains
-- **Follow best practices** for consistent, high-quality assistance
-
----
-
-## Documentation
-
-For detailed conversion process, best practices, and validation guidelines, see:
-- **SKILL-VALIDATION-GUIDE.md** - Comprehensive validation framework
-- **CONVERSION-GUIDE.md** - Complete conversion methodology
-- **EXTENDED-SUBAGENT-CATALOG.md** - 300+ agent inventory
-- **FINAL-REPORT.md** - Complete project summary
+설치 후 기술은 다음과 같습니다.
+- 설명이 사용자 쿼리와 일치하면 **자동 트리거**
+- 스킬별 명령을 통해 **요청 시 로드**
+- 해당 도메인에 대한 **지침 제공**
+- 일관된 고품질 지원을 위해 **모범 사례를 따르세요**
 
 ---
 
-## Quality Assurance
+## 문서
 
-All 133 Agent Skills:
-- ✅ Under 500 lines (concise)
-- ✅ Third-person descriptions (auto-discovery ready)
-- ✅ Proper YAML frontmatter (name + description)
-- ✅ Clear behavioral traits and use cases
-- ✅ Progressive disclosure ready (for reference files)
-- ✅ Domain-specific expertise documented
-- ✅ Example interactions provided
-- ✅ Tool restrictions specified where appropriate
-- ✅ No auxiliary documentation files (only SKILL.md)
-
-**Conversion Status: COMPLETE**
-
-Ready for installation and immediate use with Claude Code Agent Skills system.
-
-## New Skills from VoltAgent (44)
-
-### AI & Machine Learning (4)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **ai-engineer** | AI system design and deployment expert | ai-engineer-skill/ |
-| **llm-architect** | Large language model architecture | llm-architect-skill/ |
-| **machine-learning-engineer** | ML model development, training | machine-learning-engineer-skill/ |
-| **ml-engineer** | Machine learning specialist | ml-engineer-skill/ |
-| **mlops-engineer** | ML pipeline automation, deployment | mlops-engineer-skill/ |
-| **data-analyst** | Data insights and visualization specialist | data-analyst-skill/ |
-| **data-scientist** | Analytics and insights expert | data-scientist-skill/ |
-| **database-optimizer** | Database performance specialist | database-optimizer-skill/ |
-| **devops-incident-responder** | DevOps incident management | devops-incident-responder-skill/ |
-| **error-detective** | Error analysis and resolution expert | error-detective-skill/ |
-| **prompt-engineer** | Prompt optimization specialist | prompt-engineer-skill/ |
-
-### Architecture & Review (1)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **architect-reviewer** | Architecture review specialist | architect-reviewer-skill/ |
-
-### Development (2)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **backend-developer** | Server-side expert for scalable APIs | backend-developer-skill/ |
-| **frontend-developer** | React, Vue, Angular UI/UX specialist | frontend-developer-skill/ |
-
-### Infrastructure & Platform (8)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **azure-infra-engineer** | Azure infrastructure and Az PowerShell automation | azure-infra-engineer-skill/ |
-| **platform-engineer** | Platform architecture expert | platform-engineer-skill/ |
-| **network-engineer** | Network infrastructure specialist | network-engineer-skill/ |
-| **security-engineer** | Infrastructure security specialist | security-engineer-skill/ |
-| **incident-responder** | System incident response expert | incident-responder-skill/ |
-| **windows-infra-admin** | Active Directory, DNS, DHCP, GPO automation | windows-infra-admin-skill/ |
-
-### Languages & Frameworks (4)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **elixir-expert** | Elixir and OTP fault-tolerant systems | elixir-expert-skill/ |
-| **electron-pro** | Desktop application expert | electron-pro-skill/ |
-| **mobile-developer** | Cross-platform mobile specialist | mobile-developer-skill/ |
-| **mobile-app-developer** | Mobile application specialist | mobile-app-developer-skill/ |
-
-### Operations (2)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **it-ops-orchestrator** | Multi-cloud or hybrid routing | it-ops-orchestrator-skill/ |
-| **chaos-engineer** | System resilience testing expert | chaos-engineer-skill/ |
-
-### Security & Compliance (3)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **ad-security-reviewer** | Active Directory security analysis | ad-security-reviewer-skill/ |
-| **powershell-security-hardening** | PowerShell security hardening | powershell-security-hardening-skill/ |
-
-### PowerShell (3)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **powershell-5.1-expert** | Windows PowerShell 5.1 automation | powershell-5.1-expert-skill/ |
-| **powershell-7-expert** | Cross-platform PowerShell 7+ automation | powershell-7-expert-skill/ |
-| **powershell-module-architect** | PowerShell module and profile architecture | powershell-module-architect-skill/ |
-| **powershell-ui-architect** | PowerShell UI/UX specialist | powershell-ui-architect-skill/ |
-
-### Real-time & Communication (1)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **websocket-engineer** | Real-time communication specialist | websocket-engineer-skill/ |
-
-### UI & Design (1)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **ui-designer** | Visual design and interaction specialist | ui-designer-skill/ |
-
-### Databases (2)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **sql-pro** | Database query expert | sql-pro-skill/ |
-| **postgres-pro** | PostgreSQL database expert | postgres-pro-skill/ |
-
-### Business & Product (4)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **content-marketer** | Content marketing specialist | content-marketer-skill/ |
-| **legal-advisor** | Legal and compliance specialist | legal-advisor-skill/ |
-| **m365-admin** | Microsoft 365 administration | m365-admin-skill/ |
-| **wordpress-master** | WordPress development and optimization | wordpress-master-skill/ |
-
-### Developer Experience (2)
-| Skill | Description | Directory |
-|--------|-------------|------------|
-| **slack-expert** | Slack platform and @slack/bolt specialist | slack-expert-skill/ |
-| **build-engineer** | Build system specialist | build-engineer-skill/ |
+자세한 변환 프로세스, 모범 사례 및 검증 지침은 다음을 참조하세요.
+- **SKILL-VALIDATION-GUIDE.md** - 종합적인 검증 프레임워크
+- **CONVERSION-GUIDE.md** - 완전한 변환 방법론
+- **EXTENDED-SUBAGENT-CATALOG.md** - 300개 이상의 에이전트 인벤토리
+- **FINAL-REPORT.md** - 전체 프로젝트 요약
 
 ---
 
-**Source:** 44 unique skills from [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents)
+## 품질 보증
+
+133개 에이전트 스킬 모두:
+- ✅ 500줄 이내(간결하게)
+- ✅ 3인칭 설명(자동 검색 가능)
+- ✅ 적절한 YAML 머리말(이름 + 설명)
+- ✅ 명확한 행동 특성 및 사용 사례
+- ✅ 점진적 공개 준비됨(참조 파일의 경우)
+- ✅ 도메인별 전문 지식 문서화
+- ✅ 예시 상호작용 제공
+- ✅ 적절한 경우 도구 제한 사항 지정
+- ✅ 보조 문서 파일 없음(SKILL.md만)
+
+**변환 상태: 완료**
+
+Claude Code Agent Skills 시스템을 통해 설치 및 즉시 사용이 가능합니다.
+
+## VoltAgent의 새로운 스킬 (44)
+
+### AI 및 머신러닝(4)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **AI 엔지니어** | AI 시스템 설계 및 배포 전문가 | AI-엔지니어-기술/ |
+| **llm-건축가** | 대규모 언어 모델 아키텍처 | llm-건축가-기술/ |
+| **머신러닝 엔지니어** | ML 모델 개발, 교육 | 기계 학습-엔지니어-기술/ |
+| **ml-엔지니어** | 머신러닝 전문가 | ml-엔지니어-기술/ |
+| **mlops-엔지니어** | ML 파이프라인 자동화, 배포 | mlops-엔지니어-기술/ |
+| **데이터 분석가** | 데이터 통찰력 및 시각화 전문가 | 데이터 분석가-기술/ |
+| **데이터 과학자** | 분석 및 통찰력 전문가 | 데이터 과학자-기술/ |
+| **데이터베이스 최적화 프로그램** | 데이터베이스 성능 전문가 | 데이터베이스-최적화-기술/ |
+| **devops-사고-응답자** | DevOps 사고 관리 | devops-incident-responder-skill/ |
+| **오류 감지** | 오류 분석 및 해결 전문가 | 오류-탐지-기술/ |
+| **신속 엔지니어** | 신속한 최적화 전문가 | 프롬프트-엔지니어-기술/ |
+
+### 아키텍처 및 검토(1)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **건축가-검토자** | 건축 리뷰 전문가 | 건축가-검토자-기술/ |
+
+### 개발 (2)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **백엔드 개발자** | 확장 가능한 API를 위한 서버 측 전문가 | 백엔드-개발자-기술/ |
+| **프런트엔드 개발자** | React, Vue, Angular UI/UX 전문가 | 프론트엔드-개발자-기술/ |
+
+### 인프라 및 플랫폼 (8)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **푸른 인프라 엔지니어** | Azure 인프라 및 Az PowerShell 자동화 | Azure-인프라-엔지니어-기술/ |
+| **플랫폼 엔지니어** | 플랫폼 아키텍처 전문가 | 플랫폼 엔지니어 기술/ |
+| **네트워크 엔지니어** | 네트워크 인프라 전문가 | 네트워크 엔지니어 기술/ |
+| **보안 엔지니어** | 인프라 보안 전문가 | 보안 엔지니어 기술/ |
+| **사고 대응자** | 시스템 사고 대응 전문가 | 사고 대응 기술/ |
+| **windows-인프라-관리자** | Active Directory, DNS, DHCP, GPO 자동화 | 창-인프라-관리-기술/ |
+
+### 언어 및 프레임워크 (4)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **엘릭서 전문가** | Elixir 및 OTP 내결함성 시스템 | 엘릭서-전문가-기술/ |
+| **전자 프로** | 데스크탑 애플리케이션 전문가 | 전자 프로 기술/ |
+| **모바일 개발자** | 크로스 플랫폼 모바일 전문가 | 모바일 개발자 기술/ |
+| **모바일 앱 개발자** | 모바일 애플리케이션 전문가 | 모바일-앱-개발자-기술/ |### 작업(2)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **it-ops-오케스트레이터** | 멀티 클라우드 또는 하이브리드 라우팅 | it-ops-오케스트레이터-기술/ |
+| **카오스 엔지니어** | 시스템 탄력성 테스트 전문가 | 혼돈-엔지니어-기술/ |
+
+### 보안 및 규정 준수(3)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **광고 보안 검토자** | Active Directory 보안 분석 | 광고 보안-검토자-기술/ |
+| **powershell-보안 강화** | PowerShell 보안 강화 | powershell-보안-강화-기술/ |
+
+### 파워셸 (3)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **powershell-5.1-전문가** | Windows PowerShell 5.1 자동화 | powershell-5.1-전문가-기술/ |
+| **powershell-7-전문가** | 플랫폼 간 PowerShell 7+ 자동화 | powershell-7-전문가-기술/ |
+| **powershell-모듈-설계자** | PowerShell 모듈 및 프로필 아키텍처 | powershell-모듈-건축가-기술/ |
+| **powershell-ui-architect** | PowerShell UI/UX 전문가 | powershell-ui-architect-skill/ |
+
+### 실시간 및 커뮤니케이션 (1)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **웹소켓 엔지니어** | 실시간 커뮤니케이션 전문가 | 웹소켓-엔지니어-기술/ |
+
+### UI 및 디자인 (1)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **UI 디자이너** | 시각 디자인 및 인터랙션 전문가 | ui-디자이너-기술/ |
+
+### 데이터베이스 (2)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **SQL-프로** | 데이터베이스 쿼리 전문가 | SQL-프로-기술/ |
+| **포스트그레스 프로** | PostgreSQL 데이터베이스 전문가 | postgres-pro-skill/ |
+
+### 비즈니스 및 제품 (4)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **콘텐츠 마케팅 담당자** | 콘텐츠 마케팅 전문가 | 콘텐츠 마케팅 담당자-기술/ |
+| **법률고문** | 법률 및 규정 준수 전문가 | 법률 고문 기술/ |
+| **m365-관리자** | Microsoft 365 관리 | m365-관리자-기술/ |
+| **워드프레스 마스터** | WordPress 개발 및 최적화 | 워드프레스-마스터-기술/ |
+
+### 개발자 경험(2)
+| 스킬 | 설명 | 디렉토리 |
+|---------|-------------|------------|
+| **slack 전문가** | Slack 플랫폼 및 @slack/bolt 전문가 | Slack-전문가-기술/ |
+| **빌드 엔지니어** | 빌드 시스템 전문가 | 빌드-엔지니어-기술/ |
+
+---
+
+**출처:** [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents)의 고유 스킬 44개

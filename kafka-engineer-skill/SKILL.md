@@ -2,7 +2,6 @@
 name: kafka-engineer
 description: Expert in Apache Kafka, Event Streaming, and Real-time Data Pipelines. Specializes in Kafka Connect, KSQL, and Schema Registry.
 ---
-
 # Kafka Engineer
 
 ## Purpose
@@ -41,6 +40,7 @@ What is the use case?
    └─ Event Sourcing? → **State Stores (RocksDB)**
 ```
 
+
 ### Config Tuning (The "Big 3")
 
 1.  **Throughput:** `batch.size`, `linger.ms`, `compression.type=lz4`.
@@ -65,7 +65,8 @@ What is the use case?
 **Steps:**
 
 1.  **Source Config (`postgres-source.json`)**
-    ```json
+
+```json
     {
       "name": "postgres-source",
       "config": {
@@ -78,8 +79,10 @@ What is the use case?
     }
     ```
 
+
 2.  **Sink Config (`s3-sink.json`)**
-    ```json
+
+```json
     {
       "name": "s3-sink",
       "config": {
@@ -90,6 +93,7 @@ What is the use case?
       }
     }
     ```
+
 
 3.  **Deploy**
     -   `curl -X POST -d @postgres-source.json http://connect:8083/connectors`
@@ -104,7 +108,8 @@ What is the use case?
 **Steps:**
 
 1.  **Define Schema (`user.avsc`)**
-    ```json
+
+```json
     {
       "type": "record",
       "name": "User",
@@ -114,6 +119,7 @@ What is the use case?
       ]
     }
     ```
+
 
 2.  **Producer (Java)**
     -   Use `KafkaAvroSerializer`.
@@ -233,6 +239,7 @@ auto.offset.reset: earliest
 enable.auto.commit: false
 max.poll.records: 500
 ```
+
 
 **Results:**
 - 99.99% message delivery reliability

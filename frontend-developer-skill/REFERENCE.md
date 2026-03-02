@@ -1,22 +1,20 @@
-# Frontend Developer - Technical Reference
+# 프론트엔드 개발자 - 기술 참조
 
-## Workflow 1: Setting Up New React Project with Best Practices
+## 작업 흐름 1: 모범 사례를 사용하여 새 React 프로젝트 설정
 
-**Goal:** Bootstrap production-ready React app with TypeScript, testing, linting, and state management in <30 minutes.
+**목표:** 30분 이내에 TypeScript, 테스트, Linting 및 상태 관리 기능을 갖춘 프로덕션용 부트스트랩 React 앱을 개발합니다.
 
-### Step 1: Initialize Project with Vite
-
+### 1단계: Vite로 프로젝트 초기화
 ```bash
 npm create vite@latest my-app -- --template react-ts
 cd my-app
 npm install
 ```
-
-### Step 2: Setup State Management (Zustand)
-
+### 2단계: 상태 관리 설정(Zustand)
 ```bash
 npm install zustand
 ```
+
 
 ```typescript
 // src/store/useAppStore.ts
@@ -38,12 +36,11 @@ export const useAppStore = create<AppState>((set) => ({
   })),
 }));
 ```
-
-### Step 3: Setup TanStack Query for Server State
-
+### 3단계: 서버 상태에 대한 TanStack 쿼리 설정
 ```bash
 npm install @tanstack/react-query
 ```
+
 
 ```typescript
 // src/main.tsx
@@ -64,12 +61,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </QueryClientProvider>
 );
 ```
-
-### Step 4: Setup Testing (Vitest + Testing Library)
-
+### 4단계: 테스트 설정(Vitest + 테스트 라이브러리)
 ```bash
 npm install -D vitest @testing-library/react @testing-library/jest-dom @vitest/ui jsdom
 ```
+
 
 ```typescript
 // vitest.config.ts
@@ -85,45 +81,39 @@ export default defineConfig({
   },
 });
 ```
-
-### Step 5: Setup Linting (ESLint + Prettier)
-
+### 5단계: Linting 설정(ESLint + Prettier)
 ```bash
 npm install -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 npm install -D prettier eslint-config-prettier eslint-plugin-prettier
 ```
-
-### Step 6: Add Tailwind CSS
-
+### 6단계: Tailwind CSS 추가
 ```bash
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
+**예상 결과:**
+- Vite(빠른 HMR)를 사용한 TypeScript 지원 React 프로젝트
+- 클라이언트 상태를 위한 Zustand, 서버 상태를 위한 TanStack Query
+- 테스트용으로 구성된 Vitest
+- 코드 품질을 위한 ESLint + Prettier
+- 빠른 스타일링을 위한 Tailwind CSS
 
-**Expected Result:**
-- TypeScript-ready React project with Vite (fast HMR)
-- Zustand for client state, TanStack Query for server state
-- Vitest configured for testing
-- ESLint + Prettier for code quality
-- Tailwind CSS for rapid styling
-
-**Verification:**
+**확인:**
 ```bash
 npm run dev        # Dev server starts
 npm run test       # Tests pass
 npm run lint       # No errors
 npm run build      # Production build succeeds
 ```
+## 작업 흐름 2: 제작을 위한 번들 크기 최적화
 
-## Workflow 2: Optimizing Bundle Size for Production
+**목표:** 프로덕션 번들을 500KB 이상에서 <200KB(gzipped)로 줄입니다.
 
-**Goal:** Reduce production bundle from 500KB+ to <200KB (gzipped).
-
-### Step 1: Analyze Current Bundle
-
+### 1단계: 현재 번들 분석
 ```bash
 npm install -D rollup-plugin-visualizer
 ```
+
 
 ```typescript
 // vite.config.ts
@@ -136,9 +126,7 @@ export default defineConfig({
   ],
 });
 ```
-
-### Step 2: Implement Code Splitting
-
+### 2단계: 코드 분할 구현
 ```typescript
 // src/App.tsx - Route-based code splitting
 import { lazy, Suspense } from 'react';
@@ -159,9 +147,7 @@ function App() {
   );
 }
 ```
-
-### Step 3: Replace Heavy Dependencies
-
+### 3단계: 무거운 종속성 교체
 ```bash
 # Before: moment.js (70KB) → After: date-fns (2KB per function)
 npm uninstall moment
@@ -172,6 +158,7 @@ npm uninstall lodash
 npm install lodash-es
 ```
 
+
 ```typescript
 // Before
 import _ from 'lodash';
@@ -181,9 +168,7 @@ _.debounce(fn, 300);
 import { debounce } from 'lodash-es';
 debounce(fn, 300);
 ```
-
-### Step 4: Configure Build Optimization
-
+### 4단계: 빌드 최적화 구성
 ```typescript
 // vite.config.ts
 export default defineConfig({
@@ -200,16 +185,15 @@ export default defineConfig({
   },
 });
 ```
+**예상 결과:**
+- 메인 번들: <100KB(gzipped)
+- 공급업체 청크: 총 <150KB
+- 경로 청크: 각각 20-50KB
+- 총 초기 로드: <200KB
 
-**Expected Result:**
-- Main bundle: <100KB (gzipped)
-- Vendor chunks: <150KB total
-- Route chunks: 20-50KB each
-- Total initial load: <200KB
+## 스크립트 참조
 
-## Scripts Reference
-
-### React Component Scaffolding
+### React 구성요소 스캐폴딩
 ```bash
 ts-node scripts/scaffold_component.tsx <ComponentName> [OPTIONS]
 # Options:
@@ -218,32 +202,27 @@ ts-node scripts/scaffold_component.tsx <ComponentName> [OPTIONS]
 # --styles=<type>: CSS type (css, styled-components, emotion, module)
 # --no-test: Skip test file generation
 ```
-
-### State Management Setup
+### 상태 관리 설정
 ```bash
 ts-node scripts/setup_state.ts <stateName> <type>
 # Types: redux, zustand, context, jotai, recoil
 ```
-
-### API Client Generation
+### API 클라이언트 생성
 ```bash
 ts-node scripts/create_api_client.ts <clientType>
 # Client types: axios, fetch
 ```
-
-### Testing Setup
+### 테스트 설정
 ```bash
 ts-node scripts/setup_testing.ts <framework>
 # Frameworks: jest, vitest, playwright
 ```
-
-### Build Optimization
+### 빌드 최적화
 ```bash
 ts-node scripts/optimize_build.ts <bundler>
 # Bundlers: vite, webpack
 ```
-
-### Deployment Script
+### 배포 스크립트
 ```bash
 ./scripts/deploy.sh [OPTIONS]
 # Options:
@@ -251,40 +230,39 @@ ts-node scripts/optimize_build.ts <bundler>
 # --skip-quality: Skip linting/formatting
 # --platform <vercel|netlify|s3|github>: Deployment platform
 ```
+## 참고자료
 
-## References
+### 반응 패턴(`references/react_patterns.md`)
+- 후크가 있는 기능성 구성 요소
+- 컨테이너/프레젠테이션 패턴
+- 고차 부품(HOC)
+- 맞춤형 후크
+- 상태 관리 패턴
+- 성능 최적화
+- 테스트 패턴
+- 오류 처리(오류 경계)
+- 양식 처리
+- 접근성
 
-### React Patterns (`references/react_patterns.md`)
-- Functional components with hooks
-- Container/Presentational pattern
-- Higher-Order Components (HOC)
-- Custom hooks
-- State management patterns
-- Performance optimization
-- Testing patterns
-- Error handling (Error Boundaries)
-- Form handling
-- Accessibility
+### 상태 관리(`references/state_management.md`)
+- Redux 툴킷
+- 주스탄
+- 컨텍스트 API
+- 조타이
+- 반동
+- 비교표
+- 언제 무엇을 사용할 것인가
+- 모범 사례
+- 코드 예시
 
-### State Management (`references/state_management.md`)
-- Redux Toolkit
-- Zustand
-- Context API
-- Jotai
-- Recoil
-- Comparison table
-- When to use what
-- Best practices
-- Code examples
-
-### Performance Guide (`references/performance_guide.md`)
-- Core Web Vitals (LCP, FID, CLS)
-- Code splitting (route-based, component-based)
-- Tree shaking
-- Bundle optimization
-- Memory management
-- Image optimization
-- Font optimization
-- Rendering optimization (virtualization, memoization)
-- Network optimization
-- Performance monitoring
+### 성능 가이드(`references/performance_guide.md`)
+- 핵심 웹 바이탈(LCP, FID, CLS)
+- 코드 분할(경로 기반, 컴포넌트 기반)
+- 나무 흔들기
+- 번들 최적화
+- 메모리 관리
+- 이미지 최적화
+- 글꼴 최적화
+- 렌더링 최적화(가상화, 메모이제이션)
+- 네트워크 최적화
+- 성능 모니터링

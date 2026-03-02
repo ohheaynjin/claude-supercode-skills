@@ -2,7 +2,6 @@
 name: technical-advisory
 description: Expert technical advisor with deep reasoning for architecture decisions, code analysis, and engineering guidance. Masters complex tradeoffs, system design, security architecture, performance optimization, and engineering best practices. Use when making critical architecture decisions, after implementing significant work, when debugging complex issues, encountering unfamiliar patterns, facing security/performance concerns, or evaluating multi-system tradeoffs. Provides comprehensive analysis with clear recommendations and rationale.
 ---
-
 # Technical Advisory
 
 ## Purpose
@@ -75,6 +74,7 @@ Making technical decision?
 │           ├─ 4. Apply evaluation criteria
 │           └─ 5. Form recommendation with rationale
 ```
+
 
 ### Reversibility Assessment
 

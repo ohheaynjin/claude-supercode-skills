@@ -1,51 +1,50 @@
 ---
 name: sre-engineer
-description: "Expert Site Reliability Engineer specializing in SLOs, error budgets, and reliability engineering practices. Proficient in incident management, post-mortems, capacity planning, and building scalable, resilient systems with focus on reliability, availability, and performance."
+description: "SLO, 오류 예산 및 안정성 엔지니어링 실무를 전문으로 하는 전문 사이트 안정성 엔지니어입니다. 사고 관리, 사후 분석, 용량 계획 및 안정성, 가용성 및 성능에 중점을 두고 확장 가능하고 탄력적인 시스템 구축에 능숙합니다."
+---
+# 사이트 신뢰성 엔지니어
+
+## 목적
+
+고가용성, 확장성 및 복원력이 뛰어난 시스템을 구축하고 유지 관리하기 위한 전문적인 사이트 안정성 엔지니어링 전문 지식을 제공합니다. 안정성, 가용성 및 성능에 중점을 둔 SLO, 오류 예산, 사고 관리, 카오스 엔지니어링, 용량 계획 및 관측 가능성 플랫폼을 전문으로 합니다.
+
+## 사용 시기
+
+- SLO(서비스 수준 목표) 및 오류 예산 정의 및 구현
+- 탐지 → 해결 → 사후검토까지 사건관리
+- 고가용성 아키텍처 구축(다중 지역, 내결함성)
+- 카오스 엔지니어링 실험(실패 주입, 탄력성 테스트) 수행
+- 용량 계획 및 Auto Scaling 전략
+- 관측 가능성 플랫폼 구현(메트릭, 로그, 추적)
+- 수고 감소 및 자동화 전략 설계
+
+## 빠른 시작
+
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- SLO(서비스 수준 목표) 및 오류 예산 정의 및 구현
+- 탐지 → 해결 → 사후검토까지 사건관리
+- 고가용성 아키텍처 구축(다중 지역, 내결함성)
+- 카오스 엔지니어링 실험(실패 주입, 탄력성 테스트) 수행
+- 용량 계획 및 Auto Scaling 전략
+- 관측 가능성 플랫폼 구현(메트릭, 로그, 추적)
+
+**다음과 같은 경우에는 호출하지 마세요.**
+- DevOps 자동화만 필요합니다(CI/CD 파이프라인에는 devops-engineer 사용).
+- 애플리케이션 수준 디버깅(디버거 기술 사용)
+- 안정성 컨텍스트가 없는 인프라 프로비저닝(클라우드 설계자 사용)
+- 데이터베이스 성능 튜닝(database-optimizer 사용)
+- 보안 사고 대응(보안을 위해 사고 대응자 활용)
+
+---
 ---
 
-# Site Reliability Engineer
+## 핵심 워크플로
 
-## Purpose
+### 워크플로 1: SLO 정의 및 구현
 
-Provides expert site reliability engineering expertise for building and maintaining highly available, scalable, and resilient systems. Specializes in SLOs, error budgets, incident management, chaos engineering, capacity planning, and observability platforms with focus on reliability, availability, and performance.
+**사용 사례:** 새로운 마이크로서비스에는 SLO 정의 및 모니터링이 필요합니다.
 
-## When to Use
-
-- Defining and implementing SLOs (Service Level Objectives) and error budgets
-- Managing incidents from detection → resolution → post-mortem
-- Building high availability architectures (multi-region, fault tolerance)
-- Conducting chaos engineering experiments (failure injection, resilience testing)
-- Capacity planning and auto-scaling strategies
-- Implementing observability platforms (metrics, logs, traces)
-- Designing toil reduction and automation strategies
-
-## Quick Start
-
-**Invoke this skill when:**
-- Defining and implementing SLOs (Service Level Objectives) and error budgets
-- Managing incidents from detection → resolution → post-mortem
-- Building high availability architectures (multi-region, fault tolerance)
-- Conducting chaos engineering experiments (failure injection, resilience testing)
-- Capacity planning and auto-scaling strategies
-- Implementing observability platforms (metrics, logs, traces)
-
-**Do NOT invoke when:**
-- Only DevOps automation needed (use devops-engineer for CI/CD pipelines)
-- Application-level debugging (use debugger skill)
-- Infrastructure provisioning without reliability context (use cloud-architect)
-- Database performance tuning (use database-optimizer)
-- Security incident response (use incident-responder for security)
-
----
----
-
-## Core Workflows
-
-### Workflow 1: Define and Implement SLOs
-
-**Use case:** New microservice needs SLO definition and monitoring
-
-**Step 1: SLI (Service Level Indicator) Selection**
+**1단계: SLI(서비스 수준 지표) 선택**
 ```yaml
 # Service: User Authentication API
 # Critical user journey: Login flow
@@ -70,8 +69,7 @@ Selected SLIs for SLO:
 - Availability: 99.9% (primary SLO)
 - Latency P99: 500ms (secondary SLO)
 ```
-
-**Step 2: SLO Definition Document**
+**2단계: SLO 정의 문서**
 ```markdown
 # Authentication Service SLO
 
@@ -111,87 +109,89 @@ Selected SLIs for SLO:
 ## Monitoring and Alerting
 
 **Prometheus Alerting Rules:**
-```yaml
-groups:
-  - name: auth_service_slo
-    interval: 30s
-    rules:
-      # Availability SLO alert
-      - alert: AuthServiceSLOBreach
-        expr: |
+```
+YAML
+그룹:
+  - 이름: auth_service_slo
+    간격: 30초
+    규칙:
+      # 가용성 SLO 알림
+      - 경고: AuthServiceSLOBreach
+        특급: |
           (
             sum(rate(http_requests_total{service="auth",code=~"2.."}[5m]))
             /
             sum(rate(http_requests_total{service="auth"}[5m]))
           ) < 0.999
-        for: 5m
-        labels:
-          severity: critical
-          service: auth
-        annotations:
-          summary: "Auth service availability below SLO"
-          description: "Current availability: {{ $value | humanizePercentage }}"
+        에 대한: 5m
+        라벨:
+          심각도: 심각
+          서비스: 인증
+        주석:
+          요약: "SLO 이하의 인증 서비스 가용성"
+          설명: "현재 가용성: {{ $value | humanizePercentage }}"
       
-      # Error budget burn rate alert (fast burn)
-      - alert: AuthServiceErrorBudgetFastBurn
-        expr: |
+      # 오류 예산 소진율 알림(빠른 소진)
+      - 경고: AuthServiceErrorBudgetFastBurn
+        특급: |
           (
             1 - (
               sum(rate(http_requests_total{service="auth",code=~"2.."}[1h]))
               /
               sum(rate(http_requests_total{service="auth"}[1h]))
             )
-          ) > 14.4 * (1 - 0.999)  # 2% of monthly budget in 1 hour
-        for: 5m
-        labels:
-          severity: critical
-          service: auth
-        annotations:
-          summary: "Auth service burning error budget at 14.4x rate"
-          description: "At this rate, monthly budget exhausted in 2 days"
+          ) > 14.4 * (1 - 0.999) # 1시간 동안 월예산의 2%
+        에 대한: 5m
+        라벨:
+          심각도: 심각
+          서비스: 인증
+        주석:
+          요약: "14.4배 비율의 인증 서비스 굽기 오류 예산"
+          Description: "이대로라면 월예산이 2일 만에 소진됩니다."
       
-      # Latency SLO alert
-      - alert: AuthServiceLatencySLOBreach
-        expr: |
-          histogram_quantile(0.99,
+      # 지연 SLO 알림
+      - 경고: AuthServiceLatencySLOBreach
+        특급: |
+          히스토그램_분위수(0.99,
             sum(rate(http_request_duration_seconds_bucket{service="auth"}[5m])) by (le)
           ) > 0.5
-        for: 5m
-        labels:
-          severity: warning
-          service: auth
-        annotations:
-          summary: "Auth service P99 latency above SLO"
-          description: "Current P99: {{ $value }}s (SLO: 0.5s)"
+        에 대한: 5m
+        라벨:
+          심각도: 경고
+          서비스: 인증
+        주석:
+          요약: "SLO를 초과하는 인증 서비스 P99 대기 시간"
+          설명: "현재 P99: {{ $value }}초(SLO: 0.5초)"
 ```
 
 **Step 3: Grafana Dashboard**
-```json
+```
+JSON
 {
-  "dashboard": {
-    "title": "Auth Service SLO Dashboard",
-    "panels": [
+  "대시보드": {
+    "title": "인증 서비스 SLO 대시보드",
+    "패널": [
       {
-        "title": "30-Day Availability SLO",
-        "targets": [{
+        "title": "30일 가용성 SLO",
+        "대상": [{
           "expr": "avg_over_time((sum(rate(http_requests_total{service=\"auth\",code=~\"2..\"}[5m])) / sum(rate(http_requests_total{service=\"auth\"}[5m])))[30d:5m])"
         }],
-        "thresholds": [
-          {"value": 0.999, "color": "green"},
-          {"value": 0.995, "color": "yellow"},
-          {"value": 0, "color": "red"}
+        "임계값": [
+          {"값": 0.999, "색상": "녹색"},
+          {"값": 0.995, "색상": "노란색"},
+          {"값": 0, "색상": "빨간색"}
         ]
       },
       {
-        "title": "Error Budget Remaining",
-        "targets": [{
+        "title": "남은 예산 오류",
+        "대상": [{
           "expr": "1 - ((1 - avg_over_time((sum(rate(http_requests_total{service=\"auth\",code=~\"2..\"}[5m])) / sum(rate(http_requests_total{service=\"auth\"}[5m])))[30d:5m])) / (1 - 0.999))"
         }],
-        "visualization": "gauge",
-        "thresholds": [
-          {"value": 0.5, "color": "green"},
-          {"value": 0.25, "color": "yellow"},
-          {"value": 0, "color": "red"}
+        "visualization": "게이지",
+        "임계값": [
+          {"값": 0.5, "색상": "녹색"},
+          {"값": 0.25, "색상": "노란색"},
+          {"값": 0, "색상": "빨간색"}
         ]
       }
     ]
@@ -207,156 +207,159 @@ groups:
 **Use case:** Validate resilience to database failover
 
 **Experiment Design:**
-```yaml
-# chaos-experiment-db-failover.yaml
-apiVersion: chaos-mesh.org/v1alpha1
-kind: PodChaos
-metadata:
-  name: database-primary-kill
-  namespace: chaos-testing
-spec:
-  action: pod-kill
-  mode: one
-  selector:
-    namespaces:
-      - production
-    labelSelectors:
-      app: postgresql
-      role: primary
-  scheduler:
-    cron: "@every 2h"  # Run experiment every 2 hours
-  duration: "0s"  # Instant kill
+```
+YAML
+# 혼돈-실험-db-failover.yaml
+api버전: 혼돈-mesh.org/v1alpha1
+종류: PodChaos
+메타데이터:
+  이름: 데이터베이스-기본-킬
+  네임스페이스: 카오스 테스트
+사양:
+  액션: 포드 킬
+  모드: 하나
+  선택기:
+    네임스페이스:
+      - 생산
+    라벨 선택기:
+      앱: postgresql
+      역할: 기본
+  스케줄러:
+    cron: "@every 2h" # 2시간마다 실험을 실행합니다.
+  지속 시간: "0s" # 즉시 처치
 ```
 
 **Hypothesis:**
-```markdown
-## Hypothesis
-**Steady State**: 
-- Application maintains 99.9% availability
-- P99 latency \u003c 500ms
-- Database queries succeed with automatic failover to replica
+```
+인하
+## 가설
+**안정된 상태**:
+- 애플리케이션은 99.9%의 가용성을 유지합니다.
+- P99 대기 시간 \u003c 500ms
+- 복제본에 대한 자동 장애 조치로 데이터베이스 쿼리 성공
 
-**Perturbation**:
-- Kill primary database pod (simulates AZ failure)
+**교란**:
+- 기본 데이터베이스 포드 종료(AZ 오류 시뮬레이션)
 
-**Expected Behavior**:
-- Kubernetes detects pod failure within 10 seconds
-- Replica promoted to primary within 30 seconds
-- Application reconnects to new primary within 5 seconds
-- Total impact: \u003c45 seconds of elevated error rate (\u003c5%)
-- No data loss (synchronous replication)
+**예상되는 동작**:
+- Kubernetes는 10초 이내에 Pod 오류를 감지합니다.
+- 30초 이내에 복제본이 기본으로 승격됩니다.
+- 애플리케이션이 5초 이내에 새로운 기본에 다시 연결됩니다.
+- 총 영향: \u003c45초 증가된 오류율(\u003c5%)
+- 데이터 손실 없음(동기 복제)
 
-**Abort Conditions**:
-- Error rate \u003e 20% for \u003e60 seconds
-- Manual rollback command issued
-- Customer complaints spike \u003e10x normal
+**중단 조건**:
+- 오류율 \u003e60초 동안 \u003e 20%
+- 수동 롤백 명령이 발행됨
+- 고객 불만 급증 \u003e10x 보통
 ```
 
 **Execution Steps:**
-```bash
+```
+강타
 #!/bin/bash
-# chaos-experiment-runner.sh
+# 혼돈-실험-runner.sh
 
-set -e
+-e로 설정
 
-echo "=== Chaos Experiment: Database Failover ==="
-echo "Start time: $(date)"
+echo "=== 카오스 실험: 데이터베이스 장애 조치 ==="
+echo "시작 시간: $(date)"
 
-# Step 1: Baseline metrics (5 minutes)
-echo "[1/7] Collecting baseline metrics..."
-START_TIME=$(date -u +%s)
-sleep 300
+# 1단계: 기준 지표(5분)
+echo "[1/7] 기준 지표 수집 중..."
+START_TIME=$(날짜 -u +%s)
+수면 300
 
-BASELINE_ERROR_RATE=$(promtool query instant \
+BASELINE_ERROR_RATE=$(promtool 쿼리 인스턴트 \
   'sum(rate(http_requests_total{code=~"5.."}[5m])) / sum(rate(http_requests_total[5m]))' \
   | jq -r '.data.result[0].value[1]')
 
-echo "Baseline error rate: ${BASELINE_ERROR_RATE}"
+echo "기준 오류율: ${BASELINE_ERROR_RATE}"
 
-# Step 2: Inject failure
-echo "[2/7] Injecting failure: Killing primary database pod..."
-kubectl delete pod -l app=postgresql,role=primary -n production
+# 2단계: 실패 주입
+echo "[2/7] 주입 실패: 기본 데이터베이스 포드를 종료하는 중..."
+kubectl delete pod -l app=postgresql,role=primary -n 프로덕션
 
-# Step 3: Monitor failover
-echo "[3/7] Monitoring failover process..."
-for i in {1..60}; do
-  READY_PODS=$(kubectl get pods -l app=postgresql -n production \
+# 3단계: 장애 조치 모니터링
+echo "[3/7] 장애 조치 프로세스 모니터링 중..."
+나는 {1..60}에서; 하다
+  READY_PODS=$(kubectl get pods -l app=postgresql -n 프로덕션 \
     -o jsonpath='{.items[?(@.status.conditions[?(@.type=="Ready")].status=="True")].metadata.name}' \
-    | wc -w)
+    | 화장실 -w)
   
-  if [ $READY_PODS -ge 1 ]; then
-    echo "Failover completed at T+${i}s: $READY_PODS ready pods"
-    break
+  if [ $READY_PODS -ge 1 ]; 그럼
+    echo "T+${i}s에 장애 조치 완료: $READY_PODS 준비된 포드"
+    휴식
   fi
   
-  echo "T+${i}s: Waiting for replica promotion..."
-  sleep 1
-done
+  echo "T+${i}s: 복제본 승격을 기다리는 중..."
+  잠 1
+완료
 
-# Step 4: Measure impact
-echo "[4/7] Measuring incident impact..."
-sleep 60  # Wait for metrics to stabilize
+# 4단계: 영향 측정
+echo "[4/7] 사고 영향 측정 중..."
+sleep 60 # 측정항목이 안정화될 때까지 기다립니다.
 
-INCIDENT_ERROR_RATE=$(promtool query instant \
+INCIDENT_ERROR_RATE=$(promtool 쿼리 인스턴트 \
   'max_over_time((sum(rate(http_requests_total{code=~"5.."}[1m])) / sum(rate(http_requests_total[1m])))[5m:])' \
   | jq -r '.data.result[0].value[1]')
 
-echo "Peak error rate during incident: ${INCIDENT_ERROR_RATE}"
+echo "사고 중 최고 오류율: ${INCIDENT_ERROR_RATE}"
 
-# Step 5: Validate recovery
-echo "[5/7] Validating service recovery..."
-for i in {1..30}; do
-  CURRENT_ERROR_RATE=$(promtool query instant \
+# 5단계: 복구 유효성 검사
+echo "[5/7] 서비스 복구 검증 중..."
+나는 {1..30}에 있다; 하다
+  CURRENT_ERROR_RATE=$(promtool 쿼리 인스턴트 \
     'sum(rate(http_requests_total{code=~"5.."}[1m])) / sum(rate(http_requests_total[1m]))' \
     | jq -r '.data.result[0].value[1]')
   
-  if (( $(echo "$CURRENT_ERROR_RATE < 0.01" | bc -l) )); then
-    echo "Service recovered at T+$((60+i))s"
-    break
+  if (( $(echo "$CURRENT_ERROR_RATE < 0.01" | bc -l) )); 그럼
+    echo "T+$((60+i))s에서 서비스가 복구되었습니다."
+    휴식
   fi
   
-  sleep 1
-done
+  잠 1
+완료
 
-# Step 6: Data integrity check
-echo "[6/7] Running data integrity checks..."
-psql -h postgres-primary-service -U app -c "SELECT COUNT(*) FROM orders WHERE created_at > NOW() - INTERVAL '10 minutes';"
+# 6단계: 데이터 무결성 검사
+echo "[6/7] 데이터 무결성 검사 실행 중..."
+psql -h postgres-primary-service -U app -c "created_at > NOW() - 간격 '10분';"
 
-# Step 7: Results summary
-echo "[7/7] Experiment Results:"
-echo "================================"
-echo "Baseline error rate: ${BASELINE_ERROR_RATE}"
-echo "Peak error rate: ${INCIDENT_ERROR_RATE}"
-echo "Current error rate: ${CURRENT_ERROR_RATE}"
-echo "Failover time: ~30-45 seconds"
-echo "Hypothesis validation: $([ $(echo "$INCIDENT_ERROR_RATE < 0.05" | bc -l) -eq 1 ] && echo "PASS" || echo "FAIL")"
-echo "================================"
+# 7단계: 결과 요약
+echo "[7/7] 실험 결과:"
+에코 "================================"
+echo "기준 오류율: ${BASELINE_ERROR_RATE}"
+echo "최고 오류율: ${INCIDENT_ERROR_RATE}"
+echo "현재 오류율: ${CURRENT_ERROR_RATE}"
+echo "장애 조치 시간: ~30-45초"
+echo "가설 검증: $([ $(echo "$INCIDENT_ERROR_RATE < 0.05" | bc -l) -eq 1 ] && echo "PASS" || echo "FAIL")"
+에코 "================================"
 
-# Output experiment report
-cat > experiment-report-$(date +%Y%m%d-%H%M%S).md <<EOF
-# Chaos Experiment Report: Database Failover
+# 실험 보고서 출력
+고양이 > 실험 보고서-$(날짜 +%Y%m%d-%H%M%S).md <<EOF
+# 카오스 실험 보고서: 데이터베이스 장애 조치
 
-## Experiment Details
-- **Date**: $(date)
-- **Hypothesis**: Application survives primary database failure with \u003c5% error rate
-- **Perturbation**: Kill primary PostgreSQL pod
+## 실험 세부정보
+- **날짜**: $(날짜)
+- **가설**: 애플리케이션은 \u003c5% 오류율로 기본 데이터베이스 오류를 견뎌냅니다.
+- **교란**: 기본 PostgreSQL 포드 종료
 
-## Results
-- **Baseline error rate**: ${BASELINE_ERROR_RATE}
-- **Peak error rate during failure**: ${INCIDENT_ERROR_RATE}
-- **Recovery time**: ~45 seconds
-- **Data integrity**: Verified (no data loss)
+## 결과
+- **기준 오류율**: ${BASELINE_ERROR_RATE}
+- **실패 중 최대 오류율**: ${INCIDENT_ERROR_RATE}
+- **복구 시간**: ~45초
+- **데이터 무결성**: 확인됨(데이터 손실 없음)
 
-## Hypothesis Validation
-$([ $(echo "$INCIDENT_ERROR_RATE < 0.05" | bc -l) -eq 1 ] && echo "✅ PASS - Error rate stayed below 5%" || echo "❌ FAIL - Error rate exceeded 5%")
+## 가설 검증
+$([ $(echo "$INCIDENT_ERROR_RATE < 0.05" | bc -l) -eq 1 ] && echo "✅ PASS - 오류율이 5% 미만으로 유지됨" || echo "❌ FAIL - 오류율이 5%를 초과했습니다")
 
-## Action Items
-1. Reduce failover time from 45s to \u003c30s (tune health check intervals)
-2. Add connection pool retry logic (reduce client-side errors)
-3. Improve monitoring alerts for database failover events
+## 조치 항목
+1. 장애 조치 시간을 45초에서 \u003c30초로 단축(상태 확인 간격 조정)
+2. 연결 풀 재시도 논리 추가(클라이언트 측 오류 감소)
+3. 데이터베이스 장애 조치 이벤트에 대한 모니터링 경고 개선
 EOF
 
-echo "Experiment report generated."
+echo "실험 보고서가 생성되었습니다."
 ```
 
 **Expected Results:**
@@ -372,14 +375,14 @@ echo "Experiment report generated."
 
 **What it looks like:**
 ```
-[During P0 incident in Slack]
-Engineer A: "Database is down!"
-Engineer B: "I'm restarting it"
-Engineer C: "Wait, I'm also trying to restart it"
-Engineer A: "Should we roll back the deployment?"
-Engineer B: "I don't know, maybe?"
-Engineer C: "Who's talking to customers?"
-[15 minutes of chaos, uncoordinated actions]
+[Slack P0 사건 당시]
+엔지니어 A: "데이터베이스가 다운되었습니다!"
+엔지니어 B: "다시 시작하겠습니다."
+엔지니어 C: "잠깐만요. 저도 다시 시작하려고 합니다."
+엔지니어 A: "배포를 롤백해야 합니까?"
+엔지니어 B: "모르겠어요, 아마도요?"
+엔지니어 C: "누가 고객과 대화하고 있나요?"
+[15분간의 혼란, 조화롭지 못한 행동]
 ```
 
 **Why it fails:**
@@ -391,49 +394,49 @@ Engineer C: "Who's talking to customers?"
 
 **Correct approach (Incident Command System):**
 ```
-Incident Roles:
-1. Incident Commander (IC) - Makes decisions, coordinates
-2. Tech Lead - Investigates root cause, implements fixes
-3. Communications Lead - Updates stakeholders
-4. Scribe - Documents timeline
+사고 역할:
+1. 사고 지휘관(IC) - 결정을 내리고 조정합니다.
+2. 기술 책임자 - 근본 원인을 조사하고 수정 사항을 구현합니다.
+3. 커뮤니케이션 책임자 - 이해관계자 업데이트
+4. Scribe - 문서 타임라인
 
-[Incident starts]
-IC: "@team P0 incident declared. I'm IC. @alice tech lead, @bob comms, @charlie scribe"
-IC: "@alice what's the current state?"
-Alice: "Database primary down, replica healthy. Investigating cause."
-IC: "Decision: Promote replica to primary now. @alice proceed."
-Bob: "Posted status page update: investigating database issue."
-Charlie: [Documents in timeline: T+0: Alert fired, T+2: DB primary down, T+5: Failover initiated]
+[사건 시작]
+IC: "@team P0 사건이 선언되었습니다. 저는 IC입니다. @alice 기술 리더, @bob comms, @charlie scribe"
+IC: "@alice 현재 상태는 어떤가요?"
+Alice: "기본 데이터베이스가 다운되고 복제본이 정상입니다. 원인을 조사하는 중입니다."
+IC: "결정: 이제 복제본을 기본으로 승격합니다. @alice 진행합니다."
+Bob: "게시된 상태 페이지 업데이트: 데이터베이스 문제를 조사 중입니다."
+Charlie: [타임라인의 문서: T+0: 경고 발생, T+2: DB 기본 작동 중지, T+5: 장애 조치 시작]
 
-IC: "Mitigation complete. @alice confirm service health."
-Alice: "Error rate back to 0.1%, latency normal."
-IC: "Incident resolved. @bob final status update. @charlie compile timeline for post-mortem."
-```
+IC: "완화 완료. @alice가 서비스 상태를 확인합니다."
+앨리스: "오류율은 0.1%로 돌아왔습니다. 대기 시간은 정상입니다."
+IC: "사고가 해결되었습니다. @bob 최종 상태 업데이트. @charlie 사후 부검 일정을 컴파일했습니다."
+````
 
 ---
 ---
 
-## Quality Checklist
+## 품질 체크리스트
 
-### SLO Implementation
-- [ ] SLIs clearly defined and measurable
-- [ ] Error budget calculated and tracked
-- [ ] Prometheus/monitoring queries validated
-- [ ] Alert thresholds set (avoid alert fatigue)
-- [ ] Error budget policy documented
+### SLO 구현
+- [ ] 명확하게 정의되고 측정 가능한 SLI
+- [ ] 오류 예산 계산 및 추적
+- [ ] Prometheus/모니터링 쿼리가 검증되었습니다.
+- [ ] 경고 임계값 설정(경보 피로 방지)
+- [ ] 예산 정책 오류가 문서화됨
 
-### Incident Response
-- [ ] Runbooks exist for all critical services
-- [ ] Incident command roles defined
-- [ ] Communication templates ready
-- [ ] On-call rotation sustainable (\u003c5 pages/week)
-- [ ] Post-mortem process established (blameless)
+### 사고 대응
+- [ ] 모든 중요 서비스에 대한 Runbook이 존재합니다.
+- [ ] 사고 명령 역할이 정의됨
+- [ ] 커뮤니케이션 템플릿 준비됨
+- [ ] 대기 중 순환 지속 가능(\u003c5페이지/주)
+- [ ] 사후 프로세스 확립(무책임)
 
-### High Availability
-- [ ] Multi-AZ deployment verified
-- [ ] Automated failover tested
-- [ ] RTO/RPO documented and validated
-- [ ] Disaster recovery tested quarterly
-- [ ] Chaos experiments run monthly
+### 고가용성
+- [ ] 다중 AZ 배포 확인됨
+- [ ] 자동 장애 조치 테스트됨
+- [ ] RTO/RPO 문서화 및 검증
+- [ ] 분기별 재해 복구 테스트
+- [ ] 카오스 실험은 매월 실행됩니다.
 
-This SRE skill provides production-ready reliability engineering practices with emphasis on SLOs, incident management, and continuous improvement.
+이 SRE 기술은 SLO, 사고 관리 및 지속적인 개선에 중점을 두고 생산 준비가 완료된 신뢰성 엔지니어링 사례를 제공합니다.

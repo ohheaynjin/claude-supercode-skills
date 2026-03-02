@@ -1,38 +1,32 @@
 ---
 name: mlops-engineer
-description: Expert in Machine Learning Operations bridging data science and DevOps. Use when building ML pipelines, model versioning, feature stores, or production ML serving. Triggers include "MLOps", "ML pipeline", "model deployment", "feature store", "model versioning", "ML monitoring", "Kubeflow", "MLflow".
+description: 데이터 과학과 DevOps를 연결하는 기계 학습 운영 전문가입니다. ML 파이프라인, 모델 버전 관리, 특성 저장소 또는 프로덕션 ML 제공을 구축할 때 사용합니다. 트리거에는 'MLOps', 'ML 파이프라인', '모델 배포', '피처 스토어', '모델 버전 관리', 'ML 모니터링', 'Kubeflow', 'MLflow'가 포함됩니다.
 ---
+# MLOps 엔지니어
 
-# MLOps Engineer
+## 목적
+기계 학습 운영, 데이터 과학 및 DevOps 사례 연결에 대한 전문 지식을 제공합니다. 학습 파이프라인부터 프로덕션 제공, 모델 버전 관리, 모니터링까지 엔드투엔드 ML 수명주기를 전문으로 합니다.
 
-## Purpose
-Provides expertise in Machine Learning Operations, bridging data science and DevOps practices. Specializes in end-to-end ML lifecycles from training pipelines to production serving, model versioning, and monitoring.
+## 사용 시기
+- ML 학습 및 서비스 파이프라인 구축
+- 모델 버전 관리 및 레지스트리 구현
+- 피처 스토어 설정
+- 프로덕션에 모델 배포
+- 모델 성능 및 드리프트 모니터링
+- ML 워크플로 자동화(ML용 CI/CD)
+- 모델에 대한 A/B 테스트 구현
+- 실험 추적 관리
 
-## When to Use
-- Building ML training and serving pipelines
-- Implementing model versioning and registry
-- Setting up feature stores
-- Deploying models to production
-- Monitoring model performance and drift
-- Automating ML workflows (CI/CD for ML)
-- Implementing A/B testing for models
-- Managing experiment tracking
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- ML 파이프라인 및 워크플로 구축
+- 프로덕션에 모델 배포
+- 모델 버전 관리 및 레지스트리 설정
+- 피처 스토어 구현
+- 프로덕션 ML 시스템 모니터링
 
-## Quick Start
-**Invoke this skill when:**
-- Building ML pipelines and workflows
-- Deploying models to production
-- Setting up model versioning and registry
-- Implementing feature stores
-- Monitoring production ML systems
-
-**Do NOT invoke when:**
-- Model development and training → use `/ml-engineer`
-- Data pipeline ETL → use `/data-engineer`
-- Kubernetes infrastructure → use `/kubernetes-specialist`
-- General CI/CD without ML → use `/devops-engineer`
-
-## Decision Framework
+**다음과 같은 경우에는 호출하지 마세요.**
+- 모델 개발 및 훈련 → 활용`/ml-engineer`- 데이터 파이프라인 ETL → 사용`/data-engineer`- 쿠버네티스 인프라 → 사용`/kubernetes-specialist`- ML이 없는 일반 CI/CD → 사용`/devops-engineer`## 의사결정 프레임워크
 ```
 ML Lifecycle Stage?
 ├── Experimentation
@@ -47,46 +41,45 @@ ML Lifecycle Stage?
 └── Monitoring
     └── Evidently/Fiddler/custom metrics
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. ML 파이프라인 설정
+1. 파이프라인 단계 정의(데이터 준비, 교육, 평가)
+2. 오케스트레이터(Kubeflow, Airflow, Vertex)를 선택합니다.
+3. 각 파이프라인 단계를 컨테이너화합니다.
+4. 아티팩트 저장소 구현
+5. 실험 추적 추가
+6. 자동 재교육 트리거 구성
 
-### 1. ML Pipeline Setup
-1. Define pipeline stages (data prep, training, eval)
-2. Choose orchestrator (Kubeflow, Airflow, Vertex)
-3. Containerize each pipeline step
-4. Implement artifact storage
-5. Add experiment tracking
-6. Configure automated retraining triggers
+### 2. 모델 배포
+1. 모델 레지스트리에 모델 등록
+2. 서빙 컨테이너 구축
+3. 서비스 제공 인프라에 배포
+4. 자동 크기 조정 구성
+5. 카나리아/섀도 배포 구현
+6. 모니터링 및 알림 설정
 
-### 2. Model Deployment
-1. Register model in model registry
-2. Build serving container
-3. Deploy to serving infrastructure
-4. Configure autoscaling
-5. Implement canary/shadow deployment
-6. Set up monitoring and alerts
+### 3. 모델 모니터링
+1. 주요 지표 정의(대기 시간, 처리량, 정확성)
+2. 데이터 드리프트 감지 구현
+3. 예측 모니터링 설정
+4. 알림 기준 생성
+5. 가시성을 위한 대시보드 구축
+6. 재교육 트리거 자동화
 
-### 3. Model Monitoring
-1. Define key metrics (latency, throughput, accuracy)
-2. Implement data drift detection
-3. Set up prediction monitoring
-4. Create alerting thresholds
-5. Build dashboards for visibility
-6. Automate retraining triggers
+## 모범 사례
+- 모든 버전 관리: 코드, 데이터, 모델, 구성
+- 학습과 제공 간의 일관성을 위해 특성 저장소를 사용합니다.
+- ML 워크플로를 위해 특별히 설계된 CI/CD 구현
+- 데이터 드리프트 및 모델 성능을 지속적으로 모니터링
+- 모델 출시에 카나리아 배포 사용
+- 교육 및 서비스 환경을 일관되게 유지하세요.
 
-## Best Practices
-- Version everything: code, data, models, configs
-- Use feature stores for consistency between training and serving
-- Implement CI/CD specifically designed for ML workflows
-- Monitor data drift and model performance continuously
-- Use canary deployments for model rollouts
-- Keep training and serving environments consistent
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Manual deployments | Error-prone, slow | Automated ML CI/CD |
-| Training-serving skew | Prediction errors | Feature stores |
-| No model versioning | Can't reproduce or rollback | Model registry |
-| Ignoring data drift | Silent degradation | Continuous monitoring |
-| Notebook-to-production | Unmaintainable | Proper pipeline code |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 수동 배포 | 오류가 발생하기 쉽고 느림 | 자동화된 ML CI/CD |
+| 훈련 제공 편향 | 예측 오류 | 특집 매장 |
+| 모델 버전 관리 없음 | 재현 또는 롤백할 수 없습니다 | 모델 등록 |
+| 데이터 드리프트 무시 | 조용한 저하 | 지속적인 모니터링 |
+| 노트북에서 프로덕션으로 | 유지 관리 불가능 | 적절한 파이프라인 코드 |

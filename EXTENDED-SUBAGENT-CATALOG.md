@@ -1,306 +1,295 @@
-# Extended Subagent Skills Catalog
+# 확장된 하위 상담원 기술 카탈로그
 
-This document catalogs the 300+ additional subagents identified for potential conversion to Agent Skills format, organized by category and priority.
+이 문서에는 상담원 기술 형식으로 전환할 가능성이 있는 것으로 식별된 300개 이상의 추가 하위 상담원이 범주 및 우선순위별로 정리되어 있습니다.
 
-## Overview
+## 개요
 
-**Currently Converted:** 9 core subagents
-**Remaining to Convert:** 300+ subagents across multiple collections
+**현재 변환됨:** 9개 핵심 하위 에이전트
+**변환할 남은 수:** 여러 컬렉션에 걸쳐 300개 이상의 하위 에이전트
 
-## Conversion Priority Matrix
+## 전환 우선순위 매트릭스
 
-### Priority 1: Core Utility (High Value)
+### 우선순위 1: 핵심 유틸리티(높은 가치)
 
-These agents provide foundational capabilities used across most development workflows.
+이러한 에이전트는 대부분의 개발 워크플로에서 사용되는 기본 기능을 제공합니다.
 
-| Agent | Description | Tools | Rationale |
+| 에이전트 | 설명 | 도구 | 근거 |
 |-------|-------------|-------|------------|
-| **code-reviewer** | Quality-focused code review with security focus | Read, Grep, Glob | Critical for all development |
-| **debugger** | Advanced debugging and root cause analysis | Read, Grep, Glob | Common bottleneck in workflows |
-| **refactoring-specialist** | Code refactoring and design patterns | Read, Write, Edit, Bash, Glob, Grep | Improves codebase quality |
-| **dependency-manager** | Package management and supply chain security | Read, Write, Edit, Bash, Glob, Grep | Critical for modern projects |
+| **코드 검토자** | 보안에 초점을 맞춘 품질 중심의 코드 검토 | 읽기, Grep, Glob | 모든 개발에 중요 |
+| **디버거** | 고급 디버깅 및 근본 원인 분석 | 읽기, Grep, Glob | 워크플로의 일반적인 병목 현상 |
+| **리팩토링 전문가** | 코드 리팩토링 및 디자인 패턴 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 코드베이스 품질 향상 |
+| **종속성 관리자** | 패키지 관리 및 공급망 보안 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 현대 프로젝트에 매우 중요 |
 
-### Priority 2: Language Specialists (High Frequency)
+### 우선 순위 2: 언어 전문가(빈도가 높음)
 
-23 language-specific agents covering major frameworks and technologies.
+주요 프레임워크와 기술을 다루는 23개의 언어별 에이전트.
 
-#### JavaScript/TypeScript Ecosystem
-| Agent | Expertise | Use Cases |
-|-------|-----------|------------|
-| **javascript-pro** | Modern ES2023+, Node.js, Bun, async patterns | Vanilla JS, Node.js backends |
-| **typescript-pro** | TypeScript 5+ patterns, generics, utility types | Type-safe JS projects |
-| **react-specialist** | React 18+, Next.js, Zustand, TanStack Query | React apps and libraries |
-| **nextjs-developer** | Next.js 14+, App Router, Server Actions | Full-stack React apps |
-| **vue-expert** | Vue 3 Composition API, Pinia, Nuxt | Vue.js applications |
+#### JavaScript/TypeScript 생태계
+| 에이전트 | 전문성 | 사용 사례 |
+|-------|------------|------------|
+| **자바스크립트-프로** | 최신 ES2023+, Node.js, Bun, 비동기 패턴 | 바닐라 JS, Node.js 백엔드 |
+| **typescript-pro** | TypeScript 5+ 패턴, 제네릭, 유틸리티 유형 | 유형이 안전한 JS 프로젝트 |
+| **반응 전문가** | React 18+, Next.js, Zustand, TanStack 쿼리 | React 앱과 라이브러리 |
+| **nextjs-개발자** | Next.js 14+, 앱 라우터, 서버 작업 | 풀스택 React 앱 |
+| **vue 전문가** | Vue 3 구성 API, Pinia, Nuxt | Vue.js 애플리케이션 |
 
-#### Backend Languages
-| Agent | Expertise | Use Cases |
-|-------|-----------|------------|
-| **python-pro** | Python 3.11+, type hints, async, FastAPI | Python backends, data science |
-| **golang-pro** | Go 1.21+, goroutines, channels, stdlib | High-performance services |
-| **java-architect** | Java 21, Spring Boot 3, Jakarta EE | Enterprise Java applications |
-| **spring-boot-engineer** | Spring Boot 3+, Spring Cloud, Kubernetes | Spring-based microservices |
-| **dotnet-core-expert** | .NET 8 cross-platform, MAUI, EF Core | C#/.NET applications |
-| **rust-engineer** | Rust async, ownership, FFI, WebAssembly | Systems programming, WASM |
+#### 백엔드 언어
+| 에이전트 | 전문성 | 사용 사례 |
+|-------|------------|------------|
+| **파이썬 프로** | Python 3.11+, 유형 힌트, 비동기, FastAPI | Python 백엔드, 데이터 과학 |
+| **골랑프로** | Go 1.21+, 고루틴, 채널, stdlib | 고성능 서비스 |
+| **자바 건축가** | Java 21, 스프링 부트 3, 자카르타 EE | 엔터프라이즈 Java 애플리케이션 |
+| **스프링 부트 엔지니어** | 스프링 부트 3+, 스프링 클라우드, Kubernetes | Spring 기반 마이크로서비스 |
+| **dotnet-코어 전문가** | .NET 8 크로스 플랫폼, MAUI, EF Core | C#/.NET 애플리케이션 |
+| **녹슨 엔지니어** | Rust 비동기, 소유권, FFI, WebAssembly | 시스템 프로그래밍, WASM |
 
-#### Mobile & Specialized
-| Agent | Expertise | Use Cases |
-|-------|-----------|------------|
-| **flutter-expert** | Flutter 3+, Dart, Firebase, platform channels | Cross-platform mobile |
-| **kotlin-specialist** | Kotlin 2.0, KMP, Coroutines, Ktor | Android development |
-| **swift-expert** | iOS/macOS, SwiftUI, Combine, concurrency | Apple platforms |
+#### 모바일 및 전문화
+| 에이전트 | 전문성 | 사용 사례 |
+|-------|------------|------------|
+| **플러터 전문가** | Flutter 3+, Dart, Firebase, 플랫폼 채널 | 크로스 플랫폼 모바일 |
+| **kotlin 전문가** | Kotlin 2.0, KMP, 코루틴, Ktor | 안드로이드 개발 |
+| **스위프트 전문가** | iOS/macOS, SwiftUI, 결합, 동시성 | 애플 플랫폼 |
 
-#### Other Languages
-- **cpp-pro** - C++20, modern features, performance optimization
-- **csharp-developer** - .NET 8, C# 12, ASP.NET Core, EF Core
-- **php-pro** - PHP 8.2+, modern patterns, Composer
+#### 기타 언어
+- **cpp-pro** - C++20, 최신 기능, 성능 최적화
+- **csharp-개발자** - .NET 8, C# 12, ASP.NET Core, EF Core
+- **php-pro** - PHP 8.2+, 최신 패턴, Composer
 - **ruby-on-rails** - Ruby on Rails, Hotwire, Turbo, Stimulus
-- **laravel-specialist** - Laravel 10+, PHP 8.2, Eloquent, Livewire
+- **laravel 전문가** - Laravel 10+, PHP 8.2, Eloquent, Livewire
 
-### Priority 3: Infrastructure & DevOps (Critical Foundation)
+### 우선순위 3: 인프라 및 DevOps(중요 기반)
 
-11 agents covering cloud, databases, and operations.
-
-| Agent | Focus | Tools | Rationale |
+클라우드, 데이터베이스, 운영을 담당하는 에이전트 11개.| 에이전트 | 집중 | 도구 | 근거 |
 |-------|-------|-------|------------|
-| **cloud-architect** | AWS/Azure/GCP, multi-cloud, cost optimization | Read, Write, Edit, Bash, Glob, Grep | Cloud deployment strategy |
-| **kubernetes-specialist** | K8s orchestration, Helm, operators | Read, Write, Edit, Bash, Glob, Grep | Container orchestration |
-| **deployment-engineer** | CI/CD, Docker, Kubernetes, GitOps | Read, Write, Edit, Bash, Glob, Grep | Deployment automation |
-| **database-administrator** | PostgreSQL/MySQL, HA, backup, monitoring | Read, Write, Edit, Bash, Glob, Grep | Database management |
-| **sre-engineer** | Site reliability, SLOs, error budgets | Read, Write, Edit, Bash, Glob, Grep | Production reliability |
-| **devops-engineer** | CI/CD automation, IaC, monitoring, SRE | Read, Write, Edit, Bash, Glob, Grep | DevOps workflows |
+| **클라우드 설계자** | AWS/Azure/GCP, 멀티 클라우드, 비용 최적화 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 클라우드 배포 전략 |
+| **쿠버네티스 전문가** | K8s 오케스트레이션, Helm, 연산자 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 컨테이너 오케스트레이션 |
+| **배포 엔지니어** | CI/CD, 도커, 쿠버네티스, GitOps | 읽기, 쓰기, 편집, Bash, Glob, Grep | 배포 자동화 |
+| **데이터베이스 관리자** | PostgreSQL/MySQL, HA, 백업, 모니터링 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 데이터베이스 관리 |
+| **재엔지니어** | 사이트 안정성, SLO, 오류 예산 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 생산 신뢰성 |
+| **데브옵스 엔지니어** | CI/CD 자동화, IaC, 모니터링, SRE | 읽기, 쓰기, 편집, Bash, Glob, Grep | DevOps 워크플로 |
 
-### Priority 4: Quality & Security (Compliance Critical)
+### 우선순위 4: 품질 및 보안(규정 준수 중요)
 
-13 agents focused on code quality, security, and compliance.
+코드 품질, 보안 및 규정 준수에 중점을 둔 13명의 에이전트.
 
-| Agent | Specialty | Tools | Rationale |
-|-------|-----------|-------|------------|
-| **security-auditor** | Security vulnerabilities, OWASP | Read, Grep, Glob | Security review |
-| **accessibility-tester** | WCAG 2.1 AA compliance, A11y audits | Read, Grep, Glob | Accessibility compliance |
-| **penetration-tester** | Ethical hacking, vulnerability assessment | Read, Grep, Glob | Security testing |
-| **performance-engineer** | Performance optimization, profiling | Read, Grep, Glob | Performance review |
-| **compliance-auditor** | SOC2, HIPAA, GDPR compliance | Read, Grep, Glob | Regulatory compliance |
-| **code-reviewer** | Code quality, security, best practices | Read, Grep, Glob | Quality gate |
+| 에이전트 | 전문분야 | 도구 | 근거 |
+|-------|------------|-------|------------|
+| **보안 감사자** | 보안 취약점, OWASP | 읽기, Grep, Glob | 보안 검토 |
+| **접근성 테스터** | WCAG 2.1 AA 규정 준수, A11y 감사 | 읽기, Grep, Glob | 접근성 준수 |
+| **침투 테스터** | 윤리적 해킹, 취약점 평가 | 읽기, Grep, Glob | 보안 테스트 |
+| **성능 엔지니어** | 성능 최적화, 프로파일링 | 읽기, Grep, Glob | 성과평가 |
+| **규정 준수 감사자** | SOC2, HIPAA, GDPR 준수 | 읽기, Grep, Glob | 규정 준수 |
+| **코드 검토자** | 코드 품질, 보안, 모범 사례 | 읽기, Grep, Glob | 품질 게이트 |
 
-### Priority 5: Architecture & Design (Strategic)
+### 우선순위 5: 아키텍처 및 디자인(전략적)
 
-Multiple agents focused on system architecture and API design.
+시스템 아키텍처 및 API 설계에 중점을 둔 여러 에이전트.
 
-| Agent | Focus | Tools | Rationale |
+| 에이전트 | 집중 | 도구 | 근거 |
 |-------|-------|-------|------------|
-| **api-designer** | REST/GraphQL API architect with OpenAPI 3.1 | Read, Write, Edit, Bash, Glob, Grep | API design |
-| **microservices-architect** | Distributed systems, service decomposition | Read, Write, Edit, Bash, Glob, Grep | Microservices |
-| **backend-developer** | Scalable APIs, database design, auth | Read, Write, Edit, Bash, Glob, Grep | Backend architecture |
-| **frontend-developer** | React/Vue/Angular UI/UX, accessibility | Read, Write, Edit, Bash, Glob, Grep | Frontend architecture |
-| **ui-designer** | Visual design, design systems, interaction patterns | Read, Write, Edit, Bash, Glob, Grep | UI/UX design |
+| **API 디자이너** | OpenAPI 3.1을 사용하는 REST/GraphQL API 설계자 | 읽기, 쓰기, 편집, Bash, Glob, Grep | API 디자인 |
+| **마이크로서비스 설계자** | 분산 시스템, 서비스 분해 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 마이크로서비스 |
+| **백엔드 개발자** | 확장 가능한 API, 데이터베이스 설계, 인증 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 백엔드 아키텍처 |
+| **프런트엔드 개발자** | React/Vue/Angular UI/UX, 접근성 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 프런트엔드 아키텍처 |
+| **UI 디자이너** | 시각 디자인, 디자인 시스템, 상호 작용 패턴 | 읽기, 쓰기, 편집, Bash, Glob, Grep | UI/UX 디자인 |
 
-### Priority 6: Data & AI (Emerging Importance)
+### 우선순위 6: 데이터 및 AI(새로운 중요성)
 
-13 agents covering data engineering, ML, and AI systems.
-
-| Agent | Focus | Tools | Rationale |
+데이터 엔지니어링, ML, AI 시스템을 담당하는 에이전트 13개.| 에이전트 | 집중 | 도구 | 근거 |
 |-------|-------|-------|------------|
-| **data-engineer** | ETL/ELT, data lakes, streaming (Spark, Kafka) | Read, Write, Edit, Bash, Glob, Grep | Data pipelines |
-| **machine-learning-engineer** | ML systems, TensorFlow, PyTorch | Read, Write, Edit, Bash, Glob, Grep | ML infrastructure |
-| **mlops-engineer** | MLOps, model deployment, monitoring | Read, Write, Edit, Bash, Glob, Grep | ML operations |
-| **llm-architect** | LLM architecture, RAG, fine-tuning | Read, Write, Edit, Bash, Glob, Grep | LLM integration |
-| **data-scientist** | Analytics, ML models, statistical analysis | Read, Write, Edit, Bash, Glob, Grep | Data analysis |
-| **database-optimizer** | Query optimization, indexing, performance | Read, Write, Edit, Bash, Glob, Grep | DB performance |
+| **데이터 엔지니어** | ETL/ELT, 데이터 레이크, 스트리밍(Spark, Kafka) | 읽기, 쓰기, 편집, Bash, Glob, Grep | 데이터 파이프라인 |
+| **머신러닝 엔지니어** | ML 시스템, TensorFlow, PyTorch | 읽기, 쓰기, 편집, Bash, Glob, Grep | ML 인프라 |
+| **mlops-엔지니어** | MLOps, 모델 배포, 모니터링 | 읽기, 쓰기, 편집, Bash, Glob, Grep | ML 작업 |
+| **llm-건축가** | LLM 아키텍처, RAG, 미세 조정 | 읽기, 쓰기, 편집, Bash, Glob, Grep | LLM 통합 |
+| **데이터 과학자** | 분석, ML 모델, 통계 분석 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 데이터 분석 |
+| **데이터베이스 최적화 프로그램** | 쿼리 최적화, 인덱싱, 성능 | 읽기, 쓰기, 편집, Bash, Glob, Grep | DB 성능 |
 
-### Priority 7: Developer Experience (Productivity)
+### 우선순위 7: 개발자 경험(생산성)
 
-9 agents improving developer workflows and tooling.
+개발자 워크플로우와 도구를 개선하는 9개의 에이전트.| 에이전트 | 전문분야 | 도구 | 근거 |
+|-------|------------|-------|------------|
+| **git-워크플로-관리자** | Git 워크플로, 분기 전략 | 읽기, 쓰기, 편집, Bash, Glob, Grep | Git 프로세스 |
+| **툴링 엔지니어** | 개발자 도구, 플러그인, 확장 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 맞춤형 도구 |
+| **cli 개발자** | CLI 도구, 클릭, argparse, UX | 읽기, 쓰기, 편집, Bash, Glob, Grep | CLI 개발 |
+| **레거시 현대화** | 레거시 코드 현대화, 리팩토링 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 기술 부채 감소 |
 
-| Agent | Specialty | Tools | Rationale |
-|-------|-----------|-------|------------|
-| **git-workflow-manager** | Git workflows, branching strategies | Read, Write, Edit, Bash, Glob, Grep | Git processes |
-| **tooling-engineer** | Developer tooling, plugins, extensions | Read, Write, Edit, Bash, Glob, Grep | Custom tools |
-| **cli-developer** | CLI tools, click, argparse, UX | Read, Write, Edit, Bash, Glob, Grep | CLI development |
-| **legacy-modernizer** | Legacy code modernization, refactoring | Read, Write, Edit, Bash, Glob, Grep | Tech debt reduction |
+### 우선순위 8: 비즈니스 및 제품(교차 도메인)
 
-### Priority 8: Business & Product (Cross-Domain)
+제품 관리, 비즈니스 분석 및 문서화를 위한 10명의 에이전트.
 
-10 agents for product management, business analysis, and documentation.
-
-| Agent | Focus | Tools | Rationale |
+| 에이전트 | 집중 | 도구 | 근거 |
 |-------|-------|-------|------------|
-| **product-manager** | Product strategy, roadmap, prioritization | Read, Write, Edit, Glob, Grep, WebFetch, WebSearch | Product planning |
-| **business-analyst** | Requirements, business analysis | Read, Write, Edit, Glob, Grep | Requirements gathering |
-| **project-manager** | Project management, delivery | Read, Write, Edit, Glob, Grep | Project coordination |
-| **technical-writer** | Technical writing, docs | Read, Write, Edit, Glob, Grep, WebFetch, WebSearch | Documentation |
-| **ux-researcher** | UX research, user testing | Read, Write, Edit, Glob, Grep, WebFetch, WebSearch | UX validation |
+| **제품 관리자** | 제품 전략, 로드맵, 우선순위 | 읽기, 쓰기, 편집, Glob, Grep, WebFetch, WebSearch | 상품기획 |
+| **비즈니스 분석가** | 요구사항, 비즈니스 분석 | 읽기, 쓰기, 편집, Glob, Grep | 요구사항 수집 |
+| **프로젝트 관리자** | 프로젝트 관리, 납품 | 읽기, 쓰기, 편집, Glob, Grep | 프로젝트 조정 |
+| **기술 작가** | 기술 문서 작성, 문서 | 읽기, 쓰기, 편집, Glob, Grep, WebFetch, WebSearch | 문서 |
+| **ux-연구원** | UX 연구, 사용자 테스트 | 읽기, 쓰기, 편집, Glob, Grep, WebFetch, WebSearch | UX 검증 |
 
-### Priority 9: Specialized Domains (Niche but Critical)
+### 우선순위 9: 전문 도메인(틈새이지만 중요)
 
-10 domain-specific agents for specialized requirements.
+특수한 요구 사항을 충족하는 10개의 도메인별 에이전트.
 
-| Agent | Domain | Tools | Rationale |
+| 에이전트 | 도메인 | 도구 | 근거 |
 |-------|---------|-------|------------|
-| **api-documenter** | API documentation (OpenAPI, Swagger) | Read, Write, Edit, Glob, Grep | API docs |
-| **blockchain-developer** | Web3, smart contracts, DeFi | Read, Write, Edit, Bash, Glob, Grep | Web3/blockchain |
-| **embedded-systems** | Embedded, real-time, RTOS | Read, Write, Edit, Bash, Glob, Grep | Embedded/IoT |
-| **fintech-engineer** | Financial tech, trading, compliance | Read, Write, Edit, Bash, Glob, Grep | FinTech |
-| **game-developer** | Game development, Unity, Unreal | Read, Write, Edit, Bash, Glob, Grep | Game development |
-| **iot-engineer** | IoT, edge computing, sensors | Read, Write, Edit, Bash, Glob, Grep | IoT solutions |
-| **payment-integration** | Payment systems (Stripe, PayPal) | Read, Write, Edit, Bash, Glob, Grep | Payment processing |
-| **quant-analyst** | Quantitative analysis, finance | Read, Write, Edit, Bash, Glob, Grep | Quant finance |
-| **risk-manager** | Risk assessment, management | Read, Write, Edit, Bash, Glob, Grep | Risk analysis |
-| **seo-specialist** | SEO, optimization, analytics | Read, Write, Edit, Bash, Glob, Grep | SEO/optimization |
+| **API 문서** | API 문서(OpenAPI, Swagger) | 읽기, 쓰기, 편집, Glob, Grep | API 문서 |
+| **블록체인 개발자** | Web3, 스마트 계약, DeFi | 읽기, 쓰기, 편집, Bash, Glob, Grep | Web3/블록체인 |
+| **임베디드 시스템** | 임베디드, 실시간, RTOS | 읽기, 쓰기, 편집, Bash, Glob, Grep | 임베디드/IoT |
+| **핀테크 엔지니어** | 금융 기술, 거래, 규정 준수 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 핀테크 |
+| **게임 개발자** | 게임 개발, Unity, 언리얼 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 게임 개발 |
+| **IoT 엔지니어** | IoT, 엣지 컴퓨팅, 센서 | 읽기, 쓰기, 편집, Bash, Glob, Grep | IoT 솔루션 |
+| **결제통합** | 결제 시스템(Stripe, PayPal) | 읽기, 쓰기, 편집, Bash, Glob, Grep | 결제 처리 |
+| **양적 분석가** | 정량분석, 금융 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 퀀트금융 |
+| **위험 관리자** | 위험 평가, 관리 | 읽기, 쓰기, 편집, Bash, Glob, Grep | 위험 분석 |
+| **서구 전문가** | SEO, 최적화, 분석 | 읽기, 쓰기, 편집, Bash, Glob, Grep | SEO/최적화 |
 
-### Priority 10: Meta & Orchestration (Workflow)
+### 우선순위 10: 메타 및 오케스트레이션(워크플로)
 
-8 agents for coordinating work and managing agents.
+업무를 조정하고 대리인을 관리하는 8명의 대리인.
 
-| Agent | Purpose | Tools | Rationale |
+| 에이전트 | 목적 | 도구 | 근거 |
 |-------|---------|-------|------------|
-| **agent-organizer** | Multi-agent coordinator, team assembly | Read, Write, Edit, Glob, Grep | Agent coordination |
-| **workflow-orchestrator** | Complex workflow automation | Read, Write, Edit, Glob, Grep | Workflow automation |
-| **task-distributor** | Task allocation, load balancing | Read, Write, Edit, Glob, Grep | Task distribution |
-| **knowledge-synthesizer** | Knowledge aggregation, synthesis | Read, Write, Edit, Glob, Grep | Knowledge management |
+| **대리인-주최자** | 다중 에이전트 코디네이터, 팀 조립 | 읽기, 쓰기, 편집, Glob, Grep | 에이전트 조정 |
+| **워크플로 조정자** | 복잡한 워크플로우 자동화 | 읽기, 쓰기, 편집, Glob, Grep | 워크플로우 자동화 |
+| **작업 배포자** | 작업 할당, 로드 밸런싱 | 읽기, 쓰기, 편집, Glob, Grep | 업무분배 |
+| **지식 합성기** | 지식 집합, 종합 | 읽기, 쓰기, 편집, Glob, Grep | 지식경영 |
 
-### Priority 11: Research & Analysis (Information)
+### 우선순위 11: 연구 및 분석(정보)
 
-6 agents for comprehensive research and analysis.
+포괄적인 연구 및 분석을 위한 6가지 에이전트.| 에이전트 | 전문분야 | 도구 | 근거 |
+|-------|------------|-------|------------|
+| **연구 분석가** | 종합연구, 종합 | 읽기, Grep, Glob, WebFetch, WebSearch | 심층 연구 |
+| **검색 전문가** | 고급 정보 검색 | 읽기, Grep, Glob, WebFetch, WebSearch | 연구 쿼리 |
+| **트렌드 분석가** | 동향 분석, 예측 | 읽기, Grep, Glob, WebFetch, WebSearch | 시장동향 |
+| **경쟁 분석가** | 경쟁력 있는 정보 | 읽기, Grep, Glob, WebFetch, WebSearch | 경쟁 분석 |
+| **시장 조사원** | 시장 분석, 소비자 인사이트 | 읽기, Grep, Glob, WebFetch, WebSearch | 시장 조사 |
+| **데이터 연구자** | 데이터 발견, 분석 | 읽기, Grep, Glob, WebFetch, WebSearch | 데이터 연구 |
 
-| Agent | Specialty | Tools | Rationale |
-|-------|-----------|-------|------------|
-| **research-analyst** | Comprehensive research, synthesis | Read, Grep, Glob, WebFetch, WebSearch | Deep research |
-| **search-specialist** | Advanced information retrieval | Read, Grep, Glob, WebFetch, WebSearch | Research queries |
-| **trend-analyst** | Trend analysis, forecasting | Read, Grep, Glob, WebFetch, WebSearch | Market trends |
-| **competitive-analyst** | Competitive intelligence | Read, Grep, Glob, WebFetch, WebSearch | Competitive analysis |
-| **market-researcher** | Market analysis, consumer insights | Read, Grep, Glob, WebFetch, WebSearch | Market research |
-| **data-researcher** | Data discovery, analysis | Read, Grep, Glob, WebFetch, WebSearch | Data research |
+## 체계적인 전환 전략
 
-## Systematic Conversion Strategy
+### 1단계: 영향력이 큰 에이전트(즉시)
 
-### Phase 1: High-Impact Agents (Immediate)
+영향력이 가장 큰 상담원 20명을 먼저 전환하세요.
 
-Convert 20 highest-impact agents first:
+**핵심 유틸리티**(에이전트 4개):
+- 코드 검토자
+- 디버거
+- 리팩토링 전문가
+- 종속성 관리자
 
-**Core Utilities** (4 agents):
-- code-reviewer
-- debugger
-- refactoring-specialist
-- dependency-manager
-
-**Top Language Specialists** (8 agents):
-- javascript-pro
+**최고의 언어 전문가**(상담사 8명):
+- 자바스크립트 프로
 - typescript-pro
-- react-specialist
-- python-pro
-- golang-pro
-- java-architect
-- nextjs-developer
-- vue-expert
+- 반응 전문가
+- 파이썬 프로
+- 골랑프로
+- 자바 건축가
+- nextjs 개발자
+- vue 전문가
 
-**Critical Infrastructure** (8 agents):
-- cloud-architect
-- kubernetes-specialist
-- deployment-engineer
-- database-administrator
-- sre-engineer
-- devops-engineer
-- security-auditor
-- performance-engineer
+**중요 인프라**(에이전트 8개):
+- 클라우드 설계자
+- kubernetes 전문가
+- 배포 엔지니어
+- 데이터베이스 관리자
+- SRE 엔지니어
+- 데브옵스 엔지니어
+- 보안 감사관
+- 성능 엔지니어
 
-### Phase 2: Language Coverage (Short Term)
+### 2단계: 언어 지원(단기)
 
-Convert remaining language specialists (15 agents):
+나머지 언어 전문가 변환(에이전트 15명):
 
-- Backend languages: spring-boot-engineer, dotnet-core-expert, rust-engineer, cpp-pro
-- Mobile: flutter-expert, kotlin-specialist, swift-expert
-- Web frameworks: angular-architect, vue-expert, laravel-specialist
-- Other: php-pro, rails-expert
+- 백엔드 언어: spring-boot-engineer, dotnet-core-expert, Rust-engineer, cpp-pro
+- 모바일: flutter 전문가, kotlin 전문가, Swift 전문가
+- 웹 프레임워크: Angle-architect, vue-expert, laravel-specialist
+- 기타: php-pro, 레일스 전문가
 
-### Phase 3: Domain Specialists (Medium Term)
+### 3단계: 도메인 전문가(중기)우선순위에 따라 도메인별 에이전트를 변환합니다.
 
-Convert domain-specific agents by priority:
+**품질 및 보안**(에이전트 8명):
+- 접근성 테스터
+- 침투 테스터
+- 규정 준수 감사관
+- 코드 검토자
+- qa 전문가
+- 테스트 자동화
+- 오류 탐지
+- 테라폼 엔지니어
 
-**Quality & Security** (8 agents):
-- accessibility-tester
-- penetration-tester
-- compliance-auditor
-- code-reviewer
-- qa-expert
-- test-automator
-- error-detective
-- terraform-engineer
+**데이터 및 AI**(에이전트 10개):
+- 데이터 엔지니어
+- 머신러닝 엔지니어
+- mlops 엔지니어
+- LLM 건축가
+- 데이터 과학자
+- 데이터베이스 최적화 프로그램
+- nlp 엔지니어
+- AI 엔지니어
+- ml-엔지니어
+- 신속한 엔지니어
 
-**Data & AI** (10 agents):
-- data-engineer
-- machine-learning-engineer
-- mlops-engineer
-- llm-architect
-- data-scientist
-- database-optimizer
-- nlp-engineer
-- ai-engineer
-- ml-engineer
-- prompt-engineer
+**건축 및 디자인**(에이전트 4명):
+- API 디자이너
+- 마이크로서비스 아키텍트
+-graphql-건축가
+- 풀스택 개발자
 
-**Architecture & Design** (4 agents):
-- api-designer
-- microservices-architect
-- graphql-architect
-- fullstack-developer
+### 4단계: 비즈니스 및 전문 분야(장기)
 
-### Phase 4: Business & Specialized (Long Term)
+비즈니스 및 전문 에이전트 전환:
 
-Convert business and specialized agents:
+**비즈니스 및 제품**(에이전트 8명):
+- 제품 관리자
+- 비즈니스 분석가
+- 프로젝트 관리자
+- 기술 작가
+- ux-연구원
+- 스크럼 마스터
+- 고객-성공-관리자
+- 영업 엔지니어
 
-**Business & Product** (8 agents):
-- product-manager
-- business-analyst
-- project-manager
-- technical-writer
-- ux-researcher
-- scrum-master
-- customer-success-manager
-- sales-engineer
+**특수 도메인**(에이전트 8명):
+- API 문서
+- 블록체인 개발자
+- 임베디드 시스템
+- 핀테크 엔지니어
+- 게임 개발자
+- IoT 엔지니어
+- 결제 통합
+- SEO 전문가
 
-**Specialized Domains** (8 agents):
-- api-documenter
-- blockchain-developer
-- embedded-systems
-- fintech-engineer
-- game-developer
-- iot-engineer
-- payment-integration
-- seo-specialist
+**개발자 경험**(에이전트 5명):
+-git-워크플로-관리자
+- 툴링 엔지니어
+- CLI 개발자
+- 레거시 현대화
+- dx-옵티마이저
 
-**Developer Experience** (5 agents):
-- git-workflow-manager
-- tooling-engineer
-- cli-developer
-- legacy-modernizer
-- dx-optimizer
+### 5단계: 메타 및 오케스트레이션(장기)
 
-### Phase 5: Meta & Orchestration (Long Term)
+조정 및 연구 에이전트 변환:
 
-Convert coordination and research agents:
+**메타 및 오케스트레이션**(에이전트 5명):
+- 대리인-주최자
+- 작업 흐름 조정자
+- 작업 분배자
+- 지식 합성기
+- 성능 모니터
 
-**Meta & Orchestration** (5 agents):
-- agent-organizer
-- workflow-orchestrator
-- task-distributor
-- knowledge-synthesizer
-- performance-monitor
+**연구 및 분석**(에이전트 6명):
+- 연구 분석가
+- 검색 전문가
+- 트렌드 분석가
+- 경쟁 분석가
+- 시장 조사원
+- 데이터 연구원
 
-**Research & Analysis** (6 agents):
-- research-analyst
-- search-specialist
-- trend-analyst
-- competitive-analyst
-- market-researcher
-- data-researcher
+## 변환 템플릿
 
-## Conversion Templates
+### 언어 전문가 템플릿
 
-### Language Specialist Template
-
-For converting language-specific agents, use this structure:
-
+언어별 에이전트를 변환하려면 다음 구조를 사용하십시오.
 ```markdown
 ---
 name: [language]-development
@@ -331,11 +320,9 @@ You are an expert [language] developer with deep knowledge of [version] features
 - Testing approaches
 - Performance optimization
 ```
+### 인프라 전문가 템플릿
 
-### Infrastructure Specialist Template
-
-For converting infrastructure/DevOps agents:
-
+인프라/DevOps 에이전트 변환의 경우:
 ```markdown
 ---
 name: [domain]-infrastructure
@@ -365,78 +352,77 @@ You are an expert [domain] engineer with comprehensive knowledge of [platforms],
 - Capacity planning
 - Reliability engineering
 ```
+## 추정
 
-## Estimations
+### 노력 필요
 
-### Effort Required
+- **1단계**(에이전트 20개): ~4시간
+- **2단계**(에이전트 15명): ~3시간
+- **3단계**(에이전트 22개): ~4.5시간
+- **4단계**(에이전트 21개): ~4.5시간
+- **5단계**(에이전트 11개): ~2.5시간
 
-- **Phase 1** (20 agents): ~4 hours
-- **Phase 2** (15 agents): ~3 hours
-- **Phase 3** (22 agents): ~4.5 hours
-- **Phase 4** (21 agents): ~4.5 hours
-- **Phase 5** (11 agents): ~2.5 hours
+**총 예상 시간**: 우선 순위가 높은 상담원 89명의 경우 최대 18.5시간
 
-**Total Estimated**: ~18.5 hours for 89 high-priority agents
+### 전체 카탈로그 변환
 
-### Full Catalog Conversion
+300개 이상의 에이전트를 모두 변환하려면 대략 다음이 필요합니다.
+- **시간**: ~60시간 이상
+- **스킬 파일**: 300개 이상의 SKILL.md 파일
+- **검증**: 모든 기술에 대한 광범위한 테스트
+- **문서**: 지원 가이드 및 템플릿
 
-Converting all 300+ agents would require approximately:
-- **Time**: ~60+ hours
-- **Skill Files**: 300+ SKILL.md files
-- **Validation**: Extensive testing across all skills
-- **Documentation**: Supporting guides and templates
+## 추천
 
-## Recommendations
+### 옵션 1: 타겟 전환(권장)
 
-### Option 1: Targeted Conversion (Recommended)
+영향력이 가장 큰 상담원 50~100명을 먼저 전환하세요.
+- 가장 일반적으로 사용되는 기능에 중점을 둡니다.
+- 인프라, 보안, 언어 전문가 우선순위
+- 틈새시장/전문 에이전트를 나중 단계로 연기
+- **투자 시간**: 20~25시간
+- **적용 범위**: 일반적인 사용 사례의 80-90%
 
-Convert 50-100 highest-impact agents first:
-- Focus on most commonly used capabilities
-- Prioritize infrastructure, security, and language specialists
-- Defer niche/specialized agents to later phases
-- **Time Investment**: 20-25 hours
-- **Coverage**: 80-90% of common use cases
+### 옵션 2: 전체 체계적 변환
 
-### Option 2: Full Systematic Conversion
+설정된 템플릿을 사용하여 모든 에이전트를 변환합니다.
+- 카테고리별 상담사별 템플릿 생성
+- 유사한 에이전트에 대해서는 일괄 처리를 사용합니다.
+- 복잡한 기술에 대한 점진적 공개 구현
+- **시간 투자**: 60시간 이상
+- **적용 범위**: 문서화된 에이전트 100%
 
-Convert all agents using established templates:
-- Create agent-specific templates for each category
-- Use batch processing for similar agents
-- Implement progressive disclosure for complex skills
-- **Time Investment**: 60+ hours
-- **Coverage**: 100% of documented agents
+### 옵션 3: 주문형 전환
 
-### Option 3: On-Demand Conversion
+사용자 요청에 따라 필요에 따라 에이전트를 변환합니다.
+- 우선순위가 가장 높은 에이전트부터 시작하세요.
+- 사용자가 요청하면 특정 에이전트를 변환합니다.
+- **시간 투자**: 가변적, 최소한의 초기 투자
+- **커버리지**: 필요에 따라 유기적으로 확장
 
-Convert agents as needed based on user requests:
-- Start with highest-priority agents
-- Convert specific agents when users request them
-- **Time Investment**: Variable, minimal upfront
-- **Coverage**: Expands organically based on needs
+## 다음 단계
 
-## Next Steps
+1. **접근 방식 선택**: 타겟 전환, 전체 전환, 주문형 전환 중에서 결정
+2. **우선순위 정의**: 먼저 변환할 상담원/카테고리를 선택하세요.
+3. **템플릿 생성**: 상담원 카테고리별 템플릿 개발
+4. **변환 실행**: 선택한 상담원을 체계적으로 변환합니다.
+5. **철저하게 검증**: 마무리하기 전에 각 기술을 테스트하세요.
+6. **문서화 프로세스**: 학습 내용으로 변환 가이드 업데이트
 
-1. **Choose Approach**: Decide between targeted, full, or on-demand conversion
-2. **Define Priorities**: Select which agents/categories to convert first
-3. **Create Templates**: Develop templates for each agent category
-4. **Execute Conversion**: Systematically convert selected agents
-5. **Validate Thoroughly**: Test each skill before finalizing
-6. **Document Process**: Update conversion guide with learnings
+## 리소스
 
-## Resources
+모든 기술은 다음을 참조해야 합니다.
+- 공식 인류학 기술 문서
+- 인류학/기술 저장소 예시
+- SKILL-VALIDATION-GUIDE.md의 모범 사례 가이드
+- CONVERSION-GUIDE.md의 변환 프로세스
 
-All skills should reference:
-- Official Anthropic skill documentation
-- anthropics/skills repository examples
-- Best practices guide in SKILL-VALIDATION-GUIDE.md
-- Conversion process in CONVERSION-GUIDE.md
+## 요약
 
-## Summary
+- **9개 스킬 완료**: 핵심 유틸리티(탐색, 오라클, 라이브러리언 등)
+- **남은 스킬 300개 이상**: 우선순위 및 카테고리별로 정리
+- **명확한 전환 전략**: 예상 시간이 포함된 5단계
+- **제공되는 템플릿**: 언어, 인프라 및 전문 에이전트용
+- **다양한 옵션**: 타겟(25시간), 전체(60시간) 또는 주문형 변환
 
-- **9 skills completed**: Core utilities (explore, oracle, librarian, etc.)
-- **300+ skills remaining**: Organized by priority and category
-- **Clear conversion strategy**: 5 phases with time estimates
-- **Templates provided**: For language, infrastructure, and specialist agents
-- **Multiple options**: Targeted (25h), full (60h), or on-demand conversion
-
-Ready to proceed with systematic conversion based on your priorities and time constraints.
+귀하의 우선순위와 시간적 제약에 따라 체계적인 전환을 진행할 준비가 되어 있습니다.

@@ -1,44 +1,44 @@
-# Error Detective - Best Practices
+# 오류 탐지 - 모범 사례
 
-This guide outlines best practices for error detection, analysis, and prevention in distributed systems.
+이 가이드에서는 분산 시스템의 오류 감지, 분석 및 예방에 대한 모범 사례를 간략하게 설명합니다.
 
-## Core Principles
+## 핵심 원칙
 
-### Proactive Detection
+### 사전 탐지
 
-- Detect errors before they become incidents
-- Set up alerts for anomaly detection
-- Monitor leading indicators, not just lagging ones
-- Use predictive models for early warning
+- 오류가 사건으로 발생하기 전에 감지
+- 이상 징후 감지에 대한 알림 설정
+- 단지 후행 지표가 아닌 선행 지표를 모니터링하세요.
+- 조기 경고를 위해 예측 모델을 사용합니다.
 
-### Comprehensive Correlation
+### 포괄적인 상관관계
 
-- Correlate errors across all services
-- Identify error propagation paths
-- Map service dependencies
-- Understand error cascades
+- 모든 서비스 전반에 걸쳐 오류를 연관시킵니다.
+- 오류 전파 경로 식별
+- 지도 서비스 종속성
+- 오류 계단식 이해
 
-### Data-Driven Insights
+### 데이터 기반 통찰력
 
-- Use historical data to establish baselines
-- Analyze trends and patterns
-- Validate hypotheses with data
-- Make evidence-based recommendations
+- 과거 데이터를 사용하여 기준선 설정
+- 추세 및 패턴 분석
+- 데이터로 가설 검증
+- 증거 기반 추천 제공
 
-## Log Management
+## 로그 관리
 
-### Structured Logging
+### 구조화된 로깅
 
-Use structured log formats with consistent fields:
-- **timestamp**: ISO 8601 format
-- **level**: DEBUG, INFO, WARNING, ERROR, CRITICAL
-- **service**: Service name
-- **request_id**: Correlation ID
-- **user_id**: User identifier (if applicable)
-- **error_code**: Standardized error codes
-- **message**: Human-readable description
+일관된 필드가 있는 구조화된 로그 형식을 사용합니다.
+- **타임스탬프**: ISO 8601 형식
+- **수준**: 디버그, 정보, 경고, 오류, 위험
+- **서비스**: 서비스 이름
+- **request_id**: 상관관계 ID
+- **user_id**: 사용자 식별자(해당되는 경우)
+- **error_code**: 표준화된 오류 코드
+- **메시지**: 사람이 읽을 수 있는 설명
 
-**Example**:
+**예**:
 ```json
 {
   "timestamp": "2024-01-12T10:30:00Z",
@@ -50,304 +50,299 @@ Use structured log formats with consistent fields:
   "message": "Database connection timeout"
 }
 ```
+### 로그 집계
+
+- 모든 서비스의 로그를 중앙 집중화
+- ELK Stack, Splunk, Loki 또는 CloudWatch 사용
+- 로그 보존 정책 구현
+- 인덱스된 필드를 사용하여 효율적으로 로그를 검색합니다.
 
-### Log Aggregation
+### 로그 수준
 
-- Centralize logs from all services
-- Use ELK Stack, Splunk, Loki, or CloudWatch
-- Implement log retention policies
-- Search logs efficiently with indexed fields
+적절한 로그 수준을 사용하십시오.
+- **디버그**: 자세한 진단 정보
+- **INFO**: 일반 정보 메시지
+- **경고**: 예상치 못했지만 복구 가능한 상황
+- **ERROR**: 서비스가 중단되지 않는 오류 조건
+- **중요**: 즉각적인 주의가 필요한 심각한 상황
 
-### Log Levels
+## 오류 분류
 
-Use appropriate log levels:
-- **DEBUG**: Detailed diagnostic information
-- **INFO**: General informational messages
-- **WARNING**: Unexpected but recoverable situations
-- **ERROR**: Error conditions that don't stop service
-- **CRITICAL**: Critical conditions requiring immediate attention
+### 심각도 수준
 
-## Error Classification
+심각도에 따라 오류를 분류합니다.
+- **긴급**: 서비스 이용 불가, 데이터 손실, 보안 위반
+- **높음**: 성능 저하, 부분 중단, 중대한 오류
+- **중간**: 사소한 성능 문제, 심각하지 않은 오류
+- **낮음**: 정보 문제, 외관상 오류
 
-### Severity Levels
+### 오류 카테고리
 
-Classify errors by severity:
-- **Critical**: Service unavailable, data loss, security breach
-- **High**: Degraded performance, partial outage, significant errors
-- **Medium**: Minor performance issues, non-critical errors
-- **Low**: Informational issues, cosmetic errors
+범주별로 오류를 정리합니다.
+- **시스템 오류**: 인프라, 연결, 하드웨어
+- **애플리케이션 오류**: 코드 버그, 논리 오류, 유효성 검사 실패
+- **사용자 오류**: 잘못된 입력, 승인 실패, 권한 문제
+- **통합 오류**: API 오류, 타사 서비스 문제
+- **성능 오류**: 속도 저하, 시간 초과, 높은 대기 시간
+- **보안 오류**: 인증 실패, 승인 문제, 의심스러운 활동
+- **데이터 오류**: 손상, 불일치, 무결성 문제
+- **구성 오류**: 잘못된 구성, 충돌, 설정 누락
 
-### Error Categories
+### 오류 코드
 
-Organize errors by category:
-- **System Errors**: Infrastructure, connectivity, hardware
-- **Application Errors**: Code bugs, logic errors, validation failures
-- **User Errors**: Invalid input, authorization failures, permission issues
-- **Integration Errors**: API failures, third-party service issues
-- **Performance Errors**: Slowdowns, timeouts, high latency
-- **Security Errors**: Authentication failures, authorization issues, suspicious activity
-- **Data Errors**: Corruption, inconsistency, integrity issues
-- **Configuration Errors**: Misconfigurations, conflicts, missing settings
+표준화된 오류 코드를 정의합니다.
+- **DB-XXX**: 데이터베이스 관련 오류
+- **API-XXX**: API 관련 오류
+- **AUTH-XXX**: 인증/승인 오류
+- **NET-XXX**: 네트워크 관련 오류
+- **SYS-XXX**: 시스템 관련 오류
 
-### Error Codes
+## 오류 패턴 분석
 
-Define standardized error codes:
-- **DB-XXX**: Database-related errors
-- **API-XXX**: API-related errors
-- **AUTH-XXX**: Authentication/authorization errors
-- **NET-XXX**: Network-related errors
-- **SYS-XXX**: System-related errors
+### 패턴 인식
 
-## Error Pattern Analysis
+일반적인 오류 패턴을 식별합니다.
+- **빈도 분석**: 시간 경과에 따른 오류 발생 횟수 계산
+- **시간 기반 패턴**: 시간별, 일별, 주별 주기
+- **서비스 패턴**: 서비스별 공통 오류
+- **사용자 패턴**: 특정 사용자에게 영향을 미치는 오류
+- **버전 패턴**: 배포 관련 오류
+- **환경 패턴**: 개발/스테이징/프로덕션 간의 차이점
 
-### Pattern Recognition
+### 주요 오류 패턴
 
-Identify common error patterns:
-- **Frequency Analysis**: Count error occurrences over time
-- **Time-Based Patterns**: Hourly, daily, weekly cycles
-- **Service Patterns**: Common errors by service
-- **User Patterns**: Errors affecting specific users
-- **Version Patterns**: Errors related to deployments
-- **Environment Patterns**: Differences between dev/staging/prod
+추적 및 우선순위 지정:
+- 횟수별 가장 빈번한 오류
+- 가장 큰 영향을 미치는 오류
+- 사건 전반에 걸쳐 반복되는 패턴
+- 최근 나타나는 새로운 오류 패턴
 
-### Top Error Patterns
+### 근본 원인 패턴
 
-Track and prioritize:
-- Most frequent errors by count
-- Errors with highest impact
-- Recurring patterns across incidents
-- New error patterns appearing recently
+근본 원인의 패턴을 식별합니다.
+- 데이터베이스 연결 문제
+- 메모리 누수
+- 네트워크 시간 초과
+- 의존성 실패
+- 구성 오류
+- 경쟁 조건
 
-### Root Cause Patterns
+## 오류 상관관계
 
-Identify patterns in root causes:
-- Database connection issues
-- Memory leaks
-- Network timeouts
-- Dependency failures
-- Configuration errors
-- Race conditions
+### 서비스 간 상관관계
 
-## Error Correlation
+- 시간 창(예: 5분 창)별로 오류의 상관 관계를 지정합니다.
+- 동일한 창에서 오류가 있는 서비스 식별
+- 지도 오류 전파 경로
+- 계단식 오류 감지
 
-### Cross-Service Correlation
+### 사용자 여정 상관관계
 
-- Correlate errors by time windows (e.g., 5-minute windows)
-- Identify services with errors in same window
-- Map error propagation paths
-- Detect cascading failures
+- 사용자 요청 전반에 걸쳐 오류 추적
+- 시스템을 통해 요청 ID를 따릅니다.
+- 사용자에게 영향을 미치는 오류 체인 식별
+- 엔드 투 엔드 오류 영향 이해
 
-### User Journey Correlation
+### 종속성 매핑
 
-- Track errors across user requests
-- Follow request IDs through system
-- Identify user-impacting error chains
-- Understand end-to-end error impact
+- 문서 서비스 종속성
+- 업스트림/다운스트림 관계 식별
+- 시스템의 중요 경로 매핑
+- 서비스 실패의 영향 이해
 
-### Dependency Mapping
+## 이상 탐지
 
-- Document service dependencies
-- Identify upstream/downstream relationships
-- Map critical paths in system
-- Understand impact of service failures
+### 기준선 설정
 
-## Anomaly Detection
+- 과거 데이터에서 기준선 계산(30일 이상 권장)
+- 정상적인 오류율, 대기 시간, 처리량 추적
+- 각 지표에 대한 허용 범위 설정
+- 정기적으로 기준선 업데이트(주간/월간)
 
-### Baseline Establishment
+### 임계값 구성
 
-- Calculate baselines from historical data (30+ days recommended)
-- Track normal error rates, latency, throughput
-- Establish acceptable ranges for each metric
-- Update baselines regularly (weekly/monthly)
+적절한 임계값을 설정합니다.
+- **오류율**: 기준 + 표준 개발자 2명 초과 시 경고
+- **지연 시간**: p95 > 기준선 + 50%일 때 경고
+- **처리량**: < 기준 - 20%인 경우 경고
+- **리소스 사용량**: CPU > 80%, 메모리 > 85%일 때 경고
 
-### Threshold Configuration
+### 이상 징후 유형
 
-Set appropriate thresholds:
-- **Error Rate**: Alert when > baseline + 2 std devs
-- **Latency**: Alert when p95 > baseline + 50%
-- **Throughput**: Alert when < baseline - 20%
-- **Resource Usage**: Alert when CPU > 80%, memory > 85%
+다양한 이상 유형을 감지합니다.
+- **Spike Anomalies**: 오류가 갑자기 증가함
+- **드리프트 이상**: 시간이 지남에 따라 점진적인 증가
+- **포인트 이상**: 단일 이상값 데이터 포인트
+- **패턴 이상**: 순환 패턴의 변화
 
-### Anomaly Types
+## 시각화
 
-Detect different anomaly types:
-- **Spike Anomalies**: Sudden increase in errors
-- **Drift Anomalies**: Gradual increase over time
-- **Point Anomalies**: Single outlier data points
-- **Pattern Anomalies**: Changes in cyclical patterns
+### 대시보드다음을 표시하는 대시보드를 만듭니다.
+- 서비스별 시간 경과에 따른 오류율
+- 심각도별 오류 개수
+- 주요 오류 패턴
+- 이상 징후 탐지 결과
+- 서비스 상태
 
-## Visualization
+### 히트맵
 
-### Dashboards
+다음과 같은 경우 히트맵을 사용하세요.
+- 지리적 오류 분포
+- 시간적 패턴(시간별 열)
+- 서비스 오류 빈도
+- 오류 유형 분포
 
-Create dashboards showing:
-- Error rate over time by service
-- Error count by severity level
-- Top error patterns
-- Anomaly detection results
-- Service health status
+### 종속성 그래프
 
-### Heat Maps
+시각화:
+- 서비스 종속성
+- 오류 전파 경로
+- 중요한 경로
+- 단일 실패 지점
 
-Use heat maps for:
-- Geographic error distribution
-- Temporal patterns (heat by time of day)
-- Service error frequency
-- Error type distribution
+## 예방 전략
 
-### Dependency Graphs
+### 사전 모니터링
 
-Visualize:
-- Service dependencies
-- Error propagation paths
-- Critical paths
-- Single points of failure
+- 선행 지표 모니터링(큐 깊이, 리소스 사용량)
+- 임계값이 위반되기 전에 경고 설정
+- 중요한 경로에 대해 종합 모니터링을 사용합니다.
+- 오류 경로를 정기적으로 테스트
 
-## Prevention Strategies
+### 회로 차단기
 
-### Proactive Monitoring
+다음을 위해 회로 차단기를 구현합니다.
+- 계단식 실패 방지
+- 실패한 서비스에 대한 반복 호출을 중지합니다.
+- 대체 응답 제공
+- 자동 복구 활성화
 
-- Monitor leading indicators (queue depths, resource usage)
-- Set alerts before thresholds are breached
-- Use synthetic monitoring for critical paths
-- Test error paths regularly
+### 우아한 저하
 
-### Circuit Breakers
+단계적으로 성능이 저하되도록 시스템을 설계합니다.
+- 로드 시 중요하지 않은 기능을 비활성화합니다.
+- 백엔드 실패 시 캐시된 콘텐츠 제공
+- 제한된 기능 제공 vs. 완전한 중단 제공
+- 저하된 상태를 사용자에게 전달
 
-Implement circuit breakers to:
-- Prevent cascading failures
-- Stop repeated calls to failing services
-- Provide fallback responses
-- Enable automatic recovery
+### 오류 예산
 
-### Graceful Degradation
+다음에 대해 오류 예산을 사용하십시오.
+- 가용성 목표 설정(예: 99.9% = 43.2분/월 다운타임)
+- 혁신과 안정성의 균형
+- 추적 오류 소비
+- 예산에 따라 배포 결정을 내립니다.
 
-Design systems to degrade gracefully:
-- Disable non-critical features under load
-- Serve cached content when backends fail
-- Provide limited functionality vs. complete outage
-- Communicate degraded state to users
+## 지속적인 개선
 
-### Error Budgets
+### 정기 검토
 
-Use error budgets for:
-- Setting availability targets (e.g., 99.9% = 43.2 minutes/month downtime)
-- Balancing innovation with stability
-- Tracking error consumption
-- Making deployment decisions based on budget
+- 매주 오류 패턴을 검토합니다.
+- 월별 동향 분석
+- 분기별 심층 분석 실시
+- 정기적으로 기준선 업데이트
+- 탐지 알고리즘 개선
 
-## Continuous Improvement
+### 기술 자료
 
-### Regular Review
+- 발견된 모든 오류 패턴을 문서화합니다.
+- 카탈로그 근본 원인 및 솔루션
+- 매장 조사 절차
+- 자주 발생하는 문제 FAQ 유지
+- 팀 간 결과 공유
 
-- Review error patterns weekly
-- Analyze trends monthly
-- Conduct quarterly deep dives
-- Update baselines regularly
-- Refine detection algorithms
+### 지표 추적
 
-### Knowledge Base
+주요 지표 추적:
+- **MTTD**: 평균 감지 시간
+- **MTTR**: 평균 해결 시간
+- **오류율 감소**: 시간 경과에 따른 개선 추적
+- **오탐지율**: 경고 품질 모니터링
+- **탐지 정확도**: 정밀도 및 재현율 측정
 
-- Document all error patterns found
-- Catalog root causes and solutions
-- Store investigation procedures
-- Maintain common issues FAQ
-- Share findings across teams
+## 알림 모범 사례
 
-### Metric Tracking
+### 경고 품질
 
-Track key metrics:
-- **MTTD**: Mean Time to Detect
-- **MTTR**: Mean Time to Resolve
-- **Error Rate Reduction**: Track improvement over time
-- **False Positive Rate**: Monitor alert quality
-- **Detection Accuracy**: Measure precision and recall
+- 오탐지 최소화
+- 중요한 경고가 실행 가능한지 확인
+- 알림에 실행 가능한 정보 포함
+- 컨텍스트 제공(서비스, 오류 코드, 영향)
+- Runbook 또는 문서 링크
 
-## Alerting Best Practices
+### 경고 라우팅
 
-### Alert Quality
+- 적절한 팀에 경고 전달
+- 중요한 문제에는 에스컬레이션 경로를 사용하세요.
+- 통화 중 회전 설정
+- 알림에 연락처 정보 포함
+- 정기적으로 알림 전달 테스트
 
-- Minimize false positives
-- Ensure critical alerts are actionable
-- Include actionable information in alerts
-- Provide context (service, error code, impact)
-- Link to runbooks or documentation
+### 경고 피로 예방
 
-### Alert Routing
+- 관련 알림을 결합합니다.
+- 플래핑 조건에 대한 경고 제한 사용
+- 적절한 경고 임계값 설정
+- 정기적으로 알림을 검토하고 조정합니다.
+- 알려진 문제에 대한 경고 억제 허용
 
-- Route alerts to appropriate teams
-- Use escalation paths for critical issues
-- Set up on-call rotations
-- Include contact information in alerts
-- Test alert delivery regularly
+## 팀 조정
 
-### Alert Fatigue Prevention
+### 역할
 
-- Combine related alerts
-- Use alert throttling for flapping conditions
-- Set appropriate alert thresholds
-- Review and tune alerts regularly
-- Allow alert suppression for known issues
+- **Error Detective**: 오류 패턴 분석
+- **당직 엔지니어**: 경고에 응답
+- **서비스 소유자**: 수정 사항 구현
+- **SRE**: 시스템 복원력 향상
+- **제품 관리자**: 비즈니스 영향 이해
 
-## Team Coordination
+### 커뮤니케이션
 
-### Roles
+- 감지된 패턴을 개발팀과 공유
+- 사고에 대한 근본 원인 분석 제공
+- 오류 정보로 상태 페이지 업데이트
+- 배운 내용을 문서로 작성하세요.
+- 무책임한 사후검토 실시
 
-- **Error Detective**: Analyze error patterns
-- **On-Call Engineer**: Respond to alerts
-- **Service Owner**: Implement fixes
-- **SRE**: Improve system resilience
-- **Product Manager**: Understand business impact
+## 툴링
 
-### Communication
+### 권장 도구
 
-- Share detected patterns with development teams
-- Provide root cause analysis for incidents
-- Update status pages with error information
-- Document lessons learned
-- Conduct blameless postmortems
+- **ELK 스택**: 로그 집계 및 검색
+- **Splunk**: 엔터프라이즈 로그 분석
+- **Grafana/Loki**: 클라우드 네이티브 로깅
+- **Prometheus**: 측정항목 수집 및 알림
+- **Datadog**: 전체 스택 모니터링
+- **허니콤**: 분산 추적 및 분석
 
-## Tooling
+### 통합
 
-### Recommended Tools
+- 오류 감지와 사고 관리 통합
+- 경고 라우팅을 위해 PagerDuty에 연결
+- 수정사항 추적을 위해 Jira를 사용하세요.
+- 지식 베이스에 패턴 저장
+- 보고서 생성 자동화
 
-- **ELK Stack**: Log aggregation and search
-- **Splunk**: Enterprise log analysis
-- **Grafana/Loki**: Cloud-native logging
-- **Prometheus**: Metrics collection and alerting
-- **Datadog**: Full-stack monitoring
-- **Honeycomb**: Distributed tracing and analysis
+## 데이터 품질
 
-### Integration
+### 로그 품질 표준
 
-- Integrate error detection with incident management
-- Connect to PagerDuty for alert routing
-- Use Jira for tracking fixes
-- Store patterns in knowledge base
-- Automate report generation
+- 모든 로그가 구조화되어 있는지 확인
+- 일관된 필드 이름을 사용하십시오.
+- 상관관계 ID 포함
+- 오류 메시지에 컨텍스트 추가
+- 일관된 타임스탬프 형식 유지
 
-## Data Quality
+### 데이터 검증- 로그 항목의 형식이 올바른지 확인합니다.
+- 필수 입력사항이 누락되었는지 확인하세요.
+- 타임스탬프 범위가 합리적인지 확인하세요.
+- 잘못된 형식의 로그를 감지하고 플래그를 지정합니다.
+- 분석 전 데이터 정리 및 전처리
 
-### Log Quality Standards
+### 성능
 
-- Ensure all logs are structured
-- Use consistent field names
-- Include correlation IDs
-- Add context to error messages
-- Maintain consistent timestamp formats
-
-### Data Validation
-
-- Validate log entries are well-formed
-- Check for missing required fields
-- Verify timestamp ranges are reasonable
-- Detect and flag malformed logs
-- Clean and preprocess data before analysis
-
-### Performance
-
-- Optimize log indexing for fast search
-- Use appropriate retention periods
-- Archive old logs efficiently
-- Monitor log system performance
-- Scale infrastructure for log volume
+- 빠른 검색을 위해 로그 인덱싱 최적화
+- 적절한 보존 기간을 사용하십시오.
+- 오래된 로그를 효율적으로 보관
+- 로그 시스템 성능 모니터링
+- 로그 볼륨에 따른 인프라 확장

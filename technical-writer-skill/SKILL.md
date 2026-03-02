@@ -1,38 +1,37 @@
 ---
 name: technical-writer
-description: Expert in creating clear, accurate, and user-friendly documentation. Masters API documentation, user guides, tutorials, and knowledge base creation.
+description: 명확하고 정확하며 사용자 친화적인 문서를 작성하는 전문가입니다. Masters API 문서, 사용자 가이드, 튜토리얼 및 지식 기반 생성.
 ---
+# 테크니컬 라이터
 
-# Technical Writer
+## 목적
+개발자, 사용자 및 이해관계자를 위한 효과적인 기술 문서 작성에 대한 전문 지식을 제공합니다. 다양한 대상에게 서비스를 제공하는 API 문서, 사용자 가이드, 튜토리얼 및 유지 관리 가능한 문서 시스템 구축을 전문으로 합니다.
 
-## Purpose
-Provides expertise in creating effective technical documentation for developers, users, and stakeholders. Specializes in API documentation, user guides, tutorials, and building maintainable documentation systems that serve diverse audiences.
+## 사용 시기
+- API 문서 및 참조 가이드 작성
+- 사용자 가이드 및 시작 튜토리얼 만들기
+- 지식 기반 및 FAQ 구축
+- README 파일 및 프로젝트 문서 작성
+- 개발자를 위한 온보딩 문서 작성
+- 아키텍처 및 시스템 설계 문서화
+- 릴리스 노트 및 변경 로그 작성
+- 프로젝트 전반에 걸쳐 문서화 스타일 표준화
 
-## When to Use
-- Writing API documentation and reference guides
-- Creating user guides and getting-started tutorials
-- Building knowledge bases and FAQs
-- Writing README files and project documentation
-- Creating onboarding documentation for developers
-- Documenting architecture and system design
-- Writing release notes and changelogs
-- Standardizing documentation style across projects
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- API 문서 및 참조 가이드 작성
+- 사용자 가이드 및 시작 튜토리얼 만들기
+- 지식 기반 및 FAQ 구축
+- README 파일 및 프로젝트 문서 작성
+- 개발자를 위한 온보딩 문서 작성
 
-## Quick Start
-**Invoke this skill when:**
-- Writing API documentation and reference guides
-- Creating user guides and getting-started tutorials
-- Building knowledge bases and FAQs
-- Writing README files and project documentation
-- Creating onboarding documentation for developers
+**다음과 같은 경우에는 호출하지 마세요.**
+- 코드 주석 작성 → 개발자의 책임
+- ADR 생성 → 문서 작성기 사용
+- 마케팅 컨텐츠 작성 → 컨텐츠 마케터 활용
+- 문서 인프라 설계 → 문서 엔지니어 활용
 
-**Do NOT invoke when:**
-- Writing code comments → developer responsibility
-- Creating ADRs → use document-writer
-- Writing marketing content → use content-marketer
-- Designing documentation infrastructure → use documentation-engineer
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Documentation Type?
 ├── API Reference → OpenAPI spec + generated docs
@@ -42,47 +41,46 @@ Documentation Type?
 ├── Troubleshooting → Problem-solution format
 └── Release Notes → User-focused change descriptions
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. API 문서
+1. API 엔드포인트 및 데이터 모델 검토
+2. 사용 사례와 함께 명확한 엔드포인트 설명 작성
+3. 예시를 포함한 문서 요청/응답 형식
+4. 인증 및 오류 처리 포함
+5. 여러 언어로 코드 샘플 추가
+6. 모든 예시의 정확성을 테스트하세요.
+7. API 변경에 대한 버전 관리 설정
 
-### 1. API Documentation
-1. Review API endpoints and data models
-2. Write clear endpoint descriptions with use cases
-3. Document request/response formats with examples
-4. Include authentication and error handling
-5. Add code samples in multiple languages
-6. Test all examples for accuracy
-7. Set up versioning for API changes
+### 2. 튜토리얼 개발
+1. 대상 고객 및 전제 조건 식별
+2. 학습 목표 및 결과 정의
+3. 점진적인 복잡성의 구조 콘텐츠
+4. 상황에 맞게 단계별 지침을 작성하세요.
+5. 복사하고 실행할 수 있는 코드 샘플을 추가하세요.
+6. 일반적인 문제에 대한 문제 해결 포함
+7. 새로운 환경에서 튜토리얼 흐름 테스트
 
-### 2. Tutorial Development
-1. Identify target audience and prerequisites
-2. Define learning objectives and outcomes
-3. Structure content in progressive complexity
-4. Write step-by-step instructions with context
-5. Add code samples that can be copied and run
-6. Include troubleshooting for common issues
-7. Test tutorial flow with fresh environment
+### 3. 문서 유지 관리
+1. 서류 검토 일정 수립
+2. 끊어진 링크에 대한 자동 검사 설정
+3. 코드 변경 사항과 함께 문서 추적
+4. 사용자 피드백 수집 및 반영
+5. API 변경 시 예시 업데이트
+6. 더 이상 사용되지 않는 콘텐츠를 적절하게 보관하세요.
+7. 개선 기회에 대한 분석 모니터링
 
-### 3. Documentation Maintenance
-1. Establish documentation review schedule
-2. Set up automated checks for broken links
-3. Track documentation alongside code changes
-4. Collect and incorporate user feedback
-5. Update examples when APIs change
-6. Archive deprecated content appropriately
-7. Monitor analytics for improvement opportunities
+## 모범 사례
+- 시스템의 구조가 아닌 독자의 목표를 위해 작성하라
+- 정의된 용어집과 함께 일관된 용어를 사용합니다.
+- 사용자가 복사할 수 있는 작업 코드 예제 포함
+- 깨끗한 환경에서 모든 과정을 테스트합니다.
+- 문장은 짧게 유지하고 단락에 집중하세요.
+- 명확성을 더해주는 시각적 요소(다이어그램, 스크린샷)를 사용하세요.
 
-## Best Practices
-- Write for the reader's goals, not the system's structure
-- Use consistent terminology with a defined glossary
-- Include working code examples that users can copy
-- Test all procedures in clean environments
-- Keep sentences short and paragraphs focused
-- Use visuals (diagrams, screenshots) where they add clarity
-
-## Anti-Patterns
-- **Developer-centric writing** → Focus on user tasks and goals
-- **Outdated examples** → Automate testing of code samples
-- **Wall of text** → Use headings, lists, and whitespace
-- **Assuming knowledge** → State prerequisites explicitly
-- **One-time writing** → Treat docs as living documents
+## 안티 패턴
+- **개발자 중심 글쓰기** → 사용자 작업과 목표에 집중
+- **오래된 예제** → 코드 샘플 테스트 자동화
+- **텍스트 벽** → 제목, 목록 및 공백 사용
+- **지식을 가정** → 전제 조건을 명시적으로 명시
+- **일회성 글쓰기** → 문서를 살아있는 문서로 취급

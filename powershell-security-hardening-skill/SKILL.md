@@ -1,38 +1,32 @@
 ---
 name: powershell-security-hardening
-description: Expert in Windows security hardening and PowerShell security configuration. Specializes in securing automation, enforcing least privilege, and aligning with enterprise security baselines. Use for securing PowerShell environments and Windows systems. Triggers include "PowerShell security", "constrained language mode", "JEA", "execution policy", "security baseline", "PowerShell logging".
+description: Windows 보안 강화 및 PowerShell 보안 구성 전문가입니다. 자동화 보안, 최소 권한 적용, 엔터프라이즈 보안 기준 조정을 전문으로 합니다. PowerShell 환경 및 Windows 시스템을 보호하는 데 사용됩니다. 트리거에는 "PowerShell 보안", "제한된 언어 모드", "JEA", "실행 정책", "보안 기준", "PowerShell 로깅"이 포함됩니다.
 ---
+# PowerShell 보안 강화
 
-# PowerShell Security Hardening
+## 목적
+Windows 보안 강화 및 PowerShell 보안 구성에 대한 전문 지식을 제공합니다. 자동화 스크립트 보안, JEA(Just Enough Administration) 구현, 최소 권한 적용 및 엔터프라이즈 보안 기준 조정을 전문으로 합니다.
 
-## Purpose
-Provides expertise in Windows security hardening and PowerShell security configuration. Specializes in securing automation scripts, implementing Just Enough Administration (JEA), enforcing least privilege, and aligning with enterprise security baselines.
+## 사용 시기
+- PowerShell 보안 정책 구성
+- 제한된 언어 모드 구현
+- JEA(Just Enough Administration) 설정
+- PowerShell 로깅 및 감사 활성화
+- 자동화 자격 증명 확보
+- CIS/STIG 기준선 적용
+- PowerShell 공격으로부터 보호
+- 실행 정책 구현
 
-## When to Use
-- Configuring PowerShell security policies
-- Implementing Constrained Language Mode
-- Setting up Just Enough Administration (JEA)
-- Enabling PowerShell logging and auditing
-- Securing automation credentials
-- Applying CIS/STIG baselines
-- Protecting against PowerShell attacks
-- Implementing execution policies
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- PowerShell 환경 강화
+- JEA 또는 제한된 언어 모드 구현
+- PowerShell 로깅 구성
+- 자동화 자격 증명 확보
+- 보안 기준 적용
 
-## Quick Start
-**Invoke this skill when:**
-- Hardening PowerShell environments
-- Implementing JEA or constrained language mode
-- Configuring PowerShell logging
-- Securing automation credentials
-- Applying security baselines
-
-**Do NOT invoke when:**
-- General Windows administration → use `/windows-infra-admin`
-- PowerShell development → use `/powershell-7-expert`
-- Active Directory security → use `/ad-security-reviewer`
-- Network security → use `/network-engineer`
-
-## Decision Framework
+**다음과 같은 경우에는 호출하지 마세요.**
+- 일반 Windows 관리 → 사용`/windows-infra-admin`- PowerShell 개발 → 사용`/powershell-7-expert`- Active Directory 보안 → 사용`/ad-security-reviewer`- 네트워크 보안 → 사용`/network-engineer`## 의사결정 프레임워크
 ```
 Security Requirement?
 ├── Script Execution Control
@@ -45,46 +39,45 @@ Security Requirement?
 └── Auditing
     └── Script Block Logging + Transcription
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. PowerShell 로깅 설정
+1. GPO를 통해 스크립트 블록 로깅 활성화
+2. 주요 모듈에 대한 모듈 로깅 활성화
+3. 안전한 위치로 전사 구성
+4. 보호된 이벤트 로그 전달 설정
+5. 의심스러운 패턴에 대한 알림 생성
+6. 샘플 스크립트를 사용하여 로깅 테스트
 
-### 1. PowerShell Logging Setup
-1. Enable Script Block Logging via GPO
-2. Enable Module Logging for key modules
-3. Configure transcription to secure location
-4. Set up protected event log forwarding
-5. Create alerts for suspicious patterns
-6. Test logging with sample scripts
+### 2. JEA 구성
+1. 역할 기능 파일 정의
+2. 허용되는 cmdlet 및 매개변수 지정
+3. 세션 구성 생성
+4. JEA 엔드포인트 등록
+5. 제한된 사용자 계정으로 테스트
+6. 문서 역할 할당
 
-### 2. JEA Configuration
-1. Define role capabilities file
-2. Specify allowed cmdlets and parameters
-3. Create session configuration
-4. Register JEA endpoint
-5. Test with limited user account
-6. Document role assignments
+### 3. 제한된 언어 모드
+1. 지원 요건 평가
+2. AppLocker/WDAC 정책 만들기
+3. 신뢰할 수 없는 스크립트에 대해 CLM 활성화
+4. 필수 스크립트를 화이트리스트에 추가하세요
+5. 애플리케이션 기능 테스트
+6. 우회 시도 모니터링
 
-### 3. Constrained Language Mode
-1. Assess application requirements
-2. Create AppLocker/WDAC policy
-3. Enable CLM for untrusted scripts
-4. Whitelist required scripts
-5. Test application functionality
-6. Monitor for bypass attempts
+## 모범 사례
+- 모든 시스템에서 스크립트 블록 로깅 활성화
+- 전체 관리자 권한 대신 JEA 사용
+- 보안 저장소에 자격 증명 저장(스크립트 아님)
+- 악성 코드 탐지를 위해 AMSI 적용
+- AllSigned 정책과 함께 서명된 스크립트 사용
+- PowerShell 사용 로그를 정기적으로 감사합니다.
 
-## Best Practices
-- Enable script block logging on all systems
-- Use JEA instead of full admin rights
-- Store credentials in secure vault (not scripts)
-- Apply AMSI for malware detection
-- Use signed scripts with AllSigned policy
-- Regularly audit PowerShell usage logs
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Credentials in scripts | Exposure risk | SecretManagement vault |
-| Disabled logging | No visibility | Enable all logging |
-| Bypass execution policy | Security theater | AppLocker/WDAC |
-| Full admin for automation | Over-privileged | JEA with minimal rights |
-| Ignoring AMSI | Malware blind spot | Keep AMSI enabled |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 스크립트의 자격 증명 | 노출 위험 | SecretManagement 볼트 |
+| 비활성화된 로깅 | 가시성 없음 | 모든 로깅 활성화 |
+| 실행 정책 우회 | 보안 극장 | 앱락커/WDAC |
+| 자동화를 위한 전체 관리자 | 과도한 특권 | 최소한의 권리를 가진 JEA |
+| AMSI 무시 | 악성코드 사각지대 | AMSI 활성화 유지 |

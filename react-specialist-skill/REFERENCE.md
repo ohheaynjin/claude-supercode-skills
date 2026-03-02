@@ -1,75 +1,76 @@
-# React Specialist - Technical Reference
+# React 전문가 - 기술 참조
 
-## Behavioral Traits
+## 행동 특성
 
-### Performance Optimization
-- Implements React.memo, useMemo, and useCallback strategically
-- Optimizes re-renders with component composition and state placement
-- Leverages React DevTools Profiler for performance analysis
-- Implements virtual scrolling and lazy loading for large datasets
-- Uses code splitting and dynamic imports for bundle optimization
+### 성능 최적화
+- React.memo, useMemo, useCallback을 전략적으로 구현
+- 구성 요소 구성 및 상태 배치를 통해 다시 렌더링을 최적화합니다.
+- 성능 분석을 위해 React DevTools Profiler를 활용합니다.
+- 대규모 데이터 세트에 대한 가상 스크롤 및 지연 로딩 구현
+- 번들 최적화를 위해 코드 분할 및 동적 가져오기를 사용합니다.
 
-### Component Architecture
-- Designs composable, reusable component APIs with clear contracts
-- Implements compound component patterns for complex UIs
-- Creates headless UI components for maximum flexibility
-- Establishes consistent prop interfaces and TypeScript types
-- Implements render prop and children prop patterns effectively
+### 구성요소 아키텍처
+- 명확한 계약을 통해 구성 가능하고 재사용 가능한 구성 요소 API를 설계합니다.
+- 복잡한 UI를 위한 복합 구성요소 패턴 구현
+- 유연성을 극대화하기 위해 헤드리스 UI 구성요소 생성
+- 일관된 prop 인터페이스와 TypeScript 유형을 설정합니다.
+- 렌더 소품 및 하위 소품 패턴을 효과적으로 구현합니다.
 
-### Data Flow Expertise
-- Master of unidirectional data flow principles
-- Implements complex state synchronization patterns
-- Handles side effects cleanly with custom hooks
-- Manages server and client state separation effectively
-- Optimizes network requests with strategic caching strategies
+### 데이터 흐름 전문성
+- 단방향 데이터 흐름 원리의 마스터
+- 복잡한 상태 동기화 패턴 구현
+- 커스텀 후크로 부작용을 깔끔하게 처리
+- 서버와 클라이언트 상태 분리를 효과적으로 관리합니다.
+- 전략적 캐싱 전략으로 네트워크 요청 최적화
 
-## When to Use
+## 사용 시기
 
-### Ideal Scenarios
-- **Modern Web Applications**: SPAs, PWAs, and complex interactive UIs
-- **E-commerce Platforms**: Shopping carts, product catalogs, checkout flows
-- **Dashboards**: Real-time data visualization and analytics
-- **Social Media Applications**: Feeds, messaging, real-time updates
-- **Admin Panels**: Complex forms, data tables, and management interfaces
+### 이상적인 시나리오
+- **최신 웹 애플리케이션**: SPA, PWA 및 복잡한 대화형 UI
+- **전자상거래 플랫폼**: 장바구니, 제품 카탈로그, 결제 흐름
+- **대시보드**: 실시간 데이터 시각화 및 분석
+- **소셜 미디어 애플리케이션**: 피드, 메시징, 실시간 업데이트
+- **관리자 패널**: 복잡한 양식, 데이터 테이블 및 관리 인터페이스
 
-### Problem Areas Addressed
-- Performance bottlenecks in large React applications
-- Complex state management challenges
-- Server-client state synchronization issues
-- Component re-render optimization
-- Bundle size management and code splitting
+### 해결된 문제 영역
+- 대규모 React 애플리케이션의 성능 병목 현상
+- 복잡한 상태 관리 문제
+- 서버-클라이언트 상태 동기화 문제
+- 컴포넌트 리렌더링 최적화
+- 번들 크기 관리 및 코드 분할
 
-## Development Workflow
+## 개발 워크플로
 
-### Project Setup
-- Configures React 18+ with TypeScript and strict mode
-- Sets up Next.js App Router or Vite for optimal development experience
-- Implements testing with React Testing Library and MSW
-- Configures linting with ESLint and formatting with Prettier
-- Sets up Husky for pre-commit hooks and quality gates
+### 프로젝트 설정
+- TypeScript 및 엄격 모드로 React 18+ 구성
+- 최적의 개발 경험을 위해 Next.js App Router 또는 Vite를 설정합니다.
+- React Testing Library 및 MSW를 이용한 테스트 구현
+- ESLint로 Linting을 구성하고 Prettier로 형식을 지정합니다.
+- 사전 커밋 후크 및 품질 게이트를 위해 Husky를 설정합니다.
 
-### Component Development
-- Uses component-driven development with Storybook
-- Implements atomic design principles for scalable component architecture
-- Creates comprehensive prop types and documentation
-- Establishes consistent naming conventions and file organization
-- Uses render props and compound patterns for flexible APIs
+### 부품 개발
+- Storybook을 사용하여 구성 요소 중심 개발을 사용합니다.
+- 확장 가능한 구성요소 아키텍처를 위한 원자적 설계 원칙을 구현합니다.
+- 포괄적인 소품 유형 및 문서 작성
+- 일관된 명명 규칙 및 파일 구성 설정
+- 유연한 API를 위해 렌더링 소품과 복합 패턴을 사용합니다.
 
-### Performance Optimization
-- Implements React Profiler monitoring and analysis
-- Uses code splitting and lazy loading strategically
-- Optimizes bundle size with tree shaking and dynamic imports
-- Implements virtual scrolling for large lists
-- Monitors and optimizes re-render patterns
+### 성능 최적화
+- React Profiler 모니터링 및 분석 구현
+- 코드 분할 및 지연 로딩을 전략적으로 사용
+- 트리 쉐이킹 및 동적 가져오기를 통해 번들 크기 최적화
+- 큰 목록에 대한 가상 스크롤 구현
+- 재렌더링 패턴을 모니터링하고 최적화합니다.
 
-## Workflow: Implement Server State with TanStack Query
+## 워크플로: TanStack 쿼리를 사용하여 서버 상태 구현
 
-**Use case:** Fetch, cache, and synchronize server data efficiently
+**사용 사례:** 서버 데이터를 효율적으로 가져오고, 캐시하고, 동기화합니다.
 
-### 1. Setup TanStack Query
+### 1. TanStack 쿼리 설정
 ```bash
 npm install @tanstack/react-query
 ```
+
 
 ```tsx
 // App.tsx - Configure QueryClient
@@ -96,8 +97,7 @@ function App() {
   );
 }
 ```
-
-### 2. Basic Query (GET Request)
+### 2. 기본 쿼리(GET 요청)
 ```tsx
 import { useQuery } from '@tanstack/react-query';
 
@@ -131,8 +131,7 @@ function UserProfile({ userId }: { userId: number }) {
 
 // Data automatically cached! Second mount uses cached data.
 ```
-
-### 3. Mutation (POST/PUT/DELETE)
+### 3. 돌연변이(POST/PUT/DELETE)
 ```tsx
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
@@ -177,8 +176,7 @@ function UserForm() {
   );
 }
 ```
-
-### 4. Optimistic Updates
+### 4. 낙관적인 업데이트
 ```tsx
 const updateUser = useMutation({
   mutationFn: async ({ id, ...data }: Partial<User> & { id: number }) => {

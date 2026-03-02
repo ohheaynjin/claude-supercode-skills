@@ -1,38 +1,32 @@
 ---
 name: knowledge-synthesizer
-description: Expert in aggregating, processing, and synthesizing information from multiple sources into coherent insights. Use when building knowledge graphs, ontologies, RAG systems, or extracting insights across documents. Triggers include "knowledge graph", "ontology", "synthesize information", "GraphRAG", "insight extraction", "cross-document analysis".
+description: 여러 소스의 정보를 일관된 통찰력으로 집계, 처리 및 합성하는 전문가입니다. 지식 그래프, 온톨로지, RAG 시스템을 구축하거나 문서 전체에서 통찰력을 추출할 때 사용합니다. 트리거에는 "지식 그래프", "온톨로지", "정보 합성", "GraphRAG", "통찰력 추출", "문서 간 분석"이 포함됩니다.
 ---
+# 지식 합성기
 
-# Knowledge Synthesizer
+## 목적
+여러 소스의 정보를 집계하고 이를 구조화되고 실행 가능한 지식으로 합성하는 데 대한 전문 지식을 제공합니다. RAG 및 AI 시스템에 대한 온톨로지 구축, 지식 그래프 디자인, 통찰력 추출을 전문으로 합니다.
 
-## Purpose
-Provides expertise in aggregating information from multiple sources and synthesizing it into structured, actionable knowledge. Specializes in ontology building, knowledge graph design, and insight extraction for RAG and AI systems.
+## 사용 시기
+- 지식 그래프 또는 온톨로지 구축
+- GraphRAG 또는 하이브리드 검색 시스템 설계
+- 여러 문서의 정보를 종합
+- 텍스트에서 엔터티 및 관계 추출
+- 구조화된 지식 기반 구축
+- 분류 및 분류 시스템 개발
+- 의미론적 검색 아키텍처 구현
+- 서로 다른 데이터 소스를 의미있게 연결
 
-## When to Use
-- Building knowledge graphs or ontologies
-- Designing GraphRAG or hybrid retrieval systems
-- Synthesizing information across multiple documents
-- Extracting entities and relationships from text
-- Creating structured knowledge bases
-- Developing taxonomy and classification systems
-- Implementing semantic search architectures
-- Connecting disparate data sources meaningfully
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 지식 그래프 또는 온톨로지 구축
+- 그래프 구성 요소를 사용한 RAG 시스템 설계
+- 다양한 소스로부터 통찰력을 종합
+- 비정형 텍스트에서 구조화된 지식 추출
+- 분류 또는 분류 체계 만들기
 
-## Quick Start
-**Invoke this skill when:**
-- Building knowledge graphs or ontologies
-- Designing RAG systems with graph components
-- Synthesizing insights from multiple sources
-- Extracting structured knowledge from unstructured text
-- Creating taxonomies or classification schemes
-
-**Do NOT invoke when:**
-- Vector database setup without graph needs → use `/context-manager`
-- General NLP tasks (NER, classification) → use `/nlp-engineer`
-- Database schema design → use `/database-administrator`
-- Document writing → use `/technical-writer`
-
-## Decision Framework
+**다음과 같은 경우에는 호출하지 마세요.**
+- 그래프가 필요 없는 벡터 데이터베이스 설정 → 사용`/context-manager`- 일반 NLP 업무(NER, 분류) → 활용`/nlp-engineer`- 데이터베이스 스키마 설계 → 활용`/database-administrator`- 문서작성 → 활용`/technical-writer`## 의사결정 프레임워크
 ```
 Knowledge Structure Needed?
 ├── Hierarchical (taxonomy)
@@ -44,46 +38,45 @@ Knowledge Structure Needed?
 └── Flat (simple retrieval)
     └── Standard vector store sufficient
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. 온톨로지 디자인
+1. 도메인 범위 및 경계 식별
+2. 핵심 엔터티 유형(클래스) 정의
+3. 엔터티 간 관계 매핑
+4. 속성 및 제약 조건 추가
+5. 도메인 전문가와 검증
+6. 예시가 포함된 문서
 
-### 1. Ontology Design
-1. Identify domain scope and boundaries
-2. Define core entity types (classes)
-3. Map relationships between entities
-4. Add properties and constraints
-5. Validate with domain experts
-6. Document with examples
+### 2. 지식 그래프 구축
+1. 원본 문서에서 엔터티 추출
+2. 엔터티 간의 관계 식별
+3. 엔터티 정규화 및 중복 제거
+4. 그래프 구조 구축(노드, 에지)
+5. 메타데이터 및 출처 추가
+6. 쿼리 인터페이스 생성
 
-### 2. Knowledge Graph Construction
-1. Extract entities from source documents
-2. Identify relationships between entities
-3. Normalize and deduplicate entities
-4. Build graph structure (nodes, edges)
-5. Add metadata and provenance
-6. Create query interfaces
+### 3. 통찰력 종합
+1. 출처 수집 및 출처 확립
+2. 주요 주장 및 사실 추출
+3. 모순과 합의를 식별
+4. 일관된 내러티브로 종합
+5. 추적성을 위해 출처를 인용하세요.
+6. 신뢰 수준 강조
 
-### 3. Insight Synthesis
-1. Gather sources and establish provenance
-2. Extract key claims and facts
-3. Identify contradictions and agreements
-4. Synthesize into coherent narrative
-5. Cite sources for traceability
-6. Highlight confidence levels
+## 모범 사례
+- 추출된 모든 지식의 출처를 유지합니다.
+- 해당되는 경우 확립된 온톨로지 표준(OWL, SKOS)을 사용합니다.
+- 진화를 위한 설계 - 온톨로지는 시간이 지남에 따라 변합니다.
+- 추출된 관계를 소스 컨텍스트와 검증
+- 유용성과 세분성 사이의 균형 유지
+- 추출된 사실에 대한 신뢰도 점수 포함
 
-## Best Practices
-- Maintain provenance for all extracted knowledge
-- Use established ontology standards (OWL, SKOS) when applicable
-- Design for evolution—ontologies change over time
-- Validate extracted relationships with source context
-- Balance granularity with usability
-- Include confidence scores for extracted facts
-
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| No provenance tracking | Cannot verify claims | Track source for every fact |
-| Over-complex ontology | Hard to maintain and query | Start simple, evolve as needed |
-| Ignoring contradictions | Inconsistent knowledge base | Flag and resolve conflicts |
-| Static schema | Breaks with new domains | Design for extensibility |
-| Blind extraction trust | Hallucinated relationships | Validate with confidence thresholds |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 출처 추적 없음 | 주장을 확인할 수 없습니다 | 모든 사실의 출처 추적 |
+| 지나치게 복잡한 온톨로지 | 유지 관리 및 쿼리가 어려움 | 간단하게 시작하고 필요에 따라 발전 |
+| 모순을 무시 | 일관되지 않은 지식 기반 | 충돌 플래그 지정 및 해결 |
+| 정적 스키마 | 새로운 도메인 중단 | 확장성을 고려한 설계 |
+| 블라인드 추출 신뢰 | 환각적인 관계 | 신뢰도 임계값으로 검증 |

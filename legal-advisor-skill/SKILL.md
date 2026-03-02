@@ -1,38 +1,36 @@
 ---
 name: legal-advisor
-description: Provides legal guidance for contracts, compliance, intellectual property, data privacy, and regulatory matters. Use when reviewing contracts, ensuring compliance, protecting IP, or navigating technology law. Triggers include "contract review", "terms of service", "GDPR", "privacy policy", "intellectual property", "licensing", "compliance".
+description: 계약, 규정 준수, 지적 재산권, 데이터 개인 정보 보호 및 규제 문제에 대한 법적 지침을 제공합니다. 계약 검토, 규정 준수 보장, IP 보호 또는 기술 법률 탐색 시 사용합니다. 트리거에는 "계약 검토", "서비스 약관", "GDPR", "개인 정보 보호 정책", "지적 재산권", "라이선스", "규정 준수"가 포함됩니다.
 ---
+# 법률고문
 
-# Legal Advisor
+## 목적
+기술법, 계약, 규정 준수 및 지적 재산권 문제에 대한 전문적인 법적 지침을 제공합니다. 기술 비즈니스를 위한 데이터 개인 정보 보호 규정, 소프트웨어 라이센스, 서비스 약관 및 위험 완화를 전문으로 합니다.
 
-## Purpose
-Provides expert legal guidance on technology law, contracts, compliance, and intellectual property matters. Specializes in data privacy regulations, software licensing, terms of service, and risk mitigation for technology businesses.
+## 사용 시기
+- 기술 계약 검토 또는 초안 작성
+- GDPR, CCPA 또는 데이터 개인 정보 보호 규정 준수 보장
+- 소프트웨어 라이선스 영향 평가
+- 서비스 약관 초안 작성 또는 검토
+- 지적재산권(특허, 상표, 저작권) 보호
+- 규제 준수 요구 사항 평가
+- 오픈소스 라이선스 의무 이해
+- 기술 역할에 대한 고용 계약 탐색
 
-## When to Use
-- Reviewing or drafting technology contracts
-- Ensuring GDPR, CCPA, or data privacy compliance
-- Evaluating software licensing implications
-- Drafting or reviewing Terms of Service
-- Protecting intellectual property (patents, trademarks, copyright)
-- Assessing regulatory compliance requirements
-- Understanding open-source licensing obligations
-- Navigating employment agreements for tech roles
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 계약 또는 라이선스 계약 검토
+- 데이터 개인 정보 보호 규정 준수 보장
+- 지적재산권 보호
+- 서비스 약관 또는 개인정보 보호정책 초안 작성
+- 기술 결정의 법적 위험 평가
 
-## Quick Start
-**Invoke this skill when:**
-- Reviewing contracts or licensing agreements
-- Ensuring data privacy compliance
-- Protecting intellectual property
-- Drafting Terms of Service or Privacy Policies
-- Assessing legal risks in technology decisions
-
-**Do NOT invoke when:**
-- Security implementation details → use `/security-engineer`
-- Compliance automation tooling → use `/compliance-auditor`
-- Financial regulatory systems → use `/fintech-engineer`
-- HR policy writing → use `/internal-comms`
-
-## Decision Framework
+**다음과 같은 경우에는 호출하지 마세요.**
+- 보안 구현 내용 → 활용`/security-engineer`
+- 컴플라이언스 자동화 툴링 → 활용`/compliance-auditor`
+- 금융규제시스템 → 활용`/fintech-engineer`
+- 인사정책 작성 → 활용`/internal-comms`
+## 의사결정 프레임워크
 ```
 Legal Matter Type?
 ├── Contract Review
@@ -48,45 +46,45 @@ Legal Matter Type?
     └── Patent, trademark, copyright, or trade secret?
 ```
 
-## Core Workflows
+## 핵심 워크플로
 
-### 1. Contract Review
-1. Identify parties and contract type
-2. Review scope of work and deliverables
-3. Check liability and indemnification clauses
-4. Examine IP ownership and assignment
-5. Review termination and renewal terms
-6. Flag concerning clauses with recommendations
+### 1. 계약 검토
+1. 당사자 및 계약 유형 식별
+2. 업무 범위 및 결과물 검토
+3. 책임 및 면책조항을 확인하세요.
+4. IP 소유권 및 할당 조사
+5. 종료 및 갱신 조건 검토
+6. 권고사항이 포함된 조항에 플래그 지정
 
-### 2. Privacy Policy Compliance
-1. Inventory data collection practices
-2. Identify applicable regulations (GDPR, CCPA)
-3. Document data processing purposes
-4. Define data retention policies
-5. Establish user rights procedures
-6. Draft compliant privacy policy
+### 2. 개인정보취급방침 준수
+1. 재고 데이터 수집 관행
+2. 해당 규정(GDPR, CCPA) 파악
+3. 문서정보 처리목적
+4. 데이터 보존 정책 정의
+5. 이용자 권리 절차 확립
+6. 초안을 준수하는 개인정보 보호정책
 
-### 3. Open-Source License Audit
-1. Inventory all open-source dependencies
-2. Identify license type for each (MIT, GPL, Apache)
-3. Check license compatibility with your project
-4. Document attribution requirements
-5. Flag copyleft obligations
-6. Create compliance documentation
+### 3. 오픈 소스 라이선스 감사
+1. 모든 오픈 소스 종속성 목록 작성
+2. 각 라이센스 유형(MIT, GPL, Apache)을 식별합니다.
+3. 프로젝트와의 라이선스 호환성 확인
+4. 문서 귀속 요건
+5. 카피레프트 의무 표시
+6. 규정 준수 문서 작성
 
-## Best Practices
-- Always get legal review for contracts over significant value
-- Document all data processing activities for compliance
-- Maintain clear IP assignment in employment contracts
-- Use license scanning tools for open-source compliance
-- Keep Terms of Service and Privacy Policy updated
-- Consider jurisdiction in all legal matters
+## 모범 사례
+- 상당한 가치가 있는 계약에 대해서는 항상 법적 검토를 받습니다.
+- 규정 준수를 위해 모든 데이터 처리 활동을 문서화합니다.
+- 고용 계약에서 명확한 IP 할당을 유지합니다.
+- 오픈 소스 규정 준수를 위해 라이선스 검색 도구 사용
+- 서비스 약관 및 개인정보 보호정책을 최신 상태로 유지하세요.
+- 모든 법적 문제에 있어서 관할권을 고려하십시오.
 
-## Anti-Patterns
-| Anti-Pattern | Problem | Correct Approach |
-|--------------|---------|------------------|
-| Copying ToS from others | May not fit your business | Draft specific to your practices |
-| Ignoring GDPR for small projects | Fines apply regardless of size | Comply from the start |
-| GPL code in proprietary | License violation | Check compatibility before use |
-| Verbal agreements | Unenforceable | Document in writing |
-| No IP assignment | Unclear ownership | Clear IP clauses in contracts |
+## 안티 패턴
+| 안티 패턴 | 문제 | 올바른 접근 |
+|---------------|---------|------|
+| 다른 사람의 ToS 복사 | 귀하의 비즈니스에 적합하지 않을 수 있습니다 | 귀하의 업무에 맞는 초안 |
+| 소규모 프로젝트의 GDPR 무시 | 벌금은 규모에 관계없이 적용됩니다 | 처음부터 준수 |
+| 독점 GPL 코드 | 라이센스 위반 | 사용 전 호환성 확인 |
+| 구두 계약 | 시행불가 | 서면 문서 |
+| IP 할당 없음 | 소유권이 불분명함 | 계약의 명확한 IP 조항 |

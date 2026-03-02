@@ -2,7 +2,6 @@
 name: payment-integration
 description: Expert in integrating payment gateways (Stripe, PayPal, Adyen) and designing PCI-compliant billing architectures. Use when implementing checkout flows, subscriptions, or payment processing. Triggers include "Stripe", "PayPal", "payment gateway", "checkout", "subscription billing", "PCI compliance", "payment processing".
 ---
-
 # Payment Integration
 
 ## Purpose
@@ -46,6 +45,7 @@ Payment Use Case?
 └── Global Payments
     └── Adyen / Multi-gateway strategy
 ```
+
 
 ## Core Workflows
 

@@ -75,6 +75,7 @@ claude-skills-conversion/
         └── best_practices.md
 ```
 
+
 ## Scripts by Skill
 
 ### Incident Responder Skill
@@ -89,6 +90,7 @@ python scripts/incident_triage.py --incident INC-001 --description "Service outa
   --impact service_outage --urgency immediate --affected-users 500 \
   --service api-service --output triage_report.json
 ```
+
 
 **Key Features**:
 - Automated severity classification (CRITICAL, HIGH, MEDIUM, LOW)
@@ -112,6 +114,7 @@ python scripts/incident_analysis.py --incident INC-001 \
   --affected-users 500 --downtime 90 \
   --service api-service --output analysis_report.json
 ```
+
 
 **Key Features**:
 - Log correlation across multiple services
@@ -142,6 +145,7 @@ python scripts/incident_response.py --incident INC-001 --severity critical \
   --action-type status --status investigating --details "Root cause identified"
 ```
 
+
 **Key Features**:
 - Predefined containment and mitigation actions
 - Automated team notification
@@ -169,6 +173,7 @@ python scripts/runbook_generator.py --incident-type data_breach \
   --output data_breach_runbook.json
 ```
 
+
 **Key Features**:
 - 5 incident types: data_breach, service_outage, security_violation, database_failure, network_incident
 - Complete response procedures for each phase
@@ -191,6 +196,7 @@ python scripts/maintenance_automation.py --task system_update \
   --duration 120 --priority medium --backup-type full \
   --affected-users 0 --output maintenance_report.json
 ```
+
 
 **Key Features**:
 - Maintenance window scheduling
@@ -217,6 +223,7 @@ python scripts/chaos_experiment.py --experiment database-failure-test \
   --output chaos_experiment_report.json
 ```
 
+
 **Key Features**:
 - 8 failure types: pod_kill, network_latency, packet_loss, network_partition, cpu_stress, memory_stress, disk_failure, dns_failure
 - Hypothesis-driven experiment design
@@ -238,6 +245,7 @@ python scripts/chaos_experiment.py --experiment database-failure-test \
 python scripts/resilience_assessment.py --target api-service \
   --component database --output resilience_report.json
 ```
+
 
 **Key Features**:
 - Resilience pattern analysis (circuit breaker, retry, bulkhead, timeout, fallback)
@@ -276,6 +284,7 @@ python scripts/error_detection_automation.py --correlate \
 python scripts/error_detection_automation.py --detect-anomalies \
   --service api-service --output anomaly_report.json
 ```
+
 
 **Key Features**:
 - Log scanning with error pattern matching (critical, high, medium severity)
@@ -340,6 +349,7 @@ python scripts/incident_response.py \
   --details "Root cause fixed and service restored"
 ```
 
+
 ### Chaos Engineering Workflow
 
 Complete chaos engineering workflow:
@@ -373,6 +383,7 @@ python scripts/resilience_assessment.py \
 # Measure improvement in resilience score
 ```
 
+
 ### Error Detection Workflow
 
 Complete error detection workflow:
@@ -398,6 +409,7 @@ python scripts/error_detection_automation.py --detect-anomalies \
 # Check correlation.json for cascades
 # Check anomalies.json for unexpected behavior
 ```
+
 
 ## Best Practices
 
@@ -503,6 +515,7 @@ if __name__ == '__main__':
     main()
 ```
 
+
 ### Updating Existing Scripts
 
 1. **Review Current Implementation**: Understand existing logic and patterns
@@ -563,6 +576,7 @@ if __name__ == '__main__':
 python scripts/script_name.py --help
 ```
 
+
 #### Documentation
 
 - SKILL.md: Overview and capabilities for each skill
@@ -578,6 +592,7 @@ export DEBUG=true
 # Or modify script
 logging.basicConfig(level=logging.DEBUG)
 ```
+
 
 ## Contributing
 

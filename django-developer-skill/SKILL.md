@@ -2,7 +2,6 @@
 name: django-developer
 description: Expert Django developer specializing in Async Views, Django Ninja (FastAPI-like), and HTMX patterns for modern full-stack apps.
 ---
-
 # Django Developer
 
 ## Purpose
@@ -41,6 +40,7 @@ What is the project goal?
    └─ Complex/Bi-directional? → **Django Channels (WebSockets)**
 ```
 
+
 ### Async Strategy (Django 4.2+)
 
 | Feature | Sync (WSGI) | Async (ASGI) | Recommendation |
@@ -71,7 +71,8 @@ What is the project goal?
 **Steps:**
 
 1.  **View (Python)**
-    ```python
+
+```python
     def contact_list(request):
         contacts = Contact.objects.all()
         # If HTMX request, return only the rows (partial)
@@ -83,8 +84,10 @@ What is the project goal?
         return render(request, template, {"contacts": contacts})
     ```
 
+
 2.  **Template (`contact_list.html`)**
-    ```html
+
+```html
     <!-- Search triggers server request on keyup -->
     <input type="text" 
            name="search" 
@@ -99,6 +102,7 @@ What is the project goal?
     </table>
     ```
 
+
 ---
 ---
 
@@ -109,7 +113,8 @@ What is the project goal?
 **Steps:**
 
 1.  **View Definition**
-    ```python
+
+```python
     # views.py
     from asgiref.sync import sync_to_async
 
@@ -125,6 +130,7 @@ What is the project goal?
 
         return JsonResponse({"users": user_count, "orders": order_count})
     ```
+
 
 2.  **Middleware Compatibility**
     -   Ensure all middlewares are async-capable (`async_capable = True`).
@@ -154,6 +160,7 @@ class OrderService:
             return order
 ```
 
+
 ### Pattern 2: Custom Manager (Query Logic)
 
 **Use case:** Reusable filters.
@@ -168,6 +175,7 @@ class Article(models.Model):
     objects = models.Manager() # Default
     published = PublishedManager() # Custom
 ```
+
 
 ### Pattern 3: Async Chat (Channels)
 
@@ -191,6 +199,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             {"type": "chat_message", "message": text_data}
         )
 ```
+
 
 ---
 ---

@@ -1,331 +1,327 @@
-# Security Frameworks and Standards
+# 보안 프레임워크 및 표준
 
-## Overview
-Comprehensive reference for major security frameworks, standards, and methodologies used in security auditing and compliance.
+## 개요
+보안 감사 및 규정 준수에 사용되는 주요 보안 프레임워크, 표준 및 방법론에 대한 포괄적인 참조 자료입니다.
 
-## OWASP (Open Web Application Security Project)
+## OWASP(개방형 웹 애플리케이션 보안 프로젝트)
 
-### OWASP Testing Guide
-- **Purpose:** Comprehensive web application security testing methodology
-- **Scope:** 4 categories, 13 controls
-- **Key Areas:**
-  - Information Gathering
-  - Configuration and Deployment Management
-  - Identity Management Testing
-  - Input Validation Testing
-- **Link:** https://owasp.org/www-project-web-security-testing-guide/
+### OWASP 테스트 가이드
+- **목적:** 종합적인 웹 애플리케이션 보안 테스트 방법론
+- **범위:** 4개 카테고리, 13개 컨트롤
+- **주요 분야:**
+  - 정보수집
+  - 구성 및 배포 관리
+  - 신원 관리 테스트
+  - 입력 검증 테스트
+- **링크:** https://owasp.org/www-project-web-security-testing-guide/
 
-### OWASP ASVS (Application Security Verification Standard)
-- **Purpose:** Security requirements and controls for applications
-- **Scope:** 14 requirements areas
-- **Verification Levels:**
-  - Level 1: Basic security controls
-  - Level 2: Standard security controls
-  - Level 3: Advanced security controls
-- **Link:** https://owasp.org/www-project-application-security-verification-standard/
+### OWASP ASVS(애플리케이션 보안 검증 표준)
+- **목적:** 애플리케이션에 대한 보안 요구 사항 및 제어
+- **범위:** 14개 요구사항 영역
+- **검증 수준:**
+  - 레벨 1: 기본 보안 통제
+  - 레벨 2: 표준 보안 통제
+  - 레벨 3: 고급 보안 제어
+- **링크:** https://owasp.org/www-project-application-security-verification-standard/
 
-### OWASP MASVS (Mobile Application Security Verification Standard)
-- **Purpose:** Mobile app security requirements
-- **Scope:** 8 areas including data storage, cryptography, authentication
-- **Link:** https://owasp.org/www-project-mobile-app-security/
+### OWASP MASVS(모바일 애플리케이션 보안 검증 표준)
+- **목적:** 모바일 앱 보안 요구 사항
+- **범위:** 데이터 저장, 암호화, 인증 등 8개 영역
+- **링크:** https://owasp.org/www-project-mobile-app-security/
 
-## NIST (National Institute of Standards and Technology)
+## NIST(국립표준기술연구소)
 
-### NIST SP 800-53 - Security and Privacy Controls
-- **Purpose:** Security and privacy controls for federal information systems
-- **Families:** 18 control families including:
-  - Access Control (AC)
-  - System and Communications Protection (SC)
-  - Security Assessment and Authorization (CA)
-  - Incident Response (IR)
-- **Control Baselines:** Low, Moderate, High
-- **Link:** https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final
+### NIST SP 800-53 - 보안 및 개인 정보 보호 제어
+- **목적:** 연방 정보 시스템에 대한 보안 및 개인 정보 보호 제어
+- **패밀리:** 다음을 포함한 18개의 컨트롤 패밀리:
+  - 접근 제어(AC)
+  - 시스템 및 통신 보호(SC)
+  - 보안 평가 및 인증(CA)
+  - 사고대응(IR)
+- **통제 기준:** 낮음, 보통, 높음
+- **링크:** https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final
 
-### NIST SP 800-115 - Technical Guide to Information Security Testing
-- **Purpose:** Technical guidance for security testing and assessment
-- **Key Techniques:**
-  - Discovery
-  - Vulnerability scanning
-  - Penetration testing
-  - Red teaming
-- **Link:** https://csrc.nist.gov/publications/detail/sp/800-115/final
+### NIST SP 800-115 - 정보 보안 테스트 기술 가이드
+- **목적:** 보안 테스트 및 평가를 위한 기술 지침
+- **주요 기술:**
+  - 발견
+  - 취약점 스캐닝
+  - 침투 테스트
+  - 레드팀
+- **링크:** https://csrc.nist.gov/publications/detail/sp/800-115/final
 
-### NIST Cybersecurity Framework (CSF)
-- **Functions:**
-  1. Identify
-  2. Protect
-  3. Detect
-  4. Respond
-  5. Recover
-- **Categories:** 23 categories across functions
-- **Tiers:** Partial, Risk Informed, Repeatable, Adaptive
-- **Link:** https://www.nist.gov/cyberframework
+### NIST 사이버보안 프레임워크(CSF)
+- **기능:**
+  1. 식별
+  2. 보호
+  3. 감지
+  4. 응답
+  5. 복구
+- **카테고리:** 기능 전반에 걸쳐 23개 카테고리
+- **계층:** 부분적, 위험 정보 제공, 반복 가능, 적응형
+- **링크:** https://www.nist.gov/cyberframework
 
-## CIS (Center for Internet Security)
+## CIS(인터넷 보안 센터)
 
-### CIS Controls
-- **Purpose:** Prioritized set of actions for cybersecurity defense
-- **Version:** CIS Controls v8
-- **Implementation Groups:**
-  - IG1: Basic cyber hygiene
-  - IG2: Essential cyber hygiene
-  - IG3: Advanced cyber hygiene
-- **Key Controls:**
-  - Inventory and Control of Enterprise Assets
-  - Inventory and Control of Software Assets
-  - Data Protection
-  - Secure Configuration of Enterprise Assets
-  - Account Management
-- **Link:** https://www.cisecurity.org/controls/cis-controls-list
+### CIS 제어
+- **목적:** 사이버 보안 방어를 위한 우선순위 조치 세트
+- **버전:** CIS Controls v8
+- **구현 그룹:**
+  - IG1: 기본 사이버 위생
+  - IG2: 필수 사이버 위생
+  - IG3: 고급 사이버 위생
+- **주요 컨트롤:**
+  - 기업 자산의 재고 및 통제
+  - 소프트웨어 자산의 재고 및 통제
+  - 데이터 보호
+  - 기업 자산의 보안 구성
+  - 계정 관리
+- **링크:** https://www.cisecurity.org/controls/cis-controls-list
 
-### CIS Benchmarks
-- **Purpose:** Configuration guidelines for secure system setup
-- **Platforms:** 100+ platforms including:
-  - Windows, Linux, macOS
-  - Cloud providers (AWS, Azure, GCP)
-  - Databases
-  - Network devices
-- **Download:** https://www.cisecurity.org/cis-benchmarks
+### CIS 벤치마크
+- **목적:** 보안 시스템 설정을 위한 구성 지침
+- **플랫폼:** 다음을 포함한 100개 이상의 플랫폼:
+  - 윈도우, 리눅스, 맥OS
+  - 클라우드 제공업체(AWS, Azure, GCP)
+  - 데이터베이스
+  - 네트워크 장치
+- **다운로드:** https://www.cisecurity.org/cis-benchmarks
 
-## ISO (International Organization for Standardization)
+## ISO(국제표준화기구)
 
-### ISO 27001 - Information Security Management
-- **Purpose:** Requirements for establishing, implementing, maintaining ISMS
-- **Annex A:** 114 controls in 14 categories
-- **Certification:** Third-party audit available
-- **Link:** https://www.iso.org/standard/27001
+### ISO 27001 - 정보 보안 관리
+- **목적:** ISMS 구축, 구현, 유지를 위한 요구사항
+- **부록 A:** 14개 카테고리의 114개 컨트롤
+- **인증:** 제3자 감사 가능
+- **링크:** https://www.iso.org/standard/27001
 
-### ISO 27002 - Information Security Controls
-- **Purpose:** Code of practice for information security controls
-- **Structure:** 93 controls in 4 themes:
-  - Organizational
-  - People
-  - Physical
-  - Technological
-- **Link:** https://www.iso.org/standard/82875
+### ISO 27002 - 정보 보안 통제
+- **목적:** 정보보안통제 실천강령
+- **구조:** 4가지 테마의 93개 컨트롤:
+  - 조직적
+  - 사람
+  - 물리적
+  - 기술적
+- **링크:** https://www.iso.org/standard/82875### ISO 22301 - 비즈니스 연속성
+- **목적:** 비즈니스 연속성 관리 요구사항
+- **핵심 요소:**
+  - 위험성 평가
+  - 비즈니스 영향 분석
+  - 사업 연속성 전략
+  - 테스트 및 운동
+- **링크:** https://www.iso.org/standard/75106
 
-### ISO 22301 - Business Continuity
-- **Purpose:** Requirements for business continuity management
-- **Key Elements:**
-  - Risk assessment
-  - Business impact analysis
-  - Business continuity strategy
-  - Testing and exercising
-- **Link:** https://www.iso.org/standard/75106
-
-## PCI DSS (Payment Card Industry Data Security Standard)
+## PCI DSS(지불 카드 산업 데이터 보안 표준)
 
 ### PCI DSS v4.0
-- **Purpose:** Security standards for organizations handling cardholder data
-- **12 Requirements:**
-  1. Install and maintain network security controls
-  2. Apply secure configurations to all system components
-  3. Protect stored account data
-  4. Protect cardholder data in transit
-  5. Protect all systems from malware
-  6. Develop and maintain secure systems and software
-  7. Restrict access to system components and cardholder data
-  8. Identify users and authenticate access
-  9. Restrict physical access to cardholder data
-  10. Log and monitor access to system components
-  11. Test security systems and processes regularly
-  12. Support information security with organizational policies
-- **Validation:** Self-Assessment Questionnaire (SAQ) or ROC
-- **Link:** https://www.pcisecuritystandards.org/
+- **목적:** 카드 소지자 데이터를 처리하는 조직을 위한 보안 표준
+- **12가지 요구사항:**
+  1. 네트워크 보안 제어 장치를 설치하고 유지 관리합니다.
+  2. 모든 시스템 구성 요소에 보안 구성을 적용합니다.
+  3. 저장된 계정 데이터 보호
+  4. 전송 중인 카드 소지자 데이터 보호
+  5. 악성코드로부터 모든 시스템을 보호하세요
+  6. 보안 시스템 및 소프트웨어 개발 및 유지
+  7. 시스템 구성요소 및 카드 소지자 데이터에 대한 접근을 제한합니다.
+  8. 사용자 식별 및 접근 인증
+  9. 카드 소지자 데이터에 대한 물리적 접근을 제한하세요.
+  10. 시스템 구성 요소에 대한 액세스 기록 및 모니터링
+  11. 보안 시스템 및 프로세스를 정기적으로 테스트합니다.
+  12. 조직 정책을 통한 정보보안 지원
+- **검증:** 자체 평가 설문지(SAQ) 또는 ROC
+- **링크:** https://www.pcisecuritystandards.org/
 
-## HIPAA (Health Insurance Portability and Accountability Act)
+## HIPAA(건강 보험 이동성 및 책임법)
 
-### HIPAA Security Rule
-- **Purpose:** Protect electronic protected health information (ePHI)
-- **Administrative Safeguards:**
-  - Security management process
-  - Assigned security responsibility
-  - Workforce security
-  - Information access management
-  - Security awareness and training
-  - Security incident procedures
-  - Contingency plan
-  - Evaluation
-  - Business associate contracts
-- **Physical Safeguards:**
-  - Facility access controls
-  - Workstation use
-  - Workstation security
-  - Device and media controls
-- **Technical Safeguards:**
-  - Access control
-  - Audit controls
-  - Integrity controls
-  - Transmission security
-- **Link:** https://www.hhs.gov/hipaa/
+### HIPAA 보안 규칙
+- **목적:** 전자 보호 건강 정보(ePHI) 보호
+- **관리적 보호 조치:**
+  - 보안관리 프로세스
+  - 할당된 보안 책임
+  - 인력 보안
+  - 정보 접근 관리
+  - 보안 인식 및 교육
+  - 보안사고 처리절차
+  - 비상 계획
+  - 평가
+  - 사업 제휴 계약
+- **물리적 보호 조치:**
+  - 시설 출입 통제
+  - 워크스테이션 사용
+  - 워크스테이션 보안
+  - 장치 및 미디어 제어
+- **기술적 보호 조치:**
+  - 접근 통제
+  - 감사 통제
+  - 무결성 제어
+  - 전송 보안
+- **링크:** https://www.hhs.gov/hipaa/
 
-## GDPR (General Data Protection Regulation)
+## GDPR(일반 데이터 보호 규정)
 
-### Key Requirements
-- **Purpose:** Protect personal data of EU citizens
-- **Principles:**
-  1. Lawfulness, fairness, and transparency
-  2. Purpose limitation
-  3. Data minimization
-  4. Accuracy
-  5. Storage limitation
-  6. Integrity and confidentiality
-  7. Accountability
-- **Rights:**
-  - Right to be informed
-  - Right of access
-  - Right to rectification
-  - Right to erasure
-  - Right to restrict processing
-  - Right to data portability
-  - Right to object
-  - Rights in relation to automated decision making
-- **Link:** https://gdpr.eu/
+### 주요 요구 사항
+- **목적:** EU 시민의 개인 데이터를 보호합니다.
+- **원칙:**
+  1. 합법성, 공정성, 투명성
+  2. 목적 제한
+  3. 데이터 최소화
+  4. 정확성
+  5. 저장 용량 제한
+  6. 무결성 및 기밀성
+  7. 책임
+- **권리:**
+  - 정보를 받을 권리
+  - 접근권한
+  - 정정할 권리
+  - 삭제할 권리
+  - 처리를 제한할 권리
+  - 데이터 이동성에 대한 권리
+  - 반대할 권리
+  - 자동화된 의사결정에 관한 권리
+- **링크:** https://gdpr.eu/
 
-## SOC 2 (System and Organization Controls)
+## SOC 2(시스템 및 조직 제어)
 
-### SOC 2 Type 1 and Type 2
-- **Purpose:** Security, availability, processing integrity, confidentiality, privacy
-- **Trust Services Criteria (TSC):**
-  1. Security
-  2. Availability
-  3. Processing Integrity
-  4. Confidentiality
-  5. Privacy
-- **Common Criteria:**
-  - Control Environment
-  - Communication and Information
-  - Risk Assessment
-  - Monitoring Activities
-  - Control Activities
-- **Link:** https://www.aicpa.org/soc4so
+### SOC 2 유형 1 및 유형 2
+- **목적:** 보안, 가용성, 처리 무결성, 기밀성, 개인 정보 보호
+- **신뢰 서비스 기준(TSC):**
+  1. 보안
+  2. 가용성
+  3. 처리 무결성
+  4. 기밀 유지
+  5. 개인정보 보호
+- **공통 기준:**
+  - 제어 환경
+  - 커뮤니케이션 및 정보
+  - 위험성 평가
+  - 활동 모니터링
+  - 통제활동
+- **링크:** https://www.aicpa.org/soc4so
 
-## Security Assessment Methodologies
+## 보안 평가 방법론
 
-### PTES (Penetration Testing Execution Standard)
-- **Phases:**
-  1. Pre-engagement Interactions
-  2. Intelligence Gathering
-  3. Threat Modeling
-  4. Vulnerability Analysis
-  5. Exploitation
-  6. Post-Exploitation
-  7. Reporting
-- **Link:** http://www.pentest-standard.org/
+### PTES(침투 테스트 실행 표준)
+- **단계:**
+  1. 참여 전 상호작용
+  2. 정보수집
+  3. 위협 모델링
+  4. 취약점 분석
+  5. 착취
+  6. 착취 후
+  7. 보고
+- **링크:** http://www.pentest-standard.org/
 
-### OSSTMM (Open Source Security Testing Methodology Manual)
-- **Security Test Modules:**
-  1. Human Security
-  2. Physical Security
-  3. Wireless Security
-  4. Telecommunications Security
-  5. Data Networks Security
-  6. Data Communications Security
-  7. Applications Security
-- **Link:** https://www.isecom.org/
+### OSSTMM(오픈소스 보안 테스트 방법론 매뉴얼)
+- **보안 테스트 모듈:**
+  1. 인간안보
+  2. 물리적 보안
+  3. 무선 보안
+  4. 통신보안
+  5. 데이터 네트워크 보안
+  6. 데이터 통신 보안
+  7. 애플리케이션 보안
+- **링크:** https://www.isecom.org/
 
-### STRIDE Threat Modeling
-- **Categories:**
-  - **S**poofing
-  - **T**ampering
-  - **R**epudiation
-  - **I**nformation Disclosure
-  - **D**enial of Service
-  - **E**levation of Privilege
-- **Link:** https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats
+### STRIDE 위협 모델링
+- **카테고리:**
+  - **시**푸핑
+  - **티**엄청나게
+  - **R** 부인
+  - **I**정보 공개
+  - **서비스 거부**
+  - **권한 승격**
+- **링크:** https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats
 
-## Vulnerability Scoring
+## 취약점 점수### CVSS(공통 취약점 점수 시스템)
+- **버전:** CVSS v3.1
+- **측정항목:**
+  - 공격 벡터(AV)
+  - 공격 복잡도(AC)
+  - 필수 권한(PR)
+  - 사용자 상호작용(UI)
+  - 범위(S)
+  - 기밀성(C)
+  - 성실성(I)
+  - 가용성(A)
+- **심각도:**
+  - 0.0: 없음
+  - 0.1-3.9: 낮음
+  - 4.0-6.9: 중간
+  - 7.0-8.9: 높음
+  - 9.0-10.0: 심각
+- **링크:** https://www.first.org/cvss/
 
-### CVSS (Common Vulnerability Scoring System)
-- **Version:** CVSS v3.1
-- **Metrics:**
-  - Attack Vector (AV)
-  - Attack Complexity (AC)
-  - Privileges Required (PR)
-  - User Interaction (UI)
-  - Scope (S)
-  - Confidentiality (C)
-  - Integrity (I)
-  - Availability (A)
-- **Severity:**
-  - 0.0: None
-  - 0.1-3.9: Low
-  - 4.0-6.9: Medium
-  - 7.0-8.9: High
-  - 9.0-10.0: Critical
-- **Link:** https://www.first.org/cvss/
+## 클라우드 보안 표준
 
-## Cloud Security Standards
+### CSA STAR(클라우드 보안 연합 보안 신뢰 보증 및 위험)
+- **목적:** 클라우드 보안 보증 및 인증
+- **구성요소:**
+  - CCM(클라우드 제어 매트릭스)
+  - CAIQ(합의 평가 이니셔티브 설문지)
+- **링크:** https://cloudsecurityalliance.org/star/
 
-### CSA STAR (Cloud Security Alliance Security Trust Assurance and Risk)
-- **Purpose:** Cloud security assurance and certification
-- **Components:**
-  - CCM (Cloud Controls Matrix)
-  - CAIQ (Consensus Assessments Initiative Questionnaire)
-- **Link:** https://cloudsecurityalliance.org/star/
+### ISO 27017 - 클라우드 보안
+- **목적:** 클라우드별 정보보안 통제
+- **컨트롤:** 37개의 클라우드별 컨트롤
+- **링크:** https://www.iso.org/standard/43757
 
-### ISO 27017 - Cloud Security
-- **Purpose:** Cloud-specific information security controls
-- **Controls:** 37 cloud-specific controls
-- **Link:** https://www.iso.org/standard/43757
+## DevSecOps 표준
 
-## DevSecOps Standards
+### SAMM(소프트웨어 보증 성숙도 모델)
+- **업무 기능:**
+  1. 거버넌스
+  2. 디자인
+  3. 구현
+  4. 검증
+  5. 운영
+- **보안 관행:** 직무 전반에 걸친 12가지 관행
+- **성숙도 수준:** 0-3
+- **링크:** https://owaspsamm.org/
 
-### SAMM (Software Assurance Maturity Model)
-- **Business Functions:**
-  1. Governance
-  2. Design
-  3. Implementation
-  4. Verification
-  5. Operations
-- **Security Practices:** 12 practices across functions
-- **Maturity Levels:** 0-3
-- **Link:** https://owaspsamm.org/
+### BSIMM(성숙 모델의 보안 구축)
+- **도메인:** 다음을 포함한 12개 도메인:
+  - 거버넌스
+  - 지능
+  - SSDL 터치포인트
+  - 배포
+  - 운영
+- **활동:** 119개 활동
+- **링크:** https://www.bsimm.com/
 
-### BSIMM (Building Security In Maturity Model)
-- **Domains:** 12 domains including:
-  - Governance
-  - Intelligence
-  - SSDL Touchpoints
-  - Deployment
-  - Operations
-- **Activities:** 119 activities
-- **Link:** https://www.bsimm.com/
+## 빠른 참조
 
-## Quick Reference
+### 프레임워크 선택 가이드
 
-### Framework Selection Guide
+| 조직/유형 | 권장 프레임워크 |
+|------|------------|
+| 웹 애플리케이션 | OWASP 상위 10위, OWASP ASVS |
+| 금융/카드 데이터 | PCI DSS |
+| 헬스케어 | HIPAA 보안 규칙 |
+| EU 데이터 처리 | GDPR |
+| 클라우드 인프라 | CIS 제어, ISO 27017 |
+| 정부(미국) | NIST CSF, NIST SP 800-53 |
+| 적합성 인증 | ISO 27001, SOC 2 |
+| 데브섹옵스 | 샘, BSIMM |
 
-| Organization/Type | Recommended Framework(s) |
-|-------------------|-------------------------|
-| Web Applications | OWASP Top 10, OWASP ASVS |
-| Financial/Card Data | PCI DSS |
-| Healthcare | HIPAA Security Rule |
-| EU Data Processing | GDPR |
-| Cloud Infrastructure | CIS Controls, ISO 27017 |
-| Government (US) | NIST CSF, NIST SP 800-53 |
-| Compliance Certification | ISO 27001, SOC 2 |
-| DevSecOps | SAMM, BSIMM |
+### 공통 규정 준수 매트릭스
 
-### Common Compliance Matrix
+| 프레임워크 | 중점 분야 | 산업 |
+|------------|------------|----------|
+| OWASP ASV | 애플리케이션 보안 | 모두 |
+| NIST SP 800-53 | 연방 시스템 | 정부 |
+| ISO 27001 | 정보보안 | 모두 |
+| PCI DSS | 결제 데이터 | 금융 |
+| HIPAA | 건강 데이터 | 헬스케어 |
+| GDPR | 개인정보 | EU 운영 |
+| SOC 2 | 보안 통제 | SaaS/클라우드 |
+| CIS 제어 | 보안 통제 | 모두 |
 
-| Framework | Focus Area | Industry |
-|-----------|------------|----------|
-| OWASP ASVS | Application Security | All |
-| NIST SP 800-53 | Federal Systems | Government |
-| ISO 27001 | Information Security | All |
-| PCI DSS | Payment Data | Financial |
-| HIPAA | Health Data | Healthcare |
-| GDPR | Personal Data | EU Operations |
-| SOC 2 | Security Controls | SaaS/Cloud |
-| CIS Controls | Security Controls | All |
+## 구현 팁
 
-## Implementation Tips
-
-1. **Start with Risk Assessment:** Identify assets, threats, and risks first
-2. **Baseline with CIS:** Use CIS Benchmarks for configuration hardening
-3. **Map Controls:** Understand how controls map across frameworks
-4. **Automate Where Possible:** Use tools for continuous compliance
-5. **Document Everything:** Maintain evidence for audits
-6. **Regular Reviews:** Update as threats and requirements evolve
-7. **Training:** Ensure teams understand relevant frameworks
+1. **위험 평가부터 시작:** 먼저 자산, 위협, 위험을 식별합니다.
+2. **CIS 기준선:** 구성 강화를 위해 CIS 벤치마크를 사용합니다.
+3. **맵 컨트롤:** 컨트롤이 프레임워크 전체에 매핑되는 방식을 이해합니다.
+4. **가능한 경우 자동화:** 지속적인 규정 준수를 위한 도구 사용
+5. **모든 것을 문서화하세요:** 감사를 위한 증거를 유지하세요
+6. **정기 검토:** 위협 및 요구 사항이 발전함에 따라 업데이트됩니다.
+7. **교육:** 팀이 관련 프레임워크를 이해하는지 확인하세요.

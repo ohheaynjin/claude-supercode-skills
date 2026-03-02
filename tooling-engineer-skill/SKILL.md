@@ -1,38 +1,37 @@
 ---
 name: tooling-engineer
-description: Expert in building developer tools, CLI utilities, IDE extensions, and optimizing local development environments.
+description: 개발자 도구, CLI 유틸리티, IDE 확장 구축 및 로컬 개발 환경 최적화 전문가입니다.
 ---
+# 툴링 엔지니어
 
-# Tooling Engineer
+## 목적
+명령줄 인터페이스, IDE 확장, 빌드 시스템 최적화, 로컬 개발 환경 자동화 등 개발자 생산성 도구 구축에 대한 전문 지식을 제공합니다. 개발자 경험과 워크플로 효율성을 향상하는 데 중점을 둡니다.
 
-## Purpose
-Provides expertise in building developer productivity tools including command-line interfaces, IDE extensions, build system optimizations, and local development environment automation. Focuses on improving developer experience and workflow efficiency.
+## 사용 시기
+- 명령줄 도구 및 유틸리티 구축
+- IDE/편집기 확장 생성(VS Code, JetBrains)
+- 빌드 시스템 및 컴파일 시간 최적화
+- 반복적인 개발 업무 자동화
+- 로컬 개발 환경 설정
+- 코드 생성기 및 스캐폴딩 도구 만들기
+- 린터, 포맷터, 정적 분석 도구 구축
+- 개발자 온보딩 경험 개선
 
-## When to Use
-- Building command-line tools and utilities
-- Creating IDE/editor extensions (VS Code, JetBrains)
-- Optimizing build systems and compilation times
-- Automating repetitive development tasks
-- Setting up local development environments
-- Creating code generators and scaffolding tools
-- Building linters, formatters, and static analysis tools
-- Improving developer onboarding experience
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 명령줄 도구 및 유틸리티 구축
+- IDE/편집기 확장 생성(VS Code, JetBrains)
+- 빌드 시스템 및 컴파일 시간 최적화
+- 반복적인 개발 업무 자동화
+- 로컬 개발 환경 설정
 
-## Quick Start
-**Invoke this skill when:**
-- Building command-line tools and utilities
-- Creating IDE/editor extensions (VS Code, JetBrains)
-- Optimizing build systems and compilation times
-- Automating repetitive development tasks
-- Setting up local development environments
+**다음과 같은 경우에는 호출하지 마세요.**
+- CI/CD 파이프라인 구축 → devops-engineer 사용
+- 프로덕션 애플리케이션 생성 → 적절한 개발자 기술 사용
+- ops용 쉘 스크립트 작성 → 적절한 PowerShell/Bash 기술 사용
+- MCP 서버 구축 → mcp-developer 사용
 
-**Do NOT invoke when:**
-- Building CI/CD pipelines → use devops-engineer
-- Creating production applications → use appropriate developer skill
-- Writing shell scripts for ops → use appropriate PowerShell/Bash skill
-- Building MCP servers → use mcp-developer
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Developer Tool Need?
 ├── Command Line → CLI with argument parsing + subcommands
@@ -42,49 +41,48 @@ Developer Tool Need?
 ├── Environment Setup → Container or script-based provisioning
 └── Automation → Task runner or custom tooling
 ```
+## 핵심 워크플로
 
-## Core Workflows
+### 1. CLI 도구 개발
+1. 명령 구조 및 인수 스키마 정의
+2. CLI 프레임워크(Commander, Click, Cobra 등)를 선택합니다.
+3. 명확한 구분으로 핵심 기능 구현
+4. 도움말 텍스트 및 사용 예 추가
+5. 구성 파일 지원 구현
+6. 쉘 완성 스크립트 추가
+7. 배포용 패키지(npm, pip, Brew 등)
+8. 일반적인 사용 사례로 문서 작성
 
-### 1. CLI Tool Development
-1. Define command structure and argument schema
-2. Choose CLI framework (Commander, Click, Cobra, etc.)
-3. Implement core functionality with clear separation
-4. Add help text and usage examples
-5. Implement configuration file support
-6. Add shell completion scripts
-7. Package for distribution (npm, pip, brew, etc.)
-8. Write documentation with common use cases
+### 2. IDE 확장 개발
+1. 대상 IDE 및 확장 API 식별
+2. 확장 기능 및 트리거 정의
+3. 비계 확장 프로젝트 구조
+4. 핵심 기능 구현(명령, 공급자, 보기)
+5. 구성 옵션 추가
+6. 다양한 편집기 상태에서 테스트
+7. 확장 마켓플레이스에 게시
+8. 피드백 수집 및 반복
 
-### 2. IDE Extension Development
-1. Identify target IDE and extension API
-2. Define extension capabilities and triggers
-3. Scaffold extension project structure
-4. Implement core features (commands, providers, views)
-5. Add configuration options
-6. Test across different editor states
-7. Publish to extension marketplace
-8. Gather feedback and iterate
+### 3. 시스템 최적화 구축
+1. 병목 현상을 식별하기 위해 현재 빌드를 프로파일링합니다.
+2. 비용이 많이 드는 작업을 위한 캐싱 구현
+3. 가능한 경우 병렬 실행을 활성화합니다.
+4. 일반적인 변경 사항에 대한 증분 빌드 설정
+5. 빌드 측정항목 및 모니터링 추가
+6. 팀을 위한 문서 구축 시스템
+7. 개선 사항 측정 및 반복
 
-### 3. Build System Optimization
-1. Profile current build to identify bottlenecks
-2. Implement caching for expensive operations
-3. Enable parallel execution where possible
-4. Set up incremental builds for common changes
-5. Add build metrics and monitoring
-6. Document build system for team
-7. Measure improvement and iterate
+## 모범 사례
+- Unix 철학을 적용한 CLI 설계(구성 가능, 집중형)
+- 재정의 옵션으로 합리적인 기본값 제공
+- 문제 해결을 위한 상세/디버그 모드 포함
+- 가능하면 도구를 오프라인으로 작동시키세요.
+- 명확한 오류 메시지로 빠르게 실패하세요.
+- 버전 도구 및 이전 버전과의 호환성 유지
 
-## Best Practices
-- Design CLIs with Unix philosophy (composable, focused)
-- Provide sensible defaults with override options
-- Include verbose/debug modes for troubleshooting
-- Make tools work offline when possible
-- Fail fast with clear error messages
-- Version tools and maintain backwards compatibility
-
-## Anti-Patterns
-- **Feature creep** → Keep tools focused on one job
-- **Silent failures** → Always report errors clearly
-- **No configuration** → Allow customization for different needs
-- **Manual installation** → Provide package manager distribution
-- **Poor error messages** → Include context and suggested fixes
+## 안티 패턴
+- **기능 추가** → 도구를 하나의 작업에 집중하도록 유지
+- **조용한 실패** → 항상 오류를 명확하게 보고합니다.
+- **구성 없음** → 다양한 요구에 맞게 사용자 정의 허용
+- **수동 설치** → 패키지 관리자 배포 제공
+- **불량한 오류 메시지** → 컨텍스트 및 제안된 수정 사항 포함

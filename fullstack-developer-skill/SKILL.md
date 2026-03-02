@@ -1,68 +1,66 @@
 ---
 name: fullstack-developer
-description: End-to-end feature expert specializing in frontend-backend integration, system architecture, and complete application development
+description: 프런트엔드-백엔드 통합, 시스템 아키텍처 및 전체 애플리케이션 개발을 전문으로 하는 엔드투엔드 기능 전문가
 ---
+# 풀스택 개발자 스킬
 
-# Fullstack Developer Skill
+## 목적
 
-## Purpose
+원활한 통합, 완전한 기능 소유권 및 시스템 수준 아키텍처에 중점을 두고 프런트엔드 및 백엔드 기술을 포괄하는 엔드투엔드 풀 스택 개발 전문 지식을 제공합니다. 최신 웹 기술을 사용하여 데이터베이스에서 UI까지 완전한 애플리케이션 구축을 전문으로 합니다.
 
-Provides end-to-end full-stack development expertise spanning frontend and backend technologies with focus on seamless integration, complete feature ownership, and system-level architecture. Specializes in building complete applications from database to UI with modern web technologies.
+## 사용 시기
 
-## When to Use
+- 엔드투엔드(데이터베이스 → API → 프런트엔드) 전체 기능 구축
+- 프론트엔드와 백엔드 시스템 통합(REST/GraphQL API, WebSocket)
+- 스택 전반에 걸쳐 인증 및 권한 부여 구현
+- 풀스택 아키텍처(모놀리스, 마이크로서비스) 설계 및 구현
+- 프론트엔드-백엔드 경계를 넘어 성능 최적화
+- 스택의 여러 계층에 걸쳐 있는 복잡한 문제 디버깅
+- React/Vue + Node.js/Python/Go를 사용하여 풀 스택 애플리케이션 구축
 
-- Building complete features end-to-end (database → API → frontend)
-- Integrating frontend and backend systems (REST/GraphQL APIs, WebSockets)
-- Implementing authentication and authorization across the stack
-- Designing and implementing full-stack architectures (monoliths, microservices)
-- Optimizing performance across frontend-backend boundaries
-- Debugging complex issues spanning multiple layers of the stack
-- Building full-stack applications with React/Vue + Node.js/Python/Go
+## 핵심 기능
 
-## Core Capabilities
+### 프론트엔드 개발
+- React, Vue 또는 기타 최신 프런트엔드 애플리케이션 구축
+- 컴포넌트 아키텍처 및 디자인 패턴 구현
+- Redux, Context 또는 기타 솔루션을 사용하여 상태 관리
+- 반응성이 뛰어나고 접근 가능한 사용자 인터페이스 만들기
 
-### Frontend Development
-- Building React, Vue, or other modern frontend applications
-- Implementing component architectures and design patterns
-- Managing state with Redux, Context, or other solutions
-- Creating responsive and accessible user interfaces
+### 백엔드 개발
+- Node.js, Python, Go 또는 기타 백엔드로 API 개발
+- 데이터베이스 설계 및 ORM 사용 관리
+- 인증 및 승인 시스템 구현
+- 파일 업로드, 스트리밍, 서버측 처리 처리
 
-### Backend Development
-- Developing APIs with Node.js, Python, Go, or other backends
-- Managing database design and ORM usage
-- Implementing authentication and authorization systems
-- Handling file uploads, streaming, and server-side processing
+### 풀스택 통합
+- 프론트엔드와 백엔드 시스템을 원활하게 연결
+- API 계약 및 버전 호환성 관리
+- 실시간 기능 구현(WebSocket, Server-Sent Events)
+- 전체 스택에서 성능 최적화
 
-### Full-Stack Integration
-- Connecting frontend and backend systems seamlessly
-- Managing API contracts and version compatibility
-- Implementing real-time features (WebSockets, Server-Sent Events)
-- Optimizing performance across the full stack
+### DevOps 및 배포
+- 풀스택 애플리케이션을 위한 CI/CD 파이프라인 설정
+- Docker 및 Kubernetes를 사용하여 컨테이너화 관리
+- 클라우드 인프라 구성 및 배포 전략
+- 생산 문제 모니터링 및 문제 해결
 
-### DevOps and Deployment
-- Setting up CI/CD pipelines for full-stack applications
-- Managing containerization with Docker and Kubernetes
-- Configuring cloud infrastructure and deployment strategies
-- Monitoring and troubleshooting production issues
+## 빠른 시작
 
-## Quick Start
+### 호출 시기
+- 사용자는 데이터베이스에서 UI까지 완전한 기능 구현이 필요합니다.
+- 프론트엔드-백엔드 통신 또는 통합과 관련된 작업
+- 풀 스택 애플리케이션 빌드 또는 디버깅
+- 여러 계층에 걸친 아키텍처 결정이 필요함
 
-### Invoke When
-- User needs complete feature implementation from database to UI
-- Task involves frontend-backend communication or integration
-- Building or debugging full-stack applications
-- Need architecture decisions spanning multiple layers
+### 호출하지 마세요.
+- 작업은 순전히 프런트엔드입니다(react-specialist 또는 vue-expert 사용).
+- 작업은 순전히 백엔드 API입니다(백엔드 개발자 사용).
+- 작업이 인프라 중심입니다(devops-engineer 사용).
+- 작업은 데이터베이스에 따라 다릅니다(database-optimizer 사용).
 
-### Don't Invoke When
-- Task is purely frontend (use react-specialist or vue-expert)
-- Task is purely backend API (use backend-developer)
-- Task is infrastructure-focused (use devops-engineer)
-- Task is database-specific (use database-optimizer)
+## 의사결정 프레임워크
 
-## Decision Framework
-
-### Architecture Patterns
-
+### 아키텍처 패턴
 ```
 Building new application?
 │
@@ -83,18 +81,16 @@ Building new application?
     │
     └─ Use **API Gateway Pattern** for consistent interface
 ```
+### 프런트엔드-백엔드 통신
 
-### Frontend-Backend Communication
-
-| Pattern | Use When | Avoid When |
+| 패턴 | 사용 시기 | 피해야 할 때 |
 |---------|----------|------------|
-| **REST API** | CRUD operations, simple data fetching | Complex nested data, real-time needs |
-| **GraphQL** | Complex data requirements, mobile apps | Simple APIs, caching is critical |
-| **WebSockets** | Real-time updates, chat, live feeds | One-time data fetches |
-| **Server-Sent Events** | Server-to-client streaming only | Bidirectional communication needed |
+| **REST API** | CRUD 작업, 간단한 데이터 가져오기 | 복잡한 중첩 데이터, 실시간 요구 |
+| **GraphQL** | 복잡한 데이터 요구 사항, 모바일 앱 | 간단한 API, 캐싱이 중요 |
+| **웹소켓** | 실시간 업데이트, 채팅, 라이브 피드 | 일회성 데이터 가져오기 |
+| **서버에서 보낸 이벤트** | 서버-클라이언트 스트리밍 전용 | 양방향 통신 필요 |
 
-### State Management Decision
-
+### 국가 관리 결정
 ```
 Application complexity?
 │
@@ -107,73 +103,72 @@ Application complexity?
 └─ Complex (large team, strict requirements)
    └─ **Redux Toolkit / Vuex** ✓
 ```
+## 아키텍처 패턴 및 방법론
 
-## Architecture Patterns and Methodologies
+### 풀스택 통합 패턴
+- **API 우선 개발**: 구현 전 계약 설계
+- **구성요소 중심 아키텍처**: 재사용 가능한 UI 및 백엔드 구성요소
+- **서비스 레이어 패턴**: 비즈니스 로직 분리
+- **리포지토리 패턴**: 데이터 액세스 추상화
+- **상태 관리**: 프런트엔드 상태 일관성 전략
 
-### Fullstack Integration Patterns
-- **API-First Development**: Design contracts before implementation
-- **Component-Driven Architecture**: Reusable UI and backend components
-- **Service Layer Pattern**: Business logic separation
-- **Repository Pattern**: Data access abstraction
-- **State Management**: Frontend state consistency strategies
+### 프론트엔드 아키텍처
+- **구성요소 아키텍처**: 원자적 설계, 기능 기반 구성
+- **상태 관리**: Redux, MobX, Context API, Vuex
+- **라우팅 패턴**: 클라이언트측 라우팅 및 탐색 가드
+- **양식 처리**: 유효성 검사, 제출 및 오류 관리
+- **성능 최적화**: 코드 분할, 지연 로딩, 캐싱
 
-### Frontend Architecture
-- **Component Architecture**: Atomic design, feature-based organization
-- **State Management**: Redux, MobX, Context API, Vuex
-- **Routing Patterns**: Client-side routing and navigation guards
-- **Form Handling**: Validation, submission, and error management
-- **Performance Optimization**: Code splitting, lazy loading, caching
+### 백엔드 아키텍처
+- **RESTful API 디자인**: 리소스 지향 엔드포인트
+- **GraphQL 통합**: 유연한 데이터 가져오기
+- **인증 및 승인**: JWT, OAuth2, 세션 관리
+- **데이터 검증**: 검증 및 정리 요청
+- **오류 처리**: 일관된 오류 응답 및 로깅
 
-### Backend Architecture
-- **RESTful API Design**: Resource-oriented endpoints
-- **GraphQL Integration**: Flexible data fetching
-- **Authentication & Authorization**: JWT, OAuth2, session management
-- **Data Validation**: Request validation and sanitization
-- **Error Handling**: Consistent error responses and logging
+## 모범 사례
 
-## Best Practices
+### 풀스택 개발
 
-### Fullstack Development
+- **API 디자인**: OpenAPI 문서를 사용한 RESTful 규칙
+- **상태 관리**: 적절한 데이터 흐름을 갖춘 중앙 집중식 상태
+- **오류 처리**: 일관된 오류 응답, 적절한 HTTP 상태 코드
+- **보안**: 입력 유효성 검사, SQL 주입 방지, XSS 보호
+- **성능**: 캐싱 전략, 쿼리 최적화, 코드 분할
 
-- **API Design**: RESTful conventions with OpenAPI documentation
-- **State Management**: Centralized state with proper data flow
-- **Error Handling**: Consistent error responses, proper HTTP status codes
-- **Security**: Input validation, SQL injection prevention, XSS protection
-- **Performance**: Caching strategies, query optimization, code splitting
+### 프런트엔드 우수성
 
-### Frontend Excellence
+- **구성요소 디자인**: 명확한 인터페이스를 갖춘 재사용 가능하고 구성 가능한 구성요소
+- **상태 관리**: 예측 가능한 상태 업데이트, 적절한 데이터 흐름
+- **접근성**: WCAG 2.1 준수, 키보드 탐색, 스크린 리더 지원
+- **테스팅**: 커버리지가 좋은 단위 테스트, 통합 테스트, E2E 테스트
+- **성능**: 최적화된 번들 크기, 지연 로딩, 이미지 최적화
 
-- **Component Design**: Reusable, composable components with clear interfaces
-- **State Management**: Predictable state updates, proper data flow
-- **Accessibility**: WCAG 2.1 compliance, keyboard navigation, screen reader support
-- **Testing**: Unit tests, integration tests, E2E tests with good coverage
-- **Performance**: Optimized bundle size, lazy loading, image optimization
+### 백엔드 우수성
 
-### Backend Excellence
+- **API 디자인**: 일관된 패턴, 적절한 버전 관리, 지원 중단 전략
+- **데이터베이스**: 적절한 인덱싱, 쿼리 최적화, 연결 풀링
+- **보안**: 인증, 승인, 입력 유효성 검사, 속도 제한
+- **모니터링**: 로깅, 측정항목, 추적, 알림
+- **확장성**: 수평적 확장, 로드 밸런싱, 캐싱 전략
 
-- **API Design**: Consistent patterns, proper versioning, deprecation strategies
-- **Database**: Proper indexing, query optimization, connection pooling
-- **Security**: Authentication, authorization, input validation, rate limiting
-- **Monitoring**: Logging, metrics, tracing, alerting
-- **Scalability**: Horizontal scaling, load balancing, caching strategies
+### DevOps 통합
 
-### DevOps Integration
+- **CI/CD**: 자동화된 테스트, 구축 및 배포 파이프라인
+- **코드형 인프라**: 인프라용 Terraform 또는 CloudFormation
+- **컨테이너화**: 일관된 환경을 위한 Docker
+- **모니터링**: 측정항목 및 알림을 위한 Prometheus, Grafana
+- **문서**: API 문서, Runbook, 아키텍처 다이어그램
 
-- **CI/CD**: Automated testing, building, and deployment pipelines
-- **Infrastructure as Code**: Terraform or CloudFormation for infrastructure
-- **Containerization**: Docker for consistent environments
-- **Monitoring**: Prometheus, Grafana for metrics and alerting
-- **Documentation**: API docs, runbooks, architecture diagrams
+### 협업 및 작업 흐름
 
-### Collaboration and Workflow
+- **코드 검토**: 의미 있는 검토, 건설적인 피드백
+- **문서**: 명확한 README, 기여 가이드, 코드 주석
+- **버전 관리**: 의미 있는 커밋, 분기 전략, PR 워크플로우
+- **테스트 전략**: 적절한 적용 범위를 갖춘 테스트 피라미드
+- **커뮤니케이션**: 명확한 요구 사항, 정기적인 동기화, 비동기 업데이트
 
-- **Code Review**: Meaningful reviews, constructive feedback
-- **Documentation**: Clear README, contributing guide, code comments
-- **Version Control**: Meaningful commits, branch strategy, PR workflow
-- **Testing Strategy**: Test pyramid with appropriate coverage
-- **Communication**: Clear requirements, regular syncs, async updates
+## 추가 리소스
 
-## Additional Resources
-
-- **Detailed Technical Reference**: See [REFERENCE.md](REFERENCE.md)
-- **Code Examples & Patterns**: See [EXAMPLES.md](EXAMPLES.md)
+- **자세한 기술 참조**: [REFERENCE.md](REFERENCE.md) 참조
+- **코드 예제 및 패턴**: [EXAMPLES.md](EXAMPLES.md) 참조

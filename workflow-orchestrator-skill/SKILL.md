@@ -1,38 +1,37 @@
 ---
 name: workflow-orchestrator
-description: Expert in designing durable, scalable workflow systems using Temporal, Camunda, and Event-Driven Architectures.
+description: Temporal, Camunda 및 Event-Driven Architectures를 사용하여 내구성 있고 확장 가능한 워크플로우 시스템을 설계하는 전문가입니다.
 ---
+# 워크플로 조정자
 
-# Workflow Orchestrator
+## 목적
+복잡한 비즈니스 프로세스를 조정하는 내구성 있는 워크플로 시스템을 설계하고 구현하는 데 대한 전문 지식을 제공합니다. Temporal 및 Camunda와 같은 워크플로우 엔진, 사가 패턴, 안정적인 장기 실행 프로세스 구축을 전문으로 합니다.
 
-## Purpose
-Provides expertise in designing and implementing durable workflow systems that coordinate complex business processes. Specializes in workflow engines like Temporal and Camunda, saga patterns, and building reliable long-running processes.
+## 사용 시기
+- 다단계 비즈니스 워크플로우 설계
+- 분산 트랜잭션을 위한 Saga 패턴 구현
+- Temporal, Camunda 또는 유사한 워크플로우 엔진을 사용하여 구축
+- 내구성 요구 사항이 있는 장기 실행 프로세스 처리
+- 여러 서비스 전반에 걸쳐 활동 조정
+- 보상 및 롤백 로직 구현
+- 인간 참여형(Human-In-The-Loop) 승인 워크플로 구축
+- 복잡한 프로세스에 대한 상태 머신 관리
 
-## When to Use
-- Designing multi-step business workflows
-- Implementing saga patterns for distributed transactions
-- Building with Temporal, Camunda, or similar workflow engines
-- Handling long-running processes with durability requirements
-- Coordinating activities across multiple services
-- Implementing compensation and rollback logic
-- Building human-in-the-loop approval workflows
-- Managing state machines for complex processes
+## 빠른 시작
+**다음과 같은 경우에 이 스킬을 호출하세요:**
+- 다단계 비즈니스 워크플로우 설계
+- 분산 트랜잭션을 위한 Saga 패턴 구현
+- Temporal, Camunda 또는 유사한 워크플로우 엔진을 사용하여 구축
+- 내구성 요구 사항이 있는 장기 실행 프로세스 처리
+- 여러 서비스 전반에 걸쳐 활동 조정
 
-## Quick Start
-**Invoke this skill when:**
-- Designing multi-step business workflows
-- Implementing saga patterns for distributed transactions
-- Building with Temporal, Camunda, or similar workflow engines
-- Handling long-running processes with durability requirements
-- Coordinating activities across multiple services
+**다음과 같은 경우에는 호출하지 마세요.**
+- 간단한 비동기 작업 처리 → 적절한 대기열 솔루션 사용
+- 에이전트에 대한 작업 분배 → 작업 분배기 사용
+- 이벤트 스트리밍 → Event-Driven-Architect 사용
+- CI/CD 파이프라인 → devops-engineer 사용
 
-**Do NOT invoke when:**
-- Simple async job processing → use appropriate queue solution
-- Task distribution for agents → use task-distributor
-- Event streaming → use event-driven-architect
-- CI/CD pipelines → use devops-engineer
-
-## Decision Framework
+## 의사결정 프레임워크
 ```
 Workflow Need?
 ├── Durable Long-Running → Temporal or durable execution engine
@@ -43,49 +42,49 @@ Workflow Need?
 └── Scheduled Jobs → Cron-based with workflow wrapper
 ```
 
-## Core Workflows
+## 핵심 워크플로
 
-### 1. Temporal Workflow Implementation
-1. Define workflow interface and activities
-2. Implement workflow logic with Temporal SDK
-3. Create activity implementations for external calls
-4. Configure retry policies and timeouts
-5. Implement signals and queries for external interaction
-6. Add versioning for workflow updates
-7. Deploy workers and monitor execution
-8. Implement testing with Temporal test framework
+### 1. 임시 워크플로 구현
+1. 워크플로 인터페이스 및 활동 정의
+2. Temporal SDK를 사용하여 워크플로 논리 구현
+3. 외부 호출을 위한 활동 구현 생성
+4. 재시도 정책 및 시간 초과 구성
+5. 외부 상호작용을 위한 신호 및 쿼리 구현
+6. 워크플로우 업데이트를 위한 버전 관리 추가
+7. 작업자 배포 및 실행 모니터링
+8. 임시 테스트 프레임워크로 테스트 구현
 
-### 2. Saga Pattern Implementation
-1. Identify distributed transaction boundaries
-2. Define forward actions and compensating actions
-3. Choose orchestration (central) or choreography (events)
-4. Implement idempotent operations
-5. Handle partial failures with compensation
-6. Add timeout handling for stuck sagas
-7. Implement observability for saga state
-8. Test failure scenarios thoroughly
+### 2. Saga 패턴 구현
+1. 분산된 트랜잭션 경계 식별
+2. 전진 행동과 보상 행동 정의
+3. 오케스트레이션(중앙) 또는 안무(이벤트)를 선택하세요.
+4. 멱등성 연산 구현
+5. 부분적인 실패를 보상으로 처리
+6. 중단된 사가에 대한 시간 초과 처리 추가
+7. 사가 상태에 대한 관찰 가능성 구현
+8. 실패 시나리오를 철저하게 테스트하라
 
-### 3. Human-in-the-Loop Workflow
-1. Design process with human task points
-2. Model workflow with BPMN or similar notation
-3. Implement automated steps as activities
-4. Create task inbox UI for human actions
-5. Add escalation and timeout handling
-6. Implement delegation and reassignment
-7. Add audit trail for compliance
-8. Monitor SLAs for human tasks
+### 3. 인간 참여형(Human-In-The-Loop) 워크플로
+1. 휴먼 태스크 포인트를 활용한 설계 프로세스
+2. BPMN 또는 유사한 표기법을 사용한 모델 작업 흐름
+3. 자동화된 단계를 활동으로 구현
+4. 인간의 행동을 위한 작업 받은 편지함 UI 만들기
+5. 에스컬레이션 및 시간 초과 처리 추가
+6. 위임 및 재할당 구현
+7. 규정 준수를 위한 감사 추적 추가
+8. 인간 작업에 대한 SLA 모니터링
 
-## Best Practices
-- Make all activities idempotent for safe retries
-- Use workflow versioning for production updates
-- Implement comprehensive compensation for failures
-- Set appropriate timeouts at each step
-- Add observability with traces spanning workflow
-- Design for failure; assume any step can fail
+## 모범 사례
+- 안전한 재시도를 위해 모든 활동을 멱등성으로 만듭니다.
+- 프로덕션 업데이트에 워크플로 버전 관리 사용
+- 실패에 대한 포괄적인 보상 실시
+- 각 단계에서 적절한 시간 제한을 설정하세요.
+- 워크플로우 전반에 걸친 추적으로 관찰 가능성 추가
+- 실패에 대비한 설계 모든 단계가 실패할 수 있다고 가정
 
-## Anti-Patterns
-- **Non-idempotent activities** → Design for safe retry
-- **Missing compensations** → Plan rollback from the start
-- **Infinite retries** → Set max attempts and handle failures
-- **Blocking human tasks** → Add timeouts and escalation
-- **Tight coupling** → Keep workflows decoupled from activity impl
+## 안티 패턴
+- **비멱등성 활동** → 안전한 재시도를 위한 설계
+- **보상 누락** → 처음부터 계획 롤백
+- **무한 재시도** → 최대 시도 횟수 설정 및 실패 처리
+- **사람 작업 차단** → 시간 초과 및 에스컬레이션 추가
+- **긴밀한 결합** → 작업 흐름을 활동 구현에서 분리된 상태로 유지

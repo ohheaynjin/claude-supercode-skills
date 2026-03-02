@@ -1,11 +1,10 @@
-# Azure Infrastructure Patterns
+# Azure 인프라 패턴
 
-Common patterns and best practices for Azure infrastructure deployment and management.
+Azure 인프라 배포 및 관리에 대한 일반적인 패턴 및 모범 사례입니다.
 
-## Infrastructure as Code Patterns
+## 코드 패턴으로서의 인프라
 
-### Modular Bicep Templates
-
+### 모듈식 이두근 템플릿
 ```bicep
 // main.bicep
 param location string = resourceGroup().location
@@ -31,9 +30,7 @@ module vmModule 'modules/vm.bicep' = {
   ]
 }
 ```
-
-### Parameterized Templates
-
+### 매개변수화된 템플릿
 ```typescript
 const parameters = {
   environment: 'production',
@@ -47,11 +44,9 @@ const config = {
   // ... other config
 };
 ```
+## 네트워크 패턴
 
-## Network Patterns
-
-### Hub and Spoke Topology
-
+### 허브 및 스포크 토폴로지
 ```typescript
 const hubVNetConfig = {
   name: 'hub-vnet',
@@ -71,9 +66,7 @@ const spokeVNetConfig = {
   ]
 };
 ```
-
-### VNet Peering Configuration
-
+### VNet 피어링 구성
 ```typescript
 // Peer VNets for connectivity
 await deployVNetPeering({
@@ -84,9 +77,7 @@ await deployVNetPeering({
   allowGatewayTransit: false
 });
 ```
-
-### NSG Rule Patterns
-
+### NSG 규칙 패턴
 ```typescript
 const commonRules: NSGRule[] = [
   {
@@ -124,11 +115,9 @@ const commonRules: NSGRule[] = [
   }
 ];
 ```
+## 보안 패턴
 
-## Security Patterns
-
-### Managed Identity Pattern
-
+### 관리 ID 패턴
 ```typescript
 // Use Managed Identity for service-to-service authentication
 const vmConfig = {
@@ -140,9 +129,7 @@ const vmConfig = {
   }
 };
 ```
-
-### RBAC Assignment Pattern
-
+### RBAC 할당 패턴
 ```typescript
 await assignRole({
   roleDefinitionId: '/providers/Microsoft.Authorization/roleDefinitions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
@@ -151,9 +138,7 @@ await assignRole({
   principalType: 'ServicePrincipal'
 });
 ```
-
-### Azure Policy Pattern
-
+### Azure 정책 패턴
 ```typescript
 const policyDefinition = {
   policyRule: {
@@ -171,11 +156,9 @@ const policyDefinition = {
   }
 };
 ```
+## 모니터링 패턴
 
-## Monitoring Patterns
-
-### Multi-Metric Alert Pattern
-
+### 다중 측정항목 경고 패턴
 ```typescript
 const multiMetricAlert = {
   criteria: {
@@ -199,9 +182,7 @@ const multiMetricAlert = {
   }
 };
 ```
-
-### Log Analytics Query Pattern
-
+### 로그 분석 쿼리 패턴
 ```typescript
 const query = `
 AzureActivity
@@ -210,6 +191,7 @@ AzureActivity
 | sort by TimeGenerated desc
 `;
 ```
+
 
 ## Deployment Patterns
 
@@ -236,6 +218,7 @@ await updateTrafficManager({
 await deleteResourceGroup('app-blue');
 ```
 
+
 ### Rolling Update Pattern
 
 ```typescript
@@ -244,6 +227,7 @@ for (let i = 0; i < vmCount; i++) {
   await healthCheck(vmNames[i]);
 }
 ```
+
 
 ## Cost Optimization Patterns
 
@@ -279,6 +263,7 @@ const autoScaleConfig = {
 };
 ```
 
+
 ### Reserved Instance Pattern
 
 ```typescript
@@ -293,6 +278,7 @@ const reservationConfig = {
   term: 'P1Y'
 };
 ```
+
 
 ## Error Handling Patterns
 
@@ -315,6 +301,7 @@ async function retryWithBackoff<T>(
   throw new Error('Max retries exceeded');
 }
 ```
+
 
 ### Circuit Breaker Pattern
 
@@ -347,6 +334,7 @@ class CircuitBreaker {
 }
 ```
 
+
 ## Tagging Strategy
 
 ```typescript
@@ -364,6 +352,7 @@ const resourceConfig = {
   tags: standardTags
 };
 ```
+
 
 ## Resource Naming Conventions
 

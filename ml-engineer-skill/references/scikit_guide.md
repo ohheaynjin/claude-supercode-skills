@@ -10,6 +10,7 @@ Scikit-learn is the most popular Python library for machine learning, providing 
 pip install scikit-learn pandas numpy matplotlib
 ```
 
+
 ## Quick Start
 
 ### Basic Workflow
@@ -45,6 +46,7 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy:.2%}")
 ```
 
+
 ## Model Selection Guide
 
 ### Classification Models
@@ -64,6 +66,7 @@ model = RandomForestClassifier(
 )
 ```
 
+
 **Gradient Boosting**
 - **When**: High accuracy required, structured data
 - **Pros**: Best performance on many tasks
@@ -79,6 +82,7 @@ model = GradientBoostingClassifier(
 )
 ```
 
+
 **Logistic Regression**
 - **When**: Binary classification, interpretable results
 - **Pros**: Fast, interpretable, good baseline
@@ -92,6 +96,7 @@ model = LogisticRegression(
     random_state=42
 )
 ```
+
 
 **SVM**
 - **When**: Small to medium datasets, clear margin separation
@@ -108,6 +113,7 @@ model = SVC(
 )
 ```
 
+
 ### Regression Models
 
 **Linear Regression**
@@ -120,6 +126,7 @@ from sklearn.linear_model import LinearRegression
 model = LinearRegression()
 ```
 
+
 **Random Forest Regressor**
 - **When**: Non-linear relationships, robust model needed
 - **Pros**: Handles complex patterns
@@ -130,6 +137,7 @@ from sklearn.ensemble import RandomForestRegressor
 model = RandomForestRegressor(n_estimators=100)
 ```
 
+
 **Gradient Boosting Regressor**
 - **When**: High accuracy required
 - **Pros**: State-of-the-art for tabular data
@@ -139,6 +147,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 
 model = GradientBoostingRegressor(n_estimators=100)
 ```
+
 
 ## Preprocessing Pipeline
 
@@ -180,6 +189,7 @@ model = Pipeline(steps=[
 model.fit(X_train, y_train)
 ```
 
+
 ### Feature Scaling
 
 ```python
@@ -198,6 +208,7 @@ scaler = RobustScaler()
 X_scaled = scaler.fit_transform(X)
 ```
 
+
 ### Encoding Categorical Variables
 
 ```python
@@ -211,6 +222,7 @@ y_encoded = le.fit_transform(y)
 ohe = OneHotEncoder(handle_unknown='ignore')
 X_encoded = ohe.fit_transform(X_categorical)
 ```
+
 
 ## Cross-Validation
 
@@ -226,6 +238,7 @@ print(f"CV Scores: {scores}")
 print(f"Mean Score: {scores.mean():.2%} (+/- {scores.std() * 2:.2%})")
 ```
 
+
 ### Stratified K-Fold (for classification)
 
 ```python
@@ -234,6 +247,7 @@ from sklearn.model_selection import StratifiedKFold, cross_val_score
 skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 scores = cross_val_score(model, X, y, cv=skf)
 ```
+
 
 ### Grid Search CV
 
@@ -260,6 +274,7 @@ print(f"Best params: {grid_search.best_params_}")
 print(f"Best score: {grid_search.best_score_:.2%}")
 ```
 
+
 ## Feature Engineering
 
 ### Creating New Features
@@ -279,6 +294,7 @@ X_poly = poly.fit_transform(X)
 X['age_bin'] = pd.cut(X['age'], bins=[0, 18, 35, 50, 100], labels=['child', 'young', 'middle', 'senior'])
 ```
 
+
 ### Feature Selection
 
 ```python
@@ -291,6 +307,7 @@ X_selected = selector.fit_transform(X, y)
 # Get selected feature names
 selected_features = [X.columns[i] for i in selector.get_support(indices=True)]
 ```
+
 
 ## Model Evaluation
 
@@ -321,6 +338,7 @@ y_bin = label_binarize(y_test, classes=[0, 1, 2])
 roc_auc = roc_auc_score(y_bin, y_pred_proba, multi_class='ovr')
 ```
 
+
 ### Regression Metrics
 
 ```python
@@ -331,6 +349,7 @@ rmse = np.sqrt(mse)
 mae = mean_absolute_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
 ```
+
 
 ## Model Persistence
 
@@ -350,6 +369,7 @@ loaded_scaler = joblib.load('scaler.pkl')
 # Make predictions
 y_pred = loaded_model.predict(loaded_scaler.transform(X_test))
 ```
+
 
 ## Best Practices
 
