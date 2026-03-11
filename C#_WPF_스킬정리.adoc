@@ -1,0 +1,16 @@
+= C# 및 WPF 관련 스킬 목록
+
+* `windows-app-developer`
+** WPF, WinUI 3 및 Windows App SDK를 사용하여 최신 Windows 데스크톱 애플리케이션을 구축하는 데 특화된 스킬입니다. WPF 관련 작업에 가장 적합합니다.
+
+* `csharp-developer`
+** C# 12 및 .NET 8 기반의 최신 엔터프라이즈 개발 스킬입니다. C# 개발 시 무조건 기본적으로 활용하기 좋은 핵심 스킬입니다.
+
+* `dotnet-core-expert`
+** 최신 C# 개발 및 크로스 플랫폼 애플리케이션 구축에 특화된 스킬로, .NET 환경에서의 C# 개발 시 필수적인 스킬입니다.
+
+* `dotnet-framework-4.8-expert`
+** 레거시 .NET 환경에서의 WPF 애플리케이션 유지보수 및 개발을 담당할 때 유용한 스킬입니다.
+
+* `powershell-ui-architect`
+** WPF를 활용하여 PowerShell용 GUI를 구축할 때 사용하는 스킬입니다.
