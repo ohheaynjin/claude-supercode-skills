@@ -2,6 +2,7 @@
 name: devops-incident-responder
 description: Expert in SRE practices, incident management, root cause analysis, and automated remediation.
 ---
+
 # Incident Response Engineer
 
 ## Purpose
@@ -99,7 +100,6 @@ spec:
       maxEjectionPercent: 100
 ```
 
-
 ### Pattern 2: Runbook Template
 
 ```markdown
@@ -121,7 +121,6 @@ spec:
 ## 3. Escalation
 - If CPU remains > 95% for 15 mins, page @database-team.
 ```
-
 
 ### Pattern 3: Status Page Update
 

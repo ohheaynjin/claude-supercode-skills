@@ -1,8 +1,9 @@
-# SQL Pro - 코드 예제 및 패턴
+# SQL Pro - Code Examples & Patterns
 
-## 계층적 데이터를 위한 재귀적 CTE
+## Recursive CTE for Hierarchical Data
 
-**시나리오**: 조직 계층 - 관리자 아래의 모든 직원 찾기
+**Scenario**: Organizational hierarchy - find all employees under a manager
+
 ```sql
 -- Create employees table
 CREATE TABLE employees (
@@ -55,7 +56,9 @@ SELECT
 FROM org_tree
 ORDER BY path;  -- Depth-first traversal
 ```
-## 총 개수를 사용한 페이지 매김
+
+## Pagination with Total Count
+
 ```sql
 -- Template: Window function for pagination + total count in single query
 WITH paginated_users AS (
@@ -80,7 +83,9 @@ id  | name  | email       | created_at | total_count
 124 | Bob   | b@email.com | 2024-03-14 | 5432
 */
 ```
-## 조건부 집계(피벗 테이블)
+
+## Conditional Aggregation (Pivot Table)
+
 ```sql
 -- Pivot without PIVOT syntax (works across all databases)
 SELECT 
@@ -101,7 +106,9 @@ year | q1_sales | q2_sales | q3_sales | q4_sales | total_sales
 2024 | 125000   | 145000   | 167000   | 189000   | 626000
 */
 ```
-## 인덱스 커버리지 확인
+
+## Index Coverage Check
+
 ```sql
 -- Template: Check if query can use index-only scan
 -- 1. Identify columns in WHERE, JOIN, ORDER BY
@@ -125,11 +132,12 @@ CREATE INDEX idx_orders_status_created_covering
 
 -- Verify with EXPLAIN: look for "Index Only Scan" (PostgreSQL) or "Using index" (MySQL)
 ```
-## 안티 패턴 및 수정 사항
 
-### 안티 패턴: 프로덕션 코드에서 SELECT *
+## Anti-Patterns & Fixes
 
-**나쁜:**
+### Anti-Pattern: SELECT * in Production Code
+
+**BAD:**
 ```sql
 -- Selecting all columns (even if only need 3)
 SELECT * FROM users WHERE id = 123;
@@ -139,13 +147,14 @@ SELECT * FROM orders o
 JOIN users u ON o.user_id = u.id
 WHERE o.status = 'pending';
 ```
-**실패하는 이유:**
-- **성능**: 불필요한 데이터를 가져옵니다(네트워크 전송, 메모리 오버헤드).
-- **인덱스 적용 범위**: 인덱스 전용 스캔을 사용할 수 없습니다(힙에 액세스해야 함).
-- **주요 변경 사항**: 스키마 변경으로 인해 애플리케이션 코드가 중단됩니다.
-- **모호성**: 조인 시 열 이름이 충돌합니다(어떤 'ID' 열이요?).
 
-**좋음:**
+**Why it fails:**
+- **Performance**: Fetches unnecessary data (network transfer, memory overhead)
+- **Index coverage**: Cannot use index-only scans (must access heap)
+- **Breaking changes**: Schema changes break application code
+- **Ambiguity**: Column name conflicts in joins (which 'id' column?)
+
+**GOOD:**
 ```sql
 -- Select only needed columns
 SELECT id, email, name, created_at 
@@ -168,9 +177,10 @@ CREATE INDEX idx_users_id_covering
   ON users (id) 
   INCLUDE (email, name, created_at);  -- Index-only scan possible
 ```
-### 안티 패턴: WHERE 절의 암시적 유형 변환
 
-**나쁜:**
+### Anti-Pattern: Implicit Type Conversion in WHERE Clause
+
+**BAD:**
 ```sql
 -- user_id is INTEGER, but comparing with string
 SELECT * FROM orders WHERE user_id = '12345';
@@ -181,12 +191,13 @@ SELECT * FROM orders WHERE created_at = '2024-03-15';
 -- phone_number is VARCHAR, but comparing with number
 SELECT * FROM users WHERE phone_number = 1234567890;
 ```
-**실패하는 이유:**
-- **인덱스가 사용되지 않음**: 유형 불일치로 인해 인덱스 사용이 불가능함(전체 테이블 스캔)
-- **암시적 변환 오버헤드**: 데이터베이스가 모든 행의 값을 변환합니다(느림).
-- **일관되지 않은 동작**: 서로 다른 데이터베이스는 변환을 다르게 처리합니다.
 
-**좋음:**
+**Why it fails:**
+- **Index not used**: Type mismatch prevents index usage (full table scan)
+- **Implicit conversion overhead**: Database converts every row's value (slow)
+- **Inconsistent behavior**: Different databases handle conversions differently
+
+**GOOD:**
 ```sql
 -- Use correct data types
 SELECT * FROM orders WHERE user_id = 12345;  -- INTEGER
@@ -205,7 +216,9 @@ SELECT * FROM users WHERE phone_number = '1234567890';
 EXPLAIN SELECT * FROM orders WHERE user_id = 12345;
 -- Should show "Index Scan" or "Index Seek", NOT "Seq Scan"
 ```
-## 쿼리 최적화 예
+
+## Query Optimization Example
+
 ```sql
 -- Before: Multiple scans, inefficient joins
 SELECT o.order_id, c.customer_name, SUM(oi.quantity * oi.price) as total

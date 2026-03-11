@@ -2,9 +2,10 @@
 
 ## 개요
 
-이 프로젝트는 모범 사례, 오류 처리 및 구성 관리와 함께 프로덕션용으로 설계된 11가지 ML/AI 관련 기술에 대한 포괄적인 스크립트와 참조를 제공합니다.
+이 프로젝트는 모범 사례, 오류 처리 및 구성 관리와 함께 프로덕션용으로 설계된 11가지 ML/AI 관련 기술에 대한 포괄적인 스크립트 및 참조를 제공합니다.
 
 ## 프로젝트 구조
+
 ```
 claude-skills-conversion/
 ├── ai-engineer-skill/          # AI service integration, RAG, prompts
@@ -20,6 +21,7 @@ claude-skills-conversion/
 ├── devops-incident-responder-skill/  # Incident response automation
 └── incident-responder-skill/     # Alert handling and triage
 ```
+
 ## 스킬 생성
 
 ### 1. AI 엔지니어
@@ -117,8 +119,7 @@ claude-skills-conversion/
 
 ## 설치
 
-### 전제 조건
-```bash
+### 전제 조건```bash
 # Python dependencies
 pip install scikit-learn pandas numpy
 pip install transformers peft datasets
@@ -130,8 +131,8 @@ pip install fastapi uvicorn
 # Optional: GPU support
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
-### 환경 설정
-```bash
+
+### 환경 설정```bash
 # Set API keys
 export OPENAI_API_KEY="your-openai-key"
 export ANTHROPIC_API_KEY="your-anthropic-key"
@@ -139,10 +140,10 @@ export ANTHROPIC_API_KEY="your-anthropic-key"
 # PostgreSQL
 export PGPASSWORD="your-db-password"
 ```
+
 ## 빠른 시작 예
 
-### AI 엔지니어 - OpenAI 통합
-```python
+### AI 엔지니어 - OpenAI 통합```python
 from ai_engineer_skill.scripts.integrate_openai import OpenAIIntegration, OpenAIConfig
 
 config = OpenAIConfig(api_key=os.getenv("OPENAI_API_KEY"))
@@ -152,16 +153,16 @@ messages = [{"role": "user", "content": "Hello!"}]
 response = integration.chat_completion(messages)
 print(response['content'])
 ```
-### LLM 설계자 - 모델 벤치마킹
-```python
+
+### LLM 설계자 - 모델 벤치마킹```python
 from llm_architect_skill.scripts.benchmark_models import ModelBenchmarker
 
 benchmarker = ModelBenchmarker(models)
 benchmarker.benchmark_task("summarization", task_func, test_data)
 best = benchmarker.get_best_model_for_task("summarization")
 ```
-### ML 엔지니어 - 교육 파이프라인
-```python
+
+### ML 엔지니어 - 교육 파이프라인```python
 from ml_engineer_skill.scripts.train_sklearn import MLModelTrainer, ModelConfig
 
 trainer = MLModelTrainer(ModelConfig())
@@ -169,8 +170,8 @@ X_train, X_test = trainer.preprocess_features(X_train, X_test)
 trainer.train_model(X_train, y_train)
 metrics = trainer.evaluate_model(X_test, y_test)
 ```
-### MLOps - MLflow 추적
-```python
+
+### MLOps - MLflow 추적```python
 from mlops_engineer_skill.scripts.track_mlflow import MLflowTracker
 
 tracker = MLflowTracker(experiment_name="my_experiment")
@@ -180,6 +181,7 @@ tracker.log_metrics({"accuracy": 0.95})
 tracker.log_model(model, "my_model")
 tracker.end_run()
 ```
+
 ## 모범 사례
 
 ### 오류 처리
@@ -212,7 +214,7 @@ tracker.end_run()
 4. 오류 처리 및 로깅 포함
 5. 예시 사용법을 제공하세요.`main()`기능
 
-## 라이선스
+## 라이센스
 
 프로덕션 준비가 완료된 교육 코드입니다. 귀하의 요구에 적응하십시오.
 

@@ -16,7 +16,7 @@ description: 원시 텍스트 이상의 해석이 필요한 미디어 파일(PDF
 
 ## 이 스킬을 언제 사용해야 할까요?
 
-다음이 필요할 때 사용하세요.
+다음이 필요한 경우에 사용하세요.
 - PDF 문서의 내용과 구조를 분석합니다.
 - 기술 다이어그램, 순서도 및 시스템 아키텍처 해석
 - 여러 요소가 포함된 복잡한 이미지에서 정보 추출
@@ -81,7 +81,9 @@ description: 원시 텍스트 이상의 해석이 필요한 미디어 파일(PDF
 - 테이블 레이아웃, 헤더, 데이터 관계 이해
 - 병합된 셀로 복잡한 테이블 구조 처리
 - 데이터 유형 및 형식 정보 유지
-- 시각적 테이블을 구조화된 형식으로 변환**양식 분석:**
+- 시각적 테이블을 구조화된 형식으로 변환
+
+**양식 분석:**
 - 양식 및 설문지 해석
 - 필드 이름 및 해당 값 추출
 - 양식 레이아웃 및 데이터 입력 패턴 이해
@@ -123,8 +125,7 @@ description: 원시 텍스트 이상의 해석이 필요한 미디어 파일(PDF
 
 ### 미디어별 패턴
 
-**문서 분석:**
-```
+**문서 분석:**```
 1. Document Structure Assessment
    - Identify document type and purpose
    - Map section hierarchy and organization
@@ -140,8 +141,8 @@ description: 원시 텍스트 이상의 해석이 필요한 미디어 파일(PDF
    - Identify key themes and main points
    - Summarize content while maintaining accuracy
 ```
-**기술 다이어그램 분석:**
-```
+
+**기술 다이어그램 분석:**```
 1. Component Identification
    - Recognize different diagram elements (nodes, edges, symbols)
    - Understand notation and conventions used
@@ -157,8 +158,8 @@ description: 원시 텍스트 이상의 해석이 필요한 미디어 파일(PDF
    - Describe processes and decision points
    - Identify inputs, outputs, and transformations
 ```
-**데이터 시각화 분석:**
-```
+
+**데이터 시각화 분석:**```
 1. Chart Type Recognition
    - Identify chart type (bar, line, pie, scatter, etc.)
    - Understand axes, scales, and data series
@@ -174,6 +175,7 @@ description: 원시 텍스트 이상의 해석이 필요한 미디어 파일(PDF
    - Identify significant findings and implications
    - Note limitations or potential misinterpretations
 ```
+
 ## 출력 형식
 
 ### 구조화된 정보 추출

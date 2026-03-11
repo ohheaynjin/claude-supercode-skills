@@ -2,6 +2,7 @@
 name: bmad-bmm-analyst
 description: Business analysis expert who drives project discovery, market research, and requirements validation within the BMAD methodology
 ---
+
 # Business Analysis Expert
 
 ## Purpose
@@ -122,7 +123,6 @@ preferences, and create a comprehensive product brief with
 differentiated value proposition and market positioning."
 ```
 
-
 ### Feature Expansion
 ```
 User: "Should we add AI-powered meal planning to our fitness app?"
@@ -132,7 +132,6 @@ and provide a business case with ROI projections and implementation
 recommendations."
 ```
 
-
 ### Market Entry Strategy
 ```
 User: "We want to expand our B2B SaaS to the European market"
@@ -141,7 +140,6 @@ requirements (GDPR), identify local competitors, assess cultural
 adaptation needs, and develop a market entry strategy with timeline
 and resource requirements."
 ```
-
 
 ## Best Practices
 

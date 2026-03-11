@@ -24,14 +24,13 @@ AI 컨텍스트 관리, 메모리 아키텍처 및 컨텍스트 창 최적화에
 - AI 에이전트를 위한 장기 기억 구축
 - 품질을 유지하면서 토큰 사용량을 줄입니다.
 
-**다음과 같은 경우에는 호출하지 마세요.**
+**다음과 같은 경우에는 호출하지 마세요**
 - 전체 RAG 파이프라인 구축(ai-engineer 사용)
 - 벡터 데이터베이스 관리(데이터 엔지니어 사용)
 - 여러 에이전트 조정(에이전트-주최자 사용)
 - 임베딩 모델 학습(ml-engine 사용)
 
-## 의사결정 프레임워크
-```
+## 의사결정 프레임워크```
 Memory Type Selection:
 ├── Single conversation → Sliding window context
 ├── Multi-session user → Persistent memory store
@@ -42,7 +41,8 @@ Memory Type Selection:
     ├── Semantic memory → Knowledge graph
     └── Procedural memory → Learned patterns
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. 컨텍스트 창 최적화
 1. 현재 토큰 사용량 측정

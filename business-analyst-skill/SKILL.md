@@ -24,14 +24,13 @@ description: 비즈니스 요구 사항과 기술 솔루션 간의 격차를 해
 - 기능 사양 작성
 - 비즈니스 요구사항을 기술 사양으로 변환
 
-**다음과 같은 경우에는 호출하지 마세요.**
+**다음과 같은 경우에는 호출하지 마세요**
 - 시스템 아키텍처 설계(solution-architect 사용)
 - 프로젝트 일정 및 리소스 관리(프로젝트 관리자 사용)
 - 사용자 리서치 수행 (ux-researcher 사용)
 - 제품 전략 정의(제품 관리자 사용)
 
-## 의사결정 프레임워크
-```
+## 의사결정 프레임워크```
 Requirements Type:
 ├── New feature → User stories + acceptance criteria
 ├── Process improvement → AS-IS/TO-BE BPMN models
@@ -39,7 +38,8 @@ Requirements Type:
 ├── Compliance need → Regulatory requirements matrix
 └── Stakeholder request → Impact analysis + prioritization
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. 요구 사항 수집
 1. 모든 이해관계자 식별

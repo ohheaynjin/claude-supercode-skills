@@ -38,6 +38,7 @@ description: 사용자에게 확장 가능한 데이터 파이프라인 개발, 
 ## 의사결정 프레임워크
 
 ### 파이프라인 아키텍처 선택
+
 ```
 ├─ Batch Processing?
 │   ├─ Daily/hourly schedules → Airflow + dbt
@@ -70,30 +71,32 @@ description: 사용자에게 확장 가능한 데이터 파이프라인 개발, 
         Lambda: Separate batch/speed layers
         Kappa: Single stream-first approach
 ```
+
 ### 데이터 저장소 선택
 
 | 사용 사례 | 기술 | 장점 | 단점 |
-|------------|------------|------|------|
-| **구조적 분석** | 눈송이/BigQuery | SQL, 빠른 쿼리 | 대규모 비용 |
-| **반구조적** | 삼각주/빙산 | ACID, 스키마 진화 | 복잡성 |
-| **원시 스토리지** | S3/GCS | 저렴하고 내구성 | 쿼리 엔진 없음 |
-| **실시간** | Redis/다이나모DB | 낮은 대기 시간 | 제한된 분석 |
-| **시계열** | 타임스케일DB/인플럭스DB | 시간 데이터에 최적화 | 특정 사용 사례 |
+|----------|------------|------|------|
+| **구조화된 분석** | 눈송이/BigQuery | SQL, 빠른 쿼리 | 규모에 따른 비용 |
+| **반구조적** | 델타 호수/빙산 | ACID, 스키마 진화 | 복잡성 |
+| **원시 스토리지** | S3/GCS | 저렴하고 내구성이 좋음 | 쿼리 엔진 없음 |
+| **실시간** | 레디스/다이나모DB | 낮은 대기 시간 | 제한된 분석 |
+| **시계열** | 타임스케일DB/인플럭스DB | 시간 데이터에 최적화됨 | 특정 사용 사례 |
 
 ### ETL 대 ELT 결정
 
-| 요인 | ETL(변환 우선) | ELT(먼저 로드) |
-|---------|---------|------|
-| **데이터 볼륨** | 중소 | 대형(TB+) |
+| 요인 | ETL(변환 우선) | ELT(로드 우선) |
+|--------|----------------------|------------------|
+| **데이터 볼륨** | 중소형 | 대형(TB+) |
 | **변환** | 복합, 예압 | SQL 기반, 창고 내 |
-| **지연 시간** | 더 높은 | 낮은 |
+| **숨어 있음** | 더 높은 | 낮추다 |
 | **비용** | 로드 전 계산 | 창고 컴퓨팅 |
-| **최고의 대상** | 레거시 시스템 | 최신 클라우드 DW |
+| **최적의 용도** | 레거시 시스템 | 최신 클라우드 DW |
 
 ## 핵심 패턴
 
 ### 패턴 1: 멱등성 파티션 덮어쓰기
 **사용 사례:** 중복을 생성하지 않고 일괄 작업을 안전하게 다시 실행합니다.
+
 ```python
 # PySpark example: Overwrite partition based on execution date
 def write_daily_partition(df, target_table, execution_date):
@@ -105,8 +108,10 @@ def write_daily_partition(df, target_table, execution_date):
      .format("parquet")
      .saveAsTable(target_table))
 ```
+
 ### 패턴 2: 느리게 변경되는 차원 유형 2(SCD2)
 **사용 사례:** 과거 상태를 잃지 않고 변경 내역을 추적합니다.
+
 ```sql
 -- dbt implementation of SCD2
 {{ config(materialized='incremental', unique_key='user_id') }}
@@ -118,7 +123,8 @@ SELECT
     ) as valid_to
 FROM {{ source('raw', 'users') }}
 ```
-### 패턴 3: 스트리밍용 DLQ(배달 못한 편지 대기열)
+
+### 패턴 3: 스트리밍을 위한 DLQ(배달 못한 편지 대기열)
 **사용 사례:** 파이프라인을 중지하지 않고 잘못된 형식의 메시지를 처리합니다.
 
 ### 패턴 4: 데이터 품질 회로 차단기

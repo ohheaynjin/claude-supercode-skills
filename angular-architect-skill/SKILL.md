@@ -2,6 +2,7 @@
 name: angular-architect
 description: Enterprise Angular development expert specializing in Angular 16+ features, Signals, Standalone Components, and RxJS/NgRx at scale.
 ---
+
 # Angular Architect
 
 ## Purpose
@@ -40,7 +41,6 @@ What is the complexity level?
    └─ Caching/Deduplication? → **TanStack Query (Angular)** or **RxJS + Cache Operator**
 ```
 
-
 ### Architecture Patterns
 
 | Pattern | Use Case | Pros | Cons |
@@ -66,8 +66,7 @@ What is the complexity level?
 **Steps:**
 
 1.  **Define Store**
-
-```typescript
+    ```typescript
     import { signalStore, withState, withMethods, patchState } from '@ngrx/signals';
     
     export const UserStore = signalStore(
@@ -86,10 +85,8 @@ What is the complexity level?
     );
     ```
 
-
 2.  **Use in Component**
-
-```typescript
+    ```typescript
     export class UserListComponent {
       readonly store = inject(UserStore);
       
@@ -102,7 +99,6 @@ What is the complexity level?
     }
     ```
 
-
 ---
 ---
 
@@ -113,8 +109,7 @@ What is the complexity level?
 **Steps:**
 
 1.  **Bootstrap Config**
-
-```typescript
+    ```typescript
     // main.ts
     bootstrapApplication(AppComponent, {
       providers: [
@@ -122,7 +117,6 @@ What is the complexity level?
       ]
     });
     ```
-
 
 2.  **State Management (Signals Only)**
     -   Do NOT use `ApplicationRef.tick()` manually.
@@ -178,20 +172,17 @@ this.route.params.subscribe(params => {
 });
 ```
 
-
 **Why it fails:**
 -   Race conditions (if params change fast).
 -   Memory leaks (if not unsubscribed).
 
 **Correct approach:**
 -   **SwitchMap:**
-
-```typescript
+    ```typescript
     this.data$ = this.route.params.pipe(
       switchMap(params => this.service.getData(params.id))
     );
     ```
-
 -   Use `AsyncPipe` or `toSignal` in template.
 
 ### ❌ Anti-Pattern 2: Logic in Templates
@@ -201,23 +192,18 @@ this.route.params.subscribe(params => {
 <div *ngIf="user.roles.includes('ADMIN') && user.active && !isLoading">
 ```
 
-
 **Why it fails:**
 -   Hard to test.
 -   Runs on every change detection cycle.
 
 **Correct approach:**
 -   **Computed Signal / Getter:**
-
-```typescript
+    ```typescript
     isAdmin = computed(() => this.user().roles.includes('ADMIN'));
     ```
-
-
-```html
+    ```html
     <div *ngIf="isAdmin()">
     ```
-
 
 ### ❌ Anti-Pattern 3: Shared Module Bloat
 

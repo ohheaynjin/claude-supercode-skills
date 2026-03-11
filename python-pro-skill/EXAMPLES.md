@@ -4,20 +4,19 @@
 
 ### 안티 패턴: 유형 힌트 무시
 
-**모습:**
-```python
+**모습:**```python
 def process_users(users):  # No type hints
     return [u['name'] for u in users]  # Runtime error if wrong type
 
 result = process_users("not a list")  # No warning until runtime
 ```
+
 **실패하는 이유:**
 - IDE 자동 완성 기능 없음
 - 개발이 아닌 런타임에 오류가 발생합니다.
 - 안전하게 리팩토링하기가 더 어렵습니다.
 
-**올바른 접근 방식:**
-```python
+**올바른 접근 방식:**```python
 from typing import List, Dict
 
 def process_users(users: List[Dict[str, str]]) -> List[str]:
@@ -26,12 +25,12 @@ def process_users(users: List[Dict[str, str]]) -> List[str]:
 # mypy catches error at development time
 result = process_users("not a list")  # mypy error!
 ```
+
 ---
 
 ### 안티 패턴: 이벤트 루프 차단
 
-**모습:**
-```python
+**모습:**```python
 import time
 import asyncio
 
@@ -41,13 +40,13 @@ async def slow_handler():
 
 # All other requests wait 5 seconds
 ```
+
 **실패하는 이유:**
 - 비동기 이점이 완전히 무효화되었습니다.
 - 모든 동시 요청 차단
 - 서버가 중단된 것처럼 보입니다.
 
-**올바른 접근 방식:**
-```python
+**올바른 접근 방식:**```python
 import asyncio
 
 async def slow_handler():
@@ -63,12 +62,12 @@ async def cpu_intensive_handler():
     )
     return result
 ```
+
 ---
 
 ### 안티 패턴: 컨텍스트 관리자를 사용하지 않음
 
-**모습:**
-```python
+**모습:**```python
 # Manual resource management
 file = open("data.txt", "r")
 data = file.read()
@@ -80,8 +79,8 @@ cursor.execute("SELECT * FROM users")
 # If exception here, connection leaks!
 conn.close()
 ```
-**올바른 접근 방식:**
-```python
+
+**올바른 접근 방식:**```python
 # Context manager handles cleanup automatically
 with open("data.txt", "r") as file:
     data = file.read()
@@ -92,12 +91,12 @@ async with asyncpg.create_pool(DATABASE_URL) as pool:
         result = await conn.fetch("SELECT * FROM users")
 # Connection automatically returned to pool
 ```
+
 ---
 
 ### 안티 패턴: 변경 가능한 기본 인수
 
-**모습:**
-```python
+**모습:**```python
 def append_to_list(item, items=[]):  # Shared across calls!
     items.append(item)
     return items
@@ -106,8 +105,8 @@ print(append_to_list(1))  # [1]
 print(append_to_list(2))  # [1, 2] - Unexpected!
 print(append_to_list(3))  # [1, 2, 3] - Bug!
 ```
-**올바른 접근 방식:**
-```python
+
+**올바른 접근 방식:**```python
 from typing import Optional, List
 
 def append_to_list(item: int, items: Optional[List[int]] = None) -> List[int]:
@@ -119,11 +118,13 @@ def append_to_list(item: int, items: Optional[List[int]] = None) -> List[int]:
 print(append_to_list(1))  # [1]
 print(append_to_list(2))  # [2] - Correct!
 ```
+
 ---
 
 ## 테스트 패턴
 
 ### 비동기 테스트를 사용한 Pytest
+
 ```python
 import pytest
 from httpx import AsyncClient
@@ -153,7 +154,9 @@ async def test_get_user_not_found(async_client: AsyncClient):
     assert response.status_code == 404
     assert response.json()["detail"] == "User not found"
 ```
+
 ### 외부 서비스 모의
+
 ```python
 from unittest.mock import AsyncMock, patch
 import pytest
@@ -183,11 +186,13 @@ async def test_database_operation():
     
     assert user.email == "test@example.com"
 ```
+
 ---
 
 ## Pydantic 고급 패턴
 
 ### 검증이 포함된 중첩 모델
+
 ```python
 from pydantic import BaseModel, Field, field_validator, model_validator
 from typing import List, Optional
@@ -252,9 +257,11 @@ order = Order(
 print(order.customer_email)  # "john@example.com" (lowercased)
 print(order.total)  # 109.97
 ```
+
 ---
 
 ## 비동기 생성기 패턴
+
 ```python
 from typing import AsyncGenerator
 import asyncpg
@@ -288,9 +295,11 @@ async def process_all_users():
     async for user in stream_users(pool):
         await process_user(user)
 ```
+
 ---
 
 ## 의존성 주입 패턴
+
 ```python
 from typing import Protocol, runtime_checkable
 from functools import lru_cache
@@ -338,9 +347,11 @@ async def notify_user(
     )
     return {"status": "sent"}
 ```
+
 ---
 
 ## 캐싱 패턴
+
 ```python
 from functools import lru_cache
 from typing import Optional

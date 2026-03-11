@@ -12,7 +12,7 @@
 4. **낮음** - 백로그 수정(3개월 이내)
 
 ### 위험 기반 접근 방식
-고려 사항:
+다음을 고려하십시오:
 - Exploitability (악용의 용이성)
 - 영향(사업상의 피해)
 - 자산 가치(영향을 받는 시스템의 중요성)
@@ -22,13 +22,12 @@
 
 ### SQL 주입
 
-**탐지:**
-```sql
+**발각:**```sql
 -- Vulnerable pattern (detected by scanners)
 SELECT * FROM users WHERE id = $user_input
 ```
-**해결:**
-```python
+
+**해결:**```python
 # Using parameterized queries with SQLAlchemy
 from sqlalchemy import text
 
@@ -56,21 +55,21 @@ def get_user(user_id):
     # Safe - ORM handles escaping
     return User.query.filter_by(id=user_id).first()
 ```
-**확인:**
-```bash
+
+**확인:**```bash
 # Use SQLMap to test remediation
 sqlmap -u "http://example.com/user?id=1" --level=5 --risk=3
 ```
+
 ### 교차 사이트 스크립팅(XSS)
 
-**탐지:**
-```html
+**발각:**```html
 <!-- Vulnerable pattern -->
 <script>alert('XSS')</script>
 <img src=x onerror=alert('XSS')>
 ```
-**해결:**
-```python
+
+**해결:**```python
 # Input validation with bleach
 import bleach
 
@@ -102,8 +101,8 @@ env = Environment(
 def show_comment(comment_text):
     return render_template('comment.html', comment=comment_text)
 ```
-**HTTP 헤더:**
-```python
+
+**HTTP 헤더:**```python
 # Content Security Policy
 @app.after_request
 def add_csp_header(response):
@@ -111,15 +110,15 @@ def add_csp_header(response):
     response.headers['Content-Security-Policy'] = csp
     return response
 ```
+
 ### 인증 우회
 
-**탐지:**
-```python
+**발각:**```python
 # Vulnerable pattern
 if password == stored_password:  # Weak comparison
 ```
-**해결:**
-```python
+
+**해결:**```python
 # Secure password hashing
 import bcrypt
 
@@ -154,18 +153,18 @@ def login():
     # Use constant-time comparison to prevent timing attacks
     return 'Invalid credentials', 401
 ```
+
 ### 안전하지 않은 IDOR(직접 개체 참조)
 
-**탐지:**
-```python
+**발각:**```python
 # Vulnerable pattern
 @app.route('/documents/<doc_id>')
 def get_document(doc_id):
     doc = Document.query.get(doc_id)
     return doc.content  # No authorization check
 ```
-**해결:**
-```python
+
+**해결:**```python
 # Add authorization checks
 @app.route('/documents/<doc_id>')
 @login_required
@@ -190,16 +189,16 @@ class Document(db.Model):
 # Generate secure URLs
 document_url = url_for('get_document', document_id=document.id)
 ```
+
 ### 하드코딩된 자격 증명
 
-**탐지:**
-```python
+**발각:**```python
 # Vulnerable pattern
 API_KEY = "sk_live_1234567890abcdef"
 DB_PASSWORD = "admin123"
 ```
-**해결:**
-```python
+
+**해결:**```python
 # Use environment variables
 import os
 from dotenv import load_dotenv
@@ -230,18 +229,18 @@ client.auth.approle.login(
 
 secret = client.read_secret(path='secret/database')['data']['password']
 ```
+
 ### 안전하지 않은 역직렬화
 
-**탐지:**
-```python
+**발각:**```python
 # Vulnerable pattern
 import pickle
 
 def load_data(data):
     return pickle.loads(data)  # Dangerous!
 ```
-**해결:**
-```python
+
+**해결:**```python
 # Use JSON instead of pickle
 import json
 
@@ -272,12 +271,12 @@ def secure_deserialize(data, secret_key):
     
     return pickle.loads(pickled)
 ```
+
 ## 구성 강화
 
 ### 웹 서버 보안
 
-**엔진엑스:**
-```nginx
+**엔진엑스:**```nginx
 # Disable server tokens
 server_tokens off;
 
@@ -293,8 +292,8 @@ ssl_protocols TLSv1.2 TLSv1.3;
 ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256';
 ssl_prefer_server_ciphers off;
 ```
-**아파치:**
-```apache
+
+**아파치:**```apache
 # Disable server signature
 ServerSignature Off
 ServerTokens Prod
@@ -309,10 +308,10 @@ Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains
 SSLProtocol all -SSLv3 -TLSv1 -TLSv1.1
 SSLCipherSuite HIGH:!aNULL:!MD5
 ```
+
 ### 데이터베이스 보안
 
-**포스트그레SQL:**
-```sql
+**포스트그레SQL:**```sql
 -- Remove default test database
 DROP DATABASE IF EXISTS test;
 
@@ -325,8 +324,8 @@ GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO app_user;
 -- Enable SSL
 ALTER SYSTEM SET ssl = on;
 ```
-**MySQL/MariaDB:**
-```sql
+
+**MySQL/MariaDB:**```sql
 -- Remove anonymous users
 DELETE FROM mysql.user WHERE User='';
 
@@ -340,10 +339,10 @@ SET GLOBAL validate_password.length = 12;
 -- Enable SSL
 ALTER USER 'root'@'localhost' REQUIRE SSL;
 ```
+
 ### 시스템 강화
 
-**우분투/데비안:**
-```bash
+**우분투/데비안:**```bash
 # Update system
 sudo apt update && sudo apt upgrade -y
 
@@ -362,8 +361,8 @@ sudo systemctl restart sshd
 sudo apt install fail2ban
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 ```
-**RHEL/센트OS:**
-```bash
+
+**RHEL/센트OS:**```bash
 # Update system
 sudo yum update -y
 
@@ -378,10 +377,10 @@ sudo sed -i 's/#PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
 sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
 sudo systemctl restart sshd
 ```
+
 ## 종속성 관리
 
-### 파이썬
-```bash
+### 파이썬```bash
 # Audit dependencies
 pip-audit
 
@@ -392,8 +391,8 @@ pip install --upgrade package-name
 pip install pip-tools
 pip-compile requirements.in
 ```
-### Node.js
-```bash
+
+### Node.js```bash
 # Audit dependencies
 npm audit
 
@@ -407,10 +406,10 @@ npm update package-name
 npx npm-check-updates -u
 npm install
 ```
+
 ## 컨테이너 보안
 
-### 도커
-```dockerfile
+### 도커```dockerfile
 # Use minimal base image
 FROM python:3.11-slim
 
@@ -426,8 +425,8 @@ USER appuser
 # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
 #   aquasec/trivy:latest image myapp:latest
 ```
-### 쿠버네티스
-```yaml
+
+### 쿠버네티스```yaml
 # Security context
 apiVersion: v1
 kind: Pod
@@ -448,10 +447,10 @@ spec:
         drop:
         - ALL
 ```
+
 ## 모니터링 및 로깅
 
-### 보안 이벤트 로깅
-```python
+### 보안 이벤트 로깅```python
 import structlog
 
 logger = structlog.get_logger()
@@ -476,8 +475,8 @@ def log_data_access(user_id, resource_type, resource_id):
         timestamp=datetime.utcnow().isoformat()
     )
 ```
-### 침입 탐지
-```bash
+
+### 침입 탐지```bash
 # Install OSSEC
 sudo apt install ossec-hids-server
 
@@ -493,10 +492,10 @@ sudo apt install ossec-hids-server
   <location>local</location>
 </active-response>
 ```
+
 ## 테스트 및 검증
 
-### 자동화된 보안 테스트
-```yaml
+### 자동화된 보안 테스트```yaml
 # GitHub Actions workflow
 name: Security Scan
 on: [push, pull_request]
@@ -521,8 +520,8 @@ jobs:
         run: |
           docker run --rm -v $PWD:/app aquasec/trivy config /app
 ```
-### 침투 테스트
-```bash
+
+### 침투 테스트```bash
 # OWASP ZAP automated scan
 zap-cli quick-scan --self-contained --start-options '-config api.disablekey=true' http://localhost:8080
 
@@ -532,11 +531,12 @@ nmap --script vuln -p- target.example.com
 # Nikto web scanner
 nikto -h http://target.example.com -C all
 ```
+
 ## 해결 작업 흐름
 
 1. **식별** - 스캔을 통해 취약점을 감지합니다.
 2. **우선순위** - 위험 및 비즈니스 영향 평가
-3. **수정** - 우선순위에 따라 수정사항 적용
+3. **수정** - 우선순위에 따라 수정 사항을 적용합니다.
 4. **검증** - 수정이 효과적인지 테스트합니다.
 5. **문서** - 변경 사항 및 증거 기록
 6. **모니터** - 회귀 및 새로운 문제를 관찰합니다.
@@ -552,9 +552,9 @@ nikto -h http://target.example.com -C all
 - [ ] 문서가 업데이트되었습니다.
 - [ ] 팀에 변경 사항이 통보되었습니다.
 
-## 리소스
+## 자원
 
-- [OWASP 치트 시트 시리즈](https://cheatsheetseries.owasp.org/)
-- [CWE 톱 25](https://cwe.mitre.org/top25/)
-- [NIST 사이버보안 프레임워크](https://www.nist.gov/cyberframework)
-- [SANS열람실](https://www.sans.org/reading-room/)
+- [OWASP 요약본 시리즈](https://cheatsheetseries.owasp.org/)
+- [CWE 상위 25위](https://cwe.mitre.org/top25/)
+- [NIST 사이버 보안 프레임워크](https://www.nist.gov/cyberframework)
+- [산스열람실](https://www.sans.org/reading-room/)

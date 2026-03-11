@@ -7,6 +7,7 @@
 ## 코드 품질
 
 ### PSScriptAnalyzer 규칙
+
 ```powershell
 # Install PSScriptAnalyzer
 Install-Module PSScriptAnalyzer
@@ -27,9 +28,11 @@ $env:POWERSHELL_FORMAT_SETTINGS = @{
     Rules = @('PSUseCorrectCasing')
 }
 ```
+
 ### 코드 스타일 지침
 
 #### 명명 규칙
+
 ```powershell
 # Good: Approved verbs
 Get-Item
@@ -46,7 +49,9 @@ Make-Item
 Delete-Item
 Check-Item
 ```
-#### 변수 명명
+
+#### 변수 이름 지정
+
 ```powershell
 # Good: PascalCase for variables, camelCase for parameters
 $ServerName
@@ -60,9 +65,11 @@ param(
 $servername
 $ConfigData
 ```
+
 ### 오류 처리
 
 #### Try-Catch-Finally 패턴
+
 ```powershell
 function Invoke-Operation {
     [CmdletBinding()]
@@ -95,7 +102,9 @@ function Invoke-Operation {
     }
 }
 ```
+
 #### 사용자 정의 오류 메시지
+
 ```powershell
 function Set-Configuration {
     [CmdletBinding()]
@@ -121,9 +130,11 @@ function Set-Configuration {
     }
 }
 ```
+
 ## 매개변수 검증
 
 ### 내장 유효성 검사기
+
 ```powershell
 param(
     # Validate not null or empty
@@ -166,7 +177,9 @@ param(
     [pscredential]$Credential
 )
 ```
+
 ### 사용자 정의 유효성 검사기
+
 ```powershell
 function Validate-EmailAddress {
     param(
@@ -192,9 +205,11 @@ param(
     [string]$Email
 )
 ```
+
 ## 성능 최적화
 
 ### 파이프라인 모범 사례
+
 ```powershell
 # Good: Use pipeline
 Get-ChildItem | Where-Object Extension -eq '.txt' | ForEach-Object Name
@@ -204,7 +219,9 @@ $files = Get-ChildItem
 $txtFiles = $files | Where-Object { $_.Extension -eq '.txt' }
 $names = $txtFiles | ForEach-Object { $_.Name }
 ```
+
 ### 객체 생성
+
 ```powershell
 # Good: Use PSCustomObject
 $object = [PSCustomObject]@{
@@ -218,7 +235,9 @@ $object = [PSCustomObject][ordered]@{
     Value = 123
 }
 ```
+
 ### 불필요한 작업을 피하세요
+
 ```powershell
 # Bad: Repeated property access
 if ($object.Property -eq 'value') {
@@ -231,9 +250,11 @@ if ($propertyValue -eq 'value') {
     $result = $propertyValue
 }
 ```
+
 ## 테스트
 
 ### 테스트 조직
+
 ```
 Tests/
 ├── Unit/
@@ -246,7 +267,9 @@ Tests/
 │   └── EndToEnd.Tests.ps1
 └── Tests.ps1
 ```
+
 ### 테스트 구조
+
 ```powershell
 Describe "Get-Item Unit Tests" {
     BeforeAll {
@@ -276,9 +299,11 @@ Describe "Get-Item Unit Tests" {
     }
 }
 ```
+
 ## 보안
 
 ### 보안 문자열
+
 ```powershell
 # Read credential securely
 $credential = Get-Credential
@@ -290,7 +315,9 @@ $secureString = Read-Host "Enter password" -AsSecureString
 # Use in commands
 Invoke-Command -ComputerName "server" -Credential $credential
 ```
+
 ### 실행 정책
+
 ```powershell
 # Check execution policy
 Get-ExecutionPolicy -List
@@ -298,7 +325,9 @@ Get-ExecutionPolicy -List
 # Set execution policy
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ```
+
 ### 서명 스크립트
+
 ```powershell
 # Sign script
 Set-AuthenticodeSignature -FilePath ".\script.ps1" -Certificate $cert
@@ -306,9 +335,11 @@ Set-AuthenticodeSignature -FilePath ".\script.ps1" -Certificate $cert
 # Verify signature
 Get-AuthenticodeSignature -FilePath ".\script.ps1"
 ```
+
 ## 문서
 
-### 댓글 기반 도움말
+### 설명 기반 도움말
+
 ```powershell
 <#
 .SYNOPSIS
@@ -335,6 +366,7 @@ Get-AuthenticodeSignature -FilePath ".\script.ps1"
     https://docs.example.com/get-item
 #>
 ```
+
 ### 외부 문서
 
 1. **README.md**: 모듈 개요 및 빠른 시작
@@ -346,6 +378,7 @@ Get-AuthenticodeSignature -FilePath ".\script.ps1"
 ## 버전 관리
 
 ### 의미적 버전 관리
+
 ```
 MAJOR.MINOR.PATCH
 
@@ -353,13 +386,16 @@ MAJOR: Incompatible API changes
 MINOR: Backward-compatible functionality additions
 PATCH: Backward-compatible bug fixes
 ```
+
 ### 모듈 매니페스트 버전
+
 ```powershell
 @{
     ModuleVersion = '1.2.3'
     # ...
 }
 ```
+
 ### 출시 프로세스
 
 1. 매니페스트의 버전 업데이트
@@ -369,9 +405,10 @@ PATCH: Backward-compatible bug fixes
 5. 갤러리에 게시
 6. 릴리스 노트 작성
 
-## 배포
+## 분포
 
 ### 파워셸 갤러리
+
 ```powershell
 # Publish module
 Publish-Module -Path ".\MyModule" -NuGetApiKey "your-api-key"
@@ -382,7 +419,9 @@ Update-Module -Name MyModule
 # Find module
 Find-Module -Name MyModule
 ```
+
 ### 개인 저장소
+
 ```powershell
 # Register private repository
 Register-PSRepository -Name "MyRepo" -SourceLocation "https://myrepo.local/nuget"
@@ -390,29 +429,30 @@ Register-PSRepository -Name "MyRepo" -SourceLocation "https://myrepo.local/nuget
 # Publish to private repository
 Publish-Module -Path ".\MyModule" -NuGetApiKey "your-api-key" -Repository MyRepo
 ```
+
 ## 문제 해결
 
 ### 일반적인 문제
 
 **문제:** 설치 후 모듈을 찾을 수 없음
 
-**해결책:** 모듈 경로 새로 고침
-```powershell
+**해결책:** 모듈 경로 새로 고침```powershell
 Import-Module MyModule -Force
 ```
+
 **문제:** 함수가 내보내지지 않음
 
-**해결책:** 매니페스트에서 FunctionsToExport를 확인하세요.
-```powershell
+**해결책:** 매니페스트에서 FunctionsToExport를 확인하세요.```powershell
 Get-Module MyModule | Select-Object ExportedFunctions
 ```
+
 **문제:** 테스트 실패
 
-**해결책:** 자세한 출력으로 Pester를 실행하세요.
-```powershell
+**해결책:** 자세한 출력으로 Pester를 실행하세요.```powershell
 Invoke-Pester -Path ".\Tests" -Verbose
 ```
-## 리소스
+
+## 자원
 
 - [PSScriptAnalyzer 규칙](https://github.com/PowerShell/PSScriptAnalyzer#rules)
 - [페스터 문서](https://pester.dev/docs/)

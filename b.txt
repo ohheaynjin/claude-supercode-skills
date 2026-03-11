@@ -1,0 +1,20 @@
+Skipping ./flutter-expert-skill/SKILL.md, already translated
+Processing ./ad-security-reviewer-skill/SKILL.md
+Successfully processed ./cpp-pro-skill/REFERENCE.md
+Processing ./ad-security-reviewer-skill/references/remediation_patterns.md
+Skipping ./ad-security-reviewer-skill/references/remediation_patterns.md, already translated
+Processing ./ad-security-reviewer-skill/references/security_quickstart.md
+Successfully processed ./rails-expert-skill/REFERENCE.md
+Processing ./csharp-developer-skill/SKILL.md
+Skipping ./csharp-developer-skill/SKILL.md, already translated
+Processing ./typescript-pro-skill/SKILL.md
+Successfully processed ./typescript-pro-skill/SKILL.md
+Processing ./golang-pro-skill/SKILL.md
+Successfully processed ./ad-security-reviewer-skill/SKILL.md
+Processing ./performance-engineer-skill/SKILL.md
+Successfully processed ./multimodal-looker-skill/SKILL.md
+Processing ./trend-analyst-skill/SKILL.md
+Successfully processed ./ad-security-reviewer-skill/references/security_quickstart.md
+Processing ./oracle-skill/SKILL.md
+Successfully processed ./trend-analyst-skill/SKILL.md
+Processing ./kubernetes-specialist-skill/EXAMPLES.md

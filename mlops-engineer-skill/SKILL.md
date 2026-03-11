@@ -25,9 +25,10 @@ description: 데이터 과학과 DevOps를 연결하는 기계 학습 운영 전
 - 피처 스토어 구현
 - 프로덕션 ML 시스템 모니터링
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- 모델 개발 및 훈련 → 활용`/ml-engineer`- 데이터 파이프라인 ETL → 사용`/data-engineer`- 쿠버네티스 인프라 → 사용`/kubernetes-specialist`- ML이 없는 일반 CI/CD → 사용`/devops-engineer`## 의사결정 프레임워크
-```
+**다음과 같은 경우에는 호출하지 마세요**
+- 모델 개발 및 훈련 → 활용`/ml-engineer`- 데이터 파이프라인 ETL → 사용`/data-engineer`- 쿠버네티스 인프라 → 사용`/kubernetes-specialist`- ML이 없는 일반 CI/CD → 사용`/devops-engineer`
+
+## 의사결정 프레임워크```
 ML Lifecycle Stage?
 ├── Experimentation
 │   └── MLflow/Weights & Biases for tracking
@@ -41,7 +42,8 @@ ML Lifecycle Stage?
 └── Monitoring
     └── Evidently/Fiddler/custom metrics
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. ML 파이프라인 설정
 1. 파이프라인 단계 정의(데이터 준비, 교육, 평가)

@@ -1,10 +1,11 @@
-# Microsoft 365 관리 패턴
+# Microsoft 365 Administration Patterns
 
-TypeScript 및 Microsoft Graph API를 사용하는 Microsoft 365 관리에 대한 일반적인 패턴 및 모범 사례입니다.
+Common patterns and best practices for Microsoft 365 administration using TypeScript and Microsoft Graph API.
 
-## 사용자 관리 패턴
+## User Management Patterns
 
-### 사용자 라이프사이클 관리
+### User Lifecycle Management
+
 ```typescript
 interface UserLifecycleState {
   onboarding: UserOnboardingConfig;
@@ -76,7 +77,9 @@ async function onboardUser(
   }
 }
 ```
-### 대량 사용자 작업
+
+### Bulk User Operations
+
 ```typescript
 async function bulkUserOperation(
   userManager: M365UserManager,
@@ -131,7 +134,9 @@ async function bulkUserOperation(
   return { succeeded, failed, errors };
 }
 ```
-### 게스트 사용자 관리
+
+### Guest User Management
+
 ```typescript
 async function inviteGuest(
   userManager: M365UserManager,
@@ -186,9 +191,11 @@ async function manageGuestAccess(
   }
 }
 ```
-## 팀 관리 패턴
 
-### 팀 템플릿 시스템
+## Teams Administration Patterns
+
+### Team Template System
+
 ```typescript
 interface TeamTemplate {
   name: string;
@@ -291,7 +298,9 @@ async function createTeamFromTemplate(
   return teamId;
 }
 ```
-### 팀 계층 관리
+
+### Team Hierarchy Management
+
 ```typescript
 interface TeamHierarchy {
   parent: string;
@@ -355,9 +364,11 @@ async function createTeamHierarchy(
   }
 }
 ```
-## 온라인 패턴 교환
 
-### 이메일 자동화 패턴
+## Exchange Online Patterns
+
+### Email Automation Patterns
+
 ```typescript
 async function sendBulkEmail(
   exchangeManager: ExchangeManager,
@@ -394,7 +405,9 @@ async function sendBulkEmail(
   return { sent, failed, errors };
 }
 ```
-### 캘린더 관리
+
+### Calendar Management
+
 ```typescript
 async function scheduleMeeting(
   exchangeManager: ExchangeManager,
@@ -482,9 +495,11 @@ async function findAvailableTimeSlots(
   return slots;
 }
 ```
-## 보안 및 규정 준수 패턴
 
-### 조건부 액세스 관리
+## Security and Compliance Patterns
+
+### Conditional Access Management
+
 ```typescript
 async function configureConditionalAccess(
   accessToken: string,
@@ -526,7 +541,9 @@ async function configureConditionalAccess(
   }
 }
 ```
-### 감사 로그 모니터링
+
+### Audit Log Monitoring
+
 ```typescript
 async function monitorAuditLogs(
   userManager: M365UserManager,
@@ -559,7 +576,9 @@ async function monitorAuditLogs(
   }
 }
 ```
-## 라이선스 관리
+
+## License Management
+
 ```typescript
 interface LicenseAllocation {
   skuId: string;
@@ -612,7 +631,9 @@ async function assignLicenseWithAvailabilityCheck(
   return await userManager.assignLicenses(userId, [licenseSkuId]);
 }
 ```
-## 백업 및 복구
+
+## Backup and Recovery
+
 ```typescript
 async function backupTeam(
   teamsManager: TeamsManager,

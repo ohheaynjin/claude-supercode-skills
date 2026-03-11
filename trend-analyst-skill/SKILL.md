@@ -31,8 +31,7 @@ description: 예측, 신호 감지 및 시장 인텔리전스 전문가입니다
 - 경쟁분석 → 경쟁분석 활용
 - 구체적으로 금융 시계열 → 퀀트 애널리스트 활용
 
-## 의사결정 프레임워크
-```
+## 의사결정 프레임워크```
 Trend Analysis Task?
 ├── Emerging Trends → Signal detection + weak signal analysis
 ├── Trend Strength → Momentum analysis + adoption curves
@@ -41,7 +40,8 @@ Trend Analysis Task?
 ├── Social Listening → Sentiment analysis + volume tracking
 └── Technology Trends → Hype cycle positioning + maturity assessment
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. 추세 식별
 1. 트렌드 스캐닝을 위한 도메인 및 범위 정의

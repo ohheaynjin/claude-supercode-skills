@@ -1,36 +1,37 @@
 ---
 name: cli-developer
-description: 명령줄 인터페이스(CLI), 터미널 사용자 인터페이스(TUI) 및 셸 자동화 도구 구축 전문가입니다. CLI 애플리케이션 생성, 대화형 터미널 UI 구축, 명령줄 인수 구문 분석 또는 셸 스크립트 및 자동화 도구 개발 시 사용합니다.
+description: Expert in building Command Line Interfaces (CLIs), Terminal User Interfaces (TUIs), and shell automation tools. Use when creating CLI applications, building interactive terminal UIs, parsing command-line arguments, or developing shell scripts and automation tools.
 ---
-# CLI 개발자
 
-## 목적
-강력하고 사용자 친화적인 명령줄 애플리케이션 및 터미널 인터페이스 구축에 대한 전문 지식을 제공합니다. 인수 구문 분석, 대화형 프롬프트, TUI 프레임워크 및 여러 언어에 걸친 셸 자동화를 다룹니다.
+# CLI Developer
 
-## 사용 시기
-- 모든 언어로 CLI 애플리케이션 구축
-- 대화형 터미널 사용자 인터페이스 만들기
-- 명령줄 인수 구문 분석 구현
-- 쉘 스크립트 및 자동화 도구 구축
-- 진행률 표시줄, 스피너 및 색상 추가
-- REPL 스타일 애플리케이션 만들기
-- CLI 도구를 패키지로 배포
+## Purpose
+Provides expertise in building robust, user-friendly command-line applications and terminal interfaces. Covers argument parsing, interactive prompts, TUI frameworks, and shell automation across multiple languages.
 
-## 빠른 시작
-**다음과 같은 경우에 이 스킬을 호출하세요:**
-- 모든 언어로 CLI 애플리케이션 구축
-- 대화형 터미널 사용자 인터페이스 만들기
-- 명령줄 인수 구문 분석 구현
-- 쉘 스크립트 및 자동화 도구 구축
-- REPL 스타일 애플리케이션 만들기
+## When to Use
+- Building CLI applications in any language
+- Creating interactive terminal user interfaces
+- Implementing command-line argument parsing
+- Building shell scripts and automation tools
+- Adding progress bars, spinners, and colors
+- Creating REPL-style applications
+- Distributing CLI tools as packages
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- GUI 데스크탑 애플리케이션 구축(windows-app-developer 사용)
-- 웹 기반 인터페이스 만들기(프론트엔드 기술 활용)
-- PowerShell 관련 도구 작성(powershell 기술 사용)
-- 모바일 애플리케이션 구축(모바일 개발자 사용)
+## Quick Start
+**Invoke this skill when:**
+- Building CLI applications in any language
+- Creating interactive terminal user interfaces
+- Implementing command-line argument parsing
+- Building shell scripts and automation tools
+- Creating REPL-style applications
 
-## 의사결정 프레임워크
+**Do NOT invoke when:**
+- Building GUI desktop applications (use windows-app-developer)
+- Creating web-based interfaces (use frontend skills)
+- Writing PowerShell-specific tools (use powershell skills)
+- Building mobile applications (use mobile-developer)
+
+## Decision Framework
 ```
 CLI Framework Selection:
 ├── Node.js → Commander.js, Yargs, Oclif
@@ -45,46 +46,46 @@ CLI Framework Selection:
 └── Simple script → Shell (bash/zsh)
 ```
 
-## 핵심 워크플로
+## Core Workflows
 
-### 1. CLI 애플리케이션 설정
-1. 언어/요구 사항에 따라 프레임워크를 선택합니다.
-2. 명령 구조 및 하위 명령 정의
-3. 인수 및 옵션 구문 분석 구현
-4. 입력 유효성 검사 및 도움말 텍스트 추가
-5. 핵심 명령 로직 구현
-6. 출력 형식 추가(JSON, 테이블 등)
-7. 배포용 패키지
+### 1. CLI Application Setup
+1. Choose framework based on language/needs
+2. Define command structure and subcommands
+3. Implement argument and option parsing
+4. Add input validation and help text
+5. Implement core command logic
+6. Add output formatting (JSON, table, etc.)
+7. Package for distribution
 
-### 2. 대화형 TUI 개발
-1. TUI 프레임워크 선택
-2. 화면 레이아웃 및 구성 요소 디자인
-3. 입력 처리 및 탐색 구현
-4. 상태 관리 추가
-5. 터미널 크기 조정 이벤트 처리
-6. 다양한 터미널 에뮬레이터에서 테스트
+### 2. Interactive TUI Development
+1. Select TUI framework
+2. Design screen layout and components
+3. Implement input handling and navigation
+4. Add state management
+5. Handle terminal resize events
+6. Test across different terminal emulators
 
-### 3. CLI 배포
-1. 적절한 버전 관리 추가
-2. 매뉴얼 페이지 또는 도움말 문서 만들기
-3. 대상 플랫폼용 패키지
-4. 패키지 관리자를 통해 설치 설정
-5. 쉘 완성 생성
-6. 업데이트 메커니즘 추가
+### 3. CLI Distribution
+1. Add proper versioning
+2. Create man pages or help docs
+3. Package for target platforms
+4. Set up installation via package managers
+5. Create shell completions
+6. Add update mechanism
 
-## 모범 사례
-- 플래그와 인수에 대한 POSIX 규칙을 따릅니다.
-- 짧은(-v) 옵션과 긴(--verbose) 옵션을 모두 제공합니다.
-- --help 및 --version 플래그를 포함합니다.
-- 종료 코드를 올바르게 사용하십시오(성공의 경우 0).
-- 배관 및 stdin 입력 지원
-- 쉘 완성 스크립트 추가
+## Best Practices
+- Follow POSIX conventions for flags and arguments
+- Provide both short (-v) and long (--verbose) options
+- Include --help and --version flags
+- Use exit codes properly (0 for success)
+- Support piping and stdin input
+- Add shell completion scripts
 
-## 안티 패턴
-| 안티 패턴 | 문제 | 올바른 접근 |
-|---------------|---------|------|
-| 도움말 텍스트 없음 | 사용자가 명령을 검색할 수 없음 | 포괄적인 --help |
-| 조용한 실패 | 사용자는 무엇이 잘못되었는지 모릅니다 | 오류 메시지 + 종료 코드 지우기 |
-| 하드 코딩된 경로 | 다른 시스템에서 중단 | 환경 변수 사용, XDG |
-| 표준 입력 지원 없음 | 데이터를 파이프할 수 없습니다 | 표준 입력에서 읽기 지원 |
-| 파이프로 컬러 출력 | 구문 분석 중단 | TTY 감지, 파이프 색상 비활성화 |
+## Anti-Patterns
+| Anti-Pattern | Problem | Correct Approach |
+|--------------|---------|------------------|
+| No help text | Users can't discover commands | Add comprehensive --help |
+| Silent failures | Users don't know what went wrong | Clear error messages + exit codes |
+| Hard-coded paths | Breaks on other systems | Use environment variables, XDG |
+| No stdin support | Can't pipe data | Support reading from stdin |
+| Colored output to pipes | Breaks parsing | Detect TTY, disable colors for pipes |

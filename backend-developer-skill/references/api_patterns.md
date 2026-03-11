@@ -1,12 +1,12 @@
-# 백엔드 API 패턴
+# Backend API Patterns
 
-## 빠른 시작
+## Quick Start
 
-### REST API 모범 사례
+### REST API Best Practices
 
-#### 리소스 이름 지정
+#### Resource Naming
 
-자원에는 복수 명사를 사용하십시오.
+Use plural nouns for resources:
 ```
 GET    /users          # List all users
 GET    /users/{id}     # Get specific user
@@ -14,23 +14,24 @@ POST   /users          # Create user
 PUT    /users/{id}     # Update user
 DELETE /users/{id}     # Delete user
 ```
-#### HTTP 상태 코드
 
--`200 OK`- 요청 성공
--`201 Created`- 리소스가 성공적으로 생성되었습니다.
--`204 No Content`- 성공했지만 콘텐츠가 반환되지 않았습니다.
--`400 Bad Request`- 잘못된 요청 데이터
--`401 Unauthorized`- 인증이 필요합니다
--`403 Forbidden`- 권한이 부족합니다.
--`404 Not Found`- 리소스를 찾을 수 없습니다.
--`409 Conflict`- 리소스가 이미 존재합니다.
--`422 Unprocessable Entity`- 유효성 검사 실패
--`429 Too Many Requests`- 비율 제한을 초과했습니다.
--`500 Internal Server Error`- 서버 오류
+#### HTTP Status Codes
 
-#### 요청/응답 형식
+- `200 OK` - Request succeeded
+- `201 Created` - Resource created successfully
+- `204 No Content` - Success but no content returned
+- `400 Bad Request` - Invalid request data
+- `401 Unauthorized` - Authentication required
+- `403 Forbidden` - Insufficient permissions
+- `404 Not Found` - Resource not found
+- `409 Conflict` - Resource already exists
+- `422 Unprocessable Entity` - Validation failed
+- `429 Too Many Requests` - Rate limit exceeded
+- `500 Internal Server Error` - Server error
 
-**요청 예시:**
+#### Request/Response Format
+
+**Request Example:**
 ```json
 {
   "data": {
@@ -42,7 +43,8 @@ DELETE /users/{id}     # Delete user
   }
 }
 ```
-**응답 예:**
+
+**Response Example:**
 ```json
 {
   "data": {
@@ -61,48 +63,58 @@ DELETE /users/{id}     # Delete user
   }
 }
 ```
-### 페이지 매김 전략
 
-#### 오프셋 기반 페이지 매김
+### Pagination Strategies
+
+#### Offset-based Pagination
 ```
 GET /users?page=1&pageSize=20
 ```
-#### 커서 기반 페이지 매김
+
+#### Cursor-based Pagination
 ```
 GET /users?cursor=abc123&limit=20
 ```
-#### 키 세트 페이지 매김
+
+#### Keyset Pagination
 ```
 GET /users?lastId=123&limit=20
 ```
-### 필터링 및 정렬
 
-**쿼리 매개변수:**
+### Filtering and Sorting
+
+**Query Parameters:**
 ```
 GET /users?filter[status]=active&sort=name,desc
 ```
-**복잡한 필터:**
+
+**Complex Filters:**
 ```
 GET /users?filter[age][gte]=18&filter[age][lte]=65
 ```
-### 버전 관리 전략
 
-#### URL 버전 관리
+### Versioning Strategies
+
+#### URL Versioning
 ```
 /api/v1/users
 /api/v2/users
 ```
-#### 헤더 버전 관리
+
+#### Header Versioning
 ```
 Accept: application/vnd.api.v1+json
 ```
-#### 쿼리 매개변수 버전 관리
+
+#### Query Parameter Versioning
 ```
 /api/users?version=1
 ```
-## 일반적인 패턴
 
-### 저장소 패턴
+## Common Patterns
+
+### Repository Pattern
+
 ```typescript
 interface UserRepository {
   findById(id: number): Promise<User | null>;
@@ -118,7 +130,9 @@ class SQLUserRepository implements UserRepository {
   }
 }
 ```
-### 서비스 레이어 패턴
+
+### Service Layer Pattern
+
 ```typescript
 class UserService {
   constructor(
@@ -139,7 +153,9 @@ class UserService {
   }
 }
 ```
-### 작업 단위 패턴
+
+### Unit of Work Pattern
+
 ```python
 class UnitOfWork:
     def __init__(self, session):
@@ -160,7 +176,9 @@ with UnitOfWork(session) as uow:
     user = uow.users.create(user_data)
     uow.users.update(user.id, updates)
 ```
-### CQRS(명령어 쿼리 책임 분리)
+
+### CQRS (Command Query Responsibility Segregation)
+
 ```typescript
 // Command (Write)
 class CreateUserCommand {
@@ -189,9 +207,11 @@ class GetUserQueryHandler {
   }
 }
 ```
-## 인증 패턴
 
-### JWT 토큰 구조
+## Authentication Patterns
+
+### JWT Token Structure
+
 ```json
 {
   "header": {
@@ -207,7 +227,9 @@ class GetUserQueryHandler {
   }
 }
 ```
-### 토큰 새로고침 흐름
+
+### Token Refresh Flow
+
 ```
 Client                    Server
   |                         |
@@ -219,7 +241,9 @@ Client                    Server
   |  refresh_token         |
   |<-----------------------|
 ```
-### 속도 제한
+
+### Rate Limiting
+
 ```typescript
 import rateLimit from 'express-rate-limit';
 
@@ -231,9 +255,11 @@ const limiter = rateLimit({
 
 app.use('/api/', limiter);
 ```
-## 오류 처리
 
-### 표준 오류 응답
+## Error Handling
+
+### Standard Error Response
+
 ```json
 {
   "error": {
@@ -250,7 +276,9 @@ app.use('/api/', limiter);
   }
 }
 ```
-### 전역 오류 처리기
+
+### Global Error Handler
+
 ```typescript
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   const statusCode = err instanceof AppError ? err.statusCode : 500;
@@ -266,9 +294,11 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   });
 });
 ```
-## 데이터베이스 패턴
 
-### 소프트 삭제
+## Database Patterns
+
+### Soft Deletes
+
 ```typescript
 @Entity()
 export class User {
@@ -282,7 +312,9 @@ export class User {
   }
 }
 ```
-### 감사
+
+### Auditing
+
 ```typescript
 @Entity()
 export class AuditLog {
@@ -295,7 +327,9 @@ export class AuditLog {
   timestamp: Date;
 }
 ```
-### 낙관적 잠금
+
+### Optimistic Locking
+
 ```typescript
 @Entity()
 export class Product {
@@ -309,9 +343,11 @@ await repository.update(
   { name: 'New Name' }
 );
 ```
-## 성능 패턴
 
-### 캐싱 전략
+## Performance Patterns
+
+### Caching Strategy
+
 ```typescript
 import Redis from 'ioredis';
 
@@ -335,7 +371,9 @@ async function getUser(id: number): Promise<User> {
   return user;
 }
 ```
-### 데이터베이스 연결 풀링
+
+### Database Connection Pooling
+
 ```typescript
 import { Pool } from 'pg';
 
@@ -350,7 +388,9 @@ const pool = new Pool({
   connectionTimeoutMillis: 2000
 });
 ```
-### 일괄 작업
+
+### Batch Operations
+
 ```typescript
 // Instead of multiple individual inserts
 for (const user of users) {
@@ -360,9 +400,11 @@ for (const user of users) {
 // Use batch insert
 await userRepository.createMany(users);
 ```
-## 보안 패턴
 
-### 입력 삭제
+## Security Patterns
+
+### Input Sanitization
+
 ```typescript
 import validator from 'validator';
 
@@ -370,7 +412,9 @@ function sanitizeInput(input: string): string {
   return validator.escape(input.trim());
 }
 ```
-### SQL 주입 방지
+
+### SQL Injection Prevention
+
 ```typescript
 // BAD
 const query = `SELECT * FROM users WHERE id = ${userId}`;
@@ -379,7 +423,9 @@ const query = `SELECT * FROM users WHERE id = ${userId}`;
 const query = 'SELECT * FROM users WHERE id = $1';
 const result = await db.query(query, [userId]);
 ```
-### CORS 구성
+
+### CORS Configuration
+
 ```typescript
 const corsOptions = {
   origin: process.env.ALLOWED_ORIGINS?.split(',') || [],
@@ -390,9 +436,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 ```
-## 테스트 패턴
 
-### 단위 테스트
+## Testing Patterns
+
+### Unit Testing
+
 ```typescript
 describe('UserService', () => {
   let service: UserService;
@@ -411,7 +459,9 @@ describe('UserService', () => {
   });
 });
 ```
-### 통합 테스트
+
+### Integration Testing
+
 ```typescript
 describe('User API', () => {
   let app: Application;
@@ -435,9 +485,11 @@ describe('User API', () => {
   });
 });
 ```
-## 모니터링 및 관찰 가능성
 
-### 구조화된 로깅
+## Monitoring and Observability
+
+### Structured Logging
+
 ```typescript
 logger.info('User created', {
   userId: user.id,
@@ -446,7 +498,9 @@ logger.info('User created', {
   timestamp: new Date().toISOString()
 });
 ```
-### 측정항목 수집
+
+### Metrics Collection
+
 ```typescript
 import { Counter, Histogram } from 'prom-client';
 
@@ -467,7 +521,9 @@ app.use((req, res, next) => {
   next();
 });
 ```
-### 상태 점검
+
+### Health Checks
+
 ```typescript
 app.get('/health', async (req, res) => {
   const health = {
@@ -484,22 +540,23 @@ app.get('/health', async (req, res) => {
   res.status(isHealthy ? 200 : 503).json(health);
 });
 ```
-## 문제 해결
 
-### 일반적인 문제
+## Troubleshooting
 
-#### 연결 풀 고갈
-- **증상**: 느린 응답, 시간 초과
-- **해결책**: 풀 크기 늘리기, 연결 수명 줄이기, 연결 시간 초과 추가
+### Common Issues
 
-#### 메모리 누수
-- **증상**: 시간이 지남에 따라 메모리 사용량이 증가합니다.
-- **해결책**: 힙 스냅샷으로 프로파일링, 이벤트 리스너 확인, 연결 종료
+#### Connection Pool Exhaustion
+- **Symptoms**: Slow responses, timeouts
+- **Solution**: Increase pool size, reduce connection lifetime, add connection timeout
 
-#### N+1 쿼리 문제
-- **증상**: 단일 요청에 대해 데이터베이스 쿼리가 많이 발생함
-- **해결책**: 즉시 로딩, 일괄 쿼리 사용, GraphQL DataLoader 패턴 구현
+#### Memory Leaks
+- **Symptoms**: Memory usage increases over time
+- **Solution**: Profile with heap snapshots, check for event listeners, close connections
 
-#### 느린 API 응답
-- **증상**: 응답 시간이 길다
-- **해결책**: 캐싱 추가, 쿼리 최적화, 데이터베이스 인덱스 사용, 페이지 매김 구현
+#### N+1 Query Problem
+- **Symptoms**: Many database queries for single request
+- **Solution**: Use eager loading, batch queries, implement GraphQL DataLoader pattern
+
+#### Slow API Responses
+- **Symptoms**: High response times
+- **Solution**: Add caching, optimize queries, use database indexes, implement pagination

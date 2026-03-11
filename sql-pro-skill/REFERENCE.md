@@ -1,182 +1,184 @@
-# SQL Pro - 기술 참조
+# SQL Pro - Technical Reference
 
-## 이 스킬의 역할
+## What This Skill Does
 
-SQL pro는 데이터베이스 스키마를 분석하고, 성능을 위한 쿼리를 최적화하고, 효율적인 데이터베이스 구조를 설계하고, 여러 데이터베이스 플랫폼에서 확장성과 데이터 무결성을 보장하는 데이터 관리 솔루션을 구현합니다.
+The SQL pro analyzes database schemas, optimizes queries for performance, designs efficient database structures, and implements data management solutions that ensure scalability and data integrity across multiple database platforms.
 
-### 스키마 분석
-- 데이터베이스 설계 및 정규화 검토
-- 인덱스 활용도 및 효율성 분석
-- 쿼리 패턴 및 병목 현상 식별
-- 데이터 분포 및 증가 평가
-- 제약 조건 설계 및 참조 무결성 평가
-- 통계의 정확성 및 유지관리 확인
+### Schema Analysis
+- Review database design and normalization
+- Analyze index usage and effectiveness
+- Identify query patterns and bottlenecks
+- Assess data distribution and growth
+- Evaluate constraint design and referential integrity
+- Check statistics accuracy and maintenance
 
-### 구현 단계
-- 행별 처리를 피하는 세트 기반 작업 설계
-- 성능을 위해 하위 쿼리 및 CTE 최적화
-- 적절한 조인 전략 및 알고리즘 적용
-- 적절한 인덱싱 전략 구현
-- 플랫폼별 기능 및 최적화 활용
-- 문서 쿼리 의도 및 논리
+### Implementation Phase
+- Design set-based operations avoiding row-by-row processing
+- Optimize subqueries and CTEs for performance
+- Apply appropriate join strategies and algorithms
+- Implement proper indexing strategies
+- Leverage platform-specific features and optimizations
+- Document query intent and logic
 
-### 성능 검증
-- 실행 계획 분석 및 병목 현상 식별
-- 인덱스 사용량 확인 및 스캔 감소
-- 테이블 스캔 및 키 조회 제거
-- 정확한 계획을 위한 통계 업데이트
-- 교착 상태 및 차단 제거
-- 프로덕션 데이터 볼륨으로 확장성 테스트
+### Performance Verification
+- Analyze execution plans and identify bottlenecks
+- Confirm index usage and scan reduction
+- Eliminate table scans and key lookups
+- Update statistics for accurate plans
+- Eliminate deadlocks and blocking
+- Test scalability with production data volumes
 
-## 고급 쿼리 패턴
+## Advanced Query Patterns
 
-- 공통 테이블 표현식(CTE) 및 재귀 쿼리
-- 창 기능: ROW_NUMBER, RANK, LEAD, LAG, 집계 창
-- 데이터 변환을 위한 PIVOT/UNPIVOT 작업
-- 트리/그래프 구조에 대한 계층적 쿼리
-- 그래프 순회 패턴 및 재귀 CTE
-- 시간 기반 분석을 위한 시간 쿼리
-- 지리공간 운영 및 공간 색인화
+- Common Table Expressions (CTEs) and recursive queries
+- Window functions: ROW_NUMBER, RANK, LEAD, LAG, aggregate windows
+- PIVOT/UNPIVOT operations for data transformation
+- Hierarchical queries for tree/graph structures
+- Graph traversal patterns and recursive CTEs
+- Temporal queries for time-based analysis
+- Geospatial operations and spatial indexing
 
-## 쿼리 최적화 기술
+## Query Optimization Techniques
 
-- 실행계획 분석 및 해석
-- 지수 선정 전략 및 커버링 지수
-- 통계관리 및 유지관리
-- 쿼리 힌트 및 계획 안내(필요한 경우)
-- 병렬 쿼리 실행 튜닝
-- 파티션 가지치기 및 파티셔닝 전략
-- 조인 알고리즘 선택(해시, 병합, 중첩 루프)
-- 하위 쿼리 최적화 및 EXISTS 대 IN 패턴
+- Execution plan analysis and interpretation
+- Index selection strategies and covering indexes
+- Statistics management and maintenance
+- Query hints and plan guides (when necessary)
+- Parallel query execution tuning
+- Partition pruning and partitioning strategies
+- Join algorithm selection (hash, merge, nested loop)
+- Subquery optimization and EXISTS vs. IN patterns
 
-## 인덱스 디자인 패턴
+## Index Design Patterns
 
-- 클러스터형 인덱스와 비클러스터형 인덱스
-- 쿼리 최적화를 위한 커버링 인덱스
-- 선택적 쿼리를 위한 필터링된/부분 인덱스
-- 표현식에 대한 함수 기반/인덱스
-- 복합 인덱스 열 순서
-- 지수교차점 및 합집합 전략
-- 누락된 지수 분석 및 추천
-- 인덱스 유지관리 및 단편화 제어
+- Clustered vs. non-clustered indexes
+- Covering indexes for query optimization
+- Filtered/partial indexes for selective queries
+- Function-based/indexes on expressions
+- Composite index column ordering
+- Index intersection and union strategies
+- Missing index analysis and recommendations
+- Index maintenance and fragmentation control
 
-## 거래 관리
+## Transaction Management
 
-- 격리 수준 선택 및 영향
-- 교착상태 예방 및 해결
-- 에스컬레이션 잠금 및 에스컬레이션 제어
-- 행 버전 관리를 통한 낙관적 동시성
-- 중첩된 트랜잭션에 대한 저장점 사용
-- 분산 트랜잭션 및 2단계 커밋
-- 트랜잭션 로그 최적화 및 크기 조정
+- Isolation level selection and implications
+- Deadlock prevention and resolution
+- Lock escalation and escalation control
+- Optimistic concurrency with row versioning
+- Savepoint usage for nested transactions
+- Distributed transactions and two-phase commit
+- Transaction log optimization and sizing
 
-## 성능 튜닝
+## Performance Tuning
 
-- 쿼리 계획 캐싱 및 매개변수 스니핑 솔루션
-- 통계 업데이트 및 자동 통계 구성
-- 대형 테이블을 위한 테이블 파티셔닝
-- 구체화된 뷰 및 인덱싱된 뷰
-- 쿼리 재작성 및 최적화 패턴
-- 리소스 거버너/워크로드 관리
-- 대기 통계 분석 및 해결
-- 연결 풀링 최적화
+- Query plan caching and parameter sniffing solutions
+- Statistics updates and auto-stats configuration
+- Table partitioning for large tables
+- Materialized views and indexed views
+- Query rewriting and optimization patterns
+- Resource governor/workload management
+- Wait statistics analysis and resolution
+- Connection pooling optimization
 
-## 데이터 웨어하우징
+## Data Warehousing
 
-- 스타 스키마 및 눈송이 스키마 디자인
-- 천천히 변화하는 차원(SCD 유형 1-4)
-- 팩트 테이블 최적화 및 압축
-- ETL/ELT 패턴 설계 및 최적화
-- 집계 테이블 및 사전 계산된 요약
-- Columnstore 인덱스 및 분석 쿼리
-- 데이터 압축 및 저장 최적화
-- 증분 로딩 전략
+- Star schema and snowflake schema design
+- Slowly changing dimensions (SCD types 1-4)
+- Fact table optimization and compression
+- ETL/ELT pattern design and optimization
+- Aggregate tables and pre-computed summaries
+- Columnstore indexes and analytical queries
+- Data compression and storage optimization
+- Incremental loading strategies
 
-## 데이터베이스별 기능
+## Database-Specific Features
 
-### 포스트그레SQL
-- JSONB 처리 및 인덱싱
-- 어레이 유형 및 작업
-- 고급 CTE 및 구체화된 뷰
-- 전체 텍스트 검색 및 트라이그램 매칭
-- 테이블 파티셔닝과 선언적 파티셔닝
-- 사용자 정의 기능 및 확장
+### PostgreSQL
+- JSONB handling and indexing
+- Array types and operations
+- Advanced CTEs and materialized views
+- Full-text search and trigram matching
+- Table partitioning and declarative partitioning
+- Custom functions and extensions
 
 ### MySQL
-- 스토리지 엔진(InnoDB, MyISAM) 선택
-- 복제 및 마스터-슬레이브 구성
-- 쿼리 캐시 분석 및 최적화
-- 파티셔닝 및 샤딩 전략### SQL 서버
-- Columnstore 인덱스 및 분석 워크로드
-- 메모리 내 OLTP 및 메모리 최적화 테이블
-- 쿼리 저장소 및 계획 회귀 모니터링
-- 임시 테이블 및 시스템 버전 테이블
+- Storage engines (InnoDB, MyISAM) selection
+- Replication and master-slave configurations
+- Query cache analysis and optimization
+- Partitioning and sharding strategies
 
-### 오라클
-- 파티셔닝 전략(범위, 목록, 해시, 복합)
-- RAC(실제 애플리케이션 클러스터)
-- 구체화된 뷰 및 쿼리 재작성
-- 고급 대기열 및 CDC
+### SQL Server
+- Columnstore indexes and analytical workloads
+- In-Memory OLTP and memory-optimized tables
+- Query Store and plan regression monitoring
+- Temporal tables and system-versioned tables
 
-## 보안 구현
+### Oracle
+- Partitioning strategies (range, list, hash, composite)
+- Real Application Clusters (RAC)
+- Materialized views and query rewrite
+- Advanced queuing and CDC
 
-- 행 수준 보안(RLS) 정책
-- 민감한 데이터를 위한 동적 데이터 마스킹
-- 미사용(TDE) 및 전송 중 암호화
-- 컬럼 레벨 암호화 및 키 관리
-- 감사 추적 설계 및 구현
-- 권한 관리 및 역할 기반 액세스
-- SQL 주입 방지 및 매개변수화된 쿼리
-- 데이터 익명화 및 수정 기술
+## Security Implementation
 
-## 모범 사례
+- Row-level security (RLS) policies
+- Dynamic data masking for sensitive data
+- Encryption at rest (TDE) and in transit
+- Column-level encryption and key management
+- Audit trail design and implementation
+- Permission management and role-based access
+- SQL injection prevention and parameterized queries
+- Data anonymization and redaction techniques
 
-### 쿼리 개발
-- 데이터 모델과 관계를 이해하는 것부터 시작하세요.
-- 복잡한 쿼리를 논리적 단계로 나누기 위해 읽기 가능한 CTE를 작성합니다.
-- 쿼리 초기에 필터링을 적용하여 행 수를 줄입니다.
-- 존재 여부 확인을 위해 COUNT(*) 대신 EXISTS를 사용하세요.
-- SELECT * 방지 - 필요한 열만 지정
-- OFFSET-FETCH 또는 LIMIT-OFFSET을 사용하여 페이지 매김 구현
-- IS NULL/IS NOT NULL을 사용하여 NULL 값을 명시적으로 처리합니다.
-- 프로덕션 데이터 볼륨을 사용한 테스트 쿼리
+## Best Practices
 
-### 색인 전략
-- WHERE, JOIN, ORDER BY에 사용되는 컬럼에 대한 인덱스 생성
-- 커버링 인덱스를 사용하여 키 조회 제거
-- 선택적 쿼리를 위해 필터링된/부분 인덱스를 고려합니다.
-- 선택성에 따라 복합 인덱스의 열 순서 지정
-- 인덱스 사용량을 모니터링하고 사용하지 않는 인덱스를 제거합니다.
-- 단편화된 인덱스를 정기적으로 재구축/재구성
-- 인덱스 선택을 위한 읽기 성능과 쓰기 성능의 균형
+### Query Development
+- Start with understanding the data model and relationships
+- Write readable CTEs to break complex queries into logical steps
+- Apply filtering early in the query to reduce row count
+- Use EXISTS instead of COUNT(*) for existence checks
+- Avoid SELECT * - specify only needed columns
+- Implement pagination using OFFSET-FETCH or LIMIT-OFFSET
+- Handle NULL values explicitly with IS NULL/IS NOT NULL
+- Test queries with production data volumes
 
-### 성능 튜닝
-- 최적화 전 항상 실행 계획을 분석하세요.
-- 정확한 쿼리 계획을 위한 통계 업데이트
-- 계획 재사용을 위해 매개변수화된 쿼리 사용
-- 큰 테이블의 경우 파티셔닝을 고려하세요.
-- 쿼리 힌트는 최후의 수단으로만 구현하세요.
-- 병목 현상 식별을 위한 대기 통계 모니터링
-- 동시성을 위한 적절한 격리 수준 설정
-- 적절한 데이터 유형을 사용하여 스토리지를 최소화하고 성능을 향상시킵니다.
+### Indexing Strategy
+- Create indexes on columns used in WHERE, JOIN, and ORDER BY
+- Use covering indexes to eliminate key lookups
+- Consider filtered/partial indexes for selective queries
+- Order columns in composite indexes by selectivity
+- Monitor index usage and remove unused indexes
+- Rebuild/reorganize fragmented indexes regularly
+- Balance read vs. write performance for index selection
 
-### 데이터베이스 디자인
-- 데이터 중복성을 줄이기 위해 정규화(보통 3NF)
-- 읽기가 많은 작업 부하 및 성능을 위해 비정규화
-- 열에 적절한 데이터 유형을 사용하십시오.
-- 데이터 무결성에 대한 제약 조건 정의
-- 처음부터 성장과 확장성을 고려한 계획
-- 문서 스키마 결정 및 비즈니스 규칙
-- 적절한 명명 규칙을 구현합니다.
-- 단순한 데이터 저장이 아닌 쿼리 패턴을 위한 설계
+### Performance Tuning
+- Always analyze execution plans before optimization
+- Update statistics for accurate query plans
+- Use parameterized queries for plan reuse
+- Consider partitioning for large tables
+- Implement query hints only as last resort
+- Monitor wait statistics for bottleneck identification
+- Set appropriate isolation levels for concurrency
+- Use proper data types to minimize storage and improve performance
 
-## 다른 기술과의 통합
+### Database Design
+- Normalize to reduce data redundancy (usually 3NF)
+- Denormalize for read-heavy workloads and performance
+- Use appropriate data types for columns
+- Define constraints for data integrity
+- Plan for growth and scalability from the start
+- Document schema decisions and business rules
+- Implement proper naming conventions
+- Design for query patterns, not just data storage
 
-- **백엔드 엔지니어**: 애플리케이션 쿼리를 최적화하고 효율적인 데이터 액세스 패턴을 설계합니다.
-- **데이터베이스 관리자**: 스키마 설계, 유지 관리 및 백업 전략에 대해 협업합니다.
-- **데이터 엔지니어**: ETL/ELT 파이프라인 최적화 및 데이터 변환 지원
-- **python-developer**: ORM 쿼리 최적화 및 SQLAlchemy 패턴에 대한 도움말
-- **java-architect**: JPA/Hibernate 쿼리 최적화 및 JPQL에 대한 협업
-- **성능 엔지니어**: 데이터베이스 성능 튜닝 및 모니터링 작업
-- **devops-engineer**: 데이터베이스 배포, 마이그레이션 및 CI/CD 지원
-- **데이터 과학자**: 분석 쿼리 및 데이터 추출 최적화 지원
+## Integration with Other Skills
+
+- **backend-engineer**: Optimize application queries and design efficient data access patterns
+- **database-administrator**: Collaborate on schema design, maintenance, and backup strategies
+- **data-engineer**: Support on ETL/ELT pipeline optimization and data transformation
+- **python-developer**: Help with ORM query optimization and SQLAlchemy patterns
+- **java-architect**: Collaborate on JPA/Hibernate query optimization and JPQL
+- **performance-engineer**: Work on database performance tuning and monitoring
+- **devops-engineer**: Assist on database deployment, migrations, and CI/CD
+- **data-scientist**: Help optimize analytical queries and data extraction

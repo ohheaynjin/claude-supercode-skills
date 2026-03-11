@@ -1,36 +1,37 @@
 ---
 name: error-coordinator
-description: 다중 에이전트 시스템의 탄력성을 높이는 전문가입니다. 루프, 환각, 실패를 감지하고 자가 치유 워크플로를 구현하는 데 특화되어 있습니다. 에이전트 시스템에 대한 오류 처리를 설계하거나 재시도 전략을 구현하거나 탄력적인 AI 워크플로를 구축할 때 사용합니다.
+description: Expert in making multi-agent systems resilient. Specializes in detecting loops, hallucinations, and failures, and implementing self-healing workflows. Use when designing error handling for agent systems, implementing retry strategies, or building resilient AI workflows.
 ---
-# 오류 코디네이터
 
-## 목적
-강력한 오류 처리, 오류 감지 및 복구 메커니즘을 갖춘 탄력적인 다중 에이전트 시스템 구축에 대한 전문 지식을 제공합니다. 루프 감지, 환각 완화 및 자가 치유 에이전트 워크플로를 다룹니다.
+# Error Coordinator
 
-## 사용 시기
-- 에이전트 시스템의 오류 처리 설계
-- 재시도 및 복구 전략 구현
-- 자가 치유 AI 워크플로우 구축
-- 에이전트 루프 및 무한 재귀 감지
-- 에이전트 출력의 환각 완화
-- 에이전트에 대한 회로 차단기 구현
-- 에이전트 전반에 걸쳐 장애 복구 조정
+## Purpose
+Provides expertise in building resilient multi-agent systems with robust error handling, failure detection, and recovery mechanisms. Covers loop detection, hallucination mitigation, and self-healing agent workflows.
 
-## 빠른 시작
-**다음과 같은 경우에 이 스킬을 호출하세요:**
-- 에이전트 시스템의 오류 처리 설계
-- 재시도 및 복구 전략 구현
-- 자가 치유 AI 워크플로우 구축
-- 에이전트 루프 및 무한 재귀 감지
-- 에이전트 전반에 걸쳐 장애 복구 조정
+## When to Use
+- Designing error handling for agent systems
+- Implementing retry and recovery strategies
+- Building self-healing AI workflows
+- Detecting agent loops and infinite recursion
+- Mitigating hallucinations in agent outputs
+- Implementing circuit breakers for agents
+- Coordinating failure recovery across agents
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- 에이전트 팀 구성(에이전트-주최자 사용)
-- 애플리케이션 오류 디버깅(디버거 사용)
-- 생산 사고 처리(사고 대응자 사용)
-- 코드 오류 패턴 감지(오류 감지 사용)
+## Quick Start
+**Invoke this skill when:**
+- Designing error handling for agent systems
+- Implementing retry and recovery strategies
+- Building self-healing AI workflows
+- Detecting agent loops and infinite recursion
+- Coordinating failure recovery across agents
 
-## 의사결정 프레임워크
+**Do NOT invoke when:**
+- Organizing agent teams (use agent-organizer)
+- Debugging application errors (use debugger)
+- Handling production incidents (use incident-responder)
+- Detecting code error patterns (use error-detective)
+
+## Decision Framework
 ```
 Error Type Handling:
 ├── Transient failure → Retry with backoff
@@ -47,46 +48,47 @@ Recovery Strategy:
 ├── Critical path → Fallback agent
 └── Best effort → Log + continue
 ```
-## 핵심 워크플로
 
-### 1. 루프 감지 시스템
-1. 에이전트 호출 기록 추적
-2. 반복되는 상태 패턴 감지
-3. 최대 반복 제한 설정
-4. 탈출 해치 트리거 구현
-5. 분석을 위해 루프 발생을 기록합니다.
-6. 감독자나 담당자에게 에스컬레이션하세요.
+## Core Workflows
 
-### 2. 환각 완화
-1. 소스 데이터를 이용한 지상 응답
-2. 출력 유효성 검사 구현
-3. 검색과의 교차 확인
-4. 신뢰도 점수 추가
-5. 신뢰도가 낮은 출력에 플래그 지정
-6. 재시도를 위한 피드백 제공
+### 1. Loop Detection System
+1. Track agent invocation history
+2. Detect repeated state patterns
+3. Set maximum iteration limits
+4. Implement escape hatch triggers
+5. Log loop occurrences for analysis
+6. Escalate to supervisor or human
 
-### 3. 회로 차단기 구현
-1. 에이전트별 실패율 추적
-2. 실패 임계값 정의
-3. 임계값 위반 시 개방 회로
-4. 대체 동작 제공
-5. 테스트를 위해 반개방 상태 구현
-6. 복구 시 회로 폐쇄
-7. 차단기 상태 모니터링 및 경고
+### 2. Hallucination Mitigation
+1. Ground responses with source data
+2. Implement output validation
+3. Cross-check with retrieval
+4. Add confidence scoring
+5. Flag low-confidence outputs
+6. Provide feedback for retry
 
-## 모범 사례
-- 모든 에이전트 통화에 대한 시간 초과 구현
-- 지터와 함께 지수 백오프 사용
-- 전체 컨텍스트로 모든 실패를 기록합니다.
-- 우아한 성능 저하를 위한 디자인
-- 명시적으로 실패 시나리오 테스트
-- 오류율 및 패턴 모니터링
+### 3. Circuit Breaker Implementation
+1. Track failure rates per agent
+2. Define failure threshold
+3. Open circuit on threshold breach
+4. Provide fallback behavior
+5. Implement half-open state for testing
+6. Close circuit on recovery
+7. Monitor and alert on breaker state
 
-## 안티 패턴
-| 안티 패턴 | 문제 | 올바른 접근 |
-|---------------|---------|------|
-| 무한 재시도 | 자원 고갈 | 최대 재시도 제한 |
-| 조용한 실패 | 숨겨진 문제 | 로그 및 경고 |
-| 시간 초과 없음 | 중단된 프로세스 | 항상 시간 초과 설정 |
-| 동일한 재시도 간격 | 천둥치는 무리 | 지수 백오프 |
-| 대체 없음 | 완전한 실패 | 우아한 저하 |
+## Best Practices
+- Implement timeouts for all agent calls
+- Use exponential backoff with jitter
+- Log all failures with full context
+- Design for graceful degradation
+- Test failure scenarios explicitly
+- Monitor error rates and patterns
+
+## Anti-Patterns
+| Anti-Pattern | Problem | Correct Approach |
+|--------------|---------|------------------|
+| Infinite retries | Resource exhaustion | Max retry limits |
+| Silent failures | Hidden problems | Log and alert |
+| No timeouts | Hung processes | Always set timeouts |
+| Same retry interval | Thundering herd | Exponential backoff |
+| No fallbacks | Complete failure | Graceful degradation |

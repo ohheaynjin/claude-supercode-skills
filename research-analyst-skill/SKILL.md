@@ -25,14 +25,13 @@ description: 다소스 정보 수집, 비판적 분석, 통합 지식 종합을 
 - 익숙하지 않은 도메인에 대한 지식 기반 구축
 - 신뢰할 수 있는 단일 출처가 없는 복잡한 질문 조사
 
-**다음과 같은 경우에는 호출하지 마세요.**
+**다음과 같은 경우에는 호출하지 마세요**
 - 단일 코드베이스 내에서 검색 → 코드베이스 탐색 사용
 - 정량적 데이터 분석 → 데이터 분석가 활용
 - 최종 문서 작성 → 테크니컬 라이터 활용
 - 구체적으로 경쟁정보 → 경쟁분석가 활용
 
-## 의사결정 프레임워크
-```
+## 의사결정 프레임워크```
 Research Need?
 ├── Technology Evaluation → Feature matrix + benchmark analysis
 ├── Market Research → Market sizing + competitive landscape
@@ -41,7 +40,8 @@ Research Need?
 ├── Trend Analysis → Signal detection + pattern recognition
 └── Comparative Analysis → Criteria definition + scoring matrix
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. 체계적인 연구 프로세스
 1. 연구 질문 및 범위 경계를 정의합니다.

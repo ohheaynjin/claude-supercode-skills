@@ -6,7 +6,9 @@ OpenCode 프로젝트의 4가지 보안 관련 기술을 위해 만들어진 포
 ## 스킬 생성
 
 ### 1. 보안 감사자 기술
-**위치:**`claude-skills-conversion/security-auditor-skill/`**스크립트(Python 파일 8개):**
+**위치:**`claude-skills-conversion/security-auditor-skill/`
+
+**스크립트(Python 파일 8개):**
 -`scripts/scan_vulnerabilities.py`- 보안 취약점 스캐닝(Bandit, Safety)
 -`scripts/detect_secrets.py`- 비밀 감지(API 키, 비밀번호, 토큰)
 -`scripts/audit_dependencies.py`- 종속성 취약점 점검(pip-audit, npm audit)
@@ -14,7 +16,7 @@ OpenCode 프로젝트의 4가지 보안 관련 기술을 위해 만들어진 포
 -`scripts/audit_infrastructure.py`- 인프라 보안 감사(Terraform, CloudFormation)
 -`scripts/review_config.py`- 구성 검토(하드코딩된 자격 증명, 취약한 비밀번호)
 -`scripts/sast_scan.py`- SAST 자동화(SonarQube, Semgrep, CodeQL)
--`scripts/dast_scan.py`- DAST 자동화(OWASP ZAP, Nikto, SQLMap)
+-`scripts/dast_scan.py`- DAST 자동화(OWASP ZAP, Głoso, SQLMap)
 
 **참조(마크다운 파일 4개):**
 -`references/owasp_top10.md`- 패턴 및 교정을 통한 OWASP 상위 10대 보안 위험
@@ -23,7 +25,9 @@ OpenCode 프로젝트의 4가지 보안 관련 기술을 위해 만들어진 포
 -`references/report_templates.md`- 보안 보고서 템플릿(경영 요약, 기술, 규정 준수)
 
 ### 2. 침투 테스터 스킬
-**위치:**`claude-skills-conversion/penetration-tester-skill/`**스크립트(7개 Python 파일):**
+**위치:**`claude-skills-conversion/penetration-tester-skill/`
+
+**스크립트(7개 Python 파일):**
 -`scripts/recon_scan.py`- 자동 정찰(DNS, 하위 도메인 열거, 포트 스캐닝)
 -`scripts/vuln_scan.py`- 취약점 스캐닝(Nessus, OpenVAS, Nmap)
 -`scripts/web_app_test.py`- 웹 애플리케이션 보안 테스트(OWASP ZAP, Burp Suite, XSSer)
@@ -39,7 +43,9 @@ OpenCode 프로젝트의 4가지 보안 관련 기술을 위해 만들어진 포
 -`references/tool_setup.md`- 침투 테스트 도구 설정 가이드 (Kali, Ubuntu, macOS, Windows, Cloud)
 
 ### 3. 건축가 리뷰어 스킬
-**위치:**`claude-skills-conversion/architect-reviewer-skill/`**스크립트(4개의 Python 파일):**
+**위치:**`claude-skills-conversion/architect-reviewer-skill/`
+
+**스크립트(4개의 Python 파일):**
 -`scripts/analyze_patterns.py`- 아키텍처 패턴 분석(마이크로서비스, 모놀리스, 이벤트 중심)
 -`scripts/security_design_review.py`- 보안 설계 검토(인증, 암호화, 입력 검증)
 -`scripts/threat_model.py`- STRIDE 방법론을 이용한 위협 모델링
@@ -51,7 +57,9 @@ OpenCode 프로젝트의 4가지 보안 관련 기술을 위해 만들어진 포
 -`references/security_checklist.md`- 아키텍처 보안 체크리스트
 
 ### 4. 규정 준수 감사자 기술
-**위치:**`claude-skills-conversion/compliance-auditor-skill/`**스크립트(7개 Python 파일):**
+**위치:**`claude-skills-conversion/compliance-auditor-skill/`
+
+**스크립트(7개 Python 파일):**
 -`scripts/check_gdpr.py`- GDPR 준수 확인(데이터 최소화, 동의, 삭제 권한)
 -`scripts/validate_hipaa.py`- HIPAA 검증(PHI 보호, 감사 통제)
 -`scripts/collect_soc2_evidence.py`- SOC 2 증거 수집(보안, 가용성, 처리 무결성, 기밀성, 개인 정보 보호)
@@ -95,8 +103,7 @@ OpenCode 프로젝트의 4가지 보안 관련 기술을 위해 만들어진 포
 
 ## 사용 예
 
-### 보안 감사관
-```bash
+### 보안 감사관```bash
 # Vulnerability scanning
 python3 scripts/scan_vulnerabilities.py . --format json --output vulnerability_report.json
 
@@ -121,8 +128,8 @@ python3 scripts/sast_scan.py . --language python
 # DAST scan
 python3 scripts/dast_scan.py https://example.com --format text --output dast_report.txt
 ```
-### 침투 테스터
-```bash
+
+### 침투 테스터```bash
 # Reconnaissance scan
 python3 scripts/recon_scan.py target.com --format json --output recon_data.json
 
@@ -144,8 +151,8 @@ python3 scripts/auth_test.py http://example.com --brute-force --output auth_test
 # Generate penetration test report
 python3 scripts/generate_report.py --findings pentest_findings.json --output final_report.md
 ```
-### 건축가 검토자
-```bash
+
+### 건축가 검토자```bash
 # Architecture pattern analysis
 python3 scripts/analyze_patterns.py . --format json --output architecture_analysis.json
 
@@ -158,8 +165,8 @@ python3 scripts/threat_model.py . --methodology STRIDE --output threat_model.jso
 # Single Point of Failure identification
 python3 scripts/identify_spof.py . --check-dependencies --check-infrastructure
 ```
-### 규정 준수 감사관
-```bash
+
+### 규정 준수 감사관```bash
 # GDPR compliance check
 python3 scripts/check_gdpr.py . --config config/compliance.yaml --output gdpr_report.json
 
@@ -181,10 +188,10 @@ python3 scripts/assess_iso27001.py . --controls annex_a --output iso_report.md
 # Generate compliance report
 python3 scripts/generate_report.py --evidence evidence/ --compliance SOC2 --output compliance_report.md
 ```
+
 ## 구성 템플릿
 
-### 보안 감사자 구성
-```yaml
+### 보안 감사자 구성```yaml
 # config/security.yaml
 security:
   scan_paths: ['.']
@@ -198,8 +205,8 @@ security:
     file_extensions: ['.py', '.js', '.ts', '.java', '.go']
     max_file_size_mb: 10
 ```
-### 침투 테스터 구성
-```yaml
+
+### 침투 테스터 구성```yaml
 # config/pentest.yaml
 penetration_testing:
   target_domains: []
@@ -207,13 +214,14 @@ penetration_testing:
   max_threads: 50
   scan_depth: 3
 ```
-### 규정 준수 감사자 구성
-```yaml
+
+### 규정 준수 감사자 구성```yaml
 # config/compliance.yaml
 compliance_auditing:
   audit_scope: '.'
   frameworks: ['SOC2', 'GDPR', 'HIPAA', 'PCI_DSS', 'ISO27001', 'NIST']
 ```
+
 ## 다른 기술과의 통합
 
 보안 기술은 다음과 통합되도록 설계되었습니다.
@@ -256,17 +264,17 @@ compliance_auditing:
 
 ## 지원되는 규정 준수 프레임워크
 
-| 프레임워크 | 적용 범위 |
-|------------|----------|
+| 뼈대 | 적용 범위 |
+|-----------|----------|
 | OWASP 상위 10위 | 웹 애플리케이션 보안 위험 |
-| OWASP ASV | 애플리케이션 보안 검증 표준 |
-| NIST SP 800-53 | 연방 정보 시스템 제어 |
+| OWASP ASVS | 애플리케이션 보안 검증 표준 |
+| NIST SP 800-53 | 연방 정보 시스템 통제 |
 | NIST CSF | 사이버보안 프레임워크 |
 | CIS 제어 | 우선순위 보안 제어 |
 | ISO 27001 | 정보보안 관리 |
 | ISO 27701 | 개인정보 관리 |
 | PCI DSS v4.0 | 결제 카드 산업 보안 |
-| HIPAA | 의료정보 개인정보보호 |
+| HIPAA | 의료정보 개인정보 보호 |
 | GDPR | EU 데이터 보호 규정 |
 | SOC 2 유형 2 | 보안, 가용성, 처리 무결성, 기밀성, 개인 정보 보호 |
 | 보폭 | 위협 모델링 방법론 |

@@ -6,7 +6,7 @@ description: OpenAPI 3.1, HATEOAS, 페이지 매김 및 버전 관리 전략을 
 
 ## 목적
 
-OpenAPI 3.1 사양, API 버전 관리 전략, 페이지 매김 패턴 및 HATEOAS(하이퍼미디어 기반 디자인)를 전문으로 하는 전문가 REST 및 GraphQL API 아키텍처 전문 지식을 제공합니다. 적절한 오류 처리 및 표준화를 통해 확장 가능하고 잘 문서화되어 있으며 개발자 친화적인 API를 구축하는 데 중점을 둡니다.
+OpenAPI 3.1 사양, API 버전 관리 전략, 페이지 매김 패턴 및 하이퍼미디어 기반 디자인(HATEOAS)을 전문으로 하는 전문가 REST 및 GraphQL API 아키텍처 전문 지식을 제공합니다. 적절한 오류 처리 및 표준화를 통해 확장 가능하고 잘 문서화되어 있으며 개발자 친화적인 API를 구축하는 데 중점을 둡니다.
 
 ## 사용 시기
 
@@ -28,7 +28,7 @@ OpenAPI 3.1 사양, API 버전 관리 전략, 페이지 매김 패턴 및 HATEOA
 - HATEOAS 호환 API 구축(하이퍼미디어 기반)
 - 서비스 전반의 오류 응답 및 상태 코드 표준화
 
-**다음과 같은 경우에는 호출하지 마세요.**
+**다음과 같은 경우에는 호출하지 마세요**
 - 사전 설계된 API 엔드포인트만 구현(백엔드 개발자 사용)
 - API 컨텍스트 없이 데이터베이스 스키마 설계(데이터베이스 관리자 사용)
 - Frontend API 통합(frontend-developer 사용)
@@ -38,14 +38,13 @@ OpenAPI 3.1 사양, API 버전 관리 전략, 페이지 매김 패턴 및 HATEOA
 ---
 ---
 
-## 핵심 워크플로
+## 핵심 워크플로우
 
 ### 워크플로 1: OpenAPI 3.1을 사용하여 RESTful API 설계
 
 **사용 사례:** 전자상거래 플랫폼에는 제품 카탈로그 API가 필요합니다.
 
-**1단계: 리소스 모델링**
-```yaml
+**1단계: 리소스 모델링**```yaml
 # Resources identified:
 # - Products (CRUD)
 # - Categories (read-only, hierarchical)
@@ -70,8 +69,8 @@ GET    /v1/categories/{id}       # Get category + subcategories
 # Query parameters (filtering, pagination, sorting):
 GET /v1/products?category=electronics&min_price=100&max_price=500&sort=price:asc&limit=20&cursor=abc123
 ```
-**2단계: OpenAPI 3.1 사양**
-```yaml
+
+**2단계: OpenAPI 3.1 사양**```yaml
 # openapi.yaml
 openapi: 3.1.0
 info:
@@ -358,8 +357,8 @@ security:
   - ApiKey: []
   - BearerAuth: []
 ```
-**3단계: 문서 생성**
-```bash
+
+**3단계: 문서 생성**```bash
 # Install Redoc CLI
 npm install -g redoc-cli
 
@@ -375,6 +374,7 @@ docker run -p 8080:8080 -e SWAGGER_JSON=/docs/openapi.yaml \
 
 # Open http://localhost:8080 for interactive API testing
 ```
+
 ---
 ---
 
@@ -382,8 +382,7 @@ docker run -p 8080:8080 -e SWAGGER_JSON=/docs/openapi.yaml \
 
 ### ❌ 안티 패턴 1: 일관성 없는 오류 응답
 
-**모습:**
-```json
+**모습:**```json
 // Endpoint 1: Login failure
 {
   "error": "Invalid credentials"
@@ -405,13 +404,13 @@ docker run -p 8080:8080 -e SWAGGER_JSON=/docs/openapi.yaml \
 
 // Problem: Clients need custom error handling per endpoint
 ```
+
 **실패하는 이유:**
 - 클라이언트 코드가 복잡해짐(여러 오류 구문 분석 전략)
 - 프론트엔드 개발자가 좌절함(일관되지 않은 계약)
 - 오류 로깅/모니터링 어려움(표준 형식 없음)
 
-**올바른 접근 방식:**
-```json
+**올바른 접근 방식:**```json
 // Standardized error response (all endpoints)
 {
   "error": {
@@ -460,6 +459,7 @@ function handleApiError(response) {
   }
 }
 ```
+
 ---
 ---
 

@@ -2,6 +2,7 @@
 name: chaos-engineer
 description: Expert in resilience testing, fault injection, and building anti-fragile systems using controlled experiments.
 ---
+
 # Chaos Engineer
 
 ## Purpose
@@ -42,7 +43,6 @@ What are we testing?
    └─ DNS? → **Block DNS Resolution**
 ```
 
-
 ### Tool Selection
 
 | Environment | Tool | Best For |
@@ -79,8 +79,7 @@ What are we testing?
 **Steps:**
 
 1.  **Define Experiment (`backend-kill.yaml`)**
-
-```yaml
+    ```yaml
     apiVersion: chaos-mesh.org/v1alpha1
     kind: PodChaos
     metadata:
@@ -98,7 +97,6 @@ What are we testing?
       scheduler:
         cron: "@every 1m"
     ```
-
 
 2.  **Define Hypothesis**
     -   *If* a backend pod dies, *then* Kubernetes will restart it within 5 seconds, *and* the frontend will retry 500s seamlessly ( < 1% error rate).

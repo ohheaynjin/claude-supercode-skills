@@ -54,6 +54,7 @@ description: 여러 프레임워크, 데이터베이스 및 배포 전략을 사
 ## 의사결정 프레임워크
 
 ### 백엔드 프레임워크 선택
+
 ```
 Backend Framework Selection
 ├─ JavaScript/TypeScript
@@ -71,17 +72,19 @@ Backend Framework Selection
 └─ Go
     └─ High-performance services → Gin or Fiber
 ```
+
 ### 인증 전략 매트릭스
 
-| 시나리오 | 전략 | 복잡성 | 보안 |
-|------------|------------|------------|----------|
-| 무상태 API(모바일, SPA) | JWT | 낮음 | 중간 |
-| 제3자 로그인 | OAuth 2.0 | 중간 | 높음 |
-| 기존 웹 앱 | 세션 기반 | 낮음 | 높음 |
-| 마이크로서비스 | JWT + API 게이트웨이 | 높음 | 높음 |
-| 엔터프라이즈 SSO | SAML 2.0 | 높음 | 매우 높음 |
+| 대본 | 전략 | 복잡성 | 보안 |
+|----------|----------|------------|----------|
+| 무상태 API(모바일, SPA) | JWT | 낮은 | 중간 |
+| 타사 로그인 | OAuth 2.0 | 중간 | 높은 |
+| 기존 웹 앱 | 세션 기반 | 낮은 | 높은 |
+| 마이크로서비스 | JWT + API 게이트웨이 | 높은 | 높은 |
+| 엔터프라이즈 SSO | SAML 2.0 | 높은 | 매우 높음 |
 
 ### 데이터베이스 및 ORM 선택
+
 ```
 Database & ORM Decision
 ├─ Relational (SQL)
@@ -98,6 +101,7 @@ Database & ORM Decision
     ├─ Document store → MongoDB (Mongoose for Node.js)
     └─ Key-value → Redis (caching, sessions)
 ```
+
 ## 모범 사례
 
 1. **항상 입력 유효성 검사** - 제공된 유효성 검사 미들웨어 사용
@@ -150,7 +154,7 @@ Database & ORM Decision
 - TypeScript 구성 확인
 - 종속성이 설치되어 있는지 확인
 - 오류 메시지 검토
-- 구문 오류 확인
+- 구문 오류를 확인하세요.
 
 **배포 문제**
 - Docker 이미지 빌드 확인

@@ -25,14 +25,13 @@ description: 비디오 처리, 스트리밍 프로토콜(HLS/DASH/WebRTC) 및 FF
 - FFmpeg를 이용한 영상 처리 자동화
 - 비디오 품질 및 압축 최적화
 
-**다음과 같은 경우에는 호출하지 마세요.**
+**다음과 같은 경우에는 호출하지 마세요**
 - 일반 웹 애플리케이션 구축 → fullstack-developer 사용
 - 애니메이션 GIF 만들기 → slack-gif-creator 사용
 - 미디어 파일 분석만 → 다중 모드 분석 사용
 - 영상 없이 이미지 처리 → 적절한 스킬 사용
 
-## 의사결정 프레임워크
-```
+## 의사결정 프레임워크```
 Video Engineering Task?
 ├── On-Demand Streaming → HLS/DASH with adaptive bitrate
 ├── Live Streaming → Low-latency HLS or WebRTC
@@ -41,7 +40,8 @@ Video Engineering Task?
 ├── Quality Optimization → Codec selection + encoding params
 └── Video Analytics → Metadata extraction + scene detection
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. 적응형 스트리밍 설정
 1. 소스 비디오 사양 분석

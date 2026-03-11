@@ -1,12 +1,13 @@
-# 최적화 전략 구축
+# Build Optimization Strategies
 
-## 개요
+## Overview
 
-빠르고 효율적인 웹 애플리케이션을 제공하려면 빌드 최적화가 중요합니다. 이 가이드에서는 빌드 파이프라인 전반에 걸친 포괄적인 최적화 전략을 다룹니다.
+Build optimization is crucial for delivering fast, efficient web applications. This guide covers comprehensive optimization strategies across the build pipeline.
 
-## 코드 분할
+## Code Splitting
 
-### 경로 기반 분할
+### Route-based Splitting
+
 ```typescript
 import { lazy, Suspense } from 'react';
 
@@ -22,7 +23,9 @@ export const App = () => (
   </Suspense>
 );
 ```
-### 구성요소 기반 분할
+
+### Component-based Splitting
+
 ```typescript
 import { lazy, Suspense } from 'react';
 
@@ -45,7 +48,9 @@ export const Dashboard = () => {
   );
 };
 ```
-### 공급업체 분할
+
+### Vendor Splitting
+
 ```javascript
 // webpack.config.js
 module.exports = {
@@ -63,9 +68,11 @@ module.exports = {
   },
 };
 ```
-## 나무 흔들기
 
-### ES 모듈
+## Tree Shaking
+
+### ES Modules
+
 ```javascript
 //GOOD - ES modules
 export { func1, func2 } from './utils';
@@ -73,14 +80,18 @@ export { func1, func2 } from './utils';
 // BAD - CommonJS
 module.exports = { func1, func2 };
 ```
-### Package.json 부작용
+
+### Package.json Side Effects
+
 ```json
 {
   "sideEffects": false,
   "sideEffects": ["*.css", "./src/**/*.scss"]
 }
 ```
-### 웹팩 구성
+
+### Webpack Configuration
+
 ```javascript
 module.exports = {
   optimization: {
@@ -89,9 +100,11 @@ module.exports = {
   },
 };
 ```
-## 축소
 
-### 자바스크립트
+## Minification
+
+### JavaScript
+
 ```javascript
 // Terser configuration
 const TerserPlugin = require('terser-webpack-plugin');
@@ -117,7 +130,9 @@ module.exports = {
   },
 };
 ```
+
 ### CSS
+
 ```javascript
 // CSS Nano configuration
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -141,7 +156,9 @@ module.exports = {
   },
 };
 ```
+
 ### HTML
+
 ```javascript
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -159,9 +176,11 @@ module.exports = {
   ],
 };
 ```
-## 번들 분석
 
-### 웹팩 번들 분석기
+## Bundle Analysis
+
+### Webpack Bundle Analyzer
+
 ```javascript
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 
@@ -176,14 +195,18 @@ module.exports = {
   ],
 };
 ```
-### 소스 맵 탐색기
+
+### Source Map Explorer
+
 ```bash
 npm run build
 npm run build:analyze
 ```
-## 자산 최적화
 
-### 이미지
+## Asset Optimization
+
+### Images
+
 ```javascript
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
@@ -222,7 +245,9 @@ module.exports = {
   },
 };
 ```
-### 글꼴
+
+### Fonts
+
 ```javascript
 module.exports = {
   module: {
@@ -238,7 +263,9 @@ module.exports = {
   },
 };
 ```
-### SVG 최적화
+
+### SVG Optimization
+
 ```javascript
 const SvgrWebpackPlugin = require('svg-sprite-loader');
 
@@ -253,9 +280,11 @@ module.exports = {
   },
 };
 ```
-## 캐싱
 
-### 파일 시스템 캐시
+## Caching
+
+### File System Cache
+
 ```javascript
 module.exports = {
   cache: {
@@ -266,7 +295,9 @@ module.exports = {
   },
 };
 ```
-### 바벨 캐시
+
+### Babel Cache
+
 ```javascript
 module.exports = {
   module: {
@@ -285,7 +316,9 @@ module.exports = {
   },
 };
 ```
-### 영구 빌드
+
+### Persistent Build
+
 ```javascript
 module.exports = {
   snapshot: {
@@ -297,9 +330,11 @@ module.exports = {
   },
 };
 ```
-## 성능 모니터링
 
-### 지표 구축
+## Performance Monitoring
+
+### Build Metrics
+
 ```javascript
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
@@ -314,7 +349,9 @@ module.exports = {
   ],
 };
 ```
-### 라이트하우스 CI
+
+### Lighthouse CI
+
 ```yaml
 # .github/workflows/lighthouse.yml
 name: Lighthouse CI
@@ -334,9 +371,11 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
 ```
-## 환경별 최적화
 
-### 개발
+## Environment-specific Optimization
+
+### Development
+
 ```javascript
 module.exports = {
   mode: 'development',
@@ -354,7 +393,9 @@ module.exports = {
   },
 };
 ```
-### 생산
+
+### Production
+
 ```javascript
 module.exports = {
   mode: 'production',
@@ -380,9 +421,11 @@ module.exports = {
   },
 };
 ```
-## 고급 전략
 
-### 종속성을 위한 DLL 플러그인
+## Advanced Strategies
+
+### DLL Plugin for Dependencies
+
 ```javascript
 const webpack = require('webpack');
 const path = require('path');
@@ -404,7 +447,9 @@ module.exports = {
   ],
 };
 ```
-### 모듈 연합
+
+### Module Federation
+
 ```javascript
 const ModuleFederationPlugin = require('webpack').container
   .ModuleFederationPlugin;
@@ -425,7 +470,9 @@ module.exports = {
   ],
 };
 ```
-### 미리 로드 및 미리 가져오기
+
+### Preloading & Prefetching
+
 ```typescript
 // Preload critical resources
 <link rel="preload" href="/styles/main.css" as="style">
@@ -435,32 +482,33 @@ module.exports = {
 <link rel="prefetch" href="/about.js">
 <link rel="prefetch" href="/dashboard.js">
 ```
-## 체크리스트
 
-### 사전 빌드
-- [ ] 번들 크기 분석
-- [ ] 사용되지 않은 코드 식별
-- [ ] 종속성 검토
-- [ ] 코드 분할 전략 설정
-- [ ] 압축 구성
+## Checklist
 
-### 빌드 중
-- [ ] 축소 활성화
-- [ ] 소스 맵 구성
-- [ ] 캐싱 설정
-- [ ] 트리 흔들기 활성화
-- [ ] 자산 최적화
+### Pre-build
+- [ ] Analyze bundle size
+- [ ] Identify unused code
+- [ ] Review dependencies
+- [ ] Set up code splitting strategy
+- [ ] Configure compression
 
-### 빌드 후
-- [ ] 번들 보고서 검토
-- [ ] 테스트 로딩 성능
-- [ ] 소스 맵이 작동하는지 확인
-- [ ] Lighthouse 점수 확인
-- [ ] 생산 지표 모니터링
+### During Build
+- [ ] Enable minification
+- [ ] Configure source maps
+- [ ] Set up caching
+- [ ] Enable tree shaking
+- [ ] Optimize assets
 
-### 연속
-- [ ] 시간 경과에 따른 번들 크기 추적
-- [ ] 빌드 시간 모니터링
-- [ ] Lighthouse CI 결과 검토
-- [ ] 정기적으로 종속성을 업데이트합니다.
-- [ ] 최적화 전략 검토
+### Post-build
+- [ ] Review bundle reports
+- [ ] Test loading performance
+- [ ] Verify source maps work
+- [ ] Check Lighthouse scores
+- [ ] Monitor production metrics
+
+### Continuous
+- [ ] Track bundle size over time
+- [ ] Monitor build times
+- [ ] Review Lighthouse CI results
+- [ ] Update dependencies regularly
+- [ ] Review optimization strategies

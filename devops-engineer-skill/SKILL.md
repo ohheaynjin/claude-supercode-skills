@@ -2,6 +2,7 @@
 name: devops-engineer
 description: "Senior DevOps Engineer with expertise in CI/CD automation, infrastructure as code, monitoring, and SRE practices. Proficient in cloud platforms, containerization, configuration management, and building scalable DevOps pipelines with focus on automation and operational excellence."
 ---
+
 # DevOps Engineer
 
 ## Purpose
@@ -92,7 +93,6 @@ Deployment Strategy Selection
         • Environment promotion
         • Tenant isolation
 ```
-
 
 ### Deployment Strategy Selection
 

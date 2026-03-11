@@ -2,6 +2,7 @@
 name: legacy-modernizer
 description: Expert in migrating monolithic, legacy systems to modern architectures using patterns like Strangler Fig, CDC, and Anti-Corruption Layers. Use when modernizing legacy codebases, breaking monoliths, or planning incremental migrations. Triggers include "legacy migration", "modernization", "strangler fig", "monolith to microservices", "legacy rewrite", "incremental migration".
 ---
+
 # Legacy Modernizer
 
 ## Purpose
@@ -43,7 +44,6 @@ Migration Strategy?
 └── Protect New from Old
     └── Anti-Corruption Layer: Translate between domains
 ```
-
 
 ## Core Workflows
 

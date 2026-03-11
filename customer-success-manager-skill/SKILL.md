@@ -2,6 +2,7 @@
 name: customer-success-manager
 description: Expert in onboarding, adoption, and retention strategies. Specializes in turning users into advocates through structured success plans and proactive health monitoring. Use when designing onboarding flows, creating success plans, or improving customer retention.
 ---
+
 # Customer Success Manager
 
 ## Purpose
@@ -46,7 +47,6 @@ Customer Segment Strategy:
     ├── Self-service resources
     └── Trigger-based outreach
 ```
-
 
 ## Core Workflows
 

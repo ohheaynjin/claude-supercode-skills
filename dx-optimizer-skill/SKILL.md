@@ -24,14 +24,13 @@ description: 엔드투엔드 개발자 여정을 최적화하는 전문가입니
 - CI/CD 피드백 루프 최적화
 - 개발자 수고 감소
 
-**다음과 같은 경우에는 호출하지 마세요.**
+**다음과 같은 경우에는 호출하지 마세요**
 - CI/CD 파이프라인 구축(devops-engineer 사용)
 - Kubernetes 관리(kubernetes-specialist 사용)
 - 문서 작성(테크니컬 라이터 사용)
 - 클라우드 아키텍처 설계(cloud-architect 사용)
 
-## 의사결정 프레임워크
-```
+## 의사결정 프레임워크```
 DX Improvement Priority:
 ├── Long CI times → Optimize pipeline, caching
 ├── Slow local dev → Dev containers, hot reload
@@ -46,7 +45,8 @@ Metric Focus:
 ├── Reliability → MTTR
 └── Satisfaction → Developer surveys
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. DORA 지표 구현
 1. 측정 방법론 정의

@@ -4,12 +4,11 @@
 
 ### 코드 생성
 
-**기본 코드:**
-```python
+**기본 코드:**```python
 template = "Write {language} code that {description}"
 ```
-**제약조건 있음:**
-```python
+
+**제약조건 있음:**```python
 template = """
 Write {language} code that {description}.
 
@@ -20,14 +19,12 @@ Requirements:
 - Add documentation
 """
 ```
-**코드 설명:**
-```python
+
+**코드 설명:**```python
 template = """
 Explain the following {language} code:
 
-```
-{암호}
-```
+```{암호}```
 
 Focus on:
 - Functionality
@@ -35,36 +32,36 @@ Focus on:
 - Potential improvements
 """
 ```
+
 ### 텍스트 생성
 
-**요약:**
-```python
+**요약:**```python
 template = """
 Summarize the following text in {max_sentences} sentences:
 
 {text}
 """
 ```
-**번역:**
-```python
+
+**번역:**```python
 template = """
 Translate the following text from {source_lang} to {target_lang}:
 
 {text}
 """
 ```
-**재작성:**
-```python
+
+**재작성:**```python
 template = """
 Rewrite the following text in {tone} tone:
 
 {text}
 """
 ```
+
 ### 질문 답변
 
-**걸레 품질관리:**
-```python
+**걸레 품질관리:**```python
 template = """
 Based on the following context:
 
@@ -75,18 +72,18 @@ Answer the question: {question}
 If the answer is not in the context, say "I don't know".
 """
 ```
-**다단계 QA:**
-```python
+
+**다단계 QA:**```python
 template = """
 Step 1: {question1}
 Step 2: Based on your answer, {question2}
 Step 3: Finally, {question3}
 """
 ```
+
 ### 데이터 처리
 
-**추출:**
-```python
+**추출:**```python
 template = """
 Extract the following information from the text:
 
@@ -100,8 +97,8 @@ Extract:
 Format as JSON.
 """
 ```
-**분류:**
-```python
+
+**분류:**```python
 template = """
 Classify the following text into one of these categories:
 
@@ -112,10 +109,10 @@ Text: {text}
 Category:
 """
 ```
+
 ### 분석
 
-**감정 분석:**
-```python
+**감정 분석:**```python
 template = """
 Analyze the sentiment of the following text:
 
@@ -127,8 +124,8 @@ Provide:
 - Key phrases influencing sentiment
 """
 ```
-**주제 모델링:**
-```python
+
+**주제 모델링:**```python
 template = """
 Identify the main topics in the following text:
 
@@ -137,10 +134,10 @@ Identify the main topics in the following text:
 List topics with brief descriptions.
 """
 ```
+
 ## 신속한 엔지니어링 기술
 
-### 생각의 사슬
-```python
+### 생각의 사슬```python
 template = """
 {question}
 
@@ -153,8 +150,8 @@ Think step by step:
 Final answer:
 """
 ```
-### 퓨샷 학습
-```python
+
+### 퓨샷 학습```python
 template = """
 Examples:
 Input: "I love this!"
@@ -170,8 +167,8 @@ Input: {input_text}
 Output:
 """
 ```
-### 자체 일관성
-```python
+
+### 자체 일관성```python
 template = """
 Solve this problem: {problem}
 
@@ -179,8 +176,8 @@ Provide your reasoning and final answer.
 """
 # Generate multiple responses, take majority vote
 ```
-### 생각의 나무
-```python
+
+### 생각의 나무```python
 template = """
 Problem: {problem}
 
@@ -191,18 +188,18 @@ Branch 3: {approach3}
 Evaluate each branch and select the best solution.
 """
 ```
+
 ## 시스템 프롬프트
 
-### 페르소나 정의
-```python
+### 페르소나 정의```python
 system_prompt = """
 You are an expert {domain} with {years} years of experience.
 Your responses should be {tone} and include {level} of detail.
 Always cite sources when applicable.
 """
 ```
-### 작업 사양
-```python
+
+### 작업 사양```python
 system_prompt = """
 Your task is to {task_description}.
 
@@ -214,10 +211,10 @@ Constraints:
 Output format: {format_specification}
 """
 ```
+
 ## 프롬프트 최적화
 
-### A/B 테스트
-```python
+### A/B 테스트```python
 from prompt_engineer import PromptOptimizer
 
 optimizer = PromptOptimizer()
@@ -230,8 +227,8 @@ results = optimizer.compare_templates(
     test_data=evaluation_set
 )
 ```
-### 반복적인 개선
-```python
+
+### 반복적인 개선```python
 def improve_prompt(current_prompt, feedback):
     improved = llm.generate(f"""
     Improve this prompt based on feedback:
@@ -247,6 +244,7 @@ def improve_prompt(current_prompt, feedback):
 
     return improved
 ```
+
 ## 모범 사례
 
 1. **구체적으로**: 원하는 것을 명확하게 정의하세요.

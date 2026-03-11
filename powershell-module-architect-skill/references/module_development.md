@@ -7,6 +7,7 @@
 ## 모듈 구조
 
 ### 표준 모듈 레이아웃
+
 ```
 MyModule/
 ├── MyModule.psd1          # Module manifest
@@ -36,9 +37,11 @@ MyModule/
 ├── README.md              # Module documentation
 └── LICENSE                # License file
 ```
+
 ## 모듈 매니페스트
 
 ### 매니페스트 만들기
+
 ```powershell
 # MyModule.psd1
 @{
@@ -62,6 +65,7 @@ MyModule/
     ReleaseNotes = 'Initial release'
 }
 ```
+
 ### 매니페스트 모범 사례
 
 1. 의미론적 버전 관리(MAJOR.MINOR.PATCH)를 사용합니다.
@@ -75,6 +79,7 @@ MyModule/
 ## 모듈 스크립트
 
 ### 기본 모듈 스크립트
+
 ```powershell
 # MyModule.psm1
 $ErrorActionPreference = 'Stop'
@@ -95,9 +100,11 @@ $publicFunctions = Get-ChildItem -Path "$PSScriptRoot\Public" -Filter "*.ps1" |
 
 Export-ModuleMember -Function $publicFunctions
 ```
+
 ## 공개 함수
 
 ### 함수 템플릿
+
 ```powershell
 # Public/Get-Item.ps1
 <#
@@ -164,9 +171,11 @@ function Get-Item {
     }
 }
 ```
+
 ### 함수 모범 사례
 
-1. 항상 사용하세요`CmdletBinding()`2. 포괄적인 설명 기반 도움말 포함
+1. 항상 `CmdletBinding()`을(를) 사용하세요
+2. 포괄적인 설명 기반 도움말 포함
 3. 매개변수 검증 사용
 4. 적절한 오류 처리 구현
 5. 디버깅을 위해 자세한 출력을 사용하세요.
@@ -177,6 +186,7 @@ function Get-Item {
 ## 비공개 기능
 
 ### 도우미 함수 예
+
 ```powershell
 # Private/Helper-Function.ps1
 function Invoke-ApiCall {
@@ -203,9 +213,11 @@ function Invoke-ApiCall {
     }
 }
 ```
+
 ## 수업
 
 ### PowerShell 클래스
+
 ```powershell
 # Classes/MyClass.ps1
 class MyClass {
@@ -234,9 +246,11 @@ class MyClass {
     }
 }
 ```
+
 ## 형식 사양
 
 ### 사용자 정의 형식
+
 ```xml
 <!-- Formats/MyModule.format.ps1xml -->
 <Configuration>
@@ -267,9 +281,11 @@ class MyClass {
     </ViewDefinitions>
 </Configuration>
 ```
+
 ## 유형 확장
 
 ### 유형 멤버 추가
+
 ```xml
 <!-- Types/MyModule.types.ps1xml -->
 <Types>
@@ -286,9 +302,11 @@ class MyClass {
     </Type>
 </Types>
 ```
+
 ## 포장
 
 ### NuGet 패키지 생성
+
 ```powershell
 # Update module manifest version
 $manifestPath = "MyModule.psd1"
@@ -304,7 +322,9 @@ Get-Command -Module MyModule
 # Create NuGet package
 # The module directory is ready for distribution
 ```
+
 ### PowerShellGet 사용
+
 ```powershell
 # Publish to PowerShell Gallery
 Publish-Module -Path ".\MyModule" -NuGetApiKey "your-api-key" -Repository PSGallery
@@ -315,9 +335,11 @@ Install-Module -Name MyModule
 # Update module
 Update-Module -Name MyModule
 ```
+
 ## 테스트
 
 ### 페스터 테스트
+
 ```powershell
 # Tests/Unit/Get-Item.Tests.ps1
 Describe "Get-Item" {
@@ -345,9 +367,11 @@ Describe "Get-Item" {
     }
 }
 ```
+
 ## 문서
 
 ### 주제 정보
+
 ```text
 # en-US/about_MyModule.help.txt
 TOPIC
@@ -366,6 +390,7 @@ EXAMPLES
 NOTES
     Additional notes and references
 ```
+
 ## 모범 사례 요약
 
 1. **구조**: 표준 모듈 레이아웃을 따릅니다.
@@ -379,7 +404,7 @@ NOTES
 9. **오류 처리**: 강력한 오류 처리 구현
 10. **성능**: 성능 및 리소스 사용량 최적화
 
-## 리소스
+## 자원
 
 - [PowerShell 모듈 개발](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/how-to-write-a-powershell-module)
 - [Pester 테스트 프레임워크](https://pester.dev/)

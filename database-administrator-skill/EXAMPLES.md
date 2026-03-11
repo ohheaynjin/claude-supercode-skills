@@ -3,6 +3,7 @@
 ## 안티 패턴: 쿼리 계획 회귀 무시
 
 ### 외관(나쁨):
+
 ```sql
 -- Query works fine in development (1000 rows)
 SELECT * FROM orders 
@@ -15,6 +16,7 @@ LIMIT 10;
 -- Same query in production (10M rows)
 -- Execution time: 45 seconds (disaster!)
 ```
+
 ### 실패 이유:
 - 개발 데이터는 프로덕션에 비해 매우 작습니다.
 - 쿼리 플래너는 규모에 따라 다양한 전략을 선택합니다.
@@ -22,6 +24,7 @@ LIMIT 10;
 - 테이블 통계가 오래되었습니다(autovacuum이 실행되지 않음).
 
 ### 올바른 접근 방식:
+
 ```sql
 -- 1. Always EXPLAIN ANALYZE in production-like data
 EXPLAIN (ANALYZE, BUFFERS, VERBOSE)
@@ -69,7 +72,9 @@ WHERE mean_exec_time > 1000  -- Queries averaging >1s
 ORDER BY total_exec_time DESC
 LIMIT 20;
 ```
+
 ## MongoDB 샤딩 배포
+
 ```bash
 # 1. Deploy Config Server Replica Set
 mongod --configsvr --replSet configReplSet --dbpath /data/configdb --port 27019
@@ -116,7 +121,9 @@ sh.shardCollection("ecommerce.products", { category_id: 1, product_id: 1 })
 # 6. Verify
 sh.status()
 ```
+
 ## MongoDB 애플리케이션 연결
+
 ```javascript
 const { MongoClient } = require('mongodb');
 
@@ -140,7 +147,9 @@ async function getProductsByCategory(categoryId) {
   return products;
 }
 ```
+
 ## PostgreSQL 성능 모니터링 쿼리
+
 ```sql
 -- Find slow queries
 SELECT 
@@ -226,7 +235,9 @@ JOIN pg_catalog.pg_stat_activity blocking_activity
     ON blocking_activity.pid = blocking_locks.pid
 WHERE NOT blocked_locks.granted;
 ```
+
 ## 백업 확인 스크립트
+
 ```bash
 #!/bin/bash
 # Verify backup can be restored

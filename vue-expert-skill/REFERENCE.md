@@ -35,14 +35,13 @@
 
 ### 참조 대 반응형
 
-**ref** - 기본 값과 필요할 때 가장 적합합니다.`.value`입장:
-```typescript
+**ref** - 기본 값과 필요할 때 가장 적합합니다.`.value`입장:```typescript
 const count = ref(0)
 const name = ref('John')
 count.value++ // Access with .value
 ```
-**반응형** - 복잡한 객체에 가장 적합:
-```typescript
+
+**반응형** - 복잡한 객체에 가장 적합:```typescript
 const user = reactive({
   name: 'John',
   age: 30,
@@ -50,10 +49,10 @@ const user = reactive({
 })
 user.name = 'Jane' // Direct property access
 ```
+
 ### 구조 분해를 위한 toRefs
 
-반응형 객체를 구조분해할 때 다음을 사용하세요.`toRefs`반응성을 유지하기 위해:
-```typescript
+반응형 객체를 구조분해할 때 다음을 사용하세요.`toRefs`반응성을 유지하기 위해:```typescript
 const user = reactive({ name: 'John', age: 30 })
 
 // BAD - loses reactivity
@@ -63,34 +62,34 @@ const { name, age } = user
 const { name, age } = toRefs(user)
 console.log(name.value) // Still reactive!
 ```
+
 ### 계산된 속성
 
-반응 값에 따라 파생된 상태에 대해 계산된 값을 사용합니다.
-```typescript
+반응 값에 따라 파생된 상태에 대해 계산된 값을 사용합니다.```typescript
 const firstName = ref('John')
 const lastName = ref('Doe')
 
 const fullName = computed(() => `${firstName.value} ${lastName.value}`)
 ```
+
 ### 감시 및 WatchEffect
 
-**감시** - 명시적인 종속성, 이전/새 값에 대한 액세스:
-```typescript
+**감시** - 명시적인 종속성, 이전/새 값에 대한 액세스:```typescript
 watch(count, (newValue, oldValue) => {
   console.log(`Count changed from ${oldValue} to ${newValue}`)
 }, { immediate: true, deep: true })
 ```
-**watchEffect** - 종속성을 자동 추적합니다.
-```typescript
+
+**watchEffect** - 종속성을 자동 추적합니다.```typescript
 watchEffect(() => {
   console.log(`Count is now: ${count.value}`)
   // Automatically re-runs when count changes
 })
 ```
+
 ## 피니아 매장 패턴
 
-### 구문 저장소 설정(권장)
-```typescript
+### 구문 저장소 설정(권장)```typescript
 export const useUserStore = defineStore('user', () => {
   // State
   const user = ref<User | null>(null)
@@ -112,8 +111,8 @@ export const useUserStore = defineStore('user', () => {
   return { user, loading, isAuthenticated, login }
 })
 ```
-### 매장 구성
-```typescript
+
+### 매장 구성```typescript
 // Composing stores together
 export const useCartStore = defineStore('cart', () => {
   const userStore = useUserStore()
@@ -123,10 +122,10 @@ export const useCartStore = defineStore('cart', () => {
   )
 })
 ```
-## Vue 라우터 패턴
 
-### 루트 가드
-```typescript
+## 라우터 패턴 보기
+
+### 루트 가드```typescript
 router.beforeEach(async (to, from) => {
   const userStore = useUserStore()
   
@@ -135,17 +134,17 @@ router.beforeEach(async (to, from) => {
   }
 })
 ```
-### 동적 경로
-```typescript
+
+### 동적 경로```typescript
 const routes = [
   { path: '/users/:id', component: UserProfile },
   { path: '/products/:category/:id?', component: ProductPage }
 ]
 ```
+
 ## Nuxt.js 세부 사항
 
-### 파일 기반 라우팅
-```
+### 파일 기반 라우팅```
 pages/
 ├── index.vue          → /
 ├── about.vue          → /about
@@ -154,8 +153,8 @@ pages/
 │   └── [id].vue       → /users/:id
 └── [...slug].vue      → catch-all route
 ```
-### useFetch 및 useAsyncData
-```typescript
+
+### useFetch 및 useAsyncData```typescript
 // Auto-cached, SSR-friendly data fetching
 const { data, pending, error, refresh } = await useFetch('/api/users')
 
@@ -167,32 +166,32 @@ const { data } = await useFetch('/api/users', {
   transform: (data) => data.users
 })
 ```
-### 서버 API 경로
-```typescript
+
+### 서버 API 경로```typescript
 // server/api/users.get.ts
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)
   return await db.users.findMany({ take: query.limit })
 })
 ```
+
 ## 성능 최적화 기술
 
-### 목록 최적화를 위한 v-memo
-```vue
+### 목록 최적화를 위한 v-memo```vue
 <template>
   <div v-for="item in items" :key="item.id" v-memo="[item.selected]">
     <!-- Only re-renders when item.selected changes -->
   </div>
 </template>
 ```
-### 코드 분할을 위한 정의AsyncComponent
-```typescript
+
+### 코드 분할을 위한 정의AsyncComponent```typescript
 const HeavyComponent = defineAsyncComponent(() =>
   import('./HeavyComponent.vue')
 )
 ```
-### 가상 스크롤
-```vue
+
+### 가상 스크롤```vue
 <template>
   <RecycleScroller
     :items="items"
@@ -203,10 +202,10 @@ const HeavyComponent = defineAsyncComponent(() =>
   </RecycleScroller>
 </template>
 ```
+
 ## 타입스크립트 통합
 
-### 유형화된 Prop과 방출
-```typescript
+### 유형화된 Prop과 방출```typescript
 interface Props {
   user: User
   isEditable?: boolean
@@ -222,13 +221,13 @@ const props = withDefaults(defineProps<Props>(), {
 })
 const emit = defineEmits<Emits>()
 ```
-### 입력된 참조
-```typescript
+
+### 입력된 참조```typescript
 const inputRef = ref<HTMLInputElement | null>(null)
 const componentRef = ref<InstanceType<typeof MyComponent> | null>(null)
 ```
-### 일반 컴포저블
-```typescript
+
+### 일반 컴포저블```typescript
 function useAsyncData<T>(asyncFn: () => Promise<T>) {
   const data = ref<T | null>(null) as Ref<T | null>
   const error = ref<Error | null>(null)

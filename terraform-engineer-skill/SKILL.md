@@ -2,6 +2,7 @@
 name: terraform-engineer
 description: Infrastructure as Code (IaC) expert using Terraform/OpenTofu, HCL, and modern state management.
 ---
+
 # Terraform Engineer
 
 ## Purpose
@@ -137,7 +138,6 @@ What are you building?
    └─ `dev/`
 ```
 
-
 ### Terraform vs. The World
 
 | Tool | Approach | Best For |
@@ -165,8 +165,7 @@ What are you building?
 **Steps:**
 
 1.  **Dependency Definition (`versions.tf`)**
-
-```hcl
+    ```hcl
     terraform {
       required_version = ">= 1.5.0"
       required_providers {
@@ -178,10 +177,8 @@ What are you building?
     }
     ```
 
-
 2.  **Implementation (`main.tf`)**
-
-```hcl
+    ```hcl
     module "vpc" {
       source = "terraform-aws-modules/vpc/aws"
       version = "5.5.1"
@@ -204,16 +201,13 @@ What are you building?
     }
     ```
 
-
 3.  **Outputs (`outputs.tf`)**
-
-```hcl
+    ```hcl
     output "vpc_id" {
       description = "The ID of the VPC"
       value       = module.vpc.vpc_id
     }
     ```
-
 
 ---
 ---
@@ -228,8 +222,7 @@ What are you building?
     -   AWS Console → EC2 → Instance ID: `i-0123456789abcdef0`
 
 2.  **Write Terraform Code**
-
-```hcl
+    ```hcl
     resource "aws_instance" "legacy_server" {
       ami           = "ami-0c55b159cbfafe1f0"
       instance_type = "t2.micro"
@@ -237,22 +230,17 @@ What are you building?
     }
     ```
 
-
 3.  **Run Import**
-
-```bash
+    ```bash
     terraform import aws_instance.legacy_server i-0123456789abcdef0
     ```
-
     *(Or use `import` block in TF 1.5+)*
-
-```hcl
+    ```hcl
     import {
       to = aws_instance.legacy_server
       id = "i-0123456789abcdef0"
     }
     ```
-
 
 4.  **Reconcile**
     -   Run `terraform plan`.
@@ -304,15 +292,13 @@ What are you building?
 
 **Correct approach:**
 -   Standard `.gitignore` for Terraform:
-
-```
+    ```
     .terraform/
     *.tfstate
     *.tfstate.backup
     *.tfvars
     .terraform.lock.hcl (Commit this one!)
     ```
-
 
 ---
 ---

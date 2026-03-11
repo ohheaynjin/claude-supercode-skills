@@ -1,11 +1,10 @@
-# Rust Engineer - Code Examples & Patterns
+# Rust 엔지니어 - 코드 예제 및 패턴
 
-This document contains code examples, anti-patterns, and real-world implementation patterns for Rust development.
+이 문서에는 Rust 개발을 위한 코드 예제, 안티 패턴, 실제 구현 패턴이 포함되어 있습니다.
 
-## Anti-Pattern 1: Ignoring Error Handling with .unwrap()
+## 안티 패턴 1: .unwrap()을 사용한 오류 처리 무시
 
-**What it looks like:**
-```rust
+**모습:**```rust
 // WRONG: Unwrap everywhere
 fn load_config() -> Config {
     let content = std::fs::read_to_string("config.toml").unwrap(); // Panic on missing file!
@@ -20,15 +19,13 @@ async fn save_user(db: &PgPool, user: &User) {
 }
 ```
 
+**실패하는 이유:**
+- **런타임 패닉**: `.unwrap()`이 `Err` 또는 `None`에서 프로그램을 충돌시킵니다.
+- **자동 오류**: `Result`을 무시하면 데이터베이스 오류, 네트워크 오류가 숨겨집니다.
+- **복구 없음**: 비동기 컨텍스트에서는 패닉을 안전하게 포착할 수 없습니다.
+- **나쁜 UX**: 사용자에게 유용한 오류 메시지 대신 "스레드 패닉"이 표시됩니다.
 
-**Why it fails:**
-- **Runtime panics**: `.unwrap()` crashes the program on `Err` or `None`
-- **Silent failures**: Ignoring `Result` hides database errors, network failures
-- **No recovery**: Panics can't be caught safely in async contexts
-- **Poor UX**: Users see "thread panicked" instead of helpful error messages
-
-**Correct approach:**
-```rust
+**올바른 접근 방식:**```rust
 // CORRECT: Proper error propagation
 fn load_config() -> Result<Config, ConfigError> {
     let content = std::fs::read_to_string("config.toml")
@@ -52,19 +49,17 @@ let port: u16 = std::env::var("PORT")
     .expect("PORT must be a valid u16");
 ```
 
-
-**When .unwrap() is acceptable:**
-- Tests (failure should fail the test)
-- Prototypes and examples
-- Truly impossible cases (mathematically proven)
-- After explicit validation (`if let Some(x) = ... { x.unwrap() }`)
+**.unwrap()이 허용되는 경우:**
+- 테스트(실패하면 테스트에 실패해야 함)
+- 프로토타입 및 예시
+- 정말 불가능한 경우(수학적으로 증명됨)
+- 명시적인 검증 후(`if let Some(x) = ... { x.unwrap() }`)
 
 ---
 
-## Anti-Pattern 2: Clone-Heavy Code (Unnecessary Allocations)
+## 안티 패턴 2: 복제가 많은 코드(불필요한 할당)
 
-**What it looks like:**
-```rust
+**모습:**```rust
 // WRONG: Cloning on every function call
 fn process_orders(orders: Vec<Order>) -> Vec<OrderSummary> {
     orders
@@ -89,15 +84,13 @@ fn generate_ids(count: usize) -> Vec<String> {
 }
 ```
 
+**실패하는 이유:**
+- **성능 저하**: 할당 비용이 많이 듭니다.
+- **메모리 부족**: 불필요한 복제로 인해 메모리 사용량이 증가합니다.
+- **캐시 누락**: 더 많은 할당 = 더 많은 포인터 추적
+- **소유권 버그 숨기기**: 복제 마스크 디자인 문제
 
-**Why it fails:**
-- **Performance degradation**: Allocations are expensive
-- **Memory pressure**: Unnecessary clones increase memory usage
-- **Cache misses**: More allocations = more pointer chasing
-- **Hides ownership bugs**: Cloning masks design issues
-
-**Correct approach:**
-```rust
+**올바른 접근 방식:**```rust
 // CORRECT: Borrow instead of clone
 fn process_orders(orders: &[Order]) -> Vec<OrderSummary> {
     orders
@@ -144,17 +137,16 @@ fn normalize_string(s: &str) -> Cow<str> {
 }
 ```
 
-
-**Guidelines:**
-- **Default to borrowing** (`&T`) unless ownership transfer needed
-- **Use `Arc<T>`** for shared immutable data across threads
-- **Use `Rc<T>`** for shared data in single-threaded context
-- **Profile before optimizing**: Use `cargo flamegraph` to find hot clones
-- **Cheap clones are OK**: `Arc`, `Rc`, `PgPool`, small Copy types
+**가이드라인:**
+- 소유권 이전이 필요한 경우를 제외하고 **기본값은 차용**(`&T`)입니다.
+- **스레드 간에 공유된 불변 데이터의 경우 `Arc<T>`**을 사용하세요.
+- **단일 스레드 컨텍스트에서 공유 데이터에는 `Rc<T>`**를 사용하세요.
+- **최적화 전 프로필**: `cargo flamegraph`을 사용하여 핫 클론을 찾습니다.
+- **저렴한 복제도 괜찮습니다**: `Arc`, `Rc`, `PgPool`, 작은 복사 유형
 
 ---
 
-## Example: Complete Axum REST API
+## 예: 완전한 Axum REST API
 
 ```rust
 // main.rs
@@ -306,12 +298,11 @@ impl IntoResponse for AppError {
 }
 ```
 
-
 ---
 
-## Testing Patterns
+## 테스트 패턴
 
-### Unit Testing with Mocks
+### 모의를 이용한 단위 테스트
 
 ```rust
 #[cfg(test)]
@@ -347,8 +338,7 @@ mod tests {
 }
 ```
 
-
-### Integration Testing
+### 통합 테스트
 
 ```rust
 #[cfg(test)]
@@ -379,10 +369,9 @@ mod integration_tests {
 }
 ```
 
-
 ---
 
-## Dockerfile for Rust Services
+## Rust 서비스용 Dockerfile
 
 ```dockerfile
 # Build stage
@@ -407,8 +396,7 @@ EXPOSE 3000
 CMD ["myapp"]
 ```
 
-
-**Build optimizations:**
-- Use `lto = true` in `Cargo.toml` for smaller binaries
-- Use `strip = true` to remove debug symbols
-- Consider `opt-level = "s"` for size optimization
+**빌드 최적화:**
+- 더 작은 바이너리의 경우 `Cargo.toml`에서 `lto = true`을 사용하세요.
+- 디버그 기호를 제거하려면 `strip = true`를 사용하세요.
+- 크기 최적화를 위해 `opt-level = "s"`을(를) 고려하세요.

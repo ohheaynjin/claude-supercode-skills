@@ -1,6 +1,7 @@
 # C++ Professional - 코드 예제 및 패턴
 
 ## 잠금 없는 대기열 구현
+
 ```cpp
 // Lock-free queue for high-performance scenarios
 template<typename T>
@@ -49,7 +50,9 @@ private:
 
 using OrderQueue = LockFreeQueue<Order>;
 ```
+
 ## 풀 할당이 포함된 사용자 정의 스마트 포인터
+
 ```cpp
 template<typename T>
 class PooledPtr {
@@ -108,7 +111,9 @@ private:
     T* ptr_;
 };
 ```
+
 ## Google 테스트로 테스트하기
+
 ```cpp
 // order_service_test.cpp
 #include <gtest/gtest.h>
@@ -232,6 +237,7 @@ TEST(OrderBenchmark, ParallelProcessing) {
         }));
 }
 ```
+
 ## 사용 사례 예시
 
 ### 예시 1: 고성능 거래 엔진
@@ -247,7 +253,7 @@ TEST(OrderBenchmark, ParallelProcessing) {
 **성능 결과:**
 - 주문 처리 지연 시간: 50μs(기존 500μs)
 - 처리량: 초당 100,000개 주문(20,000개에서 증가)
-- CPU 사용률: 캐시 지역성 향상을 통해 40% 감소
+- CPU 사용률: 캐시 지역성 개선을 통해 40% 감소
 
 ### 예 2: 내장형 실시간 컨트롤러
 
@@ -259,8 +265,7 @@ TEST(OrderBenchmark, ParallelProcessing) {
 3. **개념 기반 API**: 컴파일 시 오용을 방지하는 유형 안전 인터페이스
 4. **하드웨어 추상화**: 여러 마이크로컨트롤러 플랫폼을 지원하는 휴대용 레이어
 
-**주요 기술:**
-```cpp
+**주요 기술:**```cpp
 // Compile-time validated configuration
 template<RealTimeSystem T>
 class Controller {
@@ -271,6 +276,7 @@ class Controller {
     std::atomic_size_t pool_index_{0};
 };
 ```
+
 ### 예시 3: 크로스 플랫폼 게임 엔진 라이브러리
 
 **시나리오:** Windows, macOS, Linux 및 콘솔로 컴파일되는 게임 엔진 SDK를 만듭니다.
@@ -287,6 +293,7 @@ class Controller {
 - 메모리 안전성: 2년 내 메모리 관련 CVE 제로화
 
 ## 개념 예
+
 ```cpp
 // Using concepts for type-safe templates
 template<typename T>
@@ -308,7 +315,9 @@ concept OrderComponent = Serializable<T> && requires(T t) {
     { t.validate() } -> std::same_as<bool>;
 };
 ```
+
 ## 범위 예
+
 ```cpp
 // Modern ranges-based data processing
 auto get_top_orders_by_value(const std::vector<Order>& orders, size_t n) {
@@ -337,7 +346,9 @@ for (const auto& order : pending_high_value | std::views::take(10)) {
     process(order);
 }
 ```
+
 ## std::format 예
+
 ```cpp
 // Type-safe formatting with std::format
 std::string format_order_summary(const Order& order) {

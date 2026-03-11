@@ -4,6 +4,7 @@
 보안 감사 보고서, 침투 테스트 보고서, 취약성 평가를 위한 표준화된 템플릿입니다.
 
 ## 요약 템플릿
+
 ```markdown
 # Security Assessment Report - Executive Summary
 
@@ -74,7 +75,9 @@ This document provides an executive summary of the security assessment conducted
 | [Name] | [Title] | [Date] | |
 | [Name] | [Title] | [Date] | |
 ```
+
 ## 세부 기술 보고서 ​​템플릿
+
 ```markdown
 # Security Assessment Report - Technical Details
 
@@ -120,15 +123,11 @@ This document provides an executive summary of the security assessment conducted
 - Location: [Specific location]
 
 #### Technical Details
-```
-[코드 스니펫, 구성 또는 기술 세부정보]
-```
+```[코드 스니펫, 구성 또는 기술 세부정보]```
 
 #### Proof of Concept
-```
-강타
-[재현하는 명령 또는 단계]
-```
+```강타
+[재현하는 명령 또는 단계]```
 
 #### Impact
 - **Confidentiality:** [High/Medium/Low/None]
@@ -138,22 +137,16 @@ This document provides an executive summary of the security assessment conducted
 #### Remediation
 
 **Immediate Mitigation:**
-```
-파이썬/코드/배쉬
-[임시수정]
-```
+```파이썬/코드/배시
+[임시수정]```
 
 **Permanent Fix:**
-```
-파이썬/코드/배쉬
-[영구적인 해결책]
-```
+```파이썬/코드/배시
+[영구적인 해결책]```
 
 **Validation Steps:**
-```
-강타
-[수정 확인 명령어]
-```
+```강타
+[수정 확인 명령어]```
 
 #### References
 - [OWASP Link]
@@ -198,7 +191,9 @@ This document provides an executive summary of the security assessment conducted
 - **Medium:** Limited impact, requires specific conditions
 - **Low:** Minimal impact, difficult to exploit
 ```
+
 ## 침투 테스트 보고서 템플릿
+
 ```markdown
 # Penetration Test Report
 
@@ -225,24 +220,16 @@ This document provides an executive summary of the security assessment conducted
 ## Attack Narrative
 
 ### Phase 1: Reconnaissance
-```
-[열거 결과 찾기]
-```
+```[열거 결과 찾기]```
 
 ### Phase 2: Vulnerability Assessment
-```
-[확인된 취약점]
-```
+```[확인된 취약점]```
 
 ### Phase 3: Exploitation
-```
-[성공적인 익스플로잇 세부정보]
-```
+```[성공적인 익스플로잇 세부정보]```
 
 ### Phase 4: Post-Exploitation
-```
-[접속레벨 달성, 데이터 접근]
-```
+```[접속레벨 달성, 데이터 접근]```
 
 ## Exploited Vulnerabilities
 
@@ -255,9 +242,7 @@ This document provides an executive summary of the security assessment conducted
 3. [Step 3]
 
 **Result:**
-```
-[명령어 출력 또는 스크린샷]
-```
+```[명령어 출력 또는 스크린샷]```
 
 ### Vulnerability 2: [Name]
 [Repeat for each exploited vulnerability]
@@ -321,7 +306,9 @@ This document provides an executive summary of the security assessment conducted
 ### Appendix C: Screenshots
 [Relevant screenshots]
 ```
+
 ## 규정 준수 보고서 템플릿
+
 ```markdown
 # Compliance Assessment Report
 
@@ -351,19 +338,15 @@ This document provides an executive summary of the security assessment conducted
 **Requirement:** [Specific requirement text]
 
 **Current State:**
-```
-[현재 구현 설명]
-```
+```[현재 구현 설명]```
 
 **Gap Analysis:**
 - What's missing: [List]
 - Why it's missing: [Reason]
 
 **Recommendation:**
-```
-배쉬/파이썬
-[구체적인 해결 단계]
-```
+```배쉬/파이썬
+[구체적인 해결 단계]```
 
 **Evidence Required:**
 - [ ]
@@ -432,7 +415,9 @@ This document provides an executive summary of the security assessment conducted
 | System Owner | [Name] | [Date] | |
 | Auditor | [Name] | [Date] | |
 ```
+
 ## 코드 검토 보안 보고서 템플릿
+
 ```markdown
 # Security Code Review Report
 
@@ -466,19 +451,15 @@ This document provides an executive summary of the security assessment conducted
 **Category:** [Injection/Auth/etc]
 
 **Vulnerable Code:**
-```
-파이썬
-[문제가 있는 코드 조각]
-```
+```파이썬
+[문제가 있는 코드 조각]```
 
 **Issue Description:**
 [Detailed explanation]
 
 **Remediation:**
-```
-파이썬
-[고정코드]
-```
+```파이썬
+[고정코드]```
 
 **References:**
 - [OWASP/CWE reference]
@@ -540,7 +521,9 @@ This document provides an executive summary of the security assessment conducted
 2. **Short-term:** [What to do this week]
 3. **Long-term:** [What to do this month]
 ```
+
 ## 보고서 생성 스크립트
+
 ```python
 #!/usr/bin/env python3
 """
@@ -613,9 +596,7 @@ class SecurityReportGenerator:
                     report += f"**Description:**\n{finding.get('description', 'No description')}\n\n"
                     
                     if finding.get('remediation'):
-                        report += f"**Remediation:**\n```
-\n{찾기['수정']}\n
-```\n\n"
+                        report += f"**Remediation:**\n```\n{찾기['수정']}\n```\n\n"
                     
                     if finding.get('references'):
                         report += f"**References:**\n"
@@ -654,7 +635,9 @@ if __name__ == '__main__':
     generator = SecurityReportGenerator(findings)
     generator.save_reports('reports/')
 ```
+
 ## 이메일 알림 템플릿
+
 ```python
 # Critical vulnerability notification
 def send_critical_alert(finding):

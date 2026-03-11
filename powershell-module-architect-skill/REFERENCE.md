@@ -5,6 +5,7 @@
 **사용 사례:** 프로필 로드 시간을 8초에서 1초 미만으로 단축
 
 ### 1단계: 느린 로딩 진단
+
 ```powershell
 # Measure-Command each section in profile
 $sw = [System.Diagnostics.Stopwatch]::StartNew()
@@ -24,7 +25,9 @@ Write-Host "MyHelpers: $($sw.ElapsedMilliseconds)ms"
 # ActiveDirectory: 3200ms ← SLOW!
 # MyHelpers: 150ms
 ```
+
 ### 2단계: 지연 로딩 적용
+
 ```powershell
 # BEFORE (slow - loads immediately)
 Import-Module ActiveDirectory
@@ -44,7 +47,9 @@ function Get-ADUser {
     Microsoft.ActiveDirectory.Management\Get-ADUser @args
 }
 ```
+
 ### 3단계: 조각 프로필
+
 ```powershell
 # Microsoft.PowerShell_profile.ps1 (main profile - keep MINIMAL)
 $profileFragments = @(
@@ -60,7 +65,9 @@ foreach ($fragment in $profileFragments) {
 
 # Load heavy modules on-demand only
 ```
+
 ### 4단계: 일반 작업 최적화
+
 ```powershell
 # Instead of full module load, create focused wrapper
 function gadu {  # Get-ADUser shortcut
@@ -76,11 +83,13 @@ function gadu {  # Get-ADUser shortcut
 
 # Result: 0ms load time, 3200ms only when actually needed
 ```
+
 ---
 
 ## 모듈 매니페스트 템플릿
 
 **사용 시기:** 게시 모듈 또는 자동 검색 활성화
+
 ```powershell
 @{
     # Module Identity
@@ -129,11 +138,13 @@ function gadu {  # Get-ADUser shortcut
     }
 }
 ```
+
 ---
 
 ## 동적 매개변수 패턴
 
 **사용 시기:** 매개변수 옵션은 다른 매개변수 값에 따라 달라집니다.
+
 ```powershell
 function Get-LogFile {
     [CmdletBinding()]
@@ -182,9 +193,11 @@ function Get-LogFile {
 Get-LogFile -LogType Application -Severity Error  # Severity parameter available
 Get-LogFile -LogType System  # Severity parameter NOT available
 ```
+
 ---
 
 ## 버전 간 호환성 패턴
+
 ```powershell
 # Detect PowerShell version and use appropriate syntax
 function Get-OrgData {
@@ -227,9 +240,11 @@ function Test-Feature {
     }
 }
 ```
+
 ---
 
 ## 매개변수 유효성 검사 패턴
+
 ```powershell
 function Set-Configuration {
     [CmdletBinding(SupportsShouldProcess)]
@@ -280,11 +295,13 @@ function Set-Configuration {
     }
 }
 ```
+
 ---
 
 ## 모듈 로딩 성능
 
 ### 벤치마크 모듈 로드 시간
+
 ```powershell
 function Measure-ModuleLoadTime {
     param(
@@ -317,7 +334,9 @@ function Measure-ModuleLoadTime {
 # Usage
 Measure-ModuleLoadTime -ModuleName 'Organization.ActiveDirectory'
 ```
+
 ### 어셈블리 캐싱으로 최적화
+
 ```powershell
 # For modules with compiled components
 $cacheDir = Join-Path $env:LOCALAPPDATA 'PowerShellModuleCache'

@@ -1,8 +1,9 @@
-# 반응 패턴 및 모범 사례
+# React Patterns and Best Practices
 
-## 구성요소 패턴
+## Component Patterns
 
-### 후크가 있는 기능적 구성 요소
+### Functional Components with Hooks
+
 ```typescript
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 
@@ -67,7 +68,9 @@ export const UserCard: React.FC<UserCardProps> = ({ userId, onUpdate }) => {
   );
 };
 ```
-### 컨테이너/프레젠테이션 패턴
+
+### Container/Presentational Pattern
+
 ```typescript
 // Presentational Component (dumb)
 interface UserListProps {
@@ -105,7 +108,9 @@ export const UserListContainer: React.FC = () => {
   );
 };
 ```
-### 고차 부품(HOC)
+
+### Higher-Order Components (HOC)
+
 ```typescript
 export function withLoading<P extends object>(
   Component: React.ComponentType<P & { loading?: boolean }>
@@ -124,7 +129,9 @@ export function withLoading<P extends object>(
 // Usage
 const UserCardWithLoading = withLoading(UserCard);
 ```
-### 사용자 정의 후크
+
+### Custom Hooks
+
 ```typescript
 // Data fetching hook
 function useFetch<T>(url: string) {
@@ -205,9 +212,11 @@ function useForm<T extends Record<string, any>>(
   };
 }
 ```
-## 상태 관리 패턴
 
-### 컨텍스트 API
+## State Management Patterns
+
+### Context API
+
 ```typescript
 // Context definition
 interface AuthContextType {
@@ -262,9 +271,11 @@ export const useAuth = () => {
   return context;
 };
 ```
-## 성능 최적화
 
-### 코드 분할
+## Performance Optimization
+
+### Code Splitting
+
 ```typescript
 import { lazy, Suspense } from 'react';
 
@@ -292,7 +303,9 @@ const routes = [
   },
 ];
 ```
-### 메모
+
+### Memoization
+
 ```typescript
 // React.memo for component memoization
 export const ExpensiveComponent = React.memo(({ data }: { data: Data }) => {
@@ -309,7 +322,9 @@ const handleClick = useCallback(() => {
   console.log('Clicked');
 }, []);
 ```
-### 가상화
+
+### Virtualization
+
 ```typescript
 import { FixedSizeList } from 'react-window';
 
@@ -330,9 +345,11 @@ export const VirtualList: React.FC<{ items: any[] }> = ({ items }) => {
   );
 };
 ```
-## 테스트 패턴
 
-### 단위 테스트
+## Testing Patterns
+
+### Unit Testing
+
 ```typescript
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { UserCard } from './UserCard';
@@ -365,7 +382,9 @@ describe('UserCard', () => {
   });
 });
 ```
-### 통합 테스트
+
+### Integration Testing
+
 ```typescript
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
@@ -399,9 +418,11 @@ describe('UserList Integration', () => {
   });
 });
 ```
-## 오류 처리
 
-### 오류 경계
+## Error Handling
+
+### Error Boundaries
+
 ```typescript
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -448,9 +469,11 @@ export class ErrorBoundary extends React.Component<
   <App />
 </ErrorBoundary>
 ```
-## 양식 처리
 
-### 제어 구성요소
+## Form Handling
+
+### Controlled Components
+
 ```typescript
 interface FormValues {
   email: string;
@@ -492,9 +515,11 @@ export const LoginForm: React.FC = () => {
   );
 };
 ```
-## 접근성
 
-### ARIA 속성
+## Accessibility
+
+### ARIA Attributes
+
 ```typescript
 export const AccessibleButton: React.FC<{
   children: React.ReactNode;
@@ -514,7 +539,9 @@ export const AccessibleButton: React.FC<{
   );
 };
 ```
-### 집중 관리
+
+### Focus Management
+
 ```typescript
 export const Modal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
   isOpen,

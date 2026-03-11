@@ -1,21 +1,20 @@
-# PowerShell 7 Expert - Quick Start Guide
+# PowerShell 7 전문가 - 빠른 시작 가이드
 
-## Overview
+## 개요
 
-This skill provides expertise in PowerShell 7+, the modern cross-platform version of PowerShell. Includes REST API automation, container support, and cloud integration.
+이 기술은 PowerShell의 최신 크로스 플랫폼 버전인 PowerShell 7+에 대한 전문 지식을 제공합니다. REST API 자동화, 컨테이너 지원 및 클라우드 통합이 포함됩니다.
 
-## Prerequisites
+## 전제 조건
 
-- PowerShell 7.0 or later installed
-- Cross-platform support (Windows, Linux, macOS)
-- Internet access for REST API calls (optional)
+- PowerShell 7.0 이상이 설치되어 있습니다.
+- 크로스 플랫폼 지원(Windows, Linux, macOS)
+- REST API 호출을 위한 인터넷 액세스(선택 사항)
 
-## Getting Started
+## 시작하기
 
-### 1. Install PowerShell 7
+### 1. 파워셸 7을 설치한다
 
-#### Windows
-```powershell
+#### 윈도우```powershell
 # Using winget
 winget install Microsoft.PowerShell
 
@@ -23,23 +22,18 @@ winget install Microsoft.PowerShell
 # https://github.com/PowerShell/PowerShell/releases
 ```
 
-
-#### Linux (Ubuntu)
-```bash
+#### 리눅스(우분투)```bash
 # Download and install
 wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/powershell_7.4.0-1.deb_amd64.deb
 sudo dpkg -i powershell_7.4.0-1.deb_amd64.deb
 ```
 
-
-#### macOS
-```bash
+#### 맥OS```bash
 # Using Homebrew
 brew install powershell
 ```
 
-
-### 2. Verify Installation
+### 2. 설치 확인
 
 ```powershell
 # Check version
@@ -51,8 +45,7 @@ if ($IsLinux) { Write-Host "Running on Linux" }
 if ($IsMacOS) { Write-Host "Running on macOS" }
 ```
 
-
-### 3. Cross-Platform Automation
+### 3. 크로스 플랫폼 자동화
 
 ```powershell
 # Run cross-platform deployment
@@ -68,8 +61,7 @@ if ($IsMacOS) { Write-Host "Running on macOS" }
 .\scripts\crossplatform_automation.ps1 -TargetOS macOS -Action Monitor
 ```
 
-
-### 4. REST API Consumption
+### 4. REST API 소비
 
 ```powershell
 # Basic GET request
@@ -94,8 +86,7 @@ if ($IsMacOS) { Write-Host "Running on macOS" }
     -RetryDelaySeconds 2
 ```
 
-
-### 5. Publish to PowerShell Gallery
+### 5. PowerShell 갤러리에 게시
 
 ```powershell
 # Publish module
@@ -111,10 +102,9 @@ if ($IsMacOS) { Write-Host "Running on macOS" }
     -Prerelease
 ```
 
+## 최신 PowerShell 7 기능
 
-## Modern PowerShell 7 Features
-
-### Ternary Operator
+### 삼항 연산자
 
 ```powershell
 # Old way
@@ -124,8 +114,7 @@ $result = if ($condition) { "yes" } else { "no" }
 $result = $condition ? "yes" : "no"
 ```
 
-
-### Null-Coalescing Operator
+### 널 병합 연산자
 
 ```powershell
 # Old way
@@ -137,8 +126,7 @@ if ($null -eq $value) {
 $value = $value ?? "default"
 ```
 
-
-### Pipeline Chain Operators
+### 파이프라인 체인 운영자
 
 ```powershell
 # Old way
@@ -151,8 +139,7 @@ Get-ChildItem | Where-Object Extension -eq '.txt'
 Get-ChildItem | Where-Object Extension -eq '.txt' | ForEach-Object FullName
 ```
 
-
-### Foreach Method
+### Foreach 메서드
 
 ```powershell
 # Old way
@@ -162,8 +149,7 @@ Get-ChildItem | Where-Object Extension -eq '.txt' | ForEach-Object FullName
 1..5.ForEach({ Write-Host $_ })
 ```
 
-
-### Where Method
+### Where 메소드
 
 ```powershell
 # Old way
@@ -175,10 +161,9 @@ $numbers = 1..100
 $even = $numbers.Where({ $_ % 2 -eq 0 })
 ```
 
+## 컨테이너 지원
 
-## Container Support
-
-### Docker Integration
+### 도커 통합
 
 ```powershell
 # Check Docker availability
@@ -197,8 +182,7 @@ docker stop ps7-container
 docker rm ps7-container
 ```
 
-
-### PowerShell in Containers
+### 컨테이너의 PowerShell
 
 ```powershell
 # Run PowerShell in container
@@ -211,8 +195,7 @@ docker run --rm -it -v ${PWD}:/data mcr.microsoft.com/powershell:latest
 docker run --rm -v ${PWD}:/data mcr.microsoft.com/powershell:latest pwsh -File /data/script.ps1
 ```
 
-
-## TypeScript Integration
+## 타입스크립트 통합
 
 ```typescript
 import PowerShell7Manager from './scripts/ps7_wrapper';
@@ -247,54 +230,53 @@ await ps7.publishToGallery({
 });
 ```
 
+## 모범 사례
 
-## Best Practices
+1. PS 7 전용 스크립트에는 `#Requires -Version 7.0`을 사용하세요.
+2. `$IsWindows`, `$IsLinux`, `$IsMacOS`과의 플랫폼 호환성을 확인하세요.
+3. 크로스 플랫폼 경로에는 슬래시 `/`를 사용하세요.
+4. 적절한 오류 처리 및 로깅 구현
+5. 코드 품질을 위해 PSScriptAnalyzer를 사용하세요
+6. Pester로 포괄적인 테스트 작성
+7. 내보낸 모든 기능을 문서화하세요.
+8. 모듈에 의미론적 버전 관리를 사용하세요.
 
-1. Use `#Requires -Version 7.0` for PS 7 specific scripts
-2. Check platform compatibility with `$IsWindows`, `$IsLinux`, `$IsMacOS`
-3. Use forward slashes `/` for cross-platform paths
-4. Implement proper error handling and logging
-5. Use PSScriptAnalyzer for code quality
-6. Write comprehensive tests with Pester
-7. Document all exported functions
-8. Use semantic versioning for modules
+## 문제 해결
 
-## Troubleshooting
+### PowerShell 7을 찾을 수 없음
 
-### PowerShell 7 Not Found
+**오류:** pwsh: 명령을 찾을 수 없습니다.
 
-**Error:** pwsh: command not found
+**해결책:** 공식 저장소에서 PowerShell 7을 설치합니다.
 
-**Solution:** Install PowerShell 7 from the official repository
+### 교차 플랫폼 경로 문제
 
-### Cross-Platform Path Issues
+**오류:** 경로 구분 기호로 인해 파일을 찾을 수 없습니다.
 
-**Error:** File not found due to path separators
+**해결책:** 경로에 `Join-Path` 또는 슬래시 `/`를 사용하세요.
 
-**Solution:** Use `Join-Path` or forward slashes `/` for paths
+### REST API 오류
 
-### REST API Errors
+**오류:** 상태 코드 401로 인해 API 요청이 실패했습니다.
 
-**Error:** API request failed with status code 401
+**해결책:** 인증 자격 증명 및 토큰 유효성을 확인하세요.
 
-**Solution:** Check authentication credentials and token validity
+### 모듈 가져오기 실패
 
-### Module Import Failures
+**오류:** 파일이나 어셈블리를 로드할 수 없습니다.
 
-**Error:** Could not load file or assembly
+**해결책:** 모듈 종속성 및 .NET 버전 요구 사항을 확인하세요.
 
-**Solution:** Check module dependencies and .NET version requirements
+## 다음 단계
 
-## Next Steps
+- 고급 주제에 대한 `references/` 디렉터리 탐색
+- PowerShell 7 모범 사례는 `modern_ps_guide.md`을 검토하세요.
+- 원하는 상태 구성을 보려면 `dsc_patterns.md`을 확인하세요.
+- JEA(Just Enough Administration)에 대해 알아보세요.
 
-- Explore the `references/` directory for advanced topics
-- Review `modern_ps_guide.md` for PowerShell 7 best practices
-- Check `dsc_patterns.md` for Desired State Configuration
-- Learn about JEA (Just Enough Administration)
+## 지원하다
 
-## Support
-
-For issues or questions, refer to:
-- [PowerShell 7 Documentation](https://docs.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-70)
-- [PowerShell GitHub Repository](https://github.com/PowerShell/PowerShell)
-- [PowerShell Community](https://github.com/PowerShell/PowerShell/discussions)
+문제나 질문이 있는 경우 다음을 참조하세요.
+- [PowerShell 7 설명서](https://docs.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-70)
+- [PowerShell GitHub 리포지토리](https://github.com/PowerShell/PowerShell)
+- [PowerShell 커뮤니티](https://github.com/PowerShell/PowerShell/discussions)

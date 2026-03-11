@@ -1,12 +1,13 @@
-# 상태 관리 가이드
+# State Management Guide
 
-## 개요
+## Overview
 
-올바른 상태 관리 솔루션을 선택하는 것은 애플리케이션의 복잡성, 팀 규모, 특정 사용 사례에 따라 달라집니다. 이 가이드에서는 가장 인기 있는 옵션을 다룹니다.
+Choosing the right state management solution depends on your application's complexity, team size, and specific use cases. This guide covers the most popular options.
 
-## Redux 툴킷
+## Redux Toolkit
 
-### 빠른 시작
+### Quick Start
+
 ```typescript
 // store/userSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
@@ -90,7 +91,9 @@ export const useAppSelector = <T>(selector: (state: RootState) => T): T => {
   return useSelector(selector);
 };
 ```
-### 구성요소에서의 사용법
+
+### Usage in Components
+
 ```typescript
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { fetchUsers, addUser } from '../store/userSlice';
@@ -119,9 +122,11 @@ export const UserList: React.FC = () => {
   );
 };
 ```
-## 조건
 
-### 기본 사용법
+## Zustand
+
+### Basic Usage
+
 ```typescript
 // store/userStore.ts
 import create from 'zustand';
@@ -165,7 +170,9 @@ export const useUserStore = create<UserStore>()(
   )
 );
 ```
-### 구성요소에서의 사용법
+
+### Usage in Components
+
 ```typescript
 import { useUserStore } from '../store/userStore';
 
@@ -185,9 +192,11 @@ export const UserList: React.FC = () => {
   );
 };
 ```
-## 컨텍스트 API
 
-### 설정
+## Context API
+
+### Setup
+
 ```typescript
 // context/AuthContext.tsx
 import React, { createContext, useContext, useState, useCallback } from 'react';
@@ -235,7 +244,9 @@ export const useAuth = () => {
   return context;
 };
 ```
-### 용법
+
+### Usage
+
 ```typescript
 import { useAuth } from '../context/AuthContext';
 
@@ -250,9 +261,11 @@ export const UserProfile: React.FC = () => {
   );
 };
 ```
-## 뭔가
 
-### 설정
+## Jotai
+
+### Setup
+
 ```typescript
 // atoms.ts
 import { atom, useAtom, useSetAtom, useAtomValue } from 'jotai';
@@ -273,7 +286,9 @@ export const usersAtom = atom(async () => {
 // Storage atom
 export const themeAtom = atomWithStorage('theme', 'light');
 ```
-### 용법
+
+### Usage
+
 ```typescript
 import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { countAtom, doubleCountAtom, usersAtom, themeAtom } from '../atoms';
@@ -293,9 +308,11 @@ export const Counter: React.FC = () => {
   );
 };
 ```
-## 반동
 
-### 설정
+## Recoil
+
+### Setup
+
 ```typescript
 // atoms.ts
 import { atom, selector, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
@@ -324,7 +341,9 @@ export const usersState = selector({
   },
 });
 ```
-### 용법
+
+### Usage
+
 ```typescript
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { countState, doubleCountState } from '../atoms';
@@ -342,53 +361,54 @@ export const Counter: React.FC = () => {
   );
 };
 ```
-## 비교
 
-| 기능 | 리덕스 | 주스탄 | 컨텍스트 | 조타이 | 반동 |
-|---------|---------|---------|---------|-------|-------|
-| 번들 크기 | 대형 | 작은 | 내장 | 작은 | 중간 |
-| 학습 곡선 | 중간 | 낮음 | 낮음 | 낮음 | 중간 |
-| 개발자 도구 | 우수 | 좋음 | 기본 | 좋음 | 좋음 |
-| 타입스크립트 지원 | 우수 | 우수 | 좋음 | 우수 | 우수 |
-| 지속성 | 예 | 예 | 매뉴얼 | 예 | 예 |
-| 비동기 작업 | 내장 | 매뉴얼 | 매뉴얼 | 내장 | 내장 |
-| 최고의 대상 | 대형 앱 | 모든 앱 | 작은 앱 | 모든 앱 | 대형 앱 |
+## Comparison
 
-## 언제 무엇을 사용해야 하는가
+| Feature | Redux | Zustand | Context | Jotai | Recoil |
+|---------|--------|---------|---------|-------|--------|
+| Bundle Size | Large | Tiny | Built-in | Tiny | Medium |
+| Learning Curve | Medium | Low | Low | Low | Medium |
+| DevTools | Excellent | Good | Basic | Good | Good |
+| TypeScript Support | Excellent | Excellent | Good | Excellent | Excellent |
+| Persistence | Yes | Yes | Manual | Yes | Yes |
+| Async Actions | Built-in | Manual | Manual | Built-in | Built-in |
+| Best For | Large Apps | Any App | Small Apps | Any App | Large Apps |
 
-### Redux 툴킷
-- 크고 복잡한 애플리케이션
-- 고급 디버깅이 필요함
-- Redux 사용 경험이 있는 팀
-- 시간 이동 디버깅이 필요합니다.
+## When to Use What
 
-### 주스탄
-- 모든 크기의 적용
-- 고급 기능보다 단순함을 선호합니다.
-- 최소한의 상용구 필요
-- TypeScript 우선 API를 원함
+### Redux Toolkit
+- Large, complex applications
+- Need for advanced debugging
+- Team experienced with Redux
+- Require time-travel debugging
 
-### 컨텍스트 API
-- 중소형 애플리케이션
-- 간단한 상태 요구 사항
-- 외부 의존성을 피하고 싶다
-- 테마, 인증, 사용자 환경 설정
+### Zustand
+- Any size application
+- Prefer simplicity over advanced features
+- Need for minimal boilerplate
+- Want TypeScript-first API
 
-### 조타이
-- 모든 크기의 적용
-- 원자 상태 관리를 선호합니다.
-- 최소한의 상용구를 원함
-- 유연한 구성이 필요함
+### Context API
+- Small to medium applications
+- Simple state needs
+- Want to avoid external dependencies
+- Theme, authentication, user preferences
 
-### 반동
-- 대규모 애플리케이션
-- 고급 기능이 필요한 경우
-- Facebook의 검증된 솔루션을 원함
-- 복잡한 파생 상태 필요
+### Jotai
+- Any size application
+- Prefer atomic state management
+- Want minimal boilerplate
+- Need for flexible composition
 
-## 모범 사례
+### Recoil
+- Large applications
+- Need for advanced features
+- Want Facebook's battle-tested solution
+- Require complex derived state
 
-### 상태를 최소로 유지
+## Best Practices
+
+### Keep State Minimal
 ```typescript
 // BAD - Store everything
 const state = {
@@ -404,7 +424,8 @@ const state = {
   currentUserId: null,
 };
 ```
-### 데이터 정규화
+
+### Normalize Data
 ```typescript
 // BAD - Nested structures
 const state = {
@@ -419,7 +440,8 @@ const state = {
   posts: { 1: { id: 1, title: 'Post 1', userId: 1 } },
 };
 ```
-### 선택기 사용
+
+### Use Selectors
 ```typescript
 // BAD - Select in component
 const users = useSelector(state => state.users);

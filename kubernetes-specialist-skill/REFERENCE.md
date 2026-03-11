@@ -3,6 +3,7 @@
 ## 워크플로: 프로덕션 Kubernetes 클러스터 배포(EKS 예)
 
 ### 1단계: 클러스터 설계 결정
+
 ```yaml
 # cluster-requirements.yaml
 cluster:
@@ -54,7 +55,9 @@ cluster:
     - cluster-autoscaler  # Node autoscaling
     - metrics-server  # HPA metrics
 ```
+
 ### 2단계: 코드형 인프라(Terraform)
+
 ```hcl
 # eks-cluster.tf
 module "eks" {
@@ -205,7 +208,9 @@ resource "helm_release" "cluster_autoscaler" {
   }
 }
 ```
+
 ### 3단계: Helm을 사용하여 애플리케이션 배포
+
 ```bash
 # Create namespace
 kubectl create namespace production
@@ -229,10 +234,10 @@ kubectl get pods -n production
 kubectl get svc -n production
 kubectl get ingress -n production
 ```
+
 ## 작업 흐름: ArgoCD로 GitOps 구현
 
-### 1. ArgoCD를 설치합니다.
-```bash
+### 1. ArgoCD를 설치합니다.```bash
 kubectl create namespace argocd
 
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -247,8 +252,8 @@ kubectl -n argocd get secret argocd-initial-admin-secret \
 # Port forward to access UI
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
-### 2. Git 리포지토리 구성
-```yaml
+
+### 2. Git 리포지토리 구성```yaml
 # argocd-repo-secret.yaml
 apiVersion: v1
 kind: Secret
@@ -264,7 +269,9 @@ stringData:
   password: ghp_xxxxxxxxxxxxx
   username: git
 ```
+
 ## 생산 준비 체크리스트
+
 ```bash
 # Security
 [ ] Pod Security Standards enforced

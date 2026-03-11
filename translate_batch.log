@@ -1,0 +1,759 @@
+Processing ./SECURITY_SKILLS_FRAMEWORK.md
+Processing ./README.md
+Skipping ./SECURITY_SKILLS_FRAMEWORK.md, already translated
+Processing ./PROJECT-SUMMARY.md
+Skipping ./README.md, already translated
+Skipping ./PROJECT-SUMMARY.md, already translated
+Processing ./ANTHROPIC-COMPLIANCE-REPORT.md
+Processing ./FINAL-REPORT.md
+Processing ./SKILL-VALIDATION-GUIDE.md
+Processing ./CONVERSION-GUIDE.md
+Skipping ./SKILL-VALIDATION-GUIDE.md, already translated
+Processing ./UPDATED-GITHUB-INSTRUCTIONS.md
+Skipping ./ANTHROPIC-COMPLIANCE-REPORT.md, already translated
+Processing ./SKILLS-INDEX.md
+Skipping ./FINAL-REPORT.md, already translated
+Processing ./GITHUB-INSTRUCTIONS-WEB-INTERFACE.md
+Skipping ./UPDATED-GITHUB-INSTRUCTIONS.md, already translated
+Processing ./EXTENDED-SUBAGENT-CATALOG.md
+Processing ./GITHUB-INSTRUCTIONS.md
+Skipping ./CONVERSION-GUIDE.md, already translated
+Processing ./SKILL.md
+Skipping ./SKILL.md, already translated
+Processing ./AUTOMATION-SCRIPTS-README.md
+Skipping ./GITHUB-INSTRUCTIONS.md, already translated
+Processing ./general-skill/SKILL.md
+Skipping ./GITHUB-INSTRUCTIONS-WEB-INTERFACE.md, already translated
+Processing ./fullstack-developer-skill/EXAMPLES.md
+Skipping ./general-skill/SKILL.md, already translated
+Processing ./fullstack-developer-skill/REFERENCE.md
+Skipping ./EXTENDED-SUBAGENT-CATALOG.md, already translated
+Processing ./fullstack-developer-skill/SKILL.md
+Skipping ./AUTOMATION-SCRIPTS-README.md, already translated
+Processing ./vue-expert-skill/EXAMPLES.md
+Skipping ./fullstack-developer-skill/REFERENCE.md, already translated
+Processing ./vue-expert-skill/REFERENCE.md
+Skipping ./fullstack-developer-skill/SKILL.md, already translated
+Processing ./vue-expert-skill/SKILL.md
+Skipping ./vue-expert-skill/EXAMPLES.md, already translated
+Processing ./rails-expert-skill/EXAMPLES.md
+Skipping ./SKILLS-INDEX.md, already translated
+Processing ./rails-expert-skill/REFERENCE.md
+Skipping ./rails-expert-skill/EXAMPLES.md, already translated
+Processing ./rails-expert-skill/SKILL.md
+Skipping ./rails-expert-skill/SKILL.md, already translated
+Processing ./mlops-engineer-skill/SKILL.md
+Skipping ./fullstack-developer-skill/EXAMPLES.md, already translated
+Processing ./git-workflow-manager-skill/SKILL.md
+Skipping ./mlops-engineer-skill/SKILL.md, already translated
+Processing ./docx-skill/SKILL.md
+Skipping ./docx-skill/SKILL.md, already translated
+Processing ./powershell-ui-architect-skill/SKILL.md
+Skipping ./git-workflow-manager-skill/SKILL.md, already translated
+Processing ./powershell-ui-architect-skill/references/gui_patterns.md
+Skipping ./vue-expert-skill/REFERENCE.md, already translated
+Processing ./cpp-pro-skill/EXAMPLES.md
+Skipping ./powershell-ui-architect-skill/references/gui_patterns.md, already translated
+Processing ./cpp-pro-skill/REFERENCE.md
+Skipping ./powershell-ui-architect-skill/SKILL.md, already translated
+Processing ./cpp-pro-skill/SKILL.md
+Skipping ./vue-expert-skill/SKILL.md, already translated
+Processing ./database-administrator-skill/EXAMPLES.md
+Skipping ./cpp-pro-skill/EXAMPLES.md, already translated
+Processing ./database-administrator-skill/REFERENCE.md
+Skipping ./database-administrator-skill/REFERENCE.md, already translated
+Processing ./database-administrator-skill/SKILL.md
+Skipping ./database-administrator-skill/SKILL.md, already translated
+Processing ./ai-engineer-skill/SKILL.md
+Skipping ./ai-engineer-skill/SKILL.md, already translated
+Processing ./ai-engineer-skill/references/prompt_templates.md
+Skipping ./database-administrator-skill/EXAMPLES.md, already translated
+Processing ./ai-engineer-skill/references/cost_optimization.md
+Skipping ./ai-engineer-skill/references/prompt_templates.md, already translated
+Processing ./ai-engineer-skill/references/ai_integration_guide.md
+Skipping ./ai-engineer-skill/references/cost_optimization.md, already translated
+Processing ./ai-engineer-skill/references/rag_patterns.md
+Skipping ./cpp-pro-skill/SKILL.md, already translated
+Processing ./video-engineer-skill/SKILL.md
+Skipping ./video-engineer-skill/SKILL.md, already translated
+Processing ./technical-writer-skill/SKILL.md
+Skipping ./technical-writer-skill/SKILL.md, already translated
+Processing ./blockchain-developer-skill/SKILL.md
+Skipping ./ai-engineer-skill/references/ai_integration_guide.md, already translated
+Processing ./plan-skill/SKILL.md
+Skipping ./ai-engineer-skill/references/rag_patterns.md, already translated
+Processing ./research-analyst-skill/SKILL.md
+Successfully processed ./rails-expert-skill/REFERENCE.md
+Processing ./cloud-architect-skill/SKILL.md
+Successfully processed ./cpp-pro-skill/REFERENCE.md
+Processing ./api-designer-skill/SKILL.md
+Successfully processed ./research-analyst-skill/SKILL.md
+Processing ./powershell-5.1-expert-skill/SKILL.md
+Processing ./SECURITY_SKILLS_FRAMEWORK.md
+Processing ./README.md
+Skipping ./README.md, already translated
+Skipping ./SECURITY_SKILLS_FRAMEWORK.md, already translated
+Processing ./PROJECT-SUMMARY.md
+Processing ./ANTHROPIC-COMPLIANCE-REPORT.md
+Skipping ./PROJECT-SUMMARY.md, already translated
+Processing ./FINAL-REPORT.md
+Skipping ./ANTHROPIC-COMPLIANCE-REPORT.md, already translated
+Processing ./SKILL-VALIDATION-GUIDE.md
+Processing ./CONVERSION-GUIDE.md
+Processing ./UPDATED-GITHUB-INSTRUCTIONS.md
+Processing ./SKILLS-INDEX.md
+Skipping ./SKILLS-INDEX.md, already translated
+Processing ./GITHUB-INSTRUCTIONS-WEB-INTERFACE.md
+Skipping ./GITHUB-INSTRUCTIONS-WEB-INTERFACE.md, already translated
+Skipping ./SKILL-VALIDATION-GUIDE.md, already translated
+Processing ./GITHUB-INSTRUCTIONS.md
+Processing ./EXTENDED-SUBAGENT-CATALOG.md
+Skipping ./FINAL-REPORT.md, already translated
+Skipping ./CONVERSION-GUIDE.md, already translated
+Skipping ./UPDATED-GITHUB-INSTRUCTIONS.md, already translated
+Processing ./SKILL.md
+Skipping ./SKILL.md, already translated
+Processing ./fullstack-developer-skill/EXAMPLES.md
+Processing ./AUTOMATION-SCRIPTS-README.md
+Processing ./general-skill/SKILL.md
+Skipping ./EXTENDED-SUBAGENT-CATALOG.md, already translated
+Processing ./fullstack-developer-skill/REFERENCE.md
+Skipping ./GITHUB-INSTRUCTIONS.md, already translated
+Skipping ./AUTOMATION-SCRIPTS-README.md, already translated
+Processing ./vue-expert-skill/EXAMPLES.md
+Skipping ./fullstack-developer-skill/EXAMPLES.md, already translated
+Skipping ./fullstack-developer-skill/REFERENCE.md, already translated
+Processing ./fullstack-developer-skill/SKILL.md
+Skipping ./general-skill/SKILL.md, already translated
+Processing ./vue-expert-skill/REFERENCE.md
+Skipping ./vue-expert-skill/REFERENCE.md, already translated
+Processing ./vue-expert-skill/SKILL.md
+Skipping ./vue-expert-skill/SKILL.md, already translated
+Processing ./rails-expert-skill/SKILL.md
+Skipping ./rails-expert-skill/SKILL.md, already translated
+Processing ./rails-expert-skill/REFERENCE.md
+Processing ./rails-expert-skill/EXAMPLES.md
+Processing ./mlops-engineer-skill/SKILL.md
+Skipping ./fullstack-developer-skill/SKILL.md, already translated
+Skipping ./vue-expert-skill/EXAMPLES.md, already translated
+Processing ./git-workflow-manager-skill/SKILL.md
+Processing ./docx-skill/SKILL.md
+Skipping ./mlops-engineer-skill/SKILL.md, already translated
+Skipping ./rails-expert-skill/EXAMPLES.md, already translated
+Skipping ./git-workflow-manager-skill/SKILL.md, already translated
+Processing ./cpp-pro-skill/EXAMPLES.md
+Processing ./powershell-ui-architect-skill/SKILL.md
+Processing ./powershell-ui-architect-skill/references/gui_patterns.md
+Skipping ./cpp-pro-skill/EXAMPLES.md, already translated
+Processing ./cpp-pro-skill/REFERENCE.md
+Skipping ./docx-skill/SKILL.md, already translated
+Skipping ./powershell-ui-architect-skill/SKILL.md, already translated
+Processing ./database-administrator-skill/EXAMPLES.md
+Skipping ./powershell-ui-architect-skill/references/gui_patterns.md, already translated
+Processing ./cpp-pro-skill/SKILL.md
+Processing ./database-administrator-skill/REFERENCE.md
+Skipping ./database-administrator-skill/EXAMPLES.md, already translated
+Processing ./database-administrator-skill/SKILL.md
+Skipping ./database-administrator-skill/SKILL.md, already translated
+Processing ./ai-engineer-skill/SKILL.md
+Skipping ./ai-engineer-skill/SKILL.md, already translated
+Processing ./ai-engineer-skill/references/prompt_templates.md
+Skipping ./ai-engineer-skill/references/prompt_templates.md, already translated
+Processing ./ai-engineer-skill/references/cost_optimization.md
+Skipping ./ai-engineer-skill/references/cost_optimization.md, already translated
+Processing ./ai-engineer-skill/references/ai_integration_guide.md
+Skipping ./ai-engineer-skill/references/ai_integration_guide.md, already translated
+Processing ./ai-engineer-skill/references/rag_patterns.md
+Skipping ./database-administrator-skill/REFERENCE.md, already translated
+Skipping ./cpp-pro-skill/SKILL.md, already translated
+Skipping ./ai-engineer-skill/references/rag_patterns.md, already translated
+Processing ./video-engineer-skill/SKILL.md
+Processing ./technical-writer-skill/SKILL.md
+Processing ./blockchain-developer-skill/SKILL.md
+Skipping ./video-engineer-skill/SKILL.md, already translated
+Processing ./plan-skill/SKILL.md
+Skipping ./technical-writer-skill/SKILL.md, already translated
+Processing ./research-analyst-skill/SKILL.md
+Successfully processed ./cpp-pro-skill/REFERENCE.md
+Processing ./cloud-architect-skill/SKILL.md
+Successfully processed ./rails-expert-skill/REFERENCE.md
+Processing ./api-designer-skill/SKILL.md
+Successfully processed ./research-analyst-skill/SKILL.md
+Processing ./powershell-5.1-expert-skill/SKILL.md
+Successfully processed ./cloud-architect-skill/SKILL.md
+Processing ./powershell-5.1-expert-skill/references/ps51_quickstart.md
+Processing ./SECURITY_SKILLS_FRAMEWORK.md
+Processing ./README.md
+Skipping ./SECURITY_SKILLS_FRAMEWORK.md, already translated
+Processing ./PROJECT-SUMMARY.md
+Skipping ./README.md, already translated
+Processing ./ANTHROPIC-COMPLIANCE-REPORT.md
+Processing ./FINAL-REPORT.md
+Skipping ./PROJECT-SUMMARY.md, already translated
+Processing ./SKILL-VALIDATION-GUIDE.md
+Skipping ./ANTHROPIC-COMPLIANCE-REPORT.md, already translated
+Skipping ./FINAL-REPORT.md, already translated
+Processing ./CONVERSION-GUIDE.md
+Processing ./UPDATED-GITHUB-INSTRUCTIONS.md
+Skipping ./SKILL-VALIDATION-GUIDE.md, already translated
+Processing ./SKILLS-INDEX.md
+Processing ./GITHUB-INSTRUCTIONS-WEB-INTERFACE.md
+Skipping ./CONVERSION-GUIDE.md, already translated
+Processing ./EXTENDED-SUBAGENT-CATALOG.md
+Skipping ./UPDATED-GITHUB-INSTRUCTIONS.md, already translated
+Skipping ./SKILLS-INDEX.md, already translated
+Processing ./GITHUB-INSTRUCTIONS.md
+Skipping ./GITHUB-INSTRUCTIONS-WEB-INTERFACE.md, already translated
+Processing ./SKILL.md
+Skipping ./EXTENDED-SUBAGENT-CATALOG.md, already translated
+Processing ./AUTOMATION-SCRIPTS-README.md
+Skipping ./GITHUB-INSTRUCTIONS.md, already translated
+Processing ./general-skill/SKILL.md
+Processing ./fullstack-developer-skill/EXAMPLES.md
+Processing ./fullstack-developer-skill/REFERENCE.md
+Skipping ./AUTOMATION-SCRIPTS-README.md, already translated
+Processing ./fullstack-developer-skill/SKILL.md
+Skipping ./general-skill/SKILL.md, already translated
+Processing ./vue-expert-skill/EXAMPLES.md
+Skipping ./fullstack-developer-skill/EXAMPLES.md, already translated
+Skipping ./SKILL.md, already translated
+Skipping ./fullstack-developer-skill/SKILL.md, already translated
+Skipping ./fullstack-developer-skill/REFERENCE.md, already translated
+Skipping ./vue-expert-skill/EXAMPLES.md, already translated
+Processing ./vue-expert-skill/REFERENCE.md
+Processing ./vue-expert-skill/SKILL.md
+Processing ./rails-expert-skill/EXAMPLES.md
+Processing ./rails-expert-skill/REFERENCE.md
+Processing ./rails-expert-skill/SKILL.md
+Skipping ./rails-expert-skill/EXAMPLES.md, already translated
+Skipping ./vue-expert-skill/REFERENCE.md, already translated
+Skipping ./vue-expert-skill/SKILL.md, already translated
+Skipping ./rails-expert-skill/SKILL.md, already translated
+Processing ./powershell-ui-architect-skill/SKILL.md
+Processing ./mlops-engineer-skill/SKILL.md
+Processing ./docx-skill/SKILL.md
+Processing ./git-workflow-manager-skill/SKILL.md
+Skipping ./powershell-ui-architect-skill/SKILL.md, already translated
+Processing ./powershell-ui-architect-skill/references/gui_patterns.md
+Skipping ./git-workflow-manager-skill/SKILL.md, already translated
+Processing ./cpp-pro-skill/EXAMPLES.md
+Skipping ./mlops-engineer-skill/SKILL.md, already translated
+Processing ./cpp-pro-skill/REFERENCE.md
+Skipping ./powershell-ui-architect-skill/references/gui_patterns.md, already translated
+Processing ./cpp-pro-skill/SKILL.md
+Skipping ./cpp-pro-skill/SKILL.md, already translated
+Processing ./database-administrator-skill/EXAMPLES.md
+Skipping ./cpp-pro-skill/EXAMPLES.md, already translated
+Processing ./database-administrator-skill/REFERENCE.md
+Skipping ./docx-skill/SKILL.md, already translated
+Processing ./database-administrator-skill/SKILL.md
+Skipping ./database-administrator-skill/SKILL.md, already translated
+Processing ./ai-engineer-skill/SKILL.md
+Skipping ./database-administrator-skill/REFERENCE.md, already translated
+Processing ./ai-engineer-skill/references/prompt_templates.md
+Skipping ./database-administrator-skill/EXAMPLES.md, already translated
+Processing ./ai-engineer-skill/references/cost_optimization.md
+Skipping ./ai-engineer-skill/SKILL.md, already translated
+Processing ./ai-engineer-skill/references/ai_integration_guide.md
+Skipping ./ai-engineer-skill/references/ai_integration_guide.md, already translated
+Processing ./ai-engineer-skill/references/rag_patterns.md
+Skipping ./ai-engineer-skill/references/cost_optimization.md, already translated
+Processing ./video-engineer-skill/SKILL.md
+Skipping ./video-engineer-skill/SKILL.md, already translated
+Processing ./technical-writer-skill/SKILL.md
+Skipping ./ai-engineer-skill/references/prompt_templates.md, already translated
+Processing ./blockchain-developer-skill/SKILL.md
+Skipping ./technical-writer-skill/SKILL.md, already translated
+Processing ./plan-skill/SKILL.md
+Skipping ./ai-engineer-skill/references/rag_patterns.md, already translated
+Processing ./research-analyst-skill/SKILL.md
+Successfully processed ./rails-expert-skill/REFERENCE.md
+Processing ./cloud-architect-skill/SKILL.md
+Successfully processed ./cpp-pro-skill/REFERENCE.md
+Processing ./api-designer-skill/SKILL.md
+Successfully processed ./research-analyst-skill/SKILL.md
+Processing ./powershell-5.1-expert-skill/SKILL.md
+Processing ./SECURITY_SKILLS_FRAMEWORK.md
+Processing ./README.md
+Skipping ./SECURITY_SKILLS_FRAMEWORK.md, already translated
+Processing ./PROJECT-SUMMARY.md
+Skipping ./PROJECT-SUMMARY.md, already translated
+Skipping ./README.md, already translated
+Processing ./ANTHROPIC-COMPLIANCE-REPORT.md
+Processing ./FINAL-REPORT.md
+Processing ./SKILL-VALIDATION-GUIDE.md
+Skipping ./FINAL-REPORT.md, already translated
+Processing ./CONVERSION-GUIDE.md
+Skipping ./SKILL-VALIDATION-GUIDE.md, already translated
+Processing ./SKILLS-INDEX.md
+Processing ./UPDATED-GITHUB-INSTRUCTIONS.md
+Processing ./GITHUB-INSTRUCTIONS-WEB-INTERFACE.md
+Skipping ./ANTHROPIC-COMPLIANCE-REPORT.md, already translated
+Skipping ./UPDATED-GITHUB-INSTRUCTIONS.md, already translated
+Skipping ./GITHUB-INSTRUCTIONS-WEB-INTERFACE.md, already translated
+Skipping ./CONVERSION-GUIDE.md, already translated
+Processing ./EXTENDED-SUBAGENT-CATALOG.md
+Skipping ./SKILLS-INDEX.md, already translated
+Processing ./GITHUB-INSTRUCTIONS.md
+Processing ./SKILL.md
+Processing ./AUTOMATION-SCRIPTS-README.md
+Processing ./general-skill/SKILL.md
+Skipping ./SKILL.md, already translated
+Skipping ./EXTENDED-SUBAGENT-CATALOG.md, already translated
+Skipping ./GITHUB-INSTRUCTIONS.md, already translated
+Skipping ./AUTOMATION-SCRIPTS-README.md, already translated
+Skipping ./general-skill/SKILL.md, already translated
+Processing ./vue-expert-skill/REFERENCE.md
+Processing ./fullstack-developer-skill/REFERENCE.md
+Processing ./fullstack-developer-skill/SKILL.md
+Processing ./vue-expert-skill/EXAMPLES.md
+Processing ./fullstack-developer-skill/EXAMPLES.md
+Skipping ./vue-expert-skill/REFERENCE.md, already translated
+Skipping ./fullstack-developer-skill/REFERENCE.md, already translated
+Skipping ./fullstack-developer-skill/SKILL.md, already translated
+Skipping ./vue-expert-skill/EXAMPLES.md, already translated
+Skipping ./fullstack-developer-skill/EXAMPLES.md, already translated
+Processing ./mlops-engineer-skill/SKILL.md
+Processing ./vue-expert-skill/SKILL.md
+Processing ./rails-expert-skill/REFERENCE.md
+Processing ./rails-expert-skill/SKILL.md
+Processing ./rails-expert-skill/EXAMPLES.md
+Skipping ./mlops-engineer-skill/SKILL.md, already translated
+Processing ./git-workflow-manager-skill/SKILL.md
+Skipping ./vue-expert-skill/SKILL.md, already translated
+Skipping ./rails-expert-skill/EXAMPLES.md, already translated
+Skipping ./git-workflow-manager-skill/SKILL.md, already translated
+Processing ./powershell-ui-architect-skill/references/gui_patterns.md
+Skipping ./powershell-ui-architect-skill/references/gui_patterns.md, already translated
+Processing ./powershell-ui-architect-skill/SKILL.md
+Skipping ./rails-expert-skill/SKILL.md, already translated
+Processing ./cpp-pro-skill/REFERENCE.md
+Processing ./docx-skill/SKILL.md
+Processing ./cpp-pro-skill/EXAMPLES.md
+Skipping ./docx-skill/SKILL.md, already translated
+Skipping ./powershell-ui-architect-skill/SKILL.md, already translated
+Processing ./cpp-pro-skill/SKILL.md
+Processing ./database-administrator-skill/EXAMPLES.md
+Skipping ./cpp-pro-skill/EXAMPLES.md, already translated
+Processing ./database-administrator-skill/REFERENCE.md
+Skipping ./cpp-pro-skill/SKILL.md, already translated
+Skipping ./database-administrator-skill/EXAMPLES.md, already translated
+Processing ./ai-engineer-skill/SKILL.md
+Processing ./database-administrator-skill/SKILL.md
+Skipping ./database-administrator-skill/REFERENCE.md, already translated
+Skipping ./ai-engineer-skill/SKILL.md, already translated
+Processing ./ai-engineer-skill/references/cost_optimization.md
+Processing ./ai-engineer-skill/references/prompt_templates.md
+Skipping ./database-administrator-skill/SKILL.md, already translated
+Processing ./ai-engineer-skill/references/ai_integration_guide.md
+Skipping ./ai-engineer-skill/references/prompt_templates.md, already translated
+Processing ./ai-engineer-skill/references/rag_patterns.md
+Skipping ./ai-engineer-skill/references/cost_optimization.md, already translated
+Processing ./video-engineer-skill/SKILL.md
+Skipping ./ai-engineer-skill/references/ai_integration_guide.md, already translated
+Processing ./technical-writer-skill/SKILL.md
+Skipping ./ai-engineer-skill/references/rag_patterns.md, already translated
+Processing ./blockchain-developer-skill/SKILL.md
+Skipping ./technical-writer-skill/SKILL.md, already translated
+Processing ./plan-skill/SKILL.md
+Skipping ./video-engineer-skill/SKILL.md, already translated
+Processing ./research-analyst-skill/SKILL.md
+Successfully processed ./cpp-pro-skill/REFERENCE.md
+Processing ./cloud-architect-skill/SKILL.md
+Successfully processed ./rails-expert-skill/REFERENCE.md
+Processing ./api-designer-skill/SKILL.md
+Successfully processed ./research-analyst-skill/SKILL.md
+Processing ./powershell-5.1-expert-skill/SKILL.md
+Successfully processed ./cloud-architect-skill/SKILL.md
+Processing ./powershell-5.1-expert-skill/references/ps51_quickstart.md
+Successfully processed ./powershell-5.1-expert-skill/SKILL.md
+Processing ./powershell-5.1-expert-skill/references/migration_guide.md
+Successfully processed ./api-designer-skill/SKILL.md
+Processing ./powershell-5.1-expert-skill/references/legacy_patterns.md
+Successfully processed ./blockchain-developer-skill/SKILL.md
+Processing ./javascript-pro-skill/SKILL.md
+Successfully processed ./powershell-5.1-expert-skill/references/ps51_quickstart.md
+Processing ./react-native-specialist-skill/SKILL.md
+Successfully processed ./powershell-5.1-expert-skill/references/legacy_patterns.md
+Processing ./react-specialist-skill/EXAMPLES.md
+Successfully processed ./javascript-pro-skill/SKILL.md
+Processing ./react-specialist-skill/REFERENCE.md
+Successfully processed ./react-specialist-skill/EXAMPLES.md
+Processing ./react-specialist-skill/SKILL.md
+Successfully processed ./powershell-5.1-expert-skill/references/migration_guide.md
+Processing ./csv-data-wrangler-skill/SKILL.md
+Successfully processed ./react-specialist-skill/REFERENCE.md
+Processing ./knowledge-synthesizer-skill/SKILL.md
+Successfully processed ./plan-skill/SKILL.md
+Processing ./solution-architect-skill/SKILL.md
+Successfully processed ./csv-data-wrangler-skill/SKILL.md
+Processing ./librarian-skill/SKILL.md
+Successfully processed ./knowledge-synthesizer-skill/SKILL.md
+Processing ./powershell-module-architect-skill/EXAMPLES.md
+Successfully processed ./solution-architect-skill/SKILL.md
+Processing ./powershell-module-architect-skill/REFERENCE.md
+Successfully processed ./react-native-specialist-skill/SKILL.md
+Processing ./powershell-module-architect-skill/SKILL.md
+Successfully processed ./powershell-module-architect-skill/REFERENCE.md
+Processing ./powershell-module-architect-skill/references/module_development.md
+Successfully processed ./powershell-module-architect-skill/EXAMPLES.md
+Processing ./powershell-module-architect-skill/references/best_practices.md
+Successfully processed ./powershell-module-architect-skill/references/module_development.md
+Processing ./security-auditor-skill/SKILL.md
+Successfully processed ./react-specialist-skill/SKILL.md
+Processing ./security-auditor-skill/references/security_frameworks.md
+Successfully processed ./librarian-skill/SKILL.md
+Processing ./security-auditor-skill/references/remediation_guide.md
+Successfully processed ./powershell-module-architect-skill/SKILL.md
+Processing ./security-auditor-skill/references/owasp_top10.md
+Successfully processed ./powershell-module-architect-skill/references/best_practices.md
+Processing ./security-auditor-skill/references/report_templates.md
+Successfully processed ./security-auditor-skill/references/report_templates.md
+Processing ./powershell-7-expert-skill/SKILL.md
+Successfully processed ./powershell-7-expert-skill/SKILL.md
+Processing ./powershell-7-expert-skill/references/ps7_quickstart.md
+Successfully processed ./security-auditor-skill/references/remediation_guide.md
+Processing ./powershell-7-expert-skill/references/dsc_patterns.md
+Successfully processed ./security-auditor-skill/references/owasp_top10.md
+Processing ./deployment-engineer-skill/SKILL.md
+Successfully processed ./powershell-7-expert-skill/references/ps7_quickstart.md
+Processing ./context-manager-skill/SKILL.md
+Successfully processed ./powershell-7-expert-skill/references/dsc_patterns.md
+Processing ./data-researcher-skill/SKILL.md
+Successfully processed ./security-auditor-skill/references/security_frameworks.md
+Processing ./internal-comms-skill/SKILL.md
+Successfully processed ./context-manager-skill/SKILL.md
+Processing ./business-analyst-skill/SKILL.md
+Successfully processed ./security-auditor-skill/SKILL.md
+Processing ./tooling-engineer-skill/SKILL.md
+Successfully processed ./internal-comms-skill/SKILL.md
+Processing ./algorithmic-art-skill/SKILL.md
+Successfully processed ./business-analyst-skill/SKILL.md
+Processing ./error-detective-skill/SKILL.md
+Successfully processed ./tooling-engineer-skill/SKILL.md
+Processing ./error-detective-skill/references/troubleshooting.md
+Successfully processed ./deployment-engineer-skill/SKILL.md
+Processing ./error-detective-skill/references/best_practices.md
+Successfully processed ./data-researcher-skill/SKILL.md
+Processing ./sales-engineer-skill/SKILL.md
+Successfully processed ./algorithmic-art-skill/SKILL.md
+Processing ./debugger-skill/SKILL.md
+Successfully processed ./error-detective-skill/references/troubleshooting.md
+Processing ./dx-optimizer-skill/SKILL.md
+Successfully processed ./sales-engineer-skill/SKILL.md
+Processing ./slack-expert-skill/SKILL.md
+Successfully processed ./error-detective-skill/SKILL.md
+Processing ./multimodal-looker-skill/SKILL.md
+Successfully processed ./dx-optimizer-skill/SKILL.md
+Processing ./mobile-app-developer-skill/SKILL.md
+Successfully processed ./slack-expert-skill/SKILL.md
+Processing ./sre-engineer-skill/SKILL.md
+Successfully processed ./debugger-skill/SKILL.md
+Processing ./build-skill/SKILL.md
+Successfully processed ./mobile-app-developer-skill/SKILL.md
+Processing ./rust-engineer-skill/EXAMPLES.md
+Successfully processed ./rust-engineer-skill/EXAMPLES.md
+Processing ./rust-engineer-skill/REFERENCE.md
+Successfully processed ./build-skill/SKILL.md
+Processing ./rust-engineer-skill/SKILL.md
+Successfully processed ./sre-engineer-skill/SKILL.md
+Processing ./pdf-skill/SKILL.md
+Successfully processed ./pdf-skill/SKILL.md
+Processing ./data-engineer-skill/EXAMPLES.md
+Successfully processed ./data-engineer-skill/EXAMPLES.md
+Processing ./data-engineer-skill/REFERENCE.md
+Successfully processed ./rust-engineer-skill/REFERENCE.md
+Processing ./data-engineer-skill/SKILL.md
+Successfully processed ./data-engineer-skill/REFERENCE.md
+Processing ./qa-expert-skill/SKILL.md
+Successfully processed ./rust-engineer-skill/SKILL.md
+Processing ./powershell-security-hardening-skill/SKILL.md
+Successfully processed ./powershell-security-hardening-skill/SKILL.md
+Processing ./powershell-security-hardening-skill/references/security_baseline.md
+Successfully processed ./data-engineer-skill/SKILL.md
+Processing ./powershell-security-hardening-skill/references/signing_guide.md
+Successfully processed ./qa-expert-skill/SKILL.md
+Processing ./electron-pro-skill/SKILL.md
+Successfully processed ./powershell-security-hardening-skill/references/security_baseline.md
+Processing ./project-manager-skill/SKILL.md
+Successfully processed ./powershell-security-hardening-skill/references/signing_guide.md
+Processing ./swift-expert-skill/SKILL.md
+Successfully processed ./electron-pro-skill/SKILL.md
+Processing ./agent-organizer-skill/SKILL.md
+Successfully processed ./project-manager-skill/SKILL.md
+Processing ./flutter-expert-skill/SKILL.md
+Successfully processed ./agent-organizer-skill/SKILL.md
+Processing ./ad-security-reviewer-skill/SKILL.md
+Successfully processed ./swift-expert-skill/SKILL.md
+Processing ./ad-security-reviewer-skill/references/remediation_patterns.md
+Successfully processed ./flutter-expert-skill/SKILL.md
+Processing ./ad-security-reviewer-skill/references/security_quickstart.md
+Successfully processed ./ad-security-reviewer-skill/references/remediation_patterns.md
+Processing ./csharp-developer-skill/SKILL.md
+Successfully processed ./csharp-developer-skill/SKILL.md
+Processing ./typescript-pro-skill/SKILL.md
+Processing ./SECURITY_SKILLS_FRAMEWORK.md
+Processing ./README.md
+Skipping ./SECURITY_SKILLS_FRAMEWORK.md, already translated
+Processing ./PROJECT-SUMMARY.md
+Processing ./ANTHROPIC-COMPLIANCE-REPORT.md
+Processing ./FINAL-REPORT.md
+Skipping ./README.md, already translated
+Processing ./SKILL-VALIDATION-GUIDE.md
+Skipping ./ANTHROPIC-COMPLIANCE-REPORT.md, already translated
+Skipping ./SKILL-VALIDATION-GUIDE.md, already translated
+Processing ./CONVERSION-GUIDE.md
+Skipping ./FINAL-REPORT.md, already translated
+Processing ./UPDATED-GITHUB-INSTRUCTIONS.md
+Processing ./SKILLS-INDEX.md
+Skipping ./PROJECT-SUMMARY.md, already translated
+Processing ./GITHUB-INSTRUCTIONS-WEB-INTERFACE.md
+Processing ./EXTENDED-SUBAGENT-CATALOG.md
+Skipping ./CONVERSION-GUIDE.md, already translated
+Processing ./GITHUB-INSTRUCTIONS.md
+Skipping ./UPDATED-GITHUB-INSTRUCTIONS.md, already translated
+Skipping ./EXTENDED-SUBAGENT-CATALOG.md, already translated
+Processing ./SKILL.md
+Processing ./AUTOMATION-SCRIPTS-README.md
+Skipping ./GITHUB-INSTRUCTIONS-WEB-INTERFACE.md, already translated
+Skipping ./GITHUB-INSTRUCTIONS.md, already translated
+Skipping ./SKILLS-INDEX.md, already translated
+Skipping ./SKILL.md, already translated
+Processing ./general-skill/SKILL.md
+Processing ./fullstack-developer-skill/EXAMPLES.md
+Skipping ./AUTOMATION-SCRIPTS-README.md, already translated
+Processing ./fullstack-developer-skill/REFERENCE.md
+Processing ./fullstack-developer-skill/SKILL.md
+Processing ./vue-expert-skill/EXAMPLES.md
+Skipping ./fullstack-developer-skill/EXAMPLES.md, already translated
+Skipping ./fullstack-developer-skill/REFERENCE.md, already translated
+Processing ./vue-expert-skill/SKILL.md
+Skipping ./general-skill/SKILL.md, already translated
+Processing ./vue-expert-skill/REFERENCE.md
+Processing ./rails-expert-skill/EXAMPLES.md
+Skipping ./vue-expert-skill/SKILL.md, already translated
+Skipping ./vue-expert-skill/REFERENCE.md, already translated
+Skipping ./vue-expert-skill/EXAMPLES.md, already translated
+Skipping ./fullstack-developer-skill/SKILL.md, already translated
+Processing ./rails-expert-skill/REFERENCE.md
+Processing ./rails-expert-skill/SKILL.md
+Processing ./mlops-engineer-skill/SKILL.md
+Skipping ./rails-expert-skill/EXAMPLES.md, already translated
+Processing ./git-workflow-manager-skill/SKILL.md
+Skipping ./rails-expert-skill/SKILL.md, already translated
+Skipping ./mlops-engineer-skill/SKILL.md, already translated
+Processing ./powershell-ui-architect-skill/references/gui_patterns.md
+Processing ./docx-skill/SKILL.md
+Processing ./powershell-ui-architect-skill/SKILL.md
+Skipping ./git-workflow-manager-skill/SKILL.md, already translated
+Skipping ./powershell-ui-architect-skill/references/gui_patterns.md, already translated
+Processing ./cpp-pro-skill/EXAMPLES.md
+Skipping ./docx-skill/SKILL.md, already translated
+Processing ./cpp-pro-skill/SKILL.md
+Skipping ./powershell-ui-architect-skill/SKILL.md, already translated
+Skipping ./cpp-pro-skill/EXAMPLES.md, already translated
+Processing ./database-administrator-skill/REFERENCE.md
+Skipping ./cpp-pro-skill/SKILL.md, already translated
+Processing ./database-administrator-skill/EXAMPLES.md
+Processing ./cpp-pro-skill/REFERENCE.md
+Skipping ./database-administrator-skill/REFERENCE.md, already translated
+Processing ./ai-engineer-skill/SKILL.md
+Processing ./database-administrator-skill/SKILL.md
+Skipping ./database-administrator-skill/SKILL.md, already translated
+Processing ./ai-engineer-skill/references/prompt_templates.md
+Skipping ./ai-engineer-skill/SKILL.md, already translated
+Processing ./ai-engineer-skill/references/cost_optimization.md
+Skipping ./ai-engineer-skill/references/cost_optimization.md, already translated
+Processing ./ai-engineer-skill/references/ai_integration_guide.md
+Skipping ./database-administrator-skill/EXAMPLES.md, already translated
+Processing ./ai-engineer-skill/references/rag_patterns.md
+Skipping ./ai-engineer-skill/references/ai_integration_guide.md, already translated
+Processing ./video-engineer-skill/SKILL.md
+Skipping ./ai-engineer-skill/references/prompt_templates.md, already translated
+Processing ./technical-writer-skill/SKILL.md
+Skipping ./ai-engineer-skill/references/rag_patterns.md, already translated
+Processing ./blockchain-developer-skill/SKILL.md
+Skipping ./blockchain-developer-skill/SKILL.md, already translated
+Processing ./plan-skill/SKILL.md
+Skipping ./technical-writer-skill/SKILL.md, already translated
+Processing ./research-analyst-skill/SKILL.md
+Skipping ./research-analyst-skill/SKILL.md, already translated
+Processing ./cloud-architect-skill/SKILL.md
+Skipping ./cloud-architect-skill/SKILL.md, already translated
+Processing ./api-designer-skill/SKILL.md
+Skipping ./video-engineer-skill/SKILL.md, already translated
+Processing ./powershell-5.1-expert-skill/SKILL.md
+Skipping ./plan-skill/SKILL.md, already translated
+Processing ./powershell-5.1-expert-skill/references/ps51_quickstart.md
+Skipping ./api-designer-skill/SKILL.md, already translated
+Processing ./powershell-5.1-expert-skill/references/migration_guide.md
+Skipping ./powershell-5.1-expert-skill/references/ps51_quickstart.md, already translated
+Processing ./powershell-5.1-expert-skill/references/legacy_patterns.md
+Skipping ./powershell-5.1-expert-skill/references/migration_guide.md, already translated
+Processing ./javascript-pro-skill/SKILL.md
+Skipping ./powershell-5.1-expert-skill/SKILL.md, already translated
+Processing ./react-native-specialist-skill/SKILL.md
+Skipping ./javascript-pro-skill/SKILL.md, already translated
+Processing ./react-specialist-skill/EXAMPLES.md
+Skipping ./powershell-5.1-expert-skill/references/legacy_patterns.md, already translated
+Processing ./react-specialist-skill/REFERENCE.md
+Skipping ./react-specialist-skill/EXAMPLES.md, already translated
+Processing ./react-specialist-skill/SKILL.md
+Skipping ./react-specialist-skill/REFERENCE.md, already translated
+Processing ./csv-data-wrangler-skill/SKILL.md
+Skipping ./csv-data-wrangler-skill/SKILL.md, already translated
+Processing ./knowledge-synthesizer-skill/SKILL.md
+Skipping ./knowledge-synthesizer-skill/SKILL.md, already translated
+Processing ./solution-architect-skill/SKILL.md
+Skipping ./react-native-specialist-skill/SKILL.md, already translated
+Processing ./librarian-skill/SKILL.md
+Skipping ./librarian-skill/SKILL.md, already translated
+Processing ./powershell-module-architect-skill/EXAMPLES.md
+Skipping ./solution-architect-skill/SKILL.md, already translated
+Processing ./powershell-module-architect-skill/REFERENCE.md
+Skipping ./powershell-module-architect-skill/EXAMPLES.md, already translated
+Processing ./powershell-module-architect-skill/SKILL.md
+Skipping ./react-specialist-skill/SKILL.md, already translated
+Processing ./powershell-module-architect-skill/references/module_development.md
+Skipping ./powershell-module-architect-skill/SKILL.md, already translated
+Processing ./powershell-module-architect-skill/references/best_practices.md
+Skipping ./powershell-module-architect-skill/REFERENCE.md, already translated
+Processing ./security-auditor-skill/SKILL.md
+Skipping ./powershell-module-architect-skill/references/best_practices.md, already translated
+Processing ./security-auditor-skill/references/security_frameworks.md
+Skipping ./powershell-module-architect-skill/references/module_development.md, already translated
+Processing ./security-auditor-skill/references/remediation_guide.md
+Skipping ./security-auditor-skill/SKILL.md, already translated
+Processing ./security-auditor-skill/references/owasp_top10.md
+Skipping ./security-auditor-skill/references/remediation_guide.md, already translated
+Processing ./security-auditor-skill/references/report_templates.md
+Skipping ./security-auditor-skill/references/owasp_top10.md, already translated
+Processing ./powershell-7-expert-skill/SKILL.md
+Skipping ./security-auditor-skill/references/security_frameworks.md, already translated
+Processing ./powershell-7-expert-skill/references/ps7_quickstart.md
+Skipping ./security-auditor-skill/references/report_templates.md, already translated
+Processing ./powershell-7-expert-skill/references/dsc_patterns.md
+Skipping ./powershell-7-expert-skill/SKILL.md, already translated
+Processing ./deployment-engineer-skill/SKILL.md
+Skipping ./powershell-7-expert-skill/references/dsc_patterns.md, already translated
+Processing ./context-manager-skill/SKILL.md
+Skipping ./deployment-engineer-skill/SKILL.md, already translated
+Processing ./data-researcher-skill/SKILL.md
+Skipping ./data-researcher-skill/SKILL.md, already translated
+Processing ./internal-comms-skill/SKILL.md
+Skipping ./powershell-7-expert-skill/references/ps7_quickstart.md, already translated
+Processing ./business-analyst-skill/SKILL.md
+Skipping ./context-manager-skill/SKILL.md, already translated
+Processing ./tooling-engineer-skill/SKILL.md
+Skipping ./internal-comms-skill/SKILL.md, already translated
+Processing ./algorithmic-art-skill/SKILL.md
+Skipping ./tooling-engineer-skill/SKILL.md, already translated
+Processing ./error-detective-skill/SKILL.md
+Skipping ./algorithmic-art-skill/SKILL.md, already translated
+Processing ./error-detective-skill/references/troubleshooting.md
+Skipping ./error-detective-skill/SKILL.md, already translated
+Processing ./error-detective-skill/references/best_practices.md
+Skipping ./error-detective-skill/references/troubleshooting.md, already translated
+Processing ./sales-engineer-skill/SKILL.md
+Skipping ./sales-engineer-skill/SKILL.md, already translated
+Processing ./debugger-skill/SKILL.md
+Skipping ./business-analyst-skill/SKILL.md, already translated
+Processing ./dx-optimizer-skill/SKILL.md
+Skipping ./debugger-skill/SKILL.md, already translated
+Processing ./slack-expert-skill/SKILL.md
+Skipping ./dx-optimizer-skill/SKILL.md, already translated
+Processing ./multimodal-looker-skill/SKILL.md
+Skipping ./slack-expert-skill/SKILL.md, already translated
+Processing ./mobile-app-developer-skill/SKILL.md
+Skipping ./mobile-app-developer-skill/SKILL.md, already translated
+Processing ./sre-engineer-skill/SKILL.md
+Skipping ./sre-engineer-skill/SKILL.md, already translated
+Processing ./build-skill/SKILL.md
+Skipping ./build-skill/SKILL.md, already translated
+Processing ./rust-engineer-skill/EXAMPLES.md
+Skipping ./rust-engineer-skill/EXAMPLES.md, already translated
+Processing ./rust-engineer-skill/REFERENCE.md
+Skipping ./rust-engineer-skill/REFERENCE.md, already translated
+Processing ./rust-engineer-skill/SKILL.md
+Skipping ./rust-engineer-skill/SKILL.md, already translated
+Processing ./pdf-skill/SKILL.md
+Skipping ./pdf-skill/SKILL.md, already translated
+Processing ./data-engineer-skill/EXAMPLES.md
+Skipping ./data-engineer-skill/EXAMPLES.md, already translated
+Processing ./data-engineer-skill/REFERENCE.md
+Skipping ./data-engineer-skill/REFERENCE.md, already translated
+Processing ./data-engineer-skill/SKILL.md
+Skipping ./data-engineer-skill/SKILL.md, already translated
+Processing ./qa-expert-skill/SKILL.md
+Skipping ./qa-expert-skill/SKILL.md, already translated
+Processing ./powershell-security-hardening-skill/SKILL.md
+Skipping ./powershell-security-hardening-skill/SKILL.md, already translated
+Processing ./powershell-security-hardening-skill/references/security_baseline.md
+Skipping ./powershell-security-hardening-skill/references/security_baseline.md, already translated
+Processing ./powershell-security-hardening-skill/references/signing_guide.md
+Skipping ./powershell-security-hardening-skill/references/signing_guide.md, already translated
+Processing ./electron-pro-skill/SKILL.md
+Skipping ./electron-pro-skill/SKILL.md, already translated
+Processing ./project-manager-skill/SKILL.md
+Skipping ./project-manager-skill/SKILL.md, already translated
+Processing ./swift-expert-skill/SKILL.md
+Skipping ./swift-expert-skill/SKILL.md, already translated
+Processing ./agent-organizer-skill/SKILL.md
+Skipping ./agent-organizer-skill/SKILL.md, already translated
+Processing ./flutter-expert-skill/SKILL.md
+Skipping ./flutter-expert-skill/SKILL.md, already translated
+Processing ./ad-security-reviewer-skill/SKILL.md
+Successfully processed ./cpp-pro-skill/REFERENCE.md
+Processing ./ad-security-reviewer-skill/references/remediation_patterns.md
+Skipping ./ad-security-reviewer-skill/references/remediation_patterns.md, already translated
+Processing ./ad-security-reviewer-skill/references/security_quickstart.md
+Successfully processed ./rails-expert-skill/REFERENCE.md
+Processing ./csharp-developer-skill/SKILL.md
+Skipping ./csharp-developer-skill/SKILL.md, already translated
+Processing ./typescript-pro-skill/SKILL.md
+Successfully processed ./typescript-pro-skill/SKILL.md
+Processing ./golang-pro-skill/SKILL.md
+Successfully processed ./ad-security-reviewer-skill/SKILL.md
+Processing ./performance-engineer-skill/SKILL.md
+Successfully processed ./multimodal-looker-skill/SKILL.md
+Processing ./trend-analyst-skill/SKILL.md
+Successfully processed ./ad-security-reviewer-skill/references/security_quickstart.md
+Processing ./oracle-skill/SKILL.md
+Successfully processed ./trend-analyst-skill/SKILL.md
+Processing ./kubernetes-specialist-skill/EXAMPLES.md
+Successfully processed ./kubernetes-specialist-skill/EXAMPLES.md
+Processing ./kubernetes-specialist-skill/REFERENCE.md
+Successfully processed ./kubernetes-specialist-skill/REFERENCE.md
+Processing ./kubernetes-specialist-skill/SKILL.md
+Successfully processed ./error-detective-skill/references/best_practices.md
+Processing ./performance-monitor-skill/SKILL.md
+Successfully processed ./golang-pro-skill/SKILL.md
+Processing ./macos-developer-skill/SKILL.md
+Successfully processed ./performance-monitor-skill/SKILL.md
+Processing ./frontend-ui-ux-engineer-skill/SKILL.md
+Successfully processed ./performance-engineer-skill/SKILL.md
+Processing ./python-pro-skill/EXAMPLES.md
+Successfully processed ./oracle-skill/SKILL.md
+Processing ./python-pro-skill/REFERENCE.md
+Successfully processed ./frontend-ui-ux-engineer-skill/SKILL.md
+Processing ./python-pro-skill/SKILL.md
+Successfully processed ./kubernetes-specialist-skill/SKILL.md
+Processing ./mobile-developer-skill/SKILL.md
+Successfully processed ./python-pro-skill/REFERENCE.md
+Processing ./quant-analyst-skill/SKILL.md
+Successfully processed ./python-pro-skill/EXAMPLES.md
+Processing ./backend-developer-skill/EXAMPLES.md
+Successfully processed ./quant-analyst-skill/SKILL.md
+Processing ./backend-developer-skill/REFERENCE.md
+Successfully processed ./backend-developer-skill/EXAMPLES.md
+Processing ./backend-developer-skill/SKILL.md
+Successfully processed ./python-pro-skill/SKILL.md
+Processing ./backend-developer-skill/references/api_patterns.md
+Successfully processed ./macos-developer-skill/SKILL.md
+Processing ./backend-developer-skill/references/backend_frameworks.md
+Successfully processed ./backend-developer-skill/REFERENCE.md
+Processing ./backend-developer-skill/references/troubleshooting.md
+Successfully processed ./backend-developer-skill/SKILL.md
+Processing ./backend-developer-skill/references/deployment_guide.md
+Successfully processed ./mobile-developer-skill/SKILL.md
+Processing ./backend-developer-skill/references/testing_strategies.md

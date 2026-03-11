@@ -44,6 +44,7 @@
 ## 실행 정책 구성
 
 ### 권장 설정
+
 ```powershell
 # Set RemoteSigned for LocalMachine scope
 Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy RemoteSigned
@@ -54,7 +55,9 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Restricted
 # Verify settings
 Get-ExecutionPolicy -List
 ```
+
 ### 그룹 정책 시행
+
 ```
 Computer Configuration → Administrative Templates →
 Windows Components → Windows PowerShell
@@ -64,9 +67,11 @@ Turn on Script Execution:
 - Execution Policy: Allow only signed scripts
 
 ```
+
 ## 제한된 언어 모드
 
 ### 제한 모드 활성화
+
 ```powershell
 # Set constrained language mode
 $ExecutionContext.SessionState.LanguageMode = "ConstrainedLanguage"
@@ -74,13 +79,17 @@ $ExecutionContext.SessionState.LanguageMode = "ConstrainedLanguage"
 # Verify
 $ExecutionContext.SessionState.LanguageMode
 ```
+
 ### 시스템 전체 시행
+
 ```powershell
 # Set system-wide constrained mode
 $registryPath = "HKLM:\SOFTWARE\Microsoft\PowerShell\1\ShellIds"
 Set-ItemProperty -Path $registryPath -Name "ConsoleSessionConfigurationName" -Value "ConstrainedLanguage"
 ```
+
 ### 제한 모드 테스트
+
 ```powershell
 # Test restricted operations
 try {
@@ -99,9 +108,11 @@ catch {
     Write-Host "✓ Object creation blocked (SECURE)" -ForegroundColor Green
 }
 ```
+
 ## 스크립트 블록 로깅
 
 ### 스크립트 블록 로깅 활성화
+
 ```powershell
 # Enable script block logging
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging"
@@ -113,7 +124,9 @@ if (-not (Test-Path $registryPath)) {
 Set-ItemProperty -Path $registryPath -Name "EnableScriptBlockLogging" -Value 1 -Force
 Set-ItemProperty -Path $registryPath -Name "EnableScriptBlockInvocationLogging" -Value 1 -Force
 ```
+
 ### 스크립트 블록 로그 분석
+
 ```powershell
 # Query script block events
 $events = Get-WinEvent -LogName "Microsoft-Windows-PowerShell/Operational" `
@@ -130,7 +143,9 @@ foreach ($event in $events) {
     }
 }
 ```
+
 ### 의심스러운 활동 감지
+
 ```powershell
 function Find-SuspiciousScripts {
     $suspiciousPatterns = @(
@@ -159,9 +174,11 @@ function Find-SuspiciousScripts {
     }
 }
 ```
+
 ## 모듈 로깅
 
 ### 모듈 로깅 활성화
+
 ```powershell
 # Enable module logging
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging"
@@ -180,7 +197,9 @@ if (-not (Test-Path $moduleNamesPath)) {
 
 Set-ItemProperty -Path $moduleNamesPath -Name "*" -Value "*" -Force
 ```
+
 ### 모듈 사용량 모니터링
+
 ```powershell
 function Get-ModuleUsage {
     $events = Get-WinEvent -LogName "Microsoft-Windows-PowerShell/Operational" `
@@ -204,9 +223,11 @@ function Get-ModuleUsage {
         Format-Table -AutoSize
 }
 ```
+
 ## 전사
 
 ### 전사 활성화
+
 ```powershell
 # Enable transcription
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription"
@@ -224,7 +245,9 @@ Set-ItemProperty -Path $registryPath -Name "EnableTranscripting" -Value 1 -Force
 Set-ItemProperty -Path $registryPath -Name "EnableInvocationHeader" -Value 1 -Force
 Set-ItemProperty -Path $registryPath -Name "OutputDirectory" -Value $transcriptionPath -Force
 ```
+
 ### 전사 구성
+
 ```powershell
 # Start transcription manually
 Start-Transcript -Path "C:\Logs\transcript_$(Get-Date -Format 'yyyyMMdd_HHmmss').txt"
@@ -235,9 +258,11 @@ Stop-Transcript
 # Enable transcription for all sessions
 $PSDefaultParameterValues['Start-Transcript:IncludeInvocationHeader'] = $true
 ```
+
 ## 충분한 행정(JEA)
 
 ### JEA 세션 구성 생성
+
 ```powershell
 # Create role capability file
 $roleParams = @{
@@ -267,9 +292,11 @@ New-PSSessionConfigurationFile @sessionParams
 # Register session configuration
 Register-PSSessionConfiguration -Path ".\JEAConfig.pssc" -Name "JEA" -Force
 ```
+
 ## 코드 서명
 
 ### 서명 스크립트
+
 ```powershell
 # Get code signing certificate
 $cert = Get-ChildItem -Path Cert:\CurrentUser\My -CodeSigningCert | Select-Object -First 1
@@ -280,7 +307,9 @@ Set-AuthenticodeSignature -FilePath ".\script.ps1" -Certificate $cert -Timestamp
 # Verify signature
 Get-AuthenticodeSignature -FilePath ".\script.ps1"
 ```
+
 ### 서명된 스크립트 시행
+
 ```powershell
 # Require signed scripts only
 Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy AllSigned
@@ -288,9 +317,11 @@ Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy AllSigned
 # Test compliance
 Get-AuthenticodeSignature -FilePath ".\script.ps1" | Select-Object Status
 ```
+
 ## 모니터링 및 경고
 
 ### PowerShell 보안 이벤트
+
 ```powershell
 # Key event IDs to monitor
 $securityEventIds = @{
@@ -310,7 +341,9 @@ foreach ($eventId in $securityEventIds.Values) {
     Write-Host "Event ID $eventId: $($events.Count) events"
 }
 ```
+
 ### 경고 구성
+
 ```powershell
 # Create scheduled task for monitoring
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-File C:\Scripts\Monitor-PowerShell.ps1"
@@ -318,9 +351,11 @@ $trigger = New-ScheduledTaskTrigger -Daily -At "3:00 AM"
 
 Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "PowerShell Security Monitor" -Description "Monitor PowerShell security events"
 ```
+
 ## 규정 준수 검사
 
 ### 보안 준수 확인
+
 ```powershell
 function Test-PowerShellSecurityCompliance {
     $compliance = @{
@@ -371,6 +406,7 @@ function Test-PowerShellSecurityCompliance {
     return $compliance
 }
 ```
+
 ## 모범 사례
 
 1. **심층 방어**: 여러 보안 제어 계층화
@@ -382,8 +418,8 @@ function Test-PowerShellSecurityCompliance {
 7. **업데이트**: PowerShell과 시스템을 최신 상태로 유지하세요.
 8. **교육**: PowerShell 보안에 대해 직원 교육
 
-## 리소스
+## 자원
 
-- [PowerShell 보안 설명서](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/wsman-credentials-in-security-descriptions)
+- [PowerShell 보안 문서](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/wsman-credentials-in-security-descriptions)
 - [스크립트 블록 로깅](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_script_block_logging)
 - [JEA 문서](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/jea/overview)

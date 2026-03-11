@@ -1,68 +1,69 @@
-# Next.js 개발자 - 기술 참조
+# Next.js Developer - Technical Reference
 
-## 행동 특성
+## Behavioral Traits
 
-### 성능 우선
-- 최고의 사용자 경험을 위해 핵심 웹 바이탈(LCP, FID, CLS)을 최적화합니다.
-- 전략적 코드 분할 및 지연 로딩 구현
-- 원활한 상호작용을 위해 React 18 동시 기능을 사용합니다.
-- 이미지, 글꼴 및 타사 스크립트를 효과적으로 최적화합니다.
-- 성과를 지속적으로 모니터링하고 측정합니다.
+### Performance First
+- Optimizes Core Web Vitals (LCP, FID, CLS) for best user experience
+- Implements strategic code splitting and lazy loading
+- Uses React 18 concurrent features for smooth interactions
+- Optimizes images, fonts, and third-party scripts effectively
+- Monitors and measures performance continuously
 
-### SEO 우수성
-- next-seo 또는 사용자 정의 메타데이터를 사용하여 포괄적인 SEO 메타데이터를 구현합니다.
-- 적절한 제목 계층 구조로 의미론적 HTML을 생성합니다.
-- 구조화된 데이터 및 스키마 마크업을 사용하여 검색 엔진에 최적화
-- 적절한 URL 구조 및 라우팅 패턴 구현
-- 애플리케이션 전반에 걸쳐 접근성(a11y) 준수 보장
+### SEO Excellence
+- Implements comprehensive SEO metadata with next-seo or custom metadata
+- Creates semantic HTML with proper heading hierarchy
+- Optimizes for search engines with structured data and schema markup
+- Implements proper URL structures and routing patterns
+- Ensures accessibility (a11y) compliance throughout applications
 
-### 개발자 경험
-- 포괄적인 개발 도구 및 워크플로 설정
-- 적절한 오류 경계 및 오류 처리 구현
-- 재사용 가능한 구성요소 라이브러리 및 설계 시스템 생성
-- 일관된 코드 패턴 및 규칙 설정
-- 유형 안전성과 더 나은 DX를 위해 TypeScript를 활용합니다.
+### Developer Experience
+- Sets up comprehensive development tooling and workflows
+- Implements proper error boundaries and error handling
+- Creates reusable component libraries and design systems
+- Establishes consistent code patterns and conventions
+- Leverages TypeScript for type safety and better DX
 
-## 이상적인 시나리오
+## Ideal Scenarios
 
-- **전자상거래**: 서버 측 렌더링을 통해 SEO에 최적화된 온라인 상점
-- **콘텐츠 관리**: 블로그, 뉴스 사이트, 콘텐츠가 많은 애플리케이션
-- **SaaS 플랫폼**: 인증 및 데이터 관리 기능을 갖춘 풀스택 애플리케이션
-- **마케팅 웹사이트**: 고성능 랜딩 페이지 및 마케팅 퍼널
-- **대시보드**: 복잡한 데이터 시각화를 갖춘 관리 패널
-- **엔터프라이즈 애플리케이션**: 복잡한 비즈니스 로직을 갖춘 확장 가능한 웹 애플리케이션
+- **E-commerce**: SEO-optimized online stores with server-side rendering
+- **Content Management**: Blogs, news sites, and content-heavy applications
+- **SaaS Platforms**: Full-stack applications with authentication and data management
+- **Marketing Websites**: High-performance landing pages and marketing funnels
+- **Dashboards**: Admin panels with complex data visualization
+- **Enterprise Applications**: Scalable web applications with complex business logic
 
-### 해결된 문제 영역
-- 성능 및 SEO 최적화 문제
-- 풀스택 애플리케이션의 복잡한 상태 관리
-- 데이터베이스 통합 및 데이터 동기화
-- 인증 및 승인 패턴
-- 타사 통합 및 API 관리
+### Problem Areas Addressed
+- Performance and SEO optimization challenges
+- Complex state management in full-stack applications
+- Database integration and data synchronization
+- Authentication and authorization patterns
+- Third-party integrations and API management
 
-## 개발 워크플로
+## Development Workflow
 
-### 프로젝트 설정
-- TypeScript 및 Tailwind CSS를 사용하여 Next.js 14+ 프로젝트를 초기화합니다.
-- 코드 품질을 위해 ESLint, Prettier 및 Husky 구성
-- 데이터베이스 관리를 위해 Prisma 또는 Drizzle ORM 설정
-- 인증을 위해 NextAuth.js 또는 Clerk 구현
-- 맞춤형 디자인 시스템으로 Tailwind CSS 구성
+### Project Setup
+- Initializes Next.js 14+ project with TypeScript and Tailwind CSS
+- Configures ESLint, Prettier, and Husky for code quality
+- Sets up Prisma or Drizzle ORM for database management
+- Implements NextAuth.js or Clerk for authentication
+- Configures Tailwind CSS with custom design system
 
-### 부품 개발
-- Storybook을 사용하여 구성 요소 중심 개발을 사용합니다.
-- 재사용 가능한 UI 구성 요소로 원자 디자인 구현
-- 포괄적인 소품 인터페이스 및 문서 작성
-- 접근 가능한 구성 요소에 Radix UI 또는 Shadcn/ui를 사용합니다.
-- 처음부터 적절한 접근성(a11y)을 구현합니다.
+### Component Development
+- Uses component-driven development with Storybook
+- Implements atomic design with reusable UI components
+- Creates comprehensive prop interfaces and documentation
+- Uses Radix UI or Shadcn/ui for accessible components
+- Implements proper accessibility (a11y) from the start
 
-### 성능 모니터링
-- Next.js Analytics 및 Vercel Speed Insights 설정
-- Core Web Vitals 모니터링 구현
-- 자동화된 성능 테스트를 위해 Lighthouse CI를 사용합니다.
-- @next/bundle-analyzer를 사용하여 번들 크기를 모니터링합니다.
-- 성능 예산 및 알림 구현
+### Performance Monitoring
+- Sets up Next.js Analytics and Vercel Speed Insights
+- Implements Core Web Vitals monitoring
+- Uses Lighthouse CI for automated performance testing
+- Monitors bundle size with @next/bundle-analyzer
+- Implements performance budgets and alerts
 
-## 캐싱 전략 선택
+## Caching Strategy Selection
+
 ```
 Data Fetching Caching Strategy
 ├─ Static data (rarely changes)
@@ -100,18 +101,19 @@ Data Fetching Caching Strategy
         • Performance: Instant after first load
 ```
 
-**캐싱 전략 비교표:**
+**Caching Strategy Comparison Table:**
 
-| 전략 | 신선도 | 비용 | 성과 | 사용 사례 |
-|----------|------------|------|-------------|----------|
-|`force-cache`(기본값) | 재검증까지 유효하지 않음 | $0 | 인스턴트(CDN) | 정적 콘텐츠 |
-|`{ revalidate: 3600 }`| 최대 1시간 | $0 | 인스턴트(CDN) | 반정적(블로그, 제품) |
-|`{ revalidate: 60 }`| 최대 1분 | 낮음 | 빠른 | 자주 업데이트되는(뉴스) |
-|`no-store`| 항상 신선한 | 높음 | 느리게 | 사용자별(카트, 프로필) |
-|`revalidateTag()`| 주문형 신선함 | 낮음 | 업데이트 후 빠른 속도 | 관리자가 트리거한 업데이트 |
-| 클라이언트측(SWR) | 구성 가능 | 중간 | 오래된 재검증을 통해 속도 향상 | 대화형 대시보드 |
+| Strategy | Freshness | Cost | Performance | Use Case |
+|----------|-----------|------|-------------|----------|
+| `force-cache` (default) | Stale until revalidation | $0 | Instant (CDN) | Static content |
+| `{ revalidate: 3600 }` | Max 1hr old | $0 | Instant (CDN) | Semi-static (blog, products) |
+| `{ revalidate: 60 }` | Max 1min old | Low | Fast | Frequently updated (news) |
+| `no-store` | Always fresh | High | Slower | User-specific (cart, profile) |
+| `revalidateTag()` | On-demand fresh | Low | Fast after update | Admin-triggered updates |
+| Client-side (SWR) | Configurable | Medium | Fast with stale-while-revalidate | Interactive dashboards |
 
-## 라우팅 패턴 선택
+## Routing Pattern Selection
+
 ```
 Complex Routing Needs
 ├─ Modal overlays (don't change URL)
@@ -142,10 +144,10 @@ Complex Routing Needs
         • Progressive page rendering
 ```
 
-## 유형 안전 모범 사례
+## Type Safety Best Practices
 
-- **End-to-End 유형**: 프런트엔드와 백엔드 간에 유형을 공유합니다.
-- **API 유형**: API 응답에서 유형을 생성합니다.
-- **데이터베이스 유형**: 데이터베이스 엔터티에 대해 ORM 생성 유형을 사용합니다.
-- **구성요소 속성**: 모든 구성요소 인터페이스를 강력하게 입력합니다.
-- **서버 작업**: 적절한 입력/출력 유형으로 서버 작업을 입력합니다.
+- **End-to-End Types**: Share types between frontend and backend
+- **API Types**: Generate types from API responses
+- **Database Types**: Use ORM-generated types for database entities
+- **Component Props**: Strongly type all component interfaces
+- **Server Actions**: Type server actions with proper input/output types

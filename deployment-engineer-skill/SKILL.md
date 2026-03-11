@@ -6,7 +6,7 @@ description: "다양한 플랫폼에서 CI/CD 자동화, 컨테이너화 및 릴
 
 ## 목적
 
-다양한 플랫폼 전반에 걸친 CI/CD 자동화, 컨테이너화 및 릴리스 관리를 전문으로 하는 전문적인 배포 엔지니어링 전문 지식을 제공합니다. Jenkins, GitHub Actions, GitLab CI, Azure DevOps 및 블루-그린 배포, Canary 릴리스 및 GitOps 워크플로를 포함한 최신 배포 전략에 능숙합니다.
+다양한 플랫폼 전반에 걸쳐 CI/CD 자동화, 컨테이너화 및 릴리스 관리를 전문으로 하는 전문적인 배포 엔지니어링 전문 지식을 제공합니다. Jenkins, GitHub Actions, GitLab CI, Azure DevOps 및 블루-그린 배포, Canary 릴리스 및 GitOps 워크플로를 포함한 최신 배포 전략에 능숙합니다.
 
 ## 사용 시기
 
@@ -15,7 +15,7 @@ description: "다양한 플랫폼에서 CI/CD 자동화, 컨테이너화 및 릴
 - **플러그인 생태계**: Docker, Kubernetes, GitHub, Slack, SonarQube 통합
 - **보안 관리**: 자격 증명 관리, 역할 기반 액세스 제어, 보안 검색
 - **확장성**: Jenkins 컨트롤러, 에이전트, 분산 빌드, Kubernetes 통합
-- **모니터링**: 지표 구축, 성능 모니터링, 장애 분석
+- **모니터링**: 지표 구축, 성능 모니터링, 오류 분석
 
 ### GitHub Actions 숙련도
 - **워크플로 디자인**: YAML 워크플로 작성, 트리거 조건, 매트릭스 빌드
@@ -76,7 +76,9 @@ description: "다양한 플랫폼에서 CI/CD 자동화, 컨테이너화 및 릴
 - **배포 컨트롤러**: 배포, StatefulSet, DaemonSet 관리
 - **서비스 구성**: 인그레스, 서비스 메시, 로드 밸런싱
 - **롤링 업데이트**: 업데이트 전략, 상태 확인, 롤백 절차
-- **다중 환경**: 네임스페이스 관리, 구성 관리### 대체 플랫폼
+- **다중 환경**: 네임스페이스 관리, 구성 관리
+
+### 대체 플랫폼
 - **AWS ECS**: 작업 정의, 서비스, 자동 확장, 로드 밸런싱
 - **AWS Fargate**: 서버리스 컨테이너 배포, 비용 최적화
 - **Azure Container Instances**: ACI 배포, 컨테이너 그룹
@@ -150,7 +152,9 @@ description: "다양한 플랫폼에서 CI/CD 자동화, 컨테이너화 및 릴
 - **비밀 관리**: HashiCorp Vault, AWS Secrets Manager, Azure Key Vault
 - **액세스 제어**: RBAC, 최소 권한, 감사 로깅
 - **보안 스캐닝**: 정적 분석, 동적 분석, 컨테이너 스캐닝
-- **규정 준수 프레임워크**: SOC 2, ISO 27001, PCI DSS 통합### 환경 보안
+- **규정 준수 프레임워크**: SOC 2, ISO 27001, PCI DSS 통합
+
+### 환경 보안
 - **네트워크 보안**: VPC 구성, 보안 그룹, 네트워크 정책
 - **컨테이너 보안**: 런타임 보호, 이미지 서명, 취약점 관리
 - **데이터 보호**: 저장 및 전송 중 암호화, 백업 전략
@@ -162,7 +166,7 @@ description: "다양한 플랫폼에서 CI/CD 자동화, 컨테이너화 및 릴
 - 처음부터 새로운 CI/CD 파이프라인 설정
 - 기존 배포 프로세스 최적화
 - 고급 배포 전략 구현
-- 보안 검색 및 규정 준수 확인 자동화
+- 보안 검색 및 규정 준수 검사 자동화
 - 배포에 대한 모니터링 및 관찰 가능성 설정
 
 ### 프로세스 개선
@@ -174,8 +178,7 @@ description: "다양한 플랫폼에서 CI/CD 자동화, 컨테이너화 및 릴
 
 ## 예시 시나리오
 
-### 엔터프라이즈 CI/CD 파이프라인 설정
-```yaml
+### 엔터프라이즈 CI/CD 파이프라인 설정```yaml
 # Multi-Stage Pipeline Architecture
 Stages:
 1. Code Quality:
@@ -202,8 +205,8 @@ Stages:
    - Progressive rollout to 100%
    - Automated rollback on failure
 ```
-### Kubernetes GitOps 워크플로
-```yaml
+
+### Kubernetes GitOps 워크플로```yaml
 # GitOps with ArgoCD
 Git Repository Structure:
 ├── apps/
@@ -226,8 +229,8 @@ Deployment Flow:
 6. Progressive delivery with canary analysis
 7. Automated promotion to production
 ```
-### 보안 우선 파이프라인
-```yaml
+
+### 보안 우선 파이프라인```yaml
 # Security Integration Pipeline
 Security Gates:
 1. Pre-commit:
@@ -250,6 +253,7 @@ Security Gates:
    - Secrets management verification
    - Compliance reporting
 ```
+
 ## 도구 및 기술
 
 ### CI/CD 플랫폼
@@ -287,8 +291,7 @@ Security Gates:
 3. **규정 준수 통합**: 금융 규제에 대한 자동 규정 준수 확인
 4. **배포 전략**: 자동 롤백을 통한 블루-그린 배포
 
-**파이프라인 구성:**
-```yaml
+**파이프라인 구성:**```yaml
 # Multi-Stage Pipeline Architecture
 Stages:
 1. Code Quality:
@@ -315,6 +318,7 @@ Stages:
    - Progressive rollout to 100%
    - Automated rollback on failure
 ```
+
 **결과:**
 - 배포 빈도가 매주에서 매일 여러 번으로 증가했습니다.
 - 평균 복구 시간이 4시간에서 15분으로 단축되었습니다.
@@ -330,8 +334,7 @@ Stages:
 3. **점진적 전달**: Canary 및 청록색 배포
 4. **멀티 클러스터 관리**: 스테이징, 프로덕션 및 재해 복구 클러스터
 
-**배포 아키텍처:**
-```
+**배포 아키텍처:**```
 Git Repository Structure:
 ├── apps/
 │   ├── frontend/
@@ -353,6 +356,7 @@ Deployment Flow:
 6. Progressive delivery with canary analysis
 7. Automated promotion to production
 ```
+
 **결과:**
 - 제로 다운타임 배포 달성
 - 배포 시간이 45분에서 5분으로 단축되었습니다.
@@ -368,8 +372,7 @@ Deployment Flow:
 3. **규정 준수 확인**: 자동화된 HIPAA 규정 준수 확인
 4. **감사 로깅**: 규정 준수 보고를 위한 포괄적인 로깅
 
-**보안 파이프라인 구성:**
-```yaml
+**보안 파이프라인 구성:**```yaml
 # Security Integration Pipeline
 Security Gates:
 1. Pre-commit:
@@ -392,6 +395,7 @@ Security Gates:
    - Secrets management verification
    - Compliance reporting
 ```
+
 **규정 준수 성과:**
 - 중요한 발견 사항이 전혀 없이 HIPAA 감사를 통과했습니다.
 - 보안 취약점 85% 감소

@@ -1,12 +1,13 @@
-# 프론트엔드 성능 가이드
+# Frontend Performance Guide
 
-## 핵심 웹 바이탈
+## Core Web Vitals
 
-### 콘텐츠가 포함된 최대 페인트(LCP)
+### Largest Contentful Paint (LCP)
 
-**목표:** < 2.5초
+**Target:** < 2.5 seconds
 
-LCP는 뷰포트에 표시되는 가장 큰 콘텐츠 요소의 로딩 성능을 측정합니다.
+LCP measures the loading performance of the largest content element visible in the viewport.
+
 ```typescript
 // Optimize LCP
 // 1. Remove render-blocking resources
@@ -27,11 +28,13 @@ LCP는 뷰포트에 표시되는 가장 큰 콘텐츠 요소의 로딩 성능을
   <img src="image.jpg" alt="Description">
 </picture>
 ```
-### 첫 번째 입력 지연(FID)
 
-**목표:** < 100밀리초
+### First Input Delay (FID)
 
-FID는 사용자가 페이지와 처음 상호작용하는 시간부터 브라우저가 응답하는 시간까지의 시간을 측정합니다.
+**Target:** < 100 milliseconds
+
+FID measures the time from when a user first interacts with your page to the time when the browser responds.
+
 ```typescript
 // Minimize JavaScript execution
 // 1. Code split by routes
@@ -70,11 +73,13 @@ const handleInput = debounce((value: string) => {
   // Expensive operation
 }, 300);
 ```
-### 누적 레이아웃 변경(CLS)
 
-**목표:** < 0.1
+### Cumulative Layout Shift (CLS)
 
-CLS는 로드되는 페이지 레이아웃의 안정성을 측정합니다.
+**Target:** < 0.1
+
+CLS measures the stability of a page layout as it loads.
+
 ```typescript
 // Reserve space for dynamic content
 // BAD
@@ -104,9 +109,11 @@ useEffect(() => {
   }
 }, []);
 ```
-## 코드 분할
 
-### 경로 기반 분할
+## Code Splitting
+
+### Route-based Splitting
+
 ```typescript
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
@@ -129,7 +136,9 @@ function App() {
   );
 }
 ```
-### 구성요소 기반 분할
+
+### Component-based Splitting
+
 ```typescript
 import { lazy, Suspense } from 'react';
 
@@ -150,9 +159,11 @@ export const Dashboard: React.FC = () => {
   );
 };
 ```
-## 나무 흔들기
 
-### 적절한 수입품
+## Tree Shaking
+
+### Proper Imports
+
 ```javascript
 // BAD - Imports entire library
 import _ from 'lodash';
@@ -163,7 +174,9 @@ import { debounce, throttle } from 'lodash';
 // EVEN BETTER - Use tree-shakeable libraries
 import { debounce } from 'lodash-es';
 ```
-### 동적 가져오기
+
+### Dynamic Imports
+
 ```typescript
 // Load heavy libraries only when needed
 const loadChart = async () => {
@@ -171,9 +184,11 @@ const loadChart = async () => {
   // Use Chart
 };
 ```
-## 번들 최적화
 
-### 웹팩 구성
+## Bundle Optimization
+
+### Webpack Configuration
+
 ```javascript
 // webpack.config.js
 module.exports = {
@@ -197,7 +212,9 @@ module.exports = {
   },
 };
 ```
-### Vite 구성
+
+### Vite Configuration
+
 ```typescript
 // vite.config.ts
 export default defineConfig({
@@ -214,9 +231,11 @@ export default defineConfig({
   },
 });
 ```
-## 메모리 관리
 
-### 정리 효과
+## Memory Management
+
+### Cleanup Effects
+
 ```typescript
 useEffect(() => {
   const timer = setInterval(() => {
@@ -234,7 +253,9 @@ useEffect(() => {
   };
 }, []);
 ```
-### 메모리 누수 방지
+
+### Avoid Memory Leaks
+
 ```typescript
 // BAD - Accumulating data in state
 export const List: React.FC = () => {
@@ -273,9 +294,11 @@ export const List: React.FC = () => {
   return <>{/* ... */}</>;
 };
 ```
-## 이미지 최적화
 
-### 반응형 이미지
+## Image Optimization
+
+### Responsive Images
+
 ```typescript
 import Image from 'next/image';
 
@@ -288,7 +311,9 @@ import Image from 'next/image';
   sizes="(max-width: 768px) 100vw, 50vw"
 />
 ```
-### 지연 로딩
+
+### Lazy Loading
+
 ```typescript
 <img
   loading="lazy"
@@ -298,7 +323,9 @@ import Image from 'next/image';
   height="600"
 />
 ```
-### 최신 형식
+
+### Modern Formats
+
 ```typescript
 <picture>
   <source type="image/avif" srcset="image.avif">
@@ -306,9 +333,11 @@ import Image from 'next/image';
   <img src="image.jpg" alt="Description">
 </picture>
 ```
-## 글꼴 최적화
 
-### 글꼴 로딩
+## Font Optimization
+
+### Font Loading
+
 ```html
 <!-- Preconnect to font domain -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -323,7 +352,9 @@ import Image from 'next/image';
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" 
       rel="stylesheet">
 ```
-### 글꼴 표시
+
+### Font Display
+
 ```css
 @font-face {
   font-family: 'Inter';
@@ -331,9 +362,11 @@ import Image from 'next/image';
   font-display: swap;
 }
 ```
-## 렌더링 최적화
 
-### 가상화
+## Rendering Optimization
+
+### Virtualization
+
 ```typescript
 import { FixedSizeList } from 'react-window';
 
@@ -356,7 +389,9 @@ export const VirtualList: React.FC<{ items: any[] }> = ({ items }) => {
   );
 };
 ```
-### 메모
+
+### Memoization
+
 ```typescript
 // React.memo for components
 export const ExpensiveComponent = React.memo(({ data }: { data: Data }) => {
@@ -376,9 +411,11 @@ const handleClick = useCallback(() => {
   console.log('Clicked');
 }, []);
 ```
-## 네트워크 최적화
 
-### 일괄 요청
+## Network Optimization
+
+### Request Batching
+
 ```typescript
 // BAD - Individual requests
 const fetchData = async () => {
@@ -393,7 +430,9 @@ const fetchData = async () => {
   return response.json();
 };
 ```
-### 디바운싱 요청
+
+### Request Debouncing
+
 ```typescript
 const debounce = <T extends (...args: any[]) => any>(
   fn: T,
@@ -410,9 +449,11 @@ const handleSearch = debounce((query: string) => {
   fetch(`/api/search?q=${query}`);
 }, 300);
 ```
-## 성능 모니터링
 
-### 웹 바이탈 측정
+## Performance Monitoring
+
+### Web Vitals Measurement
+
 ```typescript
 import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
 
@@ -430,29 +471,30 @@ getFCP(reportWebVitals);
 getLCP(reportWebVitals);
 getTTFB(reportWebVitals);
 ```
-## 도구 및 리소스
 
-- **Lighthouse**: 성능 감사를 위한 Chrome DevTools
-- **WebPageTest**: 웹 성능 테스트 도구
-- **Chrome DevTools**: 내장된 브라우저 성능 도구
-- **번들 분석기**: 번들 크기 및 구성 분석
-- **React DevTools**: React 구성 요소용 프로파일러
+## Tools and Resources
 
-## 체크리스트
+- **Lighthouse**: Chrome DevTools for performance auditing
+- **WebPageTest**: Web performance testing tool
+- **Chrome DevTools**: Built-in browser performance tools
+- **Bundle Analyzer**: Analyze bundle size and composition
+- **React DevTools**: Profiler for React components
 
-### 배포하기 전에
-- [ ] Lighthouse 감사 실행
-- [ ] 번들 크기 확인
-- [ ] 느린 연결 테스트
-- [ ] 지연 로딩이 작동하는지 확인
-- [ ] 모바일 장치에서 테스트
-- [ ] 핵심 웹 바이탈 확인
-- [ ] 이미지 최적화
-- [ ] JavaScript 최소화
+## Checklists
 
-### 지속적인 모니터링
-- [ ] 핵심 웹 바이탈 추적
-- [ ] 오류율 모니터링
-- [ ] 사용자 참여 지표 추적
-- [ ] API 성능 모니터링
-- [ ] 번들 크기 변경 추적
+### Before Deploying
+- [ ] Run Lighthouse audit
+- [ ] Check bundle sizes
+- [ ] Test on slow connections
+- [ ] Verify lazy loading works
+- [ ] Test on mobile devices
+- [ ] Check Core Web Vitals
+- [ ] Optimize images
+- [ ] Minimize JavaScript
+
+### Continuous Monitoring
+- [ ] Track Core Web Vitals
+- [ ] Monitor error rates
+- [ ] Track user engagement metrics
+- [ ] Monitor API performance
+- [ ] Track bundle size changes

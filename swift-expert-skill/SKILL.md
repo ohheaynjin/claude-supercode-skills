@@ -51,7 +51,7 @@ Swift 6, SwiftUI 및 최신 동시성 패턴을 사용하여 기본 iOS/macOS/vi
 **결과:**
 - 상용구 코드 70% 감소
 - 콜백 지옥과 경쟁 조건 제거
-- 코드 가독성 및 유지 관리성 향상
+- 코드 가독성 및 유지관리성 향상
 - 구조화된 작업으로 더 나은 메모리 관리
 
 ### 예시 3: 성능 최적화
@@ -102,7 +102,9 @@ Swift 6, SwiftUI 및 최신 동시성 패턴을 사용하여 기본 iOS/macOS/vi
 - **VisionOS**: 공간 컴퓨팅 패턴 고려
 
 **다음과 같은 경우에는 호출하지 마세요.**
-- React Native/Flutter를 활용한 크로스 플랫폼 앱 구축 → 활용`mobile-app-developer`- 간단한 쉘 스크립트 작성(특별히 Swift 스크립팅이 아닌 경우) → 사용`bash`또는`python-pro`- 게임 자산 디자인 → 활용`game-developer`(Metal/SceneKit이 범위 내에 있지만)
+- React Native/Flutter를 사용하여 크로스 플랫폼 앱 구축 → `mobile-app-developer` 사용
+- 간단한 쉘 스크립트 작성(특별히 Swift 스크립팅이 아닌 경우) → `bash` 또는 `python-pro` 사용
+- 게임 자산 디자인 → `game-developer` 사용(Metal/SceneKit이 범위에 있음)
 
 ---
 ---
@@ -142,8 +144,7 @@ Swift 6, SwiftUI 및 최신 동시성 패턴을 사용하여 기본 iOS/macOS/vi
 
 **단계:**
 
-1. **배우 정의**
-```swift
+1. **배우 정의**```swift
     actor ImageCache {
         private var cache: [URL: UIImage] = [:]
 
@@ -160,8 +161,8 @@ Swift 6, SwiftUI 및 최신 동시성 패턴을 사용하여 기본 iOS/macOS/vi
         }
     }
     ```
-2. **사용법(비동기 컨텍스트)**
-```swift
+
+2. **사용법(비동기 컨텍스트)**```swift
     class ImageLoader {
         private let cache = ImageCache()
 
@@ -180,6 +181,7 @@ Swift 6, SwiftUI 및 최신 동시성 패턴을 사용하여 기본 iOS/macOS/vi
         }
     }
     ```
+
 ---
 ---
 
@@ -187,7 +189,8 @@ Swift 6, SwiftUI 및 최신 동시성 패턴을 사용하여 기본 iOS/macOS/vi
 
 ### 패턴 1: 종속성 주입(환경)
 
-**사용 사례:** SwiftUI 계층 구조에 서비스를 주입합니다.
+**사용 사례:** SwiftUI 계층 구조에 서비스 주입.
+
 ```swift
 // 1. Define Key
 private struct AuthKey: EnvironmentKey {
@@ -211,9 +214,11 @@ struct LoginView: View {
     }
 }
 ```
+
 ### 패턴 2: 코디네이터(탐색)
 
 **사용 사례:** 뷰에서 탐색 로직을 분리합니다.
+
 ```swift
 @Observable
 class Coordinator {
@@ -237,9 +242,11 @@ enum Destination: Hashable {
     case settings
 }
 ```
+
 ### 패턴 3: 결과 작성기(DSL)
 
 **사용 사례:** API 요청 구성을 위한 맞춤 DSL을 만듭니다.
+
 ```swift
 @resultBuilder
 struct RequestBuilder {
@@ -259,6 +266,7 @@ makeRequest {
     URLQueryItem(name: "sort", value: "desc")
 }
 ```
+
 ---
 ---
 
@@ -267,10 +275,10 @@ makeRequest {
 ### **백엔드 개발자:**
 - **Handoff**: 백엔드가 gRPC/REST 사양을 제공 → Swift Expert가 Codable 구조체를 생성합니다.
 - **협업**: 페이지 매김(커서) 및 오류 봉투를 처리합니다.
-- **도구**:`swift-openapi-generator`.
+- **도구**: `swift-openapi-generator`.
 
 ### **UI 디자이너:**
-- **Handoff**: 디자이너가 Figma 제공 → Swift Expert 사용`HStack/VStack`복제하다.
+- **Handoff**: Designer가 Figma 제공 → Swift Expert는 `HStack/VStack`을 사용하여 복제합니다.
 - **협업**: 디자인 시스템 정의(색상, 타이포그래피 확장).
 - **도구**: Xcode 미리보기.
 

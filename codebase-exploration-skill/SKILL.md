@@ -2,6 +2,7 @@
 name: codebase-exploration
 description: Deep contextual grep for codebases. Expert at finding patterns, architectures, implementations, and answering "Where is X?", "Which file has Y?", and "Find code that does Z" questions. Use when exploring unfamiliar codebases, finding specific implementations, understanding code organization, discovering patterns across multiple files, or locating functionality in a project. Supports three thoroughness levels quick, medium, very thorough.
 ---
+
 # Codebase Exploration
 
 ## Purpose
@@ -170,7 +171,6 @@ Specializes in systematic codebase exploration and discovery. Uses advanced sear
 3. User lookup: src/repositories/user.repository.ts
 4. Guards: src/guards/auth.guard.ts
 ```
-
 
 ## Anti-Patterns
 

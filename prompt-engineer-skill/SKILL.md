@@ -1,32 +1,38 @@
 ---
 name: prompt-engineer
-description: 대규모 언어 모델에 대한 프롬프트를 설계, 최적화 및 평가하는 전문가입니다. Chain-of-Thought, ReAct, Few-Shot 학습, 제작 프롬프트 관리를 전문으로 합니다. 프롬프트 작성, LLM 출력 최적화 또는 프롬프트 시스템 구축 시 사용합니다. 트리거에는 "프롬프트 엔지니어링", "프롬프트 최적화", "생각의 사슬", "퓨샷", "프롬프트 템플릿", "LLM 프롬프트"가 포함됩니다.
+description: Expert in designing, optimizing, and evaluating prompts for Large Language Models. Specializes in Chain-of-Thought, ReAct, few-shot learning, and production prompt management. Use when crafting prompts, optimizing LLM outputs, or building prompt systems. Triggers include "prompt engineering", "prompt optimization", "chain of thought", "few-shot", "prompt template", "LLM prompting".
 ---
-# 프롬프트 엔지니어
 
-## 목적
-대규모 언어 모델에 대한 프롬프트 설계, 최적화 및 평가에 대한 전문 지식을 제공합니다. Chain-of-Thought, ReAct, Few-shot 학습 등 프롬프트 기술과 제작 프롬프트 관리 및 평가를 전문으로 합니다.
+# Prompt Engineer
 
-## 사용 시기
-- LLM 지원을 위한 프롬프트 디자인
-- 프롬프트 성능 최적화
-- 사고연쇄추론 구현
-- 퓨샷 예시 만들기
-- 프롬프트 템플릿 구축
-- 신속한 효과성 평가
-- 제작 시 프롬프트 관리
-- 프롬프트를 통해 환각 감소
+## Purpose
+Provides expertise in designing, optimizing, and evaluating prompts for Large Language Models. Specializes in prompting techniques like Chain-of-Thought, ReAct, and few-shot learning, as well as production prompt management and evaluation.
 
-## 빠른 시작
-**다음과 같은 경우에 이 스킬을 호출하세요:**
-- LLM 지원을 위한 프롬프트 작성
-- 기존 프롬프트 최적화
-- 고급 프롬프트 기술 구현
-- 신속한 관리체계 구축
-- 신속한 품질 평가
+## When to Use
+- Designing prompts for LLM applications
+- Optimizing prompt performance
+- Implementing Chain-of-Thought reasoning
+- Creating few-shot examples
+- Building prompt templates
+- Evaluating prompt effectiveness
+- Managing prompts in production
+- Reducing hallucinations through prompting
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- LLM 시스템 아키텍처 → 사용`/llm-architect`- RAG 구현 → 사용`/ai-engineer`- NLP 모델 훈련 → 활용`/nlp-engineer`- 에이전트 성능 모니터링 → 활용`/performance-monitor`## 의사결정 프레임워크
+## Quick Start
+**Invoke this skill when:**
+- Crafting prompts for LLM applications
+- Optimizing existing prompts
+- Implementing advanced prompting techniques
+- Building prompt management systems
+- Evaluating prompt quality
+
+**Do NOT invoke when:**
+- LLM system architecture → use `/llm-architect`
+- RAG implementation → use `/ai-engineer`
+- NLP model training → use `/nlp-engineer`
+- Agent performance monitoring → use `/performance-monitor`
+
+## Decision Framework
 ```
 Prompting Technique?
 ├── Reasoning Tasks
@@ -40,45 +46,46 @@ Prompting Technique?
 └── Consistency
     └── System prompt + temperature tuning
 ```
-## 핵심 워크플로
 
-### 1. 프롬프트 디자인
-1. 업무를 명확하게 정의하라
-2. 격려 기법을 선택하세요
-3. 상황에 맞는 시스템 프롬프트 작성
-4. 소수의 경우 예시 추가
-5. 출력 형식 지정
-6. 다양한 입력으로 테스트
+## Core Workflows
 
-### 2. 사고 사슬 구현
-1. 추론 요구 사항 식별
-2. "단계적으로 생각해보자" 또는 이에 상응하는 내용을 추가합니다.
-3. 추론 예시 제공
-4. 예상 추론 단계의 구조
-5. 추론 품질 테스트
-6. 단계 안내 반복
+### 1. Prompt Design
+1. Define task clearly
+2. Choose prompting technique
+3. Write system prompt with context
+4. Add examples if few-shot
+5. Specify output format
+6. Test with diverse inputs
 
-### 3. 프롬프트 최적화
-1. 기준 지표 설정
-2. 실패 패턴 식별
-3. 명확성을 위해 지침을 조정하세요.
-4. 예시 추가/수정
-5. 출력 제약 조건 조정
-6. 개선 측정
+### 2. Chain-of-Thought Implementation
+1. Identify reasoning requirements
+2. Add "Let's think step by step" or equivalent
+3. Provide reasoning examples
+4. Structure expected reasoning steps
+5. Test reasoning quality
+6. Iterate on step guidance
 
-## 모범 사례
-- 지시사항은 구체적이고 명확해야 합니다.
-- 구조화된 출력 형식(JSON, XML) 사용
-- 복잡한 작업에 대한 예시 포함
-- 엣지 케이스 및 적대적 입력으로 테스트
-- 버전 관리 프롬프트
-- 신속한 성과 측정 및 추적
+### 3. Prompt Optimization
+1. Establish baseline metrics
+2. Identify failure patterns
+3. Adjust instructions for clarity
+4. Add/modify examples
+5. Tune output constraints
+6. Measure improvement
 
-## 안티 패턴
-| 안티 패턴 | 문제 | 올바른 접근 |
-|---------------|---------|------|
-| 모호한 지침 | 일관성 없는 출력 | 구체적이고 명시적이어야 합니다 |
-| 예시 없음 | 복잡한 작업에 대한 성능 저하 | 몇 장의 예시 추가 |
-| 구조화되지 않은 출력 | 구문 분석하기 어려움 | 형식을 명확하게 지정 |
-| 테스트 없음 | 알 수 없는 실패 모드 | 다양한 입력 테스트 |
-| 코드에서 프롬프트 | 반복하기 어려움 | 별도의 프롬프트 관리 |
+## Best Practices
+- Be specific and explicit in instructions
+- Use structured output formats (JSON, XML)
+- Include examples for complex tasks
+- Test with edge cases and adversarial inputs
+- Version control prompts
+- Measure and track prompt performance
+
+## Anti-Patterns
+| Anti-Pattern | Problem | Correct Approach |
+|--------------|---------|------------------|
+| Vague instructions | Inconsistent output | Be specific and explicit |
+| No examples | Poor performance on complex tasks | Add few-shot examples |
+| Unstructured output | Hard to parse | Specify format clearly |
+| No testing | Unknown failure modes | Test diverse inputs |
+| Prompt in code | Hard to iterate | Separate prompt management |

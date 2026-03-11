@@ -1,21 +1,21 @@
-# STRIDE 위협 모델링 방법론
+# STRIDE Threat Modeling Methodology
 
-## 개요
-STRIDE는 시스템 설계에서 보안 위협을 식별하기 위해 Microsoft에서 개발한 위협 모델링 프레임워크입니다.
+## Overview
+STRIDE is a threat modeling framework developed by Microsoft to identify security threats in system design.
 
-## 스트라이드 카테고리
+## STRIDE Categories
 
-### 스푸핑(S)
+### Spoofing (S)
 
-**정의:** 사물 또는 누군가의 명의를 도용하는 행위
+**Definition:** Impersonation of something or someone
 
-**예:**
-- 스푸핑된 사용자 인증
-- 가짜 API 엔드포인트
-- 이메일 스푸핑
-- 중간자 공격
+**Examples:**
+- Spoofed user authentication
+- Fake API endpoints
+- Email spoofing
+- Man-in-the-middle attacks
 
-**탐지:**
+**Detection:**
 ```python
 # Check for weak authentication
 def check_spoofing_risks(auth_mechanism):
@@ -29,24 +29,25 @@ def check_spoofing_risks(auth_mechanism):
     
     return risks
 ```
-**완화:**
-- 강력한 인증(비밀번호, 인증서, 생체인식)
-- 다단계 인증(MFA)
-- 인증서 고정
-- 유효한 인증서가 있는 HTTPS/TLS
-- 세션 관리 모범 사례
 
-### 탬퍼링(T)
+**Mitigations:**
+- Strong authentication (passwords, certificates, biometrics)
+- Multi-factor authentication (MFA)
+- Certificate pinning
+- HTTPS/TLS with valid certificates
+- Session management best practices
 
-**정의:** 데이터 또는 코드 수정
+### Tampering (T)
 
-**예:**
-- 데이터 주입 공격
-- 중간자 수정
-- 코드 주입
-- 매개변수 변조
+**Definition:** Modification of data or code
 
-**탐지:**
+**Examples:**
+- Data injection attacks
+- Man-in-the-middle modification
+- Code injection
+- Parameter tampering
+
+**Detection:**
 ```python
 # Check for integrity protection
 def check_tampering_protection(data_handling):
@@ -60,24 +61,25 @@ def check_tampering_protection(data_handling):
     
     return risks
 ```
-**완화:**
-- 디지털 서명
-- 해시 검증(SHA-256, SHA-3)
-- 체크섬
-- 데이터에 대한 접근 통제
-- 보안 통신 채널(TLS)
-- 코드 서명
 
-### 부인(R)
+**Mitigations:**
+- Digital signatures
+- Hash verification (SHA-256, SHA-3)
+- Checksums
+- Access controls on data
+- Secure communication channels (TLS)
+- Code signing
 
-**정의:** 사용자가 작업 수행을 거부합니다.
+### Repudiation (R)
 
-**예:**
-- 거래 거부
-- 감사 로그 변조
-- 부인방지 실패
+**Definition:** Users deny performing actions
 
-**탐지:**
+**Examples:**
+- Denial of transaction
+- Audit log tampering
+- Non-repudiation failures
+
+**Detection:**
 ```python
 # Check for audit logging
 def check_repudiation_prevention(logging_config):
@@ -91,25 +93,26 @@ def check_repudiation_prevention(logging_config):
     
     return risks
 ```
-**완화:**
-- 종합적인 감사 로깅
-- 불변의 감사 로그
-- 로그의 디지털 서명
-- 부인방지 서비스
-- 사용자 활동 추적
-- 시간 동기화
 
-### 정보 공개(I)
+**Mitigations:**
+- Comprehensive audit logging
+- Immutable audit logs
+- Digital signatures on logs
+- Non-repudiation services
+- User activity tracking
+- Time synchronization
 
-**정의:** 승인되지 않은 당사자에게 정보 노출
+### Information Disclosure (I)
 
-**예:**
-- 데이터 유출
-- 암호화되지 않은 민감한 데이터
-- 노출된 API
-- 보안되지 않은 데이터베이스
+**Definition:** Exposure of information to unauthorized parties
 
-**탐지:**
+**Examples:**
+- Data leakage
+- Unencrypted sensitive data
+- Exposed APIs
+- Unsecured databases
+
+**Detection:**
 ```python
 # Check for data protection
 def check_information_disclosure_risks(data_protection):
@@ -123,25 +126,26 @@ def check_information_disclosure_risks(data_protection):
     
     return risks
 ```
-**완화:**
-- 암호화(휴식은 AES-256, 전송은 TLS)
-- 접근 제어 및 최소 권한
-- 데이터 마스킹/익명화
-- 안전한 API 설계
-- 데이터 분류
-- 안전한 폐기
 
-### 서비스 거부(D)
+**Mitigations:**
+- Encryption (AES-256 for rest, TLS for transit)
+- Access controls and least privilege
+- Data masking/anonymization
+- Secure API design
+- Data classification
+- Secure disposal
 
-**정의:** 서비스 또는 액세스 거부
+### Denial of Service (D)
 
-**예:**
-- DDoS 공격
-- 자원 고갈
-- 애플리케이션 충돌
-- 네트워크 플러딩
+**Definition:** Denial of service or access
 
-**탐지:**
+**Examples:**
+- DDoS attacks
+- Resource exhaustion
+- Application crashes
+- Network flooding
+
+**Detection:**
 ```python
 # Check for DoS protections
 def check_dos_protections(infra_config):
@@ -155,26 +159,27 @@ def check_dos_protections(infra_config):
     
     return risks
 ```
-**완화:**
-- 속도 제한
-- 스로틀링
-- 로드 밸런싱
-- 중복성(다중 AZ, 다중 지역)
-- 자동 크기 조정
-- DDoS 보호 서비스
-- 회로 차단기
 
-### 권한 승격(E)
+**Mitigations:**
+- Rate limiting
+- Throttling
+- Load balancing
+- Redundancy (multi-AZ, multi-region)
+- Auto-scaling
+- DDoS protection services
+- Circuit breakers
 
-**정의:** 승인된 것보다 더 높은 권한을 얻습니다.
+### Elevation of Privilege (E)
 
-**예:**
-- 권한 상승 공격
-- 수평적/수직적 권한 상승
-- 손상된 액세스 제어
-- 관리자 인터페이스 노출
+**Definition:** Gaining higher privileges than authorized
 
-**탐지:**
+**Examples:**
+- Privilege escalation attacks
+- Horizontal/vertical privilege escalation
+- Broken access control
+- Admin interface exposure
+
+**Detection:**
 ```python
 # Check for privilege controls
 def check_privilege_controls(auth_config):
@@ -188,52 +193,54 @@ def check_privilege_controls(auth_config):
     
     return risks
 ```
-**완화:**
-- 최소 권한의 원칙
-- 역할 기반 액세스 제어(RBAC)
-- 권한 분리
-- 안전한 세션 관리
-- 정기 권한 감사
-- 입력 검증
 
-## 위협 모델링 프로세스
+**Mitigations:**
+- Principle of least privilege
+- Role-based access control (RBAC)
+- Privilege separation
+- Secure session management
+- Regular privilege audits
+- Input validation
 
-### 1단계: 시스템 분해
+## Threat Modeling Process
 
-**요소 식별:**
-- 데이터 저장소(데이터베이스, 파일 시스템)
-- 데이터 흐름(API 호출, 메시지 대기열)
-- 프로세스(서비스, 기능)
-- 외부 엔터티(사용자, 제3자 서비스)
+### Step 1: Decompose System
 
-**다이어그램 요소:**
+**Identify Elements:**
+- Data stores (databases, file systems)
+- Data flows (API calls, message queues)
+- Processes (services, functions)
+- External entities (users, third-party services)
+
+**Diagram Elements:**
 ```
 [User] --(HTTP)--> [Load Balancer] --(HTTP)--> [Web Server]
 Web Server --(SQL)--> [Database]
 Web Server --(gRPC)--> [Microservice A]
 Microservice A --(Kafka)--> [Microservice B]
 ```
-### 2단계: STRIDE 적용
 
-**각 요소에 대해:**
-1. 스푸핑될 수 있나요?
-2. 변조가 가능한가요?
-3. 부인할 수 있나요?
-4. 정보를 공개할 수 있나요?
-5. 서비스가 거부될 수 있나요?
-6. 권한을 높일 수 있나요?
+### Step 2: Apply STRIDE
 
-**예제 테이블:**
+**For Each Element:**
+1. Can it be spoofed?
+2. Can it be tampered with?
+3. Can it repudiate?
+4. Can information be disclosed?
+5. Can it be denied service?
+6. Can privileges be elevated?
 
-| 요소 | 스푸핑 | 조작 | 부인 | 정보 공개 | DoS | 고도 |
-|---------|------------|------------|---------------|------|------|------------|
-| 로그인 양식 | 예 | 아니요 | 예 | 예 | 예 | 예 |
-| 데이터베이스 | 예 | 예 | 아니요 | 예 | 예 | 예 |
-| API 게이트웨이 | 예 | 예 | 예 | 예 | 예 | 예 |
+**Example Table:**
 
-### 3단계: 위협 분석
+| Element | Spoofing | Tampering | Repudiation | Info Disclosure | DoS | Elevation |
+|---------|------------|------------|---------------|------------------|------|------------|
+| Login Form | Yes | No | Yes | Yes | Yes | Yes |
+| Database | Yes | Yes | No | Yes | Yes | Yes |
+| API Gateway | Yes | Yes | Yes | Yes | Yes | Yes |
 
-**위협 분석 프레임워크:**
+### Step 3: Analyze Threats
+
+**Threat Analysis Framework:**
 ```python
 def analyze_threat(threat, likelihood, impact):
     """
@@ -254,9 +261,10 @@ def analyze_threat(threat, likelihood, impact):
     
     return risk_matrix[(likelihood, impact)]
 ```
-### 4단계: 문서 조사 결과
 
-**위협 문서 템플릿:**
+### Step 4: Document Findings
+
+**Threat Documentation Template:**
 ```markdown
 ## Threat: [Title]
 
@@ -278,96 +286,97 @@ def analyze_threat(threat, likelihood, impact):
 ### Verification
 [How to verify the mitigation works]
 ```
-## 실제 예
 
-### 웹 애플리케이션 STRIDE 분석
+## Practical Examples
 
-**시스템 구성요소:**
-1. 사용자 브라우저
-2. 웹 서버(NGINX)
-3. 애플리케이션 서버(Node.js)
-4. 데이터베이스(PostgreSQL)
-5. 레디스 캐시
+### Web Application STRIDE Analysis
 
-**위협 분석:**
+**System Components:**
+1. User Browser
+2. Web Server (NGINX)
+3. Application Server (Node.js)
+4. Database (PostgreSQL)
+5. Redis Cache
 
-#### 사용자 브라우저
-- **스푸핑:** 피싱 공격
-- **조작:** 브라우저 확장
-- **부인:** 사용자 조치
-- **정보 공개:** 저장된 자격 증명
-- **DoS:** 브라우저 정지
-- **고도:** 해당 없음
+**Threat Analysis:**
 
-#### 웹 서버
-- **스푸핑:** DNS 스푸핑
-- **조작:** 구성 변조
-- **부인:** 액세스 로그
-- **정보 공개:** 헤더 유출
-- **DoS:** 리소스 고갈
-- **고도:** 해당 없음
+#### User Browser
+- **Spoofing:** Phishing attacks
+- **Tampering:** Browser extensions
+- **Repudiation:** User actions
+- **Info Disclosure:** Stored credentials
+- **DoS:** Browser freeze
+- **Elevation:** N/A
 
-#### 애플리케이션 서버
-- **스푸핑:** 세션 하이재킹
-- **조작:** 변조 요청
-- **부인:** 작업 로그
-- **정보 공개:** 오류 메시지
-- **DoS:** 메모리 고갈
-- **승격:** 권한 에스컬레이션
+#### Web Server
+- **Spoofing:** DNS spoofing
+- **Tampering:** Config tampering
+- **Repudiation:** Access logs
+- **Info Disclosure:** Headers leak
+- **DoS:** Resource exhaustion
+- **Elevation:** N/A
 
-#### 데이터베이스
-- **스푸핑:** SQL 주입
-- **조작:** 데이터 손상
-- **부인:** 거래 로그
-- **정보 공개:** 데이터 유출
-- **DoS:** 쿼리 과부하
-- **승격:** 관리자 에스컬레이션
+#### Application Server
+- **Spoofing:** Session hijacking
+- **Tampering:** Request tampering
+- **Repudiation:** Action logs
+- **Info Disclosure:** Error messages
+- **DoS:** Memory exhaustion
+- **Elevation:** Privilege escalation
 
-### API 게이트웨이 STRIDE 분석
+#### Database
+- **Spoofing:** SQL injection
+- **Tampering:** Data corruption
+- **Repudiation:** Transaction logs
+- **Info Disclosure:** Data leaks
+- **DoS:** Query overload
+- **Elevation:** Admin escalation
 
-**구성요소:**
-1. API 게이트웨이
-2. 마이크로서비스
-3. 메시지 큐
-4. 이벤트 버스
+### API Gateway STRIDE Analysis
 
-**주요 위협:**
+**Components:**
+1. API Gateway
+2. Microservices
+3. Message Queue
+4. Event Bus
 
-#### API 게이트웨이
-| 위협 | 설명 | 완화 |
+**Key Threats:**
+
+#### API Gateway
+| Threat | Description | Mitigation |
 |---------|-------------|------------|
-| 스푸핑 | 가짜 API 토큰 | JWT 검증, OAuth 2.0 |
-| 조작 | 수정요청 | 메시지 서명 |
-| 부인 | 요청 거부 | 로깅 요청 |
-| 정보 공개 | API 키 유출 | 안전한 저장 |
-| DoS | 비율 제한 우회 | 제한, WAF |
-| 고도 | 토큰 권한 상승 | 토큰 범위 |
+| Spoofing | Fake API tokens | JWT validation, OAuth 2.0 |
+| Tampering | Request modification | Message signing |
+| Repudiation | Request denial | Request logging |
+| Info Disclosure | API key leaks | Secure storage |
+| DoS | Rate limit bypass | Throttling, WAF |
+| Elevation | Token privilege escalation | Token scopes |
 
-#### 마이크로서비스 커뮤니케이션
-| 위협 | 설명 | 완화 |
+#### Microservice Communication
+| Threat | Description | Mitigation |
 |---------|-------------|------------|
-| 스푸핑 | 서비스 사칭 | mTLS |
-| 조작 | 메시지 변조 | 암호화 |
-| 부인 | 메시지 거부 | 감사 로깅 |
-| 정보 공개 | 데이터 유출 | 암호화 |
-| DoS | 대기열 오버플로 | 배압 |
-| 고도 | 서비스 인수 | 최소 권한 |
+| Spoofing | Service impersonation | mTLS |
+| Tampering | Message tampering | Encryption |
+| Repudiation | Message denial | Audit logging |
+| Info Disclosure | Data leakage | Encryption |
+| DoS | Queue overflow | Backpressure |
+| Elevation | Service takeover | Least privilege |
 
-## 도구 및 자동화
+## Tools and Automation
 
-### Microsoft 위협 모델링 도구
-- GUI 기반 위협 모델링
-- STRIDE 자동 적용
-- 다이어그램 시각화
-- 다양한 형식으로 내보내기
+### Microsoft Threat Modeling Tool
+- GUI-based threat modeling
+- STRIDE automatically applied
+- Diagram visualization
+- Export to multiple formats
 
-### OWASP 위협 드래곤
-- 웹 기반 위협 모델링
-- 협업 모델링
-- STRIDE 및 DREAD 모델
-- 다른 도구와의 통합
+### OWASP Threat Dragon
+- Web-based threat modeling
+- Collaborative modeling
+- STRIDE and DREAD models
+- Integration with other tools
 
-### PyTM(Python 위협 모델링)
+### PyTM (Python Threat Modeling)
 ```python
 #!/usr/bin/env python3
 from pytm import TM, Actor, Server, Datastore, Dataflow
@@ -384,7 +393,9 @@ webapp_to_db = Dataflow(webapp, db, "SQL Query")
 
 tm.process()
 ```
-### 사용자 정의 STRIDE 스크립트
+
+### Custom STRIDE Script
+
 ```python
 #!/usr/bin/env python3
 import yaml
@@ -429,25 +440,26 @@ if __name__ == '__main__':
     threats = modeler.model_threats()
     print(json.dumps(threats, indent=2))
 ```
-## 모범 사례
 
-1. **조기 시작:** 구현 후가 아닌 설계 중 위협 모델
-2. **반복:** 시스템이 발전함에 따라 위협 모델을 정기적으로 업데이트합니다.
-3. **우선순위:** 고위험, 고영향 위협에 집중
-4. **문서화:** 자세한 위협 문서를 보관하세요.
-5. **확인:** 완화 기능을 테스트하여 제대로 작동하는지 확인하세요.
-6. **팀 참여:** 보안, 개발, 운영팀 포함
+## Best Practices
 
-## 흔히 저지르는 실수
+1. **Start Early:** Threat model during design, not after implementation
+2. **Iterate:** Regularly update threat models as system evolves
+3. **Prioritize:** Focus on high-risk, high-impact threats
+4. **Document:** Keep detailed threat documentation
+5. **Verify:** Test mitigations to ensure they work
+6. **Involve Team:** Include security, development, and ops teams
 
-1. **위협 모델링만 구현:** 설계 중 모델링
-2. **비즈니스 로직 무시:** 비기술적 위협 고려
-3. **업데이트되지 않음:** 시스템 변경으로 모델을 최신 상태로 유지합니다.
-4. **구성요소 누락:** 모든 요소가 포함되어 있는지 확인하세요.
-5. **외부 종속성 간과:** 타사 서비스 포함
+## Common Mistakes
 
-## 참고자료
+1. **Only Threat Modeling Implementation:** Model during design
+2. **Ignoring Business Logic:** Consider non-technical threats
+3. **Not Updating:** Keep models current with system changes
+4. **Missing Components:** Ensure all elements are included
+5. **Overlooking External Dependencies:** Include third-party services
+
+## References
 
 - [Microsoft STRIDE](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling)
-- [OWASP 위협 모델링](https://owasp.org/www-community/threat_modeling)
-- [위협 모델링 치트 시트](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html)
+- [OWASP Threat Modeling](https://owasp.org/www-community/threat_modeling)
+- [Threat Modeling Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html)

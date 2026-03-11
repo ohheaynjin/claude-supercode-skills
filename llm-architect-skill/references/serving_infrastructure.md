@@ -1,110 +1,114 @@
-# 서비스 인프라 가이드
+# Serving Infrastructure Guide
 
-## 개요
+## Overview
 
-프로덕션 모델을 제공하려면 성능, 확장성, 안정성을 신중하게 고려해야 합니다.
+Production model serving requires careful consideration of performance, scalability, and reliability.
 
-## 제공 옵션
+## Serving Options
 
-### 1. API 기반 서비스
+### 1. API-Based Serving
 
-공급자 API(OpenAI, Anthropic 등) 사용
+Use provider APIs (OpenAI, Anthropic, etc.)
 
-**장점:**
-- 인프라 제로
-- 자동 스케일링
-- 모니터링 내장
-- 정기 업데이트
+**Pros:**
+- Zero infrastructure
+- Automatic scaling
+- Built-in monitoring
+- Regular updates
 
-**단점:**
-- 지속적인 비용
-- 데이터 개인 정보 보호 문제
-- 비율 제한
-- 외부 서비스에 대한 의존성
+**Cons:**
+- Ongoing costs
+- Data privacy concerns
+- Rate limits
+- Dependency on external services
 
-**최적의 용도:**
-- 개념 증명
-- 낮거나 중간 정도의 트래픽
-- ML 인프라팀 없음
-- 신속한 프로토타이핑
+**Best for:**
+- Proof of concept
+- Low to medium traffic
+- No ML infrastructure team
+- Rapid prototyping
 
-### 2. 자체 호스팅 서비스
+### 2. Self-Hosted Serving
 
-자체 인프라에 모델 배포
+Deploy models on your own infrastructure
 
-**장점:**
-- 모든 권한
-- 데이터 개인정보 보호
-- 예측 가능한 비용
-- 맞춤 최적화
+**Pros:**
+- Full control
+- Data privacy
+- Predictable costs
+- Custom optimizations
 
-**단점:**
-- 인프라 구축
-- 유지관리 간접비
-- 확장 복잡성
-- 초기비용이 높다
+**Cons:**
+- Infrastructure setup
+- Maintenance overhead
+- Scaling complexity
+- Higher initial cost
 
-**최적의 용도:**
-- 대량 생산
-- 민감한 데이터
-- 맞춤형 모델
-- 규모에 따른 비용 최적화
+**Best for:**
+- High volume production
+- Sensitive data
+- Custom models
+- Cost optimization at scale
 
-## 서빙 프레임워크
+## Serving Frameworks
 
 ### vLLM
 
-PagedAttention을 통한 높은 처리량 제공.
+High-throughput serving with PagedAttention.
 
-**설치:**
+**Installation:**
 ```bash
 pip install vllm
 ```
-**용법:**
+
+**Usage:**
 ```bash
 python -m vllm.entrypoints.api_server \
     --model meta-llama/Llama-2-7b-hf \
     --port 8000 \
     --tensor-parallel-size 4
 ```
-**장점:**
-- 10~20배 더 높은 처리량
-- 낮은 대기 시간
-- 지속적인 일괄 처리
-- OpenAI 호환 API
 
-**단점:**
-- 최신, 덜 전투 테스트됨
-- 제한된 모델 지원
+**Pros:**
+- 10-20x higher throughput
+- Low latency
+- Continuous batching
+- OpenAI-compatible API
 
-### 텍스트 생성 WebUI(Oobabooga)
+**Cons:**
+- Newer, less battle-tested
+- Limited model support
 
-모델 제공을 위한 기능이 풍부한 웹 인터페이스입니다.
+### Text Generation WebUI (Oobabooga)
 
-**특징:**
-- 웹 UI
-- 다중 모델 지원
-- 확장 생태계
-- API 액세스
+Feature-rich web interface for model serving.
 
-**설정:**
+**Features:**
+- Web UI
+- Multiple model support
+- Extensions ecosystem
+- API access
+
+**Setup:**
 ```bash
 git clone https://github.com/oobabooga/text-generation-webui
 cd text-generation-webui
 python server.py --model-path /path/to/model --listen
 ```
-### 로컬AI
 
-로컬 모델을 위한 OpenAI 호환 API입니다.
+### LocalAI
 
-**설정:**
+OpenAI-compatible API for local models.
+
+**Setup:**
 ```bash
 docker run -p 8080:8080 \
     -v /models:/models \
     localai/localai \
     --models-path /models
 ```
-**OpenAI 클라이언트 사용:**
+
+**Use OpenAI client:**
 ```python
 from openai import OpenAI
 
@@ -113,11 +117,12 @@ client = OpenAI(
     api_key="not-needed"
 )
 ```
-## 배포 전략
 
-### 도커 배포
+## Deployment Strategies
 
-**도커파일:**
+### Docker Deployment
+
+**Dockerfile:**
 ```dockerfile
 FROM python:3.10-slim
 
@@ -130,14 +135,16 @@ COPY ./models ./models
 
 CMD ["uvicorn", "model:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
-**빌드 및 실행:**
+
+**Build and Run:**
 ```bash
 docker build -t model-server .
 docker run -p 8000:8000 --gpus all model-server
 ```
-### 쿠버네티스 배포
 
-**배포 YAML:**
+### Kubernetes Deployment
+
+**Deployment YAML:**
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -162,7 +169,8 @@ spec:
           limits:
             nvidia.com/gpu: 1
 ```
-**서비스:**
+
+**Service:**
 ```yaml
 apiVersion: v1
 kind: Service
@@ -176,9 +184,10 @@ spec:
     targetPort: 8000
   type: LoadBalancer
 ```
-### 서버리스 배포
 
-**AWS 람다:**
+### Serverless Deployment
+
+**AWS Lambda:**
 ```python
 import json
 
@@ -190,9 +199,11 @@ def lambda_handler(event, context):
         'body': json.dumps({'output': response})
     }
 ```
-## 성능 최적화
 
-### 일괄 처리
+## Performance Optimization
+
+### Batch Processing
+
 ```python
 @app.post("/batch_generate")
 async def batch_generate(requests: List[GenerationRequest]):
@@ -202,7 +213,9 @@ async def batch_generate(requests: List[GenerationRequest]):
         outputs.append(output)
     return outputs
 ```
-### 캐싱
+
+### Caching
+
 ```python
 from functools import lru_cache
 
@@ -210,7 +223,9 @@ from functools import lru_cache
 def cached_generate(prompt_hash):
     return generate(original_prompt)
 ```
-### 양자화
+
+### Quantization
+
 ```python
 from transformers import BitsAndBytesConfig
 
@@ -223,23 +238,27 @@ model = AutoModelForCausalLM.from_pretrained(
     quantization_config=quantization_config
 )
 ```
-### 스트림 응답
+
+### Stream Responses
+
 ```python
 async def stream_generate(prompt):
     for token in model.generate_stream(prompt):
         yield token
 ```
-## 모니터링
 
-### 주요 지표
+## Monitoring
 
-1. **처리량**: 초당 요청
-2. **지연 시간**: P50, P95, P99 응답 시간
-3. **오류율**: 요청 실패
-4. **GPU 활용률**: 컴퓨팅 효율성
-5. **메모리 사용량**: VRAM 소비
+### Key Metrics
 
-### 프로메테우스 통합
+1. **Throughput**: Requests per second
+2. **Latency**: P50, P95, P99 response times
+3. **Error Rate**: Failed requests
+4. **GPU Utilization**: Compute efficiency
+5. **Memory Usage**: VRAM consumption
+
+### Prometheus Integration
+
 ```python
 from prometheus_client import Counter, Histogram
 
@@ -253,7 +272,9 @@ async def generate(request: GenerationRequest):
         request_counter.inc()
         return output
 ```
-### 상태 점검
+
+### Health Checks
+
 ```python
 @app.get("/health")
 async def health():
@@ -263,13 +284,14 @@ async def health():
         "memory_used": torch.cuda.memory_allocated()
     }
 ```
-## 스케일링
 
-### 수평 확장
+## Scaling
 
-증가된 로드를 처리하려면 인스턴스를 더 추가하세요.
+### Horizontal Scaling
 
-**쿠버네티스 HPA:**
+Add more instances to handle increased load.
+
+**Kubernetes HPA:**
 ```yaml
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -290,17 +312,19 @@ spec:
         type: Utilization
         averageUtilization: 80
 ```
-### 수직 확장
 
-인스턴스당 리소스를 늘립니다.
+### Vertical Scaling
 
-**GPU 유형:**
-- A100(40GB/80GB): 최고의 성능
-- V100(16GB/32GB): 밸런스 좋음
-- T4(16GB): 가성비
-- L4(24GB): 최신 옵션
+Increase resources per instance.
 
-### 로드 밸런싱
+**GPU Types:**
+- A100 (40GB/80GB): Best performance
+- V100 (16GB/32GB): Good balance
+- T4 (16GB): Cost-effective
+- L4 (24GB): Newer option
+
+### Load Balancing
+
 ```nginx
 upstream model_servers {
     least_conn;
@@ -316,15 +340,16 @@ server {
     }
 }
 ```
-## 모범 사례
 
-1. **FastAPI 사용**: 비동기, 유형 안전, 자동 문서
-2. **비율 제한 구현**: 남용 방지
-3. **인증 추가**: 보안 엔드포인트
-4. **모든 것을 기록**: 디버깅 및 모니터링
-5. **버전 모델**: 간편한 롤백
-6. **우아한 종료**: 연결을 적절하게 처리합니다.
-7. **상태 확인**: Kubernetes 준비
-8. **리소스 제한**: 메모리 누수 방지
-9. **검증 요청**: Pydantic 모델 사용
-10. **지속적으로 모니터링**: 문제를 조기에 감지
+## Best Practices
+
+1. **Use FastAPI**: Async, type-safe, automatic docs
+2. **Implement rate limiting**: Prevent abuse
+3. **Add authentication**: Secure endpoints
+4. **Log everything**: Debugging and monitoring
+5. **Version models**: Easy rollbacks
+6. **Graceful shutdown**: Handle connections properly
+7. **Health checks**: Kubernetes ready
+8. **Resource limits**: Prevent memory leaks
+9. **Request validation**: Use Pydantic models
+10. **Monitor continuously**: Detect issues early

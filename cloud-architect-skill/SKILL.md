@@ -24,14 +24,13 @@ description: 비용 최적화, 인프라 설계 및 엔터프라이즈 클라우
 - 클라우드 비용 및 리소스 활용 최적화
 - 클라우드 거버넌스 및 보안 설정
 
-**다음과 같은 경우에는 호출하지 마세요.**
+**다음과 같은 경우에는 호출하지 마세요**
 - Terraform/IaC 코드 작성(terraform-engineer 사용)
 - Kubernetes 클러스터 관리(kubernetes-specialist 사용)
 - CI/CD 파이프라인 구현(devops-engineer 사용)
 - Azure 관련 인프라(azure-infra-engineer 사용)
 
-## 의사결정 프레임워크
-```
+## 의사결정 프레임워크```
 Cloud Provider Selection:
 ├── Enterprise with Microsoft stack → Azure
 ├── Startup/Web-native → AWS or GCP
@@ -46,7 +45,8 @@ Service Type Selection:
 ├── Legacy applications → VMs (EC2, Compute Engine)
 └── Event-driven → Event services (EventBridge, Pub/Sub)
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. 클라우드 아키텍처 설계
 1. 요구사항 및 제약사항 수집

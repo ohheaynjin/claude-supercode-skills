@@ -1,332 +1,336 @@
-# 아키텍처 보안 체크리스트
+# Architecture Security Checklist
 
-## 개요
-소프트웨어 아키텍처 및 디자인 검토를 위한 포괄적인 보안 체크리스트입니다.
+## Overview
+Comprehensive security checklist for reviewing software architecture and design.
 
-## 일반 보안 원칙
+## General Security Principles
 
-### 보안 설계
-- [ ] 보안은 처음부터 고려됩니다.
-- [ ] 설계 단계에서 수행된 위협 모델링
-- [ ] 보안 요구 사항이 문서화되었습니다.
-- [ ] 개발 수명주기에 보안 테스트가 포함됨
-- [ ] 정기 보안 검토 예정
+### Security by Design
+- [ ] Security is considered from the beginning
+- [ ] Threat modeling conducted during design phase
+- [ ] Security requirements documented
+- [ ] Security testing included in development lifecycle
+- [ ] Regular security reviews scheduled
 
-### 심층 방어
-- [ ] 여러 계층의 보안 제어
-- [ ] 보안에 단일 장애 지점 없음
-- [ ] 네트워크, 애플리케이션, 데이터 수준의 방어
-- [ ] 중복된 보안 조치
-- [ ] 오류 방지 메커니즘
+### Defense in Depth
+- [ ] Multiple layers of security controls
+- [ ] No single point of failure in security
+- [ ] Defense at network, application, and data levels
+- [ ] Redundant security measures
+- [ ] Fail-safe mechanisms
 
-### 최소 권한 원칙
-- [ ] 사용자에게는 최소한의 필수 권한이 있습니다.
-- [ ] 서비스는 최소한의 권한으로 실행됩니다.
-- [ ] 범위가 적절하게 지정된 타사 통합
-- [ ] 사용자 권한과 분리된 관리자 권한
-- [ ] 정기적인 특권 감사 실시
+### Principle of Least Privilege
+- [ ] Users have minimum necessary permissions
+- [ ] Services run with minimal privileges
+- [ ] Third-party integrations scoped properly
+- [ ] Admin privileges separated from user privileges
+- [ ] Regular privilege audits conducted
 
-## 인증 및 승인
+## Authentication and Authorization
 
-### 인증 설계
-- [ ] 강력한 비밀번호 정책 시행
-- [ ] bcrypt, Argon2 또는 scrypt를 사용한 비밀번호 해싱
-- [ ] 다단계 인증(MFA) 구현
-- [ ] 세션 관리 보안(시간 초과, 순환)
-- [ ] 안전한 비밀번호 재설정 메커니즘
-- [ ] 시도 실패 후 계정 잠금
-- [ ] 민감한 작업을 위한 CAPTCHA
-- [ ] 소셜 로그인을 위한 OAuth 2.0 / OpenID Connect
-- [ ] JWT 토큰이 올바르게 서명되고 검증되었습니다.
-- [ ] 새로 고침 토큰 메커니즘 구현
+### Authentication Design
+- [ ] Strong password policies enforced
+- [ ] Password hashing with bcrypt, Argon2, or scrypt
+- [ ] Multi-factor authentication (MFA) implemented
+- [ ] Session management secure (timeout, rotation)
+- [ ] Secure password reset mechanism
+- [ ] Account lockout after failed attempts
+- [ ] CAPTCHA for sensitive operations
+- [ ] OAuth 2.0 / OpenID Connect for social login
+- [ ] JWT tokens properly signed and validated
+- [ ] Refresh token mechanism implemented
 
-### 권한 부여 디자인
-- [ ] 역할 기반 액세스 제어(RBAC)
-- [ ] 필요한 경우 속성 기반 액세스 제어(ABAC)
-- [ ] 모든 엔드포인트에 대한 권한 부여 확인
-- [ ] 관리 인터페이스가 보호됨
-- [ ] API 액세스 범위가 적절하게 지정됨
-- [ ] 데이터베이스 액세스가 제한됨
-- [ ] 서버 액세스 제어
-- [ ] 제3자 액세스가 제한되고 모니터링됩니다.
+### Authorization Design
+- [ ] Role-based access control (RBAC)
+- [ ] Attribute-based access control (ABAC) if needed
+- [ ] Authorization checks on all endpoints
+- [ ] Admin interfaces protected
+- [ ] API access properly scoped
+- [ ] Database access restricted
+- [ ] Server access controlled
+- [ ] Third-party access limited and monitored
 
-### 신원 관리
-- [ ] 중앙 집중식 ID 관리
-- [ ] 해당하는 경우 SSO(Single Sign-On)
-- [ ] 사용자 라이프사이클 관리(온보딩/오프보딩)
-- [ ] ID 페더레이션이 고려됨
-- [ ] 데이터 처리에 대한 사용자 동의
-- [ ] 삭제 권리 구현
+### Identity Management
+- [ ] Centralized identity management
+- [ ] Single sign-on (SSO) where appropriate
+- [ ] User lifecycle management (onboarding/offboarding)
+- [ ] Identity federation considered
+- [ ] User consent for data processing
+- [ ] Right to erasure implemented
 
-## 데이터 보호
+## Data Protection
 
-### 데이터 분류
-- [ ] 적절하게 분류된 데이터(공개, 내부, 기밀, 제한)
-- [ ] 분류 라벨이 문서화됨
-- [ ] 분류별 처리절차
-- [ ] 보존 정책이 정의됨
-- [ ] 폐기 절차가 확보되어 있습니다.
+### Data Classification
+- [ ] Data properly classified (public, internal, confidential, restricted)
+- [ ] Classification labels documented
+- [ ] Handling procedures for each classification
+- [ ] Retention policies defined
+- [ ] Disposal procedures secure
 
-### 암호화
-- [ ] 미사용 데이터 암호화(AES-256)
-- [ ] 전송 중 암호화된 데이터(TLS 1.2+)
-- [ ] 암호화 키가 적절하게 관리됨
-- [ ] 키 순환 정책이 시행 중입니다.
-- [ ] 중요한 키를 위한 하드웨어 보안 모듈(HSM)
-- [ ] 해당하는 경우 중요하지 않은 데이터에 대한 암호화가 비활성화됩니다.
+### Encryption
+- [ ] Data encrypted at rest (AES-256)
+- [ ] Data encrypted in transit (TLS 1.2+)
+- [ ] Encryption keys properly managed
+- [ ] Key rotation policy in place
+- [ ] Hardware security modules (HSM) for critical keys
+- [ ] Encryption disabled for non-sensitive data where appropriate
 
-### 데이터 저장
-- [ ] 중요한 데이터 격리
-- [ ] 데이터베이스 액세스 제어
-- [ ] 백업 암호화 구현
-- [ ] 비생산을 위한 데이터 마스킹
-- [ ] 안전한 삭제 절차
-- [ ] 데이터 최소화 원칙 준수
+### Data Storage
+- [ ] Sensitive data isolated
+- [ ] Database access controlled
+- [ ] Backup encryption implemented
+- [ ] Data masking for non-production
+- [ ] Secure deletion procedures
+- [ ] Data minimization principles followed
 
-## 네트워크 보안
+## Network Security
 
-### 네트워크 아키텍처
-- [ ] 네트워크 분할 구현
-- [ ] 공공 서비스를 위한 DMZ
-- [ ] 내부 서비스용 프라이빗 서브넷
-- [ ] VPC/VNet 격리
-- [ ] 네트워크 액세스 제어 목록(ACL)
-- [ ] 소프트웨어 정의 네트워킹 제어
+### Network Architecture
+- [ ] Network segmentation implemented
+- [ ] DMZ for public-facing services
+- [ ] Private subnets for internal services
+- [ ] VPC/VNet isolation
+- [ ] Network access control lists (ACLs)
+- [ ] Software-defined networking controls
 
-### 방화벽 구성
-- [ ] 기본 거부 방화벽 규칙
-- [ ] 필요한 포트만 열림
-- [ ] 인바운드 및 아웃바운드 필터링
-- [ ] 웹 애플리케이션 방화벽(WAF) 구축
-- [ ] DDoS 보호 활성화됨
-- [ ] 정기 방화벽 규칙 검토
+### Firewall Configuration
+- [ ] Default-deny firewall rules
+- [ ] Only necessary ports open
+- [ ] Inbound and outbound filtering
+- [ ] Web Application Firewall (WAF) deployed
+- [ ] DDoS protection enabled
+- [ ] Regular firewall rule reviews
 
-### 안전한 통신
-- [ ] 모든 서비스에 HTTPS/TLS가 적용됩니다.
-- [ ] 신뢰할 수 있는 CA의 유효한 인증서
-- [ ] HSTS 활성화됨
-- [ ] 해당되는 경우 인증서 고정
-- [ ] 내부 서비스에서는 mTLS를 사용합니다.
-- [ ] API 게이트웨이는 보안 정책을 시행합니다.
+### Secure Communication
+- [ ] HTTPS/TLS enforced for all services
+- [ ] Valid certificates from trusted CAs
+- [ ] HSTS enabled
+- [ ] Certificate pinning where appropriate
+- [ ] Internal services use mTLS
+- [ ] API gateways enforce security policies
 
-## 애플리케이션 보안
+## Application Security
 
-### 입력 유효성 검사
-- [ ] 모든 사용자 입력이 검증되었습니다.
-- [ ] 입력 삭제 구현
-- [ ] 유형 검사 시행
-- [ ] 입력 길이 제한
-- [ ] 블랙리스트보다 화이트리스트 검증이 선호됩니다.
-- [ ] 파일 업로드 제한(유형, 크기, 내용)### 출력 인코딩
-- [ ] HTML 출력 인코딩됨
-- [ ] JavaScript 출력이 인코딩되었습니다.
-- [ ] 필요한 경우 URL 인코딩
-- [ ] JSON 출력이 올바른 형식으로 지정되었습니다.
-- [ ] 오류 메시지에 민감한 데이터가 없습니다.
-- [ ] 사용자에게 보내는 일반적인 오류 메시지
+### Input Validation
+- [ ] All user inputs validated
+- [ ] Input sanitization implemented
+- [ ] Type checking enforced
+- [ ] Length limits on inputs
+- [ ] Whitelist validation preferred over blacklist
+- [ ] File upload restrictions (type, size, content)
 
-### 시큐어코딩
-- [ ] 데이터베이스 액세스를 위한 매개변수화된 쿼리
-- [ ] 준비된 진술이 사용됨
-- [ ] 데이터베이스 작업을 위한 ORM
-- [ ] eval() 또는 이와 유사한 위험한 함수가 없습니다.
-- [ ] 하드코딩된 자격 증명 없음
-- [ ] 종속성 취약점 스캔
+### Output Encoding
+- [ ] HTML output encoded
+- [ ] JavaScript output encoded
+- [ ] URL encoding where needed
+- [ ] JSON output properly formatted
+- [ ] No sensitive data in error messages
+- [ ] Generic error messages to users
 
-### API 보안
-- [ ] API 버전 관리 구현
-- [ ] 속도 제한이 구성됨
-- [ ] API 키 인증
-- [ ] 인증을 위한 OAuth 2.0 / JWT
-- [ ] API 문서 보안 검토
-- [ ] 중앙 집중식 제어를 위한 API 게이트웨이
-- [ ] CORS가 올바르게 구성되었습니다.
+### Secure Coding
+- [ ] Parameterized queries for database access
+- [ ] Prepared statements used
+- [ ] ORM for database operations
+- [ ] No eval() or similar dangerous functions
+- [ ] No hardcoded credentials
+- [ ] Dependency vulnerability scanning
 
-## 인프라 보안
+### API Security
+- [ ] API versioning implemented
+- [ ] Rate limiting configured
+- [ ] API key authentication
+- [ ] OAuth 2.0 / JWT for authentication
+- [ ] API documentation security reviewed
+- [ ] API gateway for centralized controls
+- [ ] CORS properly configured
 
-### 클라우드 보안
-- [ ] 클라우드 보안 그룹이 올바르게 구성됨
-- [ ] 최소 권한이 있는 IAM 역할
-- [ ] 클라우드 스토리지에 대해 미사용 암호화가 활성화되었습니다.
-- [ ] 클라우드 보안 서비스 활성화(GuardDuty 등)
-- [ ] 클라우드 구성 규정 준수 확인됨
-- [ ] 클라우드 콘솔을 위한 다단계 인증
+## Infrastructure Security
 
-### 컨테이너 보안
-- [ ] 최소한의 기본 이미지 사용
-- [ ] 컨테이너는 루트가 아닌 사용자로 실행됩니다.
-- [ ] 가능한 경우 읽기 전용 루트 파일 시스템
-- [ ] 리소스 제한이 구성됨
-- [ ] 컨테이너 이미지 스캐닝
-- [ ] Kubernetes 보안 정책(PodSecurityPolicy)
-- [ ] 컨테이너에 대한 비밀 관리
+### Cloud Security
+- [ ] Cloud security groups properly configured
+- [ ] IAM roles with least privilege
+- [ ] Encryption at rest enabled for cloud storage
+- [ ] Cloud security services enabled (GuardDuty, etc.)
+- [ ] Cloud configuration compliance checked
+- [ ] Multi-factor authentication for cloud console
 
-### 서버 강화
-- [ ] 정기적으로 업데이트되는 운영 체제
-- [ ] 불필요한 서비스가 비활성화되었습니다.
-- [ ] 보안 SSH 구성
-- [ ] 호스트 기반 방화벽
-- [ ] 침입 탐지/방지 시스템
-- [ ] 파일 무결성 모니터링
-- [ ] 로그 모니터링 활성화됨
+### Container Security
+- [ ] Minimal base images used
+- [ ] Containers run as non-root user
+- [ ] Read-only root filesystem where possible
+- [ ] Resource limits configured
+- [ ] Container image scanning
+- [ ] Kubernetes security policies (PodSecurityPolicy)
+- [ ] Secrets management for containers
 
-## 로깅 및 모니터링
+### Server Hardening
+- [ ] Operating system updated regularly
+- [ ] Unnecessary services disabled
+- [ ] Secure SSH configuration
+- [ ] Host-based firewalls
+- [ ] Intrusion detection/prevention systems
+- [ ] File integrity monitoring
+- [ ] Log monitoring enabled
 
-### 로깅
-- [ ] 포괄적인 로깅 구현
-- [ ] 보안 이벤트가 기록되었습니다.
-- [ ] 로그 형식 표준화
-- [ ] 로그 순환이 구성됨
-- [ ] 안전한 로그 저장(암호화, 액세스 제어)
-- [ ] 로그가 정기적으로 백업됩니다.
-- [ ] 로그에 민감한 데이터가 없습니다.
+## Logging and Monitoring
 
-### 모니터링
-- [ ] 실시간 보안 모니터링
-- [ ] 의심스러운 활동에 대한 경고
-- [ ] 성능 모니터링
-- [ ] 이상 탐지
-- [ ] 가동시간 모니터링
-- [ ] 네트워크 트래픽 모니터링
+### Logging
+- [ ] Comprehensive logging implemented
+- [ ] Security events logged
+- [ ] Log format standardized
+- [ ] Log rotation configured
+- [ ] Secure log storage (encrypted, access-controlled)
+- [ ] Logs backed up regularly
+- [ ] No sensitive data in logs
 
-### 사고 대응
-- [ ] 사고 대응 계획이 문서화됨
-- [ ] 대응팀 확인
-- [ ] 에스컬레이션 절차 정의
-- [ ] 커뮤니케이션 계획 수립
-- [ ] 사고 후 검토 수행
-- [ ] 학습한 내용을 문서화했습니다.
+### Monitoring
+- [ ] Real-time security monitoring
+- [ ] Alerting for suspicious activities
+- [ ] Performance monitoring
+- [ ] Anomaly detection
+- [ ] Uptime monitoring
+- [ ] Network traffic monitoring
 
-## 규정 준수 및 거버넌스
+### Incident Response
+- [ ] Incident response plan documented
+- [ ] Response team identified
+- [ ] Escalation procedures defined
+- [ ] Communication plan in place
+- [ ] Post-incident reviews conducted
+- [ ] Lessons learned documented
 
-### 규정 준수
-- [ ] GDPR 요구 사항 해결
-- [ ] PCI DSS 요구 사항 충족(해당하는 경우)
-- [ ] HIPAA 요구 사항 충족(해당되는 경우)
-- [ ] SOC 2 제어 구현(해당하는 경우)
-- [ ] 산업별 규정 준수 확인됨
-- [ ] 정기 규정 준수 감사 예정
+## Compliance and Governance
 
-### 개인정보 보호
-- [ ] 개인정보 보호정책 게시
-- [ ] 동의 관리 구현
-- [ ] 데이터 주체 권리 지원
-- [ ] 쿠키 배너 준수
-- [ ] 데이터 처리 계약이 체결되어 있습니다.
-- [ ] 개인정보 영향 평가 실시
+### Regulatory Compliance
+- [ ] GDPR requirements addressed
+- [ ] PCI DSS requirements met (if applicable)
+- [ ] HIPAA requirements met (if applicable)
+- [ ] SOC 2 controls implemented (if applicable)
+- [ ] Industry-specific compliance verified
+- [ ] Regular compliance audits scheduled
 
-### 보안 거버넌스
-- [ ] 보안 정책이 문서화됨
-- [ ] 보안 표준 정의
-- [ ] 보안 절차 확립
-- [ ] 보안 교육 제공
-- [ ] 보안 인식 프로그램
-- [ ] 정기 보안 검토
+### Privacy
+- [ ] Privacy policy published
+- [ ] Consent management implemented
+- [ ] Data subject rights supported
+- [ ] Cookie banners compliant
+- [ ] Data processing agreements in place
+- [ ] Privacy impact assessments conducted
+
+### Security Governance
+- [ ] Security policies documented
+- [ ] Security standards defined
+- [ ] Security procedures established
+- [ ] Security training provided
+- [ ] Security awareness programs
+- [ ] Regular security reviews
 
 ## DevSecOps
 
-### 보안 CI/CD
-- [ ] 코드 검토 프로세스
-- [ ] CI/CD의 자동화된 보안 테스트
-- [ ] 커밋에 대한 비밀 검색
-- [ ] 종속성 취약점 스캔
-- [ ] 컨테이너 이미지 스캐닝
-- [ ] 코드 보안 검사로서의 인프라
-- [ ] 롤백 절차
+### Secure CI/CD
+- [ ] Code review process
+- [ ] Automated security testing in CI/CD
+- [ ] Secret scanning for commits
+- [ ] Dependency vulnerability scanning
+- [ ] Container image scanning
+- [ ] Infrastructure as code security checks
+- [ ] Rollback procedures
 
-### 배포 보안
-- [ ] 프로덕션 배포 승인
-- [ ] 블루/그린 배포
-- [ ] Canary 릴리스
-- [ ] 배포 후 확인
-- [ ] 변경 관리 프로세스
-- [ ] 배포 문서
+### Deployment Security
+- [ ] Production deployment approvals
+- [ ] Blue/green deployments
+- [ ] Canary releases
+- [ ] Post-deployment verification
+- [ ] Change management process
+- [ ] Deployment documentation
 
-## 제3자 및 공급업체 보안
+## Third-Party and Vendor Security
 
-### 공급업체 관리
-- [ ] 공급업체 보안 평가 수행
-- [ ] 계약에 보안 요구 사항이 포함되어 있습니다.
-- [ ] SLA에는 보안 지표가 포함됩니다.
-- [ ] 공급업체 액세스가 모니터링됨
-- [ ] 정기적인 공급업체 리뷰### 공급망 보안
-- [ ] 종속성 조사 프로세스
-- [ ] SBOM(Software Bill of Materials) 유지
-- [ ] 종속성에 대한 취약점 모니터링
-- [ ] 대체 공급업체 식별
-- [ ] 공급망 사고 대응 계획
+### Vendor Management
+- [ ] Vendor security assessments conducted
+- [ ] Contracts include security requirements
+- [ ] SLAs include security metrics
+- [ ] Vendor access monitored
+- [ ] Regular vendor reviews
 
-## 물리적 보안
+### Supply Chain Security
+- [ ] Dependency vetting process
+- [ ] SBOM (Software Bill of Materials) maintained
+- [ ] Vulnerability monitoring for dependencies
+- [ ] Alternative vendors identified
+- [ ] Supply chain incident response plan
 
-### 접근 제어
-- [ ] 물리적 액세스 제어 구현
-- [ ] 배지/카드 시스템 사용
-- [ ] 방문객 관리
-- [ ] 확보지역 지정
-- [ ] 액세스 로그가 유지됩니다.
+## Physical Security
 
-### 장비 보안
-- [ ] 서버실이 잠겼습니다.
-- [ ] 워크스테이션 보안 정책
-- [ ] 모바일 장치 관리
-- [ ] 노트북 암호화 필요
-- [ ] 안전한 폐기 절차
+### Access Control
+- [ ] Physical access controls implemented
+- [ ] Badge/card systems used
+- [ ] Visitor management
+- [ ] Secure area designation
+- [ ] Access logs maintained
 
-## 비즈니스 연속성
+### Equipment Security
+- [ ] Server rooms locked
+- [ ] Workstation security policies
+- [ ] Mobile device management
+- [ ] Laptop encryption required
+- [ ] Secure disposal procedures
 
-### 재해 복구
-- [ ] 재해 복구 계획 문서화
-- [ ] 백업 전략 구현
-- [ ] 오프사이트 백업
-- [ ] 백업 암호화
-- [ ] 정기 백업 테스트
-- [ ] RTO 및 RPO 정의
+## Business Continuity
 
-### 고가용성
-- [ ] 중복 인프라
-- [ ] 로드 밸런싱
-- [ ] 지리적 분포
-- [ ] 페일오버 절차 테스트 완료
-- [ ] 부하 시 성능 검증
+### Disaster Recovery
+- [ ] Disaster recovery plan documented
+- [ ] Backup strategy implemented
+- [ ] Offsite backups
+- [ ] Backup encryption
+- [ ] Regular backup testing
+- [ ] RTO and RPO defined
 
-## 위험 관리
+### High Availability
+- [ ] Redundant infrastructure
+- [ ] Load balancing
+- [ ] Geographic distribution
+- [ ] Failover procedures tested
+- [ ] Performance under load verified
 
-### 위험 평가
-- [ ] 위험 식별 프로세스
-- [ ] 위험 분석 방법론
-- [ ] 위험 점수 시스템
-- [ ] 위험 처리 결정
-- [ ] 위험 등록부가 유지됨
-- [ ] 정기적인 위험 검토
+## Risk Management
 
-### 보안 테스트
-- [ ] 정기 침투 테스트
-- [ ] 취약점 스캔 일정
-- [ ] 코드 보안 검토
-- [ ] 애플리케이션 보안 테스트
-- [ ] 레드팀 연습
-- [ ] 제3자 보안 평가
+### Risk Assessment
+- [ ] Risk identification process
+- [ ] Risk analysis methodology
+- [ ] Risk scoring system
+- [ ] Risk treatment decisions
+- [ ] Risk register maintained
+- [ ] Regular risk reviews
 
-## 문서
+### Security Testing
+- [ ] Regular penetration testing
+- [ ] Vulnerability scanning schedule
+- [ ] Code security reviews
+- [ ] Application security testing
+- [ ] Red team exercises
+- [ ] Third-party security assessments
 
-### 보안 문서
-- [ ] 아키텍처 문서
-- [ ] 보안 통제 문서화
-- [ ] 사고 대응 절차
-- [ ] 일반적인 사건에 대한 플레이북
-- [ ] 연락처 정보가 문서화되어 있음
-- [ ] 정기적인 문서 업데이트
+## Documentation
 
-### 지식 공유
-- [ ] 보안 지식 기반
-- [ ] 교육 자료 이용 가능
-- [ ] 위협 인텔리전스 공유
-- [ ] 업계 위협 피드 모니터링
-- [ ] 보안 커뮤니티 참여
+### Security Documentation
+- [ ] Architecture documentation
+- [ ] Security controls documented
+- [ ] Incident response procedures
+- [ ] Playbooks for common incidents
+- [ ] Contact information documented
+- [ ] Regular documentation updates
 
-## 참고자료
+### Knowledge Sharing
+- [ ] Security knowledge base
+- [ ] Training materials available
+- [ ] Threat intelligence sharing
+- [ ] Industry threat feeds monitored
+- [ ] Security community participation
 
-- [OWASP 상위 10위](https://owasp.org/www-project-top-ten/)
-- [NIST 사이버보안 프레임워크](https://www.nist.gov/cyberframework)
-- [CIS 통제](https://www.cisecurity.org/controls)
-- [클라우드 보안 연합](https://cloudsecurityalliance.org/)
+## References
+
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+- [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
+- [CIS Controls](https://www.cisecurity.org/controls)
+- [Cloud Security Alliance](https://cloudsecurityalliance.org/)

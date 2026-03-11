@@ -1,12 +1,13 @@
-# Kotlin 전문가 - 기술 참조
+# Kotlin Specialist - Technical Reference
 
-이 문서에는 Kotlin 개발을 위한 자세한 워크플로, 기술 사양, 고급 패턴이 포함되어 있습니다.
+This document contains detailed workflows, technical specifications, and advanced patterns for Kotlin development.
 
-## 워크플로: Flow를 사용하여 코루틴 기반 데이터 계층 구현
+## Workflow: Implement Coroutines-Based Data Layer with Flow
 
-**목표:** UI 상태 관리를 위해 StateFlow를 사용하여 반응형 저장소 패턴을 구축합니다.
+**Goal:** Build reactive repository pattern with StateFlow for UI state management.
 
-### 1단계: 데이터 모델 정의
+### Step 1: Define Data Models
+
 ```kotlin
 import kotlinx.serialization.Serializable
 
@@ -25,7 +26,9 @@ sealed class UiState<out T> {
     data class Error(val message: String) : UiState<Nothing>()
 }
 ```
-### 2단계: Flow를 사용하여 저장소 만들기
+
+### Step 2: Create Repository with Flow
+
 ```kotlin
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
@@ -74,7 +77,9 @@ class ProductRepository(
     }
 }
 ```
-### 3단계: ViewModel 만들기(Android)
+
+### Step 3: Create ViewModel (Android)
+
 ```kotlin
 // Android ViewModel
 import androidx.lifecycle.ViewModel
@@ -122,7 +127,9 @@ class ProductViewModel(
     }
 }
 ```
-### 4단계: UI에서 사용(Jetpack Compose)
+
+### Step 4: Consume in UI (Jetpack Compose)
+
 ```kotlin
 import androidx.compose.runtime.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -159,7 +166,9 @@ fun ProductScreen(viewModel: ProductViewModel) {
     }
 }
 ```
-### 5단계: 취소를 올바르게 처리하기
+
+### Step 5: Handle Cancellation Properly
+
 ```kotlin
 class ProductViewModel : ViewModel() {
     private var pollingJob: Job? = null
@@ -183,23 +192,25 @@ class ProductViewModel : ViewModel() {
     }
 }
 ```
-**예상 결과:**
-- StateFlow를 통한 반응형 UI 업데이트(단일 정보 소스)
-- 검색을 위한 자동 디바운싱 및 중복 제거
-- 적절한 수명주기 인식 코루틴 범위 지정
-- 깔끔한 분리 : Repository(데이터) → ViewModel(비즈니스 로직) → UI(프레젠테이션)
 
-**확인:**
-- 검색은 300ms 일시 중지 후 응답합니다(네트워크 스팸 없음).
-- 회전하는 장치 상태 유지(ViewModel은 구성 변경에도 유지됨)
-- 화면을 떠나면 폴링 작업이 취소됩니다(메모리 누수 없음).
-- LeakCanary 및 Profiler로 확인
+**Expected Outcome:**
+- Reactive UI updates with StateFlow (single source of truth)
+- Automatic debouncing and deduplication for search
+- Proper lifecycle-aware coroutine scoping
+- Clean separation: Repository (data) → ViewModel (business logic) → UI (presentation)
+
+**Verification:**
+- Search responds after 300ms pause (no network spam)
+- Rotating device preserves state (ViewModel survives config changes)
+- Leaving screen cancels polling job (no memory leaks)
+- Check with LeakCanary and Profiler
 
 ---
 
-## 패턴: 플랫폼별 구현에 대한 예상/실제
+## Pattern: expect/actual for Platform-Specific Implementations
 
-**사용 사례:** 공유 코드에서 플랫폼별 API(파일 시스템, 알림, 센서)에 액세스합니다.
+**Use case:** Access platform-specific APIs (file system, notifications, sensors) from shared code.
+
 ```kotlin
 // commonMain/Platform.kt
 expect class PlatformStorage {
@@ -254,16 +265,18 @@ actual class PlatformStorage {
     }
 }
 ```
-**맞춤 설정 포인트:**
-- 민감한 데이터에 대한 암호화 추가(사용`expect/actual`플랫폼 암호화 API의 경우)
-- 인라인 클래스를 사용하여 유형이 안전한 키로 확장
-- 데이터 변경에 대한 흐름 기반 관찰자 추가
+
+**Customization points:**
+- Add encryption for sensitive data (use `expect/actual` for platform crypto APIs)
+- Extend with type-safe keys using inline classes
+- Add Flow-based observers for data changes
 
 ---
 
-## 패턴: Ktor 사용자 정의 플러그인
+## Pattern: Ktor Custom Plugin
 
-**사용 사례:** 로깅, 인증, 속도 제한을 위한 재사용 가능한 미들웨어입니다.
+**Use case:** Reusable middleware for logging, authentication, rate limiting.
+
 ```kotlin
 // Custom request timing plugin
 val RequestTimingPlugin = createApplicationPlugin(name = "RequestTiming") {
@@ -317,16 +330,18 @@ install(RateLimitPlugin) {
     windowMs = 30_000 // 30 seconds
 }
 ```
-**맞춤 설정 포인트:**
-- 분산 속도 제한에 Redis 사용
-- IP 기반 vs API 키 기반 전략 추가
-- 지수 백오프 헤더 구현
+
+**Customization points:**
+- Use Redis for distributed rate limiting
+- Add IP-based vs API-key-based strategies
+- Implement exponential backoff headers
 
 ---
 
-## 패턴: SupervisorScope를 사용한 구조적 동시성
+## Pattern: Structured Concurrency with supervisorScope
 
-**사용 사례:** 한 번의 실패로 인해 다른 실패가 취소되지 않는 병렬 작업을 실행합니다.
+**Use case:** Run parallel tasks where one failure doesn't cancel others.
+
 ```kotlin
 class DataSyncManager {
     suspend fun syncAll(): SyncResult = supervisorScope {
@@ -368,23 +383,24 @@ data class SyncResult(
         (users != null || products != null || orders != null)
 }
 ```
-**맞춤 설정 포인트:**
-- 사용`coroutineScope`대신 실패가 발생하면 모두 취소되어야 합니다.
-- 지수 백오프를 사용한 재시도 논리 추가
-- SharedFlow로 진행 상황 추적 구현
+
+**Customization points:**
+- Use `coroutineScope` instead if any failure should cancel all
+- Add retry logic with exponential backoff
+- Implement progress tracking with SharedFlow
 
 ---
 
-## 발송자 지침
+## Dispatcher Guidelines
 
-| 디스패처 | 사용 대상 | 스레드 풀 |
-|------------|---------|------------|
-| **디스패처.메인** | UI 업데이트만 | 메인/UI 스레드 |
-| **Dispatchers.IO** | 네트워크, 데이터베이스, 파일 I/O | 최대 64개 스레드 |
-| **디스패처.기본값** | CPU 집약적인 작업 | CPU 코어 수 |
-| **Dispatchers.Unconfined** | 고급 사용 전용(테스트) | 스레드 풀 없음 |
+| Dispatcher | Use For | Thread Pool |
+|------------|---------|-------------|
+| **Dispatchers.Main** | UI updates only | Main/UI thread |
+| **Dispatchers.IO** | Network, database, file I/O | Up to 64 threads |
+| **Dispatchers.Default** | CPU-intensive work | Number of CPU cores |
+| **Dispatchers.Unconfined** | Advanced use only (testing) | No thread pool |
 
-**모범 사례:**
+**Best Practice:**
 ```kotlin
 // CORRECT: Use appropriate dispatchers
 viewModelScope.launch {

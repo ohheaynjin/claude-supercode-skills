@@ -13,6 +13,7 @@
 ## 코드 서명 인증서 받기
 
 ### 내부 인증 기관
+
 ```powershell
 # Request code signing certificate from internal CA
 # Contact your PKI team for process
@@ -21,7 +22,9 @@
 # - Basic constraints not critical
 # - Key usage: Digital Signature
 ```
+
 ### 공공 인증 기관
+
 ```
 # Recommended providers:
 - DigiCert
@@ -33,9 +36,11 @@
 - Code Signing certificate (Code Signing)
 - Timestamping server access
 ```
+
 ## 인증서 관리
 
 ### 인증서 설치
+
 ```powershell
 # Import certificate
 $pfxPath = "C:\Certificates\codesign.pfx"
@@ -45,7 +50,9 @@ $cert = Import-PfxCertificate -FilePath $pfxPath -Password $password -CertStoreL
 # Verify installation
 Get-ChildItem -Path Cert:\CurrentUser\My -CodeSigningCert
 ```
+
 ### 인증서 확인 중
+
 ```powershell
 # Get certificate details
 $cert = Get-ChildItem -Path Cert:\CurrentUser\My -CodeSigningCert | Select-Object -First 1
@@ -61,9 +68,11 @@ if ($cert.NotAfter -lt [DateTime]::Now) {
     Write-Error "Certificate has expired"
 }
 ```
+
 ## 서명 스크립트
 
 ### 기본 스크립트 서명
+
 ```powershell
 # Get code signing certificate
 $cert = Get-ChildItem -Path Cert:\CurrentUser\My -CodeSigningCert | Select-Object -First 1
@@ -74,7 +83,9 @@ Set-AuthenticodeSignature -FilePath ".\script.ps1" -Certificate $cert
 # Verify signature
 Get-AuthenticodeSignature -FilePath ".\script.ps1"
 ```
+
 ### 타임스탬프로 서명
+
 ```powershell
 # Sign with timestamp server
 $cert = Get-ChildItem -Path Cert:\CurrentUser\My -CodeSigningCert | Select-Object -First 1
@@ -86,7 +97,9 @@ Set-AuthenticodeSignature -FilePath ".\script.ps1" -Certificate $cert -Timestamp
 $signature = Get-AuthenticodeSignature -FilePath ".\script.ps1"
 $signature | Format-List Status, SignerCertificate, TimeStamperCertificate
 ```
+
 ### 일괄 서명
+
 ```powershell
 # Sign all PowerShell scripts in directory
 $cert = Get-ChildItem -Path Cert:\CurrentUser\My -CodeSigningCert | Select-Object -First 1
@@ -106,9 +119,11 @@ foreach ($script in $scripts) {
     }
 }
 ```
+
 ## 서명 모듈
 
 ### 모듈 서명
+
 ```powershell
 # Sign entire module
 $modulePath = "C:\Modules\MyModule"
@@ -125,7 +140,9 @@ foreach ($file in $files) {
 # Verify all files
 Get-AuthenticodeSignature -Path "$modulePath\*.ps1"
 ```
+
 ### 모듈 매니페스트 서명
+
 ```powershell
 # Sign module manifest specifically
 $cert = Get-ChildItem -Path Cert:\CurrentUser\My -CodeSigningCert | Select-Object -First 1
@@ -136,9 +153,11 @@ Set-AuthenticodeSignature -FilePath "C:\Modules\MyModule\MyModule.psd1" -Certifi
 $signature = Get-AuthenticodeSignature -FilePath "C:\Modules\MyModule\MyModule.psd1"
 $signature.Status
 ```
+
 ## 서명 확인 중
 
 ### 서명 상태 확인 중
+
 ```powershell
 # Check single file
 $signature = Get-AuthenticodeSignature -FilePath ".\script.ps1"
@@ -159,7 +178,9 @@ if ($signature.Status -eq 'Valid') {
     Write-Host "Valid to: $($signature.SignerCertificate.NotAfter)"
 }
 ```
+
 ### 일괄 검증
+
 ```powershell
 # Verify all scripts in directory
 $scripts = Get-ChildItem -Path ".\" -Filter "*.ps1" -File
@@ -179,7 +200,9 @@ foreach ($script in $scripts) {
 # Display report
 $report | Format-Table -AutoSize
 ```
+
 ### 자동 검증
+
 ```powershell
 # Verify scripts before execution
 function Invoke-SignedScript {
@@ -221,9 +244,11 @@ function Invoke-SignedScript {
     }
 }
 ```
+
 ## 타임스탬프
 
 ### 타임스탬프 서버
+
 ```
 # Public timestamp servers:
 - http://timestamp.digicert.com
@@ -231,7 +256,9 @@ function Invoke-SignedScript {
 - http://timestamp.globalsign.com/scripts/timstamp.dll
 - http://timestamp.comodoca.com/authenticode
 ```
+
 ### 타임스탬프 사용
+
 ```powershell
 # Sign with timestamp
 $cert = Get-ChildItem -Path Cert:\CurrentUser\My -CodeSigningCert | Select-Object -First 1
@@ -251,9 +278,11 @@ else {
     Write-Host "No timestamp found" -ForegroundColor Yellow
 }
 ```
+
 ## 모범 사례
 
 ### 서명 작업 과정
+
 ```powershell
 # Recommended signing workflow
 1. Develop and test scripts
@@ -278,7 +307,9 @@ foreach ($script in $scripts) {
     }
 }
 ```
+
 ### 인증서 관리
+
 ```powershell
 # Monitor certificate expiration
 $cert = Get-ChildItem -Path Cert:\CurrentUser\My -CodeSigningCert | Select-Object -First 1
@@ -301,7 +332,9 @@ function Backup-Certificate {
     Write-Host "Certificate backed up to: $backupPath"
 }
 ```
-### 보안 고려사항
+
+### 보안 고려 사항
+
 ```powershell
 # 1. Protect private keys
 # - Use hardware security module (HSM) for production
@@ -324,11 +357,13 @@ Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy AllSigned
 # - Track certificate lifecycle
 # - Audit signed files
 ```
+
 ## 문제 해결
 
 ### 일반적인 문제
 
 **문제:** 인증서를 찾을 수 없습니다.
+
 ```powershell
 # Check certificate store
 Get-ChildItem -Path Cert:\CurrentUser\My | Where-Object { $_.EnhancedKeyUsageList -contains 'Code Signing' }
@@ -336,12 +371,16 @@ Get-ChildItem -Path Cert:\CurrentUser\My | Where-Object { $_.EnhancedKeyUsageLis
 # Solution: Import certificate
 Import-PfxCertificate -FilePath "certificate.pfx" -CertStoreLocation Cert:\CurrentUser\My
 ```
+
 **문제:** 액세스가 거부되어 서명이 실패합니다.
+
 ```powershell
 # Solution: Run PowerShell as Administrator
 # Code signing requires administrative privileges
 ```
+
 **문제:** 타임스탬프 서버를 사용할 수 없습니다.
+
 ```powershell
 # Solution: Use alternative timestamp server
 $timestampServers = @(
@@ -361,8 +400,9 @@ foreach ($server in $timestampServers) {
     }
 }
 ```
-## 리소스
 
-- [Authenticode 문서](https://docs.microsoft.com/en-us/windows/win32/seccrypto/cryptography-tools)
+## 자원
+
+- [인증코드 문서](https://docs.microsoft.com/en-us/windows/win32/seccrypto/cryptography-tools)
 - [코드 서명 모범 사례](https://docs.microsoft.com/en-us/windows/win32/seccrypto/code-signing-best-practices)
 - [타임스탬프 서비스](https://docs.microsoft.com/en-us/windows/win32/seccrypto/timestamp-authorization)

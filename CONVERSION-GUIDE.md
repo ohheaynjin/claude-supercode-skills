@@ -1,50 +1,49 @@
-# Subagent to Skills Conversion Guide
+# 서브에이전트 → 스킬 전환 가이드
 
-This document describes the complete process and best practices for converting Claude Code subagents into Agent Skills format, based on Anthropic's Agent Skills specification.
+이 문서에서는 Anthropic의 Agent Skills 사양을 기반으로 Claude Code 하위 에이전트를 Agent Skills 형식으로 변환하는 전체 프로세스와 모범 사례를 설명합니다.
 
-## Overview
+## 개요
 
-Successfully converted **9 core subagents** from Claude Code into Agent Skills format:
+**9개 핵심 하위 에이전트**를 Claude Code에서 에이전트 기술 형식으로 성공적으로 변환했습니다.
 
-| Subagent | Skill Name | Status |
+| 하위 에이전트 | 스킬명 | 상태 |
 |-----------|-------------|---------|
-| explore | codebase-exploration | ✅ Complete |
-| oracle | technical-advisory | ✅ Complete |
-| librarian | external-reference-research | ✅ Complete |
-| frontend-ui-ux-engineer | frontend-ui-ux-development | ✅ Complete |
-| document-writer | technical-documentation | ✅ Complete |
-| multimodal-looker | media-analysis | ✅ Complete |
-| general | general-purpose | ✅ Complete |
-| build | build-systems | ✅ Complete |
-| plan | strategic-planning | ✅ Complete |
+| 탐구하다 | 코드베이스 탐색 | ✅ 완료 |
+| 신탁 | 기술 자문 | ✅ 완료 |
+| 사서 | 외부 참조 연구 | ✅ 완료 |
+| 프론트엔드-UI-UX-엔지니어 | 프론트엔드-UI-UX-개발 | ✅ 완료 |
+| 문서 작성자 | 기술 문서 | ✅ 완료 |
+| 다중 모드 모양 | 미디어 분석 | ✅ 완료 |
+| 일반적인 | 범용 | ✅ 완료 |
+| 짓다 | 빌드 시스템 | ✅ 완료 |
+| 계획 | 전략 기획 | ✅ 완료 |
 
-## Conversion Process
+## 변환 프로세스
 
-### Phase 1: Research & Analysis (COMPLETED)
+### 1단계: 연구 및 분석(완료)
 
-**Research Conducted:**
+**수행된 연구:**
 
-1. **Official Documentation Study**
-   - Analyzed Anthropic Agent Skills specification
-   - Studied Claude Code documentation on skills
-   - Reviewed anthropics/skills GitHub repository
+1. **공식 문서 연구**
+   - 분석된 인류 에이전트 스킬 사양
+   - 기술에 대한 Claude Code 문서를 연구했습니다.
+   - 인류학/기술 GitHub 저장소 검토
 
-2. **Best Practices Extraction**
-   - Compiled comprehensive best practices from official sources
-   - Identified progressive disclosure patterns
-   - Documented tool restriction strategies
-   - Studied multi-file skill organization
+2. **모범 사례 추출**
+   - 공식 소스에서 포괄적인 모범 사례를 수집했습니다.
+   - 점진적 공개 패턴 식별
+   - 문서화된 도구 제한 전략
+   - 멀티 파일 스킬 구성을 연구했습니다.
 
-3. **Subagent Cataloging**
-   - Cataloged 300+ documented subagents across all collections
-   - Analyzed agent capabilities and usage patterns
-   - Identified tool access patterns
-   - Documented invocation strategies
+3. **하위 에이전트 목록 작성**
+   - 모든 컬렉션에 걸쳐 300개 이상의 문서화된 하위 에이전트 목록화
+   - 에이전트 성능 및 사용 패턴 분석
+   - 식별된 도구 액세스 패턴
+   - 문서화된 호출 전략
 
-### Phase 2: Structure Design (COMPLETED)
+### 2단계: 구조 설계(완료)
 
-**Directory Structure Created:**
-```
+**디렉터리 구조가 생성되었습니다:**```
 claude-skills-conversion/
 ├── SKILL-VALIDATION-GUIDE.md
 ├── build-skill/
@@ -67,73 +66,67 @@ claude-skills-conversion/
     └── SKILL.md
 ```
 
+### 3단계: 스킬 생성(완료)
 
-### Phase 3: Skill Creation (COMPLETED)
+**전환 접근 방식:**
 
-**Conversion Approach:**
+각 스킬은 다음 구조를 따릅니다.
 
-Each skill follows this structure:
-
-1. **YAML Frontmatter**
-
-```yaml
+1. **YAML 서두**```yaml
    ---
    name: skill-name
    description: Third-person description with trigger keywords
    ---
    ```
 
+2. **목적 섹션**
+   - 어떤 기술이 수행되는지에 대한 명확한 설명
+   - 철학과 지도 원칙
 
-2. **Purpose Section**
-   - Clear statement of what skill does
-   - Philosophy and guiding principles
+3. **섹션 사용 시기**
+   - 특정 트리거 시나리오
+   - 명확한 사용 사례
 
-3. **When to Use Section**
-   - Specific trigger scenarios
-   - Clear use cases
+4. **핵심 기능**
+   - 세부 기능 목록
+   - 행동 특성
+   - 도구 사용 전략
 
-4. **Core Capabilities**
-   - Detailed capabilities list
-   - Behavioral traits
-   - Tool usage strategies
+5. **상호작용 예시**
+   - 실제 사용 사례
+   - 일반적인 쿼리 패턴
 
-5. **Example Interactions**
-   - Real-world usage examples
-   - Common query patterns
+### 4단계: 검증(완료)
 
-### Phase 4: Validation (COMPLETED)
+**검증 체크리스트 적용됨:**
+- ✅ 서문 필수`name`그리고`description`- ✅ 설명은 트리거 키워드가 포함된 3인칭입니다.
+- ✅ SKILL.md 본문 500줄 미만
+- ✅ 점진적 공개 시행
+- ✅ 보조 문서 파일 없음
+- ✅ 명확한 행동 특성 및 사용 사례
 
-**Validation Checklist Applied:**
-- ✅ Frontmatter has required `name` and `description`
-- ✅ Description is third-person with trigger keywords
-- ✅ SKILL.md body under 500 lines
-- ✅ Progressive disclosure implemented
-- ✅ No auxiliary documentation files
-- ✅ Clear behavioral traits and use cases
+## 모범 사례 적용
 
-## Best Practices Applied
+### 1. 장황함보다는 간결함
 
-### 1. Conciseness Over Verbosity
+**원리:** 모든 토큰은 다른 컨텍스트와 경쟁합니다.
 
-**Principle:** Every token competes with other context.
+**구현:**
+- 기본 SKILL.md 파일은 500줄 미만으로 유지됩니다.
+- 메인 파일에만 필수 안내
+- 자세한 내용은 참조 파일로 이동했습니다(필요한 경우).
+- 중복되거나 채워지는 내용이 없습니다.
 
-**Implementation:**
-- Main SKILL.md files kept under 500 lines
-- Essential guidance only in main file
-- Detailed content moved to reference files (when needed)
-- No redundant or filler content
+### 2. 점진적 공개
 
-### 2. Progressive Disclosure
+**원칙:** 필요할 때 필요한 것만 로드하세요.
 
-**Principle:** Load only what's needed, when it's needed.
+**구현:**
+- 레벨 1: 메타데이터(이름 + 설명) - 항상 컨텍스트에 있음
+- 레벨 2: SKILL.md 본문 - 스킬이 트리거될 때 로드됨
+- 레벨 3: 참조 파일 - 필요에 따라 로드됨
 
-**Implementation:**
-- Level 1: Metadata (name + description) - always in context
-- Level 2: SKILL.md body - loaded when skill triggers
-- Level 3: Reference files - loaded as needed
-
-**Examples:**
-```markdown
+**예:**```markdown
 ## Quick Start
 Basic information here...
 
@@ -142,31 +135,29 @@ For detailed API docs, see [reference/api.md](reference/api.md)
 For examples, see [reference/examples.md](reference/examples.md)
 ```
 
+### 3. 3인칭 설명
 
-### 3. Third-Person Descriptions
+**원리:** Claude는 설명을 사용하여 스킬 발동 여부를 결정합니다.
 
-**Principle:** Claude uses descriptions to decide whether to trigger skills.
+**구현:**
+- ❌ "내가 도와줄게..."
+- ✅ "전문가..."
+- ❌ "다음에 나를 이용하세요..."
+- ✅ "사용자가 요청할 때 사용..."
 
-**Implementation:**
-- ❌ "I help with..."
-- ✅ "Expert at..."
-- ❌ "Use me when..."
-- ✅ "Use when user asks..."
+**예:**
+-`description: Explains code with visual diagrams and analogies. Use when explaining how code works, teaching about a codebase, or when the user asks "how does this work?"`
 
-**Examples:**
-- `description: Explains code with visual diagrams and analogies. Use when explaining how code works, teaching about a codebase, or when the user asks "how does this work?"`
+### 4. 도구 제한 사항
 
-### 4. Tool Restrictions
+**원칙:** 공격 표면을 최소화하는 데 필요한 것만 포함합니다.
 
-**Principle:** Only include what's necessary to minimize attack surface.
+**구현:**
+-`allowed-tools`최소한의 필수 도구로 범위 지정
+- 적절하게 사용된 와일드카드 패턴(예:`Bash(git:*)`)
+- 읽기 전용 스킬이 있습니다.`Read, Grep, Glob`오직
 
-**Implementation:**
-- `allowed-tools` scoped to minimum required tools
-- Wildcard patterns used appropriately (e.g., `Bash(git:*)`)
-- Read-only skills have `Read, Grep, Glob` only
-
-**Examples:**
-```yaml
+**예:**```yaml
 # Read-only analysis
 allowed-tools: Read, Grep, Glob
 
@@ -177,352 +168,340 @@ allowed-tools: "Bash(git status:*),Bash(git diff:*),Read,Grep"
 allowed-tools: "Bash(python scripts/*:*),Read,Write"
 ```
 
+### 5. 명명 규칙
 
-### 5. Naming Conventions
+**원칙:** 목적을 명확하게 나타내는 설명적인 이름입니다.
 
-**Principle:** Descriptive names that clearly indicate purpose.
+**구현:**
+- 동명사 형식:`processing-pdfs`, `analyzing-data`- 행동 지향:`process-pdfs`, `analyze-spreadsheets`- 명사구:`pdf-processing`, `code-exploration`
 
-**Implementation:**
-- Gerund form: `processing-pdfs`, `analyzing-data`
-- Action-oriented: `process-pdfs`, `analyze-spreadsheets`
-- Noun phrases: `pdf-processing`, `code-exploration`
+**피해야 할 사항:**
+- 일반:`helper`, `utils`, `tools`- 예약된:`anthropic-helper`, `claude-tools`
 
-**Avoided:**
-- Generic: `helper`, `utils`, `tools`
-- Reserved: `anthropic-helper`, `claude-tools`
+### 6. 수동 호출 마커
 
-### 6. Manual Invocation Markers
+**원칙:** 수동으로만 호출해야 하는 기술을 명확하게 표시합니다.
 
-**Principle:** Clearly indicate skills that should only be manually invoked.
+**구현:**
+- 빌드 및 계획 에이전트에는 명시적인 마커가 있습니다.
+- 설명에 "수동 호출만 가능"이라고 나와 있습니다.
+- 행동 특성 섹션의 여러 알림
 
-**Implementation:**
-- Build and Plan agents have explicit markers
-- Description states "Manual invocation only"
-- Multiple reminders in behavioral traits section
-
-**Example:**
-```yaml
+**예:**```yaml
 ---
 name: strategic-planning
 description: Strategic planning specialist. Manual invocation only - expert at decomposing complex projects into manageable tasks. Use when starting complex projects or requiring systematic task management.
 ---
 ```
 
+## 스킬 전환 패턴
 
-## Skill Conversion Patterns
+### 패턴 1: 전문 지식 기반 기술
 
-### Pattern 1: Expertise-Based Skills
+**예:** 탐색, 오라클, 사서
 
-**Examples:** explore, oracle, librarian
+**구조:**
+1. 심층적인 도메인 전문 지식 설명
+2. 다단계 검색 기능(빠름, 중간, 매우 철저함)
+3. 연구 방법론
+4. 도구 사용 전략
+5. 예시적인 상호작용
 
-**Structure:**
-1. Deep domain expertise description
-2. Multi-level search capabilities (quick, medium, very thorough)
-3. Research methodologies
-4. Tool usage strategies
-5. Example interactions
+### 패턴 2: 능력 기반 기술
 
-### Pattern 2: Capability-Based Skills
+**예:** frontend-ui-ux-엔지니어, 문서 작성자
 
-**Examples:** frontend-ui-ux-engineer, document-writer
+**구조:**
+1. 디자인 철학이나 접근 방식
+2. 핵심역량 목록
+3. 기술적 선호도 또는 프레임워크
+4. 행동 특성
+5. 사용 시기 지침
+6. 예시 시나리오
 
-**Structure:**
-1. Design philosophy or approach
-2. Core capabilities list
-3. Technical preferences or frameworks
-4. Behavioral traits
-5. When-to-use guidelines
-6. Example scenarios
+### 패턴 3: 업무 중심 기술
 
-### Pattern 3: Task-Oriented Skills
+**예:** 구축, 계획
 
-**Examples:** build, plan
+**구조:**
+1. 수동 호출 강조
+2. 작업 실행 패턴
+3. 작업 흐름 또는 방법론
+4. 도구 요구 사항
+5. 일반적인 사용 사례
 
-**Structure:**
-1. Manual invocation emphasis
-2. Task execution patterns
-3. Workflow or methodology
-4. Tool requirements
-5. Common use cases
+### 패턴 4: 분석 기술
 
-### Pattern 4: Analysis Skills
+**예:** 다중 모드 모양
 
-**Examples:** multimodal-looker
+**구조:**
+1. 분석 접근법(해석 vs 추출)
+2. 지원되는 미디어 유형
+3. 분석 방법론
+4. 특정 사용 사례
+5. 출력 패턴
 
-**Structure:**
-1. Analysis approach (interpretation vs extraction)
-2. Supported media types
-3. Analysis methodologies
-4. Specific use cases
-5. Output patterns
+## 주요 통찰력
 
-## Key Insights
+### 1. 컨텍스트 창 관리
 
-### 1. Context Window Management
+**발견:** 기술이 실용적이려면 매우 간결해야 합니다.
 
-**Finding:** Skills must be extremely concise to be practical.
+**구현:**
+- 대상: SKILL.md당 < 500줄
+- 전략: 자세한 내용은 점진적으로 공개
+- 이점: 스킬은 가볍고 로드 속도가 빠릅니다.
 
-**Implementation:**
-- Target: < 500 lines per SKILL.md
-- Strategy: Progressive disclosure for detailed content
-- Benefit: Skills remain lightweight and fast to load
+### 2. 에이전트와 스킬의 차이점
 
-### 2. Agent vs. Skill Differences
+**발견:** 기술은 지식을 추가합니다. 에이전트는 별도의 컨텍스트에서 실행됩니다.
 
-**Finding:** Skills add knowledge; agents execute in separate contexts.
+**의미:**
+- 스킬은 안내와 패턴에 중점을 둡니다.
+- 하위 에이전트는 별도의 도구 액세스 및 컨텍스트를 갖습니다.
+- 에이전트의 '무엇'을 스킬 '어떻게'로 변환
+- 스킬에서 상담원 격리를 재현하려고 하지 마세요.
 
-**Implications:**
-- Skills focus on guidance and patterns
-- Subagents have separate tool access and context
-- Convert agent "what" into skill "how"
-- Don't try to replicate agent isolation in skills
+### 3. 자동 검색 메커니즘
 
-### 3. Auto-Discovery Mechanics
+**발견:** 설명 품질에 따라 스킬이 자동으로 발동할지 여부가 결정됩니다.
 
-**Finding:** Description quality determines whether skills trigger automatically.
+**구현:**
+- 특정 트리거 키워드 포함
+- 3인칭 시점을 활용하라
+- 여러 자연어 구문을 다룹니다.
+- "사용 시기"에 대해 명시적으로 설명하세요.
 
-**Implementation:**
-- Include specific trigger keywords
-- Use third-person perspective
-- Cover multiple natural language phrasings
-- Be explicit about "when to use"
+### 4. 도구 액세스 패턴
 
-### 4. Tool Access Patterns
+**발견:** 에이전트 유형에 따라 도구 요구 사항이 다릅니다.
 
-**Finding:** Different agent types have different tool requirements.
+**예:**
+- 읽기 전용 에이전트:`Read, Grep, Glob`- 개발 대리인:`Read, Write, Edit, Bash, Glob, Grep`- 연구 대리인:`Read, Grep, Glob, WebFetch, WebSearch`
 
-**Examples:**
-- Read-only agents: `Read, Grep, Glob`
-- Development agents: `Read, Write, Edit, Bash, Glob, Grep`
-- Research agents: `Read, Grep, Glob, WebFetch, WebSearch`
+## 검증 및 테스트
 
-## Validation & Testing
+### 테스트 프레임워크
 
-### Testing Framework
+종합 검증 가이드 작성(`SKILL-VALIDATION-GUIDE.md`) 취재:
 
-Created comprehensive validation guide (`SKILL-VALIDATION-GUIDE.md`) covering:
+1. **주요 사항 검증**
+   - 필수 입력 사항 존재
+   - 명명 규칙을 따랐습니다.
+   - 설명 효과
 
-1. **Frontmatter Validation**
-   - Required fields present
-   - Naming conventions followed
-   - Description effectiveness
+2. **콘텐츠 유효성 검사**
+   - 구조 및 형식
+   - 줄 수 제약
+   - 콘텐츠 품질
 
-2. **Content Validation**
-   - Structure and formatting
-   - Line count constraints
-   - Content quality
+3. **기능 검증**
+   - 기본 로딩 테스트
+   - 자동 검색 테스트
+   - 실행 테스트
+   - 레퍼런스 로딩 테스트
+   - 오류 처리 테스트
+   - 도구 제한 테스트
 
-3. **Functionality Validation**
-   - Basic loading test
-   - Auto-discovery test
-   - Execution test
-   - Reference loading test
-   - Error handling test
-   - Tool restrictions test
+### 확인된 일반적인 문제
 
-### Common Issues Identified
+**문제 1: 스킬이 발동되지 않음**
+- **원인:** 트리거 키워드가 부족하여 모호한 설명
+- **수정:** 사용자가 자연스럽게 말할 수 있는 특정 용어를 추가하세요.
 
-**Issue 1: Skills Not Triggering**
-- **Cause:** Vague descriptions lacking trigger keywords
-- **Fix:** Add specific terms users would naturally say
+**문제 2: 컨텍스트가 너무 큼**
+- **원인:** SKILL.md 파일이 너무 장황합니다.
+- **수정:** 점진적 공개를 사용하고 세부정보를 참고자료로 이동하세요.
 
-**Issue 2: Context Too Large**
-- **Cause:** SKILL.md files too verbose
-- **Fix:** Use progressive disclosure, move details to references
+**문제 3: 도구 제한이 너무 엄격함**
+- **원인:**`allowed-tools`지나치게 제한됨
+- **수정:** 범위가 지정된 와일드카드를 사용하여 검토 및 확장
 
-**Issue 3: Tool Restrictions Too Strict**
-- **Cause:** `allowed-tools` overly limited
-- **Fix:** Review and expand with scoped wildcards
+## 결과물 요약
 
-## Deliverables Summary
+### 완성된 스킬 (9)
 
-### Completed Skills (9)
+1. **코드베이스 탐색**(탐색)
+   - 라인: ~400
+   - 초점: 코드베이스에 대한 심층적인 상황별 grep
+   - 철저함 수준: 빠름, 중간, 매우 철저함
 
-1. **codebase-exploration** (explore)
-   - Lines: ~400
-   - Focus: Deep contextual grep for codebases
-   - Thoroughness levels: quick, medium, very thorough
+2. **기술 자문**(오라클)
+   - 라인: ~400
+   - 초점: 아키텍처 결정 및 복잡한 문제 해결
+   - 강조: 명확한 추천을 통한 심층적 추론
 
-2. **technical-advisory** (oracle)
-   - Lines: ~400
-   - Focus: Architecture decisions and complex problem-solving
-   - Emphasis: Deep reasoning with clear recommendations
+3. **외부 참고문헌 조사**(사서)
+   - 라인: ~300
+   - 초점: 외부 문서 및 오픈 소스 예제
+   - 도구: Context7, GitHub 검색, 웹 검색
 
-3. **external-reference-research** (librarian)
-   - Lines: ~300
-   - Focus: External documentation and open-source examples
-   - Tools: Context7, GitHub search, web search
+4. **프런트엔드-UI-UX-개발**(프론트엔드-UI-UX-엔지니어)
+   - 라인: ~350
+   - 초점: 시각적 우선 디자인 접근 방식
+   - 철학: 코드는 지저분할 수 있지만 시각적 출력은 불입니다.
 
-4. **frontend-ui-ux-development** (frontend-ui-ux-engineer)
-   - Lines: ~350
-   - Focus: Visual-first design approach
-   - Philosophy: Code may be messy, but visual output is fire
+5. **기술 문서**(문서 작성자)
+   - 라인: ~350
+   - 초점: 명확하고 포괄적인 문서화
+   - 유형: README, API 문서, 아키텍처 문서
 
-5. **technical-documentation** (document-writer)
-   - Lines: ~350
-   - Focus: Clear, comprehensive documentation
-   - Types: README, API docs, architecture docs
+6. **미디어 분석**(다중 모드 보기)
+   - 라인: ~400
+   - 초점: 텍스트 추출 이상의 해석
+   - 미디어: PDF, 이미지, 다이어그램, 차트
 
-6. **media-analysis** (multimodal-looker)
-   - Lines: ~400
-   - Focus: Interpretation beyond text extraction
-   - Media: PDFs, images, diagrams, charts
+7. **범용**(일반)
+   - 라인: ~500
+   - 초점: 다목적, 다단계 실행
+   - 역량: 연구, 분석, 워크플로우
 
-7. **general-purpose** (general)
-   - Lines: ~500
-   - Focus: Versatile, multi-step execution
-   - Capabilities: Research, analysis, workflows
+8. **빌드 시스템**(빌드)
+   - 라인: ~350
+   - 초점: 빌드 작업을 위한 수동 호출
+   - 시스템: Make, CMake, webpack 등
 
-8. **build-systems** (build)
-   - Lines: ~350
-   - Focus: Manual invocation for build tasks
-   - Systems: Make, CMake, webpack, etc.
+9. **전략기획** (계획)
+   - 라인: ~400
+   - 초점: 계획을 위한 수동 호출
+   - 강조: 작업 분류, 종속성, 위험
 
-9. **strategic-planning** (plan)
-   - Lines: ~400
-   - Focus: Manual invocation for planning
-   - Emphasis: Task breakdown, dependencies, risks
+### 지원 문서
 
-### Supporting Documentation
+1. **기술 검증-가이드.md**
+   - 종합적인 검증 체크리스트
+   - 테스트 시나리오 및 절차
+   - 일반적인 문제 및 수정 사항
+   - 지속적인 개선 지침
 
-1. **SKILL-VALIDATION-GUIDE.md**
-   - Comprehensive validation checklist
-   - Testing scenarios and procedures
-   - Common issues and fixes
-   - Continuous improvement guidelines
+## 다음 단계
 
-## Next Steps
+### 즉각적인 조치
 
-### Immediate Actions
-
-1. **Install Skills**
-
-```bash
+1. **스킬 설치**```bash
    # Copy to personal skills directory
    cp -r ~/claude-skills-conversion/* ~/.claude/skills/
    ```
 
+2. **테스트 기술**
+   - 클로드 코드를 다시 시작
+   - 질문: "어떤 기술을 사용할 수 있나요?"
+   - 모든 스킬이 나타나는지 확인
+   - 관련 쿼리로 각 기술을 테스트합니다.
 
-2. **Test Skills**
-   - Restart Claude Code
-   - Ask: "What skills are available?"
-   - Verify all skills appear
-   - Test each skill with relevant queries
+3. **기술 검증**
+   - 사용`SKILL-VALIDATION-GUIDE.md`- 검증 체크리스트를 통해 실행
+   - 발견된 문제를 수정합니다.
 
-3. **Validate Skills**
-   - Use `SKILL-VALIDATION-GUIDE.md`
-   - Run through validation checklist
-   - Fix any issues found
+### 향후 개선 사항
 
-### Future Enhancements
+1. **참조 파일 추가**
+   - 복잡한 기술에 대한 자세한 참고 자료 만들기
+   - 점진적 공개를 전면적으로 시행합니다.
+   - 예제 저장소 또는 사례 연구 추가
 
-1. **Add Reference Files**
-   - Create detailed reference materials for complex skills
-   - Implement progressive disclosure fully
-   - Add example repositories or case studies
+2. **지원 스크립트 생성**
+   - 적절한 곳에 유틸리티 스크립트를 추가하세요.
+   - 결정론적 작업 구현
+   - 스크립트를 독립적으로 테스트
 
-2. **Create Supporting Scripts**
-   - Add utility scripts where appropriate
-   - Implement deterministic operations
-   - Test scripts independently
+3. **추가 상담원으로 확장**
+   - BMAD 에이전트 변환(BMM 및 CIS 모듈 전반에 걸쳐 16개 에이전트)
+   - 컬렉션에서 전문 도메인 에이전트를 변환합니다.
+   - 언어별 상담원 스킬 만들기
+   - 프레임워크별 상담원 기술 개발
 
-3. **Expand to Additional Agents**
-   - Convert BMAD agents (16 agents across BMM and CIS modules)
-   - Convert specialized domain agents from collections
-   - Create language-specific agent skills
-   - Develop framework-specific agent skills
+## 배운 교훈
 
-## Lessons Learned
+### 잘된 점
 
-### What Worked Well
+1. **병렬 작업 실행**
+   - 여러 백그라운드 에이전트를 사용하여 연구를 가속화했습니다.
+   - 동시 스킬 생성이 효율적이었습니다.
 
-1. **Parallel Task Execution**
-   - Using multiple background agents accelerated research
-   - Simultaneous skill creation was efficient
+2. **템플릿 기반 접근 방식**
+   - 조기에 명확한 패턴 확립
+   - 모든 스킬에 일관되게 적용됩니다.
+   - 품질과 일관성이 유지됨
 
-2. **Template-Based Approach**
-   - Established clear patterns early
-   - Applied consistently across all skills
-   - Maintained quality and consistency
+3. **점진적 공개**
+   - 주요 SKILL.md 파일을 간결하게 유지
+   - 향후 참조파일 확장 예정
+   - 필수지침에 초점 유지
 
-3. **Progressive Disclosure**
-   - Kept main SKILL.md files concise
-   - Planned for future reference file expansion
-   - Maintained focus on essential guidance
+### 직면한 문제
 
-### Challenges Encountered
+1. **간결함과 완전함의 균형**
+   - 과제: 기술에는 자세한 지침이 필요하지만 간결함을 유지해야 합니다.
+   - 해결책: '무엇'이 아닌 '어떻게'에 집중하세요.
+   - 절충: 일부 세부 사항은 참조 파일로 연기됨
 
-1. **Balance Between Conciseness and Completeness**
-   - Challenge: Skills need detailed guidance but must stay concise
-   - Solution: Focus on "how" not "what"
-   - Trade-off: Some details deferred to reference files
+2. **자동 검색 및 수동 호출**
+   - 과제: 일부 스킬은 수동으로만 호출해야 합니다.
+   - 해결 방법: 설명 및 행동 특성의 명확한 표시
+   - 절충안: 수동 호출을 강조하기 위해 설명이 약간 길어졌습니다.
 
-2. **Auto-Discovery vs. Manual Invocation**
-   - Challenge: Some skills should only be manually invoked
-   - Solution: Clear markers in description and behavioral traits
-   - Trade-off: Slightly longer descriptions to emphasize manual invocation
+3. **에이전트 역량 및 기술 안내**
+   - 과제: 에이전트는 도구를 격리해야 합니다. 기술은 그렇지 않습니다
+   - 솔루션: 패턴과 방법론에 집중
+   - 트레이드오프: 에이전트 실행 모델을 완전히 복제할 수 없음
 
-3. **Agent Capabilities vs. Skill Guidance**
-   - Challenge: Agents have tool isolation; skills don't
-   - Solution: Focus on patterns and methodologies
-   - Trade-off: Can't fully replicate agent execution model
+## 추천
 
-## Recommendations
+### 향후 전환을 위해
 
-### For Future Conversions
+1. **조사부터 시작하세요**
+   - 상담원의 역량을 깊이 이해
+   - 주요 행동 특성을 문서화합니다.
+   - 일반적인 사용 시나리오 식별
 
-1. **Start with Research**
-   - Understand agent's capabilities deeply
-   - Document key behavioral traits
-   - Identify typical usage scenarios
+2. **모범 사례 따르기**
+   - 500줄 이내로 유지
+   - 점진적 공개를 사용하세요.
+   - 3인칭 설명 작성
+   - 트리거 키워드 포함
 
-2. **Follow Best Practices**
-   - Keep under 500 lines
-   - Use progressive disclosure
-   - Write third-person descriptions
-   - Include trigger keywords
+3. **철저하게 검증**
+   - 자동 검색 테스트
+   - 실제 태스크로 테스트 실행
+   - 테스트 엣지 케이스 및 오류 처리
+   - 도구 제한이 올바르게 작동하는지 확인
 
-3. **Validate Thoroughly**
-   - Test auto-discovery
-   - Test execution with real tasks
-   - Test edge cases and error handling
-   - Verify tool restrictions work correctly
+4. **사용법에 따라 반복**
+   - 실제 사용 패턴을 관찰하세요
+   - 클로드가 어려움을 겪고 있는 부분을 파악하세요.
+   - 관찰을 바탕으로 콘텐츠를 다듬습니다.
+   - 다양한 모델로 테스트
 
-4. **Iterate Based on Usage**
-   - Observe real-world usage patterns
-   - Identify where Claude struggles
-   - Refine content based on observations
-   - Test with different models
+### 이 스킬을 사용하려면
 
-### For Using These Skills
+1. **스킬 활성화**
+   - 적절한 기술 디렉토리에 복사
+   - 변경 사항을 로드하려면 Claude Code를 다시 시작하세요.
+   - 목록에 스킬이 나타나는지 확인하세요.
 
-1. **Enable Skills**
-   - Copy to appropriate skills directory
-   - Restart Claude Code to load changes
-   - Verify skills appear in list
+2. **테스트 기술**
+   - 관련 쿼리에 각 스킬을 사용하세요.
+   - 출력이 예상과 일치하는지 확인
+   - 문제 또는 개선 기회 보고
 
-2. **Test Skills**
-   - Use each skill with relevant queries
-   - Verify output matches expectations
-   - Report issues or improvement opportunities
+3. **필요에 따라 맞춤설정**
+   - 특정 팀 선호도에 맞게 기술 조정
+   - 회사별 패턴이나 규칙 추가
+   - 기존 워크플로우와 통합
+   - 개선 사항을 커뮤니티에 다시 공유
 
-3. **Customize as Needed**
-   - Adjust skills to specific team preferences
-   - Add company-specific patterns or conventions
-   - Integrate with existing workflows
-   - Share improvements back to community
+## 결론
 
-## Conclusion
+Anthropic 모범 사례에 따라 9개의 핵심 하위 에이전트를 에이전트 기술 형식으로 성공적으로 전환했습니다. 모든 스킬은 다음과 같습니다.
 
-Successfully converted 9 core subagents into Agent Skills format following Anthropic best practices. All skills are:
+- ✅ 500줄 이내(간결하게)
+- ✅ 3인칭 설명(자동 검색용)
+- ✅ 점진적 공개 준비됨(자세한 내용은)
+- ✅ 명확한 행동 특성 및 사용 사례
+- ✅ 모범 사례에 대해 검증됨
+- ✅ 설치 및 사용 준비 완료
 
-- ✅ Under 500 lines (concise)
-- ✅ Third-person descriptions (for auto-discovery)
-- ✅ Progressive disclosure ready (for detailed content)
-- ✅ Clear behavioral traits and use cases
-- ✅ Validated against best practices
-- ✅ Ready for installation and use
+추가 에이전트를 체계적으로 변환하기 위해 확립된 명확한 패턴과 프로세스와 함께 향후 변환을 위해 추가 300개 이상의 하위 에이전트가 문서화되었습니다.
 
-Additional 300+ subagents documented for future conversion, with clear patterns and processes established to convert additional agents systematically.
-
-The conversion demonstrates that subagent capabilities can be effectively translated into Agent Skills format while maintaining the essence of each agent's expertise and following Anthropic's specification for skills.
+변환은 하위 에이전트 기능이 각 에이전트의 전문 지식의 본질을 유지하고 Anthropic의 기술 사양을 따르면서 에이전트 스킬 형식으로 효과적으로 변환될 수 있음을 보여줍니다.

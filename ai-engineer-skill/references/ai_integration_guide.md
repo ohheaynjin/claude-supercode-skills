@@ -2,19 +2,18 @@
 
 ## 빠른 시작
 
-### 설치
-```bash
+### 설치```bash
 pip install openai anthropic chromadb sentence-transformers
 ```
-### 환경 변수
-```bash
+
+### 환경 변수```bash
 export OPENAI_API_KEY="your-key"
 export ANTHROPIC_API_KEY="your-key"
 ```
+
 ## OpenAI 통합
 
-### 기본 사용법
-```python
+### 기본 사용법```python
 from integrate_openai import OpenAIIntegration, OpenAIConfig
 
 config = OpenAIConfig(
@@ -32,6 +31,7 @@ messages = [
 response = integration.chat_completion(messages)
 print(response['content'])
 ```
+
 ### 구성 옵션
 -`max_retries`: 재시도 횟수 (기본값: 3)
 -`retry_delay`: 재시도 간 지연 시간(초)(기본값: 1.0)
@@ -40,8 +40,7 @@ print(response['content'])
 
 ## 인류 통합
 
-### 기본 사용법
-```python
+### 기본 사용법```python
 from integrate_anthropic import AnthropicIntegration, AnthropicConfig
 
 config = AnthropicConfig(
@@ -54,10 +53,10 @@ integration = AnthropicIntegration(config)
 messages = [{"role": "user", "content": "Explain AI"}]
 response = integration.messages(messages)
 ```
+
 ## RAG 설정
 
-### 빠른 시작
-```python
+### 빠른 시작```python
 from setup_rag import RAGSystem, RAGConfig
 
 config = RAGConfig(
@@ -82,7 +81,9 @@ results = rag.query("What is machine learning?")
 for result in results:
     print(result['text'])
 ```
+
 ## 신속한 관리
+
 ```python
 from manage_prompts import PromptManager, PromptTemplate
 
@@ -100,7 +101,9 @@ manager.add_template(template)
 # Render
 rendered = template.render(text="Your text here")
 ```
+
 ## 모니터링
+
 ```python
 from monitor_ai_service import AIMonitor
 
@@ -115,7 +118,9 @@ monitor.record_request(
 status = monitor.get_health_status()
 print(f"Healthy: {status.is_healthy}")
 ```
+
 ## 비용 최적화
+
 ```python
 from optimize_tokens import TokenTracker
 
@@ -128,6 +133,7 @@ tracker.record_usage(
 cost = tracker.get_total_cost()
 print(f"Total cost: ${cost:.4f}")
 ```
+
 ## 모범 사례
 
 1. **속도 제한**: API 제한을 방지하려면 항상 속도 제한을 구현하세요.
@@ -140,9 +146,9 @@ print(f"Total cost: ${cost:.4f}")
 ## 가격 참조
 
 | 모델 | 입력(1K당) | 출력(1K당) |
-|-------|---------------|---|
+|-------|---------------|----------------|
 | GPT-4 | $0.03 | $0.06 |
 | GPT-4 터보 | $0.01 | $0.03 |
 | GPT-3.5 터보 | $0.0005 | $0.0015 |
 | 클로드 3.5 소네트 | $0.003 | $0.015 |
-| 클로드 3 작품 | $0.015 | $0.075 |
+| 직장 3개 닫기 | $0.015 | $0.075 |

@@ -6,22 +6,29 @@
 
 ### Python 스크립트를 찾을 수 없음
 
-**문제**:`python scripts/error_detection_automation.py`"해당 파일이나 디렉터리가 없습니다"를 반환합니다.
+**문제**: `python scripts/error_detection_automation.py`은 "해당 파일이나 디렉터리가 없습니다"를 반환합니다.
 
 **해결책**:
-- 올바른 디렉토리에 있는지 확인하세요.`cd error-detective-skill`- 스크립트 디렉터리가 있는지 확인하세요.`ls scripts/`- Python 3.7 이상이 설치되어 있는지 확인하십시오.`python --version`### 가져오기 오류
+- 올바른 디렉토리에 있는지 확인하세요: `cd error-detective-skill`
+- 확인 스크립트 디렉터리가 존재합니다: `ls scripts/`
+- Python 3.7 이상이 설치되어 있는지 확인하십시오: `python --version`
 
-**문제**:`ModuleNotFoundError: No module named 'json'`또는 기타 가져오기 오류
+### 가져오기 오류
+
+**문제**: `ModuleNotFoundError: No module named 'json'` 또는 기타 가져오기 오류
 
 **해결책**:
-- Python 3을 사용하는지 확인하세요.`python3 scripts/error_detection_automation.py`- 요구 사항.txt가 있는 경우 필수 종속성을 설치합니다.
+- Python 3을 사용하는지 확인하세요: `python3 scripts/error_detection_automation.py`
+- 요구 사항.txt가 있는 경우 필수 종속성을 설치합니다.
 
 ### 권한이 거부되었습니다
 
-**문제**:`PermissionError: [Errno 13] Permission denied`출력 파일을 쓸 때
+**문제**: 출력 파일을 작성할 때 `PermissionError: [Errno 13] Permission denied`
 
 **해결책**:
-- 파일 권한 확인:`ls -la scripts/`- 스크립트를 실행 가능하게 만듭니다.`chmod +x scripts/*.py`- 출력 디렉터리에 대한 쓰기 권한을 확인합니다.
+- 파일 권한 확인: `ls -la scripts/`
+- 스크립트를 실행 가능하게 만들기: `chmod +x scripts/*.py`
+- 출력 디렉터리에 대한 쓰기 권한을 확인합니다.
 
 ## 로그 스캔 문제
 
@@ -34,7 +41,7 @@
 - 로그 형식이 예상 패턴과 일치하는지 확인하세요.
 - ERROR_PATTERNS의 오류 패턴을 검토합니다.
 - 로그가 다른 형식을 사용하는 경우 사용자 정의 패턴을 추가하세요.
-- 사용`--sample-logs`샘플 데이터로 테스트하기
+- 샘플 데이터로 테스트하려면 `--sample-logs`을 사용하세요.
 
 ### 잘못된 오류 심각도
 
@@ -92,7 +99,9 @@
 
 ### 데이터 부족 오류
 
-**문제**:`Insufficient data for anomaly detection`**해결책**:
+**문제**: `Insufficient data for anomaly detection`
+
+**해결책**:
 - 분석을 위해 최소 10개 이상의 데이터 포인트 제공
 - error_history 길이를 늘립니다.
 - 오류율 데이터가 있는지 확인하세요.
@@ -169,7 +178,8 @@
 **해결책**:
 - 모니터링 시스템이 실행 중인지 확인
 - API 엔드포인트에 액세스할 수 있는지 확인하세요.
-- 직접 쿼리 테스트:`curl http://prometheus:9090/api/v1/query`- 서비스 검색 구성 검토
+- 쿼리 직접 테스트: `curl http://prometheus:9090/api/v1/query`
+- 서비스 검색 구성 검토
 
 ### 알림 통합 실패
 
@@ -184,6 +194,7 @@
 ## 디버그 모드
 
 ### 디버그 로깅 활성화
+
 ```bash
 # Set environment variable
 export DEBUG=true
@@ -191,44 +202,53 @@ export DEBUG=true
 # Or modify script logging level
 logging.basicConfig(level=logging.DEBUG)
 ```
+
 ### 테스트 실행 모드
+
 ```bash
 # Test without actual processing
 python scripts/error_detection_automation.py --scan --services api-service database-service --dry-run
 ```
+
 ### 자세한 출력
+
 ```bash
 # Get detailed execution information
 python scripts/error_detection_automation.py --scan --services api-service --verbose
 ```
+
 ### 샘플 로그 생성
+
 ```bash
 # Generate sample logs for testing
 python scripts/error_detection_automation.py --sample-logs --error-count 50
 ```
+
 ## 도움 받기
 
 ### 스크립트 도움말
+
 ```bash
 # Get help for the script
 python scripts/error_detection_automation.py --help
 ```
+
 ### 오류 메시지
 
 - 오류 메시지를 주의 깊게 읽으세요.
-- 전체 스택 추적 로그를 확인하세요.
+- 전체 스택 추적에 대한 로그를 확인하세요.
 - 문서에서 오류 코드 검색
 - 최근 환경 변화 검토
 
 ### 일반적인 오류 코드
 
--`E001`: 로그 구문 분석 실패
--`E002`: 패턴 매칭 오류
--`E003`: 상관관계 시간 초과
--`E004`: 분석을 위한 데이터가 부족함
--`E005`: 이상 탐지 임계값 오류
+- `E001`: 로그 구문 분석에 실패했습니다.
+- `E002`: 패턴 일치 오류
+- `E003`: 상관 관계 시간 초과
+- `E004`: 분석을 위한 데이터가 부족합니다.
+- `E005`: 이상 탐지 임계값 오류
 
-## 예방
+## 방지
 
 ### 배포 전 체크리스트
 

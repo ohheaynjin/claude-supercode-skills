@@ -1,36 +1,37 @@
 ---
 name: document-writer
-description: 기술 문서, ADR(건축 결정 기록) 및 RFC 작성 전문가입니다. 구조화된 지식 관리 및 시스템 문서화를 전문으로 합니다. 기술 문서, ADR, RFC 또는 시스템 설계 문서를 작성할 때 사용합니다.
+description: Expert in creating technical documentation, architectural decision records (ADRs), and RFCs. Specializes in structured knowledge management and system documentation. Use when writing technical docs, ADRs, RFCs, or system design documents.
 ---
-# 문서작성자
 
-## 목적
-소프트웨어 시스템에 대한 구조화된 기술 문서 작성에 대한 전문 지식을 제공합니다. 아키텍처 결정 기록, RFC, 디자인 문서 및 지식 기반 기사를 전문으로 합니다.
+# Document Writer
 
-## 사용 시기
-- 아키텍처 결정 기록(ADR) 작성
-- RFC(의견 요청) 문서 작성
-- 시스템 설계 문서화
-- 기술 사양 작성
-- 런북 및 플레이북 만들기
-- 내부 지식 기반 구축
-- 사건 기록(사후)
+## Purpose
+Provides expertise in creating structured technical documentation for software systems. Specializes in architectural decision records, RFCs, design documents, and knowledge base articles.
 
-## 빠른 시작
-**다음과 같은 경우에 이 스킬을 호출하세요:**
-- 아키텍처 결정 기록(ADR) 작성
-- RFC 문서 만들기
-- 시스템 설계 문서화
-- 기술 사양 작성
-- 런북 및 플레이북 만들기
+## When to Use
+- Writing architectural decision records (ADRs)
+- Creating RFC (Request for Comments) documents
+- Documenting system designs
+- Writing technical specifications
+- Creating runbooks and playbooks
+- Building internal knowledge bases
+- Documenting incidents (post-mortems)
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- API 문서 작성(api-documenter 사용)
-- 사용자 대상 문서 작성(기술 작성자 사용)
-- Word 문서 작성 (docx-skill 사용)
-- 마케팅 컨텐츠 작성 (content-marketer 이용)
+## Quick Start
+**Invoke this skill when:**
+- Writing architectural decision records (ADRs)
+- Creating RFC documents
+- Documenting system designs
+- Writing technical specifications
+- Creating runbooks and playbooks
 
-## 의사결정 프레임워크
+**Do NOT invoke when:**
+- Writing API documentation (use api-documenter)
+- Writing user-facing docs (use technical-writer)
+- Creating Word documents (use docx-skill)
+- Writing marketing content (use content-marketer)
+
+## Decision Framework
 ```
 Document Type Selection:
 ├── Decision needed → ADR
@@ -41,49 +42,50 @@ Document Type Selection:
 ├── Process definition → SOP
 └── Knowledge capture → Wiki article
 ```
-## 핵심 워크플로
 
-### 1. ADR 생성
-1. 내려야 할 결정을 식별합니다.
-2. 컨텍스트 및 제약 조건 나열
-3. 고려된 옵션 열거
-4. 장단점 분석
-5. 국가의 결정과 근거
-6. 결과 문서화
-7. 이해관계자의 검토를 받으세요
+## Core Workflows
 
-### 2. RFC 프로세스
-1. 문제 설명문 작성
-2. 솔루션 접근 방식 제안
-3. 세부 실시계획
-4. 위험 및 완화 조치
-5. 성공 지표 정의
-6. 의견을 받습니다.
-7. 피드백을 기반으로 반복
-8. 수락/거절로 이동
+### 1. ADR Creation
+1. Identify decision to be made
+2. List context and constraints
+3. Enumerate options considered
+4. Analyze pros and cons
+5. State decision and rationale
+6. Document consequences
+7. Get stakeholder review
 
-### 3. 디자인 문서
-1. 국가의 목적과 범위
-2. 현재 상태 설명
-3. 제안된 디자인 제시
-4. 다이어그램 포함(C4, 시퀀스)
-5. 비기능적 요구사항 해결
-6. 고려된 대안 나열
-7. 출시 계획 정의
+### 2. RFC Process
+1. Write problem statement
+2. Propose solution approach
+3. Detail implementation plan
+4. Address risks and mitigations
+5. Define success metrics
+6. Open for comments
+7. Iterate based on feedback
+8. Move to accepted/rejected
 
-## 모범 사례
-- 일관성을 위해 템플릿을 사용하세요.
-- 복잡한 시스템에 대한 다이어그램 포함
-- 자신이 아닌 독자를 위해 글을 쓰세요
-- 문서를 최신 상태로 유지하세요
-- 관련 문서 링크
-- 모든 문서의 버전 관리
+### 3. Design Document
+1. State purpose and scope
+2. Describe current state
+3. Present proposed design
+4. Include diagrams (C4, sequence)
+5. Address non-functional requirements
+6. List alternatives considered
+7. Define rollout plan
 
-## 안티 패턴
-| 안티 패턴 | 문제 | 올바른 접근 |
-|---------------|---------|------|
-| 템플릿 없음 | 일관성 없는 문서 | 표준 템플릿 사용 |
-| 쓰기 전용 문서 | 업데이트되지 않음 | 일정 검토 |
-| 누락된 컨텍스트 | 독자들은 혼란스러워 | 배경 포함 |
-| 너무 장황함 | 아무도 읽지 않는다 | 간결하게, 링크 세부정보 |
-| 발견할 수 없음 | 문서는 사용되지 않습니다 | 정리 및 색인 |
+## Best Practices
+- Use templates for consistency
+- Include diagrams for complex systems
+- Write for the reader, not yourself
+- Keep documents updated
+- Link related documents
+- Version control all documentation
+
+## Anti-Patterns
+| Anti-Pattern | Problem | Correct Approach |
+|--------------|---------|------------------|
+| No template | Inconsistent docs | Use standard templates |
+| Write-only docs | Never updated | Schedule reviews |
+| Missing context | Readers confused | Include background |
+| Too verbose | Nobody reads | Be concise, link details |
+| Undiscoverable | Docs go unused | Organize and index |

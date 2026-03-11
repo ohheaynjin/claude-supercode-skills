@@ -3,6 +3,7 @@
 ## 핫와이어 구현
 
 ### 터보 프레임 뷰
+
 ```erb
 <!-- app/views/orders/index.html.erb -->
 <div class="container mx-auto px-4 py-8">
@@ -124,7 +125,9 @@
             class: "px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-xs",
             data: { turbo_confirm: "Are you sure you want to cancel this order?" } %>
 ```
+
 ### 자극 컨트롤러
+
 ```javascript
 // app/javascript/controllers/order_status_controller.js
 import { Controller } from "@hotwired/stimulus"
@@ -292,9 +295,11 @@ export default class extends Controller {
   }
 }
 ```
+
 ## 테스트 전략
 
 ### 최신 레일 테스트
+
 ```ruby
 # test/services/order_service_test.rb
 require "test_helper"
@@ -538,6 +543,7 @@ class OrdersSystemTest < ApplicationSystemTestCase
   end
 end
 ```
+
 ## 사용 사례 예시
 
 ### 예시 1: 핫와이어 기반 실시간 대시보드

@@ -2,6 +2,7 @@
 name: ml-engineer
 description: Expert in building scalable ML systems, from data pipelines and model training to production deployment and monitoring.
 ---
+
 # Machine Learning Engineer
 
 ## Purpose
@@ -45,7 +46,6 @@ Need to serve predictions?
    └─ Browser? → **TensorFlow.js / ONNX Runtime Web**
 ```
 
-
 ### Training Infrastructure
 
 ```
@@ -61,7 +61,6 @@ Training Environment?
    ├─ Data Parallelism? → **Ray Train / PyTorch DDP**
    └─ Pipeline orchestration? → **Kubeflow / Airflow / Vertex AI**
 ```
-
 
 ### Feature Store Decision
 
@@ -90,8 +89,7 @@ Training Environment?
 **Steps:**
 
 1.  **Setup Tracking**
-
-```python
+    ```python
     import mlflow
     import mlflow.sklearn
     from sklearn.ensemble import RandomForestClassifier
@@ -101,10 +99,8 @@ Training Environment?
     mlflow.set_experiment("churn-prediction-prod")
     ```
 
-
 2.  **Training Script (`train.py`)**
-
-```python
+    ```python
     def train(max_depth, n_estimators):
         with mlflow.start_run():
             # Log params
@@ -145,10 +141,8 @@ Training Environment?
         train(max_depth=5, n_estimators=100)
     ```
 
-
 3.  **Pipeline Orchestration (Bash/Airflow)**
-
-```bash
+    ```bash
     #!/bin/bash
     # Run training
     python train.py
@@ -156,7 +150,6 @@ Training Environment?
     # Check if model passed threshold (e.g. via MLflow API)
     # If yes, transition to Staging
     ```
-
 
 ---
 ---
@@ -168,8 +161,7 @@ Training Environment?
 **Steps:**
 
 1.  **Baseline Generation (During Training)**
-
-```python
+    ```python
     import evidently
     from evidently.report import Report
     from evidently.metric_preset import DataDriftPreset
@@ -180,10 +172,8 @@ Training Environment?
     report.save_json("baseline_drift.json")
     ```
 
-
 2.  **Production Monitoring Job**
-
-```python
+    ```python
     # Scheduled daily job
     def check_drift():
         # Load production logs (last 24h)
@@ -201,7 +191,6 @@ Training Environment?
             trigger_retraining()
     ```
 
-
 ---
 ---
 
@@ -212,8 +201,7 @@ Training Environment?
 **Steps:**
 
 1.  **Ingestion (Chunking & Embedding)**
-
-```python
+    ```python
     from langchain.text_splitter import RecursiveCharacterTextSplitter
     from langchain_openai import OpenAIEmbeddings
     from langchain_pinecone import PineconeVectorStore
@@ -231,10 +219,8 @@ Training Environment?
     )
     ```
 
-
 2.  **Retrieval & Generation**
-
-```python
+    ```python
     from langchain.chains import RetrievalQA
     from langchain_openai import ChatOpenAI
     
@@ -249,7 +235,6 @@ Training Environment?
     response = qa_chain.invoke("How do I reset my password?")
     print(response['result'])
     ```
-
 
 3.  **Optimization (Hybrid Search)**
     -   Combine **Dense Retrieval** (Vectors) with **Sparse Retrieval** (BM25/Keywords).

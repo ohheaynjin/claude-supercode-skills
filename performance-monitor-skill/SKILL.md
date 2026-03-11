@@ -26,8 +26,12 @@ AI 에이전트 성능 모니터링, 벤치마킹 및 최적화에 대한 전문
 - 벤치마킹 에이전트 품질
 
 **다음과 같은 경우에는 호출하지 마세요.**
-- 일반 애플리케이션 성능 → 사용`/performance-engineer`- 인프라 모니터링 → 활용`/sre-engineer`- ML 모델 학습 최적화 → 사용`/ml-engineer`- 신속한 디자인 → 활용`/prompt-engineer`## 의사결정 프레임워크
-```
+- 일반 애플리케이션 성능 → `/performance-engineer` 사용
+- 인프라 모니터링 → `/sre-engineer` 사용
+- ML 모델 훈련 최적화 → `/ml-engineer` 사용
+- 프롬프트 디자인 → `/prompt-engineer` 사용
+
+## 의사결정 프레임워크```
 Optimization Goal?
 ├── Cost Reduction
 │   ├── Token usage → Prompt optimization
@@ -41,7 +45,8 @@ Optimization Goal?
 └── Reliability
     └── Error rates, retry patterns
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. 토큰 사용 추적
 1. 사용량을 캡처하기 위한 계측기 API 호출

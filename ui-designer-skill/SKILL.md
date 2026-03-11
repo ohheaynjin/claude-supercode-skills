@@ -2,6 +2,7 @@
 name: ui-designer
 description: Use when user needs visual UI design, interface creation, component systems, design systems, interaction patterns, or accessibility-focused user interfaces.
 ---
+
 # UI Designer
 
 ## Purpose
@@ -103,7 +104,6 @@ Design System Scope
         • Platform-specific components (where needed)
         • Use Design Tokens Community Group spec
 ```
-
 
 ### Component State Matrix
 

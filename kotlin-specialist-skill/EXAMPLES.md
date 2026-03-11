@@ -1,10 +1,10 @@
-# Kotlin 전문가 - 코드 예제 및 패턴
+# Kotlin Specialist - Code Examples & Patterns
 
-이 문서에는 Kotlin 개발을 위한 코드 예제, 안티 패턴, 실제 구현 패턴이 포함되어 있습니다.
+This document contains code examples, anti-patterns, and real-world implementation patterns for Kotlin development.
 
-## 안티 패턴 1: 코루틴 범위 누출
+## Anti-Pattern 1: Leaking Coroutine Scope
 
-**모습:**
+**What it looks like:**
 ```kotlin
 // WRONG: Leaking GlobalScope
 class MyActivity : AppCompatActivity() {
@@ -32,12 +32,12 @@ class MyViewModel : ViewModel() {
 }
 ```
 
-**실패하는 이유:**
-- **메모리 누수**: GlobalScope는 영원히 존재하며 파괴된 활동에 대한 참조를 보유합니다.
-- **충돌**: 활동이 종료된 후 UI를 업데이트하려고 합니다.
-- **좀비 코루틴**: 취소 확인이 없는 무한 루프
+**Why it fails:**
+- **Memory leaks**: GlobalScope lives forever, holds references to destroyed activities
+- **Crashes**: Trying to update UI after activity destruction
+- **Zombie coroutines**: Infinite loops without cancellation checks
 
-**올바른 접근 방식:**
+**Correct approach:**
 ```kotlin
 // CORRECT: Lifecycle-aware scope
 class MyActivity : AppCompatActivity() {
@@ -76,17 +76,17 @@ class MyViewModel : ViewModel() {
 }
 ```
 
-**범위 선택 가이드:**
-- **활동/프래그먼트**: 사용`lifecycleScope`(수명 주기에 따라 자동 취소됨)
-- **ViewModel**: 사용`viewModelScope`(ViewModel이 지워지면 자동 취소됨)
-- **애플리케이션 수준**: 사용`CoroutineScope(SupervisorJob() + Dispatchers.Main)`수동 정리 사용
-- **안함**: 사용`GlobalScope`프로덕션 코드에서
+**Scope Selection Guide:**
+- **Activity/Fragment**: Use `lifecycleScope` (auto-cancelled with lifecycle)
+- **ViewModel**: Use `viewModelScope` (auto-cancelled when ViewModel cleared)
+- **Application-level**: Use `CoroutineScope(SupervisorJob() + Dispatchers.Main)` with manual cleanup
+- **Never**: Use `GlobalScope` in production code
 
 ---
 
-## 안티 패턴 2: 메인 디스패처 차단
+## Anti-Pattern 2: Blocking Main Dispatcher
 
-**모습:**
+**What it looks like:**
 ```kotlin
 // WRONG: Blocking Main thread
 viewModelScope.launch(Dispatchers.Main) {
@@ -102,13 +102,13 @@ suspend fun loadData(): Data {
 }
 ```
 
-**실패하는 이유:**
-- **ANR(애플리케이션이 응답하지 않음)**: UI가 5초 이상 정지됨
-- **Janky UI**: 프레임이 60fps 미만으로 떨어지면 끊김 현상이 발생합니다.
-- **낭비된 정지**: 사용`Thread.sleep`코루틴을 정지하는 대신 스레드를 차단합니다.
-- **메인 스레드 고갈**: 다른 UI 업데이트를 실행할 수 없습니다.
+**Why it fails:**
+- **ANR (Application Not Responding)**: UI freezes for >5 seconds
+- **Janky UI**: Frame drops below 60fps cause stuttering
+- **Wasted suspend**: Using `Thread.sleep` blocks thread instead of suspending coroutine
+- **Main thread starvation**: Other UI updates can't run
 
-**올바른 접근 방식:**
+**Correct approach:**
 ```kotlin
 // CORRECT: Use appropriate dispatchers
 viewModelScope.launch {
@@ -142,9 +142,9 @@ class Repository(
 
 ---
 
-## 예: KMP 공유 모듈 완성
+## Example: Complete KMP Shared Module
 
-### 프로젝트 구조
+### Project Structure
 ```
 shared/
 ├── build.gradle.kts
@@ -161,7 +161,7 @@ shared/
 │       └── Platform.ios.kt
 ```
 
-### 공통 모듈 모델
+### Common Module Models
 ```kotlin
 // commonMain/kotlin/models/Product.kt
 @Serializable
@@ -180,7 +180,7 @@ data class ApiResponse<T>(
 )
 ```
 
-### 공통 저장소
+### Common Repository
 ```kotlin
 // commonMain/kotlin/repository/ProductRepository.kt
 class ProductRepository(
@@ -219,7 +219,7 @@ class ProductRepository(
 }
 ```
 
-### 플랫폼 예상/실제
+### Platform Expect/Actual
 ```kotlin
 // commonMain/kotlin/Platform.kt
 expect fun getPlatformName(): String
@@ -247,7 +247,8 @@ actual fun createHttpClient(): HttpClient = HttpClient(Darwin) {
 
 ---
 
-## 예: 어떤 REST API인지
+## Example: Ktor REST API
+
 ```kotlin
 // Application.kt
 fun Application.module() {
@@ -328,9 +329,9 @@ fun Route.productRoutes() {
 
 ---
 
-## 테스트 패턴
+## Testing Patterns
 
-### 리포지토리 테스트
+### Repository Testing
 ```kotlin
 class ProductRepositoryTest {
     private val testDispatcher = StandardTestDispatcher()
@@ -382,7 +383,7 @@ class ProductRepositoryTest {
 }
 ```
 
-### 흐름 테스트
+### Flow Testing
 ```kotlin
 @Test
 fun `searchProducts emits results after debounce`() = runTest {
@@ -408,7 +409,8 @@ fun `searchProducts emits results after debounce`() = runTest {
 
 ---
 
-## Gradle 구성(KMP)
+## Gradle Configuration (KMP)
+
 ```kotlin
 // shared/build.gradle.kts
 plugins {

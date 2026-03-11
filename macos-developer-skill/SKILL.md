@@ -1,64 +1,62 @@
 ---
 name: macos-developer
-description: Expert in macOS app development using AppKit, SwiftUI for Mac, and XPC. Specializes in system extensions, menu bar apps, and deep OS integration.
+description: AppKit, Mac용 SwiftUI 및 XPC를 사용한 macOS 앱 개발 전문가입니다. 시스템 확장, 메뉴 표시줄 앱 및 심층적인 OS 통합을 전문으로 합니다.
 ---
-# macOS Developer
+# macOS 개발자
 
-## Purpose
+## 목적
 
-Provides native macOS application development expertise specializing in AppKit, SwiftUI for Mac, and system integration. Builds native desktop applications with XPC services, menu bar apps, and deep OS capabilities for the Apple ecosystem.
+AppKit, Mac용 SwiftUI 및 시스템 통합을 전문으로 하는 기본 macOS 애플리케이션 개발 전문 지식을 제공합니다. Apple 생태계를 위한 XPC 서비스, 메뉴 표시줄 앱 및 심층적인 OS 기능을 사용하여 기본 데스크탑 애플리케이션을 구축합니다.
 
-## When to Use
+## 사용 시기
 
-- Building native macOS apps (DMG/App Store)
-- Developing Menu Bar apps (NSStatusItem)
-- Implementing XPC Services for privilege separation
-- Creating System Extensions (Endpoint Security, Network Extension)
-- Porting iPad apps to Mac (Catalyst)
-- Automating Mac admin tasks (AppleScript/JXA)
+- 기본 macOS 앱 구축(DMG/App Store)
+- 메뉴바 앱 개발(NSStatusItem)
+- 권한 분리를 위한 XPC 서비스 구현
+- 시스템 확장 생성(엔드포인트 보안, 네트워크 확장)
+- iPad 앱을 Mac으로 포팅(Catalyst)
+- Mac 관리 작업 자동화(AppleScript/JXA)
 
 ---
 ---
 
-## 2. Decision Framework
+## 2. 의사결정 프레임워크
 
-### UI Framework
+### UI 프레임워크
 
-| Framework | Best For | Pros | Cons |
+| 뼈대 | 최고의 대상 | 장점 | 단점 |
 |-----------|----------|------|------|
-| **SwiftUI** | Modern Apps | Declarative, simple code. | Limited AppKit feature parity. |
-| **AppKit** | System Tools | Full control (NSWindow, NSView). | Imperative, verbose. |
-| **Catalyst** | iPad Ports | Free Mac app from iPad code. | Looks like an iPad app. |
+| **SwiftUI** | 최신 앱 | 선언적이고 간단한 코드. | 제한된 AppKit 기능 패리티. |
+| **앱킷** | 시스템 도구 | 모든 권한(NSWindow, NSView). | 명령형, 장황함. |
+| **촉매** | 아이패드 포트 | iPad 코드를 통한 무료 Mac 앱. | 아이패드 앱 같네요. |
 
-### Distribution Channel
+### 유통채널
 
-*   **Mac App Store:** Sandboxed, verified, easy updates. (Required for System Extensions).
-*   **Direct Distribution (DMG):** Notarization required. More freedom (Accessibility API, Full Disk Access).
+* **Mac App Store:** 샌드박스 처리되고 검증되었으며 업데이트가 쉽습니다. (시스템 확장에 필요)
+* **직접 배포(DMG):** 공증이 필요합니다. 더 많은 자유(접근성 API, 전체 디스크 액세스).
 
-### Process Architecture
+### 프로세스 아키텍처
 
-*   **Monolith:** Simple apps.
-*   **XPC Service:** Complex apps. Isolates crashes, allows privilege escalation (Helper tool).
+* **모놀리스:** 간단한 앱.
+* **XPC 서비스:** 복잡한 앱. 충돌을 격리하고 권한 에스컬레이션을 허용합니다(도우미 도구).
 
-**Red Flags → Escalate to `security-engineer`:**
-- Requesting "Full Disk Access" without a valid reason
-- Embedding private keys in the binary
-- Bypassing Gatekeeper/Notarization
+**위험 신호 → `security-engineer`(으)로 에스컬레이션하세요.**
+- 정당한 이유 없이 "전체 디스크 액세스"를 요청하는 경우
+- 바이너리에 개인 키 삽입
+- 게이트키퍼 우회/공증
 
 ---
 ---
 
-## 3. Core Workflows
+## 3. 핵심 워크플로
 
-### Workflow 1: Menu Bar App (SwiftUI)
+### 작업 흐름 1: 메뉴 표시줄 앱(SwiftUI)
 
-**Goal:** Create an app that lives in the menu bar.
+**목표:** 메뉴바에 있는 앱을 만듭니다.
 
-**Steps:**
+**단계:**
 
-1.  **App Setup**
-
-```swift
+1. **앱 설정**```swift
     @main
     struct MenuBarApp: App {
         var body: some Scene {
@@ -71,25 +69,22 @@ Provides native macOS application development expertise specializing in AppKit, 
     }
     ```
 
-
-2.  **Hide Dock Icon**
-    -   Info.plist: `LSUIElement` = `YES`.
+2. **도크 아이콘 숨기기**
+    - Info.plist: `LSUIElement` = `YES`.
 
 ---
 ---
 
-### Workflow 3: System Extension (Endpoint Security)
+### 작업 흐름 3: 시스템 확장(엔드포인트 보안)
 
-**Goal:** Monitor file events.
+**목표:** 파일 이벤트를 모니터링합니다.
 
-**Steps:**
+**단계:**
 
-1.  **Entitlements**
-    -   `com.apple.developer.endpoint-security.client` = `YES`.
+1. **자격**
+    - `com.apple.developer.endpoint-security.client` = `YES`.
 
-2.  **Implementation (C API)**
-
-```c
+2. **구현(C API)**```c
     es_client_t *client;
     es_new_client(&client, ^(es_client_t *c, const es_message_t *msg) {
         if (msg->event_type == ES_EVENT_TYPE_NOTIFY_EXEC) {
@@ -98,53 +93,51 @@ Provides native macOS application development expertise specializing in AppKit, 
     });
     ```
 
+---
+---
+
+## 5. 안티 패턴 및 문제점
+
+### ❌ 안티 패턴 1: iOS 동작 가정
+
+**모습:**
+- 간단한 Window가 필요한 경우 `NavigationView`(분할 뷰)을 사용합니다.
+- 메뉴 표시줄 명령(`Cmd+Q`, `Cmd+S`)을 무시합니다.
+
+**실패하는 이유:**
+- Mac에서는 외계인 같은 느낌이 듭니다.
+
+**올바른 접근 방식:**
+- **키보드 단축키**를 지원합니다.
+- **다중 창** 워크플로를 지원합니다.
+
+### ❌ 안티 패턴 2: 메인 스레드 차단
+
+**모습:**
+- 메인 스레드에서 파일 I/O를 실행합니다.
+
+**실패하는 이유:**
+- 스피닝 비치볼 오브 데스(SPOD).
+
+**올바른 접근 방식:**
+- `DispatchQueue.global()` 또는 Swift `Task`를 사용하세요.
 
 ---
 ---
 
-## 5. Anti-Patterns & Gotchas
+## 예
 
-### ❌ Anti-Pattern 1: Assuming iOS Behavior
+### 예시 1: 전문 메뉴바 애플리케이션
 
-**What it looks like:**
--   Using `NavigationView` (split view) when a simple Window is needed.
--   Ignoring Menu Bar commands (`Cmd+Q`, `Cmd+S`).
+**시나리오:** 빠른 액세스를 위해 macOS 메뉴 표시줄에 있는 시스템 유틸리티를 구축합니다.
 
-**Why it fails:**
--   Feels alien on Mac.
+**개발 접근 방식:**
+1. **프로젝트 설정**: MenuBarExtra가 포함된 SwiftUI
+2. **창 관리**: 팝업 메뉴가 있는 숨겨진 도크 아이콘
+3. **설정 통합**: 기본 설정에 대한 UserDefaults
+4. **상태 항목**: 아이콘과 메뉴가 포함된 사용자 정의 NSStatusItem
 
-**Correct approach:**
--   Support **Keyboard Shortcuts**.
--   Support **Multi-Window** workflows.
-
-### ❌ Anti-Pattern 2: Blocking Main Thread
-
-**What it looks like:**
--   Running file I/O on main thread.
-
-**Why it fails:**
--   Spinning Beach Ball of Death (SPOD).
-
-**Correct approach:**
--   Use `DispatchQueue.global()` or Swift `Task`.
-
----
----
-
-## Examples
-
-### Example 1: Professional Menu Bar Application
-
-**Scenario:** Build a system utility that lives in the macOS menu bar for quick access.
-
-**Development Approach:**
-1. **Project Setup**: SwiftUI with MenuBarExtra
-2. **Window Management**: Hidden dock icon with popup menu
-3. **Settings Integration**: UserDefaults for preferences
-4. **Status Item**: Custom NSStatusItem with icon and menu
-
-**Implementation:**
-```swift
+**구현:**```swift
 @main
 struct SystemUtilityApp: App {
     var body: some Scene {
@@ -162,30 +155,28 @@ struct SystemUtilityApp: App {
 }
 ```
 
+**주요 기능:**
+- Info.plist의 LSUElement를 사용하여 도크 아이콘 숨기기
+- 빠른 작업을 위한 키보드 단축키
+- 메뉴 업데이트로 백그라운드 새로 고침
+- 자동 업데이트를 위한 Sparkle
 
-**Key Features:**
-- LSUIElement in Info.plist to hide dock icon
-- Keyboard shortcuts for quick actions
-- Background refresh with menu updates
-- Sparkle for automatic updates
+**결과:**
+- 별점 4.8점으로 Mac App Store에서 출시됨
+- 50,000명 이상의 활성 사용자
+- "최고의 새로운 앱" 카테고리에 선정됨
 
-**Results:**
-- Released on Mac App Store with 4.8-star rating
-- 50,000+ active users
-- Featured in "Best New Apps" category
+### 예제 2: XPC 서비스를 사용한 문서 기반 애플리케이션
 
-### Example 2: Document-Based Application with XPC Services
+**시나리오:** 백그라운드 처리 기능을 갖춘 전문 문서 편집기를 구축하세요.
 
-**Scenario:** Build a professional document editor with background processing.
+**아키텍처:**
+1. **메인 앱**: SwiftUI 문서 처리
+2. **XPC 서비스**: 백그라운드 문서 처리
+3. **샌드박스**: 적절한 앱 샌드박스 구성
+4. **IPC**: 통신을 위한 NSXPCConnection
 
-**Architecture:**
-1. **Main App**: SwiftUI document handling
-2. **XPC Service**: Background document processing
-3. **Sandbox**: Proper app sandbox configuration
-4. **IPC**: NSXPCConnection for communication
-
-**XPC Service Implementation:**
-```swift
+**XPC 서비스 구현:**```swift
 // Service Protocol
 @objc protocol ProcessingServiceProtocol {
     func processDocument(at url: URL, reply: @escaping (URL?) -> Void)
@@ -201,25 +192,23 @@ class ProcessingService: NSObject, ProcessingServiceProtocol {
 }
 ```
 
+**혜택:**
+- 충돌 격리(서비스 충돌로 인해 앱이 종료되지 않음)
+- 메모리 사용량 감소
+- 민감한 작업을 위한 권한 분리
+- 더 나은 App Store 승인 가능성
 
-**Benefits:**
-- Crash isolation (service crash doesn't kill app)
-- Reduced memory footprint
-- Privilege separation for sensitive operations
-- Better App Store approval chances
+### 예시 3: 네트워크 모니터링을 위한 시스템 확장
 
-### Example 3: System Extension for Network Monitoring
+**시나리오:** 시스템 확장을 사용하여 네트워크 모니터링 도구를 만듭니다.
 
-**Scenario:** Create a network monitoring tool using System Extension.
+**개발 과정:**
+1. **자격 구성**: 엔드포인트 보안 자격
+2. **시스템 확장**: 네트워크 확장 구현
+3. **배포**: 적절한 공증 및 서명
+4. **사용자 승인**: 시스템 확장 승인 워크플로
 
-**Development Process:**
-1. **Entitlement Configuration**: Endpoint security entitlement
-2. **System Extension**: Network extension implementation
-3. **Deployment**: Proper notarization and signing
-4. **User Approval**: System extension approval workflow
-
-**Implementation:**
-```swift
+**구현:**```swift
 // Network extension handler
 class NetworkExtensionHandler: NEProvider {
     override func startProtocol(options: [String: Any]?, completionHandler: @escaping (Error?) -> Void) {
@@ -236,64 +225,63 @@ class NetworkExtensionHandler: NEProvider {
 }
 ```
 
+**요구사항:**
+- App Store 외부 배포에 대한 공증
+- 사용자 승인 시스템 확장
+- Apple 개발자 포털의 적절한 권한
 
-**Requirements:**
-- Notarization for distribution outside App Store
-- User-approved system extension
-- Proper entitlements from Apple Developer portal
+## 모범 사례
 
-## Best Practices
+### AppKit 및 SwiftUI 통합
 
-### AppKit and SwiftUI Integration
+- **하이브리드 접근 방식**: UI에는 SwiftUI를 사용하고 복잡한 구성 요소에는 AppKit을 사용합니다.
+- **NSViewRepresentable**: SwiftUI 사용을 위해 NSView 래핑
+- **NSHostingView**: AppKit 창에 SwiftUI 삽입
+- **데이터 흐름**: 공유 상태에 Observable 또는 StateObject를 사용합니다.
 
-- **Hybrid Approach**: Use SwiftUI for UI, AppKit for complex components
-- **NSViewRepresentable**: Wrap NSView for SwiftUI use
-- **NSHostingView**: Embed SwiftUI in AppKit windows
-- **Data Flow**: Use Observable or StateObject for shared state
+### 샌드박스 및 보안
 
-### Sandboxing and Security
+- **최소 권한**: 꼭 필요한 권한만 요청
+- **키체인**: 민감한 데이터 저장을 위해 키체인을 사용합니다.
+- **앱 샌드박스**: App Store 배포를 위해 활성화
+- **강화된 런타임**: 공증을 위해 필요합니다.
 
-- **Minimal Entitlements**: Request only necessary permissions
-- **Keychain**: Use Keychain for sensitive data storage
-- **App Sandbox**: Enable for App Store distribution
-- **Hardened Runtime**: Required for notarization
+### 배포 및 배포
 
-### Distribution and Deployment
+- **코드 서명**: 공증 전에 항상 서명하세요.
+- **공증**: 보안 검증을 위해 Apple에 제출
+- **자동 업데이트**: 직접 배포를 위해 Sparkle 구현
+- **DMG 생성**: create-dmg 또는 유사한 도구를 사용합니다.
 
-- **Code Signing**: Always sign before notarization
-- **Notarization**: Submit to Apple for security validation
-- **Auto-Updates**: Implement Sparkle for direct distribution
-- **DMG Creation**: Use create-dmg or similar tools
+### 성능 최적화
 
-### Performance Optimization
+- **지연 로딩**: 필요할 때까지 리소스 로딩을 연기합니다.
+- **백그라운드 작업**: 장시간 작업에는 BGTaskScheduler를 사용하세요.
+- **메모리 관리**: 메모리 부족 모니터링
+- **시작 시간**: 실행 순서 최적화
 
-- **Lazy Loading**: Defer resource loading until needed
-- **Background Tasks**: Use BGTaskScheduler for long operations
-- **Memory Management**: Monitor memory pressure
-- **Startup Time**: Optimize launch sequence
+### 사용자 경험
 
-### User Experience
+- **키보드 탐색**: 전체 키보드 작동 지원
+- **어두운 모드**: 밝고 어두운 모습을 적절하게 처리합니다.
+- **접근성**: 처음부터 VoiceOver 호환성
+- **창 관리**: 여러 창을 적절하게 지원합니다.
 
-- **Keyboard Navigation**: Support full keyboard operation
-- **Dark Mode**: Properly handle light and dark appearances
-- **Accessibility**: VoiceOver compatibility from start
-- **Window Management**: Support multiple windows properly
-
-## Quality Checklist
+## 품질 체크리스트
 
 **UX:**
--   [ ] **Menus:** App supports standard menu commands.
--   [ ] **Windows:** Resizable, supports Full Screen.
--   [ ] **Dark Mode:** Supports System Appearance.
--   [ ] **Accessibility:** VoiceOver works on key elements.
+- [ ] **메뉴:** 앱은 표준 메뉴 명령을 지원합니다.
+- [ ] **Windows:** 크기 조정이 가능하며 전체 화면을 지원합니다.
+- [ ] **다크 모드:** 시스템 모양을 지원합니다.
+- [ ] **접근성:** VoiceOver는 핵심 요소에 대해 작동합니다.
 
-**System:**
--   [ ] **Sandboxing:** App Sandbox enabled (if App Store).
--   [ ] **Hardened Runtime:** Enabled for Notarization.
--   [ ] **Code Signing:** Properly signed for distribution.
--   [ ] **Notarization:** Submitted and approved by Apple.
+**시스템:**
+- [ ] **샌드박싱:** 앱 샌드박스가 활성화되었습니다(App Store의 경우).
+- [ ] **강화된 런타임:** 공증이 활성화되었습니다.
+- [ ] **코드 서명:** 배포를 위해 올바르게 서명되었습니다.
+- [ ] **공증:** Apple에서 제출하고 승인했습니다.
 
-**Performance:**
--   [ ] **Startup:** App launches within 5 seconds.
--   [ ] **Memory:** No memory leaks or excessive usage.
--   [ ] **Responsive:** UI remains responsive during operations.
+**성능:**
+- [ ] **시작:** 앱이 5초 이내에 실행됩니다.
+- [ ] **메모리:** 메모리 누수나 과도한 사용이 없습니다.
+- [ ] **반응형:** 작업 중에 UI가 반응형으로 유지됩니다.

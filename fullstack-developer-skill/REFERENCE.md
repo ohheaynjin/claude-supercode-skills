@@ -5,6 +5,7 @@
 ## 통합 패턴
 
 ### 프런트엔드-백엔드 통신
+
 ```javascript
 // API Client Configuration
 const apiClient = axios.create({
@@ -36,7 +37,9 @@ apiClient.interceptors.response.use(
   }
 );
 ```
+
 ### 구성요소 통합
+
 ```javascript
 // React Component with Backend Integration
 const UserProfile = () => {
@@ -65,7 +68,9 @@ const UserProfile = () => {
   return <UserProfileCard user={user} />;
 };
 ```
+
 ### 백엔드 경로 핸들러
+
 ```javascript
 // Express.js Route Handler
 router.get('/api/users/profile', authenticate, async (req, res) => {
@@ -97,9 +102,11 @@ router.get('/api/users/profile', authenticate, async (req, res) => {
   }
 });
 ```
+
 ## 엔드투엔드 기능 개발
 
 ### 데이터베이스 스키마 디자인
+
 ```javascript
 // User Model (Mongoose)
 const userSchema = new mongoose.Schema({
@@ -131,7 +138,9 @@ const userSchema = new mongoose.Schema({
 userSchema.index({ email: 1 });
 userSchema.index({ 'profile.firstName': 1, 'profile.lastName': 1 });
 ```
+
 ### 프런트엔드 양식 처리
+
 ```javascript
 // Form Component with Validation
 const UserSettingsForm = () => {
@@ -176,9 +185,11 @@ const UserSettingsForm = () => {
   );
 };
 ```
+
 ## 상태 관리 통합
 
 ### 전역 상태 설정
+
 ```javascript
 // Redux Store Configuration
 const store = configureStore({
@@ -226,7 +237,9 @@ const authSlice = createSlice({
   }
 });
 ```
+
 ### 백엔드 인증 미들웨어
+
 ```javascript
 // JWT Authentication Middleware
 const authenticate = async (req, res, next) => {
@@ -251,9 +264,11 @@ const authenticate = async (req, res, next) => {
   }
 };
 ```
+
 ## 실시간 기능
 
 ### 웹소켓 통합
+
 ```javascript
 // Frontend WebSocket Hook
 const useWebSocket = (url) => {
@@ -320,9 +335,11 @@ const setupWebSocket = (server) => {
   });
 };
 ```
+
 ## 성능 최적화
 
 ### 프런트엔드 최적화
+
 ```javascript
 // Code Splitting and Lazy Loading
 const LazyComponent = React.lazy(() => import('./LazyComponent'));
@@ -356,7 +373,9 @@ const useApiCache = (key, fetcher, options = {}) => {
   return { data, error, isLoading };
 };
 ```
+
 ### 백엔드 최적화
+
 ```javascript
 // Database Query Optimization
 const getProducts = async (filters = {}, pagination = {}) => {
@@ -401,9 +420,11 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 ```
+
 ## 테스트 전략
 
 ### 프론트엔드 테스트
+
 ```javascript
 // Component Testing
 describe('UserProfile', () => {
@@ -440,7 +461,9 @@ test('fetches user data successfully', async () => {
   expect(result.current.loading).toBe(false);
 });
 ```
+
 ### 백엔드 테스트
+
 ```javascript
 // Integration Testing
 describe('User API', () => {
@@ -476,9 +499,11 @@ describe('User API', () => {
   });
 });
 ```
+
 ## 배포 및 DevOps
 
 ### 컨테이너 구성
+
 ```dockerfile
 # Frontend Dockerfile
 FROM node:16-alpine as builder
@@ -494,7 +519,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
-
 
 ```dockerfile
 # Backend Dockerfile

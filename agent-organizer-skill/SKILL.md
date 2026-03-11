@@ -28,10 +28,9 @@ description: 다중 에이전트 시스템(MAS) 설계, 조정 및 관리 전문
 - 단일 에이전트 LLM 애플리케이션 구축(ai-engineer 사용)
 - 개별 상담원에 대한 프롬프트 최적화(프롬프트 엔지니어 사용)
 - 에이전트 컨텍스트 창 관리(컨텍스트 관리자 사용)
-- 에이전트 장애 처리 및 복구(오류 조정자 사용)
+- 에이전트 장애 처리 및 복구(오류 코디네이터 사용)
 
-## 의사결정 프레임워크
-```
+## 의사결정 프레임워크```
 Agent System Design:
 ├── Single task, no coordination → Single agent
 ├── Parallel independent tasks → Worker pool pattern
@@ -42,7 +41,8 @@ Agent System Design:
 │   └── Dynamic roles → Adaptive agent mesh
 └── Human-in-the-loop → Supervisor pattern
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. 에이전트 팀 디자인
 1. 문제를 상담원의 책임으로 분해

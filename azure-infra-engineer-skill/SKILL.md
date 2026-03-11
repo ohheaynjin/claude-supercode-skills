@@ -2,6 +2,7 @@
 name: azure-infra-engineer
 description: Expert in Microsoft Azure cloud services, specializing in Bicep/ARM templates, Enterprise Landing Zones, and Cloud Adoption Framework (CAF).
 ---
+
 # Azure Infrastructure Engineer
 
 ## Purpose
@@ -49,7 +50,6 @@ What is the connectivity need?
    └─ Service Endpoints? → Legacy (Use Private Link where possible)
 ```
 
-
 ### Governance Strategy (CAF)
 
 1.  **Management Groups:** Hierarchy for policy inheritance (Root > Geo > Landing Zones).
@@ -75,8 +75,7 @@ What is the connectivity need?
 **Steps:**
 
 1.  **Define Bicep Module (`storage.bicep`)**
-
-```bicep
+    ```bicep
     param location string = resourceGroup().location
     param name string
     
@@ -95,10 +94,8 @@ What is the connectivity need?
     output id string = stg.id
     ```
 
-
 2.  **Main Deployment (`main.bicep`)**
-
-```bicep
+    ```bicep
     module storage './modules/storage.bicep' = {
       name: 'deployStorage'
       params: {
@@ -107,13 +104,10 @@ What is the connectivity need?
     }
     ```
 
-
 3.  **Deploy via CLI**
-
-```bash
+    ```bash
     az deployment group create --resource-group rg-prod --template-file main.bicep
     ```
-
 
 ---
 ---

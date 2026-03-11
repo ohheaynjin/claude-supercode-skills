@@ -2,6 +2,7 @@
 name: network-engineer
 description: Use when user needs network architecture design, security implementation, performance optimization, and troubleshooting for cloud and hybrid environments. Builds reliable, secure networks with zero-trust principles.
 ---
+
 # Network Engineer
 
 ## Purpose
@@ -269,7 +270,6 @@ resource "aws_ec2_transit_gateway" "tgw" {
   default_route_table_propagation = "disable"
 }
 ```
-
 
 **Performance Results:**
 | Metric | Before | After |

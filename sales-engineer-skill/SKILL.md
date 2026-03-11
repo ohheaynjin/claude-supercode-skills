@@ -25,14 +25,13 @@ description: 제품 시연, 기술 검증(PoC) 및 솔루션 설계를 전문으
 - 고객 요구사항에 맞는 솔루션 아키텍처 구축
 - 데모 환경 및 샘플 애플리케이션 구축
 
-**다음과 같은 경우에는 호출하지 마세요.**
+**다음과 같은 경우에는 호출하지 마세요**
 - 프로덕션 애플리케이션 구축 → 적절한 개발자 기술 사용
 - 마케팅 콘텐츠 제작 → Content-Marketer 활용
 - 전체 시스템 아키텍처 설계 → 솔루션 아키텍트 활용
 - 사용자 문서 작성 → 기술 작성자 사용
 
-## 의사결정 프레임워크
-```
+## 의사결정 프레임워크```
 Sales Engineering Task?
 ├── Demo Request → Build focused demo highlighting key differentiators
 ├── PoC/Pilot → Design success criteria + implementation plan
@@ -41,7 +40,8 @@ Sales Engineering Task?
 ├── Competitive Situation → Feature comparison + positioning
 └── Objection Handling → Address concerns with evidence
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. 개념 증명 구현
 1. 고객 요구 사항 및 성공 기준 수집

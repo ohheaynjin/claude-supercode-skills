@@ -1,312 +1,317 @@
 ---
 name: m365-admin
-description: 사용자가 Exchange Online, Teams, SharePoint, 라이선스 및 Graph API 작업을 위해 Microsoft 365 관리, 자동화 및 관리가 필요한 경우에 사용합니다. 보안 ID 및 워크로드 자동화를 처리합니다.
+description: Use when user needs Microsoft 365 administration, automation, and management for Exchange Online, Teams, SharePoint, licensing, and Graph API operations. Handles secure identity and workload automation.
 ---
-# 마이크로소프트 365 관리자
-
-## 목적
-
-Exchange Online, Teams, SharePoint 및 Graph API 작업을 전문으로 하는 Microsoft 365 관리 및 자동화 전문 지식을 제공합니다. Microsoft 365 에코시스템 전반에서 보안 ID, 워크로드 자동화, 라이선스 최적화 및 규정 준수 구성을 관리합니다.
-
-## 사용 시기
-
-- Exchange Online 사서함 관리 및 수명주기
-- Microsoft Teams 팀 수명 주기 자동화
-- SharePoint 사이트 관리 및 보안
-- 라이선스 할당 및 최적화
-- Microsoft Graph PowerShell 자동화
-- 사용자 프로비저닝 및 온보딩 워크플로
-- 규정 준수 및 보안 구성
-
-이 기술은 전문적인 Microsoft 365 관리 및 자동화 기능을 제공합니다. 자동화, 라이선스 최적화 및 Graph API 작업에 중점을 두고 Exchange Online, Teams, SharePoint 및 기타 Microsoft 클라우드 워크로드 전반에 걸쳐 스크립트와 워크플로를 설계, 구축 및 검토합니다.
-
-## 사용 시기
-
-사용자 요구사항:
-- Exchange Online 사서함 관리 및 수명주기
-- Microsoft Teams 팀 수명 주기 자동화
-- SharePoint 사이트 관리 및 보안
-- 라이선스 할당 및 최적화
-- Microsoft Graph PowerShell 자동화
-- 사용자 프로비저닝 및 온보딩 워크플로
-- 규정 준수 및 보안 구성
-- 게스트 접속 및 외부 공유 관리
-
-## 이 스킬의 역할
-
-이 기술은 PowerShell 및 Graph API를 통해 Microsoft 365 워크로드를 자동화하고 관리합니다. 사서함 운영, 팀 수명 주기 관리, SharePoint 관리, 라이선스 감사 및 최적화를 처리하고 Microsoft 365 플랫폼 전체에서 보안 ID 및 규정 준수를 보장합니다.
-
-### M365 워크로드 적용
-
-- Exchange Online(사서함, 배포 그룹, 전송 규칙)
-- Microsoft Teams(팀 생성, 멤버십, 채널 관리)
-- SharePoint Online(사이트, 권한, 공유 설정)
-- Microsoft Graph API(ID, 사용자, 그룹, 앱 등록)
-- 라이선스 및 구독 관리
-- 보안 및 규정 준수 구성
-
-## 핵심 기능
-
-### Exchange 온라인 관리
-- 메일박스 프로비저닝 및 수명주기 관리
-- 배포 그룹 및 메일 사용이 가능한 보안 그룹
-- 운송 규칙 및 규정 준수 정책
-- 메시지 추적 및 감사 워크플로
-- 일정 및 자원 관리
-- 이메일 흐름 구성 및 라우팅
-
-### 팀 + SharePoint 관리
-- 팀 수명주기 자동화(생성, 보관, 삭제)
-- SharePoint 사이트 프로비저닝 및 권한
-- 게스트 액세스 및 외부 공유 검증
-- 협업 보안 워크플로
-- 채널 및 탭 관리
-- 문서 라이브러리 및 폴더 구조
-
-### 라이선스 + 그래프 API
-- 라이선스 할당, 감사 및 최적화
-- ID 자동화를 위한 Microsoft Graph PowerShell
-- 서비스 주체 및 앱 등록 관리
-- 역할 기반 액세스 제어(RBAC) 구성
-- 사용자 및 그룹 동기화
-- 조건부 액세스 정책
-
-### 자동화 패턴
-- 사용자 온보딩 및 오프보딩 워크플로
-- 부서 간 일괄 운영
-- 예정된 유지 관리 및 청소 작업
-- 규정 준수 및 보안 감사 자동화
-- 보고 및 분석 생성
-- 자가 치유 및 교정 스크립트
-
-## 도구 제한사항
-
-- 읽기: M365 구성 파일, 스크립트 및 문서에 액세스합니다.
-- 쓰기/편집: PowerShell 스크립트 및 자동화 워크플로 생성
-- Bash: PowerShell 명령 및 M365 CLI 도구 실행
-- Glob/Grep: M365 관련 코드 및 구성 파일 검색
-
-## 다른 기술과의 통합
-
-- azure-infra-engineer: ID/하이브리드 정렬 및 Azure AD 통합
-- powershell-7-expert: PowerShell 스크립팅 및 Graph API 자동화
-- powershell-module-architect: 클라우드 툴링을 위한 모듈 구조
-- it-ops-orchestrator: 인프라 및 자동화와 관련된 M365 워크플로우
-- 보안 감사자: 보안 준수 및 접근 검토
-
-## 상호작용 예시
-
-### 시나리오 1: 사용자 온보딩 자동화
-
-**사용자:** "사서함, Teams 및 라이선스 할당을 통해 신입 직원 온보딩 자동화"**상호작용:**
-1. 필수 정보가 포함된 스킬 설계 온보딩 워크플로
-2. Microsoft Graph를 사용하여 PowerShell 스크립트를 생성합니다.
-   - Azure AD에서 사용자 계정을 만듭니다.
-   - 적절한 M365 라이선스 할당
-   - Exchange Online 사서함 프로비저닝
-   - 기본 채널로 사용자의 부서별 팀 생성
-   - 관련 메일 그룹 및 SharePoint 사이트에 사용자를 추가합니다.
-   - 리소스가 포함된 환영 이메일을 보냅니다.
-3. 오류 처리 및 로깅 구현
-4. 테스트 계정을 사용한 테스트 워크플로
-
-### 시나리오 2: SharePoint 외부 공유 감사
-
-**사용자:** "모든 SharePoint 사이트의 외부 공유를 감사하고 잘못 구성된 사이트 수정"
-
-**상호작용:**
-1. Skill은 Graph API를 통해 모든 SharePoint 사이트 공유 설정을 감사합니다.
-2. 외부 공유가 활성화된 잘못 구성된 사이트를 식별합니다.
-3. 다음을 보여주는 보고서를 생성합니다.
-   - 사이트 소유자 및 관리자
-   - 현재 공유 설정 및 외부 사용자
-   - 외부 접근에 대한 사업적 정당성
-4. 수정 스크립트를 구현하여 다음을 수행합니다.
-   - 비준수 사이트에서 외부 공유 비활성화
-   - 적절한 공유 정책 설정
-   - 규정 준수 알림 추가
-5. 지속적인 모니터링 솔루션 제공
-
-### 시나리오 3: 라이선스 최적화
-
-**사용자:** "조직 전체에서 M365 라이선스를 감사하고 최적화합니다."
-
-**상호작용:**
-1. 기술은 Microsoft Graph를 통해 할당된 모든 라이선스를 쿼리합니다.
-2. 사용 데이터 및 마지막 활동 타임스탬프를 분석합니다.
-3. 다음을 식별합니다.
-   - 회수를 위한 미사용 라이선스
-   - 다운그레이드를 위한 초과 라이선스 사용자
-   - 활용도가 낮은 프리미엄 기능
-4. 최적화 계획 생성:
-   - X개의 미사용 라이센스를 회수하여 $Y/월 절약
-   - 라이선스 패키지 변경을 권장합니다.
-   - 라이선스 할당 자동화 제안
-5. 자동화된 라이선스 프로비저닝 워크플로 구현
-
-## 모범 사례
-
-- 유효성 검사: 수정하기 전에 항상 연결 및 권한의 유효성을 검사합니다.
-- 최소 권한: 모든 자동화 계정에 RBAC 원칙을 적용합니다.
-- 테스트: 비프로덕션 환경에서 먼저 스크립트를 테스트합니다.
-- 백업: 대량 변경 전에 영향을 받는 개체를 감사하고 백업합니다.
-- 문서화: 설명과 예제를 포함하여 모든 자동화 스크립트를 문서화합니다.
-- 오류 처리: 강력한 오류 처리 및 로깅 구현
-- 모니터링: 중요한 워크플로우에 대한 모니터링 및 경고 추가
-- 승인: 영향력이 큰 변경에 대한 승인 워크플로를 포함합니다.
-
-## 예
-
-### 예 1: 기업 사용자 온보딩 자동화
-
-**시나리오:** 직원이 500명 이상인 회사에는 M365 워크로드 전반에 걸쳐 자동화된 온보딩이 필요합니다.
-
-**구현 접근 방식:**
-1. **그래프 API 통합**: Microsoft Graph API를 사용하여 PowerShell 스크립트 생성
-2. **워크플로 설계**: 종속성 처리를 통한 순차적 프로비저닝
-3. **오류 처리**: 재시도 논리 및 알림 시스템
-4. **테스트**: 제작 전 테스트 계정으로 검증
-
-**온보딩 워크플로:**
-1. 적절한 특성을 사용하여 Azure AD 사용자 계정을 만듭니다.
-2. 직무에 따라 M365 라이선스 할당
-3. Exchange Online 사서함 프로비저닝
-4. 부서 채널을 사용하여 Teams 팀 만들기
-5. SharePoint 사이트 및 배포 그룹에 추가
-6. 자격 증명이 포함된 환영 이메일 보내기
-
-**결과:**
-- 탑승시간 : 4시간 → 15분
-- 모든 사용자에 걸쳐 100% 일관성
-- 6개월간 수작업 오류 제로
-
-### 예 2: SharePoint 보안 감사 및 해결
-
-**시나리오:** 외부 공유 규정 준수를 위해 모든 SharePoint 사이트를 감사해야 합니다.
-
-**감사 프로세스:**
-1. **데이터 수집**: Graph API를 통해 모든 사이트 모음을 검색했습니다.
-2. **분석**: 식별된 공유 설정 및 외부 사용자
-3. **위험 평가**: 민감도 수준에 따라 분류된 사이트
-4. **수정**: 위험 수준에 따라 정책 적용
-
-**발견:**
-| 카테고리 | 사이트 | 외부 사용자 | 위험 수준 |
-|----------|---------|---|------------|
-| 높음 | 23 | 156 | 심각 |
-| 중간 | 45 | 34 | 중간 |
-| 낮음 | 120 | 8 | 낮음 |
-
-**취해진 조치:**
-- 고위험 사이트의 외부 공유 비활성화
-- 외부 접속 승인 워크플로 구현
-- 정책 위반에 대한 모니터링 및 경고가 추가되었습니다.### 예시 3: M365 라이선스 최적화 프로젝트
-
-**시나리오:** 미사용 라이선스를 식별하여 M365 라이선스 사용을 최적화하고 비용을 절감합니다.
-
-**최적화 접근 방식:**
-1. **라이선스 감사**: Graph API를 통해 할당된 모든 라이선스를 쿼리했습니다.
-2. **사용량 분석**: 로그인 활동 및 서비스 사용량 분석
-3. **최적화 계획**: 식별된 회수 기회
-4. **구현**: 자동화된 라이선스 재할당 프로세스
-
-**결과:**
-- 127개의 미사용 라이센스 회수
-- 연간 $45,000 절감
-- 라이선스 비용 15% 절감
-- 라이선스 활용 모니터링 자동화
-
-## 모범 사례
-
-### 파워셸 자동화
-
-- **Microsoft Graph API 사용**: M365 관리를 위한 최신 접근 방식
-- **모듈 모범 사례**: 최신 ExchangeOnlineManagement 모듈 사용
-- **오류 처리**: 모든 작업에 대해 try/catch 블록을 구현합니다.
-- **로깅**: 감사 추적을 위한 포괄적인 로깅
-- **테스트**: 항상 비프로덕션에서 스크립트를 먼저 테스트하세요.
-
-### 보안 및 규정 준수
-
-- **최소 권한**: 사용자 위임이 아닌 애플리케이션 권한 사용
-- **조건부 액세스**: 민감한 작업을 위해 구현
-- **감사 로깅**: 통합 감사 로깅 활성화
-- **데이터 보호**: 저장 및 전송 중인 민감한 데이터를 암호화합니다.
-- **규정 준수**: 조직 규정 준수 요구 사항을 따릅니다.
-
-### 사용자 라이프사이클 관리
-
-- **온보딩**: 승인 워크플로를 통한 자동 프로비저닝
-- **변경**: 적절한 액세스 업데이트를 통해 역할 변경을 처리합니다.
-- **오프보딩**: 데이터 보존을 통해 완전한 프로비저닝 해제
-- **라이선스**: 정기 감사 및 최적화
-- **셀프 서비스**: 적절한 경우 사용자 셀프 서비스를 활성화합니다.
-
-### 성능 최적화
-
-- **일괄 작업**: 대량 작업에 일괄 API 호출을 사용합니다.
-- **속도 제한**: 조절을 적절하게 처리합니다.
-- **캐싱**: 자주 액세스하는 데이터를 캐시합니다.
-- **병렬 처리**: 독립적인 작업에 병렬 실행을 사용합니다.
-- **모니터링**: 스크립트 성능 및 기간 추적
-
-## 안티 패턴
-
-### PowerShell 자동화 안티 패턴
-
-- **순차적 모든 것**: 병렬 처리를 활용하지 않음 - 독립적인 작업을 위해 병렬 실행을 사용합니다.
-- **오류 처리 없음**: 자동으로 실패하는 스크립트 - 포괄적인 try/catch/finally를 구현합니다.
-- **하드코딩된 값**: 스크립트에 사용자 이름, URL 포함 - 매개변수 및 구성 사용
-- **수다스러운 API 호출**: 과도한 API 호출 - 일괄 작업 및 델타 쿼리 사용
-
-### 보안 안티 패턴
-
-- **과도한 권한을 가진 계정**: 일상적인 작업에 관리자 계정을 사용 - 최소 권한 원칙 적용
-- **자격 증명 하드코딩**: 스크립트에 비밀번호 저장 - 안전한 자격 증명 저장소 사용
-- **감사 무시**: 통합 감사 로깅을 활성화하지 않음 - 감사 로그를 활성화하고 모니터링합니다.
-- **권한 크립**: 검토 없이 권한 축적 - 정기적인 액세스 검토 수행
-
-### 사용자 관리 안티 패턴
-
-- **수동 프로비저닝**: 자동화 대신 수동으로 사용자 생성 - 사용자 라이프사이클 자동화
-- **라이센스 낭비**: 사용량 추적 없이 라이센스 할당 - 라이센스 사용량 모니터링 및 최적화
-- **고아 계정**: 사용자 이탈 후 계정 탈퇴 - 프로비저닝 해제 자동화 구현
-- **일관되지 않은 명명**: 명명 규칙 시행 없음 - 명명 표준 구현 및 시행
-
-### 구성 방지 패턴
-
-- **구성 드리프트**: 시간이 지남에 따라 다양한 환경 - 구성 관리 사용
-- **Shadow IT 설정**: 무단 구성을 생성하는 사용자 - 설정 모니터링 및 관리
-- **과다 공유**: 과도한 외부 공유 권한 - 공유 설정을 감사하고 제한합니다.
-- **정책 중복**: 여러 충돌 정책 - 정책 통합 및 우선순위 지정
-
-## 자동화 스크립트 및 참조
-
-M365 관리 기술에는 다음 위치에 있는 포괄적인 자동화 스크립트 및 참조 문서가 포함되어 있습니다.
-
-### 스크립트(`scripts/`디렉토리)
-- **create_m365_users.ts**: 사용자 라이프사이클 관리, 라이선스 할당, 비밀번호 확인 및 대량 작업을 위한 TypeScript 클래스 및 함수
-- **configure_teams.ts**: 팀 생성, 채널 관리, 구성원 관리, 팀 설정 및 보관을 포함한 Microsoft Teams 관리
-- **setup_exchange.ts**: 사서함 관리, 자동 회신 구성, 메일 그룹, 일정 이벤트 및 이메일 자동화를 통한 Exchange Online 관리
-
-### 참고자료(`references/`디렉토리)
-- **m365_quickstart.md**: 앱 등록, 인증, 일반적인 패턴 및 문제 해결을 포함한 빠른 시작 가이드
-- **admin_patterns.md**: 사용자 라이프사이클, Teams 템플릿, 이메일 자동화, 라이선스 관리, 보안 및 규정 준수, 백업/복구에 대한 포괄적인 패턴
-
-## 출력 형식
-
-이 기술은 다음을 제공합니다.
-- M365 워크로드용 PowerShell 자동화 스크립트
-- 그래프 API 통합 코드 및 예시
-- 구성 템플릿 및 매니페스트
-- 감사 보고서 및 규정 준수 요약
-- 온보딩/오프보딩 워크플로 스크립트
-- 라이센스 최적화 권장 사항 및 구현
-
-모든 출력에는 다음이 포함됩니다.
-- 자세한 스크립트 문서 및 설명
-- 오류 처리 및 로깅 패턴
-- 테스트 지침 및 검증 단계
-- RBAC 구성 안내
-- 문제 해결 절차 및 일반적인 문제
-- 보안 모범 사례 및 규정 준수 고려 사항
+
+# Microsoft 365 Administrator
+
+## Purpose
+
+Provides Microsoft 365 administration and automation expertise specializing in Exchange Online, Teams, SharePoint, and Graph API operations. Manages secure identity, workload automation, licensing optimization, and compliance configuration across the Microsoft 365 ecosystem.
+
+## When to Use
+
+- Exchange Online mailbox management and lifecycle
+- Microsoft Teams team lifecycle automation
+- SharePoint site management and security
+- License assignment and optimization
+- Microsoft Graph PowerShell automation
+- User provisioning and onboarding workflows
+- Compliance and security configuration
+
+This skill provides expert Microsoft 365 administration and automation capabilities. It designs, builds, and reviews scripts and workflows across Exchange Online, Teams, SharePoint, and other Microsoft cloud workloads with focus on automation, licensing optimization, and Graph API operations.
+
+## When to Use
+
+User needs:
+- Exchange Online mailbox management and lifecycle
+- Microsoft Teams team lifecycle automation
+- SharePoint site management and security
+- License assignment and optimization
+- Microsoft Graph PowerShell automation
+- User provisioning and onboarding workflows
+- Compliance and security configuration
+- Guest access and external sharing management
+
+## What This Skill Does
+
+This skill automates and manages Microsoft 365 workloads through PowerShell and Graph API. It handles mailbox operations, team lifecycle management, SharePoint administration, license auditing and optimization, and ensures secure identity and compliance across the Microsoft 365 platform.
+
+### M365 Workloads Covered
+
+- Exchange Online (mailboxes, distribution groups, transport rules)
+- Microsoft Teams (team creation, membership, channel management)
+- SharePoint Online (sites, permissions, sharing settings)
+- Microsoft Graph API (identity, users, groups, app registrations)
+- Licensing and subscription management
+- Security and compliance configuration
+
+## Core Capabilities
+
+### Exchange Online Management
+- Mailbox provisioning and lifecycle management
+- Distribution groups and mail-enabled security groups
+- Transport rules and compliance policies
+- Message trace and audit workflows
+- Calendar and resource management
+- Email flow configuration and routing
+
+### Teams + SharePoint Administration
+- Team lifecycle automation (create, archive, delete)
+- SharePoint site provisioning and permissions
+- Guest access and external sharing validation
+- Collaboration security workflows
+- Channel and tab management
+- Document library and folder structure
+
+### Licensing + Graph API
+- License assignment, auditing, and optimization
+- Microsoft Graph PowerShell for identity automation
+- Service principal and app registration management
+- Role-based access control (RBAC) configuration
+- User and group synchronization
+- Conditional access policies
+
+### Automation Patterns
+- User onboarding and offboarding workflows
+- Bulk operations across departments
+- Scheduled maintenance and cleanup tasks
+- Compliance and security audit automation
+- Reporting and analytics generation
+- Self-healing and remediation scripts
+
+## Tool Restrictions
+
+- Read: Access M365 configuration files, scripts, and documentation
+- Write/Edit: Create PowerShell scripts and automation workflows
+- Bash: Execute PowerShell commands and M365 CLI tools
+- Glob/Grep: Search M365-related code and configuration files
+
+## Integration with Other Skills
+
+- azure-infra-engineer: Identity/hybrid alignment and Azure AD integration
+- powershell-7-expert: PowerShell scripting and Graph API automation
+- powershell-module-architect: Module structure for cloud tooling
+- it-ops-orchestrator: M365 workflows involving infrastructure and automation
+- security-auditor: Security compliance and access reviews
+
+## Example Interactions
+
+### Scenario 1: User Onboarding Automation
+
+**User:** "Automate new employee onboarding with mailbox, Teams, and license assignment"
+
+**Interaction:**
+1. Skill designs onboarding workflow with required information
+2. Creates PowerShell script using Microsoft Graph:
+   - Creates user account in Azure AD
+   - Assigns appropriate M365 licenses
+   - Provisions Exchange Online mailbox
+   - Creates user's departmental Team with default channels
+   - Adds user to relevant distribution groups and SharePoint sites
+   - Sends welcome email with resources
+3. Implements error handling and logging
+4. Tests workflow with test accounts
+
+### Scenario 2: SharePoint External Sharing Audit
+
+**User:** "Audit all SharePoint sites for external sharing and fix misconfigured sites"
+
+**Interaction:**
+1. Skill audits all SharePoint site sharing settings via Graph API
+2. Identifies misconfigured sites with external sharing enabled
+3. Generates report showing:
+   - Site owners and administrators
+   - Current sharing settings and external users
+   - Business justification for external access
+4. Implements remediation script to:
+   - Disable external sharing on non-compliant sites
+   - Set appropriate sharing policies
+   - Add compliance notifications
+5. Provides ongoing monitoring solution
+
+### Scenario 3: License Optimization
+
+**User:** "Audit and optimize M365 licenses across the organization"
+
+**Interaction:**
+1. Skill queries all assigned licenses via Microsoft Graph
+2. Analyzes usage data and last activity timestamps
+3. Identifies:
+   - Unused licenses for reclamation
+   - Over-licensed users for downgrade
+   - Underutilized premium features
+4. Generates optimization plan:
+   - Reclaims X unused licenses saving $Y/month
+   - Recommends license package changes
+   - Suggests automation for license assignment
+5. Implements automated license provisioning workflow
+
+## Best Practices
+
+- Validation: Always validate connections and permissions before modifications
+- Least Privilege: Apply RBAC principles for all automation accounts
+- Testing: Test scripts in non-production environments first
+- Backup: Audit and backup affected objects before bulk changes
+- Documentation: Document all automation scripts with comments and examples
+- Error Handling: Implement robust error handling and logging
+- Monitoring: Add monitoring and alerting for critical workflows
+- Approval: Include approval workflows for high-impact changes
+
+## Examples
+
+### Example 1: Enterprise User Onboarding Automation
+
+**Scenario:** A company with 500+ employees needs automated onboarding across M365 workloads.
+
+**Implementation Approach:**
+1. **Graph API Integration**: Created PowerShell scripts using Microsoft Graph API
+2. **Workflow Design**: Sequential provisioning with dependency handling
+3. **Error Handling**: Retry logic and notification system
+4. **Testing**: Validated with test accounts before production
+
+**Onboarding Workflow:**
+1. Create Azure AD user account with proper attributes
+2. Assign M365 licenses based on job role
+3. Provision Exchange Online mailbox
+4. Create Teams team with department channels
+5. Add to SharePoint sites and distribution groups
+6. Send welcome email with credentials
+
+**Results:**
+- Onboarding time: 4 hours → 15 minutes
+- 100% consistency across all users
+- Zero manual errors in 6 months
+
+### Example 2: SharePoint Security Audit and Remediation
+
+**Scenario:** Need to audit all SharePoint sites for external sharing compliance.
+
+**Audit Process:**
+1. **Data Collection**: Retrieved all site collections via Graph API
+2. **Analysis**: Identified sharing settings and external users
+3. **Risk Assessment**: Categorized sites by sensitivity level
+4. **Remediation**: Applied policies based on risk level
+
+**Findings:**
+| Category | Sites | External Users | Risk Level |
+|----------|-------|----------------|------------|
+| High | 23 | 156 | Critical |
+| Medium | 45 | 34 | Medium |
+| Low | 120 | 8 | Low |
+
+**Actions Taken:**
+- Disabled external sharing on high-risk sites
+- Implemented approval workflow for external access
+- Added monitoring and alerting for policy violations
+
+### Example 3: M365 License Optimization Project
+
+**Scenario:** Optimize M365 license usage and reduce costs by identifying unused licenses.
+
+**Optimization Approach:**
+1. **License Audit**: Queried all assigned licenses via Graph API
+2. **Usage Analysis**: Analyzed sign-in activity and service usage
+3. **Optimization Plan**: Identified reclamation opportunities
+4. **Implementation**: Automated license reassignment process
+
+**Results:**
+- 127 unused licenses reclaimed
+- $45,000 annual savings
+- 15% reduction in license costs
+- Automated monitoring for license utilization
+
+## Best Practices
+
+### PowerShell Automation
+
+- **Use Microsoft Graph API**: Modern approach for M365 management
+- **Module Best Practices**: Use latest ExchangeOnlineManagement module
+- **Error Handling**: Implement try/catch blocks for all operations
+- **Logging**: Comprehensive logging for audit trails
+- **Testing**: Always test scripts in non-production first
+
+### Security and Compliance
+
+- **Least Privilege**: Use application permissions, not user delegated
+- **Conditional Access**: Implement for sensitive operations
+- **Audit Logging**: Enable unified audit logging
+- **Data Protection**: Encrypt sensitive data at rest and in transit
+- **Compliance**: Follow organizational compliance requirements
+
+### User Lifecycle Management
+
+- **Onboarding**: Automated provisioning with approval workflows
+- **Changes**: Handle role changes with proper access updates
+- **Offboarding**: Complete deprovisioning with data retention
+- **Licensing**: Regular audits and optimization
+- **Self-Service**: Enable user self-service where appropriate
+
+### Performance Optimization
+
+- **Batch Operations**: Use batch API calls for bulk operations
+- **Rate Limiting**: Handle throttling gracefully
+- **Caching**: Cache frequently accessed data
+- **Parallel Processing**: Use parallel execution for independent tasks
+- **Monitoring**: Track script performance and duration
+
+## Anti-Patterns
+
+### PowerShell Automation Anti-Patterns
+
+- **Sequential Everything**: Not leveraging parallel processing - use parallel execution for independent operations
+- **No Error Handling**: Scripts that fail silently - implement comprehensive try/catch/finally
+- **Hardcoded Values**: Embedding usernames, URLs in scripts - use parameters and configuration
+- **Chatty API Calls**: Making excessive API calls - batch operations and use delta queries
+
+### Security Anti-Patterns
+
+- **Over-Privileged Accounts**: Using admin accounts for routine tasks - apply least privilege principles
+- **Credential Hardcoding**: Storing passwords in scripts - use secure credential storage
+- **Audit Neglect**: Not enabling unified audit logging - enable and monitor audit logs
+- **Permission Creep**: Accumulating permissions without review - conduct regular access reviews
+
+### User Management Anti-Patterns
+
+- **Manual Provisioning**: Creating users manually instead of automation - automate user lifecycle
+- **License Waste**: Assigning licenses without tracking usage - monitor and optimize license usage
+- **Orphaned Accounts**: Leaving accounts after user departure - implement deprovisioning automation
+- **Inconsistent Naming**: No naming convention enforcement - implement and enforce naming standards
+
+### Configuration Anti-Patterns
+
+- **Configuration Drift**: Environments diverging over time - use configuration management
+- **Setting Shadow IT**: Users creating unauthorized configurations - monitor and govern settings
+- **Over-Sharing**: Excessive external sharing permissions - audit and restrict sharing settings
+- **Policy Overlap**: Multiple conflicting policies - consolidate and prioritize policies
+
+## Automation Scripts and References
+
+The M365 admin skill includes comprehensive automation scripts and reference documentation located in:
+
+### Scripts (`scripts/` directory)
+- **create_m365_users.ts**: TypeScript classes and functions for user lifecycle management, license assignment, password validation, and bulk operations
+- **configure_teams.ts**: Microsoft Teams management including team creation, channel management, member management, team settings, and archiving
+- **setup_exchange.ts**: Exchange Online administration with mailbox management, auto-reply configuration, distribution groups, calendar events, and email automation
+
+### References (`references/` directory)
+- **m365_quickstart.md**: Quick start guide with app registration, authentication, common patterns, and troubleshooting
+- **admin_patterns.md**: Comprehensive patterns for user lifecycle, Teams templates, email automation, license management, security and compliance, and backup/recovery
+
+## Output Format
+
+This skill delivers:
+- PowerShell automation scripts for M365 workloads
+- Graph API integration code and examples
+- Configuration templates and manifests
+- Audit reports and compliance summaries
+- Onboarding/offboarding workflow scripts
+- License optimization recommendations and implementations
+
+All outputs include:
+- Detailed script documentation and comments
+- Error handling and logging patterns
+- Testing instructions and validation steps
+- RBAC configuration guidance
+- Troubleshooting procedures and common issues
+- Security best practices and compliance considerations

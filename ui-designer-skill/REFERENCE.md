@@ -47,7 +47,6 @@
 }
 ```
 
-
 ### Step 2: Component Inventory & Prioritization (Week 1)
 
 **Priority 1 (Critical - Week 2):**
@@ -120,7 +119,6 @@ For each component:
   - type="button" for non-submit buttons
 ```
 
-
 ### Step 5: Documentation with Storybook (Weeks 5-6)
 
 ```jsx
@@ -157,7 +155,6 @@ export const AllStates = () => (
 );
 ```
 
-
 ## Workflow 2: Accessibility Audit & Remediation
 
 **Goal:** Fix all WCAG 2.1 AA violations in existing UI.
@@ -169,7 +166,6 @@ export const AllStates = () => (
 npm install -D @axe-core/cli
 axe https://yourapp.com --tags wcag2a,wcag2aa
 ```
-
 
 ### Step 2: Categorize Violations
 
@@ -192,7 +188,6 @@ Common issues found:
 }
 ```
 
-
 **After:**
 ```css
 .secondary-text {
@@ -201,7 +196,6 @@ Common issues found:
   /* Contrast: 4.6:1 ✅ */
 }
 ```
-
 
 ### Step 4: Add Focus Indicators
 
@@ -213,14 +207,12 @@ button:focus-visible {
 }
 ```
 
-
 ### Step 5: Fix Form Accessibility
 
 **Before:**
 ```html
 <input type="email" placeholder="Email" />
 ```
-
 
 **After:**
 ```html
@@ -233,7 +225,6 @@ button:focus-visible {
 />
 <span id="email-error" role="alert">Please enter valid email</span>
 ```
-
 
 ## Color Palette Strategy
 

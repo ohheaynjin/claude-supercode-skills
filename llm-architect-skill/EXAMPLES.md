@@ -1,10 +1,10 @@
-# LLM 건축가 - 예제 및 패턴
+# LLM Architect - Examples & Patterns
 
-## 안티 패턴
+## Anti-Patterns
 
-### 안티 패턴: 프롬프트가 표시될 때 미세 조정하면 충분합니다.
+### Anti-Pattern: Fine-Tuning When Prompting Would Suffice
 
-**모습:**
+**What it looks like:**
 ```python
 # User wants to change response format or style
 # Jumps straight to fine-tuning a custom model
@@ -14,12 +14,13 @@ train_model(
     epochs=3
 )
 ```
-**실패하는 이유:**
-- 좋은 메시지를 전달하려면 컴퓨팅 비용이 수천 달러가 소요됩니다.
-- 유지관리 부담(업데이트에 대한 재교육 필요)
-- 느린 반복 주기(일 대 분)
 
-**올바른 접근 방식:**
+**Why it fails:**
+- Costs thousands in compute for what good prompting achieves
+- Maintenance burden (need to retrain on updates)
+- Slower iteration cycles (days vs minutes)
+
+**Correct approach:**
 ```python
 # Try prompt engineering first (90% of cases this works)
 prompt = """Output JSON in this exact format:
@@ -34,11 +35,12 @@ prompt = """Output JSON in this exact format:
 # - Need <50ms latency (fine-tuned model smaller/faster)
 # - Highly domain-specific behavior required
 ```
+
 ---
 
-### 안티 패턴: 대체 전략 없음
+### Anti-Pattern: No Fallback Strategy
 
-**모습:**
+**What it looks like:**
 ```python
 # Single model, no error handling
 response = claude.messages.create(
@@ -47,12 +49,13 @@ response = claude.messages.create(
 )
 # If Claude API is down → your app is down
 ```
-**실패하는 이유:**
-- API 중단 발생(99.9% 가동 시간 = 월 43분 가동 중지 시간)
-- 예기치 않게 비율 제한에 도달할 수 있습니다.
-- 단일 실패 지점
 
-**올바른 접근 방식:**
+**Why it fails:**
+- API outages happen (99.9% uptime = 43 minutes downtime/month)
+- Rate limits can be hit unexpectedly
+- Single point of failure
+
+**Correct approach:**
 ```python
 import asyncio
 
@@ -78,22 +81,24 @@ async def resilient_llm_call(prompt):
         "queued": True
     }
 ```
+
 ---
 
-### 안티 패턴: 컨텍스트 창 제한 무시
+### Anti-Pattern: Ignoring Context Window Limits
 
-**모습:**
+**What it looks like:**
 ```python
 # Stuffing entire document into prompt
 prompt = f"Summarize this: {entire_100k_document}"
 # API error: context length exceeded
 ```
-**실패하는 이유:**
-- 모델에는 토큰 제한이 있습니다(모델에 따라 4K-200K).
-- 입력 크기에 따라 비용이 선형적으로 증가합니다.
-- 컨텍스트가 매우 길면 품질이 저하됩니다.
 
-**올바른 접근 방식:**
+**Why it fails:**
+- Models have token limits (4K-200K depending on model)
+- Costs increase linearly with input size
+- Quality degrades with very long contexts
+
+**Correct approach:**
 ```python
 def chunk_and_summarize(document: str, max_chunk_tokens: int = 4000) -> str:
     chunks = split_into_chunks(document, max_chunk_tokens)
@@ -111,21 +116,23 @@ def chunk_and_summarize(document: str, max_chunk_tokens: int = 4000) -> str:
     combined = "\n\n".join(summaries)
     return await call_llm(f"Combine these summaries into one:\n{combined}")
 ```
+
 ---
 
-### 안티 패턴: LLM을 데이터베이스로 취급
+### Anti-Pattern: Treating LLMs as Databases
 
-**모습:**
+**What it looks like:**
 ```python
 # Asking model to recall specific facts from training
 prompt = "What is customer ID 12345's current order status?"
 ```
-**실패하는 이유:**
-- 모델에는 결정론적 메모리가 없습니다.
-- 그럴듯하게 들리지만 잘못된 정보를 환각시킨다.
-- 훈련 데이터가 오래되었습니다(몇 개월에서 몇 년까지).
 
-**올바른 접근 방식:**
+**Why it fails:**
+- Models don't have deterministic memory
+- Hallucinate plausible-sounding but false information
+- Training data is outdated (months to years old)
+
+**Correct approach:**
 ```python
 # Fetch from database, use LLM for synthesis/presentation
 order_data = database.query("SELECT * FROM orders WHERE customer_id = 12345")
@@ -135,17 +142,19 @@ prompt = f"Summarize this order status for customer: {order_data}"
 # Database provides facts (deterministic, accurate, up-to-date)
 # LLM provides presentation (natural language, helpful)
 ```
+
 ---
 
-### 안티 패턴: 출력 유효성 검사 없음
+### Anti-Pattern: No Output Validation
 
-**모습:**
+**What it looks like:**
 ```python
 # Trusting LLM output blindly
 response = await call_llm("Generate a JSON config")
 config = json.loads(response)  # Crashes if invalid JSON
 ```
-**올바른 접근 방식:**
+
+**Correct approach:**
 ```python
 import json
 from pydantic import BaseModel, ValidationError
@@ -171,67 +180,69 @@ async def get_validated_config(prompt: str) -> ConfigOutput:
     
     raise ValueError("Failed to get valid output after 3 attempts")
 ```
----
-
-## 품질 체크리스트
-
-LLM 시스템 구현 완료를 표시하기 전에 이 체크리스트를 사용하십시오.
-
-### 건축 및 디자인
-- [ ] 지연 요구 사항이 문서화되고 검증되었습니다(P50, P95, P99).
-- [ ] 예상 트래픽에 대해 계산된 비용 예측($/1,000개 요청)
-- [ ] 절충 분석을 통해 정당화된 모델 선택
-- [ ] 대체 전략 구현 및 테스트됨
-- [ ] 확장 전략 정의됨(수평/수직, 트리거)
-
-### 성능
-- [ ] 대표 데이터 세트에 대한 벤치마크 결과(>1000개 예시)
-- [ ] 정확도/품질 지표가 최소 기준을 충족합니다.
-- [ ] P95 전반에 걸쳐 지연 시간 <2x 요구 사항
-- [ ] 예상 최대 로드의 2배에서 테스트된 처리량
-- [ ] 캐시 적중률 측정됨(캐싱이 구현된 경우)
-
-### 비용 최적화
-- [ ] 캐싱 전략 구현 및 검증
-- [ ] 프롬프트 최적화 적용(압축, 템플릿)
-- [ ] 다중 모델 라우팅 구성됨(해당하는 경우)
-- [ ] 비용 모니터링 대시보드 생성
-- [ ] 예산 알림이 구성됨(>110% 예상 지출)
-
-### 안전 및 규정 준수
-- [ ] 적대적인 예시에 대해 테스트된 콘텐츠 필터링
-- [ ] PII 감지 및 수정 검증됨
-- [ ] 즉각적인 주입 방어가 확립되어 있습니다.
-- [ ] 출력 유효성 검사 규칙이 구현되었습니다.
-- [ ] 모든 요청에 대해 감사 로깅이 구성되었습니다.
-- [ ] 규정 준수 요구 사항이 문서화되고 검증되었습니다.
-
-### 모니터링 및 관찰 가능성
-- [ ] 추적된 지연 시간 지표(P50, P95, P99)
-- [ ] 추적된 비용 지표($/일, $/1,000개 요청)
-- [ ] 추적된 품질 지표(정확도, 사용자 평가)
-- [ ] 오류율 추적 및 경고(>5% 오류율)
-- [ ] 이해관계자를 위해 생성된 대시보드
-
-### 운영 준비 상태
-- [ ] 일반적인 오류 시나리오가 문서화된 Runbook
-- [ ] 대기 중 에스컬레이션 경로가 정의됨
-- [ ] 롤백 절차 테스트됨
-- [ ] A/B 테스트 프레임워크 구성(필요한 경우)
-- [ ] 모델 버전 관리 전략 구현
-
-### 문서
-- [ ] 아키텍처 다이어그램 작성 및 검토
-- [ ] API 문서 게시됨(API를 노출하는 경우)
-- [ ] 구성 문서가 완료되었습니다.
-- [ ] 의사결정 로그 유지(이 모델이 필요한 이유, 이 접근 방식이 필요한 이유)
-- [ ] 알려진 제한 사항이 문서화되었습니다.
 
 ---
 
-## 신속한 엔지니어링 패턴
+## Quality Checklist
 
-### 생각의 사슬
+Use this checklist before marking an LLM system implementation complete:
+
+### Architecture & Design
+- [ ] Latency requirements documented and validated (P50, P95, P99)
+- [ ] Cost projections calculated for expected traffic ($/1K requests)
+- [ ] Model selection justified with trade-off analysis
+- [ ] Fallback strategy implemented and tested
+- [ ] Scaling strategy defined (horizontal/vertical, triggers)
+
+### Performance
+- [ ] Benchmark results on representative dataset (>1000 examples)
+- [ ] Accuracy/quality metrics meet minimum thresholds
+- [ ] Latency <2x requirement across P95
+- [ ] Throughput tested at 2x expected peak load
+- [ ] Cache hit rate measured (if caching implemented)
+
+### Cost Optimization
+- [ ] Caching strategy implemented and verified
+- [ ] Prompt optimization applied (compression, templates)
+- [ ] Multi-model routing configured (if applicable)
+- [ ] Cost monitoring dashboards created
+- [ ] Budget alerts configured (>110% expected spend)
+
+### Safety & Compliance
+- [ ] Content filtering tested against adversarial examples
+- [ ] PII detection and redaction validated
+- [ ] Prompt injection defenses in place
+- [ ] Output validation rules implemented
+- [ ] Audit logging configured for all requests
+- [ ] Compliance requirements documented and validated
+
+### Monitoring & Observability
+- [ ] Latency metrics tracked (P50, P95, P99)
+- [ ] Cost metrics tracked ($/day, $/1K requests)
+- [ ] Quality metrics tracked (accuracy, user ratings)
+- [ ] Error rate tracked and alerted (>5% error rate)
+- [ ] Dashboards created for stakeholders
+
+### Operational Readiness
+- [ ] Runbook documented with common failure scenarios
+- [ ] On-call escalation paths defined
+- [ ] Rollback procedure tested
+- [ ] A/B testing framework configured (if needed)
+- [ ] Model versioning strategy implemented
+
+### Documentation
+- [ ] Architecture diagram created and reviewed
+- [ ] API documentation published (if exposing APIs)
+- [ ] Configuration documentation complete
+- [ ] Decision log maintained (why this model, why this approach)
+- [ ] Known limitations documented
+
+---
+
+## Prompt Engineering Patterns
+
+### Chain of Thought
+
 ```python
 prompt = """Solve this step by step:
 
@@ -250,7 +261,9 @@ Question: {user_question}
 
 Let me think through this:"""
 ```
-### 몇 가지 예시
+
+### Few-Shot Examples
+
 ```python
 prompt = """Classify the sentiment of these reviews:
 
@@ -266,7 +279,9 @@ Sentiment: Neutral
 Review: "{user_review}"
 Sentiment:"""
 ```
-### 구조화된 출력
+
+### Structured Output
+
 ```python
 prompt = """Extract information from this text and return as JSON:
 

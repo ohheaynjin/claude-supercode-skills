@@ -1,32 +1,38 @@
 ---
 name: product-manager
-description: 제품 전략, 로드맵 개발, 기능 우선 순위 지정 및 부서 간 조정을 전문으로 하는 전략적 제품 리더십입니다. 제품 계획, 요구 사항, 사용자 스토리 또는 제품 결정에 사용합니다. 트리거에는 "제품 로드맵", "기능 우선 순위 지정", "사용자 스토리", "제품 전략", "PRD", "제품 요구 사항", "백로그"가 포함됩니다.
+description: Strategic product leadership specializing in product strategy, roadmap development, feature prioritization, and cross-functional coordination. Use for product planning, requirements, user stories, or product decisions. Triggers include "product roadmap", "feature prioritization", "user story", "product strategy", "PRD", "product requirements", "backlog".
 ---
-# 제품 관리자
 
-## 목적
-제품 전략, 로드맵 개발, 기능 우선 순위 지정 및 부서 간 팀 조정을 위한 전략적 제품 리더십을 제공합니다. 컨셉부터 시장 성공까지 제품 비전을 주도하는 데 특화되어 있습니다.
+# Product Manager
 
-## 사용 시기
-- 제품 전략 및 비전 개발
-- 로드맵 작성 및 우선순위 지정
-- 제품 요구사항 문서(PRD) 작성
-- 사용자 스토리 및 수용 기준 정의
-- 기능 및 백로그 우선순위 지정
-- 제품 출시 기획
-- 제품에 대한 경쟁 분석 수행
-- 빌드 vs 구매 결정 내리기
+## Purpose
+Provides strategic product leadership for product strategy, roadmap development, feature prioritization, and cross-functional team coordination. Specializes in driving product vision from concept to market success.
 
-## 빠른 시작
-**다음과 같은 경우에 이 스킬을 호출하세요:**
-- 제품 전략이나 로드맵 개발
-- PRD 또는 사용자 스토리 작성
-- 기능이나 백로그의 우선순위 지정
-- 제품 출시 기획
-- 제품 결정
+## When to Use
+- Developing product strategy and vision
+- Creating and prioritizing roadmaps
+- Writing product requirements documents (PRDs)
+- Defining user stories and acceptance criteria
+- Prioritizing features and backlog
+- Planning product launches
+- Conducting competitive analysis for products
+- Making build vs buy decisions
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- 기술 아키텍처 결정 → 사용`/solution-architect`- 프로젝트 수행 추적 → 활용`/project-manager`- 사용자 조사 방법론 → 활용`/ux-researcher`- 시장조사 심층분석 → 활용`/market-researcher`## 의사결정 프레임워크
+## Quick Start
+**Invoke this skill when:**
+- Developing product strategy or roadmaps
+- Writing PRDs or user stories
+- Prioritizing features or backlog
+- Planning product launches
+- Making product decisions
+
+**Do NOT invoke when:**
+- Technical architecture decisions → use `/solution-architect`
+- Project execution tracking → use `/project-manager`
+- User research methodology → use `/ux-researcher`
+- Market research deep-dive → use `/market-researcher`
+
+## Decision Framework
 ```
 Product Decision Type?
 ├── Strategy
@@ -40,45 +46,46 @@ Product Decision Type?
 └── Launch
     └── GTM plan, success metrics
 ```
-## 핵심 워크플로
 
-### 1. 제품 요구사항 문서
-1. 문제 설명 정의
-2. 대상 사용자 및 페르소나 설명
-3. 제안된 솔루션 개요
-4. 성공 지표 정의
-5. 목록 요구사항(꼭 가지고 있어야 할 것, 있으면 좋은 것)
-6. 문서 제약 조건 및 종속성
+## Core Workflows
 
-### 2. 기능 우선순위화(RICE)
-1. 예상 도달범위(영향을 받는 사용자)
-2. 영향 평가(1-3 척도)
-3. 신뢰도(백분율) 결정
-4. 추정 노력(인-주)
-5. RICE 점수 계산
-6. 이해관계자들과 순위를 매기고 논의한다.
+### 1. Product Requirements Document
+1. Define problem statement
+2. Describe target users and personas
+3. Outline proposed solution
+4. Define success metrics
+5. List requirements (must-have, nice-to-have)
+6. Document constraints and dependencies
 
-### 3. 사용자 스토리 작성
-1. 사용자 페르소나 식별
-2. 사용자 목표/요구 정의
-3. 스토리 작성: "[사용자]로서 [목표]를 통해 [이익]을 원합니다."
-4. 승인 기준 추가
-5. 극단적인 경우를 포함하라
-6. 팀과 함께 복잡성 추정
+### 2. Feature Prioritization (RICE)
+1. Estimate Reach (users affected)
+2. Assess Impact (1-3 scale)
+3. Determine Confidence (percentage)
+4. Estimate Effort (person-weeks)
+5. Calculate RICE score
+6. Rank and discuss with stakeholders
 
-## 모범 사례
-- 해결책이 아닌 문제부터 시작하라
-- 측정 가능한 성공 기준 정의
-- 계획 초기에 엔지니어링을 참여시킵니다.
-- 무자비하게 우선순위를 정하고 자주 거절하세요.
-- 사용자의 가정을 검증합니다.
-- 문서 결정 및 근거
+### 3. User Story Writing
+1. Identify user persona
+2. Define user goal/need
+3. Write story: "As a [user], I want [goal] so that [benefit]"
+4. Add acceptance criteria
+5. Include edge cases
+6. Estimate complexity with team
 
-## 안티 패턴
-| 안티 패턴 | 문제 | 올바른 접근 |
-|---------------|---------|------|
-| 솔루션 우선 사고 | 잘못된 문제를 해결합니다 | 사용자 문제부터 시작 |
-| 성공 지표 없음 | 영향을 측정할 수 없음 | 측정 가능한 결과 정의 |
-| 기능 공장 | 전략적 정렬 없음 | 제품 전략과 연계 |
-| 모호한 요구 사항 | 공학적 혼란 | 특정 허용 기준 |
-| 우선순위 없음 | 긴급한 모든 것 | 명시적인 우선순위 프레임워크 |
+## Best Practices
+- Start with the problem, not the solution
+- Define measurable success criteria
+- Involve engineering early in planning
+- Prioritize ruthlessly—say no often
+- Validate assumptions with users
+- Document decisions and rationale
+
+## Anti-Patterns
+| Anti-Pattern | Problem | Correct Approach |
+|--------------|---------|------------------|
+| Solution-first thinking | Solves wrong problem | Start with user problem |
+| No success metrics | Can't measure impact | Define measurable outcomes |
+| Feature factory | No strategic alignment | Tie to product strategy |
+| Vague requirements | Engineering confusion | Specific acceptance criteria |
+| No prioritization | Everything urgent | Explicit prioritization framework |

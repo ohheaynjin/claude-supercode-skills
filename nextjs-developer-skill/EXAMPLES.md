@@ -1,6 +1,7 @@
-# Next.js 개발자 - 코드 예제 및 패턴
+# Next.js Developer - Code Examples & Patterns
 
-## 서버 작업을 갖춘 고급 앱 라우터
+## Advanced App Router with Server Actions
+
 ```typescript
 // app/products/[slug]/page.tsx - Server Component
 import { Suspense } from 'react';
@@ -71,7 +72,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
 }
 ```
 
-## 서버 액션 예시
+## Server Action Example
+
 ```typescript
 // app/products/[slug]/actions/add-to-cart.ts - Server Action
 'use server';
@@ -121,7 +123,8 @@ export async function addToCart(
 }
 ```
 
-## 서버 작업이 포함된 클라이언트 구성 요소
+## Client Component with Server Action
+
 ```typescript
 // app/products/[slug]/components/product-detail.tsx - Client Component
 'use client';
@@ -224,7 +227,8 @@ export function ProductDetail({ product, addToCartAction }: ProductDetailProps) 
 }
 ```
 
-## 고급 캐싱을 갖춘 경로 처리기
+## Route Handler with Advanced Caching
+
 ```typescript
 // app/api/products/route.ts - Route Handler
 import { NextRequest, NextResponse } from 'next/server';
@@ -316,7 +320,8 @@ export async function POST(request: NextRequest) {
 }
 ```
 
-## 미들웨어 및 인증 설정
+## Middleware and Authentication Setup
+
 ```typescript
 // middleware.ts - Request Middleware
 import { NextResponse } from 'next/server';
@@ -368,7 +373,8 @@ export const config = {
 };
 ```
 
-## 인증 구성
+## Authentication Configuration
+
 ```typescript
 // lib/auth.config.ts - Authentication Configuration
 import type { NextAuthOptions } from 'next-auth';
@@ -444,11 +450,11 @@ export const authConfig: NextAuthOptions = {
 };
 ```
 
-## 안티 패턴 및 수정 사항
+## Anti-Patterns & Fixes
 
-### 안티 패턴 1: 클라이언트 구성 요소를 불필요하게 사용
+### Anti-Pattern 1: Using Client Components Unnecessarily
 
-**나쁜:**
+**BAD:**
 ```typescript
 // ❌ BAD: Making entire page a Client Component for one interactive element
 'use client';
@@ -470,7 +476,7 @@ export default function ProductPage() {
 }
 ```
 
-**좋은:**
+**GOOD:**
 ```typescript
 // ✅ GOOD: Server Component with nested Client Component
 import { ToggleButton } from './toggle-button';
@@ -500,11 +506,11 @@ export function ToggleButton() {
 }
 ```
 
-**영향:** 80% 더 작은 JavaScript 번들, 더 빠른 페이지 로드, 더 나은 SEO.
+**Impact:** 80% smaller JavaScript bundle, faster page loads, better SEO.
 
-### 안티 패턴 2: 서버 작업을 통한 부적절한 데이터 변형
+### Anti-Pattern 2: Improper Data Mutation with Server Actions
 
-**나쁜:**
+**BAD:**
 ```typescript
 // ❌ BAD: Not revalidating cache after mutation
 'use server';
@@ -518,7 +524,7 @@ export async function updateProduct(formData: FormData) {
 }
 ```
 
-**좋은:**
+**GOOD:**
 ```typescript
 // ✅ GOOD: Revalidate cache after mutation
 'use server';
@@ -563,4 +569,4 @@ export async function updateProduct(formData: FormData) {
 }
 ```
 
-**영향:** 변형 후 새로운 데이터, 더 나은 UX로 오래된 캐시 문제를 방지합니다.
+**Impact:** Fresh data after mutations, better UX, prevents stale cache issues.

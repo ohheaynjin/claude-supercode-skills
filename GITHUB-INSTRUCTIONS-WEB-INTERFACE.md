@@ -9,10 +9,10 @@
 ## 📋 1단계: GitHub로 이동하여 저장소 만들기
 
 1. **이동:** https://github.com/new
-2. **저장소 이름:**`claude-skills-conversion`3. **설명(필수):**
-```
+2. **저장소 이름:**`claude-skills-conversion`3. **설명(필수):**```
      133 Agent Skills converted from Claude Code subagents to Anthropic Agent Skills format. Comprehensive coverage across 12 major development domains. Systematic conversion in 60 minutes with 100% quality compliance.
      ```
+
 4. **공개 공개:** ✅ "공개로 설정"을 클릭하세요(기본값)
 5. **라이센스:** 선택`MIT License`(오픈소스에 권장)
 6. **"저장소 생성"** 버튼을 클릭하세요.
@@ -42,6 +42,7 @@ ZIP 업로드가 완료된 후:
 5. **변경 사항 커밋**(선택 사항이지만 문서화를 위해 권장됨)
 
 **붙여넣을 README 콘텐츠:**
+
 ```markdown
 # Claude Code Subagents to Agent Skills Conversion
 
@@ -82,8 +83,7 @@ This project demonstrates a systematic conversion of 133 Claude Code subagents i
 
 ## 🚀 Installation
 
-```
-강타
+```강타
 # 133개 스킬 모두 설치
 cp -r ~/claude-skills-conversion/* ~/.claude/skills/
 
@@ -93,8 +93,7 @@ cp -r ~/claude-skills-conversion/* ~/.claude/skills/
 # 설치 확인
 클로드
 # 질문하세요: "어떤 기술을 사용할 수 있나요?"
-# 카테고리별로 정리된 133개의 스킬을 표시해야 함
-```
+# 카테고리별로 정리된 133개의 스킬을 표시해야 함```
 
 ## 📚 Documentation
 
@@ -233,8 +232,7 @@ Since `gh` CLI is not available, use the **GitHub web interface** method:
 - [ ] The `claude-skills-conversion.zip` file (contains all 133 skills + 4 docs)
 
 ### Step 1: Navigate to GitHub
-```
-1. 열기: https://github.com/new
+```1. 열기: https://github.com/new
 2. 이름:`claude-skills-conversion`3. 설명: "133개의 에이전트 스킬이 Claude Code 하위 에이전트에서 Anthropic Agent Skills 형식으로 변환되었습니다. 12개의 주요 개발 영역에 걸쳐 포괄적으로 적용됩니다."
 4. 공개: ✅ (공개로 설정)
 5. 라이센스: MIT 라이센스
@@ -268,12 +266,12 @@ ZIP 업로드 후:
 README.md가 추가된 후:
 
 1. '설정'(톱니바퀴 아이콘) → '정보'를 클릭합니다.
-2. README 하이라이트와 일치하도록 저장소 설명을 업데이트합니다.
-```markdown
+2. README 하이라이트와 일치하도록 저장소 설명을 업데이트합니다.```markdown
    133 Agent Skills converted from Claude Code subagents to Anthropic Agent Skills format in 60 minutes with 100% quality compliance. 90% coverage of 300+ documented agents. Systematic, quality-first conversion.
 
    Features: 12 major development domains covered. Quality-first approach following Anthropic best practices. Scalable templates for future conversions.
    ```
+
 3. '변경사항 저장'을 클릭하세요.
 
 4. "저장소를 공개로 설정"을 클릭하세요.
@@ -288,13 +286,12 @@ README.md가 추가된 후:
 ## ⚠️ 문제 해결
 
 ### 업로드 실패:
-- **파일이 너무 큼**: 더 작은 ZIP 파일을 생성하거나 파일을 압축하세요.
+- **파일이 너무 큼**: 더 작은 ZIP 파일을 만들거나 파일을 압축하세요.
 - **네트워크 오류**: 연결을 확인하고 다시 시도하세요.
 - **업로드 시간 초과**: 기다렸다가 다시 시도하세요.
 - **ZIP 형식**: 표준 ZIP 형식(.zip 확장자)을 보장합니다.
 
-### gh CLI 설치:
-```bash
+### gh CLI 설치:```bash
 # Install via Homebrew
 brew install gh
 
@@ -308,6 +305,7 @@ gh repo create claude-skills-conversion --public
 gh repo set-url https://github.com/YOUR_USERNAME/claude-skills-conversion.git
 git push -u origin main
 ```
+
 ### 대안: 웹 인터페이스
 - 설치가 필요하지 않습니다.
 - 드래그 앤 드롭으로 더 빠른 업로드
@@ -345,7 +343,7 @@ git push -u origin main
 
 ---
 
-**이를 통해 Claude Code**는 코드 편집기에서 12개 주요 범주에 대한 도메인별 전문 지식을 갖춘 포괄적이고 지능적인 개발 지원 도구로 변모합니다.
+**이를 통해 Claude Code**는 코드 편집기에서 12개 주요 범주에 걸쳐 도메인별 전문 지식을 갖춘 포괄적이고 지능적인 개발 지원 도구로 변모합니다.
 ````
 
 ## 🚀 현재 차단기
@@ -356,7 +354,7 @@ git push -u origin main
 2. **대형 파일 크기** - ZIP은 50~100MB일 수 있으며 GitHub 제한을 초과할 수 있습니다.
    - **해결책**: 파일을 압축하거나 더 작은 배치로 업로드
 
-3. **수동 인증** - 매 세션마다 계정 로그인이 필요합니다.
+3. **수동 인증** - 모든 세션에서 계정 로그인이 필요합니다.
 
 ---
 

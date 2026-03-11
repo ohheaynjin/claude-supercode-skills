@@ -11,39 +11,30 @@ Common issues and solutions for Azure infrastructure deployments and management.
 Error: DefaultAzureCredential: Authentication failed. Attempted 4 credential types
 ```
 
-
 **Solutions:**
 
 1. **Authenticate with Azure CLI:**
-
-```bash
+   ```bash
    az login
    az account set --subscription <subscription-id>
    ```
 
-
 2. **Set environment variables for Service Principal:**
-
-```bash
+   ```bash
    export AZURE_CLIENT_ID=<client-id>
    export AZURE_CLIENT_SECRET=<client-secret>
    export AZURE_TENANT_ID=<tenant-id>
    ```
 
-
 3. **Check token expiration:**
-
-```bash
+   ```bash
    az account get-access-token
    ```
 
-
 4. **Verify subscription access:**
-
-```bash
+   ```bash
    az account list --output table
    ```
-
 
 ### Insufficient Permissions
 
@@ -52,24 +43,19 @@ Error: DefaultAzureCredential: Authentication failed. Attempted 4 credential typ
 Error: AuthorizationFailed: The client 'xxx' with object id 'yyy' does not have authorization to perform action
 ```
 
-
 **Solutions:**
 
 1. **Check current role assignments:**
-
-```bash
+   ```bash
    az role assignment list --assignee $(az ad signed-in-user show --query objectId -o tsv)
    ```
 
-
 2. **Assign Contributor role:**
-
-```bash
+   ```bash
    az role assignment create --assignee <user-or-service-principal> \
      --role Contributor \
      --scope /subscriptions/<subscription-id>/resourceGroups/<resource-group>
    ```
-
 
 3. **Use Azure Portal to verify permissions:**
    - Navigate to Resource Group → Access Control (IAM)
@@ -84,15 +70,12 @@ Error: AuthorizationFailed: The client 'xxx' with object id 'yyy' does not have 
 Error: Template validation failed: The template is not valid
 ```
 
-
 **Solutions:**
 
 1. **Compile Bicep to JSON for better error messages:**
-
-```bash
+   ```bash
    az bicep build main.bicep
    ```
-
 
 2. **Check for syntax errors:**
    - Verify all parameters are defined
@@ -100,20 +83,16 @@ Error: Template validation failed: The template is not valid
    - Ensure proper indentation
 
 3. **Validate parameters:**
-
-```typescript
+   ```typescript
    if (!config.parameters || Object.keys(config.parameters).length === 0) {
      throw new Error('Parameters object is empty');
    }
    ```
 
-
 4. **Use what-if to preview changes:**
-
-```typescript
+   ```typescript
    await whatIfDeployment(config);
    ```
-
 
 ### Deployment Timeout
 
@@ -122,12 +101,10 @@ Error: Template validation failed: The template is not valid
 Error: Deployment operation timed out after 30 minutes
 ```
 
-
 **Solutions:**
 
 1. **Increase timeout in poller configuration:**
-
-```typescript
+   ```typescript
    const poller = await client.virtualNetworks.beginCreateOrUpdateAndWait(
      resourceGroupName,
      vnetName,
@@ -138,29 +115,22 @@ Error: Deployment operation timed out after 30 minutes
    );
    ```
 
-
 2. **Check Azure service health:**
-
-```bash
+   ```bash
    az service-health list-events --output table
    ```
 
-
 3. **Verify network connectivity:**
-
-```bash
+   ```bash
    ping login.microsoftonline.com
    ```
 
-
 4. **Review deployment status:**
-
-```bash
+   ```bash
    az deployment group show \
      --resource-group <rg-name> \
      --name <deployment-name>
    ```
-
 
 ### Resource Already Exists Error
 
@@ -169,22 +139,18 @@ Error: Deployment operation timed out after 30 minutes
 Error: The Resource 'Microsoft.Network/virtualNetworks/my-vnet' under resource group 'my-rg' already exists
 ```
 
-
 **Solutions:**
 
 1. **Check if resource exists:**
-
-```bash
+   ```bash
    az resource show \
      --resource-group <rg-name> \
      --name <resource-name> \
      --resource-type Microsoft.Network/virtualNetworks
    ```
 
-
 2. **Update existing resource instead of creating new:**
-
-```typescript
+   ```typescript
    const existingVNet = await client.virtualNetworks.get(resourceGroupName, vnetName);
    if (existingVNet) {
      // Update existing resource
@@ -192,13 +158,10 @@ Error: The Resource 'Microsoft.Network/virtualNetworks/my-vnet' under resource g
    }
    ```
 
-
 3. **Use unique deployment names:**
-
-```typescript
+   ```typescript
    const deploymentName = `deploy-${Date.now()}`;
    ```
-
 
 ## Network Issues
 
@@ -209,35 +172,28 @@ Error: The Resource 'Microsoft.Network/virtualNetworks/my-vnet' under resource g
 Error: Virtual network creation failed with code 'VnetSizeTooSmall'
 ```
 
-
 **Solutions:**
 
 1. **Validate address prefix format:**
-
-```typescript
+   ```typescript
    const isValid = validateAddressPrefix('10.0.0.0/16');
    if (!isValid) {
      throw new Error('Invalid CIDR format');
    }
    ```
 
-
 2. **Check for overlapping address spaces:**
-
-```bash
+   ```bash
    az network vnet list --query "[].addressSpace.addressPrefixes" --output json
    ```
 
-
 3. **Ensure subnet prefixes don't overlap:**
-
-```typescript
+   ```typescript
    // Subnets must be within VNet address space
    const vnetPrefix = '10.0.0.0/16';
    const subnetPrefix = '10.0.1.0/24';
    // Verify subnet is within VNet range
    ```
-
 
 ### NSG Rule Conflicts
 
@@ -246,12 +202,10 @@ Error: Virtual network creation failed with code 'VnetSizeTooSmall'
 Error: NSG rule priority conflict
 ```
 
-
 **Solutions:**
 
 1. **Check for duplicate priorities:**
-
-```typescript
+   ```typescript
    const priorities = config.rules.map(r => r.priority);
    const duplicates = priorities.filter((p, i) => priorities.indexOf(p) !== i);
    if (duplicates.length > 0) {
@@ -259,10 +213,8 @@ Error: NSG rule priority conflict
    }
    ```
 
-
 2. **Use priority ranges by rule type:**
-
-```typescript
+   ```typescript
    const priorityRanges = {
      'allow': 100-1000,
      'deny': 3000-4000,
@@ -270,13 +222,10 @@ Error: NSG rule priority conflict
    };
    ```
 
-
 3. **Order rules from specific to general:**
-
-```typescript
+   ```typescript
    const sortedRules = config.rules.sort((a, b) => a.priority - b.priority);
    ```
-
 
 ## Monitoring Issues
 
@@ -287,36 +236,29 @@ Error: NSG rule priority conflict
 Error: Action group validation failed
 ```
 
-
 **Solutions:**
 
 1. **Validate email addresses:**
-
-```typescript
+   ```typescript
    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
    if (!emailRegex.test(config.emailAddress)) {
      throw new Error('Invalid email address');
    }
    ```
 
-
 2. **Validate phone numbers for SMS:**
-
-```typescript
+   ```typescript
    if (!config.phoneNumber || !config.countryCode) {
      throw new Error('Phone number and country code are required');
    }
    ```
 
-
 3. **Check action group short name length:**
-
-```typescript
+   ```typescript
    if (config.groupShortName.length > 12) {
      throw new Error('Group short name must be 12 characters or less');
    }
    ```
-
 
 ### Alert Rule Not Triggering
 
@@ -325,48 +267,39 @@ Error: Action group validation failed
 Alert configured but not firing when conditions are met
 ```
 
-
 **Solutions:**
 
 1. **Check if alert is enabled:**
-
-```typescript
+   ```typescript
    const alert = await monitorClient.metricAlerts.get(rgName, alertName);
    if (!alert.enabled) {
      await monitorClient.metricAlerts.createOrUpdate(rgName, alertName, { enabled: true });
    }
    ```
 
-
 2. **Verify metric is available:**
-
-```bash
+   ```bash
    az monitor metrics list-definitions \
      --resource <resource-id> \
      --query "[].name.value"
    ```
 
-
 3. **Check threshold and aggregation:**
-
-```typescript
+   ```typescript
    // Ensure threshold is realistic
    if (config.criteria.threshold < 0 || config.criteria.threshold > 100) {
      console.warn('Threshold may be outside expected range');
    }
    ```
 
-
 4. **Test with manual metric data:**
-
-```typescript
+   ```typescript
    const metricData = await monitorClient.metrics.list(resourceId, {
      timespan: 'PT1H',
      interval: 'PT5M',
      metricnames: config.criteria.metricName
    });
    ```
-
 
 ## Cost Issues
 
@@ -377,12 +310,10 @@ Alert configured but not firing when conditions are met
 Azure bill higher than expected
 ```
 
-
 **Solutions:**
 
 1. **Enable cost alerts:**
-
-```typescript
+   ```typescript
    await createBudget({
      name: 'monthly-budget',
      amount: 1000,
@@ -394,31 +325,24 @@ Azure bill higher than expected
    });
    ```
 
-
 2. **Review resource usage:**
-
-```bash
+   ```bash
    az consumption usage list --top 100 --output table
    ```
 
-
 3. **Check for idle resources:**
-
-```bash
+   ```bash
    az vm list --show-details --query "[?powerState!='VM running']"
    ```
 
-
 4. **Implement auto-shutdown:**
-
-```typescript
+   ```typescript
    await setAutoShutdown({
      vmId: vmResourceId,
      schedule: '22:00',
      timezone: 'Eastern Standard Time'
    });
    ```
-
 
 ## Performance Issues
 
@@ -429,19 +353,15 @@ Azure bill higher than expected
 Deployments taking longer than expected
 ```
 
-
 **Solutions:**
 
 1. **Check Azure region availability:**
-
-```bash
+   ```bash
    az account list-locations --query "[].name" --output table
    ```
 
-
 2. **Use parallel deployments:**
-
-```typescript
+   ```typescript
    await Promise.all([
      deployResource(resource1),
      deployResource(resource2),
@@ -449,21 +369,18 @@ Deployments taking longer than expected
    ]);
    ```
 
-
 3. **Optimize Bicep templates:**
    - Use modules for reusable components
    - Minimize dependencies
    - Use deployment scripts sparingly
 
 4. **Monitor deployment performance:**
-
-```typescript
+   ```typescript
    const startTime = Date.now();
    await deployBicepTemplate(config);
    const duration = Date.now() - startTime;
    console.log(`Deployment took ${duration}ms`);
    ```
-
 
 ## Debugging Tips
 
@@ -475,7 +392,6 @@ import { setLogLevel } from '@azure/logger';
 setLogLevel('verbose');
 ```
 
-
 ### Use Azure CLI for Troubleshooting
 
 ```bash
@@ -486,7 +402,6 @@ az deployment group show \
   --output json | jq '.error'
 ```
 
-
 ### Check Deployment History
 
 ```bash
@@ -496,7 +411,6 @@ az deployment operation group list \
   --output table
 ```
 
-
 ### Export Logs for Analysis
 
 ```bash
@@ -505,7 +419,6 @@ az monitor activity-log list \
   --start-time 2024-01-01T00:00:00Z \
   --output json > activity-logs.json
 ```
-
 
 ## Getting Help
 

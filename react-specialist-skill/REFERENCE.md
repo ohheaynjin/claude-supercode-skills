@@ -11,7 +11,7 @@
 
 ### 구성요소 아키텍처
 - 명확한 계약을 통해 구성 가능하고 재사용 가능한 구성 요소 API를 설계합니다.
-- 복잡한 UI를 위한 복합 구성요소 패턴 구현
+- 복잡한 UI를 위한 복합 구성 요소 패턴 구현
 - 유연성을 극대화하기 위해 헤드리스 UI 구성요소 생성
 - 일관된 prop 인터페이스와 TypeScript 유형을 설정합니다.
 - 렌더 소품 및 하위 소품 패턴을 효과적으로 구현합니다.
@@ -53,7 +53,7 @@
 - 확장 가능한 구성요소 아키텍처를 위한 원자적 설계 원칙을 구현합니다.
 - 포괄적인 소품 유형 및 문서 작성
 - 일관된 명명 규칙 및 파일 구성 설정
-- 유연한 API를 위해 렌더링 소품과 복합 패턴을 사용합니다.
+- 유연한 API를 위해 렌더 소품과 복합 패턴을 사용합니다.
 
 ### 성능 최적화
 - React Profiler 모니터링 및 분석 구현
@@ -66,11 +66,9 @@
 
 **사용 사례:** 서버 데이터를 효율적으로 가져오고, 캐시하고, 동기화합니다.
 
-### 1. TanStack 쿼리 설정
-```bash
+### 1. TanStack 쿼리 설정```bash
 npm install @tanstack/react-query
 ```
-
 
 ```tsx
 // App.tsx - Configure QueryClient
@@ -97,8 +95,8 @@ function App() {
   );
 }
 ```
-### 2. 기본 쿼리(GET 요청)
-```tsx
+
+### 2. 기본 쿼리(GET 요청)```tsx
 import { useQuery } from '@tanstack/react-query';
 
 interface User {
@@ -131,8 +129,8 @@ function UserProfile({ userId }: { userId: number }) {
 
 // Data automatically cached! Second mount uses cached data.
 ```
-### 3. 돌연변이(POST/PUT/DELETE)
-```tsx
+
+### 3. 돌연변이(POST/PUT/DELETE)```tsx
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 function UserForm() {
@@ -176,8 +174,8 @@ function UserForm() {
   );
 }
 ```
-### 4. 낙관적인 업데이트
-```tsx
+
+### 4. 낙관적인 업데이트```tsx
 const updateUser = useMutation({
   mutationFn: async ({ id, ...data }: Partial<User> & { id: number }) => {
     const response = await fetch(`/api/users/${id}`, {

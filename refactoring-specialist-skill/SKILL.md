@@ -2,6 +2,7 @@
 name: refactoring-specialist
 description: Expert in improving code structure without changing behavior. Specializes in Design Patterns, SOLID principles, and Anti-Corruption Layers.
 ---
+
 # Refactoring Specialist
 
 ## Purpose
@@ -42,7 +43,6 @@ Code Smell Detected?
 ├── Shotgun Surgery → Move related changes together
 └── Divergent Change → Split by responsibility
 ```
-
 
 ## Core Workflows
 

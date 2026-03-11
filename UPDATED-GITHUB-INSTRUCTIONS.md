@@ -27,7 +27,7 @@
    - 다음이 표시되는 경우: "파일 크기가 너무 큽니다. 먼저 압축하여 다시 시도하세요."
    - 해결 방법: 대신 범주별로 여러 개의 작은 ZIP 파일을 만듭니다.
 
-   - 드래그 앤 드롭 사용(지원되는 브라우저에만 해당)
+- 드래그 앤 드롭 사용(지원되는 브라우저에만 해당)
 
 ---
 
@@ -35,8 +35,7 @@
 
 **옵션 A: GitHub CLI 설치**
 
-**전제조건:**
-```bash
+**전제조건:**```bash
 # Install GitHub CLI via Homebrew
 brew install gh
 
@@ -50,6 +49,7 @@ git remote add origin https://YOUR_TOKEN@github.com/YOUR_USERNAME/claude-skills-
 # Push
 git push -u origin main
 ```
+
 **CLI가 문제가 되는 이유:**
 - 설치 필요(설치되지 않음)
 - 인증 필요(매번 새로운 세션)
@@ -83,23 +83,22 @@ git push -u origin main
 
 ### 1단계: ZIP 파일 준비
 
-**현재 문제:** ZIP 파일(`claude-skills-conversion.zip`)은 GitHub의 드래그 앤 드롭 업로드에 비해 너무 클 수 있습니다(한도: 파일당 100MB, GitHub에서는 총 50MB 미만을 권장함).
+**현재 문제:** ZIP 파일(`claude-skills-conversion.zip`)은 GitHub의 끌어서 놓기 업로드에 비해 너무 클 수 있습니다(한도: 파일당 100MB, GitHub에서는 총 50MB 미만 권장).
 
 **솔루션 옵션:**
 
-**옵션 1: ZIP 파일 압축(먼저 권장)**
-```bash
+**옵션 1: ZIP 파일 압축(먼저 권장)**```bash
 cd ~/claude-skills-conversion
 zip -r claude-skills-conversion.zip .git README.md SKILL-VALIDATION-GUIDE.md CONVERSION-GUIDE.md EXTENDED-SUBAGENT-CATALOG.md FINAL-TEMPORARY-SKILLS-INDEX.md
 ```
-**결과 파일 크기 확인:**
-```bash
+
+**결과 파일 크기 확인:**```bash
 du -h claude-skills-conversion.zip
 ```
+
 **50MB 미만인 경우:** 직접 업로드를 진행하세요.
 
-**50MB를 초과하는 경우:** 압축해 보세요:**
-```bash
+**50MB를 초과하는 경우:** 압축해 보세요:**```bash
 # Remove problematic directories
 rm -rf .git claude-skills-conversion/.git
 
@@ -117,8 +116,8 @@ cp README.md SKILL-VALIDATION-GUIDE.md CONVERSION-GUIDE.md EXTENDED-SUBAGENT-CAT
 # Clear original ZIP
 rm claude-skills-conversion.zip
 ```
-**옵션 2: GitHub 저장소 생성(웹 인터페이스가 실패할 경우 대체)**
-```bash
+
+**옵션 2: GitHub 저장소 생성(웹 인터페이스가 실패할 경우 대체)**```bash
 # Install GitHub CLI (if available)
 brew install gh
 
@@ -132,6 +131,7 @@ git remote add origin https://YOUR_TOKEN@github.com/YOUR_USERNAME/claude-skills-
 # Push
 git push -u origin main
 ```
+
 ---
 
 ### 2단계: GitHub 저장소 생성
@@ -155,14 +155,16 @@ git push -u origin main
 **4. 저장소를 공개로 설정**
    - "저장소 게시" 버튼을 클릭합니다(페이지 하단).
    - 확인: "저장소를 공개로 설정"
-   - 저장소 URL은 다음과 같습니다:`https://github.com/YOUR_USERNAME/claude-skills-conversion`---
+   - 저장소 URL은 다음과 같습니다:`https://github.com/YOUR_USERNAME/claude-skills-conversion`
+
+---
 
 ## 🎯 GitHub 리포지토리 관리
 
 ### 저장소 URL(자리 표시자)
 **https://github.com/YOUR_USERNAME/claude-skills-conversion**
 
-*교체`YOUR_USERNAME`계속하기 전에 실제 GitHub 사용자 이름을 입력하세요!*
+*바꾸다`YOUR_USERNAME`계속하기 전에 실제 GitHub 사용자 이름을 입력하세요!*
 
 ---
 
@@ -172,8 +174,7 @@ git push -u origin main
 
 ### 솔루션(우선순위):
 
-**옵션 1: ZIP 파일 압축**
-```bash
+**옵션 1: ZIP 파일 압축**```bash
 # Remove .git directory (created by git init)
 rm -rf ~/claude-skills-conversion/.git
 
@@ -196,8 +197,8 @@ cp ../README.md .
 # Combine: Create master ZIP
 zip -r core-skills infrastructure-skills/
 ```
-**옵션 2: 여러 카테고리 ZIP 생성(대규모 프로젝트에 권장)**
-```bash
+
+**옵션 2: 여러 카테고리 ZIP 생성(대규모 프로젝트에 권장)**```bash
 # 7. Category-based ZIPs:
 # 1. Core (9 skills + supporting docs)
 # 2. Languages (23 skills) + supporting docs
@@ -254,7 +255,9 @@ for category in core-skills infrastructure-skills languages-skills quality-secur
 
 done
 ```
+
 **옵션 3: 중복 문서 제거**
+
 ```bash
 # Keep only essential files:
 rm -f SKILL-VALIDATION-GUIDE.md
@@ -263,20 +266,21 @@ rm -f EXTENDED-SUBAGENT-CATALOG.md
 rm -f FINAL-REPORT.md
 rm -f SKILLS-CONTENTS.txt
 ```
-**불필요한 디렉토리 제거:**
-```bash
+
+**불필요한 디렉토리 제거:**```bash
 rm -f SKILL-VALIDATION-GUIDE.md  # Reference only needed during validation
 rm -f CONVERSION-GUIDE.md # Process documentation, not needed in repository
 ```
-**정리 후 .git 디렉터리 없이 ZIP을 다시 생성하세요**
-```bash
+
+**정리 후 .git 디렉터리 없이 ZIP을 다시 생성하세요**```bash
 # Remove .git directory
 rm -rf ~/claude-skills-conversion/.git
 
 # Create clean ZIP
 zip -r claude-skills-conversion.zip -r * *.md .
 ```
-**참고:** 이는 해결 방법입니다. .git 디렉토리는 애초에 포함되어서는 안 되었지만 git init가 이를 생성했습니다.
+
+**참고:** 이는 해결 방법입니다. .git 디렉토리는 처음부터 포함되어서는 안 되었지만 git init가 이를 생성했습니다.
 
 ---
 
@@ -310,10 +314,12 @@ zip -r claude-skills-conversion.zip -r * *.md .
    - "저장소 게시" 버튼을 클릭하세요.
    - "저장소를 공개로 설정" → "확인: 저장소를 공개로 설정"을 클릭하세요.
 
-**저장소 URL:**`https://github.com/YOUR_USERNAME/claude-skills-conversion`**5. LinkedIn에서 공유**
+**저장소 URL:**`https://github.com/YOUR_USERNAME/claude-skills-conversion`
+
+**5. LinkedIn에서 공유**
    - 저장소 URL 가져오기(형식:`https://github.com/YOUR_USERNAME/claude-skills-conversion`)
    - 주요 하이라이트 포함: "133개 기술, 60분, 100% 품질 준수, 90% 적용 범위"
-   - 업적 언급: "100% 품질로 60분 안에 133개의 에이전트 스킬이 변환되었습니다."
+   - 성취 언급: "100% 품질로 60분 안에 133개의 에이전트 스킬이 변환되었습니다."
 
 ---
 
@@ -331,7 +337,7 @@ zip -r claude-skills-conversion.zip -r * *.md .
 
 ### 백업 계획
 - **웹 업로드에 실패한 경우:**
-  1. 중복 문서(SKILL-VALIDATION-GUIDE.md, CONVERSION-GUIDE.md, EXTENDED-SUBAGENT-CATALOG.md, FINAL-REPORT.md, SKILLS-CONTENTS.txt)를 제거합니다. 이러한 문서는 카탈로그에서 다시 생성할 수 있습니다.
+  1. 중복 문서(SKILL-VALIDATION-GUIDE.md, CONVERSION-GUIDE.md, EXTENDED-SUBAGENT-CATALOG.md, FINAL-REPORT.md, SKILLS-CONTENTS.txt)를 제거합니다. 이 문서는 카탈로그에서 다시 생성할 수 있습니다.
 2. 먼저 빈 디렉터리를 제거해 보세요.
 3. 카테고리별 구조를 갖춘 더 작은 ZIP을 사용하세요(위에서 제안)
 4. 대안 고려: 수동 저장소 생성을 통해 브라우저를 통해 GitHub 저장소 생성
@@ -340,8 +346,8 @@ zip -r claude-skills-conversion.zip -r * *.md .
 
 ## 🎯 당신이 할 준비가 된 것
 
-이제 다음을 수행할 수 있습니다.
-1. ✅ ZIP 파일 완성(`claude-skills-conversion.zip`) 모든 133개 스킬 + 4개의 문서 파일 포함
+이제 다음이 가능해졌습니다:
+1. ✅ 완전한 ZIP 파일(`claude-skills-conversion.zip`) 모든 133개 스킬 + 4개의 문서 파일 포함
 2. ✅ 설치 지침이 포함된 포괄적인 README.md
 3. ✅ GitHub 웹 인터페이스 지침(권장 방법)
 4. ✅ 대용량 파일 문제 해결 가이드
@@ -350,7 +356,7 @@ zip -r claude-skills-conversion.zip -r * *.md .
 
 **다음 단계:**
 1. **방법 선택:** 두 옵션(웹 인터페이스와 CLI 설치)을 모두 검토합니다. - 웹 인터페이스가 더 빠르고 안정적입니다.
-2. **웹 인터페이스를 먼저 사용해 보세요:** GitHub 웹 인터페이스가 가장 빠른 방법으로 권장됩니다.
+2. **웹 인터페이스를 먼저 사용해 보세요.** GitHub 웹 인터페이스가 가장 빠른 방법으로 권장됩니다.
 3. **CLI 사용자의 경우:** CLI를 선호하는 경우 설치`gh`먼저 인증하고
 4. **업로드 진행:** 먼저 웹 인터페이스(드래그 앤 드롭)를 사용해 보세요.
 5. **문제에 대비하세요:** 업로드가 실패할 경우 백업 계획을 준비하세요.

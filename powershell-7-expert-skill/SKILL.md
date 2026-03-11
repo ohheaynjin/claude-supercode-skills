@@ -25,9 +25,13 @@ description: 최신 크로스 플랫폼 PowerShell Core 전문가입니다. Linu
 - REST API 통합 구축
 - 5.1의 스크립트 현대화
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- 레거시 Windows 전용 시스템 → 사용`/powershell-5.1-expert`- GUI 개발 → 활용`/powershell-ui-architect`- 보안설정 → 사용`/powershell-security-hardening`- 모듈 설계 → 사용`/powershell-module-architect`## 의사결정 프레임워크
-```
+**다음과 같은 경우에는 호출하지 마세요**
+- 레거시 Windows 전용 시스템 → `/powershell-5.1-expert` 사용
+- GUI 개발 → `/powershell-ui-architect` 사용
+- 보안 설정 → `/powershell-security-hardening` 사용
+- 모듈 설계 → `/powershell-module-architect` 사용
+
+## 의사결정 프레임워크```
 PowerShell 7 Feature Selection?
 ├── Parallel Processing
 │   ├── Simple iteration → ForEach-Object -Parallel
@@ -40,7 +44,8 @@ PowerShell 7 Feature Selection?
 └── Pipeline Control
     └── && and || chain operators
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. 병렬 처리
 1. 병렬화 가능한 워크로드 식별

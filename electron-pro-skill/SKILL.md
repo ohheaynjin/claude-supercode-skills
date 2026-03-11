@@ -1,28 +1,28 @@
 ---
 name: electron-pro
-description: Expert in building cross-platform desktop applications using web technologies (HTML/CSS/JS) with the Electron framework.
+description: Electron 프레임워크와 웹 기술(HTML/CSS/JS)을 사용하여 크로스 플랫폼 데스크톱 애플리케이션을 구축하는 전문가입니다.
 ---
-# Electron Desktop Developer
+# 전자 데스크탑 개발자
 
-## Purpose
+## 목적
 
-Provides cross-platform desktop application development expertise specializing in Electron, IPC architecture, and OS-level integration. Builds secure, performant desktop applications using web technologies with native capabilities for Windows, macOS, and Linux.
+Electron, IPC 아키텍처 및 OS 수준 통합을 전문으로 하는 크로스 플랫폼 데스크탑 애플리케이션 개발 전문 지식을 제공합니다. Windows, macOS 및 Linux용 기본 기능을 갖춘 웹 기술을 사용하여 안전하고 성능이 뛰어난 데스크탑 애플리케이션을 구축합니다.
 
-## When to Use
+## 사용 시기
 
-- Building cross-platform desktop apps (VS Code, Discord style)
-- Migrating web apps to desktop with native capabilities (File system, Notifications)
-- Implementing secure IPC (Main ↔ Renderer communication)
-- Optimizing Electron memory usage and startup time
-- Configuring auto-updaters (electron-updater)
-- Signing and notarizing apps for app stores
+- 크로스 플랫폼 데스크톱 앱 구축(VS Code, Discord 스타일)
+- 기본 기능(파일 시스템, 알림)을 사용하여 웹 앱을 데스크탑으로 마이그레이션
+- 안전한 IPC 구현 (Main ← Renderer 통신)
+- Electron 메모리 사용량 및 시작 시간 최적화
+- 자동 업데이트 구성(electron-updater)
+- 앱 스토어용 앱 서명 및 공증
 
 ---
 ---
 
-## 2. Decision Framework
+## 2. 의사결정 프레임워크
 
-### Architecture Selection
+### 아키텍처 선택
 
 ```
 How to structure the app?
@@ -43,37 +43,34 @@ How to structure the app?
    └─ System Tray App? → **Hidden Window Pattern**
 ```
 
+### IPC 통신 패턴
 
-### IPC Communication Patterns
-
-| Pattern | Method | Use Case |
+| 무늬 | 방법 | 사용 사례 |
 |---------|--------|----------|
-| **One-Way (Renderer → Main)** | `ipcRenderer.send` | logging, analytics, minimizing window |
-| **Two-Way (Request/Response)** | `ipcRenderer.invoke` | DB queries, file reads, heavy computations |
-| **Main → Renderer** | `webContents.send` | Menu actions, system events, push notifications |
+| **단방향(렌더러 → 기본)** | `ipcRenderer.send` | 로깅, 분석, 창 최소화 |
+| **양방향(요청/응답)** | `ipcRenderer.invoke` | DB 쿼리, 파일 읽기, 과도한 계산 |
+| **메인 → 렌더러** | `webContents.send` | 메뉴 작업, 시스템 이벤트, 푸시 알림 |
 
-**Red Flags → Escalate to `security-auditor`:**
-- Enabling `nodeIntegration: true` in production
-- Disabling `contextIsolation`
-- Loading remote content (`https://`) without strict CSP
-- Using `remote` module (Deprecated & insecure)
+**위험 신호 → `security-auditor`(으)로 에스컬레이션하세요.**
+- 프로덕션에서 `nodeIntegration: true` 활성화
+- `contextIsolation` 비활성화
+- 엄격한 CSP 없이 원격 콘텐츠(`https://`) 로드
+- `remote` 모듈 사용(더 이상 사용되지 않으며 안전하지 않음)
 
 ---
 ---
 
-### Workflow 2: Performance Optimization (Startup)
+### 작업 흐름 2: 성능 최적화(시작)
 
-**Goal:** Reduce launch time to < 2s.
+**목표:** 실행 시간을 2초 미만으로 줄입니다.
 
-**Steps:**
+**단계:**
 
-1.  **V8 Snapshot**
-    -   Use `electron-link` or `v8-compile-cache` to pre-compile JS.
+1. **V8 스냅샷**
+    - JS를 사전 컴파일하려면 `electron-link` 또는 `v8-compile-cache`을 사용하세요.
 
-2.  **Lazy Loading Modules**
-    -   Don't `require()` everything at top of `main.ts`.
-
-```javascript
+2. **지연 로딩 모듈**
+    - `main.ts` 위에 있는 모든 항목을 `require()`하지 마세요.```javascript
     // Bad
     import { heavyLib } from 'heavy-lib';
     
@@ -84,18 +81,17 @@ How to structure the app?
     });
     ```
 
-
-3.  **Bundle Main Process**
-    -   Use `esbuild` or `webpack` for Main process (not just Renderer) to tree-shake unused code and minify.
+3. **번들 주요 프로세스**
+    - 메인 프로세스(렌더러뿐만 아니라)에 `esbuild` 또는 `webpack`을 사용하여 사용하지 않는 코드를 트리 셰이크하고 축소합니다.
 
 ---
 ---
 
-## 4. Patterns & Templates
+## 4. 패턴 및 템플릿
 
-### Pattern 1: Worker Threads (CPU Intensive Tasks)
+### 패턴 1: 작업자 스레드(CPU 집약적 작업)
 
-**Use case:** Image processing or parsing large files without freezing the UI.
+**사용 사례:** UI를 정지하지 않고 이미지를 처리하거나 대용량 파일을 구문 분석합니다.
 
 ```typescript
 // main.ts
@@ -110,10 +106,9 @@ ipcMain.handle('process-image', (event, data) => {
 });
 ```
 
+### 패턴 2: 딥 링크(프로토콜 핸들러)
 
-### Pattern 2: Deep Linking (Protocol Handler)
-
-**Use case:** Opening app from browser (`myapp://open?id=123`).
+**사용 사례:** 브라우저(`myapp://open?id=123`)에서 앱을 엽니다.
 
 ```typescript
 // main.ts
@@ -132,25 +127,24 @@ app.on('open-url', (event, url) => {
 });
 ```
 
-
 ---
 ---
 
-## 6. Integration Patterns
+## 6. 통합 패턴
 
-### **frontend-ui-ux-engineer:**
--   **Handoff**: UI Dev builds the React/Vue app → Electron Dev wraps it.
--   **Collaboration**: Handling window controls (custom title bar), vibrancy/acrylic effects.
--   **Tools**: CSS `app-region: drag`.
+### **프런트엔드-UI-UX-엔지니어:**
+- **Handoff**: UI Dev가 React/Vue 앱을 빌드하고 → Electron Dev가 이를 래핑합니다.
+- **협업**: 창 컨트롤(사용자 정의 제목 표시줄), 생동감/아크릴 효과 처리.
+- **도구**: CSS `app-region: drag`.
 
-### **devops-engineer:**
--   **Handoff**: Electron Dev provides build config → DevOps sets up CI pipeline.
--   **Collaboration**: Code signing certificates (Apple Developer ID, Windows EV).
--   **Tools**: Electron Builder, Notarization scripts.
+### **devops-엔지니어:**
+- **Handoff**: Electron Dev가 빌드 구성을 제공 → DevOps가 CI 파이프라인을 설정합니다.
+- **협업**: 코드 서명 인증서(Apple Developer ID, Windows EV).
+- **도구**: Electron Builder, 공증 스크립트.
 
-### **security-engineer:**
--   **Handoff**: Electron Dev implements feature → Security Dev audits IPC surface.
--   **Collaboration**: Defining Content Security Policy (CSP) headers.
--   **Tools**: Electronegativity (Scanner).
+### **보안 엔지니어:**
+- **Handoff**: Electron Dev는 기능을 구현합니다. → Security Dev는 IPC 표면을 감사합니다.
+- **협업**: 콘텐츠 보안 정책(CSP) 헤더 정의.
+- **도구**: 전기음성도(스캐너).
 
 ---

@@ -225,7 +225,6 @@ export DEBUG=true
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-
 ### Dry Run Mode
 
 ```bash
@@ -233,14 +232,12 @@ logging.basicConfig(level=logging.DEBUG)
 python scripts/chaos_experiment.py --experiment test-01 --target api-service --failure-type pod_kill --dry-run
 ```
 
-
 ### Verbose Output
 
 ```bash
 # Get detailed execution information
 python scripts/chaos_experiment.py --experiment test-01 --target api-service --failure-type pod_kill --verbose
 ```
-
 
 ## Getting Help
 
@@ -251,7 +248,6 @@ python scripts/chaos_experiment.py --experiment test-01 --target api-service --f
 python scripts/chaos_experiment.py --help
 python scripts/resilience_assessment.py --help
 ```
-
 
 ### Error Messages
 

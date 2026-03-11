@@ -1,6 +1,7 @@
 # React 전문가 - 코드 예제 및 패턴
 
 ## 고급 사용자 정의 후크 패턴
+
 ```typescript
 // Optimized data fetching hook with TanStack Query
 function useUserPreferences() {
@@ -50,7 +51,9 @@ Tabs.Tab = function Tab({ value, children }: TabProps) {
   );
 };
 ```
+
 ## Next.js 앱 라우터 패턴
+
 ```typescript
 // Server Component with data fetching
 async function ProductPage({ params }: { params: { id: string } }) {
@@ -103,7 +106,9 @@ function ClientProductActions({ productId }: { productId: string }) {
   );
 }
 ```
+
 ## 상태 상태 관리
+
 ```typescript
 // Zustand store with TypeScript
 interface UserStore {
@@ -156,12 +161,12 @@ function UserProfile() {
   );
 }
 ```
+
 ## 안티 패턴 및 수정 사항
 
 ### 안티 패턴 1: 계산 대신 파생된 상태
 
-**모습(나쁨):**
-```jsx
+**모습(나쁨):**```jsx
 function UserList({ users, searchTerm }) {
   const [filteredUsers, setFilteredUsers] = useState([]);
 
@@ -175,13 +180,13 @@ function UserList({ users, searchTerm }) {
   return filteredUsers.map(user => <UserCard key={user.id} user={user} />);
 }
 ```
+
 **실패하는 이유:**
 - 추가 렌더링(초기 렌더링 후 효과가 실행됨)
 - 상태가 동기화되지 않을 수 있음
 - 더욱 복잡한 상태 관리
 
-**올바른 접근 방식:**
-```jsx
+**올바른 접근 방식:**```jsx
 function UserList({ users, searchTerm }) {
   // Compute during render - CORRECT
   const filteredUsers = users.filter(u => u.name.includes(searchTerm));
@@ -199,10 +204,10 @@ function UserList({ users, searchTerm }) {
   return filteredUsers.map(user => <UserCard key={user.id} user={user} />);
 }
 ```
+
 ### 안티 패턴 2: 이벤트 핸들러에 대한 useCallback 누락
 
-**모습(나쁨):**
-```jsx
+**모습(나쁨):**```jsx
 function ParentComponent() {
   const [count, setCount] = useState(0);
   
@@ -214,8 +219,8 @@ function ParentComponent() {
   return <MemoizedChild onClick={handleClick} />;
 }
 ```
-**올바른 접근 방식:**
-```jsx
+
+**올바른 접근 방식:**```jsx
 function ParentComponent() {
   const [count, setCount] = useState(0);
   
@@ -227,10 +232,10 @@ function ParentComponent() {
   return <MemoizedChild onClick={handleClick} />;
 }
 ```
+
 ### 안티 패턴 3: 여러 수준을 통한 Prop 드릴링
 
-**모습(나쁨):**
-```jsx
+**모습(나쁨):**```jsx
 function App() {
   const [user, setUser] = useState(null);
   return <Layout user={user} setUser={setUser} />;
@@ -249,8 +254,8 @@ function UserMenu({ user, setUser }) {
   return <div>{user?.name}</div>;
 }
 ```
-**컨텍스트에 따른 올바른 접근 방식:**
-```jsx
+
+**컨텍스트에 따른 올바른 접근 방식:**```jsx
 const UserContext = createContext<UserContextValue>(null);
 
 function App() {
@@ -268,8 +273,8 @@ function UserMenu() {
   return <div>{user?.name}</div>;
 }
 ```
-**또는 Zustand를 사용하면(더 간단하게):**
-```jsx
+
+**또는 Zustand를 사용하면(더 간단하게):**```jsx
 const useUserStore = create((set) => ({
   user: null,
   setUser: (user) => set({ user }),

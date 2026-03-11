@@ -1,34 +1,38 @@
 ---
 name: pptx-skill
-description: python-pptx 및 PptxGenJS를 사용하여 PowerPoint 프레젠테이션을 생성, 편집 및 자동화하는 전문가입니다. 프로그래밍 방식으로 슬라이드를 생성하거나 프레젠테이션을 수정하거나 보고서 자동화를 구축할 때 사용합니다. 트리거에는 "PowerPoint", "PPTX", "슬라이드", "프레젠테이션", "python-pptx", "PptxGenJS", "슬라이드 데크"가 포함됩니다.
+description: Expert in creating, editing, and automating PowerPoint presentations using python-pptx and PptxGenJS. Use when generating slides programmatically, modifying presentations, or building report automation. Triggers include "PowerPoint", "PPTX", "slides", "presentation", "python-pptx", "PptxGenJS", "slide deck".
 ---
-# PPTX 스킬
 
-## 목적
-프로그래밍 방식의 PowerPoint 프레젠테이션 작성, 편집 및 자동화에 대한 전문 지식을 제공합니다. 동적 슬라이드 데크 생성 및 프레젠테이션 워크플로우 자동화를 위해 python-pptx(Python) 및 PptxGenJS(JavaScript) 사용을 전문으로 합니다.
+# PPTX Skill
 
-## 사용 시기
-- 프로그래밍 방식으로 프레젠테이션 생성
-- 데이터 소스에서 슬라이드 만들기
-- 기존 PowerPoint 파일 수정
-- 자동화된 보고서 생성기 구축
-- 슬라이드에 차트 및 표 추가
-- 템플릿 및 브랜딩 적용
-- 프레젠테이션에서 콘텐츠 추출
-- 여러 프레젠테이션을 일괄 처리
+## Purpose
+Provides expertise in programmatic PowerPoint presentation creation, editing, and automation. Specializes in using python-pptx (Python) and PptxGenJS (JavaScript) for generating dynamic slide decks and automating presentation workflows.
 
-## 빠른 시작
-**다음과 같은 경우에 이 스킬을 호출하세요:**
-- 코드에서 PowerPoint 파일 만들기
-- 슬라이드 생성 자동화
-- 기존 PPTX 파일 수정
-- 프리젠테이션 템플릿 구축
-- 슬라이드에서 데이터 추출
+## When to Use
+- Generating presentations programmatically
+- Creating slides from data sources
+- Modifying existing PowerPoint files
+- Building automated report generators
+- Adding charts and tables to slides
+- Applying templates and branding
+- Extracting content from presentations
+- Batch processing multiple presentations
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- PDF 생성 → 활용`/pdf-skill`- Word 문서 → 사용`/docx-skill`- 엑셀파일 → 활용`/xlsx-skill`- 매뉴얼 프리젠테이션 디자인 → 적절한 디자인 도구 사용
+## Quick Start
+**Invoke this skill when:**
+- Creating PowerPoint files from code
+- Automating slide generation
+- Modifying existing PPTX files
+- Building presentation templates
+- Extracting data from slides
 
-## 의사결정 프레임워크
+**Do NOT invoke when:**
+- PDF generation → use `/pdf-skill`
+- Word documents → use `/docx-skill`
+- Excel files → use `/xlsx-skill`
+- Manual presentation design → use appropriate design tools
+
+## Decision Framework
 ```
 PPTX Operation?
 ├── Generate from Scratch
@@ -41,45 +45,46 @@ PPTX Operation?
 └── Extract Content
     └── python-pptx for reading
 ```
-## 핵심 워크플로
 
-### 1. 프레젠테이션 생성(python-pptx)
-1. python-pptx 설치
-2. 프레젠테이션 객체 생성
-3. 레이아웃에서 슬라이드 추가
-4. 콘텐츠 추가(텍스트, 이미지, 표)
-5. 서식 적용
-6. 프레젠테이션 저장
+## Core Workflows
 
-### 2. 차트 생성
-1. 차트용 데이터 준비
-2. 차트 데이터 개체 생성
-3. 슬라이드에 차트 추가
-4. 차트 유형 및 옵션 구성
-5. 스타일 차트 요소
-6. 적절한 위치와 크기
+### 1. Presentation Generation (python-pptx)
+1. Install python-pptx
+2. Create Presentation object
+3. Add slides from layouts
+4. Add content (text, images, tables)
+5. Apply formatting
+6. Save presentation
 
-### 3. 템플릿 기반 생성
-1. 자리 표시자를 사용하여 마스터 템플릿 만들기
-2. 코드에 템플릿 로드
-3. 자리 표시자 모양 식별
-4. 자리표시자 콘텐츠 교체
-5. 필요에 따라 동적 슬라이드 추가
-6. 새 파일로 저장
+### 2. Chart Creation
+1. Prepare data for chart
+2. Create chart data object
+3. Add chart to slide
+4. Configure chart type and options
+5. Style chart elements
+6. Position and size appropriately
 
-## 모범 사례
-- 템플릿의 슬라이드 레이아웃 사용
-- 자리 표시자 경계 내에서 텍스트 유지
-- 데이터에 적합한 차트 유형을 사용하십시오.
-- 일관된 스타일 유지
-- PowerPoint에서 테스트 출력
-- 누락된 글꼴을 정상적으로 처리
+### 3. Template-Based Generation
+1. Create master template with placeholders
+2. Load template in code
+3. Identify placeholder shapes
+4. Replace placeholder content
+5. Add dynamic slides as needed
+6. Save as new file
 
-## 안티 패턴
-| 안티 패턴 | 문제 | 올바른 접근 |
-|---------------|---------|------|
-| 레이아웃 무시 | 일관되지 않은 형식 | 슬라이드 레이아웃 사용 |
-| 하드코딩된 위치 | 레이아웃 중단 | 자리 표시자 사용 |
-| 슬라이드당 텍스트가 너무 많습니다 | 읽을 수 없음 | 콘텐츠 제한, 글머리 기호 사용 |
-| 누락된 템플릿 | 스타일링 재창조 | 재사용 가능한 템플릿 만들기 |
-| 오류 처리 없음 | 손상된 파일 | 오류 확인 및 처리 |
+## Best Practices
+- Use slide layouts from the template
+- Keep text within placeholder boundaries
+- Use appropriate chart types for data
+- Maintain consistent styling
+- Test output in PowerPoint
+- Handle missing fonts gracefully
+
+## Anti-Patterns
+| Anti-Pattern | Problem | Correct Approach |
+|--------------|---------|------------------|
+| Ignoring layouts | Inconsistent formatting | Use slide layouts |
+| Hardcoded positions | Layout breaks | Use placeholders |
+| Too much text per slide | Unreadable | Limit content, use bullets |
+| Missing templates | Reinventing styling | Create reusable templates |
+| No error handling | Corrupted files | Validate and handle errors |

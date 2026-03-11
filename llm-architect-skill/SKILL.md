@@ -1,51 +1,53 @@
 ---
 name: llm-architect
-description: 사용자에게 LLM 시스템 아키텍처, 모델 배포, 최적화 전략 및 프로덕션 서비스 인프라가 필요할 때 사용합니다. 성능, 비용 효율성 및 안전성에 중점을 두고 확장 가능한 대규모 언어 모델 애플리케이션을 설계합니다.
+description: Use when user needs LLM system architecture, model deployment, optimization strategies, and production serving infrastructure. Designs scalable large language model applications with focus on performance, cost efficiency, and safety.
 ---
-# LLM 건축가
 
-## 목적
+# LLM Architect
 
-대규모로 LLM 애플리케이션을 설계, 배포 및 최적화하기 위한 전문적인 대규모 언어 모델 시스템 아키텍처를 제공합니다. 모델 선택, RAG(Retrieval Augmented Generation) 파이프라인, 전략 미세 조정, 서비스 인프라, 비용 최적화 및 생산 LLM 시스템을 위한 안전 가드레일을 전문으로 합니다.
+## Purpose
 
-## 사용 시기
+Provides expert large language model system architecture for designing, deploying, and optimizing LLM applications at scale. Specializes in model selection, RAG (Retrieval Augmented Generation) pipelines, fine-tuning strategies, serving infrastructure, cost optimization, and safety guardrails for production LLM systems.
 
-- 요구사항부터 생산까지 엔드투엔드 LLM 시스템 설계
-- 특정 사용 사례에 맞는 모델 및 서비스 인프라 선택
-- RAG(Retrieval Augmented Generation) 파이프라인 구현
-- 품질 임계값을 유지하면서 LLM 비용 최적화
-- 안전 가드레일 및 규정 준수 메커니즘 구축
-- 미세 조정 계획 vs RAG vs 신속한 엔지니어링 전략 계획
-- 처리량이 많은 애플리케이션을 위한 LLM 추론 확장
+## When to Use
 
-## 빠른 시작
+- Designing end-to-end LLM systems from requirements to production
+- Selecting models and serving infrastructure for specific use cases
+- Implementing RAG (Retrieval Augmented Generation) pipelines
+- Optimizing LLM costs while maintaining quality thresholds
+- Building safety guardrails and compliance mechanisms
+- Planning fine-tuning vs RAG vs prompt engineering strategies
+- Scaling LLM inference for high-throughput applications
 
-**다음과 같은 경우에 이 스킬을 호출하세요:**
-- 요구사항부터 생산까지 엔드투엔드 LLM 시스템 설계
-- 특정 사용 사례에 맞는 모델 및 서비스 인프라 선택
-- RAG(Retrieval Augmented Generation) 파이프라인 구현
-- 품질 임계값을 유지하면서 LLM 비용 최적화
-- 안전 가드레일 및 규정 준수 메커니즘 구축
+## Quick Start
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- 간단한 API 통합이 존재합니다(대신 백엔드 개발자 사용).
-- 아키텍처 결정 없이 신속한 엔지니어링만 필요
-- 처음부터 기초 모델 교육(거의 항상 잘못된 접근 방식)
-- 언어 모델과 관련되지 않은 일반 ML 작업(ml-engine 사용)
+**Invoke this skill when:**
+- Designing end-to-end LLM systems from requirements to production
+- Selecting models and serving infrastructure for specific use cases
+- Implementing RAG (Retrieval Augmented Generation) pipelines
+- Optimizing LLM costs while maintaining quality thresholds
+- Building safety guardrails and compliance mechanisms
 
-## 의사결정 프레임워크
+**Do NOT invoke when:**
+- Simple API integration exists (use backend-developer instead)
+- Only prompt engineering needed without architecture decisions
+- Training foundation models from scratch (almost always wrong approach)
+- Generic ML tasks unrelated to language models (use ml-engineer)
 
-### 모델 선택 퀵 가이드
+## Decision Framework
 
-| 요구사항 | 권장 접근 방식 |
-|-------------|---------|
-| 지연 시간 <100ms | 소형 미세 조정 모델(7B 양자화) |
-| 지연 시간 2초 미만, 예산 무제한 | 클로드 3 Opus / GPT-4 |
-| 지연 시간 <2초, 도메인별 | 클로드 3번 소네트 미세 조정 |
-| 지연 시간은 2초 미만, 비용에 민감함 | 클로드 3 하이쿠 |
-| 일괄/비동기 허용 | 배치 API, 가장 저렴한 계층 |
+### Model Selection Quick Guide
 
-### RAG 대 미세 조정 결정 트리
+| Requirement | Recommended Approach |
+|-------------|---------------------|
+| Latency <100ms | Small fine-tuned model (7B quantized) |
+| Latency <2s, budget unlimited | Claude 3 Opus / GPT-4 |
+| Latency <2s, domain-specific | Claude 3 Sonnet fine-tuned |
+| Latency <2s, cost-sensitive | Claude 3 Haiku |
+| Batch/async acceptable | Batch API, cheapest tier |
+
+### RAG vs Fine-Tuning Decision Tree
+
 ```
 Need to customize LLM behavior?
 │
@@ -64,7 +66,9 @@ Need to customize LLM behavior?
 └─ Need latency <100ms?
    └─ Fine-tuned small model (7B-13B)
 ```
-### 아키텍처 패턴
+
+### Architecture Pattern
+
 ```
 [Client] → [API Gateway + Rate Limiting]
               ↓
@@ -82,19 +86,21 @@ Need to customize LLM behavior?
     ↓
 [Response to Client]
 ```
-## 핵심 작업 흐름: LLM 시스템 설계
 
-### 1. 요구 사항 수집
+## Core Workflow: Design LLM System
 
-다음 질문을 해보세요:
-- **대기 시간**: P95 응답 시간 요구 사항은 무엇입니까?
-- **규모**: 예상 요청/일 및 성장 궤적은 무엇입니까?
-- **정확도**: 허용 가능한 최소 품질은 얼마입니까? (측정 가능한 측정항목)
-- **비용**: 예산 제약이 있나요? ($/요청 또는 $/월)
-- **데이터**: 평가를 위한 기존 데이터세트가 있나요? 민감도 수준?
-- **규정 준수**: 규제 요건? (HIPAA, GDPR, SOC2 등)
+### 1. Requirements Gathering
 
-### 2. 모델 선정
+Ask these questions:
+- **Latency**: What's the P95 response time requirement?
+- **Scale**: Expected requests/day and growth trajectory?
+- **Accuracy**: What's the minimum acceptable quality? (measurable metric)
+- **Cost**: Budget constraints? ($/request or $/month)
+- **Data**: Existing datasets for evaluation? Sensitivity level?
+- **Compliance**: Regulatory requirements? (HIPAA, GDPR, SOC2, etc.)
+
+### 2. Model Selection
+
 ```python
 def select_model(requirements):
     if requirements.latency_p95 < 100:  # milliseconds
@@ -117,7 +123,9 @@ def select_model(requirements):
         else:
             return "batch-api-cheapest-tier"
 ```
-### 3. 프로토타입 제작 및 평가
+
+### 3. Prototype & Evaluate
+
 ```bash
 # Run benchmark on eval dataset
 python scripts/evaluate_model.py \
@@ -130,62 +138,63 @@ python scripts/evaluate_model.py \
 # P95 Latency: 1,245ms
 # Cost per 1K requests: $2.15
 ```
-### 4. 반복 체크리스트
 
-- [ ] 대기 시간 P95가 요구 사항을 충족합니까? 그렇지 않은 경우 → 서비스 최적화(양자화, 캐싱)
-- [ ] 정확도가 임계값을 충족합니까? 그렇지 않은 경우 → 프롬프트 개선, 미세 조정 또는 모델 업그레이드
-- [ ] 예산 범위 내에서 비용이 발생합니까? 그렇지 않은 경우 → 공격적인 캐싱, 더 작은 모델 라우팅, 일괄 처리
-- [ ] 안전 가드레일이 테스트되었습니까? 그렇지 않은 경우 → 콘텐츠 필터 추가, PII 감지
-- [ ] 대시보드를 실시간으로 모니터링합니까? 그렇지 않은 경우 → Prometheus + Grafana 설정
-- [ ] Runbook이 문서화되었습니까? 그렇지 않은 경우 → 일반적인 오류 및 수정 사항을 문서화합니다.
+### 4. Iteration Checklist
 
-## 비용 최적화 전략
+- [ ] Latency P95 meets requirement? If no → optimize serving (quantization, caching)
+- [ ] Accuracy meets threshold? If no → improve prompts, fine-tune, or upgrade model
+- [ ] Cost within budget? If no → aggressive caching, smaller model routing, batching
+- [ ] Safety guardrails tested? If no → add content filters, PII detection
+- [ ] Monitoring dashboards live? If no → set up Prometheus + Grafana
+- [ ] Runbook documented? If no → document common failures and fixes
 
-| 전략 | 저축 | 사용 시기 |
-|------------|---------|-------------|
-| 시맨틱 캐싱 | 40-80% | 60%+ 유사한 검색어 |
-| 다중 모델 라우팅 | 30-50% | 복합적인 복잡성 쿼리 |
-| 신속한 압축 | 10-20% | 긴 컨텍스트 입력 |
-| 일괄 처리 | 20-40% | 비동기 허용 워크로드 |
-| 더 작은 모델 캐스케이드 | 40-60% | 간단한 쿼리 먼저 |
+## Cost Optimization Strategies
 
-## 안전 체크리스트
+| Strategy | Savings | When to Use |
+|----------|---------|-------------|
+| Semantic caching | 40-80% | 60%+ similar queries |
+| Multi-model routing | 30-50% | Mixed complexity queries |
+| Prompt compression | 10-20% | Long context inputs |
+| Batching | 20-40% | Async-tolerant workloads |
+| Smaller model cascade | 40-60% | Simple queries first |
 
-- [ ] 적대적인 예시에 대해 테스트된 콘텐츠 필터링
-- [ ] PII 감지 및 수정 검증됨
-- [ ] 즉각적인 주입 방어가 확립되어 있습니다.
-- [ ] 출력 유효성 검사 규칙이 구현되었습니다.
-- [ ] 모든 요청에 대해 감사 로깅이 구성되었습니다.
-- [ ] 규정 준수 요구 사항이 문서화되고 검증되었습니다.
+## Safety Checklist
 
-## 위험 신호 - 에스컬레이션해야 하는 경우
+- [ ] Content filtering tested against adversarial examples
+- [ ] PII detection and redaction validated
+- [ ] Prompt injection defenses in place
+- [ ] Output validation rules implemented
+- [ ] Audit logging configured for all requests
+- [ ] Compliance requirements documented and validated
 
-| 관찰 | 액션 |
-|-------------|---------|
-| 프롬프트 반복 후 정확도 <80% | 미세 조정 고려 |
-| 지연 시간 2배 요구 사항 | 인프라 검토 |
-| 비용 >예산의 2배 | 적극적인 캐싱/라우팅 |
-| 환각률 >5% | RAG 또는 더 강한 가드레일 추가 |
-| 안전 우회 감지됨 | 즉각적인 보안 검토 |
+## Red Flags - When to Escalate
 
-## 빠른 참조: 실적 목표
+| Observation | Action |
+|-------------|--------|
+| Accuracy <80% after prompt iteration | Consider fine-tuning |
+| Latency 2x requirement | Review infrastructure |
+| Cost >2x budget | Aggressive caching/routing |
+| Hallucination rate >5% | Add RAG or stronger guardrails |
+| Safety bypass detected | Immediate security review |
 
-| 미터법 | 대상 | 심각 |
-|---------|---------|----------|
-| P95 대기 시간 | <2x 요구 사항 | <3x 요구사항 |
-| 정확도 | >90% | >80% |
-| 캐시 적중률 | >60% | >40% |
-| 오류율 | <1% | <5% |
-| 비용/요청 1,000개 | 예산 내에서 | 예산 150% 미만 |
+## Quick Reference: Performance Targets
 
-## 추가 리소스
+| Metric | Target | Critical |
+|--------|--------|----------|
+| P95 Latency | <2x requirement | <3x requirement |
+| Accuracy | >90% | >80% |
+| Cache Hit Rate | >60% | >40% |
+| Error Rate | <1% | <5% |
+| Cost/1K requests | Within budget | <150% budget |
 
-- **자세한 기술 참조**: [REFERENCE.md](REFERENCE.md) 참조
-  - RAG 구현 워크플로우
-  - 의미론적 캐싱 패턴
-  - 배포 구성
+## Additional Resources
+
+- **Detailed Technical Reference**: See [REFERENCE.md](REFERENCE.md)
+  - RAG implementation workflow
+  - Semantic caching patterns
+  - Deployment configurations
   
-- **코드 예제 및 패턴**: [EXAMPLES.md](EXAMPLES.md) 참조
-  - 안티 패턴(충분한 메시지가 표시될 때 미세 조정, 대체 없음)
-  - LLM 시스템 품질 체크리스트
-  - 탄력적인 LLM 통화 패턴
+- **Code Examples & Patterns**: See [EXAMPLES.md](EXAMPLES.md)
+  - Anti-patterns (fine-tuning when prompting suffices, no fallback)
+  - Quality checklist for LLM systems
+  - Resilient LLM call patterns

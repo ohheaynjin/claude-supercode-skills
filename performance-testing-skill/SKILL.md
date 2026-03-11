@@ -2,6 +2,7 @@
 name: performance-testing
 description: Performance testing specialist for load testing, stress testing, and performance optimization across applications and infrastructure
 ---
+
 # Performance Testing Skill
 
 ## Purpose
@@ -158,7 +159,6 @@ grep -r "response_time\|latency\|throughput" logs/ --include="*.log" --include="
 grep -r "cpu\|memory\|disk" monitoring/ --include="*.metrics" --include="*.json"
 grep -r "concurrent\|connections\|requests" load_tests/ --include="*.js" --include="*.py"
 ```
-
 
 ### Response Time Analysis
 - Average response time

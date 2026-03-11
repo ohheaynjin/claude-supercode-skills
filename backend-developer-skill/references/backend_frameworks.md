@@ -1,17 +1,20 @@
-# 백엔드 프레임워크 가이드
+# Backend Frameworks Guide
 
 ## Node.js / TypeScript
 
-### 익스프레스.js
+### Express.js
 
-#### 빠른 시작
+#### Quick Start
+
 ```bash
 npm init -y
 npm install express cors helmet dotenv
 npm install -D typescript @types/node @types/express
 npx tsc --init
 ```
-#### 기본 응용 프로그램
+
+#### Basic Application
+
 ```typescript
 import express, { Application, Request, Response } from 'express';
 
@@ -28,7 +31,9 @@ app.listen(3000, () => {
   console.log('Server running on port 3000');
 });
 ```
-#### 미들웨어 스택
+
+#### Middleware Stack
+
 ```typescript
 import helmet from 'helmet';
 import cors from 'cors';
@@ -40,7 +45,9 @@ app.use(compression());
 app.use(express.json());
 app.use(morgan('combined'));
 ```
-#### 파일 구조
+
+#### File Structure
+
 ```
 src/
 ├── index.ts              # Entry point
@@ -54,16 +61,20 @@ src/
 ├── utils/                # Utilities
 └── types/                # TypeScript types
 ```
+
 ### NestJS
 
-#### 빠른 시작
+#### Quick Start
+
 ```bash
 npm i -g @nestjs/cli
 nest new project-name
 cd project-name
 npm run start:dev
 ```
-#### 모듈 구조
+
+#### Module Structure
+
 ```typescript
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
@@ -73,7 +84,9 @@ npm run start:dev
 })
 export class UserModule {}
 ```
-#### 의존성 주입
+
+#### Dependency Injection
+
 ```typescript
 @Injectable()
 export class UserService {
@@ -88,14 +101,18 @@ export class UserService {
   }
 }
 ```
-## 파이썬 / FastAPI
 
-### 빠른 시작
+## Python / FastAPI
+
+### Quick Start
+
 ```bash
 pip install fastapi uvicorn
 uvicorn main:app --reload
 ```
-### 기본 응용 프로그램
+
+### Basic Application
+
 ```python
 from fastapi import FastAPI
 
@@ -109,7 +126,9 @@ async def root():
 async def read_item(item_id: int):
     return {"item_id": item_id}
 ```
-### 프로젝트 구조
+
+### Project Structure
+
 ```
 app/
 ├── __init__.py
@@ -129,7 +148,9 @@ app/
 ├── crud/                # Database operations
 └── utils/               # Utilities
 ```
-### 의존성 주입
+
+### Dependency Injection
+
 ```python
 from fastapi import Depends
 from sqlalchemy.orm import Session
@@ -148,7 +169,9 @@ async def create_user(
 ):
     return crud.create_user(db, user)
 ```
-### Pydantic 모델
+
+### Pydantic Models
+
 ```python
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
@@ -167,16 +190,20 @@ class UserResponse(UserBase):
     class Config:
         from_attributes = True
 ```
-## 파이썬/장고
 
-### 빠른 시작
+## Python / Django
+
+### Quick Start
+
 ```bash
 pip install django djangorestframework
 django-admin startproject project
 cd project
 python manage.py startapp api
 ```
-### 프로젝트 구조
+
+### Project Structure
+
 ```
 project/
 ├── manage.py
@@ -192,7 +219,9 @@ project/
     ├── views.py
     └── urls.py
 ```
-### Django REST 프레임워크
+
+### Django REST Framework
+
 ```python
 # serializers.py
 from rest_framework import serializers
@@ -216,7 +245,9 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
 ```
-### 설정 구성
+
+### Settings Organization
+
 ```python
 # settings/base.py
 class Base:
@@ -237,9 +268,11 @@ class Production(Base):
     DEBUG = False
     ALLOWED_HOSTS = ['example.com']
 ```
-## 자바/스프링부트
 
-### 빠른 시작
+## Java / Spring Boot
+
+### Quick Start
+
 ```bash
 # Using Spring Initializr
 curl https://start.spring.io/starter.zip \
@@ -252,7 +285,9 @@ unzip project.zip
 cd project
 ./mvnw spring-boot:run
 ```
-### 프로젝트 구조
+
+### Project Structure
+
 ```
 src/main/java/com/example/
 ├── Application.java     # Main class
@@ -267,7 +302,9 @@ src/main/resources/
 ├── application.properties
 └── db/migration/        # Liquibase migrations
 ```
-### 컨트롤러
+
+### Controller
+
 ```java
 @RestController
 @RequestMapping("/api/v1/users")
@@ -291,7 +328,9 @@ public class UserController {
     }
 }
 ```
-### 서비스 계층
+
+### Service Layer
+
 ```java
 @Service
 @Transactional
@@ -318,7 +357,9 @@ public class UserService {
     }
 }
 ```
-### 저장소
+
+### Repository
+
 ```java
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -328,7 +369,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findActiveUsers();
 }
 ```
-### 구성
+
+### Configuration
+
 ```java
 @Configuration
 public class DatabaseConfig {
@@ -347,15 +390,19 @@ public class DatabaseConfig {
     }
 }
 ```
-## 고/진
 
-### 빠른 시작
+## Go / Gin
+
+### Quick Start
+
 ```bash
 go mod init project-name
 go get -u github.com/gin-gonic/gin
 go run main.go
 ```
-### 기본 응용 프로그램
+
+### Basic Application
+
 ```go
 package main
 
@@ -383,21 +430,23 @@ func getUsers(c *gin.Context) {
     c.JSON(200, users)
 }
 ```
-## 프레임워크 비교
 
-| 기능 | 익스프레스 | FastAPI | 장고 | 스프링 부트 | 진 |
-|---------|---------|---------|---------|------------|------|
-| 언어 | 타입스크립트 | 파이썬 | 파이썬 | 자바 | 이동 |
-| 성과 | 높음 | 높음 | 중간 | 중간 | 매우 높음 |
-| 학습 곡선 | 낮음 | 낮음 | 중간 | 높음 | 낮음 |
-| 내장 기능 | 최소 | 좋음 | 우수 | 우수 | 최소 |
-| ORM 지원 | 다중 | SQLAlchemy | 장고 ORM | JPA | 다중 |
-| 타입스크립트 지원 | 네이티브 | 아니요 | 아니요 | 롬복 | 아니요 |
-| 비동기 지원 | 네이티브 | 네이티브 | 한정 | 반응성 | 네이티브 |
+## Framework Comparison
 
-## 모범 사례
+| Feature | Express | FastAPI | Django | Spring Boot | Gin |
+|---------|---------|---------|--------|-------------|-----|
+| Language | TypeScript | Python | Python | Java | Go |
+| Performance | High | High | Medium | Medium | Very High |
+| Learning Curve | Low | Low | Medium | High | Low |
+| Built-in Features | Minimal | Good | Excellent | Excellent | Minimal |
+| ORM Support | Multiple | SQLAlchemy | Django ORM | JPA | Multiple |
+| TypeScript Support | Native | No | No | Lombok | No |
+| Async Support | Native | Native | Limited | Reactive | Native |
 
-### 구성 관리
+## Best Practices
+
+### Configuration Management
+
 ```typescript
 // config/index.ts
 export const config = {
@@ -413,7 +462,9 @@ export const config = {
   },
 };
 ```
-### 환경 변수
+
+### Environment Variables
+
 ```bash
 # .env.example
 PORT=3000
@@ -421,7 +472,9 @@ NODE_ENV=development
 DATABASE_URL=postgresql://localhost:5432/mydb
 JWT_SECRET=your-secret-key
 ```
-### 로깅
+
+### Logging
+
 ```typescript
 import winston from 'winston';
 
@@ -434,9 +487,11 @@ const logger = winston.createLogger({
   ],
 });
 ```
-## 테스트
 
-### 익스프레스(예)
+## Testing
+
+### Express (Jest)
+
 ```typescript
 import request from 'supertest';
 import app from '../app';
@@ -455,7 +510,9 @@ describe('User API', () => {
   });
 });
 ```
-### FastAPI(pytest)
+
+### FastAPI (pytest)
+
 ```python
 from fastapi.testclient import TestClient
 from app.main import app
@@ -473,9 +530,11 @@ def test_create_user():
     assert response.status_code == 201
     assert response.json()["email"] == "test@example.com"
 ```
-## 배포
 
-### 도커(Node.js)
+## Deployment
+
+### Docker (Node.js)
+
 ```dockerfile
 FROM node:18-alpine AS builder
 WORKDIR /app
@@ -492,7 +551,9 @@ COPY --from=builder /app/dist ./dist
 EXPOSE 3000
 CMD ["node", "dist/index.js"]
 ```
-### 도커(파이썬)
+
+### Docker (Python)
+
 ```dockerfile
 FROM python:3.11-slim
 WORKDIR /app
@@ -502,7 +563,9 @@ COPY . .
 EXPOSE 8000
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
-### 도커(자바)
+
+### Docker (Java)
+
 ```dockerfile
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
@@ -517,21 +580,22 @@ COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 CMD ["java", "-jar", "app.jar"]
 ```
-## 문제 해결
 
-### 메모리 문제
-- 메모리 사용량 모니터링
-- 연결 풀링 구현
-- 대용량 데이터 전송에는 스트리밍 사용
+## Troubleshooting
 
-### 성능
-- 내장된 프로파일러가 있는 프로파일
-- 적절한 곳에 캐싱을 추가하세요.
-- 데이터베이스 쿼리 최적화
-- 비동기 작업 사용
+### Memory Issues
+- Monitor memory usage
+- Implement connection pooling
+- Use streaming for large data transfers
 
-### 데이터베이스 문제
-- 연결 풀 구성을 확인하세요.
-- 재시도 로직 구현
-- 적절한 인덱스를 추가하세요.
-- 쿼리 성능 모니터링
+### Performance
+- Profile with built-in profilers
+- Add caching where appropriate
+- Optimize database queries
+- Use async operations
+
+### Database Issues
+- Check connection pool configuration
+- Implement retry logic
+- Add proper indexes
+- Monitor query performance

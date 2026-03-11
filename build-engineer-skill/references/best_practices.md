@@ -1,62 +1,63 @@
-# 빌드 엔지니어 - 모범 사례
+# Build Engineer - Best Practices
 
-이 가이드에서는 빌드 시스템 구성, 최적화, 코드 분할 및 배포에 대한 모범 사례를 간략하게 설명합니다.
+This guide outlines best practices for build system configuration, optimization, code splitting, and deployment.
 
-## 핵심 원칙
+## Core Principles
 
-### 빠른 빌드
+### Fast Builds
 
-- 캐싱 활성화(파일 시스템, Babel 캐시, 영구 캐시)
-- 가능한 경우 병렬 처리를 사용합니다.
-- 오버헤드를 최소화하기 위해 빌드 구성 최적화
-- 현대적이고 빠른 번들러(Vite, esbuild, Turbopack) 사용
-- 빌드 시간 모니터링 및 병목 현상 최적화
+- Enable caching (file system, Babel cache, persistent cache)
+- Use parallel processing where possible
+- Optimize build configuration for minimal overhead
+- Use modern, fast bundlers (Vite, esbuild, Turbopack)
+- Monitor build times and optimize bottlenecks
 
-### 소형 번들
+### Small Bundles
 
-- 코드 분할 전략 구현
-- 트리쉐이크 미사용 코드
-- 압축 출력(축소, gzip, brotli)
-- 지연 로딩을 위해 동적 임포트 사용
-- 정기적으로 번들 크기를 분석합니다.
-- 사용하지 않는 종속성을 제거합니다.
+- Implement code splitting strategies
+- Tree shake unused code
+- Compress output (minification, gzip, brotli)
+- Use dynamic imports for lazy loading
+- Analyze bundle sizes regularly
+- Remove unused dependencies
 
-### 개발자 경험
+### Developer Experience
 
-- 빠른 HMR(핫 모듈 교체)
-- 소스 맵으로 오류 메시지 지우기
-- 손쉬운 로컬 개발 설정
-- API 호출을 위한 프록시 구성
-- 환경변수 관리
-- 디버깅을 위한 소스 맵 생성
+- Fast HMR (Hot Module Replacement)
+- Clear error messages with source maps
+- Easy local development setup
+- Proxy configuration for API calls
+- Environment variable management
+- Source map generation for debugging
 
-## 빌드 도구 선택
+## Build Tool Selection
 
-### 도구 비교
+### Tool Comparison
 
-| 도구 | 강점 | 사용 사례 |
+| Tool | Strengths | Use Cases |
 |------|-------------|------------|
-| 웹팩 | 고도로 구성 가능한 거대한 생태계 | 복잡한 빌드, 레거시 프로젝트 |
-| VITE | 빠르고, HMR, 간단한 구성 | 최신 프로젝트, Vue/React |
-| 에스빌드 | 매우 빠르고 최소한의 구성 | 프로덕션 빌드, 간단한 프로젝트 |
-| 터보팩 | 차세대 Rust 기반 | 성능이 중요한 새 프로젝트 |
-| 롤업 | 도서관에 적합 | 패키지/라이브러리 개발 |
-| 소포 | 제로 구성, 빠른 | 빠른 프로토타이핑, 소규모 프로젝트 |
+| Webpack | Highly configurable, huge ecosystem | Complex builds, legacy projects |
+| Vite | Fast, HMR, simple config | Modern projects, Vue/React |
+| esbuild | Extremely fast, minimal config | Production builds, simple projects |
+| Turbopack | Next-gen, Rust-based | New projects, performance-critical |
+| Rollup | Great for libraries | Package/library development |
+| Parcel | Zero-config, fast | Quick prototyping, small projects |
 
-### 각각을 사용해야 하는 경우
+### When to Use Each
 
-- **Webpack**: 복잡한 엔터프라이즈 애플리케이션, 레거시 마이그레이션
-- **Vite**: 최신 웹 앱, Vue/React 프로젝트, DX 우선순위
-- **esbuild**: 프로덕션 빌드, 성능이 중요하고 간단한 설정
-- **터보팩**: 새로운 프로젝트, 성능 실험, 얼리 어답터
-- **롤업**: 라이브러리/패키지 개발, 트리 쉐이킹 포커스
-- **소포**: 빠른 프로토타입, 학습 프로젝트, 구성 필요 없음
+- **Webpack**: Complex enterprise applications, legacy migrations
+- **Vite**: Modern web apps, Vue/React projects, DX priority
+- **esbuild**: Production builds, performance-critical, simple setups
+- **Turbopack**: New projects, performance experimentation, early adopters
+- **Rollup**: Library/package development, tree shaking focus
+- **Parcel**: Quick prototypes, learning projects, zero-config needs
 
-## 웹팩 구성
+## Webpack Configuration
 
-### 최적화
+### Optimizations
 
-#### 성능
+#### Performance
+
 ```javascript
 module.exports = {
   cache: {
@@ -69,7 +70,9 @@ module.exports = {
   },
 }
 ```
-#### 코드 분할
+
+#### Code Splitting
+
 ```javascript
 module.exports = {
   optimization: {
@@ -91,7 +94,9 @@ module.exports = {
   },
 }
 ```
-### 로더
+
+### Loaders
+
 ```javascript
 module.exports = {
   module: {
@@ -109,11 +114,13 @@ module.exports = {
   },
 }
 ```
-## Vite 구성
 
-### 최적화
+## Vite Configuration
 
-#### 빌드 옵션
+### Optimizations
+
+#### Build Options
+
 ```typescript
 export default defineConfig({
   build: {
@@ -129,7 +136,9 @@ export default defineConfig({
   },
 })
 ```
-#### 성능
+
+#### Performance
+
 ```typescript
 export default defineConfig({
   optimizeDeps: {
@@ -142,7 +151,9 @@ export default defineConfig({
   },
 })
 ```
-### 플러그인
+
+### Plugins
+
 ```typescript
 import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -157,30 +168,36 @@ export default defineConfig({
   ],
 })
 ```
-## 코드 분할 전략
 
-### 경로 기반 분할
+## Code Splitting Strategies
 
-- 지연 로드 경로 구성요소
-- React.lazy() 또는 이와 유사한 것을 사용하십시오.
-- 장점: 빠른 초기 로드, 병렬 다운로드
+### Route-Based Splitting
+
+- Lazy load route components
+- Use React.lazy() or similar
+- Benefits: Faster initial load, parallel downloads
+
 ```typescript
 const Home = lazy(() => import('./pages/Home'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 ```
-### 구성요소 기반 분할
 
-- 게으른 로드가 많은 구성 요소
-- 동적 가져오기 사용
-- 장점: 요청 시 구성요소 로드
+### Component-Based Splitting
+
+- Lazy load heavy components
+- Use dynamic imports
+- Benefits: Load components on demand
+
 ```typescript
 const HeavyChart = lazy(() => import('./components/HeavyChart'));
 ```
-### 공급업체 분할
 
-- 별도의 타사 라이브러리
-- 공급업체 청크를 별도로 캐시합니다.
-- 이점: 캐싱 개선, 재구축 속도 향상
+### Vendor Splitting
+
+- Separate third-party libraries
+- Cache vendor chunks separately
+- Benefits: Better caching, faster rebuilds
+
 ```javascript
 // Webpack
 splitChunks: {
@@ -192,17 +209,19 @@ splitChunks: {
   },
 }
 ```
-### 라이브러리 분할
 
-- 대규모 라이브러리 분할(React, Vue 등)
-- 가능한 경우 CDN에서 로드
-- 장점: 더 작은 번들, CDN 캐싱
+### Library Splitting
 
-## 캐싱 전략
+- Split large libraries (React, Vue, etc.)
+- Load from CDN when possible
+- Benefits: Smaller bundle, CDN caching
 
-### 웹팩 캐싱
+## Caching Strategies
 
-#### 파일 시스템 캐시
+### Webpack Caching
+
+#### File System Cache
+
 ```javascript
 module.exports = {
   cache: {
@@ -212,7 +231,9 @@ module.exports = {
   },
 }
 ```
-#### 바벨 캐시
+
+#### Babel Cache
+
 ```javascript
 {
   test: /\.(js|jsx)$/,
@@ -224,7 +245,9 @@ module.exports = {
   },
 }
 ```
-### Vite 캐싱
+
+### Vite Caching
+
 ```typescript
 export default defineConfig({
   cacheDir: './node_modules/.vite',
@@ -233,39 +256,41 @@ export default defineConfig({
   },
 })
 ```
-### 영구 캐시
 
-- 브라우저 캐싱 헤더 사용
-- 서비스 워커 구현
-- 정적 자산에 CDN 캐싱 사용
-- 적절한 캐시 시간 초과 설정
-- 콘텐츠 해시가 포함된 캐시 무효화
+### Persistent Cache
 
-## 생산 최적화
+- Use browser caching headers
+- Implement service workers
+- Use CDN caching for static assets
+- Set appropriate cache timeouts
+- Cache bust with content hash
 
-### 축소
+## Production Optimization
 
-- JavaScript 축소를 위해 Terser를 사용하세요.
-- CSS 최적화를 위해 cssnano 사용
-- 데드 코드 제거 활성화
-- 프로덕션에서 console.log 제거
-- html-minifier로 HTML을 축소하세요
+### Minification
 
-### 자산 최적화
+- Use Terser for JavaScript minification
+- Use cssnano for CSS optimization
+- Enable dead code elimination
+- Remove console.log in production
+- Minify HTML with html-minifier
 
-- 이미지 압축(ImageMin, imagemin)
-- 최신 이미지 형식(WebP, AVIF) 사용
-- SVG 최적화(svgo)
-- 글꼴 하위 설정
-- 유익한 경우 인라인 소액 자산
+### Asset Optimization
 
-### 번들 분석
+- Compress images (ImageMin, imagemin)
+- Use modern image formats (WebP, AVIF)
+- SVG optimization (svgo)
+- Font subsetting
+- Inline small assets when beneficial
 
-- webpack-bundle-analyzer를 사용하세요.
-- Vite용 롤업 플러그인 시각화 도구 사용
-- 번들 크기 구성 분석
-- 큰 의존성 식별
-- 최적화 기회 찾기
+### Bundle Analysis
+
+- Use webpack-bundle-analyzer
+- Use rollup-plugin-visualizer for Vite
+- Analyze bundle size composition
+- Identify large dependencies
+- Find optimization opportunities
+
 ```javascript
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 
@@ -278,17 +303,19 @@ module.exports = {
   ],
 }
 ```
-## 개발 경험
 
-### 핫 모듈 교체(HMR)
+## Development Experience
 
-- 빠른 피드백을 위해 HMR을 활성화합니다.
-- 가능한 경우 HMR 중에 상태를 보존합니다.
-- 빌드 오류에 오버레이 사용
-- HMR 시간 제한을 적절하게 구성합니다.
-- HMR 오류를 정상적으로 처리
+### Hot Module Replacement (HMR)
 
-### 개발 서버 구성
+- Enable HMR for fast feedback
+- Preserve state during HMR when possible
+- Use overlay for build errors
+- Configure HMR timeout appropriately
+- Handle HMR errors gracefully
+
+### Dev Server Configuration
+
 ```javascript
 // Webpack
 devServer: {
@@ -315,43 +342,45 @@ server: {
   },
 }
 ```
-### 소스 맵
 
-- 사용`source-map`생산을 위해
-- 사용`eval-source-map`개발을 위해
-- 프로덕션 번들에서 소스 맵 제외
-- 소스 맵 호스팅 구성
-- 보안에 미치는 영향을 고려하세요.
+### Source Maps
 
-## 성능 모니터링
+- Use `source-map` for production
+- Use `eval-source-map` for development
+- Exclude source maps from production bundle
+- Configure source map hosting
+- Consider security implications
 
-### 빌드 시간 모니터링
+## Performance Monitoring
 
-- CI/CD에서 빌드 시간 추적
-- 빌드 시간 저하에 대한 경고
-- 느린 빌드 단계 최적화
-- 빌드 시간을 줄이기 위한 캐시 종속성
-- 빌드 시간 회귀 모니터링
+### Build Time Monitoring
 
-### 번들 크기 모니터링
+- Track build time in CI/CD
+- Alert on build time degradation
+- Optimize slow build steps
+- Cache dependencies to reduce build time
+- Monitor for build time regressions
 
-- 시간 경과에 따른 번들 크기 추적
-- 크기 증가에 대한 경고
-- 구성에서 크기 예산 설정
-- 개별 청크 크기 모니터링
-- 총 번들 크기 추적
+### Bundle Size Monitoring
 
-### 런타임 성능
+- Track bundle sizes over time
+- Alert on size increases
+- Set size budgets in config
+- Monitor individual chunk sizes
+- Track total bundle size
 
-- 대화형 시간 모니터링(TTI)
-- 등대 점수 추적
-- 핵심 웹 바이탈 모니터링
-- JavaScript 실행 시간 추적
-- 번들 구문 분석 시간 모니터링
+### Runtime Performance
 
-## 종속성 관리
+- Monitor Time to Interactive (TTI)
+- Track Lighthouse scores
+- Monitor Core Web Vitals
+- Track JavaScript execution time
+- Monitor bundle parse time
 
-### 종속성 감사
+## Dependency Management
+
+### Dependency Auditing
+
 ```bash
 # Check for vulnerabilities
 npm audit
@@ -365,25 +394,27 @@ npm outdated
 # Update packages
 npm update
 ```
-### 종속성 최적화
 
-- 사용하지 않는 종속성을 제거합니다.
-- 가능하면 더 작은 대안을 사용하십시오.
-- 중요한 종속성을 묶음
-- 조건부 가져오기에 트리 쉐이킹 사용
-- 대규모 라이브러리에는 CDN을 고려하세요.
+### Dependency Optimization
 
-## 환경 구성
+- Remove unused dependencies
+- Use smaller alternatives when possible
+- Bundle critical dependencies
+- Use tree shaking for conditional imports
+- Consider CDN for large libraries
 
-### 환경 변수
+## Environment Configuration
 
-- 로컬 개발을 위해 .env 파일 사용
-- 빌드에서 환경 변수 로드
-- 문서에 필요한 변수
-- 시작 시 구성 유효성을 검사합니다.
-- .env 파일을 커밋하지 마세요.
+### Environment Variables
 
-### 다중 환경 구성
+- Use .env files for local development
+- Load environment variables in build
+- Document required variables
+- Validate configuration on startup
+- Never commit .env files
+
+### Multi-Environment Configs
+
 ```javascript
 // webpack.config.js
 const isProduction = process.env.NODE_ENV === 'production';
@@ -393,27 +424,29 @@ module.exports = {
   // Environment-specific config
 };
 ```
-## 빌드 구성 테스트
 
-### 구성 검증
+## Testing Build Configs
 
-- 여러 환경에서 테스트 구성
-- 모든 플러그인이 올바르게 로드되는지 확인
-- 로더가 파일을 확인하는지 확인
-- 샘플 파일로 테스트
-- 소스 맵 생성 검증
+### Configuration Validation
 
-### 빌드 테스트
+- Test config in multiple environments
+- Verify all plugins load correctly
+- Check loaders resolve files
+- Test with sample files
+- Validate source map generation
 
-- 로컬에서 테스트 프로덕션 빌드
-- 모든 자산이 생성되었는지 확인
-- 스테이징 환경에서 테스트
-- 실제 사용자 데이터로 테스트
-- CDN 업로드가 작동하는지 확인
+### Build Testing
 
-## CI/CD 통합
+- Test production build locally
+- Verify all assets are generated
+- Test in staging environment
+- Test with real user data
+- Verify CDN uploads work
 
-### 빌드 캐싱
+## CI/CD Integration
+
+### Build Caching
+
 ```yaml
 # GitHub Actions example
 - name: Cache node modules
@@ -422,95 +455,97 @@ module.exports = {
     path: ~/.npm
     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 ```
-### 병렬 빌드
 
-- 테스트를 실행하고 병렬로 빌드
-- 여러 구성에 매트릭스 빌드를 사용하세요.
-- 긴 빌드를 여러 단계로 분할
-- 단계 간 빌드 아티팩트 사용
+### Parallel Builds
 
-### 배포 자동화
+- Run test and build in parallel
+- Use matrix builds for multiple configurations
+- Split long builds into stages
+- Use build artifacts between stages
 
-- 성공적인 빌드 시 자동 배포
-- 배포 실패 시 롤백
-- 블루-그린 배포 전략
-- 점진적인 출시를 위한 Canary 릴리스
-- 트래픽 라우팅 전 상태 점검
+### Deployment Automation
 
-## 보안 모범 사례
+- Automated deployment on successful build
+- Rollback on deployment failure
+- Blue-green deployment strategy
+- Canary releases for gradual rollout
+- Health checks before routing traffic
 
-### 소스 맵 보안
+## Security Best Practices
 
-- 프로덕션 환경에서 전체 소스 맵을 노출하지 마세요.
-- 오류 추적 서비스에 소스 맵 업로드
-- 필요할 때 숨겨진 소스 맵을 사용하세요
-- 보안에 미치는 영향을 고려하세요.
+### Source Map Security
 
-### 종속성 보안
+- Don't expose full source maps in production
+- Upload source maps to error tracking services
+- Use hidden source maps when needed
+- Consider security implications
 
-- 종속성을 정기적으로 감사합니다.
-- 취약점을 즉시 수정
-- 종속성 라이센스 검토
-- 알림을 받으려면 Snyk 또는 dependencyabot을 사용하세요.
-- CI/CD에서 종속성을 자동으로 패치합니다.
+### Dependency Security
 
-### 빌드 환경 보안
+- Regularly audit dependencies
+- Fix vulnerabilities promptly
+- Review licenses of dependencies
+- Use Snyk or Dependabot for alerts
+- Patch dependencies automatically in CI/CD
 
-- 격리된 빌드 환경 사용
-- 빌드 출력에 비밀을 노출하지 마세요.
-- 환경 변수를 위생적으로 처리합니다.
-- 안전한 유물 저장소 사용
-- 번들에 비밀이 없는지 확인
+### Build Environment Security
 
-## 문서
+- Use isolated build environments
+- Don't expose secrets in build output
+- Sanitize environment variables
+- Use secure artifact storage
+- Verify no secrets in bundles
 
-### 빌드 문서
+## Documentation
 
-- 문서 구축 구성 결정
-- 복잡한 최적화 설명
-- 문서 종속성 근거
-- 문제 해결 단계 포함
-- 문서 환경 요구 사항
+### Build Documentation
 
-### 빌드를 위한 README
+- Document build configuration decisions
+- Explain complex optimizations
+- Document dependency rationale
+- Include troubleshooting steps
+- Document environment requirements
 
-- 구축을 위한 빠른 시작 가이드
-- 개발 워크플로
-- 프로덕션 빌드 지침
-- 일반적인 문제 및 해결 방법
-- 환경 변수 문서화
-- 배포 지침
+### README for Build
 
-## 빌드 문제 해결
+- Quick start guide for building
+- Development workflow
+- Production build instructions
+- Common issues and solutions
+- Environment variable documentation
+- Deployment instructions
 
-### 일반적인 패턴
+## Troubleshooting Build Issues
 
-- **느린 빌드**: 캐싱 활성화, 불필요한 플러그인 확인
-- **대형 번들**: 번들 분석기로 분석, 분할 구현
-- **HMR이 작동하지 않음**: WebSocket을 확인하고 구성을 확인하세요.
-- **캐싱 문제**: 캐시 지우기, 권한 확인
-- **소스 맵**: 생성 확인, 경로 확인
-- **프록시 문제**: 백엔드가 실행 중인지 확인하고 CORS를 확인하세요.
+### Common Patterns
 
-### 디버그 도구
+- **Slow builds**: Enable caching, check for unnecessary plugins
+- **Large bundles**: Analyze with bundle analyzer, implement splitting
+- **HMR not working**: Check WebSockets, verify config
+- **Caching issues**: Clear cache, verify permissions
+- **Source maps**: Verify generation, check paths
+- **Proxy issues**: Check backend is running, verify CORS
 
-- 사용`--display-modules`웹팩용
-- Vite용 번들 분석기 사용
-- 통찰력을 얻기 위해 웹팩 통계를 확인하세요.
-- 런타임 디버깅을 위해 브라우저 DevTools 사용
-- 자산 로딩을 위한 네트워크 탭 모니터링
+### Debug Tools
 
-## 지속적인 개선
+- Use `--display-modules` for Webpack
+- Use bundle analyzer for Vite
+- Check webpack stats for insights
+- Use browser DevTools for runtime debugging
+- Monitor network tab for asset loading
 
-### 정기 검토
+## Continuous Improvement
 
-- 매주 번들 크기를 검토하세요.
-- 월별 빌드 시간 분석
-- 분기별 종속성 업데이트 검토
-- 정기적으로 도구 및 플러그인 업데이트
-- 새로운 최적화 기술 모니터링
+### Regular Review
 
-### 성과예산
+- Review bundle sizes weekly
+- Analyze build times monthly
+- Review dependency updates quarterly
+- Update tools and plugins regularly
+- Monitor for new optimization techniques
+
+### Performance Budgets
+
 ```javascript
 // webpack.config.js
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -531,10 +566,11 @@ module.exports = {
   },
 }
 ```
-### 오류로부터 배우기
 
-- 문서 작성 오류 및 해결 방법
-- 내부 지식 베이스 생성
-- 팀과 솔루션 공유
-- 일반적인 문제를 기반으로 스크립트 업데이트
-- 도구 커뮤니티에 다시 기여
+### Learning from Errors
+
+- Document build errors and solutions
+- Create internal knowledge base
+- Share solutions with team
+- Update scripts based on common issues
+- Contribute back to tool communities

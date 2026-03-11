@@ -64,6 +64,7 @@
 ## 일반적인 패턴
 
 ### 패턴 1: 인증이 포함된 API 게이트웨이
+
 ```javascript
 // API Gateway Setup
 import express from 'express';
@@ -103,7 +104,9 @@ app.use('/api/products', authMiddleware, createProxyMiddleware({
   pathRewrite: { '^/api/products': '' }
 }));
 ```
+
 ### 패턴 2: TypeScript를 사용한 저장소 패턴
+
 ```typescript
 // Repository Interface
 interface IRepository<T> {
@@ -149,7 +152,9 @@ class UserRepository implements IRepository<User> {
   }
 }
 ```
+
 ### 패턴 3: API 호출을 위한 사용자 정의 React Hook
+
 ```typescript
 // useApi Hook with Error Handling and Caching
 function useApi<T>(
@@ -204,7 +209,9 @@ function ProductList() {
   return <ProductGrid products={products} />;
 }
 ```
+
 ### 패턴 4: 대체 UI의 오류 경계
+
 ```typescript
 // Error Boundary Component
 class ErrorBoundary extends React.Component<
@@ -243,14 +250,14 @@ class ErrorBoundary extends React.Component<
   }
 }
 ```
+
 ---
 
 ## 안티 패턴 및 수정 사항
 
 ### 안티 패턴 1: N+1 쿼리 문제
 
-**문제:**
-```javascript
+**문제:**```javascript
 // BAD: N+1 queries
 async function getOrdersWithItems() {
   const orders = await Order.findAll();
@@ -265,8 +272,8 @@ async function getOrdersWithItems() {
   return orders;
 }
 ```
-**해결책:**
-```javascript
+
+**해결책:**```javascript
 // GOOD: Single query with join/include
 async function getOrdersWithItems() {
   return Order.findAll({
@@ -277,10 +284,10 @@ async function getOrdersWithItems() {
   });
 }
 ```
+
 ### 안티 패턴 2: 소품 드릴링
 
-**문제:**
-```jsx
+**문제:**```jsx
 // BAD: Passing props through many levels
 function App({ user }) {
   return <Layout user={user} />;
@@ -298,8 +305,8 @@ function UserInfo({ user }) {
   return <span>{user.name}</span>;
 }
 ```
-**해결책:**
-```jsx
+
+**해결책:**```jsx
 // GOOD: Use Context for deeply nested data
 const UserContext = createContext(null);
 
@@ -316,18 +323,18 @@ function UserInfo() {
   return <span>{user.name}</span>;
 }
 ```
+
 ### 안티 패턴 3: API 호출에서 오류 처리 누락
 
-**문제:**
-```javascript
+**문제:**```javascript
 // BAD: No error handling
 async function fetchUser(id) {
   const response = await fetch(`/api/users/${id}`);
   return response.json();
 }
 ```
-**해결책:**
-```javascript
+
+**해결책:**```javascript
 // GOOD: Comprehensive error handling
 async function fetchUser(id) {
   try {
@@ -352,17 +359,17 @@ async function fetchUser(id) {
   }
 }
 ```
+
 ### 안티 패턴 4: 하드코딩된 구성
 
-**문제:**
-```javascript
+**문제:**```javascript
 // BAD: Hardcoded values
 const API_URL = 'http://localhost:3000/api';
 const DB_HOST = 'localhost';
 const JWT_SECRET = 'mysecret123';
 ```
-**해결책:**
-```javascript
+
+**해결책:**```javascript
 // GOOD: Environment variables with validation
 const config = {
   apiUrl: process.env.API_URL || 'http://localhost:3000/api',
@@ -387,6 +394,7 @@ for (const key of required) {
 
 export default config;
 ```
+
 ---
 
 ## 통합 체크리스트

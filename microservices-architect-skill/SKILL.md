@@ -1,32 +1,38 @@
 ---
 name: microservices-architect
-description: 서비스 분해, 오케스트레이션 및 마이크로서비스 아키텍처 패턴을 전문으로 하는 분산 시스템 전문가입니다. 마이크로서비스를 설계하거나, 서비스 경계를 ​​정의하거나, 서비스 메시를 구현하거나, 분산 시스템 문제를 처리할 때 사용하세요. 트리거에는 "마이크로서비스", "서비스 메시", "서비스 분해", "분산 시스템", "API 게이트웨이", "이벤트 기반"이 포함됩니다.
+description: Distributed systems expert specializing in service decomposition, orchestration, and microservices architecture patterns. Use when designing microservices, defining service boundaries, implementing service mesh, or handling distributed system challenges. Triggers include "microservices", "service mesh", "service decomposition", "distributed systems", "API gateway", "event-driven".
 ---
-# 마이크로서비스 아키텍트
 
-## 목적
-마이크로서비스 아키텍처 설계 및 구현에 대한 전문 지식을 제공합니다. 서비스 분해, 서비스 간 통신 패턴, 서비스 메시 구현 및 분산 시스템 문제 해결을 전문으로 합니다.
+# Microservices Architect
 
-## 사용 시기
-- 모놀리스를 마이크로서비스로 분해
-- 서비스 경계 및 API 정의
-- 서비스 메시 구현(Istio, Linkerd)
-- API 게이트웨이 패턴 설계
-- 분산 트랜잭션 처리(Saga 패턴)
-- 이벤트 기반 커뮤니케이션 구현
-- 서비스 검색 및 로드 밸런싱 설정
-- 복원력을 위한 설계(회로 차단기, 재시도)
+## Purpose
+Provides expertise in designing and implementing microservices architectures. Specializes in service decomposition, inter-service communication patterns, service mesh implementation, and solving distributed systems challenges.
 
-## 빠른 시작
-**다음과 같은 경우에 이 스킬을 호출하세요:**
-- 처음부터 마이크로서비스 설계
-- 기존 모노리스 분해
-- 서비스 간 통신 구현
-- 서비스 메시 또는 API 게이트웨이 설정
-- 분산 시스템 문제 해결
+## When to Use
+- Decomposing monoliths into microservices
+- Defining service boundaries and APIs
+- Implementing service mesh (Istio, Linkerd)
+- Designing API gateway patterns
+- Handling distributed transactions (Saga pattern)
+- Implementing event-driven communication
+- Setting up service discovery and load balancing
+- Designing for resilience (circuit breakers, retries)
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- 레거시 시스템을 점진적으로 마이그레이션 → 활용`/legacy-modernizer`- 이벤트 스트리밍 아키텍처 → 사용`/event-driven-architect`- Kubernetes 운영 → 사용`/kubernetes-specialist`- 단일 서비스 API 설계 → 사용`/api-designer`## 의사결정 프레임워크
+## Quick Start
+**Invoke this skill when:**
+- Designing microservices from scratch
+- Decomposing existing monoliths
+- Implementing service-to-service communication
+- Setting up service mesh or API gateway
+- Solving distributed system challenges
+
+**Do NOT invoke when:**
+- Migrating legacy systems incrementally → use `/legacy-modernizer`
+- Event streaming architecture → use `/event-driven-architect`
+- Kubernetes operations → use `/kubernetes-specialist`
+- Single service API design → use `/api-designer`
+
+## Decision Framework
 ```
 Communication Pattern?
 ├── Synchronous
@@ -39,45 +45,46 @@ Communication Pattern?
     ├── Strong consistency → Saga (orchestration)
     └── Eventual consistency → Saga (choreography)
 ```
-## 핵심 워크플로
 
-### 1. 서비스 분해
-1. 도메인 모델에서 제한된 컨텍스트 식별
-2. 서비스 책임 정의(단일 목적)
-3. 서비스별 API 설계
-4. 서비스별 데이터 소유권 결정
-5. 서비스 간 통신 계획
-6. 배포 전략 정의
+## Core Workflows
 
-### 2. 서비스 메시 구현
-1. 메시 선택(Istio, Linkerd, Consul)
-2. 사이드카 프록시 배포
-3. 트래픽 관리 구성
-4. 보안을 위한 mTLS 구현
-5. 관찰 가능성 설정(추적, 지표)
-6. 재시도 및 회로 차단기 정책 정의
+### 1. Service Decomposition
+1. Identify bounded contexts from domain model
+2. Define service responsibilities (single purpose)
+3. Design APIs for each service
+4. Determine data ownership per service
+5. Plan inter-service communication
+6. Define deployment strategy
 
-### 3. Saga 패턴 구현
-1. 분산된 트랜잭션 경계 식별
-2. 오케스트레이션과 안무 선택
-3. 보상 거래 정의
-4. Saga 코디네이터 구현(조정된 경우)
-5. 실패 시나리오 처리
-6. 사가 상태 모니터링 추가
+### 2. Service Mesh Implementation
+1. Select mesh (Istio, Linkerd, Consul)
+2. Deploy sidecar proxies
+3. Configure traffic management
+4. Implement mTLS for security
+5. Set up observability (tracing, metrics)
+6. Define retry and circuit breaker policies
 
-## 모범 사례
-- 기술 계층이 아닌 비즈니스 역량을 중심으로 서비스를 설계합니다.
-- 데이터 소유 - 각 서비스는 자체 데이터베이스를 관리합니다.
-- 느슨한 결합을 위해 비동기 통신을 사용합니다.
-- 내결함성을 위한 회로 차단기 구현
-- 실패를 위한 설계 - 모든 것은 결국 실패할 것입니다.
-- 분산 추적을 위해 상관 ID 사용
+### 3. Saga Pattern Implementation
+1. Identify distributed transaction boundaries
+2. Choose orchestration vs choreography
+3. Define compensating transactions
+4. Implement saga coordinator (if orchestrated)
+5. Handle failure scenarios
+6. Add monitoring for saga status
 
-## 안티 패턴
-| 안티 패턴 | 문제 | 올바른 접근 |
-|---------------|---------|------|
-| 분산형 모노리스 | 결합 서비스, 둘 중 최악 | 진정한 제한된 컨텍스트 |
-| 공유 데이터베이스 | 긴밀한 커플 링 | 서비스별 데이터베이스 |
-| 동기 체인 | 계단식 오류 | 가능한 경우 비동기 |
-| 회로 차단기 없음 | 계단식 오류 | Hystrix/Resilience4j 구현 |
-| 나노서비스 | 운영 오버헤드 | 적절한 규모의 서비스 |
+## Best Practices
+- Design services around business capabilities, not technical layers
+- Own your data—each service manages its own database
+- Use asynchronous communication for loose coupling
+- Implement circuit breakers for fault tolerance
+- Design for failure—everything will fail eventually
+- Use correlation IDs for distributed tracing
+
+## Anti-Patterns
+| Anti-Pattern | Problem | Correct Approach |
+|--------------|---------|------------------|
+| Distributed monolith | Coupled services, worst of both | True bounded contexts |
+| Shared database | Tight coupling | Database per service |
+| Synchronous chains | Cascading failures | Async where possible |
+| No circuit breakers | Cascading failures | Implement Hystrix/Resilience4j |
+| Nano-services | Operational overhead | Right-sized services |

@@ -2,6 +2,7 @@
 name: xlsx
 description: Expert in automating Excel workflows using Node.js (ExcelJS, SheetJS) and Python (pandas, openpyxl).
 ---
+
 # XLSX Skill
 
 ## Purpose
@@ -41,7 +42,6 @@ Excel Task?
 ├── Template-Based → Fill existing templates with data
 └── Large Files → Streaming readers (ExcelJS streaming, pandas chunks)
 ```
-
 
 ## Core Workflows
 

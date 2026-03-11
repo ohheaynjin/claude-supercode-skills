@@ -25,9 +25,13 @@ description: 여러 소스의 정보를 일관된 통찰력으로 집계, 처리
 - 비정형 텍스트에서 구조화된 지식 추출
 - 분류 또는 분류 체계 만들기
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- 그래프가 필요 없는 벡터 데이터베이스 설정 → 사용`/context-manager`- 일반 NLP 업무(NER, 분류) → 활용`/nlp-engineer`- 데이터베이스 스키마 설계 → 활용`/database-administrator`- 문서작성 → 활용`/technical-writer`## 의사결정 프레임워크
-```
+**다음과 같은 경우에는 호출하지 마세요**
+- 그래프가 필요 없는 벡터 데이터베이스 설정 → `/context-manager` 사용
+- 일반 NLP 작업(NER, 분류) → `/nlp-engineer` 사용
+- 데이터베이스 스키마 설계 → `/database-administrator` 사용
+- 문서 작성 → `/technical-writer` 사용
+
+## 의사결정 프레임워크```
 Knowledge Structure Needed?
 ├── Hierarchical (taxonomy)
 │   └── Tree structure, parent-child relationships
@@ -38,7 +42,8 @@ Knowledge Structure Needed?
 └── Flat (simple retrieval)
     └── Standard vector store sufficient
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. 온톨로지 디자인
 1. 도메인 범위 및 경계 식별

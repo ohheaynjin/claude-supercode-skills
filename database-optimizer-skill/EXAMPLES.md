@@ -19,7 +19,6 @@ CREATE INDEX idx_users_name_status ON users (name, status);
 -- ... 15 more indexes on same table
 ```
 
-
 **Why it fails:**
 - **Write penalty**: Every INSERT/UPDATE/DELETE must update ALL indexes (10x slower writes)
 - **Storage bloat**: Indexes consume disk space (can exceed table size)
@@ -59,7 +58,6 @@ ORDER BY idx_scan;
 DROP INDEX IF EXISTS idx_users_updated;  -- Never used
 ```
 
-
 **Rule of thumb**: Max 5-7 indexes per table for OLTP workloads.
 
 ---
@@ -84,7 +82,6 @@ CREATE TABLE orders (
   product_category VARCHAR(100)
 );
 ```
-
 
 **Why it fails:**
 - **Data inconsistency**: User email changes, but denormalized copies remain stale
@@ -159,7 +156,6 @@ JOIN products p ON o.product_id = p.id;
 REFRESH MATERIALIZED VIEW CONCURRENTLY mv_order_details;
 ```
 
-
 **Rule**: Normalize first, denormalize only when measurements prove it necessary.
 
 ---
@@ -178,7 +174,6 @@ def get_user(user_id):
     conn.close()
     return result
 ```
-
 
 **Why it fails:**
 - Connection overhead: 50-100ms per new connection
@@ -206,7 +201,6 @@ def get_user(user_id):
     finally:
         connection_pool.putconn(conn)
 ```
-
 
 ---
 
@@ -274,7 +268,6 @@ CREATE INDEX idx_users_status_covering
   INCLUDE (id, email);
 ```
 
-
 ### Partial Index (Selective Queries)
 
 ```sql
@@ -287,7 +280,6 @@ CREATE INDEX idx_users_active_created
   WHERE status = 'active';
 ```
 
-
 ### Expression Index
 
 ```sql
@@ -297,7 +289,6 @@ SELECT * FROM users WHERE LOWER(email) = 'john@example.com';
 -- Expression index
 CREATE INDEX idx_users_email_lower ON users (LOWER(email));
 ```
-
 
 ### BRIN Index (Time-Series Data)
 

@@ -3,6 +3,7 @@
 ## 워크플로: 고가용성을 갖춘 PostgreSQL 프로덕션 설정
 
 ### 1단계: 아키텍처 설계
+
 ```yaml
 # Architecture: Primary-Replica with Patroni + etcd
 Components:
@@ -18,7 +19,9 @@ Expected Performance:
   - Read scaling via replicas
   - Connection pooling: 10K connections → 100 database connections
 ```
+
 ### 2단계: PostgreSQL 구성(postgresql.conf)
+
 ```ini
 # /etc/postgresql/15/main/postgresql.conf
 
@@ -68,7 +71,9 @@ log_connections = on
 log_disconnections = on
 log_lock_waits = on
 ```
+
 ### 3단계: Patroni 구성(patroni.yml)
+
 ```yaml
 # /etc/patroni/patroni.yml
 scope: postgres-cluster
@@ -123,7 +128,9 @@ tags:
   noloadbalance: false
   clonefrom: false
 ```
+
 ### 4단계: HAProxy 로드 밸런서(haproxy.cfg)
+
 ```conf
 # /etc/haproxy/haproxy.cfg
 
@@ -166,7 +173,9 @@ listen postgres-replicas
     server postgres-node-2 10.0.1.11:5432 maxconn 100 check port 8008
     server postgres-node-3 10.0.1.12:5432 maxconn 100 check port 8008
 ```
+
 ### 5단계: 자동 백업 스크립트
+
 ```bash
 #!/bin/bash
 # /usr/local/bin/postgres-backup.sh
@@ -197,7 +206,9 @@ find "${BACKUP_DIR}" -type d -mtime +7 -exec rm -rf {} +
 
 echo "Backup completed successfully"
 ```
+
 ### 배포 단계
+
 ```bash
 # 1. Install PostgreSQL 15 on all nodes
 sudo apt update
@@ -237,9 +248,11 @@ patronictl -c /etc/patroni/patroni.yml list
 # | postgres-node-3 | 10.0.1.12   | Replica | running |  1 |         0 |
 # +-----------------+-------------+---------+---------+----+-----------+
 ```
+
 ## 워크플로: MongoDB 샤딩 구현
 
 ### 샤드 키 선택
+
 ```javascript
 // Bad shard key choices:
 // - Auto-incrementing _id: All writes go to one shard (hotspot)
@@ -255,7 +268,9 @@ patronictl -c /etc/patroni/patroni.yml list
 
 db.products.createIndex({ category_id: 1, product_id: 1 });
 ```
+
 ### 클러스터 아키텍처
+
 ```yaml
 Config Servers (3 nodes):
   - config-1: 10.0.1.10:27019
@@ -271,6 +286,7 @@ Shards (3 replica sets):
   Shard 2 (shard2-rs): 10.0.4.10-12:27018
   Shard 3 (shard3-rs): 10.0.5.10-12:27018
 ```
+
 ### 성능 결과
 
 - 쿼리 지연 시간: 2.5초 → 0.4초(6배 개선)

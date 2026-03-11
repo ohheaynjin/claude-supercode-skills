@@ -1,37 +1,38 @@
 ---
 name: theme-factory
-description: 테마가 있는 아티팩트 스타일링을 위한 툴킷입니다. 이러한 아티팩트는 슬라이드, 문서, 보고, HTML 랜딩 페이지 등이 될 수 있습니다. 생성 중인 모든 아티팩트에 적용할 수 있거나 즉시 새 테마를 생성할 수 있는 색상/글꼴이 포함된 사전 설정된 테마 10개가 있습니다.
+description: Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.
 ---
-# 테마팩토리
 
-## 목적
-프리젠테이션, 문서, 보고서, 웹 페이지 등 다양한 아티팩트에 일관된 시각적 테마를 적용하기 위한 툴킷을 제공합니다. 사전 설정된 테마와 조화로운 색상, 타이포그래피 및 스타일로 사용자 정의 테마를 생성하는 기능을 제공합니다.
+# Theme Factory
 
-## 사용 시기
-- 프리젠테이션이나 문서에 일관된 브랜딩 적용
-- 전문적인 색 구성표로 HTML 페이지 스타일링
-- 브랜드 가이드라인을 바탕으로 맞춤 테마 만들기
-- 일반 아티팩트를 테마 버전으로 변환
-- 새 프로젝트를 위한 색상 팔레트 생성
-- 색상 선택에 대한 접근성 보장
-- 어두운/밝은 모드 변형 만들기
-- 보고서 스타일 지정 및 데이터 시각화
+## Purpose
+Provides a toolkit for applying consistent visual themes to various artifacts including presentations, documents, reports, and web pages. Offers pre-set themes and the ability to generate custom themes with coordinated colors, typography, and styling.
 
-## 빠른 시작
-**다음과 같은 경우에 이 스킬을 호출하세요:**
-- 프리젠테이션이나 문서에 일관된 브랜딩 적용
-- 전문적인 색 구성표로 HTML 페이지 스타일링
-- 브랜드 가이드라인을 바탕으로 맞춤 테마 만들기
-- 일반 아티팩트를 테마 버전으로 변환
-- 새 프로젝트를 위한 색상 팔레트 생성
+## When to Use
+- Applying consistent branding to presentations or documents
+- Styling HTML pages with professional color schemes
+- Creating custom themes from brand guidelines
+- Converting plain artifacts to themed versions
+- Generating color palettes for new projects
+- Ensuring accessibility in color choices
+- Creating dark/light mode variations
+- Styling reports and data visualizations
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- 처음부터 UI 컴포넌트 디자인 → ui-designer 사용
-- 완전한 웹 애플리케이션 구축 → 프론트엔드 디자인 사용
-- 시각 예술이나 그래픽 만들기 → 캔버스 디자인 사용
-- Anthropic 브랜드를 구체적으로 적용 → 브랜드 가이드라인 활용
+## Quick Start
+**Invoke this skill when:**
+- Applying consistent branding to presentations or documents
+- Styling HTML pages with professional color schemes
+- Creating custom themes from brand guidelines
+- Converting plain artifacts to themed versions
+- Generating color palettes for new projects
 
-## 의사결정 프레임워크
+**Do NOT invoke when:**
+- Designing UI components from scratch → use ui-designer
+- Building complete web applications → use frontend-design
+- Creating visual art or graphics → use canvas-design
+- Applying Anthropic brand specifically → use brand-guidelines
+
+## Decision Framework
 ```
 Theming Need?
 ├── Corporate Branding → Use brand colors + approved fonts
@@ -41,44 +42,45 @@ Theming Need?
 ├── Dark Mode → Invert with adjusted colors
 └── Print-Friendly → Optimize for paper output
 ```
-## 핵심 워크플로
 
-### 1. 사전 설정된 테마 적용
-1. 대상 아티팩트(슬라이드, 문서, HTML)를 선택합니다.
-2. 사전 설정된 테마 중에서 선택하세요
-3. 현재 콘텐츠 구조 추출
-4. 제목, 텍스트, 배경에 테마 색상 적용
-5. 타이포그래피 설정(글꼴, 크기, 두께)
-6. 테마에 맞게 간격과 레이아웃 조정
-7. 시각적 일관성 확인
+## Core Workflows
 
-### 2. 맞춤 테마 생성
-1. 브랜드 정보 수집(원색, 로고, 가이드라인)
-2. 보색 팔레트 생성
-3. 폰트 페어링(제목+본문) 선택
-4. 간격 축척 및 구성요소 스타일 정의
-5. 테마 구성 파일 생성
-6. 대상 아티팩트에 적용
-7. 피드백을 기반으로 반복
+### 1. Apply Pre-set Theme
+1. Select target artifact (slides, doc, HTML)
+2. Choose from available pre-set themes
+3. Extract current content structure
+4. Apply theme colors to headings, text, backgrounds
+5. Set typography (fonts, sizes, weights)
+6. Adjust spacing and layout to theme
+7. Verify visual consistency
 
-### 3. 다중 형식 테마 응용 프로그램
-1. 테마를 추상 토큰(색상, 글꼴, 간격)으로 정의합니다.
-2. 형식별 구현 생성(CSS, PPTX 스타일, docx 스타일)
-3. 아티팩트 유형별로 적절한 구현을 적용합니다.
-4. 형식 전반에 걸쳐 시각적 일관성을 보장합니다.
-5. 문서 테마 사용 지침
+### 2. Generate Custom Theme
+1. Gather brand inputs (primary color, logo, guidelines)
+2. Generate complementary color palette
+3. Select font pairing (heading + body)
+4. Define spacing scale and component styles
+5. Create theme configuration file
+6. Apply to target artifact
+7. Iterate based on feedback
 
-## 모범 사례
-- 접근 가능한 색상 명암비(WCAG AA 최소)로 시작하세요.
-- 응집력을 위해 색상 팔레트를 3~5가지 색상으로 제한합니다.
-- 일관된 간격 척도 사용(4px, 8px, 16px 등)
-- 의도적으로 글꼴 쌍(대조 또는 보완)
-- 로렘 입숨이 아닌 실제 콘텐츠로 테마 테스트
-- 가능한 경우 밝은 모드와 어두운 모드 변형 제공
+### 3. Multi-Format Theme Application
+1. Define theme as abstract tokens (colors, fonts, spacing)
+2. Create format-specific implementations (CSS, PPTX styles, docx styles)
+3. Apply appropriate implementation per artifact type
+4. Ensure visual consistency across formats
+5. Document theme usage guidelines
 
-## 안티 패턴
-- **색상이 너무 많음** → 기본, 보조, 악센트 + 중성색으로 제한
-- **대비 무시** → 항상 접근성 비율 확인
-- **일관되지 않은 간격** → 정의된 간격 척도 사용
-- **임의의 글꼴 페어링** → 의도적인 관계가 있는 글꼴 선택
-- **콘텐츠 없는 테마** → 항상 실제 콘텐츠로 테스트
+## Best Practices
+- Start with accessible color contrast ratios (WCAG AA minimum)
+- Limit color palette to 3-5 colors for cohesion
+- Use consistent spacing scale (4px, 8px, 16px, etc.)
+- Pair fonts intentionally (contrast or complement)
+- Test themes on actual content, not lorem ipsum
+- Provide light and dark mode variants when possible
+
+## Anti-Patterns
+- **Too many colors** → Limit to primary, secondary, accent + neutrals
+- **Ignoring contrast** → Always verify accessibility ratios
+- **Inconsistent spacing** → Use defined spacing scale
+- **Random font pairing** → Choose fonts with intentional relationship
+- **Theme without content** → Always test with real content

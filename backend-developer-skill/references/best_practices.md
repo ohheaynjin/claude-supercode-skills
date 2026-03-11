@@ -113,7 +113,6 @@ This guide outlines best practices for backend API development, database design,
 }
 ```
 
-
 ### Global Error Handler
 
 - Implement global error handling middleware
@@ -155,7 +154,6 @@ This guide outlines best practices for backend API development, database design,
   "duration_ms": 45
 }
 ```
-
 
 ### Log Levels
 

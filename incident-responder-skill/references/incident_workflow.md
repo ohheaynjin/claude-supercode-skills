@@ -1,76 +1,78 @@
-# 사고 대응 플레이북
+# Incident Response Playbook
 
-## 개요
+## Overview
 
-이 플레이북은 사고를 효과적으로 처리하고 서비스와 사용자에 대한 영향을 최소화하기 위한 표준화된 절차를 제공합니다.
+This playbook provides standardized procedures for handling incidents effectively and minimizing impact on services and users.
 
-## 사고 수명주기
+## Incident Lifecycle
+
 ```
 Detection → Triage → Response → Resolution → Post-Incident Review
 ```
 
-## 심각도 분류
+## Severity Classification
 
-### 심각(P0)
-- **정의**: 완전한 서비스 중단 또는 데이터 유출
-- **응답시간**: 즉시(5분 이내)
-- **알림**: 모든 대기 엔지니어에게 PagerDuty 알림
-- **예**:
-  - 모든 고객은 서비스에 접속할 수 없습니다.
-  - 보안 침해 또는 데이터 유출 확인
-  - 완전한 데이터베이스 오류
-  - 결제 처리가 완전히 중단되었습니다.
+### Critical (P0)
+- **Definition**: Complete service outage or data breach
+- **Response Time**: Immediate (within 5 minutes)
+- **Notification**: PagerDuty alert to all on-call engineers
+- **Examples**:
+  - All customers cannot access the service
+  - Security breach or data leak confirmed
+  - Complete database failure
+  - Payment processing completely down
 
-### 높음(P1)
-- **정의**: 주요 기능이 다운되어 사용자에게 상당한 영향을 미침
-- **응답시간**: 15분 이내
-- **알림**: 페이지 기본 대기 중, 팀에 알림
-- **예**:
-  - 주요 기능이 작동하지 않음
-  - 50% 이상의 사용자가 오류를 경험함
-  - 500개의 오류를 반환하는 API
-  - 성능이 50% 이상 저하됨
+### High (P1)
+- **Definition**: Major functionality down, significant user impact
+- **Response Time**: Within 15 minutes
+- **Notification**: Page primary on-call, notify team
+- **Examples**:
+  - Major features non-functional
+  - 50%+ of users experiencing errors
+  - API returning 500 errors
+  - Performance degraded by >50%
 
-### 중간(P2)
-- **정의**: 일부 기능이 영향을 받았고, 사용자에게 보통 영향을 미쳤습니다.
-- **응답시간**: 1시간 이내
-- **알림**: 통화 중 Slack 알림
-- **예**:
-  - 중요하지 않은 기능 중단
-  - 성능이 20~50% 저하됨
-  - 특정 사용자 세그먼트가 영향을 받음
-  - 오류율은 증가했으나 서비스는 정상
+### Medium (P2)
+- **Definition**: Partial functionality affected, moderate user impact
+- **Response Time**: Within 1 hour
+- **Notification**: Slack notification to on-call
+- **Examples**:
+  - Non-critical features down
+  - Performance degraded by 20-50%
+  - Specific user segment affected
+  - Error rate increased but service functional
 
-### 낮음(P3)
-- **정의**: 사소한 문제, 사용자에게 미치는 영향 최소화
-- **응답시간**: 24시간 이내
-- **알림**: 티켓 생성, 팀 알림
-- **예**:
-  - 기능에 영향을 주지 않는 UI 결함
-  - 성능이 약간 저하됨(<20%)
-  - 소수의 사용자에게 영향을 미치는 엣지 케이스 버그
-  - 사소한 기능은 작동하지 않습니다.
+### Low (P3)
+- **Definition**: Minor issues, minimal user impact
+- **Response Time**: Within 24 hours
+- **Notification**: Create ticket, team notification
+- **Examples**:
+  - UI glitches not affecting functionality
+  - Performance slightly degraded (<20%)
+  - Edge case bugs affecting few users
+  - Minor feature non-functional
 
-## 탐지
+## Detection
 
-### 경고 소스
+### Alert Sources
 
-1. **모니터링 시스템**
-   - Prometheus/Grafana 지표
-   - 애플리케이션 성능 모니터링(APM)
-   - 로그 집계(ELK, Splunk)
+1. **Monitoring Systems**
+   - Prometheus/Grafana metrics
+   - Application performance monitoring (APM)
+   - Log aggregation (ELK, Splunk)
 
-2. **고객 보고서**
-   - 지원 티켓
-   - 소셜 미디어 언급
-   - 상태 페이지 보고서
+2. **Customer Reports**
+   - Support tickets
+   - Social media mentions
+   - Status page reports
 
-3. **자동화된 테스트**
-   - 상태 확인 엔드포인트
-   - 합성 거래
-   - 연기 테스트
+3. **Automated Testing**
+   - Health check endpoints
+   - Synthetic transactions
+   - Smoke tests
 
-### 경고 트리거
+### Alert Triggers
+
 ```python
 # Example alert triggers
 ALERT_THRESHOLDS = {
@@ -92,46 +94,46 @@ ALERT_THRESHOLDS = {
 }
 ```
 
-## 분류 프로세스
+## Triage Process
 
-### 1. 초기 평가(0~5분)
+### 1. Initial Assessment (0-5 minutes)
 
-**답변할 질문:**
-- 어떤 시스템이 영향을 받나요?
-- 얼마나 많은 사용자가 영향을 받습니까?
-- 비즈니스에 어떤 영향을 미치나요?
-- 알려진 문제인가요?
+**Questions to Answer:**
+- What systems are affected?
+- How many users are impacted?
+- What's the business impact?
+- Is this a known issue?
 
-**작업:**
-- 경고를 확인합니다.
-- 대시보드 및 로그 확인
-- 문제가 있는지 확인
-- 심각도 분류
+**Actions:**
+- Acknowledge the alert
+- Check dashboards and logs
+- Verify the problem exists
+- Classify severity
 
-### 2. 조사(5~15분)
+### 2. Investigation (5-15 minutes)
 
-**단계:**
-1. 근본 원인 영역 파악
-2. 최근 배포 확인
-3. 시스템 지표 검토
-4. 오류 로그 분석
-5. 가능하면 재현
+**Steps:**
+1. Identify the root cause area
+2. Check recent deployments
+3. Review system metrics
+4. Analyze error logs
+5. Reproduce if possible
 
-### 3. 과제
+### 3. Assignment
 
-**라우팅 규칙:**
-- **데이터베이스 문제**: DBA 팀
-- **애플리케이션 버그**: 개발팀
-- **인프라**: DevOps/SRE팀
-- **보안**: 보안팀
-- **API 문제**: 백엔드 팀
-- **프런트엔드 문제**: 프론트엔드 팀
+**Routing Rules:**
+- **Database Issues**: DBA team
+- **Application Bugs**: Development team
+- **Infrastructure**: DevOps/SRE team
+- **Security**: Security team
+- **API Issues**: Backend team
+- **Frontend Issues**: Frontend team
 
-## 대응 절차
+## Response Procedures
 
-### 의사소통 계획
+### Communication Plan
 
-**내부 커뮤니케이션:**
+**Internal Communication:**
 ```markdown
 Incident Update Template:
 - **Incident ID**: INC-YYYYMMDD-HHMMSS
@@ -143,145 +145,146 @@ Incident Update Template:
 - **Next Steps**: What we're doing next
 ```
 
-**외부 커뮤니케이션:**
-- 상태 페이지 업데이트
-- 고객 알림(P0/P1용)
-- 소셜 미디어 업데이트(대규모 중단 시)
+**External Communication:**
+- Status page updates
+- Customer notifications (for P0/P1)
+- Social media updates (if major outage)
 
-### 사건지휘관
+### Incident Commander
 
-**책임:**
-- 대응 노력 조정
-- 커뮤니케이션 관리
-- 행동의 우선순위를 정하라
-- 최종 결정을 내린다
-- 사고 후 검토 실시
+**Responsibilities:**
+- Coordinate response efforts
+- Manage communication
+- Prioritize actions
+- Make final decisions
+- Conduct post-incident review
 
-**워룸 설정:**
-1. 전용 Slack 채널을 생성합니다:`#incident-{id}`
-2. 관련 팀원 초대
-3. 사건 세부정보 공유
-4. 역할 할당
-5. 타임라인 추적
+**War Room Setup:**
+1. Create dedicated Slack channel: `#incident-{id}`
+2. Invite relevant team members
+3. Share incident details
+4. Assign roles
+5. Track timeline
 
-## 일반적인 사고 시나리오
+## Common Incident Scenarios
 
-### 서비스 다운
+### Service Down
 
-**조사 단계:**
-1. 서버가 실행 중인지 확인
-2. 네트워크 연결 확인
-3. 로드 밸런서 상태 확인
-4. 애플리케이션 로그 검토
-5. 최근 배포 확인
+**Investigation Steps:**
+1. Check if servers are running
+2. Verify network connectivity
+3. Check load balancer health
+4. Review application logs
+5. Check recent deployments
 
-**빠른 수정:**
-- 서비스 다시 시작
-- 최근 배포 되돌리기
-- 백업 시스템으로 전환
-- 리소스 확장
+**Quick Fixes:**
+- Restart services
+- Revert recent deployment
+- Switch to backup systems
+- Scale up resources
 
-### 데이터베이스 문제
+### Database Issues
 
-**조사 단계:**
-1. 데이터베이스 연결 확인
-2. 느린 쿼리 검토
-3. Connection Pool 상태 확인
-4. 오류 로그 분석
-5. 리소스 사용량(CPU, 메모리, 디스크) 확인
+**Investigation Steps:**
+1. Check database connectivity
+2. Review slow queries
+3. Check connection pool status
+4. Analyze error logs
+5. Check resource usage (CPU, memory, disk)
 
-**빠른 수정:**
-- 장기 실행 쿼리 종료
-- 연결 풀 늘리기
-- 데이터베이스 서비스 다시 시작
-- 데이터베이스 인스턴스 확장
-- 읽기 복제본으로 전환
+**Quick Fixes:**
+- Kill long-running queries
+- Increase connection pool
+- Restart database service
+- Scale up database instance
+- Switch to read replica
 
-### 성능 저하
+### Performance Degradation
 
-**조사 단계:**
-1. 느린 엔드포인트 식별
-2. 응답 시간 검토
-3. 자원 활용도 확인
-4. 데이터베이스 쿼리 분석
-5. 제3자 서비스 검토
+**Investigation Steps:**
+1. Identify slow endpoints
+2. Review response times
+3. Check resource utilization
+4. Analyze database queries
+5. Review third-party services
 
-**빠른 수정:**
-- 캐시 지우기
-- 리소스 확장
-- 정지된 프로세스 종료
-- 중요하지 않은 기능을 비활성화합니다.
-- CDN 백업으로 전환
+**Quick Fixes:**
+- Clear cache
+- Scale up resources
+- Kill hung processes
+- Disable non-critical features
+- Switch to CDN backup
 
-### 데이터 손실 또는 손상
+### Data Loss or Corruption
 
-**조사 단계:**
-1. 영향을 받는 시스템에 대한 모든 쓰기를 중지합니다.
-2. 데이터 손실 범위 파악
-3. 최근 백업 확인
-4. 액세스 로그 검토
-5. 근본 원인 파악
+**Investigation Steps:**
+1. Stop all writes to affected systems
+2. Identify scope of data loss
+3. Check recent backups
+4. Review access logs
+5. Determine root cause
 
-**복구 단계:**
-1. 백업에서 복원
-2. 트랜잭션 로그 재생(사용 가능한 경우)
-3. 데이터 무결성 확인
-4. 영향을 받은 사용자에게 알림
-5. 보안에 미치는 영향 조사
+**Recovery Steps:**
+1. Restore from backup
+2. Replay transaction logs (if available)
+3. Verify data integrity
+4. Notify affected users
+5. Investigate security implications
 
-## 해상도
+## Resolution
 
-### 확인기준
+### Confirmation Criteria
 
-다음과 같은 경우 사건이 해결됩니다.
-- 서비스가 완벽하게 작동됩니다.
-- 모든 지표가 정상 임계값 내에 있습니다.
-- 활성 오류 조건이 없습니다.
-- 영향을 받은 시스템이 다시 정상으로 돌아왔습니다.
-- 팀은 문제 없이 30분 이상 모니터링하고 있습니다.
+An incident is resolved when:
+- Service is fully operational
+- All metrics are within normal thresholds
+- No active error conditions
+- Affected systems are back to normal
+- Team is monitoring for 30+ minutes with no issues
 
-### 해결 후 조치
+### Post-Resolution Actions
 
-1. **모니터링**: 24~48시간 동안 모니터링 강화
-2. **문서화**: 사건 기록을 세부정보로 업데이트합니다.
-3. **알림**: 모든 이해관계자에게 알립니다.
-4. **정리**: 상황실 채널 닫기
-5. **보고**: 사고 후 검토 일정 잡기
+1. **Monitoring**: Enhanced monitoring for 24-48 hours
+2. **Documentation**: Update incident record with details
+3. **Notification**: Notify all stakeholders
+4. **Cleanup**: Close war room channel
+5. **Debrief**: Schedule post-incident review
 
-## 사고 후 검토(PIR)
+## Post-Incident Review (PIR)
 
-### 타임라인
+### Timeline
 
-- **일정**: 해결 후 5~7일 이내
-- **참가자** : 사고대응팀, 관련 이해관계자
-- **소요시간**: 60~90분
+- **Schedule**: Within 5-7 days of resolution
+- **Participants**: Incident response team, relevant stakeholders
+- **Duration**: 60-90 minutes
 
-### 검토 주제
+### Review Topics
 
-1. **무슨 일이 일어났나요?**
-   - 이벤트 타임라인
-   - 취해진 조치
-   - 결정된 사항
+1. **What happened?**
+   - Timeline of events
+   - Actions taken
+   - Decisions made
 
-2. **왜 그런 일이 일어났나요?**
-   - 근본 원인 분석
-   - 기여 요인
-   - 시스템적인 문제
+2. **Why did it happen?**
+   - Root cause analysis
+   - Contributing factors
+   - Systemic issues
 
-3. **우리는 어떻게 대응했나요?**
-   - 잘 된 점
-   - 잘 안 된 점
-   - 의사소통 효과
+3. **How did we respond?**
+   - What went well
+   - What didn't go well
+   - Communication effectiveness
 
-4. **개선할 점은 무엇입니까?**
-   - 프로세스 개선
-   - 시스템 변화가 필요함
-   - 교육 요구 사항
-   - 문서 업데이트
+4. **What can we improve?**
+   - Process improvements
+   - System changes needed
+   - Training requirements
+   - Documentation updates
 
-### 조치 항목
+### Action Items
 
-구체적이고 측정 가능하며 시간 제한이 있는 작업 항목을 문서화합니다.
+Document specific, measurable, and time-bound action items:
+
 ```markdown
 ## Action Items
 
@@ -293,82 +296,83 @@ Incident Update Template:
 | Document database recovery procedure | Alice Brown | 2024-02-01 | Done |
 ```
 
-## 추적할 측정항목
+## Metrics to Track
 
-### MTTR(평균 해결 시간)
-- **목표**: P0: <15분, P1: <60분, P2: <4시간
-- **공식**: 해결 시간의 합계 / 사건 수
+### MTTR (Mean Time to Resolution)
+- **Target**: P0: <15 min, P1: <60 min, P2: <4 hours
+- **Formula**: Sum of resolution times / Number of incidents
 
-### MTTD(평균 감지 시간)
-- **목표**: P0/P1의 경우 <5분
-- **수식**: 탐지 횟수의 합 / 사건 수
+### MTTD (Mean Time to Detect)
+- **Target**: <5 minutes for P0/P1
+- **Formula**: Sum of detection times / Number of incidents
 
-### MTTF(평균 고장 시간)
-- **목표**: 증가 추세(사고 감소)
-- **공식**: 총 가동 시간 / 사고 수
+### MTTF (Mean Time to Failure)
+- **Target**: Increasing trend (fewer incidents)
+- **Formula**: Total uptime / Number of incidents
 
-### 에스컬레이션 비율
-- **목표**: 에스컬레이션이 필요한 사고의 10% 미만
-- **수식**: 에스컬레이션된 사건 수 / 총 사건 수
+### Escalation Rate
+- **Target**: <10% of incidents require escalation
+- **Formula**: Escalated incidents / Total incidents
 
-## 자동화 기회
+## Automation Opportunities
 
-### 자동 경고 분류
-- 사고 심각도 자동 분류
-- 해당 팀으로 전달
-- 잠재적인 근본 원인 제안
+### Automated Alert Triage
+- Classify incident severity automatically
+- Route to appropriate team
+- Suggest potential root causes
 
-### 자동 진단
-- 상태 확인을 자동으로 실행합니다.
-- 관련 로그 및 지표 수집
-- 일반적인 패턴 식별
+### Automated Diagnostics
+- Run health checks automatically
+- Collect relevant logs and metrics
+- Identify common patterns
 
-### 자동 복구
-- 실패한 서비스 자동 재시작
-- 로드 시 자동 크기 조정
-- 백업으로 자동 장애 조치
+### Automated Recovery
+- Auto-restart failed services
+- Auto-scale under load
+- Auto-failover to backup
 
-### 자동화된 커뮤니케이션
-- 상태 페이지 자동 업데이트
-- Slack 알림 보내기
-- 지원 티켓 만들기
+### Automated Communication
+- Update status page automatically
+- Send Slack notifications
+- Create support tickets
 
-## 훈련 및 훈련
+## Training and Drills
 
-### 신입 엔지니어 교육
-1. 사고 대응 프로세스 개요
-2. 도구 및 시스템 액세스
-3. 통신 프로토콜
-4. 에스컬레이션 절차
-5. Shadow 경험이 풍부한 엔지니어
+### New Engineer Training
+1. Incident response process overview
+2. Tools and systems access
+3. Communication protocols
+4. Escalation procedures
+5. Shadow experienced engineers
 
-### 월간 훈련
-- 시뮬레이션된 사건 시나리오
-- 대응절차 연습
-- 커뮤니케이션 채널 테스트
-- 모니터링 및 경고 검증
+### Monthly Drills
+- Simulated incident scenarios
+- Practice response procedures
+- Test communication channels
+- Validate monitoring and alerting
 
-### 분기별 리뷰
-- 사고 동향 검토
-- 플레이북 업데이트
-- 프로세스 개선
-- 팀 간 학습 내용 공유
+### Quarterly Reviews
+- Review incident trends
+- Update playbooks
+- Improve processes
+- Share learnings across teams
 
-## 리소스
+## Resources
 
-### 도구
-- **통신**: Slack, PagerDuty, Status.io
-- **모니터링**: Prometheus, Grafana, Datadog
-- **로깅**: ELK 스택, Splunk
-- **사고 관리**: PagerDuty, Opsgenie, VictorOps
+### Tools
+- **Communication**: Slack, PagerDuty, Status.io
+- **Monitoring**: Prometheus, Grafana, Datadog
+- **Logging**: ELK Stack, Splunk
+- **Incident Management**: PagerDuty, Opsgenie, VictorOps
 
-### 문서
-- 런북: 단계별 절차
-- 아키텍처 다이어그램: 시스템 개요
-- 연락처 목록: 비상 연락처
-- 에스컬레이션 경로: 의사결정 트리
+### Documentation
+- Runbooks: Step-by-step procedures
+- Architecture diagrams: System overview
+- Contact lists: Emergency contacts
+- Escalation paths: Decision trees
 
-## 에스컬레이션 경로
+## Escalation Paths
+
 ```
 Level 1: On-Call Engineer (Primary)
     ↓ (No response in 10 min)
@@ -381,13 +385,13 @@ Level 4: VP of Engineering
 Level 5: CEO (Extreme circumstances)
 ```
 
-## 모범 사례
+## Best Practices
 
-1. **커뮤니케이션이 핵심**: 이해관계자에게 지속적으로 정보를 제공합니다.
-2. **솔직해지세요**: 모르는 것이 있으면 인정하세요.
-3. **모든 것을 문서화**: 일정, 결정, 조치
-3. **비난하지 마세요**: 프로세스 개선에 집중
-4. **실수로부터 배우기**: 모든 사건은 기회입니다
-5. **정기적으로 연습하세요**: 훈련은 실제 반응을 향상시킵니다.
-6. **침착함을 유지하세요**: 평정심은 더 나은 결정으로 이어집니다
-7. **사용자 우선순위**: 고객에 대한 영향 지침 조치
+1. **Communication is key**: Keep stakeholders informed
+2. **Be honest**: Admit when you don't know something
+3. **Document everything**: Timeline, decisions, actions
+3. **Don't blame**: Focus on process improvement
+4. **Learn from mistakes**: Every incident is an opportunity
+5. **Practice regularly**: Drills improve actual response
+6. **Stay calm**: Composure leads to better decisions
+7. **Prioritize users**: Impact on customers guides actions

@@ -119,7 +119,6 @@ class AuthService {
 }
 ```
 
-
 **Migration Path**:
 - Monitor costs and scaling
 - If costs become prohibitive, implement OAuth2Provider
@@ -178,7 +177,6 @@ Month 3-4: Optimize slow queries identified during migration
 Month 6: Evaluate progress, begin CockroachDB POC if needed
 Month 12: Decision point for distributed database
 ```
-
 
 **Trade-offs**:
 - Not solving "ultimate" scalability now (acceptable given growth rate)
@@ -240,7 +238,6 @@ Before extracting:
 - [ ] Create runbook for payment service incidents
 - [ ] Train team on microservices debugging
 ```
-
 
 ---
 

@@ -2,9 +2,10 @@
 
 ## 워크플로 1: JWT 인증을 사용하여 Production-Ready Express + TypeScript API 설정
 
-**목표:** TypeScript, Prisma ORM, JWT 인증, 유효성 검사, 오류 처리 기능을 갖춘 부트스트랩 보안 REST API를 1시간 이내에 완료하세요.
+**목표:** TypeScript, Prisma ORM, JWT 인증, 검증, 오류 처리 기능을 갖춘 부트스트랩 보안 REST API를 1시간 이내에 완료하세요.
 
 ### 1단계: TypeScript를 사용하여 프로젝트 초기화
+
 ```bash
 mkdir my-backend-api && cd my-backend-api
 npm init -y
@@ -12,13 +13,14 @@ npm install express cors helmet dotenv
 npm install -D typescript @types/node @types/express ts-node-dev
 npx tsc --init
 ```
+
 ### 2단계: Prisma ORM 설정
+
 ```bash
 npm install prisma @prisma/client
 npm install -D prisma
 npx prisma init
 ```
-
 
 ```prisma
 # prisma/schema.prisma
@@ -41,13 +43,14 @@ model User {
 }
 ```
 
-
 ```bash
 # Run migrations
 npx prisma migrate dev --name init
 npx prisma generate
 ```
+
 ### 3단계: JWT 인증 구현
+
 ```typescript
 // src/auth/jwt.ts
 import jwt from 'jsonwebtoken';
@@ -96,11 +99,12 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
   }
 }
 ```
+
 ### 4단계: Zod를 사용하여 입력 유효성 검사 설정
+
 ```bash
 npm install zod
 ```
-
 
 ```typescript
 // src/validators/user.validator.ts
@@ -135,7 +139,9 @@ export function validate(schema: z.ZodSchema) {
   };
 }
 ```
+
 ### 5단계: 인증 경로 구현
+
 ```typescript
 // src/routes/auth.routes.ts
 import { Router } from 'express';
@@ -212,7 +218,9 @@ router.post('/login', validate(loginSchema), async (req, res, next) => {
 
 export default router;
 ```
+
 ### 6단계: 전역 오류 처리기
+
 ```typescript
 // src/middleware/error.middleware.ts
 import { Request, Response, NextFunction } from 'express';
@@ -231,7 +239,9 @@ export function errorHandler(
   });
 }
 ```
+
 ### 7단계: 주 서버 설정
+
 ```typescript
 // src/server.ts
 import express from 'express';
@@ -261,15 +271,19 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 ```
+
 ## 워크플로 2: Bull Queue를 사용하여 백그라운드 작업 구현
 
 **목표:** 장기 실행 작업(이메일 전송, 이미지 처리)을 비동기식으로 처리합니다.
 
 ### 1단계: 종속성 설치
+
 ```bash
 npm install bull @types/bull
 ```
+
 ### 2단계: 대기열 설정
+
 ```typescript
 // src/queues/email.queue.ts
 import Queue from 'bull';
@@ -309,7 +323,9 @@ export function queueEmail(to: string, subject: string, body: string) {
 
 export { emailQueue };
 ```
+
 ### 3단계: API 경로에서 사용
+
 ```typescript
 // src/routes/user.routes.ts
 import { queueEmail } from '../queues/email.queue';
@@ -331,6 +347,7 @@ router.post('/send-welcome-email', authMiddleware, async (req, res) => {
   res.json({ message: 'Welcome email queued' });
 });
 ```
+
 ## 통합 패턴
 
 ### API 디자이너
@@ -349,42 +366,41 @@ router.post('/send-welcome-email', authMiddleware, async (req, res) => {
 - **도구:** 둘 다 TypeScript를 사용합니다. backend-developer는 프런트엔드 코드 생성을 위한 OpenAPI 사양을 제공합니다.
 
 ### 데브옵스 엔지니어
-- **핸드오프:** 백엔드 개발자가 Dockerfile을 생성 → devops-엔지니어가 CI/CD 파이프라인 설정
+- **Handoff:** backend-developer가 Dockerfile을 생성 → devops-engineer가 CI/CD 파이프라인 설정
 - **협업:** 백엔드 개발자가 상태 확인을 구현 → devops-엔지니어가 Kubernetes 프로브 구성
 - **도구:** 백엔드 개발자는 Docker를 사용합니다. devops-engineer는 Kubernetes, GitHub Actions를 사용합니다.
 
 ### 보안 감사자
-- **인계:** 백엔드 개발자가 인증 구현 → 취약점에 대한 보안 감사자 감사(SQL 주입, XSS)
+- **인계:** 백엔드 개발자가 인증 구현 → 보안 감사자 취약점 감사(SQL 주입, XSS)
 - **협업:** 백엔드 개발자가 입력 유효성 검사를 추가 → 보안 감사자가 보안 코딩 방식을 확인합니다.
 - **도구:** 백엔드 개발자는 Zod/Joi를 사용합니다. 보안 감사자는 OWASP ZAP, Burp Suite를 사용합니다.
 
 ## 스크립트 참조
 
-### API 스캐폴딩
-```bash
+### API 스캐폴딩```bash
 python scripts/scaffold_api.py <framework> <project_name>
 # Frameworks: express, fastapi, django, spring
 ```
-### 데이터베이스 모델 생성
-```bash
+
+### 데이터베이스 모델 생성```bash
 python scripts/generate_model.py <orm> --schema <schema_file> --output <output_dir>
 # ORMs: sequelize, typeorm, sqlalchemy, django, jpa
 ```
-### 인증 설정
-```bash
+
+### 인증 설정```bash
 python scripts/setup_auth.py <framework> <auth_type>
 # Auth types: jwt, oauth2, session
 ```
-### 미들웨어 세대
-```bash
+
+### 미들웨어 세대```bash
 python scripts/create_middleware.py <framework> --output <output_dir>
 ```
-### 오류 처리기 설정
-```bash
+
+### 오류 처리기 설정```bash
 python scripts/error_handler.py <framework> --output <output_dir>
 ```
-### 배포 스크립트
-```bash
+
+### 배포 스크립트```bash
 ./scripts/deploy.sh [OPTIONS]
 # Options:
 # --skip-tests: Skip test execution

@@ -23,6 +23,7 @@ eBPF 및 Flamegraph를 사용한 심층 성능 분석, 로드 테스트, 커널 
 ## 2. 의사결정 프레임워크
 
 ### 프로파일링 전략
+
 ```
 What is the bottleneck?
 │
@@ -41,6 +42,7 @@ What is the bottleneck?
 └─ **Latency (Wait Time)?**
    └─ Distributed? → **Tracing** (OpenTelemetry, Jaeger)
 ```
+
 ### 부하 테스트 도구
 
 | 도구 | 언어 | 최고의 대상 |
@@ -48,7 +50,7 @@ What is the bottleneck?
 | **K6** | JS | 개발자 친화적인 CI/CD 통합. |
 | **개틀링** | 스칼라/자바 | 높은 동시성, 복잡한 시나리오. |
 | **메뚜기** | 파이썬 | 신속한 프로토타이핑, 코드 기반 테스트. |
-| **워크2** | 다 | 원시 HTTP 처리량 벤치마킹(단순) |
+| **워크2** | C | 원시 HTTP 처리량 벤치마킹(단순) |
 
 ### 최적화 계층 구조
 
@@ -57,7 +59,7 @@ What is the bottleneck?
 3. **코드/언어:** 메모리 할당, 루프 풀기.
 4. **시스템/커널:** TCP 스택 튜닝, CPU 선호도.
 
-**위험 신호 → 에스컬레이션`database-optimizer`:**
+**위험 신호 → `database-optimizer`(으)로 에스컬레이션하세요.**
 - "느린 성능"은 인덱스가 누락된 단일 SQL 쿼리로 밝혀졌습니다.
 - 애플리케이션 중단을 유발하는 데이터베이스 잠금/교착 상태
 - DB 서버의 디스크 I/O 포화 상태
@@ -73,21 +75,21 @@ What is the bottleneck?
 
 **단계:**
 
-1. **캡처 프로필(Linux 성능)**
-```bash
+1. **캡처 프로필(Linux 성능)**```bash
     # Record stack traces at 99Hz for 30 seconds
     perf record -F 99 -a -g -- sleep 30
     ```
-2. **Flamegraph 생성**
-```bash
+
+2. **Flamegraph 생성**```bash
     perf script > out.perf
     ./stackcollapse-perf.pl out.perf > out.folded
     ./flamegraph.pl out.folded > profile.svg
     ```
+
 3. **분석**
-    - 개방형`profile.svg`브라우저에서.
+    - 브라우저에서 `profile.svg`을(를) 엽니다.
     - **넓은 타워**를 찾으세요(기능에는 시간이 걸립니다).
-    -   *예:*`json_parse`너비는 40%입니다. → JSON 처리를 최적화합니다.
+    - *예:* `json_parse`은 너비가 40%입니다. → JSON 처리를 최적화합니다.
 
 ---
 ---
@@ -107,7 +109,7 @@ What is the bottleneck?
     - *예:* 동기식 레이아웃 재계산을 강제하는 클릭 핸들러.
 
 3. **최적화**
-    - **메인 스레드에 대한 양보:**`await new Promise(r => setTimeout(r, 0))`또는`scheduler.postTask()`.
+    - **메인 스레드에 대한 양보:** `await new Promise(r => setTimeout(r, 0))` 또는 `scheduler.postTask()`.
     - **웹 작업자:** 무거운 논리를 스레드 외부로 이동합니다.
 
 ---
@@ -121,10 +123,9 @@ What is the bottleneck?
 
 1. **상호작용 식별**
     - React DevTools Profiler(상호작용 추적)를 사용하세요.
-    - 찾기`click`처리기 기간.
+    - `click` 처리기 기간을 찾습니다.
 
-2. **긴 작업 분할**
-```javascript
+2. **긴 작업 분할**```javascript
     async function handleClick() {
       // 1. UI Update (Immediate)
       setLoading(true);
@@ -137,8 +138,9 @@ What is the bottleneck?
       setLoading(false);
     }
     ```
+
 3. **확인**
-    - 사용`Web Vitals`확대. INP가 200ms 미만으로 떨어지는지 확인하세요.
+    - `Web Vitals` 확장자를 사용하세요. INP가 200ms 미만으로 떨어지는지 확인하세요.
 
 ---
 ---
@@ -148,7 +150,7 @@ What is the bottleneck?
 ### ❌ 안티 패턴 1: 조기 최적화
 
 **모습:**
-- 읽을 수 있는 것으로 교체하기`map()`콤플렉스가 있는`for`측정하지 않고 "더 빠르기" 때문에 루프를 반복합니다.
+- 측정하지 않고 "더 빠르기" 때문에 읽을 수 있는 `map()`을 복잡한 `for` 루프로 대체합니다.
 
 **실패하는 이유:**
 - 개발 시간을 낭비했습니다.
@@ -220,16 +222,16 @@ What is the bottleneck?
 3. **종속성 분석**: 매핑된 서비스 종속성 및 데이터 흐름
 4. **근본 원인**: 데이터베이스 연결 풀 고갈
 
-**추적 분석:**
-```
+**추적 분석:**```
 Service A (50ms) → Service B (200ms) → Service C (500ms) → Database (1s)
                                      ↑
                                Connection pool exhaustion
 ```
+
 **해결 방법:**
 - 연결 풀 크기 증가
 - 쿼리 최적화 구현
-- 무거운 쿼리를 위한 읽기 복제본을 추가했습니다.
+- 무거운 쿼리를 위한 읽기 복제본이 추가되었습니다.
 
 **결과:**
 - 엔드 투 엔드 P99: 2.5s → 300ms
@@ -254,7 +256,7 @@ Service A (50ms) → Service B (200ms) → Service C (500ms) → Database (1s)
 | 10,000 | 4,800 | 550ms | 1.2% |
 | 15,000 | 6,200 | 1.2초 | 5.8% |
 
-**용량 권장사항:**
+**용량 권장 사항:**
 - 동시 사용자 12,000명으로 확장
 - 애플리케이션 서버 3대 추가
 - 데이터베이스 읽기 복제본을 5개로 늘립니다.
@@ -265,7 +267,7 @@ Service A (50ms) → Service B (200ms) → Service C (500ms) → Database (1s)
 ### 프로파일링 및 분석
 
 - **먼저 측정**: 최적화하기 전에 항상 프로필을 작성하세요.
-- **포괄적인 범위**: CPU, 메모리, I/O 및 네트워크 분석
+- **포괄적 범위**: CPU, 메모리, I/O 및 네트워크 분석
 - **프로덕션 안전성**: 프로덕션에서 오버헤드가 낮은 프로파일링을 사용합니다.
 - **정기 기준**: 비교를 위한 성능 기준 설정
 

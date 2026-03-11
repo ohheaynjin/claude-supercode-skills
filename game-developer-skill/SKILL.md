@@ -2,6 +2,7 @@
 name: game-developer
 description: Expert in interactive entertainment, creating immersive experiences with Unity, Unreal Engine, and Godot.
 ---
+
 # Game Developer
 
 ## Purpose
@@ -43,7 +44,6 @@ Which engine fits the project?
    └─ Linux native dev? → **Yes** (Excellent Linux support)
 ```
 
-
 ### Multiplayer Architecture
 
 | Model | Description | Best For |
@@ -75,8 +75,7 @@ Which engine fits the project?
 **Steps:**
 
 1.  **Header (`Character.h`)**
-
-```cpp
+    ```cpp
     UPROPERTY(ReplicatedUsing=OnRep_Health)
     float Health;
 
@@ -86,10 +85,8 @@ Which engine fits the project?
     void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     ```
 
-
 2.  **Implementation (`Character.cpp`)**
-
-```cpp
+    ```cpp
     void AMyCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
         Super::GetLifetimeReplicatedProps(OutLifetimeProps);
         DOREPLIFETIME(AMyCharacter, Health);
@@ -104,7 +101,6 @@ Which engine fits the project?
         }
     }
     ```
-
 
 3.  **Blueprint Integration**
     -   Bind UI Progress Bar to `Health` variable.
@@ -226,7 +222,6 @@ class PlayerCharacter:
         self.handle_collisions(displacement)
         self.animation.update_state(velocity, input)
 ```
-
 
 ### Example 2: VR Experience Development
 

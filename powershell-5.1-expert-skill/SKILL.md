@@ -25,9 +25,13 @@ description: 레거시 Windows PowerShell 5.1 전문가입니다. WMI, ADSI, COM
 - 레거시 PowerShell 스크립트 유지 관리
 - DSC 구성 관리
 
-**다음과 같은 경우에는 호출하지 마세요.**
-- 크로스 플랫폼 PowerShell → 사용`/powershell-7-expert`- GUI/TUI 개발 → 활용`/powershell-ui-architect`- 보안강화 → 활용`/powershell-security-hardening`- 모듈 아키텍처 → 사용`/powershell-module-architect`## 의사결정 프레임워크
-```
+**다음과 같은 경우에는 호출하지 마세요**
+- 크로스 플랫폼 PowerShell → `/powershell-7-expert` 사용
+- GUI/TUI 개발 → `/powershell-ui-architect` 사용
+- 보안 강화 → `/powershell-security-hardening` 사용
+- 모듈 아키텍처 → `/powershell-module-architect` 사용
+
+## 의사결정 프레임워크```
 PowerShell Version Context?
 ├── Must run on older Windows
 │   └── Use 5.1 with WMI/ADSI
@@ -40,7 +44,8 @@ PowerShell Version Context?
     ├── Legacy → WMI
     └── Modern → CIM (also works in 5.1)
 ```
-## 핵심 워크플로
+
+## 핵심 워크플로우
 
 ### 1. WMI 시스템 쿼리
 1. WMI 클래스 식별(Win32_*)

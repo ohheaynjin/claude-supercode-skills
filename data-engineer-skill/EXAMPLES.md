@@ -1,9 +1,8 @@
 # 데이터 엔지니어 - 코드 예제 및 패턴
 
-## 안티 패턴: 데이터 파이프라인에 멱등성 없음
+## 안티 패턴: 데이터 파이프라인에 멱등성이 없습니다.
 
-### 외관(나쁨):
-```python
+### 외관(나쁨):```python
 def daily_etl():
     # Extract new data
     new_data = extract_from_api()
@@ -16,14 +15,14 @@ def daily_etl():
 
 # Problem: If pipeline fails halfway and restarts → duplicates!
 ```
+
 ### 실패 이유:
 - 파이프라인 실패로 인해 중복 레코드가 생성됨
 - 실패한 실행을 안전하게 재시도할 수 있는 방법이 없습니다.
 - 데이터 무결성이 손상됨
 - 개수 및 집계가 올바르지 않게 됩니다.
 
-### 올바른 접근 방식:
-```python
+### 올바른 접근 방식:```python
 import uuid
 from datetime import datetime
 
@@ -90,7 +89,9 @@ def daily_etl(run_date=None, run_id=None):
 # Safe to retry with same run_id
 daily_etl(run_date='2024-01-15', run_id='specific-run-id-123')
 ```
+
 ## dbt Mart 모델 예시
+
 ```sql
 -- models/marts/fact_orders.sql
 {{
@@ -143,7 +144,9 @@ FROM orders o
 LEFT JOIN customers c ON o.customer_id = c.customer_id
 LEFT JOIN order_items i ON o.order_id = i.order_id
 ```
+
 ## SCD 유형 2 구현
+
 ```sql
 -- dbt snapshot for SCD2
 {% snapshot users_snapshot %}
@@ -161,7 +164,9 @@ SELECT * FROM {{ source('raw', 'users') }}
 
 {% endsnapshot %}
 ```
+
 ## 오류 처리 기능이 있는 Kafka 소비자
+
 ```python
 from kafka import KafkaConsumer, KafkaProducer
 import json
@@ -213,7 +218,9 @@ for message in consumer:
     if result:
         consumer.commit()
 ```
+
 ## 워터마크를 사용한 Spark 스트리밍
+
 ```python
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import window, col, from_json

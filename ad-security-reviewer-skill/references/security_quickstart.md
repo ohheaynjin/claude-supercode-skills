@@ -11,6 +11,7 @@
 - TypeScript 스크립트의 경우: Node.js 16+, Azure AD 앱 등록
 
 ## 필수 모듈 설치
+
 ```powershell
 # Install RSAT features (PowerShell)
 Install-WindowsFeature RSAT-AD-PowerShell -IncludeManagementTools
@@ -18,21 +19,23 @@ Install-WindowsFeature RSAT-AD-PowerShell -IncludeManagementTools
 # Import modules
 Import-Module ActiveDirectory
 ```
+
 ## Azure AD 앱 등록(TypeScript 스크립트용)
 
-1. **앱 등록 생성:**
-```bash
+1. **앱 등록 생성:**```bash
    # Azure Portal → App registrations → New registration
    # Name: AD Security Reviewer
    # Permissions: Directory.Read.All, AuditLog.Read.All
    ```
-2. **클라이언트 비밀번호 생성:**
-```bash
+
+2. **클라이언트 비밀번호 생성:**```bash
    # Certificates & secrets → New client secret
    ```
+
 ## 빠른 예
 
 ### PowerShell: 권한 있는 그룹 감사
+
 ```powershell
 # Audit all privileged groups in the domain
 .\audit_privileged_groups.ps1 -Domain "example.com" -Threshold 5
@@ -43,7 +46,9 @@ Import-Module ActiveDirectory
 # Generate report to specific location
 .\audit_privileged_groups.ps1 -ReportPath "C:\Reports\privileged_audit.html"
 ```
+
 ### PowerShell: 위임 검토
+
 ```powershell
 # Review delegation across entire domain
 .\review_delegation.ps1 -SearchBase "DC=example,DC=com"
@@ -54,7 +59,9 @@ Import-Module ActiveDirectory
 # Set custom report path
 .\review_delegation.ps1 -ReportPath "C:\Reports\delegation_review.html"
 ```
+
 ### TypeScript: 보안 평가 실행
+
 ```typescript
 import { ADSecurityAnalyzer } from './scripts/analyze_ad_security';
 
@@ -75,9 +82,11 @@ console.log(report);
 const fs = require('fs');
 fs.writeFileSync('security_report.md', report);
 ```
+
 ## 일반적인 패턴
 
 ### 자동화된 보안 평가
+
 ```powershell
 # Run all security audits daily
 $today = Get-Date -Format "yyyy-MM-dd"
@@ -92,7 +101,9 @@ $reportPath = "C:\Reports\$today-security-audit.html"
 # Run TypeScript assessment
 node assess_security.js
 ```
+
 ### 월별 보안 검토
+
 ```typescript
 import { ADSecurityAnalyzer, generateSecurityReport } from './scripts/analyze_ad_security';
 import * as fs from 'fs';
@@ -126,7 +137,9 @@ async function monthlySecurityReview() {
 
 monthlySecurityReview().catch(console.error);
 ```
+
 ### 표적 위임 감사
+
 ```powershell
 # Find all delegation from specific user
 $targetUser = "jdoe"
@@ -136,6 +149,7 @@ $reportPath = "C:\Reports\delegation_${targetUser}.html"
     Select-String -Pattern $targetUser -Context 0, 2 |
     Out-File $reportPath
 ```
+
 ## 보안 평가 구성요소
 
 TypeScript 보안 분석기는 다음 검사를 수행합니다.
@@ -173,7 +187,7 @@ TypeScript 보안 분석기는 다음 검사를 수행합니다.
 
 7. **위험한 사용자 감지**
    - 중간 및 고위험 사용자
-   - 손상된 계정 표시
+   - 손상된 계정 표시기
 
 ## 모범 사례
 
@@ -189,27 +203,33 @@ TypeScript 보안 분석기는 다음 검사를 수행합니다.
 ## 문제 해결
 
 ### 모듈 가져오기 오류
+
 ```
 Error: Active Directory module not available
 ```
-**해결책:**
-```powershell
+
+**해결책:**```powershell
 Install-WindowsFeature RSAT-AD-PowerShell -IncludeManagementTools
 Import-Module ActiveDirectory
 ```
+
 ### 권한 거부 오류
+
 ```
 Error: Access is denied
 ```
+
 **해결책:**
 1. 관리자 권한으로 PowerShell을 실행하세요.
 2. 도메인 관리자 자격 증명 사용
 3. 계정에 필요한 위임 권한이 있는지 확인하세요.
 
 ### 그래프 API 인증 실패
+
 ```
 Error: Access token request failed
 ```
+
 **해결책:**
 1. 클라이언트 ID, 클라이언트 비밀번호, 테넌트 ID 확인
 2. 앱 등록이 활성화되어 있는지 확인하세요
@@ -217,9 +237,11 @@ Error: Access token request failed
 4. 관리자 동의가 부여되었는지 확인
 
 ### 대규모 데이터 세트 시간 초과
+
 ```
 Error: Operation timed out
 ```
+
 **해결책:**
 1. 더 작은 배치로 처리
 2. 스크립트 시간 초과 값을 늘립니다.
@@ -270,6 +292,7 @@ Error: Operation timed out
 ## 모니터링과의 통합
 
 ### 중요한 결과에 대한 이메일 알림
+
 ```typescript
 import { sendEmail } from './email_utils';
 
@@ -284,7 +307,9 @@ async function alertOnCriticalFindings(assessment: SecurityAssessmentResult) {
   }
 }
 ```
+
 ### SIEM 통합
+
 ```powershell
 # Send audit events to SIEM
 $events = Get-Content ".\audit_log.log" | ConvertFrom-Csv
@@ -299,10 +324,11 @@ foreach ($event in $events) {
     }
 }
 ```
+
 ## 추가 리소스
 
 - [Active Directory 보안 모범 사례](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices)
 - [Microsoft Graph 보안 API](https://docs.microsoft.com/graph/api/resources/security-overview)
 - [Azure ID 보호](https://docs.microsoft.com/azure/active-directory/identity-protection/overview)
-- [권한 있는 ID 관리](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+- [특권 ID 관리](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
 - [조건부 액세스 정책](https://docs.microsoft.com/azure/active-directory/conditional-access/)

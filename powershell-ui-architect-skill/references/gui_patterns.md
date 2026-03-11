@@ -7,6 +7,7 @@
 ## WinForms 패턴
 
 ### 기본 양식 구조
+
 ```powershell
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
@@ -33,7 +34,9 @@ function Show-WinFormsDialog {
     $form.ShowDialog()
 }
 ```
+
 ### 데이터 바인딩
+
 ```powershell
 function Show-BoundData {
     # Create data source
@@ -57,7 +60,9 @@ function Show-BoundData {
     $form.ShowDialog()
 }
 ```
+
 ### 이벤트 처리
+
 ```powershell
 function Show-EventHandling {
     $form = New-Object System.Windows.Forms.Form
@@ -85,9 +90,11 @@ function Show-EventHandling {
     $form.ShowDialog()
 }
 ```
+
 ## WPF 패턴
 
 ### XAML 기반 WPF
+
 ```powershell
 $xaml = @"
 <Window x:Class="MainWindow"
@@ -117,7 +124,9 @@ $btnClick.Add_Click({
 
 $window.ShowDialog()
 ```
+
 ### MVVM 패턴
+
 ```powershell
 # ViewModel
 class MyViewModel : System.ComponentModel.INotifyPropertyChanged {
@@ -151,7 +160,9 @@ class MyViewModel : System.ComponentModel.INotifyPropertyChanged {
     hidden [System.ComponentModel.PropertyChangedEventHandler]$PropertyChanged
 }
 ```
+
 ### WPF의 데이터 바인딩
+
 ```powershell
 $xaml = @"
 <Window x:Class="MainWindow"
@@ -178,9 +189,11 @@ $txtName.SetBinding([System.Windows.Controls.TextBox]::TextProperty, "Name")
 
 $window.ShowDialog()
 ```
+
 ## TUI(터미널 사용자 인터페이스) 패턴
 
 ### 기본 TUI 메뉴
+
 ```powershell
 function Show-TuiMenu {
     $menuItems = @(
@@ -220,7 +233,9 @@ function Show-TuiMenu {
     }
 }
 ```
+
 ### TUI 테이블 표시
+
 ```powershell
 function Show-TuiTable {
     $data = @(
@@ -239,7 +254,9 @@ function Show-TuiTable {
     Read-Host "Press Enter to continue"
 }
 ```
-### TUI 진행 표시줄
+
+### TUI 진행률 표시줄
+
 ```powershell
 function Show-TuiProgress {
     $totalItems = 100
@@ -259,6 +276,7 @@ function Show-TuiProgress {
     Write-Host "`nComplete!" -ForegroundColor Green
 }
 ```
+
 ## 프레임워크 선택
 
 ### WinForms를 사용해야 하는 경우
@@ -319,6 +337,7 @@ function Show-TuiProgress {
 ## 일반적인 패턴
 
 ### 모달 대화 상자
+
 ```powershell
 function Show-ModalDialog {
     $form = New-Object System.Windows.Forms.Form
@@ -326,7 +345,9 @@ function Show-ModalDialog {
     $form.ShowDialog() | Out-Null
 }
 ```
+
 ### 비동기 작업
+
 ```powershell
 function Show-Progress {
     $form = New-Object System.Windows.Forms.Form
@@ -354,6 +375,7 @@ function Show-Progress {
     $form.ShowDialog()
 }
 ```
+
 ## 모범 사례
 
 1. **프레임워크 선택**: 필요에 맞는 프레임워크를 선택하세요.
@@ -365,7 +387,7 @@ function Show-Progress {
 7. **테스트**: GUI 애플리케이션을 철저히 테스트합니다.
 8. **성능**: 대규모 데이터세트의 성능을 최적화합니다.
 
-## 리소스
+## 자원
 
 - [WinForms 설명서](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/)
 - [WPF 설명서](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/)
